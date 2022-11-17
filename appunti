@@ -1,0 +1,8 @@
+Valutazione(corso,utente,data,p_complessivo,p_accessibilita'_fisica,p_accessibilita'_servizioinclusione,p_burocrazia,p_insegnamento,g_trasporti,commento)
+Chiavi : corso, utente
+
+Utente(email,nome,cognome,data_nasciita,genere)
+Chiavi : email
+
+Iscrizione(corso,utente,fuorisede,data_i,data_f)
+Chiavi : corso, utente
