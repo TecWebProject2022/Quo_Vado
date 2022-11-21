@@ -6,3 +6,21 @@ Chiavi : email
 
 Iscrizione(corso,utente,fuorisede,data_i,data_f)
 Chiavi : corso, utente
+
+Pagine sito:
+  1. home
+  2. Area disciplinare (con elenco link delle classi di laurea)
+  3. Classe di laurea (es. L-31 Scienze informatiche): cruscotto info basi (breve descrizione, sbocchi professionali, durata, tasso occupazionale, stipendio medio [ultimi dati recuperabili da Almalaurea]) + elenco corsi di studio (con tutte le info)
+  
+  4. glossario (orientarsi tra tutti i termini)
+  5. passi da compiere (orientarsi tra procedure burocratiche)
+  6. università inclusiva 
+  
+  7. pagina login
+  8. pagina registrazione?
+  9. pagina profilo utente registrato
+  10. pagina profilo amministratore
+  11. pagina inserimento dati amministratore
+  12. pagina compilazione valutuazione utente
+  
+  13. errore 404
