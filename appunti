@@ -7,6 +7,12 @@ Chiavi : email
 Iscrizione(corso,utente,fuorisede,data_i,data_f)
 Chiavi : corso, utente
 
+Problema a cui vogliamo dare risposta: Su internet tante, a volte troppe, informazioni di vario tipo relative al percorso universitario da scegliere. Ogni scuola/ateneo fa "marketing" promuovendo i propri servizi, su altri siti sono presenti più dati relativi al mercato del lavoro, su altri ancora vengono fatte classifiche delle scuole migliori. Ci sono poi anche siti che riportano le opinioni degli studenti, i quali fanno le proprie considerazioni e danno consigli. Il tutto può portare a overload informativo (troppe informazioni che mandano in confusione l'utente).
+
+Obiettivo del sito: Ridurre questa sensazione di "smarrimento" progettando un sito che raccolga e riassuma le informazioni ritenute più importanti per l'utente. Le informazioni fornite sono il riassunto di ciò che serve per scegliere al meglio possibile, ogni curiosità o voglia di approfondire una determinata informazione verrà soddisfatta tramite collegamenti a siti esterni che offrono quel determinato servizio. Come un indice di un manuale: riassume tutto ciò che serve per scegliere e ognuno, a seconda di ciò che pensa sia più necessario, andrà a selezionare la voce che ritiene più utile.
+Al fine di promuovere una scelta consapevole, oltre alle informazioni più "tecniche" relative al percorso universitario e al corso di studio (durata, sbocchi professionali...), vengono fornite alcune informazione (ricavate in parte dalla letteratura scientifica, in parte da esperienze riportate da studenti che hanno frequentato il corso) relative alle credenze e alle aspettative di chi non ha frequentato l'università o il corso. Questo perché le credenze hanno un forte peso sulla scelta finale e una credenza sbagliata può portare a una decisione sbagliata.  
+ 
+
 Pagine sito:
   1. home
   2. Area disciplinare (con elenco link delle classi di laurea)
