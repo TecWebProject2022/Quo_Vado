@@ -49,11 +49,11 @@ nome_utente varchar(20) primary key,
 classe_laurea char(4) primary key,
 data date not null,
 commento varchar(200) not null,
-p_complessivo ???,
-p_acc_fisica ???,
-p_servizio_inclusione ???,
-tempestivita_burocratica ???,
-p_insegnamento ???
+p_complessivo varchar(2) not null,
+p_acc_fisica varchar(2) not null,
+p_servizio_inclusione varchar(2) not null,
+tempestivita_burocratica varchar(2) not null,
+p_insegnamento varchar(2) not null,
 foreign key (nome_utente) references Utente(nome),
 foreign key (codice_attivita) references ClassediLaurea(num_classe)
 );
