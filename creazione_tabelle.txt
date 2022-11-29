@@ -60,7 +60,7 @@ p_insegnamento varchar(2) not null,
 foreign key (nome_utente) references Utente(nome) ON UPDATE CASCADE,
 foreign key (codice_attivita) references ClassediLaurea(num_classe) ON UPDATE CASCADE ON DELETE CASCADE
 );
-create table password(sigla varchar(10),
+create table Password(sigla varchar(10),
                       data date, 
                       utente varchar(20),
                       PRIMARY KEY(sigla,data,utente));
