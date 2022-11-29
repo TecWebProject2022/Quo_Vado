@@ -1,14 +1,14 @@
 insert into Ateneo (nome, URL, tipologia, citta, regione, introduzione, costo_medio, num_borsaStudio, posizioneGraduatoria) values
-('nome', 'URL', 'tipologia', citta', 'regione', 'introduzione', 'costo_medio', 'nume_borsaStudio', 'posizioneGraduatoria'),
-('nome', 'URL', 'tipologia', citta', 'regione', 'introduzione', 'costo_medio', 'nume_borsaStudio', 'posizioneGraduatoria'),
-('nome', 'URL', 'tipologia', citta', 'regione', 'introduzione', 'costo_medio', 'nume_borsaStudio', 'posizioneGraduatoria'),
-('nome', 'URL', 'tipologia', citta', 'regione', 'introduzione', 'costo_medio', 'nume_borsaStudio', 'posizioneGraduatoria'),
-('nome', 'URL', 'tipologia', citta', 'regione', 'introduzione', 'costo_medio', 'nume_borsaStudio', 'posizioneGraduatoria'),
-('nome', 'URL', 'tipologia', citta', 'regione', 'introduzione', 'costo_medio', 'nume_borsaStudio', 'posizioneGraduatoria'),
-('nome', 'URL', 'tipologia', citta', 'regione', 'introduzione', 'costo_medio', 'nume_borsaStudio', 'posizioneGraduatoria'),
-('nome', 'URL', 'tipologia', citta', 'regione', 'introduzione', 'costo_medio', 'nume_borsaStudio', 'posizioneGraduatoria'),
-('nome', 'URL', 'tipologia', citta', 'regione', 'introduzione', 'costo_medio', 'nume_borsaStudio', 'posizioneGraduatoria'),
-('nome', 'URL', 'tipologia', citta', 'regione', 'introduzione', 'costo_medio', 'nume_borsaStudio', 'posizioneGraduatoria');
+('Università degli studi di Bologna', 'www.unibo.it', 'pubblica', 'Bologna', 'Emilia Romagna', 'introduzione', 'costo_medio', 'nume_borsaStudio', 'posizioneGraduatoria'),
+('Università degli studi di Padova', 'www.unipd.it', 'pubblica', 'Padova', 'Veneto', 'introduzione', 'costo_medio', 'nume_borsaStudio', 'posizioneGraduatoria'),
+('Università degli Studi del Molise', 'www.unimol.it', 'pubblica', 'Campobasso', 'Molise', 'introduzione', 'costo_medio', 'nume_borsaStudio', 'posizioneGraduatoria'),
+('Sigmund Freud University', 'www.milano-sfu.it', 'privata', 'Milano', 'Lombardia', 'introduzione', 'costo_medio', 'nume_borsaStudio', 'posizioneGraduatoria'),
+('nome', 'URL', 'tipologia', 'citta', 'regione', 'introduzione', 'costo_medio', 'nume_borsaStudio', 'posizioneGraduatoria'),
+('nome', 'URL', 'tipologia', 'citta', 'regione', 'introduzione', 'costo_medio', 'nume_borsaStudio', 'posizioneGraduatoria'),
+('nome', 'URL', 'tipologia', 'citta', 'regione', 'introduzione', 'costo_medio', 'nume_borsaStudio', 'posizioneGraduatoria'),
+('nome', 'URL', 'tipologia', 'citta', 'regione', 'introduzione', 'costo_medio', 'nume_borsaStudio', 'posizioneGraduatoria'),
+('nome', 'URL', 'tipologia', 'citta', 'regione', 'introduzione', 'costo_medio', 'nume_borsaStudio', 'posizioneGraduatoria'),
+('nome', 'URL', 'tipologia', 'citta', 'regione', 'introduzione', 'costo_medio', 'nume_borsaStudio', 'posizioneGraduatoria');
 
 insert into ClassediLaurea (num_classe, denominazione, illustrazione, area_disciplinare, gruppo_disciplinare, durata_stimata) values
 ('num_classe', 'denominazione', 'illustrazione', 'area_disciplinare', 'gruppo_disciplinare', 'durata_stimata'),
