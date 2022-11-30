@@ -37,7 +37,7 @@ foreign key (classe_laurea) references ClassediLaurea(num_classe)
 );
 
 create table Utente (
-email varchar(20) primary key,
+nome_utente varchar(20) primary key,
 password varchar(20) not null,
 nome varchar(20) not null,
 cognome varchar(30) not null,
@@ -57,7 +57,7 @@ p_acc_fisica varchar(2) not null,
 p_servizio_inclusione varchar(2) not null,
 tempestivita_burocratica varchar(2) not null,
 p_insegnamento varchar(2) not null,
-foreign key (nome_utente) references Utente(nome) ON UPDATE CASCADE,
+foreign key (nome_utente) references Utente(nome_utente) ON UPDATE CASCADE,
 foreign key (codice_attivita) references ClassediLaurea(num_classe) ON UPDATE CASCADE ON DELETE CASCADE
 );
 create table Password(sigla varchar(10),
