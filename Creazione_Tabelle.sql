@@ -42,7 +42,7 @@ password varchar(20) not null,
 nome varchar(20) not null,
 cognome varchar(30) not null,
 data_nascita date not null,
-genere char(1) not null,
+genere varchar(2)) not null,
 scuola_sup superiore not null
 );
 
