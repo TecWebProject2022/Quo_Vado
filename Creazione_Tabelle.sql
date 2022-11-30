@@ -50,7 +50,7 @@ create table Valutazione (
 nome_utente varchar(20),
 classe_laurea char(4),
 PRIMARY KEY(nome_utente,classe_laurea),
-data date not null,
+datav date not null,
 commento varchar(200) not null,
 p_complessivo varchar(2) not null,
 p_acc_fisica varchar(2) not null,
