@@ -9,13 +9,8 @@ drop table if exists Credenziale;
 create table Ateneo (
 nome varchar(50) primary key,
 link varchar(30) not null,
-tipologia varchar(8) not null,
 citta varchar(50) not null,
 regione varchar(16) not null,
-introduzione varchar(200),
-costo_medio int,
-num_borsaStudio int,
-posizioneGraduatoria int not null,
 );
 
 create table ClassediLaurea (
@@ -24,14 +19,14 @@ denominazione varchar(30) not null,
 illustrazione text,
 area_disciplinare varchar(30) not null,
 gruppo_disciplinare varchar(30) not null,
-durata_stimata int
+durata ENUM('triennale', 'magistrale', 'a ciclo unico') not null
 );
 
 create table CorsodiStudio (
 ateneo varchar(50),
 classe_laurea char(4),
 nome varchar(50) not null,
-PRIMARY KEY(ateneo,classe_laurea,nome),
+PRIMARY KEY(ateneo, classe_laurea, nome),
 accesso ENUM('libero', 'chiuso', 'programmato') not null,
 link varchar(30) not null,
 foreign key (ateneo) references Ateneo(nome),
@@ -51,8 +46,9 @@ create table Valutazione (
 nome_utente varchar(20),
 classe_laurea char(4),
 PRIMARY KEY(nome_utente,classe_laurea),
-datav date not null,
+data date not null,
 commento varchar(200) not null,
+tag commento not null,
 p_complessivo int not null,
 p_acc_fisica int not null,
 p_servizio_inclusione int not null,
