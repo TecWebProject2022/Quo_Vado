@@ -30,3 +30,23 @@ Pagine sito:
   12. pagina compilazione valutuazione utente
   
   13. errore 404
+  
+  Pagine:
+
+Home -> 4 punti: informazioni, lavoro, psicologia, supporto/diritti
+Login
+Registrazione -> aggiungere la scuola superiore frequentata
+Area riservata -> Admin / User
+Corsi -> Umanistico / Scientifico -> Classi di laurea
+
+Utente:
+email
+username (chiave)
+nome
+cognome
+data nascita
+genere
+password
+scuola di provenienza
+
+Valutazione classe di laurea:
