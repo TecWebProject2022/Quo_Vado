@@ -1,5 +1,3 @@
-create database UNIORIENTA if not exists;
-use UNIORIENTA;
 drop table if exists Ateneo;
 drop table if exists Classe di Laurea;
 drop table if exists Corso di Studio;
