@@ -69,7 +69,7 @@ insert into CorsodiStudio (ateneo, classe_laurea, nome, accesso, URL) values
 ('ateneo', 'classe_laurea', 'nome', 'accesso', 'URL');
 
 
-insert into Utente (email, password, nome, cognome, data_nascita, genere) values
+insert into Utente (nome_utente, password, nome, cognome, data_nascita, genere) values
 ('viscontisante@fastwebnet.it','rWbOWXhe','Ida','Gremese','1977-05-13','ND'),
 ('costalongalivio@hotmail.it','RGhoDtQc','Rocco','Botticelli','1971-09-10','M'),
 ('fiorinocatenazzi@yahoo.com','yIdxakZN','Alderano','Vecellio','1989-07-19','ND'),
