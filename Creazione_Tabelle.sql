@@ -55,8 +55,11 @@ p_insegnamento int not null,
 foreign key (nome_utente) references Utente(nome_utente) ON UPDATE CASCADE,
 foreign key (classe_laurea) references ClassediLaurea(num_classe) ON UPDATE CASCADE ON DELETE CASCADE
 );
-create table Credenziale(pw varchar(10),
-                      data_inserimento date, 
-                      utente varchar(20),
-                      PRIMARY KEY(pw,data_inserimento,utente),
-                      FOREIGN KEY(utente) REFERENCES Utente(nome_utente) ON UPDATE CASCADE ON DELETE CASCADE);
+
+create table Credenziale(
+pw varchar(10),
+data_inserimento date, 
+utente varchar(20),
+PRIMARY KEY(pw,data_inserimento,utente),
+FOREIGN KEY(utente) REFERENCES Utente(nome_utente) ON UPDATE CASCADE ON DELETE CASCADE
+);
