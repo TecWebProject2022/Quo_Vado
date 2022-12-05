@@ -4,6 +4,7 @@ drop table if exists Utente;
 drop table if exists CorsodiStudio;
 drop table if exists ClassediLaurea;
 drop table if exists Ateneo;
+
 create table Ateneo (
 nome varchar(50) primary key,
 link varchar(30) not null,
