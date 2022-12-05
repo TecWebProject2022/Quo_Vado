@@ -1,16 +1,14 @@
-create database UNIORIENTA if not exists;
-use UNIORIENTA;
-drop table if exists Ateneo;
-drop table if exists Classe di Laurea;
-drop table if exists Corso di Studio;
 drop table if exists Valutazione;
-drop table if exists Utente;
 drop table if exists Credenziale;
+drop table if exists Utente;
+drop table if exists CorsodiStudio;
+drop table if exists ClassediLaurea;
+drop table if exists Ateneo;
 create table Ateneo (
 nome varchar(50) primary key,
 link varchar(30) not null,
 citta varchar(50) not null,
-regione varchar(16) not null,
+regione varchar(16) not null
 );
 
 create table ClassediLaurea (
@@ -48,16 +46,17 @@ classe_laurea char(4),
 PRIMARY KEY(nome_utente,classe_laurea),
 data date not null,
 commento varchar(200) not null,
-tag commento not null,
+tag ENUM('1','2') not null,
 p_complessivo int not null,
 p_acc_fisica int not null,
 p_servizio_inclusione int not null,
 tempestivita_burocratica int not null,
 p_insegnamento int not null,
 foreign key (nome_utente) references Utente(nome_utente) ON UPDATE CASCADE,
-foreign key (codice_attivita) references ClassediLaurea(num_classe) ON UPDATE CASCADE ON DELETE CASCADE
+foreign key (classe_laurea) references ClassediLaurea(num_classe) ON UPDATE CASCADE ON DELETE CASCADE
 );
 create table Credenziale(pw varchar(10),
                       data_inserimento date, 
                       utente varchar(20),
-                      PRIMARY KEY(sigla,data_inserimento,utente));
+                      PRIMARY KEY(pw,data_inserimento,utente),
+                      FOREIGN KEY(utente) REFERENCES Utente(nome_utente) ON UPDATE CASCADE ON DELETE CASCADE);
