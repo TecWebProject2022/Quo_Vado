@@ -5,12 +5,12 @@
 	
 	<title>[titolo]</title>
 
-	<meta name="description" content="" />
-	<meta name="keywords" content="" />
+	<meta name="description" content="breve descrizione della pagina" />
+	<meta name="keywords" content="parola, parola, parola" />
 	<meta name="author" content="Marco Brugin, Valentina Caputo, Matteo Umatche, Bianca Zaghetto" />
-	<link rel="stylesheet" type="text/css" href="style.css" />
-        <link rel="stylesheet" type="text/css" href="mini.css" />
-	<link rel="stylesheet" type="text/css" href="print.css" />
+	<link rel="stylesheet" type="text/css" href="css/style.css" />
+    <link rel="stylesheet" type="text/css" href="css/mini.css" />
+	<link rel="stylesheet" type="text/css" href="css/print.css" />
 </head>
 
 <body>
@@ -19,20 +19,29 @@
 		<h2>Sito di orientamento universitario</h2>
 	</header>
 
-    <nav id="breadcrumb">
+	<a class="skip" href="#content">Vai al contenuto</a>
+
+    <nav id="breadcrumb" aria-label="breadcrumb">
 		<p>Ti trovi in: <a href="index.html" lang="en">Home</a> &gt; &gt; Orientamento</p>
-	</nav>
+	</nav> 
 
-		<a class="skip" href="#content">Vai al contenuto</a> 
-
-	<nav id="menu">
-        <ul> <!-- da mettere id="currentlink" togliendo il link-->
-            <li lang="en"><a href="index.html">Home</a></li>
-            <li><a href="orientamento.html">Esplora corsi</a></li>
-            <li><a href="universita_inclusiva.html">Inclusivit&agrave;</a></li>
-            <li><a href="contatti.html">contatti</a></li>
-            <li><a href="profilo_utente.html">Area Personale</a></li>
-        </ul>
+	<nav id="menu" aria-label="menù">
+        <dl> <!-- da mettere id="currentlink" togliendo il link-->
+            <dt lang="en"><a href="index.html">Home</a></dt>
+			<dd></dd>
+            <dt><a href="percorso_disciplinare.html">Esplora corsi</a></dt>
+			<dd></dd>
+			<dt><a href="lavoro.html">Obiettivo Lavoro</a></dt>
+			<dd></dd>
+			<dt><a href="risorse_interne.html">La scelta giusta per te</a></dt>
+			<dd></dd>
+            <dt><a href="universita_inclusiva.html">Università e Inclusione</a></dt>
+				<dd><a href="diritto_studio.html">Diritto allo studio</a></dd>
+				<dd><a href="parita_genere.html">Pari opportunità e Parità di genere</a></dd>
+				<dd><a href="disabilita.html">Servizi per la Disabilità</a></dd>
+            <!--<li><a href="contatti.html">contatti</a></li>-->
+            <!--<li><a href="profilo_utente.html">Area Personale</a></li>-->
+		</dl>
     </nav>
 
 	<main id="content">
@@ -40,9 +49,9 @@
 	</main>
 
 	<footer>
-        <img class="imgValidCode" src="images\valid-xhtml10.png" alt="W3C Valid"/>
-            <span><em>Marco Brugin, Valentina Caputo, Matteo Umatche, Bianca Zaghetto -<img src="images/cc.png"/> Quest'opera è distribuita con Licenza <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/">Creative Commons Attribuzione - Non commerciale - Condividi allo stesso modo 4.0 Internazionale</a>.</em></span>
-        <img class="imgValidCode" src="images\vcss-blue.gif" alt="W3CValid"/>
+        <img class="imgValidCode" src="images/valid-xhtml10.png" alt="W3C Valid"/>
+            <span><em>Marco Brugin, Valentina Caputo, Matteo Umatche, Bianca Zaghetto -<img src="images/cc.png" alt=""/> Quest'opera è distribuita con Licenza <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><span lang="en">Creative Commons Attribuzione</span> - Non commerciale - Condividi allo stesso modo 4.0 Internazionale</a>.</em></span>
+        <img class="imgValidCode" src="images/vcss-blue.gif" alt="W3CValid"/>
     </footer>
 
 </body>

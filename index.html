@@ -5,13 +5,13 @@
    
     <title>Quo Vado?</title>
     <meta name="description" content ="Quo Vado? è un sito di orientamento universitario. L'obiettivo è aiutare la persona a 
-    scegliere il percorso universitario, selezionando, tra tutte le informazioni, quelle ritenute più adatte."/>
+    scegliere il percorso universitario, selezionando, tra tutte le informazioni, quelle ritenute più utili alla scelta."/>
     <meta name="keywords" content="orientamento, università, lavoro,futuro,risorse,diritto allo studio,parità di genere,inclusione"/>
     <meta name="author" content="Matteo Umatche, Marco Brugin, Bianca, Valentina Caputo" />
 
-    <link rel="stylesheet" type="text/css" href="style.css" />
-    <link rel="stylesheet" type="text/css" href="mini.css" />
-    <link rel="stylesheet" type="text/css" href="print.css" />
+    <link rel="stylesheet" type="text/css" href="css/style.css" /> <!--Non sono sicura che type="text/css" vada bene per html5-->
+    <link rel="stylesheet" type="text/css" href="css/mini.css" />
+    <link rel="stylesheet" type="text/css" href="css/print.css" />
 
     
 </head>
@@ -21,35 +21,50 @@
         <h1>Quo vado?</h1>
 		<h2>Sito di orientamento universitario</h2>
     </header>
-    <nav id="breadcrumb">
-        <p>Ti trovi in: <span lang="en">Home</span></p>
-    </nav>
+    
     <a class="skip" href="#content">Vai al contenuto</a>
-    <nav id="menu">
-        <ul>
-            <li id="currentlink" lang="en">Home</li>
-            <li><a href="percorso_disciplinare.html">Esplora corsi</a></li>
-            <li><a href="universita_inclusiva.html">Inclusivit&agrave;</a></li>
-            <li><a href="Lavoro.html">Lavoro</a></li>
-            <li><a href="profilo_utente.html">Area Personale</a></li>
-        </ul>
+
+    <nav id="breadcrumb" aria-label="breadcrumb">
+		<p>Ti trovi in: Home</p>
+	</nav> 
+
+	<nav id="menu" aria-label="menù">
+        <dl> 
+            <dt id="currentlink" lang="en">Home</dt>
+            <dd></dd>
+            <dt><a href="percorso_disciplinare.html">Esplora corsi</a></dt>
+            <dd></dd>
+			<dt><a href="lavoro.html">Obiettivo Lavoro</a></dt>
+            <dd></dd>
+			<dt><a href="risorse_interne.html">La scelta giusta per te</a></dt>
+            <dd></dd>
+            <dt><a href="universita_inclusiva.html">Università e Inclusione</a></dt>
+				<dd><a href="diritto_studio.html">Diritto allo studio</a></dd>
+				<dd><a href="parita_genere.html">Pari opportunità e Parità di genere</a></dd>
+				<dd><a href="disabilita.html">Servizi per la Disabilità</a></dd>
+            <!--<li><a href="contatti.html">contatti</a></li>-->
+            <!--<li><a href="profilo_utente.html">Area Personale</a></li>-->
+		</dl>
     </nav>
+
     <main id="content">
             <h1>Orientamento al percorso universitario</h1>
-            <p>Scegliere un percorso universitario non significa soltanto decidere dove trascorrerai i prossimi tre o cinque anni. 
-                Trovare un corso di studio che ti appassiona o più vicino ai tuoi interessi è soltanto il primo passo.</p>
+            
+            <p>Scegliere un percorso universitario non significa soltanto decidere dove trascorrere i prossimi tre o cinque anni. 
+                Trovare un corso di studio che appassiona o più vicino ai propri interessi è soltanto il primo passo.</p>
 
             <p>Scegliere un percorso universitario significa fare un <strong>progetto di vita</strong> e investire nel proprio <strong>futuro</strong>. 
-                Per questo serve pensare ad un percorso di studio che, non solo rispecchi i tuoi interessi e vocazioni, ma che consenta anche di 
-                <strong> realizzarti personalmente</strong> e <strong>professionalmente</strong>.</p>
+                Per questo serve pensare ad un percorso di studio che, non solo rispecchi i propri interessi, ma che consenta anche di 
+                <strong> realizzarsi personalmente</strong> e <strong>professionalmente</strong>.</p>
 
-            <p>Fare questo non è sicuramente un compito facile, richiede approfondimenti, conoscenza di sé e del mondo del lavoro. 
-                Proprio perché scegliere il percorso di studi è difficile e richiede fatica, può essere utile chiedere aiuto a studenti che ci sono passati o 
-                a professionisti esperti in questo settore.</p>
+            <p>Fare questo non è sicuramente un compito facile, richiede approfondimenti, conoscenza di sé e del mondo del lavoro.</p> 
+                <!--Proprio perché scegliere il percorso di studi è difficile e richiede fatica, può essere utile chiedere aiuto a studenti che ci sono passati o 
+                a professionisti esperti in questo settore.-->
 
-            <p>Il nostro scopo è aiutarti in questa scelta, fornendoti una <em>bussola</em> in grado di orientarti nell’oceano di informazioni disponibili in rete.</p>
+            <p>Il nostro scopo è aiutarti in questa scelta, fornendoti una <em>bussola</em> in grado di <strong>orientarti</strong> nell’oceano di informazioni disponibili in rete.</p>
         
             <h2>I quattro punti cardinali del nostro orientamento</h2>
+
             <p>Le informazioni che si possono trovare in rete sono numerose, riguardano aspetti diversi e provengono da fonti diverse. 
                 Per sapersi orientare può essere utile fissare quattro punti chiave da tenere sempre presente nel percorso di scelta. 
                 Questi quattro punti rappresentano i punti cardinali della nostra bussola e sono: <strong>Università</strong>, <strong>Lavoro</strong>, 
@@ -67,32 +82,32 @@
                     <p>Consultare le informazioni relative ai diversi corsi di laurea delle varie università può essere una buona strada se hai già qualche 
                         idea di quelli che sono i tuoi interessi e magari sai già, più o meno, che tipo di lavoro vorrai fare dopo la laurea.</p>
                 </dd>
-                <dd class="link"><a href="orientamento.html">Scopri di più su Università</a></dd>
+                <dd class="link"><a href="percorso_disciplinare.html">Scopri di più su Università</a></dd>
 
                 <dt id="lav"><strong>Lavoro</strong></dt>
                 <dd class="summary">Sbocchi professionali e segnali che arrivano dal mondo del lavoro</dd>
                 <dd class="skip"><a href="#ris_int">Salta il contenuto e vai a Risorse Interne</a></dd>
                 <dd class="description">
                     <p>Prima di addentrarti nella ricerca del corso universitario migliore, puoi iniziare a cercare informazioni sulla <strong>professione</strong> che pensi di voler
-                        svolgere e che pensi possa un giorno realizzarti. Ti suggeriamo di non pensare alla scelta dell'università come lo scopo finale. Pensa alla scelta 
-                        dell'università come il <strong>mezzo</strong> per poter <strong>realizzare le tue ambizioni, personali oltre che lavorative</strong>.</p>
+                        svolgere e che pensi possa un giorno realizzarti. Ti suggeriamo di non vedere la scelta dell'università come lo scopo finale. Pensa alla scelta 
+                        dell'università come il <strong>mezzo</strong> per poter <strong>realizzare</strong> le tue ambizioni, <strong>personali</strong> oltre che lavorative.</p>
                     <p>Prova a pensare a:</p>
                         <ul>
-                            <li>quale lavoro o quali lavori si avvicinano ai tuoi interessi,</li>
-                            <li>che tipo di studi sono richiesti e per quanti anni dovrai studiare,</li>
-                            <li>quante prospettive ci sono di trovare lavoro,</li>
-                            <li>con il lavoro che vuoi svolgere, quali sono le prospettive economiche.</li>
+                            <li><strong>quale lavoro</strong> o quali lavori si avvicinano ai tuoi interessi,</li>
+                            <li>che <strong>tipo di studi</strong> sono richiesti e per <strong>quanti anni</strong> dovrai studiare,</li>
+                            <li>quante prospettive ci sono di <strong>trovare lavoro</strong>,</li>
+                            <li>con il lavoro che vuoi svolgere, quali sono le <strong>prospettive economiche</strong>.</li>
                         </ul>  
                 </dd>
                 <dd class="link"><a href="lavoro.html">Scopri di più su Lavoro</a></dd>
 
                 <dt id="ris_int"><strong>Risorse Interne</strong></dt>
-                <dd class="summary">Le ambizioni e le risorse che ciascuno di noi ha </dd>
+                <dd class="summary">Gli interessi, le ambizioni e le risorse che ciascuno di noi ha</dd>
                 <dd class="skip"><a href="#ris_est">Salta il contenuto e vai a Risorse Esterne</a></dd>
                 <dd class="description">
-                    <p>Il percorso verso la scelta del corso di studio può avere origine proprio da questo punto cardinale. 
+                    <p>Se non hai ancora le idee molto chiare, ti suggeriamo di iniziare da qua il tuo percorso di scelta. 
                         Spesso sono gli <strong>interessi</strong>, le <strong>passioni</strong>, le <strong>ambizioni</strong> e le <strong>credenze</strong>
-                        a guidarci nella scelta. Per questo è opportuno soffermarti su te stesso, per capire quali sono i tuoi punti di forza, 
+                        a guidarci nella scelta. Per questo prova a soffermarti su te stesso, per capire quali sono i tuoi punti di forza, 
                         cosa ti realizza e soprattutto prestare attenzione ad alcune <strong>false credenze</strong> che possono portarti sulla strada sbagliata.</p>
                 </dd>
                 <dd class="link"><a href="risorse_interne.html">Scopri di più su Risorse Interne</a></dd>
@@ -103,7 +118,7 @@
                     <p>Può capitare di avere dubbi sulle proprie capacità, pensare di non iscriversi ad un corso di laurea per paura di fallire o per paura di pesare
                         troppo sul bilancio economico familiare. Può succedere che la disabilità e la società in cui viviamo possono essere fonte di rinuncia, portandoci a 
                         credere di essere in difetto e meno capaci di altri.</p> 
-                    <p>Se anche tu hai pensato queste cose almeno una volta, ricorda: la realizzazione personale e professionale è un diritto che appartiene a tutti, 
+                    <p>Se anche tu hai pensato queste cose almeno una volta, ricorda: la realizzazione personale e professionale è un <strong>diritto</strong> che appartiene a tutti, 
                         <strong>con e senza disabilità</strong>!</p> 
                     <p>A livello universitario, questo diritto è garantito tramite:</p>
                         <ul>
@@ -117,9 +132,9 @@
     </main>
     
     <footer>
-        <img class="imgValidCode" src="images\valid-xhtml10.png" alt="W3C Valid"/>
-            <p><em>Marco Brugin, Valentina Caputo, Matteo Umatche, Bianca Zaghetto -<img src="images/cc.png"/> Quest'opera è distribuita con Licenza <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><span lang="en">Creative Commons</span> Attribuzione - Non commerciale - Condividi allo stesso modo 4.0 Internazionale</a>.</em></p>
-        <img class="imgValidCode" src="images\vcss-blue.gif" alt="W3CValid"/>
+        <img class="imgValidCode" src="images/valid-xhtml10.png" alt="W3C Valid"/>
+            <span><em>Marco Brugin, Valentina Caputo, Matteo Umatche, Bianca Zaghetto -<img src="images/cc.png" alt=""/> Quest'opera è distribuita con Licenza <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><span lang="en">Creative Commons Attribuzione</span> - Non commerciale - Condividi allo stesso modo 4.0 Internazionale</a>.</em></span>
+        <img class="imgValidCode" src="images/vcss-blue.gif" alt="W3CValid"/>
     </footer>
 </body>
 </html>
