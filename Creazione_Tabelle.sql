@@ -70,9 +70,9 @@ create table Iscrizione(
     classe char(4), 
     corso varchar(80), 
     nome_utente varchar(40),
-    PRIMARY KEY(ateneo,classe,corso), 
+    datai date not null,
+    PRIMARY KEY(ateneo,classe,corso,nome_utente), 
     punteggio_scuola_provenienza ENUM('1','2','3','4','5')  not null, 
-    datai date not null, 
     dataf date not null,
     FOREIGN KEY(ateneo,classe,corso) REFERENCES CorsodiStudio(ateneo, classe_laurea, nome) ON UPDATE CASCADE ON DELETE CASCADE
 );
