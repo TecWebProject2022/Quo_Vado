@@ -15,7 +15,7 @@ regione varchar(16) not null
 
 create table ClassediLaurea (
 num_classe char(4) primary key,
-denominazione text not null,
+denominazione varchar(250) not null,
 illustrazione text,
 area_disciplinare varchar(30) not null,
 gruppo_disciplinare varchar(50) not null,
@@ -25,10 +25,10 @@ durata ENUM('triennale', 'magistrale', 'a ciclo unico') not null
 create table CorsodiStudio (
 ateneo varchar(50),
 classe_laurea char(4),
-nome varchar(150) not null,
+nome varchar(80) not null,
 PRIMARY KEY(ateneo, classe_laurea, nome),
 accesso ENUM('Accesso programmato','Accesso libero con prova','Accesso a numero chiuso','Accesso libero cronologico') not null,
-link text not null,
+link varchar(2000) not null,
 foreign key (ateneo) references Ateneo(nome),
 foreign key (classe_laurea) references ClassediLaurea(num_classe)
 );
@@ -49,29 +49,29 @@ PRIMARY KEY(nome_utente,classe_laurea),
 datav date not null,
 commento varchar(200) not null,
 tag ENUM('1','2') not null,
-p_complessivo int not null,
-p_acc_fisica int not null,
-p_servizio_inclusione int not null,
-tempestivita_burocratica int not null,
-p_insegnamento int not null,
+p_complessivo   ENUM('1','2','3','4','5') not null,
+p_acc_fisica ENUM('1','2','3','4','5') not null,
+p_servizio_inclusione ENUM('1','2','3','4','5') not null,
+tempestivita_burocratica ENUM('1','2','3','4','5') not null,
+p_insegnamento ENUM('1','2','3','4','5') not null,
 foreign key (nome_utente) references Utente(nome_utente) ON UPDATE CASCADE,
 foreign key (classe_laurea) references ClassediLaurea(num_classe) ON UPDATE CASCADE ON DELETE CASCADE
 );
 
 create table Credenziale(
-pw varchar(10),
+pw varchar(20),
 data_inserimento date, 
-utente varchar(20),
+utente varchar(40),
 PRIMARY KEY(pw,data_inserimento,utente),
 FOREIGN KEY(utente) REFERENCES Utente(nome_utente) ON UPDATE CASCADE ON DELETE CASCADE
 );
 create table Iscrizione(
     ateneo varchar(50),
     classe char(4), 
-    corso varchar(150), 
+    corso varchar(80), 
     nome_utente varchar(40),
     PRIMARY KEY(ateneo,classe,corso), 
-    punteggio_scuola_provenienza int not null, 
+    punteggio_scuola_provenienza ENUM('1','2','3','4','5')  not null, 
     datai date not null, 
     dataf date not null,
     FOREIGN KEY(ateneo,classe,corso) REFERENCES CorsodiStudio(ateneo, classe_laurea, nome) ON UPDATE CASCADE ON DELETE CASCADE

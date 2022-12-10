@@ -306,7 +306,7 @@ insert into Valutazione (nome_utente, classe_laurea, datav, commento, tag, p_com
 ('bassocaterina@fastwebnet.it', 'L40', '2022-06-25', 'Me ne hanno sempre parlato molto bene e devo confermare; i professori soprattutto sono molto disponibili.', '1', '3', '4', '3', '3', '4'),
 ('bbocelli@tiscali.it', 'L41', '2022-06-25', 'Me ne hanno sempre parlato molto bene e devo confermare; i professori soprattutto sono molto disponibili.', '1', '4', '5', '4', '2', '4'),
 ('gabbanamatilda@tin.it', 'L03', '2022-06-25', 'Me ne hanno sempre parlato molto bene e devo confermare; i professori soprattutto sono molto disponibili.', '1', '2', '2', '4', '2', '4'),
-('luigibalbo@gmail.com', 'L07', '2022-06-25', 'Corso ben strutturato, accessibile e i professori sono preparati. Lo consiglio!', '1', '5', '5', '5', '5', '5');
+('luigibalbo@gmail.com', 'L07', '2022-06-25', 'Corso ben strutturato, accessibile e i professori sono preparati. Lo consiglio!', '1', '5', '5', '5', '5', '5'),
 ('rpavanello@tin.it', 'L09', '2022-06-25', 'Me ne hanno sempre parlato molto bene e devo confermare; i professori soprattutto sono molto disponibili.', '1', '3', '4', '3', '3', '4'),
 ('giacinto14@libero.it', 'L10', '2022-06-25', 'Corso ben strutturato, accessibile e i professori sono preparati.', '1', '4', '5', '4', '2', '4'),
 ('barsantimichelotto@hotmail.it', 'L13', '2022-06-25', 'Me ne hanno sempre parlato molto bene e devo confermare; i professori soprattutto sono molto disponibili.', '1', '2', '2', '4', '2', '4'),
