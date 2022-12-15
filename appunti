@@ -50,3 +50,13 @@ password
 scuola di provenienza
 
 Valutazione classe di laurea:
+
+Codici colori:
+header: #FFFDE8,
+breadcrumb, pagina_non_visitata, etichetta_currentLink: #162636;
+pagina_visitata: #E36600;
+testo_breadcrumb, currentLink: #FFF;
+
+Home_titolo:
+immagine_sfondo_titolo: #0D5D70;
+testo: #FFF;
