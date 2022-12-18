@@ -49,32 +49,24 @@
                 <legend>Inserisci i tuoi dati</legend>
                 
                 <label for="name">Nome:<strong>*</strong></label>
-                <input name="name" id="name" placeholder="Mario" maxlength="20" required="required" aria-required="true"                     
+                <input name="name" id="name" placeholder="Mario" maxlength="20" required="required"                   
                         data-msg-required="Per favore, inserisci il tuo nome"
                         data-msg-invalid="Formato non corretto"/>
             
                 <label for="last_name">Cognome:<strong>*</strong></label>
-                <input name="last_name" placeholder="Rossi" required="required" aria-required="true"                         
+                <input name="last_name" placeholder="Rossi" required="required"                        
                         data-msg-required="Per favore, inserisci il tuo cognome"
                         data-msg-invalid="Formato non corretto" />
                         
                 <fieldset id="date_of_birth">
                     <legend>Data di nascita</legend>
                     
-                    <label for="dob_Day">Day</label>
-                    <input type="number" name="dob_Day" id="dob_Day"  min="1" max="31" placeholder="01" required="required" aria-required="true"                     
-                        data-msg-required="Per favore, inserisci il tuo giorno di nascita"
+                    <label for="dob_Day">Date:</label>
+                    <input type="date" name="dob_Day" id="dob_Day"  min="1900-01-01" max="2023-01-01"  required="required"                     
+                        data-msg-required="Per favore, inserisci la tua data di nascita"
                         data-msg-invalid="Formato non corretto" />
                     
-                    <label for="dob_Month">Month</label>
-                    <input type="number" name="dob_Month" id="dob_Month"  min="1" max="12" placeholder="01" required="required" aria-required="true"                     
-                        data-msg-required="Per favore, inserisci il tuo mese di nascita"
-                        data-msg-invalid="Formato non corretto" />
-                    
-                    <label for="dob_Year">Year</label>
-                    <input type="number" name="dob_Year" id="dob_Year"  min="1900" max="2022" placeholder="2000" required="required" aria-required="true"                     
-                        data-msg-required="Per favore, inserisci il tuo anno di nascita"
-                        data-msg-invalid="Formato non corretto"/>
+             
                     
                 </fieldset>  
 
@@ -84,33 +76,31 @@
                     <option value="M">M</option>
                     <option value="F">F</option>
                 </select>
-                
-                <input type="reset"/>
-                <input type="button" value="avanti" onclick=""/>
+               
             </fieldset>
             
             <fieldset id="set_username_password" name="set_username_password" >
                 <legend>Scegli nome utente e password</legend>
 
                 <label for="username"><span lang="en">:*</span></label>
-                <input name="username" id="username" placeholder="username" maxlength="20" required="required" aria-required="true"                     
+                <input name="username" id="username" placeholder="username" maxlength="20" required="required"                     
                         data-msg-required="Per favore, inserisci il tuo nome utente"
                         data-msg-invalid="Formato non corretto"/>
             
                 <label for="password"><span lang="en">Password:*</span></label>
-                <input type="password" name="password" placeholder="password" required="required" aria-required="true"                         
+                <input type="password" name="password" placeholder="password" required="required"                        
                         data-msg-required="Per favore, inserisci la tua password"
                         data-msg-invalid="Formato non corretto"/>        
                 
                 <label for="repeat_password"><span lang="en">Ripeti la tua password:*</span></label>
-                <input type="password" name="repeat_password" placeholder="password" required="required" aria-required="true"                         
+                <input type="password" name="repeat_password" placeholder="password" required="required"                        
                         data-msg-required="Per favore, inserisci la tua password"
                         data-msg-invalid="Formato non corretto"/>
                 
                 <input type= "submit" value="login"/>
                 <input type="reset"/>
             
-            </fieldset>
+            </fieldset>s
             <p>i campi contrassegnati da un asterisco (*) sono obbligatori</p>
        </form>
 
