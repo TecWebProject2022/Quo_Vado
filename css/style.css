@@ -4,15 +4,67 @@
 }
 
 :root {
-    --bgcolor: ;
-    --breadcolor: ;
-    --txtcolor: ;
+    --headerbg: #FFFDE8;
+    --bgcolor: #FFFFFF;
+    --breadcolor: #162636;
+    --txtcolor: #000000;
     --contentbgcolor: ;
     --contentcolor: ;
     --linkcolor: ;
-    --visitedcolor: ;
+    --visitedcolor: #E36600;
 }
 
+html,body{
+    font-size: 100%; /* Lascio libertà all'utente*/
+    font-family: "Verdana",sans-serif;
+    line-height: 1.5em;
+    margin:auto;
+    background-color: var(--bgcolor);
+    color:var(--txtcolor);
+}
+
+header {
+    color: var(--txtcolor);
+    text-align: left;
+    padding: 1em;
+    padding-top: 0.7em;
+    border: 1px;
+    background-color: var(--headerbg); 
+}
+
+#breadcrumb {
+    background-color: var(--breadcolor);
+    color: #FFFFFF;
+    font-size: 1.1em;
+    padding: 0.5em 0em 0.5em 1em;
+    border: 1px var(--contentxtcolor);
+}
+
+#menu {
+    font-size: 1.3em;
+    padding: 0.8em;
+}
+
+#menu dl {
+    display: flex;
+    flex-direction: row;
+}
+
+footer {
+    background-color: var(--breadcolor);
+    color: #FFFFFF;
+    text-align: center;
+    padding: 1.0em;  
+    border: 1px solid var(--contentxtcolor);
+}
+
+footer a:visited {
+    color: var(--visitedcolor);
+}
+
+#breadcrumb a:visited{
+    color: var(--visitedcolor);
+}
 /*
 ================
 HEADER
