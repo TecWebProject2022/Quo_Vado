@@ -22,6 +22,23 @@ html,body{
     background-color: var(--bgcolor);
     color:var(--txtcolor);
 }
+/*
+body {
+    max-width: 1200px;
+}
+*/
+
+/* Rimuovo dalla vista gli aiuti alla navigazione*/
+.skip {
+    position: absolute; /* per evitare gli spazi */
+    text-indent:-999em;
+}
+
+/*
+================
+HEADER
+================
+*/
 
 header {
     color: var(--txtcolor);
@@ -32,44 +49,6 @@ header {
     background-color: var(--headerbg); 
 }
 
-#breadcrumb {
-    background-color: var(--breadcolor);
-    color: #FFFFFF;
-    font-size: 1.1em;
-    padding: 0.5em 0em 0.5em 1em;
-    border: 1px var(--contentxtcolor);
-}
-
-#menu {
-    font-size: 1.3em;
-    padding: 0.8em;
-}
-
-#menu dl {
-    display: flex;
-    flex-direction: row;
-}
-
-footer {
-    background-color: var(--breadcolor);
-    color: #FFFFFF;
-    text-align: center;
-    padding: 1.0em;  
-    border: 1px solid var(--contentxtcolor);
-}
-
-footer a:visited {
-    color: var(--visitedcolor);
-}
-
-#breadcrumb a:visited{
-    color: var(--visitedcolor);
-}
-/*
-================
-HEADER
-================
-*/
 
 /*
 ================
@@ -77,11 +56,60 @@ BREADCRUMB
 ================
 */
 
+#breadcrumb {
+    background-color: var(--breadcolor);
+    color: #FFFFFF;
+    font-size: 1.1em;
+    padding: 0.8em 0em 0.8em 1em;
+    margin-bottom: 1em;
+    box-shadow: 0px 5px 5px rgba(0, 0, 0, 0.25);
+}
+
+#breadcrumb a:visited{
+    color: var(--visitedcolor);
+}
+
 /*
 ================
 MENU
 ================
 */
+
+/*
+da fare:
+1. se ingrandisci oltre 1200px deve sostituire menù con menù hamburger
+2. aggiungere icona per aprire e chiudere sotto menù
+3. sistemare link colori
+*/
+
+#menu {
+    font-size: 1.3em;
+    padding: 0.5em;
+    background-color: var(--headerbg);
+}
+
+/*
+#menu dl {
+    display: flex;
+    flex-direction: row;
+}*/
+
+#menu dt {
+    display: inline;
+    margin-right: 0.8em;
+}
+
+#menu dd {
+    display: none;
+}
+
+#currentlink {
+    padding: 0.8em;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+    background-color: var(--breadcolor);
+    color: #FFFDE8;
+}
 
 /*
 ================
@@ -94,6 +122,10 @@ GLOSSARIO
 CONTENUTO
 ================
 */
+
+main {
+    margin: 5% 10%;
+}
 
 /*
 ================
@@ -130,3 +162,18 @@ UNIVERSITA' E INCLUSIONE
 FOOTER
 ================
 */
+footer {
+    background-color: var(--breadcolor);
+    color: #FFFFFF;
+    text-align: center;
+    padding: 1.0em;  
+    border: 1px solid var(--contentxtcolor);
+}
+
+footer a {
+    color: var(--linkcolor);
+}
+
+footer a:visited {
+    color: var(--visitedcolor);
+}
