@@ -148,7 +148,7 @@ HOME
 
 #intro {
     background: var(--breadcolor) url(css_images/faro_3.jpg);
-    padding-left: 5%;
+    padding-left: 10%;
     padding-top: 2%;
     padding-right: 5%;
     padding-bottom: 2.5%;
@@ -157,7 +157,8 @@ HOME
 #intro_text {
    /* background-color: #0D5D70; */
     background-image: linear-gradient(to right, rgba(13,93,112,0.8), rgba(13,93,112,0.5));
-    margin-right: 15%;
+    margin-right: 20%;
+    margin-left: -1.5em;
     padding: 1.5em;    
     border-radius: 10px;
 
