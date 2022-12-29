@@ -147,7 +147,7 @@ HOME
 */
 
 #intro {
-    background: var(--breadcolor) url(css_images/faro_3.jpg);
+    background: var(--breadcolor) url(css_images/faro_3.jpg) 85% no-repeat;
     padding-left: 10%;
     padding-top: 2%;
     padding-right: 5%;
