@@ -45,6 +45,7 @@ header {
     text-align: left;
     padding: 1em;
     padding-top: 0.7em;
+    padding-bottom: 2em;
     border: 1px;
     background-color: var(--headerbg); 
 }
@@ -77,7 +78,7 @@ MENU
 
 /*
 da fare:
-1. se ingrandisci oltre 1200px deve sostituire menù con menù hamburger
+1. se ingrandisci oltre 1024px deve sostituire menù con menù hamburger
 2. aggiungere icona per aprire e chiudere sotto menù
 3. sistemare link colori
 */
@@ -123,8 +124,20 @@ CONTENUTO
 ================
 */
 
-main {
-    margin: 5% 10%;
+main h1 {
+    color: #FFFFFF;
+    font-size: 3.3em;
+    line-height: 1.5em;
+    margin-bottom: 2.5%;
+    max-width: 1024px;
+}
+
+p {
+    max-width: 1024px;
+}
+
+#intestazione {
+    background-color: #162636;
 }
 
 /*
@@ -132,6 +145,26 @@ main {
 HOME
 ================
 */
+
+#intro {
+    background: var(--breadcolor) url(css_images/faro_3.jpg);
+    padding-left: 5%;
+    padding-top: 2%;
+    padding-right: 5%;
+    padding-bottom: 2.5%;
+}
+
+#intro_text {
+   /* background-color: #0D5D70; */
+    background-image: linear-gradient(to right, rgba(13,93,112,0.8), rgba(13,93,112,0.5));
+    margin-right: 15%;
+    padding: 1.5em;    
+    border-radius: 10px;
+
+    color: #FFFFFF;
+    font-size: 0.9em;
+        
+}
 
 /*
 ================
