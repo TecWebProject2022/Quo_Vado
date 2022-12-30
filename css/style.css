@@ -148,6 +148,7 @@ HOME
 
 #intro {
     background: var(--breadcolor) url(css_images/faro_3.jpg) 85% no-repeat;
+    background-size: cover;
     padding-left: 10%;
     padding-top: 2%;
     padding-right: 5%;
@@ -164,7 +165,44 @@ HOME
 
     color: #FFFFFF;
     font-size: 0.9em;
-        
+}
+
+#info {
+
+}
+
+#uni {
+    font-size: 1.3em;
+}
+
+#lav {
+    font-size: 1.3em;
+}
+
+.block_one {
+    background: #548E9C;
+    margin: 1% 5% 2% 30%;
+    padding: 2em 2em 2em 5em; 
+    font-size: 0.9em;
+}
+
+.block_ .link {
+    text-align: right;
+}
+
+.block_two {
+    background: #548E9C;
+    margin: 1% 30% 2% 5%;
+    padding: 2em 5em 2em 2em;
+    font-size: 0.9em;
+}
+
+.block_two ul {
+    padding-left: 2em;
+}
+
+.block_two .link {
+    text-align: right;
 }
 
 /*
