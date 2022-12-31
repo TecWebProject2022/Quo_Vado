@@ -124,20 +124,26 @@ CONTENUTO
 ================
 */
 
-main h1 {
-    color: #FFFFFF;
-    font-size: 3.3em;
-    line-height: 1.5em;
+
+main h1{
     margin-bottom: 1.5%;
     max-width: 1024px;
+    font-size: 3.3em;
+    line-height: 1.5em;
+    padding-left: 10%;
+    padding-top: 2%;
+    padding-right: 25%;
+    padding-bottom: 2%;
 }
+
+
 
 p {
-    max-width: 1024px;
+    max-width: 1024px; 
 }
 
-#intestazione {
-    background-color: #162636;
+section {
+    padding: 2% 25% 2% 10%;
 }
 
 /*
@@ -152,7 +158,13 @@ HOME
     padding-left: 10%;
     padding-top: 2%;
     padding-right: 5%;
-    padding-bottom: 2.5%;
+    padding-bottom: 2%;
+    
+}
+
+#intro h1{
+    color: #FFFFFF;
+    padding: 0%;
 }
 
 #intro_text {
@@ -216,6 +228,12 @@ ESPLORA CORSI
 OBIETTIVO LAVORO
 ================
 */
+
+#job{
+    background-color: #548E9C;
+    color: #FFFFFF;
+    
+}
 
 /*
 ================
