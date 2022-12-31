@@ -12,6 +12,7 @@
     --contentcolor: ;
     --linkcolor: ;
     --visitedcolor: #E36600;
+    --blocks: #548E9C;
 }
 
 html,body{
@@ -159,7 +160,6 @@ HOME
     padding-top: 2%;
     padding-right: 5%;
     padding-bottom: 2%;
-    
 }
 
 #intro h1{
@@ -192,13 +192,14 @@ HOME
 }
 
 .block_one {
-    background: #548E9C;
+    background: var(--blocks);
+    background-image: url(css_images/faro_3.jpg);
     margin: 1% 5% 2% 30%;
-    padding: 2em 2em 2em 5em; 
+    padding: 2em 2em 2em 3em; 
     font-size: 0.9em;
 }
 
-.block_ .link {
+.block_one .link {
     text-align: right;
 }
 
