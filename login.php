@@ -22,7 +22,7 @@ if(isset($_POST['submit'])){
         $errori.='<li>Password non compatibile</li>';
     }
 
-}
+
 if(!$errori){
     $db=new Connection();
     $dbOK=$db->Connect();
@@ -40,6 +40,7 @@ if(!$errori){
     else{
         $errori.='<li>Connection not succefultlly, please try againg</li>';
     }   
+}
 }
 $content=file_get_contents('login.html');
 if($errori){
