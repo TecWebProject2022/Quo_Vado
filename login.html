@@ -11,16 +11,16 @@
     <link rel="stylesheet" type="text/css" href="css/mini.css" />
     <link rel="stylesheet" type="text/css" href="css/print.css" />
     <link rel="shortcut icon" type="image/png" href="images/icon.ico" />
-    <script type="text/javascript" src="js/login.js"></script>  
-</head>
-    
-<body onload="AddFuntion()">
+    <script src="js/login.js"></script>  
+</head>    
+<body onload="AddFunction()">
     <header>
         <h1>Quo vado?</h1>
 		<h2>Sito di orientamento universitario</h2>
     </header>
     <nav aria-label="Aiuti per la navigazione">
-    <a class="skip" href="#content">Vai al contenuto</a></nav>
+        <a class="skip" href="#content">Vai al contenuto</a>
+    </nav>
     <nav id="menu" aria-label="menù">
         <dl> 
             <dt lang="en"><a href="index.html">Home</a></dt>
@@ -34,39 +34,37 @@
             <dt id="currentlink">Area Riservata</dt>
 		</dl>
     </nav>
-
     <nav id="breadcrumb" aria-label="breadcrumb">
         <p>Ti trovi in: <a href="index.html" lang="en">Home</a> &gt; &gt; login</p>
     </nav>
- 
     <main id="content">
         <h1 lang="en">LOGIN</h1>
         <form action="login.php" method="post" onsubmit="return Validate()">
             <fieldset>
-                <label for="username"><span lang="en">Username:</span></label>
+                <label for="username"><span lang="en">Username :</span></label>
                 <span><input value="<username/>" name="username" id="username" placeholder="username"   maxlength="40"                     
-                        data-msg-required="Per favore, inserisci il tuo username"
+                        data-msg-invalid="Il campo username sembra non valido, sono permessi massimo 40 caratteri, controlla e riprova"
+                        data-limit="40"
                         data-msg-empty="Il campo username non può essere vuoto"
                        /></span>
-            
-                <label for="password"><span lang="en">Password:</span></label>
-                <span><input  value="<password/>" type="password" name="password" placeholder="password"    maxlength="20"                     
-                        data-msg-required="Per favore, inserisci la tua password"
-                        data-msg-invalid="Il tuo username o la tua password non sembrano essere corretti per favore riprova"
-                        data-msg-empty="Il campo username non può essere vuoto" /></span>
+                <label for="password"><span lang="en">Password (max 20 caratteri):</span></label>
+                <span><input  value="<password/>" type="password" id="password" name="password" placeholder="password"    maxlength="20"                     
+                        data-limit="20"
+                        data-msg-invalid="Il campo password sembra non valido, sono permessi massimo 20 caratteri, controlla e riprova"
+                        data-msg-empty="Il campo password non può essere vuoto" /></span>
 
                 <input type="submit" id="submit" name="submit" value="Entra"/>
                 <input type="reset" id="reset" name="reset" value="Cancella tutto"/>
             
             </fieldset>
        </form>
-       <errori/>
+       <errori />
     </main>
     
     <footer>
-        <img class="imgValidCode" src="images\valid-xhtml10.png" alt="W3C Valid"/>
-            <p><em>Marco Brugin, Valentina Caputo, Matteo Umatche, Bianca Zaghetto -<img src="images/cc.png"/> Quest'opera è distribuita con Licenza <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><span lang="en">Creative Commons</span> Attribuzione - Non commerciale - Condividi allo stesso modo 4.0 Internazionale</a>.</em></p>
-        <img class="imgValidCode" src="images\vcss-blue.gif" alt="W3CValid"/>
+        <img class="imgValidCode" src="images\valid-xhtml10.png" alt="W3C Valid" />
+            <p><em>Marco Brugin, Valentina Caputo, Matteo Umatche, Bianca Zaghetto -<img src="images/cc.png" /> Quest'opera è distribuita con Licenza <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><span lang="en">Creative Commons</span> Attribuzione - Non commerciale - Condividi allo stesso modo 4.0 Internazionale</a>.</em></p>
+        <img class="imgValidCode" src="images\vcss-blue.gif" alt="W3CValid" />
     </footer>
 </body>
 </html>
