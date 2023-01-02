@@ -5,6 +5,8 @@
 
 :root {
     --headerbg: #FFFDE8;
+    --menulink: #162636;
+    --menulinkvisited: #E36600;
     --bgcolor: #FFFFFF;
     --breadcolor: #162636;
     --txtcolor: #000000;
@@ -64,6 +66,7 @@ BREADCRUMB
     font-size: 1.1em;
     padding: 0.8em 0em 0.8em 1em;
     margin-bottom: 1em;
+    margin-top: -1em;
     box-shadow: 0px 5px 5px rgba(0, 0, 0, 0.25);
 }
 
@@ -84,34 +87,89 @@ da fare:
 3. sistemare link colori
 */
 
+ul{
+    list-style: none;   
+}
+
 #menu {
     font-size: 1.3em;
     padding: 0.5em;
     background-color: var(--headerbg);
 }
 
-/*
-#menu dl {
-    display: flex;
-    flex-direction: row;
-}*/
+#menu a{
+    /*text-decoration: none;*/
+    color: var(--menulink);
+} 
 
-#menu dt {
-    display: inline;
-    margin-right: 0.8em;
+#menu a:visited{
+    color: var(--menulinkvisited);
 }
 
-#menu dd {
-    display: none;
+#menu a:hover {
+    text-decoration: none;
 }
 
-#currentlink {
-    padding: 0.8em;
+#menu li {
+    display: inline-block;  
+    padding: 0.8em;   
+}
+
+.sottomenu {
+    position: relative;
+}
+.sottomenu-content {
+    position: absolute;
+    visibility: hidden; /*per accessibilità farlo con overflow anzichè visibility: hidden*/
+    background-color: var(--headerbg);
+    z-index: 1;
+}
+
+
+.sottomenu-content a{
+    display: block;
+    width: 12em;
+}
+
+.sottomenu-content li:hover {
+    background-color: #548E9C;
+}
+
+.sottomenu:hover .sottomenu-content{
+    visibility: visible;
+    display: block;
+}
+
+li:focus-within .sottomenu-content{
+    visibility: visible;
+}
+
+
+#currentlink, #currentOverLink {
     border-top-left-radius: 20px;
     border-top-right-radius: 20px;
     background-color: var(--breadcolor);
     color: #FFFDE8;
 }
+
+#visible-sottomenu {
+    border-top: var(--breadcolor) 3px solid;
+    background-color: orange;
+    margin-top: -0.7em;
+    padding-bottom: 2em;
+}
+#visible-sottomenu ul{
+    padding-top: 0.8em;
+    padding-left: 2%;
+    
+}
+#visible-sottomenu li{
+    display: inline;
+    padding-right: 1.2em;
+    font-size: 1.2em;
+}
+
+
 
 /*
 ================
@@ -154,7 +212,7 @@ HOME
 */
 
 #intro {
-    background: var(--breadcolor) url(css_images/faro_3.jpg) 85% no-repeat;
+    background: #0D5D70 url(css_images/faro_3.jpg) 85% no-repeat;
     background-size: cover;
     padding-left: 10%;
     padding-top: 2%;
@@ -247,6 +305,7 @@ LA SCELTA GIUSTA PER TE
 UNIVERSITA' E INCLUSIONE
 ================
 */
+
 
 /*
 ================
