@@ -87,6 +87,10 @@ da fare:
 3. sistemare link colori
 */
 
+ul{
+    list-style: none;   
+}
+
 #menu {
     font-size: 1.3em;
     padding: 0.5em;
@@ -106,12 +110,6 @@ da fare:
     text-decoration: none;
 }
 
-/*
-#menu dl {
-    display: flex;
-    flex-direction: row;
-}*/
-
 #menu li {
     display: inline-block;  
     padding: 0.8em;   
@@ -122,8 +120,7 @@ da fare:
 }
 .sottomenu-content {
     position: absolute;
-    /*display: none;*/
-    visibility: hidden;
+    visibility: hidden; /*per accessibilità farlo con overflow anzichè visibility: hidden*/
     background-color: var(--headerbg);
     z-index: 1;
 }
@@ -148,12 +145,31 @@ li:focus-within .sottomenu-content{
 }
 
 
-#currentlink {
+#currentlink, #currentOverLink {
     border-top-left-radius: 20px;
     border-top-right-radius: 20px;
     background-color: var(--breadcolor);
     color: #FFFDE8;
 }
+
+#visible-sottomenu {
+    border-top: var(--breadcolor) 3px solid;
+    background-color: orange;
+    margin-top: -0.7em;
+    padding-bottom: 2em;
+}
+#visible-sottomenu ul{
+    padding-top: 0.8em;
+    padding-left: 2%;
+    
+}
+#visible-sottomenu li{
+    display: inline;
+    padding-right: 1.2em;
+    font-size: 1.2em;
+}
+
+
 
 /*
 ================
@@ -196,7 +212,7 @@ HOME
 */
 
 #intro {
-    background: var(--breadcolor) url(css_images/faro_3.jpg) 85% no-repeat;
+    background: #0D5D70 url(css_images/faro_3.jpg) 85% no-repeat;
     background-size: cover;
     padding-left: 10%;
     padding-top: 2%;
@@ -289,6 +305,7 @@ LA SCELTA GIUSTA PER TE
 UNIVERSITA' E INCLUSIONE
 ================
 */
+
 
 /*
 ================
