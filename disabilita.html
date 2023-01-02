@@ -23,17 +23,21 @@
     <a class="skip" href="#content">Vai al contenuto</a> 
 
 	<nav id="menu" aria-label="menù">
-        <dl> 
-            <dt lang="en"><a href="index.html">Home</a></dt>
-            <dt><a href="percorso_disciplinare.html">Esplora corsi</a></dt>
-			<dt><a href="lavoro.html">Obiettivo Lavoro</a></dt>
-			<dt><a href="risorse_interne.html">La scelta giusta per te</a></dt>
-            <dt><a href="universita_inclusiva.html">Università e Inclusione</a></dt>
-				<dd><a href="diritto_studio.html">Diritto allo studio</a></dd>
-				<dd><a href="parita_genere.html">Pari opportunità e Parità di genere</a></dd>
-				<dd id="currentlink">Servizi per la Disabilità</dd>
-            <dt><a href="login.html">Area Riservata</a></dt>
-		</dl>
+        <ul>
+            <li lang="en"><a href="index.html">Home</a></li>
+            <li><a href="percorso_disciplinare.html">Esplora corsi</a></li>
+            <li><a href="lavoro.html">Obiettivo Lavoro</a></li>
+            <li><a href="risorse_interne.html">La scelta giusta per te</a></li>
+            <li class="sottomenu">
+                    <a  href="universita_inclusiva.html">Università e Inclusione</a>
+                <ul class="sottomenu-content">
+                    <li><a href="diritto_studio.html">Diritto allo studio</a></li>
+                    <li><a href="parita_genere.html">Pari opportunità e Parità di genere</a></li>
+                    <li id="currentlink">Servizi per la Disabilità</li>
+                </ul>
+            </li>
+            <li><a href="login.php">Area Riservata</a></li>
+        </ul>
     </nav>
 
     <nav id="breadcrumb" aria-label="breadcrumb">
