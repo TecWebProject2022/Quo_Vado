@@ -46,7 +46,7 @@ $content=file_get_contents('login.html');
 if($errori){
     $errori='<ul>'.$errori.'</ul>';
 }
-$content=str_replace('<errori/>',$errori,$content);
+$content=str_replace('<errori />',$errori,$content);
 $content=str_replace('<username/>',$username,$content);
 $content=str_replace('<password/>',$password,$content);
 echo $content;
