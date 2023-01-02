@@ -28,7 +28,9 @@ if(!$errori){
     $dbOK=$db->Connect();
     if($dbOK){
       if($db->Login($username,$password)){
-        $errori.='<li>Login OK</li>';
+        session_start();
+        $_SESSION['user']=$username;
+        header("Location:profilo_utente.php");
       }
       else{
         $errori.='<li>Username o password non correti</li>';
