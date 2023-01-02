@@ -62,7 +62,8 @@ create table Credenziale(
 pw varchar(20),
 data_inserimento date, 
 utente varchar(40),
-PRIMARY KEY(pw,data_inserimento,utente),
+attuale boolean default 0,
+PRIMARY KEY(pw,utente),
 FOREIGN KEY(utente) REFERENCES Utente(nome_utente) ON UPDATE CASCADE ON DELETE CASCADE
 );
 create table Iscrizione(
