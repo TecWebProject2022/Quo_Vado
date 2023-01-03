@@ -30,6 +30,7 @@ if(!$errori){
       if($db->Login($username,$password)){
         session_start();
         $_SESSION['user']=$username;
+        $_SESSION['time']=time();
         header("Location:profilo_utente.php");
       }
       else{
@@ -46,7 +47,7 @@ $content=file_get_contents('login.html');
 if($errori){
     $errori='<ul>'.$errori.'</ul>';
 }
-$content=str_replace('<errori/>',$errori,$content);
+$content=str_replace('<errori />',$errori,$content);
 $content=str_replace('<username/>',$username,$content);
 $content=str_replace('<password/>',$password,$content);
 echo $content;
