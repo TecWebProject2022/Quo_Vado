@@ -33,7 +33,14 @@ class Connection{
         }
             $query_result->free();
             return $result;
-        }
     }
+
+    public function Mquery($query){
+        if($this->conn->multi_query()){
+            return $error_message= "<p>Errore in openDBConnection: " . $this->conn->error."</p>";
+        }        
+    }
+}
+    
 
 ?>
