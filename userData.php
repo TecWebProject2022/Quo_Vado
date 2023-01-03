@@ -128,7 +128,7 @@ class userData {
             if(!$dbOK){
                 $errors.="<p>Errore di connessione, prova di nuovo</p>";
             }else{
-                $insertion="INSERT INTO Utente(nome,cognome,data_nascita,genere,scuola_sup,nome_utente) VALUES (". $this->name .",". $this->lastname .",". $this->birthday .",". $this->gender .",". $this->school .",". $this->username .");"."INSERT INTO Credenziale(utente,pw,attuale,data_inserimento) VALUES (" . $this->username.",". $this->password ."1)";
+                $insertion="INSERT INTO Utente(nome,cognome,data_nascita,genere,scuola_sup,nome_utente) VALUES (\'". $this->name ."\',\'". $this->lastname ."\',\'". $this->birthday ."\',\'". $this->gender ."\',\'". $this->school ."\',\'". $this->username ."\');"."INSERT INTO Credenziale(utente,pw,attuale,data_inserimento) VALUES (\'" . $this->username."\',\'". $this->password ."\'1\','".date("Y-m-d")."\')";
                 $errors.=$db->Mquery($insertion);
             }
             $db->disconnect();
