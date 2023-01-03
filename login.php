@@ -30,6 +30,7 @@ if(!$errori){
       if($db->Login($username,$password)){
         session_start();
         $_SESSION['user']=$username;
+        $_SESSION['time']=time();
         header("Location:profilo_utente.php");
       }
       else{

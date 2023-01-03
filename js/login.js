@@ -1,9 +1,10 @@
+//Validazione dei campi 
 function Validation(element){
     var parent= element.parentNode;
-    if(parent.children.lenght==2){
+    if(parent.children.length==2){
         parent.removeChild(parent.children[1]);
     }
-    if(!element.value.lenght){
+    if(!element.value.length){
        var a=document.createElement('strong');
        a.appendChild(document.createTextNode(element.dataset.msgEmpty));
        parent.appendChild(a);
@@ -11,24 +12,31 @@ function Validation(element){
        element.select();
        return false;
     }
-    if(element.value>element.dataset.limit){
-        var a=document.createElement('em');
-        a.appendChild(document.createTextNode(element.dataset.msgInvalid));
-        parent.appendChild(a); 
+    if(element.value.length>element.dataset.limit){
+        var b=document.createElement('strong');
+        b.appendChild(document.createTextNode(element.dataset.msgInvalid));
+        parent.appendChild(b); 
         element.focus();
         element.select();
         return false;
     } 
     return true;
 }
-    
-
+//Chiamata al submit
 function Validate(){
     var user= document.getElementById('username');
     var pw= document.getElementById('password');
-    if(Validation(user) & Validation(pw))
+    if(Validation(user) & Validation(pw)){
         return true;
+    }
     return false; 
+}
+//Aggiunta funzioni all'onload
+function AddFunction(){
+    var user= document.getElementById('username');
+    var pw= document.getElementById('password');
+    user.onblur=function(){Validation(user);};
+    pw.onblur=function(){Validation(pw);};
 }
 
 
