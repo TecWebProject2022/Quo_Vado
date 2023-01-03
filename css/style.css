@@ -118,6 +118,12 @@ ul{
 .sottomenu {
     position: relative;
 }
+
+.sottomenu {
+    background: url("icons/arrow_notVisited.svg") no-repeat right;
+    background-size: 4%;
+
+}
 .sottomenu-content {
     position: absolute;
     visibility: hidden; /*per accessibilità farlo con overflow anzichè visibility: hidden*/
@@ -138,6 +144,11 @@ ul{
 .sottomenu:hover .sottomenu-content{
     visibility: visible;
     display: block;
+}
+
+.sottomenu:hover, .sottomenu:focus-within {
+    background: url("icons/up-arrow_notVisited.svg") no-repeat right;
+    background-size: 4%;
 }
 
 li:focus-within .sottomenu-content{
