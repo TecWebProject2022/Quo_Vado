@@ -43,7 +43,7 @@
     <main id="content">
         <h1>REGISTRAZIONE</h1>
         
-        <form action="" method="post">
+        <form action="registrazione_utente.php" method="post">
             <fieldset id="set_personal_data">
                 
                 <legend>Inserisci i tuoi dati</legend>
@@ -58,31 +58,26 @@
                         data-msg-required="Per favore, inserisci il tuo cognome"
                         data-msg-invalid="Formato non corretto" />
                         
-                <fieldset id="date_of_birth">
-                    <legend>Data di nascita</legend>
-                    
-                    <label for="dob_Day">Date:</label>
-                    <input type="date" name="dob_Day" id="dob_Day"  min="1900-01-01" max="2023-01-01"  required="required"                     
-                        data-msg-required="Per favore, inserisci la tua data di nascita"
-                        data-msg-invalid="Formato non corretto" />
-                    
-             
-                    
-                </fieldset>  
+                <label for="birthday">Data di nascita:<strong>*</strong></label>
+                <input type="birthday" name="birthday" id="birthday"  min="1900-01-01" max="2023-01-01"  required="required"                     
+                    data-msg-required="Per favore, inserisci la tua data di nascita"
+                    data-msg-invalid="Formato non corretto" />  
 
                 <label for="sex">Genere:</label>
-                <select  name="sex" id="sex" >
+                <select  name="sex" id="sex" />
                     <option value="ND">ND</option>
                     <option value="M">M</option>
                     <option value="F">F</option>
                 </select>
-               
+                
+                <input type="reset"/>
+                <input type="button" value="avanti" onclick=""/>
             </fieldset>
             
             <fieldset id="set_username_password" name="set_username_password" >
                 <legend>Scegli nome utente e password</legend>
 
-                <label for="username"><span lang="en">:*</span></label>
+                <label for="username"><span lang="en">username:*</span></label>
                 <input name="username" id="username" placeholder="username" maxlength="20" required="required"                     
                         data-msg-required="Per favore, inserisci il tuo nome utente"
                         data-msg-invalid="Formato non corretto"/>
@@ -92,15 +87,15 @@
                         data-msg-required="Per favore, inserisci la tua password"
                         data-msg-invalid="Formato non corretto"/>        
                 
-                <label for="repeat_password"><span lang="en">Ripeti la tua password:*</span></label>
-                <input type="password" name="repeat_password" placeholder="password" required="required"                        
-                        data-msg-required="Per favore, inserisci la tua password"
+                <label for="repeat_password">Ripeti la tua <span lang="en">password:*</span></label>
+                <input type="password" name="repeat_password" placeholder="password" required="required" 
+                        data-msg-required="Per favore, ripetila tua password"
                         data-msg-invalid="Formato non corretto"/>
                 
                 <input type= "submit" value="login"/>
                 <input type="reset"/>
             
-            </fieldset>s
+            </fieldset>
             <p>i campi contrassegnati da un asterisco (*) sono obbligatori</p>
        </form>
 
