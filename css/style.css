@@ -126,7 +126,7 @@ ul{
 }
 .sottomenu-content {
     position: absolute;
-    visibility: hidden; /*per accessibilità farlo con overflow anzichè visibility: hidden*/
+    text-indent: -999em; /*uso text-indent per screen reader*/
     background-color: var(--headerbg);
     z-index: 1;
 }
@@ -142,7 +142,7 @@ ul{
 }
 
 .sottomenu:hover .sottomenu-content{
-    visibility: visible;
+    text-indent: 0em;
     display: block;
 }
 
@@ -152,7 +152,7 @@ ul{
 }
 
 li:focus-within .sottomenu-content{
-    visibility: visible;
+    text-indent: 0em;
 }
 
 
