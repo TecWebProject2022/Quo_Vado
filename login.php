@@ -47,6 +47,12 @@ $content=file_get_contents('login.html');
 if($errori){
     $errori='<ul>'.$errori.'</ul>';
 }
+$sessione_tag='';
+if(isset($GLOBALS['sessione'])){
+    $sessione_tag=$GLOBALS['sessione'];
+    unset($GLOBALS['sessione']);
+}
+$content=str_replace('<sessione/>',$sessione_tag,$content);  
 $content=str_replace('<errori />',$errori,$content);
 $content=str_replace('<username/>',$username,$content);
 $content=str_replace('<password/>',$password,$content);
