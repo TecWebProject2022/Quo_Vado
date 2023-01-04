@@ -87,7 +87,7 @@ da fare:
 3. sistemare link colori
 */
 
-ul{
+header > ul{
     list-style: none;   
 }
 
@@ -243,10 +243,47 @@ HOME
 
 #content > h2 {
     text-align: center;
+    line-height: 1.4em;
     padding-top: 1em;
     padding-bottom: 1em;
     font-size: 2em;
 }
+
+#item1 {
+    grid-area: a;
+}
+
+#item2 {
+    grid-area: b;
+}
+
+#item3 {
+    grid-area: c;
+}
+
+#item4 {
+    grid-area: d;
+}
+
+#item5 {
+    grid-area: e;
+}
+
+.grid_container {
+    display: grid;
+    grid-template-columns: repeat(3, 33.3%);
+    grid-template-areas: "a a a"
+                         "d c b"
+                         "e e e";
+    /*grid-gap: 3%;*/
+    align-items: center;
+    justify-items: center;
+}
+
+
+
+
+
 
 #info {
     text-align: left;
@@ -257,10 +294,35 @@ HOME
     font-size: 1.3em;
 }
 
-#b1_bg {
+#first_bg {
     background-image: url(css_images/universita.jpg);
     background-size: 30%;
+    min-height: 200px;
     background-position: left;
+    background-repeat: no-repeat;
+}
+
+#second_bg {
+    background-image: url(css_images/lavoro.jpg);
+    background-size: 30%;
+    min-height: 200px;
+    background-position: right;
+    background-repeat: no-repeat;
+}
+
+#third_bg {
+    background-image: url(css_images/risorse_interne.jpg);
+    background-size: 30%;
+    min-height: 200px;
+    background-position: left;
+    background-repeat: no-repeat;
+}
+
+#fourth_bg {
+    background-image: url(css_images/risorse_esterne.jpg);
+    background-size: 30%;
+    min-height: 200px;
+    background-position: right;
     background-repeat: no-repeat;
 }
 
@@ -285,8 +347,8 @@ HOME
 
 .block_two {
     background: #548E9C;
-    margin: 1% 30% 2% 5%;
-    padding: 2em 5em 2em 2em;
+    margin: 1% 5% 2% 5%;
+    padding: 2em 30% 2em 2em;
     font-size: 0.9em;
 }
 
