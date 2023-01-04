@@ -206,12 +206,6 @@ main h1{
     padding-bottom: 2%;
 }
 
-
-
-p {
-    max-width: 1024px; 
-}
-
 section {
     padding: 2% 25% 2% 10%;
 }
@@ -248,12 +242,27 @@ HOME
     font-size: 0.9em;
 }
 
-#info {
+#content > h2 {
+    text-align: center;
+    padding-top: 1em;
+    padding-bottom: 1em;
+    font-size: 2em;
+}
 
+#info {
+    text-align: left;
+    padding: 0em 3em 2em 3em;
 }
 
 #uni {
     font-size: 1.3em;
+}
+
+#b1_bg {
+    background-image: url(css_images/universita.jpg);
+    background-size: 30%;
+    background-position: left;
+    background-repeat: no-repeat;
 }
 
 #lav {
@@ -262,9 +271,8 @@ HOME
 
 .block_one {
     background: var(--blocks);
-    background-image: url(css_images/faro_3.jpg);
-    margin: 1% 5% 2% 30%;
-    padding: 2em 2em 2em 3em; 
+    margin: 1% 5% 2% 5%;
+    padding: 2em 2em 2em 30%; 
     font-size: 0.9em;
 }
 
