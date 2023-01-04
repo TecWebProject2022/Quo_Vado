@@ -59,7 +59,7 @@ foreign key (classe_laurea) references ClassediLaurea(num_classe) ON UPDATE CASC
 );
 
 create table Credenziale(
-pw varchar(20),
+pw varchar(16),
 data_inserimento date, 
 utente varchar(40),
 attuale boolean default 0,
