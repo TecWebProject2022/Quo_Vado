@@ -365,6 +365,16 @@ ESPLORA CORSI
 ================
 */
 
+.area {
+    background: #548E9C;
+    margin: 1% 5% 2% 5%;
+    padding: 2em 6em 2em 2em;
+    font-size: 0.9em;
+    font-size: 1.3em;
+    line-height: 2em;
+}
+
+
 /*
 ================
 OBIETTIVO LAVORO
