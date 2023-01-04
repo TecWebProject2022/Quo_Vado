@@ -1,11 +1,11 @@
-<?php 
+<?php
+session_start(); 
 require_once 'database.php';
 require_once 'utilita.php';
 $content='';
 $username='';
 $password='';
 $errori='';
-
 if(isset($_POST['submit'])){
     $username=PulisciInput($_POST['username']);
     $password=PulisciInput($_POST['password']);
@@ -28,7 +28,6 @@ if(!$errori){
     $dbOK=$db->Connect();
     if($dbOK){
       if($db->Login($username,$password)){
-        session_start();
         $_SESSION['user']=$username;
         $_SESSION['time']=time();
         header("Location:profilo_utente.php");
@@ -47,6 +46,12 @@ $content=file_get_contents('login.html');
 if($errori){
     $errori='<ul>'.$errori.'</ul>';
 }
+$sessione_tag='';
+if(isset($_SESSION['sessione'])){
+    $sessione_tag=$_SESSION['sessione'];
+    unset($_SESSION['sessione']);
+}
+$content=str_replace('<sessione/>',$sessione_tag,$content);  
 $content=str_replace('<errori />',$errori,$content);
 $content=str_replace('<username/>',$username,$content);
 $content=str_replace('<password/>',$password,$content);
