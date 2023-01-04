@@ -130,16 +130,17 @@ header > ul{
 .sottomenu {
     position: relative;
 }
-
+/*
 .sottomenu {
     background: url("icons/arrow_notVisited.svg") no-repeat right;
     background-size: 4%;
 
-}
+}*/
 .sottomenu-content {
     position: absolute;
     text-indent: -999em; /*uso text-indent per screen reader*/
     background-color: var(--headerbg);
+    margin: 0.8em 0em;
     z-index: 1;
 }
 
@@ -147,6 +148,7 @@ header > ul{
 .sottomenu-content a{
     display: block;
     width: 12em;
+    padding: 0.5em;
 }
 
 .sottomenu-content li:hover {
