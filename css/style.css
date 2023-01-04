@@ -271,19 +271,14 @@ HOME
 
 .grid_container {
     display: grid;
-    grid-template-columns: repeat(3, 33.3%);
-    grid-template-areas: "a a a"
-                         "d c b"
-                         "e e e";
-    /*grid-gap: 3%;*/
+    grid-template-columns: repeat(5, 18%);
+    grid-template-areas: ". . a . ."
+                         ". d c b ."
+                         ". . e . .";
+    grid-gap: 2%;
     align-items: center;
     justify-items: center;
 }
-
-
-
-
-
 
 #info {
     text-align: left;
