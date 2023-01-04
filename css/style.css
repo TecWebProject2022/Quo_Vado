@@ -194,7 +194,6 @@ CONTENUTO
 ================
 */
 
-
 main h1{
     margin-bottom: 1.5%;
     max-width: 1024px;
@@ -269,15 +268,19 @@ HOME
     font-size: 1.3em;
 }
 
+#ris_int {
+    font-size: 1.3em;
+}
+
+#ris_est {
+    font-size: 1.3em;
+}
+
 .block_one {
     background: var(--blocks);
     margin: 1% 5% 2% 5%;
     padding: 2em 2em 2em 30%; 
     font-size: 0.9em;
-}
-
-.block_one .link {
-    text-align: right;
 }
 
 .block_two {
@@ -287,12 +290,16 @@ HOME
     font-size: 0.9em;
 }
 
-.block_two ul {
-    padding-left: 2em;
+.block_one .link {
+    text-align: right;
 }
 
 .block_two .link {
     text-align: right;
+}
+
+.block_two ul {
+    padding-left: 2em;
 }
 
 /*
