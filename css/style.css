@@ -297,10 +297,6 @@ HOME
 }
 
 #uni {
-    font-size: 1.3em;
-}
-
-#first_bg {
     background-image: url(css_images/universita.jpg);
     background-size: 30%;
     min-height: 200px;
@@ -332,18 +328,8 @@ HOME
     background-repeat: no-repeat;
 }
 
-#lav {
-    font-size: 1.3em;
-}
-
-#ris_int {
-    font-size: 1.3em;
-}
-
-#ris_est {
-    font-size: 1.3em;
-}
-
+/*colore scuro per sfondo blocchi + testo bianco
+angoli smussati o obreggiatura*/
 .block_one {
     background: var(--blocks);
     margin: 1% 5% 2% 5%;
