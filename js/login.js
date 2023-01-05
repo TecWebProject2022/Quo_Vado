@@ -12,17 +12,9 @@ function Validation(element){
        element.select();
        return false;
     }
-    else if(element.value.length>element.dataset.limitU){
+    else if(element.value.search(element.dataset.control)){
         var b=document.createElement('strong');
         b.appendChild(document.createTextNode(element.dataset.msgInvalid));
-        parent.appendChild(b); 
-        element.focus();
-        element.select();
-        return false;
-    }
-    else if(element.value.length<element.dataset.limitL){
-        var b=document.createElement('strong');
-        b.appendChild(document.createTextNode(element.dataset.msgShort));
         parent.appendChild(b); 
         element.focus();
         element.select();
