@@ -5,10 +5,17 @@
 
 :root {
     --headerbg: #FFFDE8;
-    --menulink: #162636;
-    --menulinkvisited: #E36600;
-    --bgcolor: #FFFFFF;
+    --menulink: #0D5D70;
+    --menulinkbg: #FFFEF4;
+    --menulinkvisited: #162636;
+    --menulinkvisitedbg: #D67200;
+    --menulinkhover: white;
+    --menulinkhoverbg: #0D5D70;
+
     --breadcolor: #162636;
+
+    --bgcolor: #FFFFFF;
+
     --txtcolor: #000000;
     --contentbgcolor: ;
     --contentcolor: ;
@@ -79,7 +86,6 @@ MENU
 ================
 */
 
-
 header > ul{
     list-style: none;   
 }
@@ -92,18 +98,17 @@ header > ul{
 #menu a:link{
     text-decoration: none;
     color: var(--menulink);
-    background-color: #FFFEF4;
-    color: #0D5D70;
+    background-color: var(--menulinkbg);
 } 
 
 #menu a:visited {
-    background-color: #D67200;
-    color: var(--breadcolor);
+    background-color: var(--menulinkvisitedbg);
+    color: var(--menulinkvisited);
 }
 
 #menu a:hover {
-    background-color: #0D5D70;
-    color: white;
+    background-color: var(--menulinkhoverbg);
+    color: var(--menulinkhover);
 }
 
 #menu>ul>li>a:link, #menu>ul>li>a:visited, #menu>ul>li>a:hover { /*impostazioni specifiche per primo livello del menù*/
@@ -123,12 +128,7 @@ header > ul{
 .sottomenu {
     position: relative;
 }
-/*
-.sottomenu {
-    background: url("icons/arrow_notVisited.svg") no-repeat right;
-    background-size: 4%;
 
-}*/
 .sottomenu-content { /* Nascosto */
     position: absolute;
     text-indent: -99999em; /*uso text-indent per screen reader*/
@@ -144,24 +144,13 @@ header > ul{
     border-top: #162636 0.5px solid;
 }
 
-#menu .sottomenu-content a:hover{
-    background-color: #0D5D70;
-    color: #FFFFFF;
-}
-
-
 .sottomenu:hover .sottomenu-content, li:focus-within .sottomenu-content { /* Mostra al passaggio del mouse o al tab da tastiera*/
     text-indent: 0em;
 }
 
-/*
-.sottomenu:hover, .sottomenu:focus-within {
-    background: url("icons/up-arrow_notVisited.svg") no-repeat right;
-    background-size: 4%;
-}
-*/
+/* Pagina corrente e sezione con sottomenù*/
 
-#currentlink, #currentOverLink {
+#currentlink {
     font-size: 1.2em;
     padding: 0.8em;
     border-top-left-radius: 20px;
@@ -170,25 +159,55 @@ header > ul{
     color: #FFFDE8;
 }
 
-#currentOverLink{
-    padding-left: 0%;
-    padding-right: 0%;
-    border: #162636 2px solid;
+#currentOverLink {
+    font-size: 1.2em;
+    padding: 0.8em 0em;
 }
 
+
 #visible-sottomenu {
-    border-top: var(--breadcolor) 2px solid;
-    background-color: #548E9C;
+    position: relative;
+    z-index: 1;
+    background: #162636; /* se browser non supporta linear-gradient*/
+    background: linear-gradient(to bottom, #3a7b8b, #162636);
 }
+
 #visible-sottomenu ul{
-    padding: 0.8em;
-    /*padding-left: 2%;*/
+    padding: 2em;
+    margin-left: 15%;
     
 }
 #visible-sottomenu li{
     display: inline;
     padding-right: 1.2em;
     font-size: 1.1em;
+}
+
+#visible-sottomenu a {
+    text-decoration: none;
+}
+
+#visible-sottomenu a:link{
+    padding: 0.5em;
+    border-radius: 10px;
+    box-shadow: -5px -5px 3px rgba(0, 0, 0, 0.25);
+    border: #FFFEF4 0.2px solid;
+    color:#FFFDE8;
+}
+
+#visible-sottomenu a:visited{
+    padding: 0.5em;
+    border-radius: 10px;
+    box-shadow: -5px -5px 3px rgba(0, 0, 0, 0.25);
+    border: #E36600 0.2px solid;
+    color:#E36600;
+}
+
+#currentSubLink {
+    padding: 0.5em;
+    font-size: 1.5em;
+    color: #FFFEF4;
+    
 }
 
 
@@ -240,8 +259,7 @@ HOME
     padding: 0%;
 }
 
-#intro_text {
-   /* background-color: #0D5D70; */
+#intro_text { 
     background-image: linear-gradient(to right, rgba(13,93,112,0.8), rgba(13,93,112,0.5));
     margin-right: 20%;
     margin-left: -1.5em;

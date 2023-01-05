@@ -26,7 +26,7 @@ if(isset($_POST['submit'])){
 
     }
     #aggiungo i messaggi per l'utente
-    $paginaHTML=str_replace('<messaggiForm />',$messaggiForm,$paginaHTML);
+    $paginaHTML=str_replace('<span id="messaggiForm"></span>',"<span id=""messaggiForm>".$messaggiForm."</span>",$paginaHTML);
     $userdata->free();
 }
 
