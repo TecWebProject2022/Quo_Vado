@@ -1,6 +1,8 @@
 //Validazione dei campi 
 function Validation(element){
+    
     var parent= element.parentNode;
+    
     if(parent.children.length==2){
         parent.removeChild(parent.children[1]);
     }
@@ -12,7 +14,8 @@ function Validation(element){
        element.select();
        return false;
     }
-    else if(element.value.search(element.dataset.control)==-1){
+    
+    else if(!new RegExp(element.dataset.control).test(element.value)){
         var b=document.createElement('strong');
         b.appendChild(document.createTextNode(element.dataset.msgInvalid));
         parent.appendChild(b); 
