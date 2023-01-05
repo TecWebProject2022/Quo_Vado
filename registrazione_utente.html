@@ -3,10 +3,9 @@
 <head>
     <meta charset="utf-8" />
     <title>Quo Vado?</title>
-    <meta name="description" content ="Quo Vado? è un sito di orientamento universitario. L'obiettivo è aiutare la persona a 
-    scegliere il percorso universitario, selezionando, tra tutte le informazioni, quelle ritenute più adatte."/>
-    <meta name="keywords" content="orientamento, università, percorso universitario, scelta, scegliere, scegliere università, corso di studio" />
-    <meta name="author" content="Matteo Umatche, Marco Brugin, Bianca, Valentina Caputo" />
+    <meta name="description" content ="Quo Vado? pagina per la registrazione."/>
+    <meta name="keywords" content="orientamento, università, percorso universitario,registrazione " />
+    <meta name="author" content="Matteo Umatche, Marco Brugin, Bianca Zaghetto, Valentina Caputo" />
 
     <link rel="stylesheet" type="text/css" href="css/style.css" />
     <link rel="stylesheet" type="text/css" href="css/mini.css" />
@@ -44,9 +43,7 @@
     <main id="content">
         <h1>REGISTRAZIONE</h1>
         <form action="registrazione_utente.php" method="post">
-        
-            <messaggiForm />
-        
+                
             <fieldset id="set_personal_data">
                 
                 <legend>Inserisci i tuoi dati</legend>
@@ -57,7 +54,7 @@
                         data-msg-invalid="Formato non corretto"/>
             
                 <label for="last_name">Cognome:</label>
-                <input name="last_name" value="<valoreCognome/>" required="required"                        
+                <input name="last_name" value="<valoreCognome/>" maxlength="30" required="required"                        
                         data-msg-required="Per favore, inserisci il tuo cognome"
                         data-msg-invalid="Formato non corretto" />
                         
@@ -66,8 +63,8 @@
                     data-msg-required="Per favore, inserisci la tua data di nascita"
                     data-msg-invalid="Formato non corretto" />  
 
-                <label for="sex">Genere:</label>
-                <select  name="sex" id="sex" value="<valoreGenere/>" required>
+                <label for="gender">Genere:</label>
+                <select  name="gender" id="gender" value="<valoreGenere/>" required>
                     <option value="ND">ND</option>
                     <option value="M">M</option>
                     <option value="F">F</option>
@@ -87,7 +84,7 @@
             </fieldset>
             
             <fieldset id="set_username_password" name="set_username_password" class="skip" >
-                <legend>Scegli nome utente e password</legend>
+                <legend>Scegli nome utente e <span lang="en">password</span></legend>
 
                 <label for="username"><span lang="en">username:</span></label>
                 <input name="username" id="username" value="<Username>" maxlength="40" required="required"                     
@@ -95,22 +92,23 @@
                         data-msg-invalid="Formato non corretto"/>
             
                 <label for="password"><span lang="en">Password:</span></label>
-                <input type="password" name="password" value="<valorePassword>" required="required"                        
+                <input type="password" name="password" value="<valorePassword>"  minlength="8" maxlength="16" required="required"                        
                         data-msg-required="Per favore, inserisci la tua password"
-                        data-msg-invalid="Formato non corretto"/>        
+                        data-msg-invalid="La password deve essere compresa ra 8 e 16 caratteri"/>        
                 
                 <label for="repeat_password">Ripeti la tua <span lang="en">password:</span></label>
-                <input type="password" name="repeat_password" value="<valorePassword>" required="required" 
-                        data-msg-required="Per favore, ripetila tua password"
-                        data-msg-invalid="Formato non corretto"/>
+                <input type="password" name="repeat_password" value="<valorePassword>" minlength="8" maxlength="16" required="required" 
+                        data-msg-required="Per favore, ripeti la tua password"
+                        data-msg-invalid="La password deve essere compresa ra 8 e 16 caratteri"/>
                 
                 <input type= "submit" value="Registrami"/>
                 <input type="reset" value="cancella"/>
             
             </fieldset>
             
+            <messaggiForm />
        </form>
-
+       <p>Hai gia' un <span lang="en">account</span>? <a href="login.html">Accedi</a></p>
     </main>
     
     <footer>
