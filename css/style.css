@@ -5,10 +5,17 @@
 
 :root {
     --headerbg: #FFFDE8;
-    --menulink: #162636;
-    --menulinkvisited: #E36600;
-    --bgcolor: #FFFFFF;
+    --menulink: #0D5D70;
+    --menulinkbg: #FFFEF4;
+    --menulinkvisited: #162636;
+    --menulinkvisitedbg: #D67200;
+    --menulinkhover: white;
+    --menulinkhoverbg: #0D5D70;
+
     --breadcolor: #162636;
+
+    --bgcolor: #FFFFFF;
+
     --txtcolor: #000000;
     --contentbgcolor: ;
     --contentcolor: ;
@@ -79,7 +86,6 @@ MENU
 ================
 */
 
-
 header > ul{
     list-style: none;   
 }
@@ -92,18 +98,17 @@ header > ul{
 #menu a:link{
     text-decoration: none;
     color: var(--menulink);
-    background-color: #FFFEF4;
-    color: #0D5D70;
+    background-color: var(--menulinkbg);
 } 
 
 #menu a:visited {
-    background-color: #D67200;
-    color: var(--breadcolor);
+    background-color: var(--menulinkvisitedbg);
+    color: var(--menulinkvisited);
 }
 
 #menu a:hover {
-    background-color: #0D5D70;
-    color: white;
+    background-color: var(--menulinkhoverbg);
+    color: var(--menulinkhover);
 }
 
 #menu>ul>li>a:link, #menu>ul>li>a:visited, #menu>ul>li>a:hover { /*impostazioni specifiche per primo livello del menù*/
