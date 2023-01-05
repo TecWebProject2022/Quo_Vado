@@ -11,16 +11,22 @@ if(isset($_POST['submit'])){
     $username=PulisciInput($_POST['username']);
     $password=PulisciInput($_POST['password']);
     if(!strlen($username)){
-        $errori.='<li>Campo username vuoto</li>';
+        $errori.='<li>Il campo username non può essere vuoto</li>';
     }
-    if(strlen($username)>40){
-        $errori.='<li>Username non compatibile</li>';
+    else if(strlen($username)<4){
+        $errori.='<li>Il Campo username deve essere almeno di 4 caratteri</li>';
+    }
+    else if(strlen($username)>40){
+        $errori.='<li>Il campo username non può essere più lungo di 40 caratteri</li>';
     }
     if(!strlen($password)){
-        $errori.='<li>Campo username vuoto</li>';
+        $errori.='<li>Il campo password non può essere vuoto</li>';
     }
-    if(strlen($password)>20){
-        $errori.='<li>Password non compatibile</li>';
+    else if(strlen($password)<4){
+        $errori.='<li>Il campo password deve essere almeno di 4 caratteri</li>';
+    }
+    else if(strlen($password)>20){
+        $errori.='<li>Password non può essere più lungo di 20 caratteri</li>';
     }
 
 
@@ -31,7 +37,10 @@ if(!$errori){
       if($db->Login($username,$password)){
         $_SESSION['user']=$username;
         $_SESSION['time']=time();
-        header("Location:profilo_utente.php");
+        if($_SESSION['user']!='admin')
+            header("Location:profilo_utente.php");
+        else
+            header("Location:profilo_admin.php");
       }
       else{
         $errori.='<li>Username o password non correti</li>';
