@@ -12,14 +12,22 @@ function Validation(element){
        element.select();
        return false;
     }
-    if(element.value.length>element.dataset.limit){
+    else if(element.value.length>element.dataset.limitU){
         var b=document.createElement('strong');
         b.appendChild(document.createTextNode(element.dataset.msgInvalid));
         parent.appendChild(b); 
         element.focus();
         element.select();
         return false;
-    } 
+    }
+    else if(element.value.length<element.dataset.limitL){
+        var b=document.createElement('strong');
+        b.appendChild(document.createTextNode(element.dataset.msgShort));
+        parent.appendChild(b); 
+        element.focus();
+        element.select();
+        return false;
+    }
     return true;
 }
 //Chiamata al submit

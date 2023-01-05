@@ -48,12 +48,16 @@
                 <label for="username"><span lang="en">Username :</span></label>
                 <span><input value="<username/>" name="username" id="username" placeholder="username"                     
                         data-msg-invalid="Il campo username sembra non valido, sono permessi massimo 40 caratteri, controlla e riprova"
-                        data-limit="40"
+                        data-limitU="40"
+                        data-limitL="4"
                         data-msg-empty="Il campo username non può essere vuoto"
+                        data-msg-short="Il campo username  deve essere almeno di 4 caratteri"
                        /></span>
                 <label for="password"><span lang="en">Password:</span></label>
                 <span><input  value="<password/>" type="password" id="password" name="password" placeholder="password"                       
-                        data-limit="20"
+                        data-limitU="20"
+                        data-limitL="4"
+                        data-msg-short="Il campo password  deve essere almeno di 4 caratteri"
                         data-msg-invalid="Il campo password sembra non valido, sono permessi massimo 20 caratteri, controlla e riprova"
                         data-msg-empty="Il campo password non può essere vuoto" /></span>
 
