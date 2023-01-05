@@ -66,7 +66,6 @@ BREADCRUMB
     font-size: 1.1em;
     padding: 0.8em 0em 0.8em 1em;
     margin-bottom: 1em;
-    margin-top: -1em;
     box-shadow: 0px 5px 5px rgba(0, 0, 0, 0.25);
 }
 
@@ -80,12 +79,6 @@ MENU
 ================
 */
 
-/*
-da fare:
-1. se ingrandisci oltre 1024px deve sostituire menù con menù hamburger
-2. aggiungere icona per aprire e chiudere sotto menù
-3. sistemare link colori
-*/
 
 header > ul{
     list-style: none;   
@@ -93,41 +86,61 @@ header > ul{
 
 #menu {
     font-size: 1.3em;
-    padding: 0.5em;
     background-color: var(--headerbg);
 }
 
-#menu a{
-    /*text-decoration: none;*/
+#menu a:link{
+    text-decoration: none;
     color: var(--menulink);
 } 
 
-#menu a:visited{
-    color: var(--menulinkvisited);
+#menu>ul>li>a:link {
+    padding: 0.75em;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+    background-color: #FFFEF4;
+    color: #0D5D70;
+    box-shadow: -5px -5px 5px rgba(0, 0, 0, 0.25);
 }
 
-#menu a:hover {
-    text-decoration: none;
+#menu>ul>li>a:visited {
+    padding: 0.75em;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+    background-color: #D67200;
+    color: var(--breadcolor);
+    box-shadow: -5px -5px 5px rgba(204, 187, 187, 0.25);
 }
+
+#menu>ul>li>a:hover {
+    padding: 0.75em;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+    background-color: #0D5D70;
+    color: white;
+    box-shadow: -5px -5px 5px rgba(0, 0, 0, 0.25);
+}
+
+
 
 #menu li {
-    display: inline-block;  
-    padding: 0.8em;   
+    display: inline-block;   
 }
 
 .sottomenu {
     position: relative;
 }
-
+/*
 .sottomenu {
     background: url("icons/arrow_notVisited.svg") no-repeat right;
     background-size: 4%;
 
-}
+}*/
 .sottomenu-content {
     position: absolute;
     text-indent: -999em; /*uso text-indent per screen reader*/
     background-color: var(--headerbg);
+    margin: 0.8em 0em;
     z-index: 1;
 }
 
@@ -135,6 +148,7 @@ header > ul{
 .sottomenu-content a{
     display: block;
     width: 12em;
+    padding: 0.5em;
 }
 
 .sottomenu-content li:hover {
@@ -157,6 +171,7 @@ li:focus-within .sottomenu-content{
 
 
 #currentlink, #currentOverLink {
+    padding: 0.8em;
     border-top-left-radius: 20px;
     border-top-right-radius: 20px;
     background-color: var(--breadcolor);
@@ -166,7 +181,6 @@ li:focus-within .sottomenu-content{
 #visible-sottomenu {
     border-top: var(--breadcolor) 3px solid;
     background-color: orange;
-    margin-top: -0.7em;
     padding-bottom: 2em;
 }
 #visible-sottomenu ul{

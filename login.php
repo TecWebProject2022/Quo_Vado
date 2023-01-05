@@ -6,6 +6,7 @@ $content='';
 $username='';
 $password='';
 $errori='';
+$sessione_tag='';
 if(isset($_POST['submit'])){
     $username=PulisciInput($_POST['username']);
     $password=PulisciInput($_POST['password']);
@@ -46,7 +47,7 @@ $content=file_get_contents('login.html');
 if($errori){
     $errori='<ul>'.$errori.'</ul>';
 }
-$sessione_tag='';
+
 if(isset($_SESSION['sessione'])){
     $sessione_tag=$_SESSION['sessione'];
     unset($_SESSION['sessione']);
