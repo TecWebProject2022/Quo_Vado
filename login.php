@@ -28,7 +28,8 @@ if(!$errori){
     $db=new Connection();
     $dbOK=$db->Connect();
     if($dbOK){
-      if($db->Login($username,$password)){
+        $query = "SELECT * FROM Utente inner join Credenziale on nome_utente=utente WHERE nome_utente=\"$username\" and pw=\"$password\" and attuale=1 ";
+      if($db->Login($query)){
         $_SESSION['user']=$username;
         $_SESSION['time']=time();
         if($_SESSION['user']!='admin')

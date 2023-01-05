@@ -21,10 +21,8 @@ class Connection{
         
        $this->conn->close();
     }
-    public function Login($user,$pw){
-        $query = "SELECT * FROM Utente inner join Credenziale on nome_utente=utente WHERE nome_utente=\"$user\" and pw=\"$pw\" and attuale=1 ";
+    public function Login($query){
         $query_result = $this->conn->query($query) or die("Errore in openDBConnection: " . $this->conn->error);
-
         if ($query_result->num_rows==1){
             return true;
         }

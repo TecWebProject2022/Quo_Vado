@@ -12,7 +12,7 @@ function Validation(element){
        element.select();
        return false;
     }
-    else if(element.value.search(element.dataset.control)){
+    else if(element.value.search(element.dataset.control)==-1){
         var b=document.createElement('strong');
         b.appendChild(document.createTextNode(element.dataset.msgInvalid));
         parent.appendChild(b); 
