@@ -85,7 +85,7 @@ header > ul{
 }
 
 #menu {
-    font-size: 1.3em;
+    font-size: 1.1em;
     background-color: var(--headerbg);
 }
 
@@ -96,6 +96,7 @@ header > ul{
 
 #menu>ul>li>a:link {
     padding: 0.75em;
+    padding-bottom: 0.9em;
     border-top-left-radius: 20px;
     border-top-right-radius: 20px;
     background-color: #FFFEF4;
@@ -105,6 +106,7 @@ header > ul{
 
 #menu>ul>li>a:visited {
     padding: 0.75em;
+    padding-bottom: 0.9em;
     border-top-left-radius: 20px;
     border-top-right-radius: 20px;
     background-color: #D67200;
@@ -114,13 +116,13 @@ header > ul{
 
 #menu>ul>li>a:hover {
     padding: 0.75em;
+    padding-bottom: 0.9em;
     border-top-left-radius: 20px;
     border-top-right-radius: 20px;
     background-color: #0D5D70;
     color: white;
     box-shadow: -5px -5px 5px rgba(0, 0, 0, 0.25);
 }
-
 
 
 #menu li {
@@ -159,18 +161,19 @@ header > ul{
     text-indent: 0em;
     display: block;
 }
-
+/*
 .sottomenu:hover, .sottomenu:focus-within {
     background: url("icons/up-arrow_notVisited.svg") no-repeat right;
     background-size: 4%;
 }
-
+*/
 li:focus-within .sottomenu-content{
     text-indent: 0em;
 }
 
 
 #currentlink, #currentOverLink {
+    font-size: 1.2em;
     padding: 0.8em;
     border-top-left-radius: 20px;
     border-top-right-radius: 20px;
@@ -178,20 +181,25 @@ li:focus-within .sottomenu-content{
     color: #FFFDE8;
 }
 
+#currentOverLink{
+    padding-left: 0%;
+    padding-right: 0%;
+    border: #162636 2px solid;
+}
+
 #visible-sottomenu {
-    border-top: var(--breadcolor) 3px solid;
-    background-color: orange;
-    padding-bottom: 2em;
+    border-top: var(--breadcolor) 2px solid;
+    background-color: #548E9C;
 }
 #visible-sottomenu ul{
-    padding-top: 0.8em;
-    padding-left: 2%;
+    padding: 0.8em;
+    /*padding-left: 2%;*/
     
 }
 #visible-sottomenu li{
     display: inline;
     padding-right: 1.2em;
-    font-size: 1.2em;
+    font-size: 1.1em;
 }
 
 
