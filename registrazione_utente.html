@@ -49,36 +49,36 @@
                 <legend>Inserisci i tuoi dati</legend>
                 
                 <label for="name">Nome:</label>
-                <input name="name" id="name" value="<valoreNome/>" maxlength="20" required="required"                   
+                <span><input name="name" id="name" value="<valoreNome/>" placeholder="nome" maxlength="20" required="required"                   
                         data-msg-required="Per favore, inserisci il tuo nome"
-                        data-msg-invalid="Formato non corretto"/>
+                        data-msg-invalid="Formato non corretto"/></span>
             
                 <label for="last_name">Cognome:</label>
-                <input name="last_name" value="<valoreCognome/>" maxlength="30" required="required"                        
+                <span><input name="last_name" value="<valoreCognome/>" placeholder="cognome" maxlength="30" required="required"                        
                         data-msg-required="Per favore, inserisci il tuo cognome"
-                        data-msg-invalid="Formato non corretto" />
+                        data-msg-invalid="Formato non corretto" /></span>
                         
                 <label for="birthday">Data di nascita:</label>
-                <input type="date" name="birthday" id="birthday" value="<valoreDataNascita/>" min="1900-01-01" max="2023-01-01"  required="required"                     
+                <span><input type="date" name="birthday" id="birthday" value="<valoreDataNascita/>" min="1900-01-01" max="2023-01-01"  required="required"                     
                     data-msg-required="Per favore, inserisci la tua data di nascita"
-                    data-msg-invalid="Formato non corretto" />  
+                    data-msg-invalid="Formato non corretto" /></span>  
 
                 <label for="gender">Genere:</label>
-                <select  name="gender" id="gender" value="<valoreGenere/>" required>
+                <span><select  name="gender" id="gender" value="<valoreGenere/>" required>
                     <option value="ND">ND</option>
                     <option value="M">M</option>
                     <option value="F">F</option>
-                </select>
+                </select></span>
 
                 <label for="school">Scuola superiore frequentata:</label>
-                <select  name="school" id="school" value="<valoreScuola/>" required>
+                <span><select  name="school" id="school" value="<valoreScuola/>" required>
                     <option value="classico">liceo classico</option>
                     <option value="scientifico">liceo scientifico</option>
                     <option value="linguistico">liceo linguistico</option>
                     <option value="commerciale">istituto tecnico commerciale</option>
                     <option value="industriale">istituto tecnico industriale</option>
-                </select>
-                
+                </select></span>
+
                 <input type="reset" value="cancella"/>
                 <input type="button" value="avanti" onclick="hideFieldset.call(this)"/>
             </fieldset>
@@ -87,26 +87,26 @@
                 <legend>Scegli nome utente e <span lang="en">password</span></legend>
 
                 <label for="username"><span lang="en">username:</span></label>
-                <input name="username" id="username" value="<Username>" maxlength="40" required="required"                     
+                <span><input name="username" id="username" value="<Username>" placeholder="username" maxlength="40" required="required"                     
                         data-msg-required="Per favore, inserisci il tuo nome utente"
-                        data-msg-invalid="Formato non corretto"/>
+                        data-msg-invalid="Formato non corretto"/></span>
             
                 <label for="password"><span lang="en">Password:</span></label>
-                <input type="password" name="password" value="<valorePassword>"  minlength="8" maxlength="16" required="required"                        
+                <span><input type="password" name="password" value="<valorePassword>"  placeholder="password" minlength="8" maxlength="20" required="required"                        
                         data-msg-required="Per favore, inserisci la tua password"
-                        data-msg-invalid="La password deve essere compresa ra 8 e 16 caratteri"/>        
+                        data-msg-invalid="La password deve essere compresa ra 8 e 20 caratteri"/></span>        
                 
                 <label for="repeat_password">Ripeti la tua <span lang="en">password:</span></label>
-                <input type="password" name="repeat_password" value="<valorePassword>" minlength="8" maxlength="16" required="required" 
+                <span><input type="password" name="repeat_password" value="<valorePassword>" placeholder="password" minlength="8" maxlength="20" required="required" 
                         data-msg-required="Per favore, ripeti la tua password"
-                        data-msg-invalid="La password deve essere compresa ra 8 e 16 caratteri"/>
+                        data-msg-invalid="La password deve essere compresa ra 8 e 20 caratteri"/></span>
                 
                 <input type= "submit" value="Registrami"/>
                 <input type="reset" value="cancella"/>
             
             </fieldset>
             
-            <messaggiForm />
+            <span id=""messaggiForm></span>
        </form>
        <p>Hai gia' un <span lang="en">account</span>? <a href="login.html">Accedi</a></p>
     </main>

@@ -92,38 +92,29 @@ header > ul{
 #menu a:link{
     text-decoration: none;
     color: var(--menulink);
-} 
-
-#menu>ul>li>a:link {
-    padding: 0.75em;
-    padding-bottom: 0.9em;
-    border-top-left-radius: 20px;
-    border-top-right-radius: 20px;
     background-color: #FFFEF4;
     color: #0D5D70;
-    box-shadow: -5px -5px 5px rgba(0, 0, 0, 0.25);
-}
+} 
 
-#menu>ul>li>a:visited {
-    padding: 0.75em;
-    padding-bottom: 0.9em;
-    border-top-left-radius: 20px;
-    border-top-right-radius: 20px;
+#menu a:visited {
     background-color: #D67200;
     color: var(--breadcolor);
-    box-shadow: -5px -5px 5px rgba(204, 187, 187, 0.25);
 }
 
-#menu>ul>li>a:hover {
-    padding: 0.75em;
-    padding-bottom: 0.9em;
-    border-top-left-radius: 20px;
-    border-top-right-radius: 20px;
+#menu a:hover {
     background-color: #0D5D70;
     color: white;
-    box-shadow: -5px -5px 5px rgba(0, 0, 0, 0.25);
 }
 
+#menu>ul>li>a:link, #menu>ul>li>a:visited, #menu>ul>li>a:hover { /*impostazioni specifiche per primo livello del menù*/
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+    box-shadow: -5px -5px 5px rgba(22, 38, 54, 0.25);
+    padding: 0.75em;
+    padding-bottom: 0.95em;
+}
+
+/*Creo Dropdown per il sotto menù*/
 
 #menu li {
     display: inline-block;   
@@ -138,39 +129,37 @@ header > ul{
     background-size: 4%;
 
 }*/
-.sottomenu-content {
+.sottomenu-content { /* Nascosto */
     position: absolute;
-    text-indent: -999em; /*uso text-indent per screen reader*/
+    text-indent: -99999em; /*uso text-indent per screen reader*/
     background-color: var(--headerbg);
     margin: 0.8em 0em;
     z-index: 1;
+    box-shadow: -5px 5px 5px rgba(0, 0, 0, 0.25);
 }
-
-
 .sottomenu-content a{
     display: block;
     width: 12em;
     padding: 0.5em;
+    border-top: #162636 0.5px solid;
 }
 
-.sottomenu-content li:hover {
-    background-color: #548E9C;
+#menu .sottomenu-content a:hover{
+    background-color: #0D5D70;
+    color: #FFFFFF;
 }
 
-.sottomenu:hover .sottomenu-content{
+
+.sottomenu:hover .sottomenu-content, li:focus-within .sottomenu-content { /* Mostra al passaggio del mouse o al tab da tastiera*/
     text-indent: 0em;
-    display: block;
 }
+
 /*
 .sottomenu:hover, .sottomenu:focus-within {
     background: url("icons/up-arrow_notVisited.svg") no-repeat right;
     background-size: 4%;
 }
 */
-li:focus-within .sottomenu-content{
-    text-indent: 0em;
-}
-
 
 #currentlink, #currentOverLink {
     font-size: 1.2em;
