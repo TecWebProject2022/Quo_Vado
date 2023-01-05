@@ -128,10 +128,10 @@ class userData {
             $error .= "<li>L'username non può essere vuoto.</li>";
         }
         elseif(strlen($value) > 40){
-            $error .= "<li>L'username non può avere più di 20 caratteri.</li>";
+            $error .= "<li>L'username non può avere più di 40 caratteri.</li>";
         }
-        elseif(!preg_match('/^[a-zA-Z\d]+$/', $value)){
-            $error .= "<li>L'username può contenere solo lettere e numeri (').</li>";
+        elseif(!preg_match('/^[@a-zA-Z0-9._-]{4,40}$/', $value)){
+            $error .= "<li>L'username può contenere solo lettere e numeri.</li>";
         }
         else{
             $this->usernname = $value;
@@ -144,7 +144,7 @@ class userData {
         $value=PulisciInput($value);
         
         #controllo che la pw sia di 8 caratteri e che sia nel formato corretto
-        if (strlen($string)<8 || strlen($string)>16 ) {
+        if (strlen($string)<8 || strlen($string)>20 ) {
             $error.="<li>La password deve essere compresa tra gli otto e i sedici caratteri.</li>";
         }elseif (!preg_match("/[0-9]/", $string) || !preg_match("/[A-Z]/", $string) || !preg_match("/[a-z]/", $string) || !preg_match("/[!£$@]/", $string)) {
             $error.="<li>La password deve contenere almeno una lettera maiuscola, una minuscola, un numero e uno dei seguenti caratteri speciali: ! £ $ @</li>";
