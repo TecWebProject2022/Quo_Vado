@@ -5,6 +5,7 @@
 
 :root {
     --headerbg: #FFFDE8;
+
     --menulink: #0D5D70;
     --menulinkbg: #FFFEF4;
     --menulinkvisited: #162636;
@@ -15,7 +16,6 @@
     --breadcolor: #162636;
 
     --bgcolor: #FFFFFF;
-
     --txtcolor: #000000;
     --contentbgcolor: ;
     --contentcolor: ;
@@ -76,8 +76,18 @@ BREADCRUMB
     box-shadow: 0px 5px 5px rgba(0, 0, 0, 0.25);
 }
 
+#breadcrumb a:link{
+    padding: 0.5em;   
+    color: var(--menulinkbg);
+    font-variant: small-caps;
+}
+
 #breadcrumb a:visited{
-    color: var(--visitedcolor);
+    color: var(--menulinkvisitedbg);
+}
+
+#breadcrumb a:hover{
+    color: white;
 }
 
 /*
@@ -166,7 +176,6 @@ header > ul{
     padding: 0.8em 0em;
 }
 
-
 #visible-sottomenu {
     position: relative;
     z-index: 1;
@@ -214,8 +223,6 @@ header > ul{
     background-color: var(--menulinkhoverbg);
 }
 
-
-
 #visible-sottomenu #currentSubLink {
     padding: 0.5em;
     padding-right: 1.2em;
@@ -223,8 +230,6 @@ header > ul{
     font-size: 1.3em;
     
 }
-
-
 
 
 /*
