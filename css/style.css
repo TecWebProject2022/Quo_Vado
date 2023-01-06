@@ -226,7 +226,7 @@ header > ul{
 }
 
 #visible-sottomenu #currentSubLink {
-    padding: 0.5em;
+   /* padding: 0.5em;*/
     padding-right: 1.2em;
     /*color: #FFFEF4;*/
     color: #162636;

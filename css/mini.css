@@ -1,0 +1,63 @@
+/*
+=================================
+Menù
+=================================
+*/
+
+#menu {
+    padding-top: 15%;
+    text-align: right;
+    background-color: #162636;
+    color: #FFFDE8;
+    margin-bottom: 1em;
+}
+
+#menu>ul>li {
+    display: block;
+    padding: 0.5em;
+    margin-right: 20%;
+}
+
+#menu>ul>li>a {
+    border-radius: 0%;
+    padding: 0.5em;
+
+}
+
+#menu>ul>li>a:link {
+    border-radius: 0%;
+    box-shadow: none;
+}
+
+#menu li {
+    display: inline-block;   
+}
+
+.sottomenu-content { 
+    position:relative; 
+    margin-top: 1em;
+    text-indent: 0;
+    background-color: #162636;
+    box-shadow: none;
+    margin-bottom: -0.2em;
+    margin-right: 10%;
+}
+
+.sottomenu-content a{
+    border-top:none;
+    width: max-content;
+}
+
+
+#currentlink {
+    font-size: 1.2em;
+    padding: 0.8em;
+    border-top-left-radius: 0px;
+    border-top-right-radius: 0px;
+    color: #FFFDE8;
+    margin-right: 0.5em;
+    border-right: #FFFDE8 5px solid;
+}
+
+
+
