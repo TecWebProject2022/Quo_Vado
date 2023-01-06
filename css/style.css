@@ -319,6 +319,7 @@ HOME
 
 #item3 {
     grid-area: c;
+    max-width: 130%;
     justify-self: center;
 }
 
@@ -380,16 +381,17 @@ HOME
 .block_one {
     background: #0D5D70;
     margin: 1% 15% 2% 15%;
-    padding: 2em 23% 2em 2em;
+    padding: 2em 2em 2em 23%;
     font-size: 0.9em;
     color: #FFFFFF;
 }
 
 .block_two {
-    background: #548E9C;
-    margin: 1% 5% 2% 5%;
-    padding: 2em 30% 2em 2em;
+    background: #0D5D70;
+    margin: 1% 15% 2% 15%;
+    padding: 2em 23% 2em 2em;
     font-size: 0.9em;
+    color: #FFFFFF;
 }
 
 .block_one .link {
