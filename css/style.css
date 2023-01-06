@@ -99,6 +99,7 @@ header > ul{
     text-decoration: none;
     color: var(--menulink);
     background-color: var(--menulinkbg);
+    font-variant: small-caps;
 } 
 
 #menu a:visited {
@@ -109,6 +110,7 @@ header > ul{
 #menu a:hover {
     background-color: var(--menulinkhoverbg);
     color: var(--menulinkhover);
+
 }
 
 #menu>ul>li>a:link, #menu>ul>li>a:visited, #menu>ul>li>a:hover { /*impostazioni specifiche per primo livello del menù*/
@@ -135,11 +137,11 @@ header > ul{
     background-color: var(--headerbg);
     margin: 0.8em 0em;
     z-index: 1;
-    box-shadow: -5px 5px 5px rgba(0, 0, 0, 0.25);
+    box-shadow: -15px 15px 5px rgba(0, 0, 0, 0.25);
 }
 .sottomenu-content a{
     display: block;
-    width: 12em;
+    width: 13em;
     padding: 0.5em;
     border-top: #162636 0.5px solid;
 }
@@ -169,12 +171,12 @@ header > ul{
     position: relative;
     z-index: 1;
     background: #162636; /* se browser non supporta linear-gradient*/
-    background: linear-gradient(to bottom, #3a7b8b, #162636);
+    background: linear-gradient(to bottom, #162636, #13131C);
 }
 
 #visible-sottomenu ul{
     padding: 2em;
-    margin-left: 15%;
+    margin-left: 10%;
     
 }
 #visible-sottomenu li{
@@ -190,25 +192,38 @@ header > ul{
 #visible-sottomenu a:link{
     padding: 0.5em;
     border-radius: 10px;
-    box-shadow: -5px -5px 3px rgba(0, 0, 0, 0.25);
-    border: #FFFEF4 0.2px solid;
-    color:#FFFDE8;
+    box-shadow: -5px -5px 4px rgba(0, 0, 0, 0.25);
+    /*border: #FFFEF4 0.2px solid;*/
+    color: var(--menulink);
+    background-color: var(--menulinkbg);
+    font-variant: small-caps;
 }
 
 #visible-sottomenu a:visited{
     padding: 0.5em;
     border-radius: 10px;
     box-shadow: -5px -5px 3px rgba(0, 0, 0, 0.25);
-    border: #E36600 0.2px solid;
-    color:#E36600;
+    /*border: #E36600 0.2px solid;*/
+    color: var(--menulinkvisited);
+    background-color: var(--menulinkvisitedbg);
 }
 
-#currentSubLink {
+#visible-sottomenu a:hover{
+    box-shadow: -5px -5px 3px rgba(0, 0, 0, 0.25);
+    color: var(--menulinkhover);
+    background-color: var(--menulinkhoverbg);
+}
+
+
+
+#visible-sottomenu #currentSubLink {
     padding: 0.5em;
-    font-size: 1.5em;
+    padding-right: 1.2em;
     color: #FFFEF4;
+    font-size: 1.3em;
     
 }
+
 
 
 
@@ -278,52 +293,47 @@ HOME
     font-size: 2em;
 }
 
-#info {
-    text-align: center;
-    padding: 0em 3em 2em 3em;
-    margin: 0% 15% 0% 15%;
-}
-
 #item1 {
     grid-area: a;
-    justify-self: center;
 }
 
 #item2 {
     grid-area: b;
-    justify-self: start;
 }
 
 #item3 {
     grid-area: c;
-    max-width: 130%;
-    justify-self: center;
 }
 
 #item4 {
     grid-area: d;
-    justify-self: end;
 }
 
 #item5 {
     grid-area: e;
-    justify-self: center;
 }
 
 .grid_container {
     display: grid;
-    grid-template-columns: 41% 10% 41%;
-    grid-template-areas: ". a ."
-                         "d c b"
-                         ". e .";
-    grid-column-gap: 2%;
-    grid-row-gap: 3%;
+    grid-template-columns: repeat(5, 18%);
+    grid-template-areas: ". . a . ."
+                         ". d c b ."
+                         ". . e . .";
+    grid-gap: 2%;
     align-items: center;
     justify-items: center;
-    margin-bottom: 3em;
+}
+
+#info {
+    text-align: left;
+    padding: 0em 3em 2em 3em;
 }
 
 #uni {
+    font-size: 1.3em;
+}
+
+#first_bg {
     background-image: url(css_images/universita.jpg);
     background-size: 30%;
     min-height: 200px;
@@ -331,7 +341,7 @@ HOME
     background-repeat: no-repeat;
 }
 
-#lav {
+#second_bg {
     background-image: url(css_images/lavoro.jpg);
     background-size: 30%;
     min-height: 200px;
@@ -339,7 +349,7 @@ HOME
     background-repeat: no-repeat;
 }
 
-#ris_int {
+#third_bg {
     background-image: url(css_images/risorse_interne.jpg);
     background-size: 30%;
     min-height: 200px;
@@ -347,7 +357,7 @@ HOME
     background-repeat: no-repeat;
 }
 
-#ris_est {
+#fourth_bg {
     background-image: url(css_images/risorse_esterne.jpg);
     background-size: 30%;
     min-height: 200px;
@@ -355,26 +365,30 @@ HOME
     background-repeat: no-repeat;
 }
 
-/*colore scuro per sfondo blocchi + testo bianco
-angoli smussati o obreggiatura*/
+#lav {
+    font-size: 1.3em;
+}
+
+#ris_int {
+    font-size: 1.3em;
+}
+
+#ris_est {
+    font-size: 1.3em;
+}
+
 .block_one {
-    background: #0D5D70;
-    margin: 1% 15% 2% 15%;
-    padding: 2em 2em 2em 23%; 
+    background: var(--blocks);
+    margin: 1% 5% 2% 5%;
+    padding: 2em 2em 2em 30%; 
     font-size: 0.9em;
-    color: #FFFFFF;
 }
-/*
-.block_one:hover {
-    width: 1%;
-}
-*/
+
 .block_two {
-    background: #0D5D70;
-    margin: 1% 15% 2% 15%;
-    padding: 2em 23% 2em 2em;
+    background: #548E9C;
+    margin: 1% 5% 2% 5%;
+    padding: 2em 30% 2em 2em;
     font-size: 0.9em;
-    color: #FFFFFF;
 }
 
 .block_one .link {
