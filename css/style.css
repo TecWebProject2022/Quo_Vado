@@ -87,7 +87,9 @@ BREADCRUMB
 }
 
 #breadcrumb a:hover{
-    color: white;
+    color: orange;
+    font-variant: normal;
+    text-decoration: none;
 }
 
 /*
