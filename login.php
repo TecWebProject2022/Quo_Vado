@@ -33,9 +33,9 @@ if(!$errori){
         $_SESSION['user']=$username;
         $_SESSION['time']=time();
         if($_SESSION['user']!='admin')
-            header("Location:profilo_utente.php");
+            header("Location:area_utente.php");
         else
-            header("Location:profilo_admin.php");
+            header("Location:area_admin.php");
       }
       else{
         $errori.='<li>Username o password non correti</li>';
@@ -43,7 +43,7 @@ if(!$errori){
     $db->Disconnect();    
     }
     else{
-        $errori.='<li>Connection not succefultlly, please try againg</li>';
+        $errori.='<li>Connessione non riuscita, attendere e riprova</li>';
     }   
 }
 }
