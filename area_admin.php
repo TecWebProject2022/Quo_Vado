@@ -15,4 +15,5 @@ else if($_SESSION['user']!='admin'){
     $_SESSION['sessione']='<p>Non hai i permessi di admin per accedere a quest\' area per accedere</p>';
     header('Location:login.php');
 }
+echo"<a href='logout.php'>ghffh</a>";
 ?>

@@ -1,4 +1,8 @@
-//Validazione dei campi 
+//Validazione dei campi
+var test={
+    "username":/^[@a-zA-Z0-9._-]{4,40}$/,
+    "password":/^[@a-zA-Z0-9._-]{4,20}$/
+   }; 
 function Validation(element){
     
     var parent= element.parentNode;
@@ -14,8 +18,9 @@ function Validation(element){
        element.select();
        return false;
     }
-    
-    else if(!new RegExp(element.dataset.control).test(element.value)){
+    else if(element.value.search(test[element.id])==-1){
+        console.log(element.dataset.control);
+        console.log(element.value);
         var b=document.createElement('strong');
         b.appendChild(document.createTextNode(element.dataset.msgInvalid));
         parent.appendChild(b); 
@@ -41,6 +46,7 @@ function AddFunction(){
     user.onblur=function(){Validation(user);};
     pw.onblur=function(){Validation(pw);};
 }
+
 
 
 
