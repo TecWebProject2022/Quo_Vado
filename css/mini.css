@@ -20,11 +20,19 @@
     --blocks: #548E9C;
 }
 
+
+header{
+    padding-right: 20%;
+}
+
+
 /*
 =================================
 Menù
 =================================
 */
+
+
 
 #menu {
     padding-top: 4%;
@@ -99,5 +107,27 @@ Menù
     border-right: #009d9d 5px solid;
 }
 
+
+#visible-sottomenu {
+    position: relative;
+    z-index: 1;
+    background: #162636; /* se browser non supporta linear-gradient*/
+    background: linear-gradient(to bottom, orange, #D67200);
+}
+
+#visible-sottomenu ul{
+    padding: 1em;
+    margin-left: 5%;
+    
+}
+#visible-sottomenu li, #visible-menu a{
+    display: block;
+    padding: 0.8em 0em;
+    font-size: 1.1em;
+}
+
+#visible-sottomenu #currentSubLink {
+     font-size: 1.2em;    
+ }
 
 
