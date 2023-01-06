@@ -97,6 +97,10 @@ BREADCRUMB
 MENU
 ================
 */
+#hamburger-menu, #menu label {
+    display: none;
+}
+
 
 header > ul{
     list-style: none;   
