@@ -22,15 +22,22 @@ class Connection{
        $this->conn->close();
     }
     public function Login($query){
-        $query_result = $this->conn->query($query) or die("Errore in openDBConnection: " . $this->conn->error);
-        if ($query_result->num_rows==1){
-            return true;
+        $query_result = $this->conn->query($query);
+        if($query_result){
+
+            if ($query_result->num_rows==1){
+                $query_result->free();
+                return true;
+            }
+            else{
+                $query_result->free();
+                return false;
+            }
         }
-        else{
-            return false;
-        }
-            $query_result->free();
-            return $result;
+        return false;
+
+
+           
     }
 
     public function Mquery($query){
