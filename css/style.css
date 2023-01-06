@@ -501,21 +501,38 @@ ESPLORA CORSI
 
 .area_disciplinare {
     display: flex;
-    align-items: flex-start;
-    margin-left: 10%;
-    margin-right: 10%;
+    align-items: stretch;
+    margin: 0% 5% 1.5% 5%;
+    flex-wrap: wrap;
 }
 
 .area {
-    flex-basis:  20%;
+    flex-grow: 1;
+    flex-basis: 17%;
     color: #FFF;
     background: #0D5D70;
     padding: 2em;
     margin: 1em;
+    text-align: center;
+    font-variant: small-caps;
     font-size: 0.9em;
     font-size: 1.3em;
     line-height: 2em;
     border-radius: 30px;
+    transition: transform .2s;
+    text-decoration: none;
+}
+
+.area:hover {
+    transform: scale(1.05);
+}
+
+.area_disciplinare a:link {
+
+}
+
+.area_disciplinare a:visited {
+
 }
 
 /*
