@@ -249,7 +249,7 @@ CONTENUTO
 
 main h1{
     margin-bottom: 1.5%;
-    max-width: 1024px;
+    /*max-width: 1024px;*/
     font-size: 3.3em;
     line-height: 1.5em;
     padding-left: 10%;
@@ -303,47 +303,72 @@ HOME
 
 #info {
     text-align: center;
-    padding: 0em 3em 2em 3em;
+    padding: 0em 3em 0em 3em;
     margin: 0% 15% 0% 15%;
 }
 
 #item1 {
     grid-area: a;
     justify-self: center;
+    font-variant: small-caps;
+    font-size: 1.4em;
 }
 
 #item2 {
     grid-area: b;
     justify-self: start;
+    font-variant: small-caps;
+    font-size: 1.4em;
 }
 
 #item3 {
     grid-area: c;
-    max-width: 130%;
+    max-width: 100%;
     justify-self: center;
 }
 
 #item4 {
     grid-area: d;
     justify-self: end;
+    font-variant: small-caps;
+    font-size: 1.4em;
 }
 
 #item5 {
     grid-area: e;
     justify-self: center;
+    font-variant: small-caps;
+    font-size: 1.4em;
 }
 
 .grid_container {
     display: grid;
-    grid-template-columns: 41% 10% 41%;
+    grid-template-columns: 4.2fr 1.6fr 4.2fr;
     grid-template-areas: ". a ."
                          "d c b"
                          ". e .";
-    grid-column-gap: 2%;
-    grid-row-gap: 3%;
+    grid-column-gap: 30px;
+    grid-row-gap: 30px;
+    padding: 4em;
     align-items: center;
     justify-items: center;
-    margin-bottom: 3em;
+}
+
+.grid_container a:link {
+    text-align: center;
+    color: #162636;
+    background-color: #FFFDE8;
+    padding: 1em;
+    border-radius: 30px;
+    box-shadow: -5px 5px 5px rgba(22, 38, 54, 0.25);
+}
+
+.grid_container a:visited {
+    text-align: center;
+    color: #162636;
+    background-color: #E36600;
+    padding: 1em;
+    border-radius: 30px;
 }
 
 #uni {
@@ -384,6 +409,41 @@ HOME
     padding: 2em 2em 2em 23%;
     font-size: 0.9em;
     color: #FFFFFF;
+    border-radius: 10px;
+    /*transition: transform .2s;*/
+}
+/*
+.block_one:hover {
+    transform: scale(1.05);
+}
+*/
+
+.block_one .link {
+    text-align: right;
+    font-variant: small-caps;
+    margin-top: 1em;
+}
+
+.block_one a:link {
+    color: #162636;
+    background-color: #FFFDE8;
+    padding: 1em;
+    border-radius: 30px;
+    box-shadow: -5px 5px 5px rgba(22, 38, 54, 0.25);
+}
+
+.block_one a:visited {
+    color: #162636;
+    background-color: #E36600;
+    padding: 1em;
+    border-radius: 30px;
+    box-shadow: inset 0 0 10px #f8a100;
+}
+
+.block_one > dt {
+    font-variant: small-caps;
+    font-size: 1.4em;
+    line-height: 1.5em;
 }
 
 .block_two {
@@ -392,14 +452,34 @@ HOME
     padding: 2em 23% 2em 2em;
     font-size: 0.9em;
     color: #FFFFFF;
-}
-
-.block_one .link {
-    text-align: right;
+    border-radius: 10px;
 }
 
 .block_two .link {
     text-align: right;
+    font-variant: small-caps;
+    margin-top: 1em;
+}
+
+.block_two a:link {
+    color: #162636;
+    background-color: #FFFDE8;
+    padding: 1em;
+    border-radius: 30px;
+    box-shadow: -5px 5px 5px rgba(22, 38, 54, 0.25);
+}
+
+.block_two a:visited {
+    color: #162636;
+    background-color: #E36600;
+    padding: 1em;
+    border-radius: 30px;
+}
+
+.block_two > dt {
+    font-variant: small-caps;
+    font-size: 1.4em;
+    line-height: 1.5em;
 }
 
 .block_two ul {
@@ -412,15 +492,31 @@ ESPLORA CORSI
 ================
 */
 
+#title {
+    color: #FFFFFF;
+    background: #0D5D70 url(css_images/strada.jpg) no-repeat;
+    background-size: cover;
+    padding: 1em;
+}
+
+.area_disciplinare {
+    display: flex;
+    align-items: flex-start;
+    margin-left: 10%;
+    margin-right: 10%;
+}
+
 .area {
-    background: #548E9C;
-    margin: 1% 5% 2% 5%;
-    padding: 2em 6em 2em 2em;
+    flex-basis:  20%;
+    color: #FFF;
+    background: #0D5D70;
+    padding: 2em;
+    margin: 1em;
     font-size: 0.9em;
     font-size: 1.3em;
     line-height: 2em;
+    border-radius: 30px;
 }
-
 
 /*
 ================

@@ -1,3 +1,25 @@
+
+:root {
+    --headerbg: #FFFDE8;
+
+    --menulink: #0D5D70;
+    --menulinkbg: #FFFEF4;
+    --menulinkvisited: #162636;
+    --menulinkvisitedbg: #D67200;
+    --menulinkhover: white;
+    --menulinkhoverbg: #0D5D70;
+
+    --breadcolor: #162636;
+
+    --bgcolor: #FFFFFF;
+    --txtcolor: #000000;
+    --contentbgcolor: ;
+    --contentcolor: ;
+    --linkcolor: ;
+    --visitedcolor: #E36600;
+    --blocks: #548E9C;
+}
+
 /*
 =================================
 Menù
@@ -5,24 +27,20 @@ Menù
 */
 
 #menu {
-    padding-top: 15%;
+    padding-top: 4%;
     text-align: right;
     background-color: #162636;
     color: #FFFDE8;
-    margin-bottom: 1em;
+    padding-bottom: 4%;
 }
 
 #menu>ul>li {
     display: block;
-    padding: 0.5em;
-    margin-right: 20%;
+    padding: 0.5em 0em;
+    margin-right: 5%;
 }
 
-#menu>ul>li>a {
-    border-radius: 0%;
-    padding: 0.5em;
 
-}
 
 #menu>ul>li>a:link {
     border-radius: 0%;
@@ -30,7 +48,26 @@ Menù
 }
 
 #menu li {
-    display: inline-block;   
+    display: block;  
+}
+
+#menu a:link{
+    color: #FFFDE8;
+    background-color: var(--breadcolor);
+    font-variant: small-caps;
+} 
+
+#menu a:visited {
+    background-color: var(--breadcolor);
+    color: var(--menulinkvisitedbg);
+}
+
+#menu a:hover {
+    background-color: var(--breadcolor);
+    color: #009d9d;
+    font-variant: normal;
+    border-right: #009d9d 2px solid;
+
 }
 
 .sottomenu-content { 
@@ -40,23 +77,26 @@ Menù
     background-color: #162636;
     box-shadow: none;
     margin-bottom: -0.2em;
-    margin-right: 10%;
+    margin-right: 8%;
+    margin-left: 8%;
+    border-top: #FFFDE8 2px solid;
+    border-bottom: #FFFDE8 2px solid;
+    font-size: 0.95em;
 }
 
 .sottomenu-content a{
     border-top:none;
-    width: max-content;
+    width:auto;
 }
 
 
-#currentlink {
+#menu #currentlink {
     font-size: 1.2em;
-    padding: 0.8em;
+    padding: 0.5em;
     border-top-left-radius: 0px;
     border-top-right-radius: 0px;
-    color: #FFFDE8;
-    margin-right: 0.5em;
-    border-right: #FFFDE8 5px solid;
+    color: #009d9d;
+    border-right: #009d9d 5px solid;
 }
 
 
