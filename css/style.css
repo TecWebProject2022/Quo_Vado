@@ -301,47 +301,51 @@ HOME
     font-size: 2em;
 }
 
+#info {
+    text-align: center;
+    padding: 0em 3em 2em 3em;
+    margin: 0% 15% 0% 15%;
+}
+
 #item1 {
     grid-area: a;
+    justify-self: center;
 }
 
 #item2 {
     grid-area: b;
+    justify-self: start;
 }
 
 #item3 {
     grid-area: c;
+    justify-self: center;
 }
 
 #item4 {
     grid-area: d;
+    justify-self: end;
 }
 
 #item5 {
     grid-area: e;
+    justify-self: center;
 }
 
 .grid_container {
     display: grid;
-    grid-template-columns: repeat(5, 18%);
-    grid-template-areas: ". . a . ."
-                         ". d c b ."
-                         ". . e . .";
-    grid-gap: 2%;
+    grid-template-columns: 41% 10% 41%;
+    grid-template-areas: ". a ."
+                         "d c b"
+                         ". e .";
+    grid-column-gap: 2%;
+    grid-row-gap: 3%;
     align-items: center;
     justify-items: center;
-}
-
-#info {
-    text-align: left;
-    padding: 0em 3em 2em 3em;
+    margin-bottom: 3em;
 }
 
 #uni {
-    font-size: 1.3em;
-}
-
-#first_bg {
     background-image: url(css_images/universita.jpg);
     background-size: 30%;
     min-height: 200px;
@@ -349,7 +353,7 @@ HOME
     background-repeat: no-repeat;
 }
 
-#second_bg {
+#lav {
     background-image: url(css_images/lavoro.jpg);
     background-size: 30%;
     min-height: 200px;
@@ -357,7 +361,7 @@ HOME
     background-repeat: no-repeat;
 }
 
-#third_bg {
+#ris_int {
     background-image: url(css_images/risorse_interne.jpg);
     background-size: 30%;
     min-height: 200px;
@@ -365,7 +369,7 @@ HOME
     background-repeat: no-repeat;
 }
 
-#fourth_bg {
+#ris_est {
     background-image: url(css_images/risorse_esterne.jpg);
     background-size: 30%;
     min-height: 200px;
@@ -373,23 +377,12 @@ HOME
     background-repeat: no-repeat;
 }
 
-#lav {
-    font-size: 1.3em;
-}
-
-#ris_int {
-    font-size: 1.3em;
-}
-
-#ris_est {
-    font-size: 1.3em;
-}
-
 .block_one {
-    background: var(--blocks);
-    margin: 1% 5% 2% 5%;
-    padding: 2em 2em 2em 30%; 
+    background: #0D5D70;
+    margin: 1% 15% 2% 15%;
+    padding: 2em 23% 2em 2em;
     font-size: 0.9em;
+    color: #FFFFFF;
 }
 
 .block_two {
