@@ -182,7 +182,7 @@ header > ul{
     position: relative;
     z-index: 1;
     background: #162636; /* se browser non supporta linear-gradient*/
-    background: linear-gradient(to bottom, #162636, #13131C);
+    background: linear-gradient(to bottom, orange, #D67200);
 }
 
 #visible-sottomenu ul{
