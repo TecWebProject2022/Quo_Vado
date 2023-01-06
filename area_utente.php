@@ -9,5 +9,5 @@ if(!isset($_SESSION['user']) || !isset($_SESSION['time']) || time()-$_SESSION['t
     $_SESSION['sessione']='<p>Sessione Scaduta</p>';
     header('Location:login.php');
 }
-echo"<a href='logout.php'>ghffh</a>";
+echo"<a href='logout.php'>LOGOUT</a>";
 ?>
