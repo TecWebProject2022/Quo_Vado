@@ -13,7 +13,7 @@ $db=new Connection();
            $contenuto.='<h2>'.$target.'</h2>';
            $contenuto.='<ul>';
            foreach($gruppi as $r){
-            $contenuto.='<li>'.$r['gruppo_disciplinare'].'</li>';
+            $contenuto.="<li>".$r['gruppo_disciplinare']."</li>";
             $query_classi="Select num_classe, denominazione from ClassediLaurea where gruppo_disciplinare=\"".$r['gruppo_disciplinare']."\";";
             if($classi=$db->ExecQuery($query_classi)){
                 $contenuto.="<li><ul>";
@@ -23,14 +23,14 @@ $db=new Connection();
                 $contenuto.="</li></ul>";
                 }
             else{
-                $errori.='<p>Opss Errore di conessione</p>';
+                $errori.="<p>Opss Errore di conessione</p>";
             }
             
            }
-        $contenuto.='</dl>';
+        $contenuto.="</dl>";
         }
         else{
-            $errori.='<p>nessun risultato presente</p>';
+            $errori.="<p>nessun risultato presente</p>";
         }
         $db->Disconnect();
     }
