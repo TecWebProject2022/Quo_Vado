@@ -548,15 +548,6 @@ ESPLORA CORSI
     flex-wrap: wrap;
 }
 
-.area_disciplinare a:link {
-    color: #FFFFFF;
-}
-
-.area_disciplinare a:visited {
-    color: #162636;
-    background-color: #E36600;
-}
-
 .area {
     flex-grow: 1;
     flex-basis: 15%;
@@ -572,6 +563,15 @@ ESPLORA CORSI
 
 .area:hover {
     transform: scale(1.05);
+}
+
+.area:link {
+    color: #FFFFFF;
+}
+
+.area:visited {
+    color: #162636;
+    background-color: #E36600;
 }
 
 #stem {
@@ -644,18 +644,36 @@ section > ul {
     margin-top: 0.5em;
 }
 
-.where {
+.external_link {
+    background-color: #0D5D70;
+}
+
+
+/*
+section > .external_link {
     box-shadow: 1px 15px 19px 6px rgba(0,0,0,0.26);
     padding: 1.5em;
     padding-left: 3em;
     margin: 2em;
     border-radius: 20px;
     transition: all .2s ease-in-out;
+    font-size: 0.9em;
+    text-decoration: none;
 }
 
-.where:hover {
+section > .external_link:hover {
     transform: scale(1.05);
 }
+
+section > .external_link:link {
+    color: #000000;
+}
+
+section > .external_link:visited {
+    color: #000000;
+    background-color: #548E9C;
+}
+*/
 
 /*
 ================
