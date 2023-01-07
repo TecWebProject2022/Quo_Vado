@@ -2,32 +2,46 @@
 require_once 'utilita.php';
 require_once 'database.php';
 $target=PulisciInput($_GET['area']);
+$content=file_get_contents('gruppi_disciplinari.html');
+$errori='';
+$contenuto='';
 $query_gruppi="Select DISTINCT(gruppo_disciplinare) from ClassediLaurea where area_disciplinare=\"$target\";";
 $db=new Connection();
     $dbOK=$db->Connect();
     if($dbOK){
         if($gruppi=$db->ExecQuery($query_gruppi)){
-           print_r ($gruppi);
+           $contenuto.='<h2>'.$target.'</h2>';
+           $contenuto.='<ul>';
            foreach($gruppi as $r){
+            $contenuto.='<li>'.$r['gruppo_disciplinare'].'</li>';
             $query_classi="Select num_classe, denominazione from ClassediLaurea where gruppo_disciplinare=\"".$r['gruppo_disciplinare']."\";";
-            $classi=$db->ExecQuery($query_classi);
-            if($classi){
-                print_r($classi);
-            }
+            if($classi=$db->ExecQuery($query_classi)){
+                $contenuto.="<li><ul>";
+                foreach($classi as $c){
+                    $contenuto.="<li>".$c['num_classe']." - ".$c['denominazione']."</li>";
+                }
+                $contenuto.="</li></ul>";
+                }
             else{
-                echo'<p>Opss Errore di conessione</p>';
+                $errori.='<p>Opss Errore di conessione</p>';
             }
             
            }
+        $contenuto.='</dl>';
         }
         else{
-            echo'<p>nessun risultato presente</p>';
+            $errori.='<p>nessun risultato presente</p>';
         }
         $db->Disconnect();
     }
     
     else{
-            echo '<p>Ci scusiamo la connessione non riuscita, attendere e riprova</p>';
-    }   
+        $errori.='<p>Ci scusiamo la connessione non riuscita, attendere e riprova</p>';
+    }  
+    $content=str_replace("<name/>",$target,$content); 
+    $content=str_replace("<content/>",$contenuto,$content);
+    $content=str_replace("<error/>",$errori,$content);
+    echo $content;
+
     
 ?>
