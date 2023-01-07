@@ -18,7 +18,7 @@ $db=new Connection();
             if($classi=$db->ExecQuery($query_classi)){
                 $contenuto.="<li><ul>";
                 foreach($classi as $c){
-                    $contenuto.="<li>".$c['num_classe']." - <a href='laurea.php?nclasse=".$c['num_classe']."'>".$c['denominazione']."</a></li>";
+                    $contenuto.="<li>".$c['num_classe']." - <a href='classe.php?nclasse=".$c['num_classe']."'>".$c['denominazione']."</a></li>";
                 }
                 $contenuto.="</li></ul>";
                 }
