@@ -37,10 +37,10 @@ Menù
     display: block;
     position: absolute;
     right: 5%;
-    top: 5%;
+    top: 2%;
     cursor: pointer;
     font-size: 2.5em;
-}
+} /* ATTENZIONE per il tab devo far coincidere la casella dell'input con l'hamburger in modo che si attivi! */
 
 
 #menu>#menu-content {
