@@ -1,6 +1,8 @@
 <?php
+require_once 'utilita.php';
+require_once 'database.php';
 session_start(); 
-if(isset($_SESSION['user']) &&  isset($_SESSION['time'])  && time()-$_SESSION['time']<3600){
+if(check()){
     if($_SESSION['user']!='admin')
         header("Location:area_utente.php");
     else
@@ -11,8 +13,7 @@ else if(isset($_SESSION['user']) &&  isset($_SESSION['time'])  && time()-$_SESSI
     unset($_SESSION['time']);
     $_SESSION['sessione']='<p>Sessione Scaduta</p>';
 }
-require_once 'database.php';
-require_once 'utilita.php';
+
 $content='';
 $username='';
 $password='';

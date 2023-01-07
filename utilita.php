@@ -5,4 +5,7 @@ function PulisciInput($value){
     #$value=htmlentities($value); #traduce tag html con i codice relativi-> prende tutto come carattri se inverto non trovo nulla
     return $value;
 }
+function check(){
+    return isset($_SESSION['user'])  &&  isset($_SESSION['time'])  && time()-$_SESSION['time']<3600;
+}
 ?>
