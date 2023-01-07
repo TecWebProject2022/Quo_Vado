@@ -23,11 +23,11 @@ $db=new Connection();
                 $contenuto.="</li></ul>";
                 }
             else{
-                $errori.="<p>Opss Errore di conessione</p>";
+                $errori.="<p>Opss si è verficato un errore di conessione, riprova</p>";
             }
             
            }
-        $contenuto.="</dl>";
+        $contenuto.="</ul>";
         }
         else{
             $errori.="<p>nessun risultato presente</p>";
