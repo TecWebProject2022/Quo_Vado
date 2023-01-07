@@ -286,6 +286,7 @@ main h1{
     padding-top: 2%;
     padding-right: 25%;
     padding-bottom: 2%;
+    text-shadow: 4px 4px 4px rgba(0,0,0,0.26);
 }
 
 section {
@@ -384,6 +385,15 @@ HOME
     justify-items: center;
 }
 
+.grid_container a {
+    text-decoration: none;
+    transition: all .2s ease-in-out;
+}
+
+.grid_container a:hover {
+    transform: scale(1.05);
+}
+
 .grid_container a:link {
     text-align: center;
     color: #162636;
@@ -448,6 +458,10 @@ HOME
     margin-top: 1em;
 }
 
+.block_one a {
+    text-decoration: none;
+}
+
 .block_one a:link {
     color: #162636;
     background-color: #FFFDE8;
@@ -485,9 +499,8 @@ HOME
     margin-top: 1em;
 }
 
-a.block_two {
+.block_two a {
     text-decoration: none;
-
 }
 
 .block_two a:link {
@@ -606,7 +619,42 @@ OBIETTIVO LAVORO
 #job{
     background-color: #548E9C;
     color: #FFFFFF;
-    
+}
+
+section > h2 {
+    color: #FFFFFF;
+    background-color: #0D5D70;
+    padding: 1.3em;
+    margin-right: 30%;
+    margin-bottom: 1.5em;
+    line-height: 1.5em;
+    text-shadow: 4px 4px 4px rgba(0,0,0,0.26);
+}
+
+section > ol {
+    background-color: #FFFDE8;
+    box-shadow: 1px 15px 19px 6px rgba(0,0,0,0.26);
+    padding: 1.5em;
+    padding-left: 3em;
+    margin: 1.5em;
+}
+
+section > ul {
+    padding-left: 2em;
+    margin-top: 0.5em;
+}
+
+.where {
+    box-shadow: 1px 15px 19px 6px rgba(0,0,0,0.26);
+    padding: 1.5em;
+    padding-left: 3em;
+    margin: 2em;
+    border-radius: 20px;
+    transition: all .2s ease-in-out;
+}
+
+.where:hover {
+    transform: scale(1.05);
 }
 
 /*
