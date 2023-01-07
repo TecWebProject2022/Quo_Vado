@@ -559,10 +559,7 @@ ESPLORA CORSI
     border-radius: 30px;
     transition: all .2s ease-in-out;
     text-decoration: none;
-    box-shadow: inset -5px -5px 9px rgba(255,255,255,0.45), inset 5px 5px 9px rgba(94,104,121,0.3);}
-
-.area:hover {
-    transform: scale(1.05);
+    box-shadow: inset -5px -5px 9px rgba(255,255,255,0.45), inset 5px 5px 9px rgba(94,104,121,0.3);
 }
 
 .area:link {
@@ -572,6 +569,10 @@ ESPLORA CORSI
 .area:visited {
     color: #162636;
     background-color: #E36600;
+}
+
+.area:hover {
+    transform: scale(1.05);
 }
 
 #stem {
@@ -645,17 +646,41 @@ section > ul {
 }
 
 .external_link {
-    background-color: #0D5D70;
+    padding: 1.5em 3em 1.5em 3em;
+    margin: 2em;
+    font-size: 1em;
+    line-height: 2em;
+    border-radius: 15px;
+    box-shadow: 1px 15px 19px 6px rgba(0,0,0,0.26);
 }
 
+#utilities > a {
+    text-decoration: none;
+    font-size: 0.9em;
+}
+
+.external_link {
+    transition: all .2s ease-in-out;
+}
+
+#utilities > a:link {
+    color:#000000;
+}
+
+#utilities > a:visited {
+    color:#000000;
+}
+
+.external_link:hover {
+    transform: scale(1.02);
+}
+
+.external_link > dt {
+    font-size: 1.2em;
+}
 
 /*
 section > .external_link {
-    box-shadow: 1px 15px 19px 6px rgba(0,0,0,0.26);
-    padding: 1.5em;
-    padding-left: 3em;
-    margin: 2em;
-    border-radius: 20px;
     transition: all .2s ease-in-out;
     font-size: 0.9em;
     text-decoration: none;
