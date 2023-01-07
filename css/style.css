@@ -31,7 +31,33 @@ html,body{
     margin:auto;
     background-color: var(--bgcolor);
     color:var(--txtcolor);
+    scroll-behavior: smooth;
 }
+
+.error {
+    color: red;
+}
+
+#scroll_button {
+    display: none; 
+    position: fixed; 
+    background-color: #E36600;
+    color: #162636;
+    cursor: pointer; /* puntatore mano */
+    right: 5%;
+    bottom: 5%;
+    padding: 0.5em;
+    border-radius: 15px;
+    font-size: 1.3em;
+    z-index: 99;
+    outline: none;
+    border: none;
+  }
+  
+  #scroll_button:hover {
+    background-color: #FFFDE8;
+  }
+
 /*
 body {
     max-width: 1200px;
@@ -364,7 +390,7 @@ HOME
     background-color: #FFFDE8;
     padding: 1em;
     border-radius: 30px;
-    box-shadow: -5px 5px 5px rgba(22, 38, 54, 0.25);
+    box-shadow: inset -5px -5px 9px rgba(255,255,255,0.45), inset 5px 5px 9px rgba(94,104,121,0.3);
 }
 
 .grid_container a:visited {
@@ -414,13 +440,7 @@ HOME
     font-size: 0.9em;
     color: #FFFFFF;
     border-radius: 10px;
-    /*transition: transform .2s;*/
 }
-/*
-.block_one:hover {
-    transform: scale(1.05);
-}
-*/
 
 .block_one .link {
     text-align: right;
@@ -433,7 +453,7 @@ HOME
     background-color: #FFFDE8;
     padding: 1em;
     border-radius: 30px;
-    box-shadow: -5px 5px 5px rgba(22, 38, 54, 0.25);
+    box-shadow: inset -5px -5px 9px rgba(255,255,255,0.45), inset 5px 5px 9px rgba(94,104,121,0.3);
 }
 
 .block_one a:visited {
@@ -465,12 +485,17 @@ HOME
     margin-top: 1em;
 }
 
+a.block_two {
+    text-decoration: none;
+
+}
+
 .block_two a:link {
     color: #162636;
     background-color: #FFFDE8;
     padding: 1em;
     border-radius: 30px;
-    box-shadow: -5px 5px 5px rgba(22, 38, 54, 0.25);
+    box-shadow: inset -5px -5px 9px rgba(255,255,255,0.45), inset 5px 5px 9px rgba(94,104,121,0.3);
 }
 
 .block_two a:visited {
@@ -510,33 +535,66 @@ ESPLORA CORSI
     flex-wrap: wrap;
 }
 
+.area_disciplinare a:link {
+    color: #FFFFFF;
+}
+
+.area_disciplinare a:visited {
+    color: #162636;
+    background-color: #E36600;
+}
+
 .area {
     flex-grow: 1;
     flex-basis: 15%;
-    color: #FFF;
     background: #0D5D70;
     padding: 2em;
     margin: 1em;
     text-align: center;
-    font-variant: small-caps;
-    font-size: 0.9em;
-    font-size: 1.3em;
     line-height: 2em;
     border-radius: 30px;
-    transition: transform .2s;
+    transition: all .2s ease-in-out;
     text-decoration: none;
-}
+    box-shadow: inset -5px -5px 9px rgba(255,255,255,0.45), inset 5px 5px 9px rgba(94,104,121,0.3);}
 
 .area:hover {
     transform: scale(1.05);
 }
 
-.area_disciplinare a:link {
-    
+#stem {
+    font-size: 1em;
 }
 
-.area_disciplinare a:visited {
+#stem > dt {
+    font-size: 1.4em;
+    font-variant: small-caps;
+}
 
+#sani {
+    font-size: 1em;
+}
+
+#sani > dt {
+    font-size: 1.4em;
+    font-variant: small-caps;
+}
+
+#art {
+    font-size: 1em;
+}
+
+#art > dt {
+    font-size: 1.4em;
+    font-variant: small-caps;
+}
+
+#eco {
+    font-size: 1em;
+}
+
+#eco > dt {
+    font-size: 1.4em;
+    font-variant: small-caps;
 }
 
 /*
