@@ -45,7 +45,7 @@ class Connection{
             return $error_message= "<p>Errore in openDBConnection: " . $this->conn->error."</p>";
         }        
     }
-    public function ExecQuery($query){
+    public function ExecQuery ($query){
        
         $query_result = $this->conn->query($query);
 
