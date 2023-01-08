@@ -680,27 +680,6 @@ section > ul {
 }
 
 /*
-section > .external_link {
-    transition: all .2s ease-in-out;
-    font-size: 0.9em;
-    text-decoration: none;
-}
-
-section > .external_link:hover {
-    transform: scale(1.05);
-}
-
-section > .external_link:link {
-    color: #000000;
-}
-
-section > .external_link:visited {
-    color: #000000;
-    background-color: #548E9C;
-}
-*/
-
-/*
 ================
 LA SCELTA GIUSTA PER TE
 ================
