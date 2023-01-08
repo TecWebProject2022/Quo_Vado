@@ -10,9 +10,12 @@
 	<meta name="keywords" content="interessi, passioni, punti di forza, punti di debolezza, ambizioni, università, orientamento" />
 	<meta name="author" content="Marco Brugin, Valentina Caputo, Matteo Umatche, Bianca Zaghetto" />
 	<link rel="stylesheet" type="text/css" media= "screen" href="css/style.css"/> 
-    <link rel="stylesheet" type="text/css" media= "screen and (max-device-width:600px), only screen
-	and (max-width:600px)" href="css/mini.css"/>
+    <link rel="stylesheet" type="text/css" media= "screen and (max-device-width:1200px), only screen
+	and (max-width:1200px)" href="css/mini.css"/>
 	<link rel="stylesheet" type="text/css" href="css/print.css" />
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    
     <link rel="shortcut icon" type="image/png" href="images/icon.ico" />
 </head>
 
@@ -25,7 +28,11 @@
     <a class="skip" href="#content">Vai al contenuto</a> 
 
     <nav id="menu" aria-label="menù">
-        <ul>
+        <input type="checkbox" id="hamburger-menu" aria-label="menu button"/>
+        <label for="hamburger-menu"><span class="fa fa-bars"></span></label> <!--TV errore perchè manca testo nella label-->
+
+        <ul id="menu-content">
+
             <li lang="en"><a href="index.html">Home</a></li>
             <li><a href="percorso_disciplinare.html">Esplora corsi</a></li>
             <li><a href="lavoro.html">Obiettivo Lavoro</a></li>
