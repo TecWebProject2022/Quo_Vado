@@ -328,7 +328,7 @@ HOME
     font-size: 0.9em;
 }
 
-#content > h2 {
+#quattro {
     text-align: center;
     line-height: 1.4em;
     padding-top: 1em;
@@ -625,7 +625,7 @@ GRUPPI DISCIPLINARI
     color: #FFFFFF;
     background-color: #0D5D70;
     padding: 1.3em;
-    margin-right: 30%;
+    margin: 2% 40% 2% 10%;
     margin-bottom: 1.5em;
     line-height: 1.5em;
     text-shadow: 4px 4px 4px rgba(0,0,0,0.26);

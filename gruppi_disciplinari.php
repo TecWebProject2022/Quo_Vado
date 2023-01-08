@@ -11,7 +11,7 @@ $db=new Connection();
     if($dbOK){
         if($gruppi=$db->ExecQuery($query_gruppi)){
            $contenuto.='<h2 id="gruppo">'.$target.'</h2>';
-           $contenuto.='<ul>';
+           $contenuto.='<ul class="collapsible">';
            foreach($gruppi as $r){
             $contenuto.="<li>".$r['gruppo_disciplinare']."</li>";
             $query_classi="Select num_classe, denominazione from ClassediLaurea where gruppo_disciplinare=\"".$r['gruppo_disciplinare']."\";";
