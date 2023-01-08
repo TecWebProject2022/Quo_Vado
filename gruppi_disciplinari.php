@@ -10,7 +10,7 @@ $db=new Connection();
     $dbOK=$db->Connect();
     if($dbOK){
         if($gruppi=$db->ExecQuery($query_gruppi)){
-           $contenuto.='<h2>'.$target.'</h2>';
+           $contenuto.='<h2 id="gruppo">'.$target.'</h2>';
            $contenuto.='<ul>';
            foreach($gruppi as $r){
             $contenuto.="<li>".$r['gruppo_disciplinare']."</li>";

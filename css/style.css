@@ -617,6 +617,22 @@ ESPLORA CORSI
 
 /*
 ================
+GRUPPI DISCIPLINARI
+================
+*/
+
+#gruppo {
+    color: #FFFFFF;
+    background-color: #0D5D70;
+    padding: 1.3em;
+    margin-right: 30%;
+    margin-bottom: 1.5em;
+    line-height: 1.5em;
+    text-shadow: 4px 4px 4px rgba(0,0,0,0.26);
+}
+
+/*
+================
 OBIETTIVO LAVORO
 ================
 */
