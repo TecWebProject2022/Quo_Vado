@@ -155,6 +155,11 @@ comparsa / scomparsa
      font-size: 1.2em;    
  }
 
+ .arrow {
+    visibility: hidden;
+ }
+
+
  /*
 ================
 CONTENUTO

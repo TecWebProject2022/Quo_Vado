@@ -183,13 +183,17 @@ header > ul{
 }
 .sottomenu-content a{
     display: block;
-    width: 13em;
+    width: 14em;
     padding: 0.5em;
     border-top: #162636 0.5px solid;
 }
 
 .sottomenu:hover .sottomenu-content, li:focus-within .sottomenu-content { /* Mostra al passaggio del mouse o al tab da tastiera*/
     text-indent: 0em;
+}
+
+.sottomenu:hover .arrow, li:focus-within .arrow { /* Mostra al passaggio del mouse o al tab da tastiera*/
+    transform: rotate(180deg);
 }
 
 /* Pagina corrente e sezione con sottomenù*/
