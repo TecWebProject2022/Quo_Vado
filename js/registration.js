@@ -1,12 +1,12 @@
 //mega giga bozza sto solo cercando di capire js
 // caricata all' onload
 function addFunction(){
-  document.getElementById("name").addEventListener("blur",function(){Validate(this)});
-  document.getElementById("last_name").addEventListener("blur",function(){Validate(this)});
-  document.getElementById("birthday").addEventListener("blur",function(){dateValidate(this)});
-  document.getElementById("username").addEventListener("blur",function(){usernameValidate(this)});
-  document.getElementById("password").addEventListener("blur",function(){Validate(this)});
-  document.getElementById("repeat_password").addEventListener("blur",function(){ r_PasswordValidate(this)});
+  document.getElementById("name").addEventListener("blur",function(){Validate(document.getElementById("name"))});
+  document.getElementById("last_name").addEventListener("blur",function(){Validate(document.getElementById("last_name"))});
+  document.getElementById("birthday").addEventListener("blur",function(){dateValidate(document.getElementById("birthday"))});
+  document.getElementById("username").addEventListener("blur",function(){usernameValidate(document.getElementById("username"))});
+  document.getElementById("password").addEventListener("blur",function(){Validate(document.getElementById("password"))});
+  document.getElementById("repeat_password").addEventListener("blur",function(){ r_PasswordValidate(document.getElementById("repeat_password"))});
 }
 
 // se l' input e' valido ritorna true altrimenti ritorna false e aggiunge un messaggio di errore
