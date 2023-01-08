@@ -9,15 +9,22 @@
     <meta name="keywords" content="orientamento, università, lavoro,futuro,risorse,diritto allo studio,parità di genere,inclusione"/>
     <meta name="author" content="Matteo Umatche, Marco Brugin, Bianca, Valentina Caputo" />
 
-    <link rel="stylesheet" type="text/css" href="css/style.css" /> 
-    <link rel="stylesheet" type="text/css" href="css/mini.css" />
-    <link rel="stylesheet" type="text/css" href="css/print.css" />
+    <link rel="stylesheet" type="text/css" media= "screen" href="css/style.css"/> 
+    <link rel="stylesheet" type="text/css" media= "screen and (max-device-width:1200px), only screen
+	and (max-width:1200px)" href="css/mini.css"/>
+   <!-- <link rel="stylesheet" type="text/css" href="css/print.css" /> -->
+
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
     <link rel="shortcut icon" type="image/png" href="images/icon.ico" />
     
 </head>
     
 <body>
+
+    <!--da fare in JS-->
+    <input type="submit" onclick="topFunction()" id="scroll_button" title="go_top">Top</input>
+
     <header>
         <h1>Quo vado?</h1>
 		<h2>Sito di orientamento universitario</h2>
@@ -26,7 +33,11 @@
     <a class="skip" href="#content">Vai al contenuto</a>
 
 	<nav id="menu" aria-label="menù">
-      <ul>
+        
+        <input type="checkbox" id="hamburger-menu" aria-label="menu button"/>
+        <label for="hamburger-menu"><span class="fa fa-bars"></span></label> <!--TV errore perchè manca testo nella label-->
+
+      <ul id="menu-content">
             <li id="currentlink" lang="en">Home</li>
             <li><a href="percorso_disciplinare.html">Esplora corsi</a></li>
             <li><a href="lavoro.html">Obiettivo Lavoro</a></li>
@@ -53,18 +64,18 @@
             <h1>Orientamento al percorso universitario</h1>
             
             <div id="intro_text">
-            <p>Scegliere un percorso universitario non significa soltanto decidere dove trascorrere i prossimi tre o cinque anni. 
-                Trovare un corso di studio che appassiona o più vicino ai propri interessi è soltanto il primo passo.</p>
+                <p>Scegliere un percorso universitario non significa soltanto decidere dove trascorrere i prossimi tre o cinque anni. 
+                    Trovare un corso di studio che appassiona o più vicino ai propri interessi è soltanto il primo passo.</p>
 
-            <p>Scegliere un percorso universitario significa fare un <strong>progetto di vita</strong> e investire nel proprio <strong>futuro</strong>. 
-                Per questo serve pensare ad un percorso di studio che, non solo rispecchi i propri interessi, ma che consenta anche di 
-                <strong> realizzarsi personalmente</strong> e <strong>professionalmente</strong>.</p>
+                <p>Scegliere un percorso universitario significa fare un <strong>progetto di vita</strong> e investire nel proprio <strong>futuro</strong>. 
+                    Per questo serve pensare ad un percorso di studio che, non solo rispecchi i propri interessi, ma che consenta anche di 
+                    <strong> realizzarsi personalmente</strong> e <strong>professionalmente</strong>.</p>
 
-            <p>Fare questo non è sicuramente un compito facile, richiede approfondimenti, conoscenza di sé e del mondo del lavoro.</p> 
-                <!--Proprio perché scegliere il percorso di studi è difficile e richiede fatica, può essere utile chiedere aiuto a studenti che ci sono passati o 
-                a professionisti esperti in questo settore.-->
+                <p>Fare questo non è sicuramente un compito facile, richiede approfondimenti, conoscenza di sé e del mondo del lavoro.</p> 
+                    <!--Proprio perché scegliere il percorso di studi è difficile e richiede fatica, può essere utile chiedere aiuto a studenti che ci sono passati o 
+                    a professionisti esperti in questo settore.-->
 
-            <p>Il nostro scopo è aiutarti in questa scelta, fornendoti una <em>bussola</em> in grado di <strong>orientarti</strong> nell’oceano di informazioni disponibili in rete.</p>
+                <p>Il nostro scopo è aiutarti in questa scelta, fornendoti una <em>bussola</em> in grado di <strong>orientarti</strong> nell’oceano di informazioni disponibili in rete.</p>
             </div>
         </div>
 
@@ -75,16 +86,16 @@
                 Questi quattro punti rappresentano i punti cardinali della nostra bussola e sono: <strong>Università</strong>, <strong>Lavoro</strong>, 
                 <strong>Risorse Interne</strong> e <strong>Risorse Esterne</strong>.</p>
 
-            <nav class="grid_container">
+            <nav class="grid_container" aria-label="link bussola">
                 <a href="#uni" id="item1">Università</a>
                 <a href="#lav" id="item2">Lavoro</a>
-                <img src="css/css_images/bussola.png" alt="bussola" id="item3" width="200" height="193" style="vertical-align:middle">
+                <img src="css/css_images/bussola.png" alt="bussola" id="item3">
                 <a href="#ris_int" id="item4">Risorse interne</a>
                 <a href="#ris_est" id="item5">Risorse esterne</a>
             </nav>
 
-                <dl class="block_one" id="first_bg">
-                <dt id="uni"><strong>Università</strong></dt>
+                <dl class="block_one" id="uni">
+                <dt><strong>Università</strong></dt>
                 <dd class="summary">Le informazioni che le università ci forniscono</dd>
                 <dd class="skip"><a href="#lav">Salta il contenuto e vai a Lavoro</a></dd>
                 <dd class="description">
@@ -93,11 +104,11 @@
                     <p>Consultare le informazioni relative ai diversi corsi di laurea delle varie università può essere una buona strada se hai già qualche 
                         idea di quelli che sono i tuoi interessi e magari sai già, più o meno, che tipo di lavoro vorrai fare dopo la laurea.</p>
                 </dd>
-                <dd class="link"><a href="percorso_disciplinare.html">Scopri di più su Università</a></dd>
+                <dd class="link"><a href="percorso_disciplinare.html">Vai a Università</a></dd>
                 </dl>
 
-                <dl class="block_two" id="second_bg">
-                <dt id="lav"><strong>Lavoro</strong></dt>
+                <dl class="block_two" id="lav">
+                <dt><strong>Lavoro</strong></dt>
                 <dd class="summary">Sbocchi professionali e segnali che arrivano dal mondo del lavoro</dd>
                 <dd class="skip"><a href="#ris_int">Salta il contenuto e vai a Risorse Interne</a></dd>
                 <dd class="description">
@@ -112,11 +123,11 @@
                             <li>con il lavoro che vuoi svolgere, quali sono le <strong>prospettive economiche</strong>.</li>
                         </ul>
                 </dd>
-                <dd class="link"><a href="lavoro.html">Scopri di più su Lavoro</a></dd>
+                <dd class="link"><a href="lavoro.html">Vai a Lavoro</a></dd>
                 </dl>
 
-                <dl class="block_one" id="third_bg">
-                <dt id="ris_int"><strong>Risorse Interne</strong></dt>
+                <dl class="block_one" id="ris_int">
+                <dt><strong>Risorse Interne</strong></dt>
                 <dd class="summary">Gli interessi, le ambizioni e le risorse che ciascuno di noi ha</dd>
                 <dd class="skip"><a href="#ris_est">Salta il contenuto e vai a Risorse Esterne</a></dd>
                 <dd class="description">
@@ -125,11 +136,11 @@
                         a guidarci nella scelta. Per questo prova a soffermarti su te stesso, per capire quali sono i tuoi punti di forza, 
                         cosa ti realizza e soprattutto prestare attenzione ad alcune <strong>false credenze</strong> che possono portarti sulla strada sbagliata.</p>
                 </dd>
-                <dd class="link"><a href="risorse_interne.html">Scopri di più su Risorse Interne</a></dd>
+                <dd class="link"><a href="risorse_interne.html">Vai a Risorse Interne</a></dd>
                 </dl>
 
-                <dl class="block_two" id="fourth_bg">
-                <dt id="ris_est"><strong>Risorse Esterne</strong></dt>
+                <dl class="block_two" id="ris_est">
+                <dt><strong>Risorse Esterne</strong></dt>
                 <dd class="summary">I mezzi di sostegno per un'<strong>università aperta a tutti</strong></dd>
                 <dd class="description">
                     <p>Può capitare di avere dubbi sulle proprie capacità, pensare di non iscriversi ad un corso di laurea per paura di fallire o per paura di pesare
@@ -144,7 +155,7 @@
                             <li><strong>inclusione</strong> e disabilità.</li>
                         </ul>
                 </dd>
-                <dd class="link"><a href="universita_inclusiva.html">Scopri di più su Risorse Esterne</a></dd>
+                <dd class="link"><a href="universita_inclusiva.html">Vai a Risorse Esterne</a></dd>
                 </dl>
     </main>
     

@@ -25,7 +25,7 @@ durata ENUM('triennale', 'magistrale', 'a ciclo unico') not null
 create table CorsodiStudio (
 ateneo varchar(50),
 classe_laurea char(4),
-nome varchar(80) not null,
+nome varchar(80),
 PRIMARY KEY(ateneo, classe_laurea, nome),
 accesso ENUM('Accesso programmato','Accesso libero con prova','Accesso a numero chiuso','Accesso libero cronologico') not null,
 link varchar(2000) not null,

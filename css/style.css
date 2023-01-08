@@ -5,10 +5,17 @@
 
 :root {
     --headerbg: #FFFDE8;
-    --menulink: #162636;
-    --menulinkvisited: #E36600;
-    --bgcolor: #FFFFFF;
+
+    --menulink: #0D5D70;
+    --menulinkbg: #FFFEF4;
+    --menulinkvisited: #162636;
+    --menulinkvisitedbg: #D67200;
+    --menulinkhover: white;
+    --menulinkhoverbg: #0D5D70;
+
     --breadcolor: #162636;
+
+    --bgcolor: #FFFFFF;
     --txtcolor: #000000;
     --contentbgcolor: ;
     --contentcolor: ;
@@ -24,7 +31,33 @@ html,body{
     margin:auto;
     background-color: var(--bgcolor);
     color:var(--txtcolor);
+    scroll-behavior: smooth;
 }
+
+.error {
+    color: red;
+}
+
+#scroll_button {
+    display: none; 
+    position: fixed; 
+    background-color: #E36600;
+    color: #162636;
+    cursor: pointer; /* puntatore mano */
+    right: 5%;
+    bottom: 5%;
+    padding: 0.5em;
+    border-radius: 15px;
+    font-size: 1.3em;
+    z-index: 99;
+    outline: none;
+    border: none;
+  }
+  
+  #scroll_button:hover {
+    background-color: #FFFDE8;
+  }
+
 /*
 body {
     max-width: 1200px;
@@ -69,8 +102,20 @@ BREADCRUMB
     box-shadow: 0px 5px 5px rgba(0, 0, 0, 0.25);
 }
 
+#breadcrumb a:link{
+    padding: 0.5em;   
+    color: var(--menulinkbg);
+    font-variant: small-caps;
+}
+
 #breadcrumb a:visited{
-    color: var(--visitedcolor);
+    color: var(--menulinkvisitedbg);
+}
+
+#breadcrumb a:hover{
+    color: orange;
+    font-variant: normal;
+    text-decoration: none;
 }
 
 /*
@@ -78,6 +123,9 @@ BREADCRUMB
 MENU
 ================
 */
+#hamburger-menu, #menu label {
+    display: none;
+}
 
 
 header > ul{
@@ -92,18 +140,19 @@ header > ul{
 #menu a:link{
     text-decoration: none;
     color: var(--menulink);
-    background-color: #FFFEF4;
-    color: #0D5D70;
+    background-color: var(--menulinkbg);
+    font-variant: small-caps;
 } 
 
 #menu a:visited {
-    background-color: #D67200;
-    color: var(--breadcolor);
+    background-color: var(--menulinkvisitedbg);
+    color: var(--menulinkvisited);
 }
 
 #menu a:hover {
-    background-color: #0D5D70;
-    color: white;
+    background-color: var(--menulinkhoverbg);
+    color: var(--menulinkhover);
+
 }
 
 #menu>ul>li>a:link, #menu>ul>li>a:visited, #menu>ul>li>a:hover { /*impostazioni specifiche per primo livello del menù*/
@@ -123,45 +172,29 @@ header > ul{
 .sottomenu {
     position: relative;
 }
-/*
-.sottomenu {
-    background: url("icons/arrow_notVisited.svg") no-repeat right;
-    background-size: 4%;
 
-}*/
 .sottomenu-content { /* Nascosto */
     position: absolute;
     text-indent: -99999em; /*uso text-indent per screen reader*/
     background-color: var(--headerbg);
     margin: 0.8em 0em;
     z-index: 1;
-    box-shadow: -5px 5px 5px rgba(0, 0, 0, 0.25);
+    box-shadow: -15px 15px 5px rgba(0, 0, 0, 0.25);
 }
 .sottomenu-content a{
     display: block;
-    width: 12em;
+    width: 13em;
     padding: 0.5em;
     border-top: #162636 0.5px solid;
 }
-
-#menu .sottomenu-content a:hover{
-    background-color: #0D5D70;
-    color: #FFFFFF;
-}
-
 
 .sottomenu:hover .sottomenu-content, li:focus-within .sottomenu-content { /* Mostra al passaggio del mouse o al tab da tastiera*/
     text-indent: 0em;
 }
 
-/*
-.sottomenu:hover, .sottomenu:focus-within {
-    background: url("icons/up-arrow_notVisited.svg") no-repeat right;
-    background-size: 4%;
-}
-*/
+/* Pagina corrente e sezione con sottomenù*/
 
-#currentlink, #currentOverLink {
+#currentlink {
     font-size: 1.2em;
     padding: 0.8em;
     border-top-left-radius: 20px;
@@ -170,19 +203,21 @@ header > ul{
     color: #FFFDE8;
 }
 
-#currentOverLink{
-    padding-left: 0%;
-    padding-right: 0%;
-    border: #162636 2px solid;
+#currentOverLink {
+    font-size: 1.2em;
+    padding: 0.8em 0em;
 }
 
 #visible-sottomenu {
-    border-top: var(--breadcolor) 2px solid;
-    background-color: #548E9C;
+    position: relative;
+    z-index: 1;
+    background: #162636; /* se browser non supporta linear-gradient*/
+    background: linear-gradient(to bottom, orange, #D67200);
 }
+
 #visible-sottomenu ul{
-    padding: 0.8em;
-    /*padding-left: 2%;*/
+    padding: 2em;
+    margin-left: 10%;
     
 }
 #visible-sottomenu li{
@@ -191,6 +226,43 @@ header > ul{
     font-size: 1.1em;
 }
 
+#visible-sottomenu a {
+    text-decoration: none;
+}
+
+#visible-sottomenu a:link{
+    padding: 0.5em;
+    border-radius: 10px;
+    box-shadow: -5px -5px 4px rgba(0, 0, 0, 0.25);
+    /*border: #FFFEF4 0.2px solid;*/
+    color: var(--menulink);
+    background-color: var(--menulinkbg);
+    font-variant: small-caps;
+}
+
+#visible-sottomenu a:visited{
+    padding: 0.5em;
+    border-radius: 10px;
+    box-shadow: -5px -5px 3px rgba(0, 0, 0, 0.25);
+    /*border: #E36600 0.2px solid;*/
+    color: var(--menulinkvisited);
+    background-color: var(--menulinkvisitedbg);
+}
+
+#visible-sottomenu a:hover{
+    box-shadow: -5px -5px 3px rgba(0, 0, 0, 0.25);
+    color: var(--menulinkhover);
+    background-color: var(--menulinkhoverbg);
+}
+
+#visible-sottomenu #currentSubLink {
+   /* padding: 0.5em;*/
+    padding-right: 1.2em;
+    /*color: #FFFEF4;*/
+    color: #162636;
+    font-size: 1.3em;
+    
+}
 
 
 /*
@@ -207,13 +279,14 @@ CONTENUTO
 
 main h1{
     margin-bottom: 1.5%;
-    max-width: 1024px;
+    /*max-width: 1024px;*/
     font-size: 3.3em;
     line-height: 1.5em;
     padding-left: 10%;
     padding-top: 2%;
     padding-right: 25%;
     padding-bottom: 2%;
+    text-shadow: 4px 4px 4px rgba(0,0,0,0.26);
 }
 
 section {
@@ -240,8 +313,7 @@ HOME
     padding: 0%;
 }
 
-#intro_text {
-   /* background-color: #0D5D70; */
+#intro_text { 
     background-image: linear-gradient(to right, rgba(13,93,112,0.8), rgba(13,93,112,0.5));
     margin-right: 20%;
     margin-left: -1.5em;
@@ -260,47 +332,86 @@ HOME
     font-size: 2em;
 }
 
+#info {
+    text-align: center;
+    padding: 0em 3em 0em 3em;
+    margin: 0% 15% 0% 15%;
+}
+
 #item1 {
     grid-area: a;
+    justify-self: center;
+    font-variant: small-caps;
+    font-size: 1.4em;
 }
 
 #item2 {
     grid-area: b;
+    justify-self: start;
+    font-variant: small-caps;
+    font-size: 1.4em;
 }
 
 #item3 {
     grid-area: c;
+    max-width: 100%;
+    justify-self: center;
 }
 
 #item4 {
     grid-area: d;
+    justify-self: end;
+    font-variant: small-caps;
+    font-size: 1.4em;
 }
 
 #item5 {
     grid-area: e;
+    justify-self: center;
+    font-variant: small-caps;
+    font-size: 1.4em;
 }
 
 .grid_container {
     display: grid;
-    grid-template-columns: repeat(5, 18%);
-    grid-template-areas: ". . a . ."
-                         ". d c b ."
-                         ". . e . .";
-    grid-gap: 2%;
+    grid-template-columns: 4.2fr 1.6fr 4.2fr;
+    grid-template-areas: ". a ."
+                         "d c b"
+                         ". e .";
+    grid-column-gap: 30px;
+    grid-row-gap: 30px;
+    padding: 4em;
     align-items: center;
     justify-items: center;
 }
 
-#info {
-    text-align: left;
-    padding: 0em 3em 2em 3em;
+.grid_container a {
+    text-decoration: none;
+    transition: all .2s ease-in-out;
+}
+
+.grid_container a:hover {
+    transform: scale(1.05);
+}
+
+.grid_container a:link {
+    text-align: center;
+    color: #162636;
+    background-color: #FFFDE8;
+    padding: 1em;
+    border-radius: 30px;
+    box-shadow: inset -5px -5px 9px rgba(255,255,255,0.45), inset 5px 5px 9px rgba(94,104,121,0.3);
+}
+
+.grid_container a:visited {
+    text-align: center;
+    color: #162636;
+    background-color: #E36600;
+    padding: 1em;
+    border-radius: 30px;
 }
 
 #uni {
-    font-size: 1.3em;
-}
-
-#first_bg {
     background-image: url(css_images/universita.jpg);
     background-size: 30%;
     min-height: 200px;
@@ -308,7 +419,7 @@ HOME
     background-repeat: no-repeat;
 }
 
-#second_bg {
+#lav {
     background-image: url(css_images/lavoro.jpg);
     background-size: 30%;
     min-height: 200px;
@@ -316,7 +427,7 @@ HOME
     background-repeat: no-repeat;
 }
 
-#third_bg {
+#ris_int {
     background-image: url(css_images/risorse_interne.jpg);
     background-size: 30%;
     min-height: 200px;
@@ -324,7 +435,7 @@ HOME
     background-repeat: no-repeat;
 }
 
-#fourth_bg {
+#ris_est {
     background-image: url(css_images/risorse_esterne.jpg);
     background-size: 30%;
     min-height: 200px;
@@ -332,38 +443,85 @@ HOME
     background-repeat: no-repeat;
 }
 
-#lav {
-    font-size: 1.3em;
-}
-
-#ris_int {
-    font-size: 1.3em;
-}
-
-#ris_est {
-    font-size: 1.3em;
-}
-
 .block_one {
-    background: var(--blocks);
-    margin: 1% 5% 2% 5%;
-    padding: 2em 2em 2em 30%; 
+    background: #0D5D70;
+    margin: 1% 15% 2% 15%;
+    padding: 2em 2em 2em 23%;
     font-size: 0.9em;
-}
-
-.block_two {
-    background: #548E9C;
-    margin: 1% 5% 2% 5%;
-    padding: 2em 30% 2em 2em;
-    font-size: 0.9em;
+    color: #FFFFFF;
+    border-radius: 10px;
 }
 
 .block_one .link {
     text-align: right;
+    font-variant: small-caps;
+    margin-top: 1em;
+}
+
+.block_one a {
+    text-decoration: none;
+}
+
+.block_one a:link {
+    color: #162636;
+    background-color: #FFFDE8;
+    padding: 1em;
+    border-radius: 30px;
+    box-shadow: inset -5px -5px 9px rgba(255,255,255,0.45), inset 5px 5px 9px rgba(94,104,121,0.3);
+}
+
+.block_one a:visited {
+    color: #162636;
+    background-color: #E36600;
+    padding: 1em;
+    border-radius: 30px;
+    box-shadow: inset 0 0 10px #f8a100;
+}
+
+.block_one > dt {
+    font-variant: small-caps;
+    font-size: 1.4em;
+    line-height: 1.5em;
+}
+
+.block_two {
+    background: #0D5D70;
+    margin: 1% 15% 2% 15%;
+    padding: 2em 23% 2em 2em;
+    font-size: 0.9em;
+    color: #FFFFFF;
+    border-radius: 10px;
 }
 
 .block_two .link {
     text-align: right;
+    font-variant: small-caps;
+    margin-top: 1em;
+}
+
+.block_two a {
+    text-decoration: none;
+}
+
+.block_two a:link {
+    color: #162636;
+    background-color: #FFFDE8;
+    padding: 1em;
+    border-radius: 30px;
+    box-shadow: inset -5px -5px 9px rgba(255,255,255,0.45), inset 5px 5px 9px rgba(94,104,121,0.3);
+}
+
+.block_two a:visited {
+    color: #162636;
+    background-color: #E36600;
+    padding: 1em;
+    border-radius: 30px;
+}
+
+.block_two > dt {
+    font-variant: small-caps;
+    font-size: 1.4em;
+    line-height: 1.5em;
 }
 
 .block_two ul {
@@ -376,15 +534,82 @@ ESPLORA CORSI
 ================
 */
 
-.area {
-    background: #548E9C;
-    margin: 1% 5% 2% 5%;
-    padding: 2em 6em 2em 2em;
-    font-size: 0.9em;
-    font-size: 1.3em;
-    line-height: 2em;
+#title {
+    color: #FFFFFF;
+    background: #0D5D70 url(css_images/strada.jpg) no-repeat;
+    background-size: cover;
+    padding: 1em;
 }
 
+.area_disciplinare {
+    display: flex;
+    align-items: stretch;
+    margin: 0% 5% 1.5% 5%;
+    flex-wrap: wrap;
+}
+
+.area {
+    flex-grow: 1;
+    flex-basis: 15%;
+    background: #0D5D70;
+    padding: 2em;
+    margin: 1em;
+    text-align: center;
+    line-height: 2em;
+    border-radius: 30px;
+    transition: all .2s ease-in-out;
+    text-decoration: none;
+    box-shadow: inset -5px -5px 9px rgba(255,255,255,0.45), inset 5px 5px 9px rgba(94,104,121,0.3);
+}
+
+.area:link {
+    color: #FFFFFF;
+}
+
+.area:visited {
+    color: #162636;
+    background-color: #E36600;
+}
+
+.area:hover {
+    transform: scale(1.05);
+}
+
+#stem {
+    font-size: 1em;
+}
+
+#stem > dt {
+    font-size: 1.4em;
+    font-variant: small-caps;
+}
+
+#sani {
+    font-size: 1em;
+}
+
+#sani > dt {
+    font-size: 1.4em;
+    font-variant: small-caps;
+}
+
+#art {
+    font-size: 1em;
+}
+
+#art > dt {
+    font-size: 1.4em;
+    font-variant: small-caps;
+}
+
+#eco {
+    font-size: 1em;
+}
+
+#eco > dt {
+    font-size: 1.4em;
+    font-variant: small-caps;
+}
 
 /*
 ================
@@ -395,7 +620,63 @@ OBIETTIVO LAVORO
 #job{
     background-color: #548E9C;
     color: #FFFFFF;
-    
+}
+
+section > h2 {
+    color: #FFFFFF;
+    background-color: #0D5D70;
+    padding: 1.3em;
+    margin-right: 30%;
+    margin-bottom: 1.5em;
+    line-height: 1.5em;
+    text-shadow: 4px 4px 4px rgba(0,0,0,0.26);
+}
+
+section > ol {
+    background-color: #FFFDE8;
+    box-shadow: 1px 15px 19px 6px rgba(0,0,0,0.26);
+    padding: 1.5em;
+    padding-left: 3em;
+    margin: 1.5em;
+}
+
+section > ul {
+    padding-left: 2em;
+    margin-top: 0.5em;
+}
+
+.external_link {
+    padding: 1.5em 3em 1.5em 3em;
+    margin: 2em;
+    font-size: 1em;
+    line-height: 2em;
+    border-radius: 15px;
+    box-shadow: 1px 15px 19px 6px rgba(0,0,0,0.26);
+}
+
+#utilities > a {
+    text-decoration: none;
+    font-size: 0.9em;
+}
+
+.external_link {
+    transition: all .2s ease-in-out;
+}
+
+#utilities > a:link {
+    color:#000000;
+}
+
+#utilities > a:visited {
+    color:#000000;
+}
+
+.external_link:hover {
+    transform: scale(1.02);
+}
+
+.external_link > dt {
+    font-size: 1.2em;
 }
 
 /*

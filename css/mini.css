@@ -1,0 +1,293 @@
+
+:root {
+    --headerbg: #FFFDE8;
+
+    --menulink: #0D5D70;
+    --menulinkbg: #FFFEF4;
+    --menulinkvisited: #162636;
+    --menulinkvisitedbg: #D67200;
+    --menulinkhover: white;
+    --menulinkhoverbg: #0D5D70;
+
+    --breadcolor: #162636;
+
+    --bgcolor: #FFFFFF;
+    --txtcolor: #000000;
+    --contentbgcolor: ;
+    --contentcolor: ;
+    --linkcolor: ;
+    --visitedcolor: #E36600;
+    --blocks: #548E9C;
+}
+
+
+header{
+    padding-right: 20%;
+}
+
+/*
+=================================
+BREADCRUMB
+=================================
+*/
+
+#breadcrumb {
+    display: none;  /*togliamo?*/
+}
+
+/*
+=================================
+MENU
+=================================
+*/
+
+#menu label {
+    color: #162636;
+    display: block;
+    position: absolute;
+    right: 5%;
+    top: 2%;
+    cursor: pointer;
+    font-size: 2.5em;
+} /* ATTENZIONE per il tab devo far coincidere la casella dell'input con l'hamburger in modo che si attivi! */
+
+
+#menu>#menu-content {
+    position: relative;
+    z-index: 1;
+    padding-top: 4%;
+    text-align: right;
+    background-color: #162636;
+    color: #FFFDE8;
+    padding-bottom: 4%;
+
+}
+
+
+/*
+comparsa / scomparsa
+*/
+
+#menu-content {  
+  display: none;
+}
+
+#menu input:checked ~ #menu-content
+{
+  display: block;
+}
+
+/*******/
+
+
+#menu li {
+    display: block;  
+}
+
+#menu>ul>li {
+    padding: 0.5em 0em;
+    margin-right: 5%;
+}
+
+#menu>ul>li>a:link {
+    border-radius: 0%;
+    box-shadow: none;
+}
+
+#menu a:link{
+    color: #FFFDE8;
+    background-color: var(--breadcolor);
+    font-variant: small-caps;
+} 
+
+#menu a:visited {
+    background-color: var(--breadcolor);
+    color: var(--menulinkvisitedbg);
+}
+
+#menu a:hover {
+    background-color: var(--breadcolor);
+    color: #009d9d;
+    font-variant: normal;
+    border-right: #009d9d 2px solid;
+
+}
+
+.sottomenu-content { 
+    position:relative; 
+    margin-top: 1em;
+    text-indent: 0;
+    background-color: #162636;
+    box-shadow: none;
+    margin-bottom: -0.2em;
+    margin-right: 8%;
+    margin-left: 8%;
+    border-top: #FFFDE8 2px solid;
+    border-bottom: #FFFDE8 2px solid;
+    font-size: 0.95em;  /*font troppo piccolo per mobile*/
+}
+
+.sottomenu-content a{
+    border-top:none;
+    width:auto;
+}
+
+
+#menu #currentlink {
+    font-size: 1.2em;
+    padding: 0.5em;
+    border-top-left-radius: 0px;
+    border-top-right-radius: 0px;
+    color: #009d9d;
+    border-right: #009d9d 5px solid;
+}
+
+
+#visible-sottomenu {
+    position: relative;
+    z-index: 1;
+    background: #162636; /* se browser non supporta linear-gradient*/
+    background: linear-gradient(to bottom, orange, #D67200);
+}
+
+#visible-sottomenu ul{
+    padding: 1em;
+    margin-left: 5%;
+    
+}
+#visible-sottomenu li, #visible-menu a{
+    display: block;
+    padding: 0.8em 0em;
+    font-size: 1.1em;
+}
+
+#visible-sottomenu #currentSubLink {
+     font-size: 1.2em;    
+ }
+
+ /*
+================
+CONTENUTO
+================
+*/
+
+section {
+    padding: 7%;
+}
+
+/*
+================
+HOME
+================
+*/
+
+#intro_text {
+    display: none;
+}
+
+#info {
+    display: none;
+}
+
+.grid_container {
+    display: none;
+}
+
+#uni {
+    background-image: url(css_images/universita.jpg);
+    background-size: 80%;
+    min-height: 200px;
+    background-position: top;
+    background-repeat: no-repeat;
+}
+
+#lav {
+    background-image: url(css_images/lavoro.jpg);
+    background-size: 80%;
+    min-height: 200px;
+    background-position: top;
+    background-repeat: no-repeat;
+}
+
+#ris_int {
+    background-image: url(css_images/risorse_interne.jpg);
+    background-size: 80%;
+    min-height: 200px;
+    background-position: top;
+    background-repeat: no-repeat;
+}
+
+#ris_est {
+    background-image: url(css_images/risorse_esterne.jpg);
+    background-size: 80%;
+    min-height: 200px;
+    background-position: top;
+    background-repeat: no-repeat;
+}
+
+.block_one {
+    background: #0D5D70;
+    margin: 1% 10% 5% 10%;
+    padding: 4em;
+    padding-top: 50%;
+    font-size: 0.9em;
+    color: #FFFFFF;
+    border-radius: 10px;
+    text-align: center;
+}
+
+.block_one .link {
+    text-align: center;
+    font-variant: small-caps;
+    margin-top: 3em;
+}
+
+.block_two {
+    background: #0D5D70;
+    margin: 1% 10% 5% 10%;
+    padding: 4em;
+    padding-top: 50%;
+    font-size: 0.9em;
+    color: #FFFFFF;
+    border-radius: 10px;
+    text-align: center;
+}
+
+.block_two .link {
+    text-align: center;
+    font-variant: small-caps;
+    margin-top: 3em;
+}
+
+/*
+================
+ESPLORA CORSI
+================
+*/
+
+.area_disciplinare {
+    display: flex;
+    align-items: stretch;
+    margin: 0% 5% 1.5% 5%;
+    flex-wrap: nowrap;
+    flex-direction: column;
+}
+
+.area {
+    flex-basis: 20%;
+    font-size: 2em;
+}
+
+.area:hover {
+    transform: scale(1);
+}
+
+/*
+================
+OBIETTIVO LAVORO
+================
+*/
+
+section > h2 {
+    margin-right: 0%;
+}

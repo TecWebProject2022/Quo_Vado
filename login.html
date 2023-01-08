@@ -7,9 +7,13 @@
     <meta name="keywords" content="Login, utenti,orientamento universitario" />
     <meta name="author" content="Matteo Umatche, Marco Brugin, Bianca, Valentina Caputo" />
 
-    <link rel="stylesheet" type="text/css" href="css/style.css" />
-    <link rel="stylesheet" type="text/css" href="css/mini.css" />
+    <link rel="stylesheet" type="text/css" media= "screen" href="css/style.css"/> 
+    <link rel="stylesheet" type="text/css" media= "screen and (max-device-width:1200px), only screen
+	and (max-width:1200px)" href="css/mini.css"/>
     <link rel="stylesheet" type="text/css" href="css/print.css" />
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    
     <link rel="shortcut icon" type="image/png" href="images/icon.ico" />
     <script src="js/login.js"></script>  
 </head>    
@@ -22,7 +26,10 @@
         <a class="skip" href="#content">Vai al contenuto</a>
     </nav>
     <nav id="menu" aria-label="menù">
-        <ul>
+        <input type="checkbox" id="hamburger-menu" aria-label="menu button"/>
+        <label for="hamburger-menu"><span class="fa fa-bars"></span></label> <!--TV errore perchè manca testo nella label-->
+
+        <ul id="menu-content">
             <li lang="en"><a href="index.html">Home</a></li>
             <li><a href="percorso_disciplinare.html">Esplora corsi</a></li>
             <li><a href="lavoro.html">Obiettivo Lavoro</a></li>
@@ -39,7 +46,7 @@
         </ul>
     </nav>
     <nav id="breadcrumb" aria-label="breadcrumb">
-        <p>Ti trovi in: <a href="index.html" lang="en">Home</a> &gt; &gt; login</p>
+        <p>Ti trovi in: <a href="index.html" lang="en">Home</a> &gt; &gt; Login</p>
     </nav>
     <main id="content">
         <h1 lang="en">LOGIN</h1>
@@ -47,18 +54,12 @@
             <fieldset>
                 <label for="username"><span lang="en">Username :</span></label>
                 <span><input value="<username/>" name="username" id="username" placeholder="username"                     
-                        data-msg-invalid="Il campo username sembra non valido, sono permessi massimo 40 caratteri, controlla e riprova"
-                        data-limitU="40"
-                        data-limitL="4"
+                        data-msg-invalid="Il campo username non può contenere spazzi e deve contenere da 4 a 40 caratteri alfanumerici (sono ammessi i seguenti caratteri: @ . _ - ), controlla e riprova"
                         data-msg-empty="Il campo username non può essere vuoto"
-                        data-msg-short="Il campo username  deve essere almeno di 4 caratteri"
                        /></span>
                 <label for="password"><span lang="en">Password:</span></label>
                 <span><input  value="<password/>" type="password" id="password" name="password" placeholder="password"                       
-                        data-limitU="20"
-                        data-limitL="4"
-                        data-msg-short="Il campo password  deve essere almeno di 4 caratteri"
-                        data-msg-invalid="Il campo password sembra non valido, sono permessi massimo 20 caratteri, controlla e riprova"
+                        data-msg-invalid="Il campo password non può contenere spazzi e deve contenere da 4 a 20 caratteri alfanumerici (sono ammessi i seguenti caratteri: @ . _ - ), controlla e riprova"
                         data-msg-empty="Il campo password non può essere vuoto" /></span>
 
                 <input type="submit" id="submit" name="submit" value="Entra"/>

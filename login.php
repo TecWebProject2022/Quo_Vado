@@ -1,7 +1,19 @@
 <?php
-session_start(); 
-require_once 'database.php';
 require_once 'utilita.php';
+require_once 'database.php';
+session_start(); 
+if(check()){
+    if($_SESSION['user']!='admin')
+        header("Location:area_utente.php");
+    else
+        header("Location:area_admin.php");
+}
+else if(isset($_SESSION['user']) &&  isset($_SESSION['time'])  && time()-$_SESSION['time']>3600){
+    unset($_SESSION['user']); 
+    unset($_SESSION['time']);
+    $_SESSION['sessione']='<p>Sessione Scaduta</p>';
+}
+
 $content='';
 $username='';
 $password='';
@@ -13,20 +25,14 @@ if(isset($_POST['submit'])){
     if(!strlen($username)){
         $errori.='<li>Il campo username non può essere vuoto</li>';
     }
-    else if(strlen($username)<4){
-        $errori.='<li>Il Campo username deve essere almeno di 4 caratteri</li>';
-    }
-    else if(strlen($username)>40){
-        $errori.='<li>Il campo username non può essere più lungo di 40 caratteri</li>';
+    else if (!preg_match('/^[@a-zA-Z0-9._-]{4,40}$/',$username)){
+        $errori.='<li>Il campo username non può contenere spazzi e deve contenere da 4 a 40 caratteri alfanumerici (sono ammessi i seguenti caratteri: @ . _ - )</li>';
     }
     if(!strlen($password)){
         $errori.='<li>Il campo password non può essere vuoto</li>';
     }
-    else if(strlen($password)<4){
-        $errori.='<li>Il campo password deve essere almeno di 4 caratteri</li>';
-    }
-    else if(strlen($password)>20){
-        $errori.='<li>Password non può essere più lungo di 20 caratteri</li>';
+    else if (!preg_match('/^[@a-zA-Z0-9._-]{4,20}$/',$password)){
+        $errori.='<li>Il campo password non può contenere spazzi e deve contenere da 4 a 20 caratteri alfanumerici (sono ammessi i seguenti caratteri: @ . _ - )</li>';
     }
 
 
@@ -34,13 +40,14 @@ if(!$errori){
     $db=new Connection();
     $dbOK=$db->Connect();
     if($dbOK){
-      if($db->Login($username,$password)){
+        $query = "SELECT * FROM Utente inner join Credenziale on nome_utente=utente WHERE nome_utente=\"$username\" and pw=\"$password\" and attuale=1 ";
+      if($db->Login($query)){
         $_SESSION['user']=$username;
         $_SESSION['time']=time();
         if($_SESSION['user']!='admin')
-            header("Location:profilo_utente.php");
+            header("Location:area_utente.php");
         else
-            header("Location:profilo_admin.php");
+            header("Location:area_admin.php");
       }
       else{
         $errori.='<li>Username o password non correti</li>';
@@ -48,7 +55,7 @@ if(!$errori){
     $db->Disconnect();    
     }
     else{
-        $errori.='<li>Connection not succefultlly, please try againg</li>';
+        $errori.='<li>Connessione non riuscita, attendere e riprova</li>';
     }   
 }
 }

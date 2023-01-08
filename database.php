@@ -21,18 +21,23 @@ class Connection{
         
        $this->conn->close();
     }
-    public function Login($user,$pw){
-        $query = "SELECT * FROM Utente inner join Credenziale on nome_utente=utente WHERE nome_utente=\"$user\" and pw=\"$pw\" and attuale=1 ";
-        $query_result = $this->conn->query($query) or die("Errore in openDBConnection: " . $this->conn->error);
+    public function Login($query){
+        $query_result = $this->conn->query($query);
+        if($query_result){
 
-        if ($query_result->num_rows==1){
-            return true;
+            if ($query_result->num_rows==1){
+                $query_result->free();
+                return true;
+            }
+            else{
+                $query_result->free();
+                return false;
+            }
         }
-        else{
-            return false;
-        }
-            $query_result->free();
-            return $result;
+        return false;
+
+
+           
     }
 
     public function Mquery($query){
@@ -40,6 +45,23 @@ class Connection{
             return $error_message= "<p>Errore in openDBConnection: " . $this->conn->error."</p>";
         }        
     }
+    public function ExecQuery ($query){
+       
+        $query_result = $this->conn->query($query);
+
+        if (!$query_result->num_rows){
+            return null;
+        }
+        else {
+            $result = array();
+            while ($row = $query_result->fetch_array(MYSQLI_ASSOC)) {
+                array_push($result, $row);
+            }
+            $query_result->free();
+            return $result;
+        }
+    }
+    
 }
     
 
