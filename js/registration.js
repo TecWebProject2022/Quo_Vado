@@ -32,7 +32,7 @@ function Validate(element){
 function dateValidate(element){
   input=Date.parse(element.value);
   now= new Date();
-  if(Validate(element){
+  if(Validate(element)){
     if(input.getFullYear() <= now.getFullYear()){
       if(input.getMonth()<= now.getMonth()){
         if(input.getDate()<=now.getDate()){
