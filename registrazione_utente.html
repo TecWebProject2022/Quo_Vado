@@ -18,7 +18,7 @@
 
 </head>
     
-<body>
+<body onload="addFunction()">
     <header>
         <h1>Quo vado?</h1>
 		<h2>Sito di orientamento universitario</h2>
@@ -46,26 +46,26 @@
  
     <main id="content">
         <h1>REGISTRAZIONE</h1>
-        <form action="registrazione_utente.php" method="post">
+        <form id="registration "action="registrazione_utente.php" onsubmit="return formValidate(this)" method="post">
                 
             <fieldset id="set_personal_data">
                 
                 <legend>Inserisci i tuoi dati</legend>
                 
                 <label for="name">Nome:</label>
-                <span><input name="name" id="name" value="<valoreNome/>" placeholder="nome" maxlength="20" required="required"                   
+                <span><input name="name" id="name" value="<valoreNome/>" placeholder="Mario" maxlength="20" required="required"                   
                         data-msg-required="Per favore, inserisci il tuo nome"
-                        data-msg-invalid="Formato non corretto"/></span>
+                        data-msg-invalid="Il nome non puo' superare i 20 caratteri e non puo' contenere numeri"/></span>
             
                 <label for="last_name">Cognome:</label>
-                <span><input name="last_name" value="<valoreCognome/>" placeholder="cognome" maxlength="30" required="required"                        
+                <span><input name="last_name" value="<valoreCognome/>" placeholder="Rossi" maxlength="30" required="required"                        
                         data-msg-required="Per favore, inserisci il tuo cognome"
-                        data-msg-invalid="Formato non corretto" /></span>
+                        data-msg-invalid="Il cognome non puo' superare i 20 caratteri e non puo' contenere numeri" /></span>
                         
                 <label for="birthday">Data di nascita:</label>
-                <span><input type="date" name="birthday" id="birthday" value="<valoreDataNascita/>" min="1900-01-01" max="2023-01-01"  required="required"                     
+                <span><input type="date" name="birthday" id="birthday" value="<valoreDataNascita/>" min="1900-01-01"  required="required"                     
                     data-msg-required="Per favore, inserisci la tua data di nascita"
-                    data-msg-invalid="Formato non corretto" /></span>  
+                    data-msg-invalid="Formato non corretto, inserire un a data compresa tra il 01/01/1900 e oggi" /></span>  
 
                 <label for="gender">Genere:</label>
                 <span><select  name="gender" id="gender" value="<valoreGenere/>" required>
@@ -93,17 +93,17 @@
                 <label for="username"><span lang="en">username:</span></label>
                 <span><input name="username" id="username" value="<Username>" placeholder="username" maxlength="40" required="required"                     
                         data-msg-required="Per favore, inserisci il tuo nome utente"
-                        data-msg-invalid="Formato non corretto"/></span>
+                        data-msg-invalid="L<span lang=en>username</span> deve essere compreso tra i 2 e i 40 caratteri, puo' contenere numeri ma noncaratteri speciali"/></span>
             
                 <label for="password"><span lang="en">Password:</span></label>
                 <span><input type="password" name="password" value="<valorePassword>"  placeholder="password" minlength="8" maxlength="20" required="required"                        
                         data-msg-required="Per favore, inserisci la tua password"
-                        data-msg-invalid="La password deve essere compresa ra 8 e 20 caratteri"/></span>        
+                        data-msg-invalid='La <span lang="en">password</span> deve essere compresa ra 8 e 20 caratteri, deve contenere almeno un alettera maiuscola, una lettera minuscola, un numero e un carattere speciale'/></span>        
                 
                 <label for="repeat_password">Ripeti la tua <span lang="en">password:</span></label>
                 <span><input type="password" name="repeat_password" value="<valorePassword>" placeholder="password" minlength="8" maxlength="20" required="required" 
                         data-msg-required="Per favore, ripeti la tua password"
-                        data-msg-invalid="La password deve essere compresa ra 8 e 20 caratteri"/></span>
+                        data-msg-invalid='La <span lang="en">password</span> deve essere compresa ra 8 e 20 caratteri, deve contenere almeno un alettera maiuscola, una lettera minuscola, un numero e un carattere speciale'/></span>
                 
                 <input type= "submit" value="Registrami"/>
                 <input type="reset" value="cancella"/>
