@@ -25,10 +25,19 @@ header{
     padding-right: 20%;
 }
 
+/*
+=================================
+BREADCRUMB
+=================================
+*/
+
+#breadcrumb {
+    display: none;  /*togliamo?*/
+}
 
 /*
 =================================
-Menù
+MENU
 =================================
 */
 
@@ -115,7 +124,7 @@ comparsa / scomparsa
     margin-left: 8%;
     border-top: #FFFDE8 2px solid;
     border-bottom: #FFFDE8 2px solid;
-    font-size: 0.95em;
+    font-size: 0.95em;  /*font troppo piccolo per mobile*/
 }
 
 .sottomenu-content a{
@@ -156,4 +165,129 @@ comparsa / scomparsa
      font-size: 1.2em;    
  }
 
+ /*
+================
+CONTENUTO
+================
+*/
 
+section {
+    padding: 7%;
+}
+
+/*
+================
+HOME
+================
+*/
+
+#intro_text {
+    display: none;
+}
+
+#info {
+    display: none;
+}
+
+.grid_container {
+    display: none;
+}
+
+#uni {
+    background-image: url(css_images/universita.jpg);
+    background-size: 80%;
+    min-height: 200px;
+    background-position: top;
+    background-repeat: no-repeat;
+}
+
+#lav {
+    background-image: url(css_images/lavoro.jpg);
+    background-size: 80%;
+    min-height: 200px;
+    background-position: top;
+    background-repeat: no-repeat;
+}
+
+#ris_int {
+    background-image: url(css_images/risorse_interne.jpg);
+    background-size: 80%;
+    min-height: 200px;
+    background-position: top;
+    background-repeat: no-repeat;
+}
+
+#ris_est {
+    background-image: url(css_images/risorse_esterne.jpg);
+    background-size: 80%;
+    min-height: 200px;
+    background-position: top;
+    background-repeat: no-repeat;
+}
+
+.block_one {
+    background: #0D5D70;
+    margin: 1% 10% 5% 10%;
+    padding: 4em;
+    padding-top: 50%;
+    font-size: 0.9em;
+    color: #FFFFFF;
+    border-radius: 10px;
+    text-align: center;
+}
+
+.block_one .link {
+    text-align: center;
+    font-variant: small-caps;
+    margin-top: 3em;
+}
+
+.block_two {
+    background: #0D5D70;
+    margin: 1% 10% 5% 10%;
+    padding: 4em;
+    padding-top: 50%;
+    font-size: 0.9em;
+    color: #FFFFFF;
+    border-radius: 10px;
+    text-align: center;
+}
+
+.block_two .link {
+    text-align: center;
+    font-variant: small-caps;
+    margin-top: 3em;
+}
+
+/*
+================
+ESPLORA CORSI
+================
+*/
+
+.area_disciplinare {
+    display: flex;
+    align-items: stretch;
+    margin: 0% 5% 1.5% 5%;
+    flex-wrap: nowrap;
+    flex-direction: column;
+}
+
+.area {
+    flex-basis: 20%;
+    font-size: 2em;
+}
+
+.area:hover {
+    transform: scale(1);
+}
+
+/*
+================
+OBIETTIVO LAVORO
+================
+*/
+
+section > h2 {
+    margin-right: 0%;
+}
