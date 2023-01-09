@@ -738,6 +738,7 @@ UNIVERSITA' E INCLUSIONE
     background: var(--tittlebg) url(css_images/inc.jpg) no-repeat bottom;
     background-size: cover;
 }
+
 /*
 ================
 FOOTER
@@ -757,4 +758,19 @@ footer a {
 
 footer a:visited {
     color: var(--visitedcolor);
+}
+
+/*
+================
+404
+================
+*/
+
+#content_404 {
+    background-color: #0D5D70;
+}
+
+#error_404 {
+    text-align: center;
+    box-shadow: none;
 }
