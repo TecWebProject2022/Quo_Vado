@@ -734,13 +734,20 @@ LA SCELTA GIUSTA PER TE
 ================
 */
 
+#int_res{
+    background: var(--tittlebg) url(css_images/int_res.jpg) no-repeat bottom;
+    background-size: cover;
+}
+
 /*
 ================
 UNIVERSITA' E INCLUSIONE
 ================
 */
-
-
+#uni_inc{
+    background: var(--tittlebg) url(css_images/inc.jpg) no-repeat bottom;
+    background-size: cover;
+}
 /*
 ================
 FOOTER
