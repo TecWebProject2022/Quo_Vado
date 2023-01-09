@@ -39,25 +39,6 @@ html,body{
     color: red;
 }
 
-#scroll_button {
-    position: fixed; 
-    background-color: #E36600;
-    color: #162636;
-    cursor: pointer; /* puntatore mano */
-    right: 5%;
-    bottom: 5%;
-    padding: 0.5em;
-    border-radius: 15px;
-    font-size: 1.3em;
-    z-index: 99;
-    outline: none;
-    border: none;
-  }
-  
-  #scroll_button:hover {
-    background-color: #FFFDE8;
-  }
-
 /*
 body {
     max-width: 1200px;
@@ -615,6 +596,7 @@ ESPLORA CORSI
     border-radius: 30px;
     transition: all .2s ease-in-out;
     text-decoration: none;
+    border:none;
     box-shadow: inset -5px -5px 9px rgba(255,255,255,0.45), inset 5px 5px 9px rgba(94,104,121,0.3);
 }
 
