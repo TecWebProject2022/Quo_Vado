@@ -5,10 +5,6 @@ class Connection{
     private const USERNAME='mbrugin';
     private const PASSWORD='eingohha5Iemuaba';
     private $conn;
-   /* public function__construct($user, $pw){
-        $this->USERNAME=$user;
-        $this->PASSWORD=$pw;
-    }*/
     public function Connect() {
         
         mysqli_report(MYSQLI_REPORT_ERROR);
