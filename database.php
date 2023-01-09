@@ -45,7 +45,7 @@ class Connection{
             return $error_message= "<p>Errore in openDBConnection: " . $this->conn->error."</p>";
         }        
     }
-    public function ExecQuery ($query){
+    public function ExecQueryAssoc($query){
        
         $query_result = $this->conn->query($query);
 
@@ -55,6 +55,22 @@ class Connection{
         else {
             $result = array();
             while ($row = $query_result->fetch_array(MYSQLI_ASSOC)) {
+                array_push($result, $row);
+            }
+            $query_result->free();
+            return $result;
+        }
+    }
+    public function ExecQueryNum($query){
+       
+        $query_result = $this->conn->query($query);
+
+        if (!$query_result->num_rows){
+            return null;
+        }
+        else {
+            $result = array();
+            while ($row = $query_result->fetch_array(MYSQLI_NUM)) {
                 array_push($result, $row);
             }
             $query_result->free();

@@ -9,7 +9,7 @@ $query_gruppi="Select DISTINCT(gruppo_disciplinare) from ClassediLaurea where ar
 $db=new Connection();
     $dbOK=$db->Connect();
     if($dbOK){
-        if($gruppi=$db->ExecQuery($query_gruppi)){
+        if($gruppi=$db->ExecQueryAssoc($query_gruppi)){
            $contenuto.='<h2 id="gruppo">'.$target.'</h2>';
            $contenuto.='<ul class="collapsible">';
            foreach($gruppi as $r){
