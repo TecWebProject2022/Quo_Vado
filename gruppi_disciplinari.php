@@ -15,7 +15,7 @@ $db=new Connection();
            foreach($gruppi as $r){
             $contenuto.="<li>".$r['gruppo_disciplinare']."</li>";
             $query_classi="Select num_classe, denominazione from ClassediLaurea where gruppo_disciplinare=\"".$r['gruppo_disciplinare']."\";";
-            if($classi=$db->ExecQuery($query_classi)){
+            if($classi=$db->ExecQueryAssoc($query_classi)){
                 $contenuto.="<li><ul>";
                 foreach($classi as $c){
                     $contenuto.="<li>".$c['num_classe']." - <a href='classe.php?nclasse=".$c['num_classe']."'>".$c['denominazione']."</a></li>";
