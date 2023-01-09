@@ -593,26 +593,34 @@ ESPLORA CORSI
     margin: 1em;
     text-align: center;
     line-height: 2em;
-    border-radius: 30px;
-    transition: all .2s ease-in-out;
+    /*transition: all .2s ease-in-out;*/
+}
+
+.area .link {
+    margin: 1em;
+}
+
+.area a:link {
     text-decoration: none;
-    cursor: pointer;
+    color: #162636;
+    background-color: #FFFDE8;
+    padding: 1em;
+    border-radius: 20px;
     box-shadow: inset -5px -5px 9px rgba(255,255,255,0.45), inset 5px 5px 9px rgba(94,104,121,0.3);
 }
 
-.area:link {
-    color: #FFFFFF;
-}
-
-.area:visited {
+.area a:visited {
+    text-decoration: none;
     color: #162636;
     background-color: #E36600;
+    padding: 1em;
+    border-radius: 20px;
 }
-
+/*
 .area:hover {
     transform: scale(1.05);
 }
-
+*/
 #stem {
     font-size: 1em;
 }
