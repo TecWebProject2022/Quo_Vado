@@ -1,20 +1,21 @@
 //mega giga bozza sto solo cercando di capire js
 // caricata all' onload
-function addFunction(){
-  const name = document.getElementById("name");
-  const lastName = document.getElementById("last_name");
-  const birthday = document.getElementById("birthday");
-  const username = document.getElementById("username");
-  const password = document.getElementById("password");
-  const repeatPassword = document.getElementById("repeat_password");
+function addFunction() {
+  let name = document.getElementById("name");
+  let lastName = document.getElementById("last_name");
+  let birthday = document.getElementById("birthday");
+  let username = document.getElementById("username");
+  let password = document.getElementById("password");
+  let repeatPassword = document.getElementById("repeat_password");
 
-  name.addEventListener("blur", function(){Validate(name)});
-  lastName.addEventListener("blur", function(){Validate(lastName)});
-  birthday.addEventListener("blur", function(){dateValidate(birthday)});
-  username.addEventListener("blur", function(){Validate(username)});
-  password.addEventListener("blur", function(){Validate(password)});
-  repeatPassword.addEventListener("blur", function(){ r_PasswordValidate(repeatPassword)});
+  name.onblur = function() { Validate(name) };
+  lastName.onblur = function() { Validate(lastName) };
+  birthday.onblur = function() { dateValidate(birthday) };
+  username.onblur = function() { Validate(username) };
+  password.onblur = function() { Validate(password) };
+  repeatPassword.onblur = function() { r_PasswordValidate(repeatPassword) };
 }
+
 
 // se l' input e' valido ritorna true altrimenti ritorna false e aggiunge un messaggio di errore
 function Validate(element){
@@ -23,7 +24,7 @@ function Validate(element){
       parent.removeChild(parent.children[1]);
   }
   
-  if(!element.checkValidity()&& (element.value.length < parseInt(element.getAttribute('maxlength'), 10)) && (element.value.length > parseInt(element.getAttribute('minlength'), 10))){
+  if(!(element.checkValidity()&& (element.value.length < parseInt(element.getAttribute('maxlength'), 10)) && (element.value.length > parseInt(element.getAttribute('minlength'), 10)))){
     var a=document.createElement('strong');
     error= element.validity.valueMissing ? element.dataset.msgEmpty:element.dataset.msgInvalid;
     a.appendChild(document.createTextNode(error));
@@ -83,7 +84,7 @@ function formValidate(form) {
   var password = form.getElementById("password");
   var r_password = form.getElementById("repeat_password");
 
-  return Validate(name) & Validate(lastname) & Validate(birthday) & Validate(username) & Validate(password) & r_PasswordValidate(r_password);
+  return Validate(name) & Validate(lastname) & dateValidate(birthday) & Validate(username) & Validate(password) & r_PasswordValidate(r_password);
 }
 
 function hideFieldset() {
