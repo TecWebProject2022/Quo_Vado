@@ -38,7 +38,7 @@ $db=new Connection();
     else{
         $errori.='<p>Ci scusiamo la connessione non riuscita, attendere e riprova</p>';
     }  
-    $content=str_replace("<name/>",$target,$content); 
+    $content=str_replace("<name/>","<span>".$target."</span>",$content); 
     $content=str_replace("<content/>",$contenuto,$content);
     $content=str_replace("<error/>",$errori,$content);
     echo $content;
