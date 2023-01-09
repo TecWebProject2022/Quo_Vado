@@ -1,6 +1,9 @@
 <?php
 require_once 'utilita.php';
 require_once 'database.php';
+if(!isset($_GET['area'])){
+    $_GET['area']='';
+}
 $target=PulisciInput($_GET['area']);
 $content=file_get_contents('gruppi_disciplinari.html');
 $errori='';
@@ -18,7 +21,7 @@ $db=new Connection();
             if($classi=$db->ExecQueryAssoc($query_classi)){
                 $contenuto.="<li><ul>";
                 foreach($classi as $c){
-                    $contenuto.="<li>".$c['num_classe']." - <a href='classe.php?nclasse=".$c['num_classe']."'>".$c['denominazione']."</a></li>";
+                    $contenuto.="<li>".$c['num_classe']." - <a href='classe.php?nclasse=".$c['num_classe']."&area=".$target."'>".$c['denominazione']."</a></li>";
                 }
                 $contenuto.="</li></ul>";
                 }
