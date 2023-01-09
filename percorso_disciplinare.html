@@ -20,7 +20,7 @@
 <body>
     <header>
 		<h1>Quo vado?</h1>
-		<h2>Esplora Corsi</h2>
+		<h2>Sito di orientamento universitario</h2>
 	</header>
 
 	<a class="skip" href="#content">Vai al contenuto</a> 
@@ -54,36 +54,31 @@
     <main id="content">
     <h1 id="title">Aree disciplinari</h1>
     
-    <!--total validator-->
-	<p class="area_disciplinare">
-
+    <div class="area_disciplinare">
         
-        <button href="gruppi_disciplinari.php?area=STEM" class="area">
-        <span>
+        <dl onclick="location.href='gruppi_disciplinari.php?area=STEM'" class="area">
 	    <dt><strong><abbr>STEM</abbr></strong></dt> 
 		<dd>Il termine STEM è un acronimo formato con l’iniziale inglese di quattro diverse 
 		    discipline: <span lang="en">Science, Technology, Engineering</span> e <span lang="en">Mathematics</span></dd>
-        </span>
-        </button>
+        </dl>
 
-        <button onclick="location.href='gruppi_disciplinari.php?area=Sanitaria e Agro-Veterinaria'" type="button" class="area">
-        <span>
+        <dl onclick="location.href='gruppi_disciplinari.php?area=Sanitaria e Agro-Veterinaria'" class="area">
 	    <dt><strong>Sanitaria Agro-Veterinaria</strong></dt>
 		<dd>Area disciplinare dedicata all'ambito sanitario, agro-forestale e sportivo</dd>
-        </span>
-        </button>
-
-        <button onclick="location.href='gruppi_disciplinari.php?area=Artistica e letteraria'" type="button" class="area">  
+        </dl>   
+  
+        <dl onclick="location.href='gruppi_disciplinari.php?area=Artistica e letteraria'" class="area">
 	    <dt><strong>Artistica e letteraria</strong></dt> 
 		<dd>Area disciplinare dedicata all'ambito artistico, letterario, educativo e linguistico</dd>
-        </button>
+        </dl>
 
-        <button onclick="location.href='gruppi_disciplinari.php?area=Economica, giuridica e sociale'" type="button" class="area">
+        <dl onclick="location.href='gruppi_disciplinari.php?area=Economica, giuridica e sociale'" class="area">
 	    <dt><strong>Economica, giuridica e sociale</strong></dt> 
 		<dd>Area disciplinare dedicata ad economia, politica, psicologia e giuridica</dd>
-        </button>
+        </dl>
 
-	</p>
+    </div>
+
     
 	</main>
 
