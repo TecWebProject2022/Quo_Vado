@@ -1,13 +1,21 @@
 //mega giga bozza sto solo cercando di capire js
 // caricata all' onload
-function addFunction(){
-  document.getElementById("name").addEventListener("blur",function(){Validate(document.getElementById("name"))});
-  document.getElementById("last_name").addEventListener("blur",function(){Validate(document.getElementById("last_name"))});
-  document.getElementById("birthday").addEventListener("blur",function(){dateValidate(document.getElementById("birthday"))});
-  document.getElementById("username").addEventListener("blur",function(){usernameValidate(document.getElementById("username"))});
-  document.getElementById("password").addEventListener("blur",function(){Validate(document.getElementById("password"))});
-  document.getElementById("repeat_password").addEventListener("blur",function(){ r_PasswordValidate(document.getElementById("repeat_password"))});
+function addFunction() {
+  let name = document.getElementById("name");
+  let lastName = document.getElementById("last_name");
+  let birthday = document.getElementById("birthday");
+  let username = document.getElementById("username");
+  let password = document.getElementById("password");
+  let repeatPassword = document.getElementById("repeat_password");
+
+  name.onblur = function() { Validate(name) };
+  lastName.onblur = function() { Validate(lastName) };
+  birthday.onblur = function() { dateValidate(birthday) };
+  username.onblur = function() { Validate(username) };
+  password.onblur = function() { Validate(password) };
+  repeatPassword.onblur = function() { r_PasswordValidate(repeatPassword) };
 }
+
 
 // se l' input e' valido ritorna true altrimenti ritorna false e aggiunge un messaggio di errore
 function Validate(element){
@@ -16,7 +24,7 @@ function Validate(element){
       parent.removeChild(parent.children[1]);
   }
   
-  if(!x.checkValidity()){
+  if(!(element.checkValidity()&& (element.value.length < parseInt(element.getAttribute('maxlength'), 10)) && (element.value.length > parseInt(element.getAttribute('minlength'), 10)))){
     var a=document.createElement('strong');
     error= element.validity.valueMissing ? element.dataset.msgEmpty:element.dataset.msgInvalid;
     a.appendChild(document.createTextNode(error));
@@ -27,12 +35,13 @@ function Validate(element){
   }
   
   return true;
-}
+} 
+
 
 function dateValidate(element){
-  input=Date.parse(element.value);
-  now= new Date();
-  if(Validate(element)){
+  var input=Date.parse(element.value);
+  var now= new Date();
+  if(element.checkValidity() && (input >= Date.parse(element.getAttribute('min')))){
     if(input.getFullYear() <= now.getFullYear()){
       if(input.getMonth()<= now.getMonth()){
         if(input.getDate()<=now.getDate()){
@@ -46,6 +55,11 @@ function dateValidate(element){
     element.focus();
     element.select();
   }
+  var a=document.createElement('strong');
+  a.appendChild(document.createTextNode(element.dataset.msgEmpty));
+  parent.appendChild(a);
+  element.focus();
+  element.select();
   return false;
 }
 
@@ -62,17 +76,15 @@ function r_PasswordValidate(element){
 }
 
 
-function formValidate(element){
-  nome=element.getElementById("name");
-  lastname=element.getElementById("lastname");
-  birthday=element.getElementById("birthday");
-  gender=element.getElementById("gender");
-  school=element.getElementById("school");
-  username=element.getElementById("username");
-  password=element.getElementById("password");
-  r_password=element.getElementById("repeat_password");
+function formValidate(form) {
+  var name = form.getElementById("name");
+  var lastname = form.getElementById("lastname");
+  var birthday = form.getElementById("birthday");
+  var username = form.getElementById("username");
+  var password = form.getElementById("password");
+  var r_password = form.getElementById("repeat_password");
 
-  return Validate(nome) & Validate(lastname) & Validate(birthday) & Validate(user) & Validate(password) & r_passwordValidate(r_password);
+  return Validate(name) & Validate(lastname) & dateValidate(birthday) & Validate(username) & Validate(password) & r_PasswordValidate(r_password);
 }
 
 function hideFieldset() {
