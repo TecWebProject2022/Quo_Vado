@@ -40,7 +40,6 @@ html,body{
 }
 
 #scroll_button {
-    display: none; 
     position: fixed; 
     background-color: #E36600;
     color: #162636;
