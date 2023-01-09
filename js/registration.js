@@ -1,30 +1,16 @@
 //mega giga bozza sto solo cercando di capire js
-// caricata all' onload
-function addFunction() {
-  let name = document.getElementById("name");
-  let lastName = document.getElementById("last_name");
-  let birthday = document.getElementById("birthday");
-  let username = document.getElementById("username");
-  let password = document.getElementById("password");
-  let repeatPassword = document.getElementById("repeat_password");
-
-  name.onblur = function() { Validate(name) };
-  lastName.onblur = function() { Validate(lastName) };
-  birthday.onblur = function() { dateValidate(birthday) };
-  username.onblur = function() { Validate(username) };
-  password.onblur = function() { Validate(password) };
-  repeatPassword.onblur = function() { r_PasswordValidate(repeatPassword) };
-}
-
 
 // se l' input e' valido ritorna true altrimenti ritorna false e aggiunge un messaggio di errore
 function Validate(element){
+  //controllo se all' interno del tag spaaaaaaaaan in cui e contenuto l' input esiste un altro tag, se esiste 
+  //significa che esiste un precedente messaggio di errore, che rimuovo
   var parent= element.parentNode;
   if(parent.children.length==2){
       parent.removeChild(parent.children[1]);
   }
-  
-  if(!(element.checkValidity()&& (element.value.length < parseInt(element.getAttribute('maxlength'), 10)) && (element.value.length > parseInt(element.getAttribute('minlength'), 10)))){
+
+  if(element.validity.patternMismatch || element.validity.tooLong || element.validity.tooShort || element.validity.valueMissing){
+    
     var a=document.createElement('strong');
     error= element.validity.valueMissing ? element.dataset.msgEmpty:element.dataset.msgInvalid;
     a.appendChild(document.createTextNode(error));
@@ -66,13 +52,14 @@ function dateValidate(element){
 // controlla che il valore inserito sia valido e uguale a quello inserito nel campo password
 function r_PasswordValidate(element){
   if(element.value == document.getElementById("password").value) return Validate(element);
-
-  var a=document.createElement('strong');
-  a.appendChild(document.createTextNode("Le password non coincidono"));
-  parent.appendChild(a);
-  element.focus();
-  element.select();
-  return false;
+  else{
+    var a=document.createElement('strong');
+    a.appendChild(document.createTextNode("Le password non coincidono"));
+    parent.appendChild(a);
+    element.focus();
+    element.select();
+    return false;
+  }
 }
 
 
@@ -87,6 +74,22 @@ function formValidate(form) {
   return Validate(name) & Validate(lastname) & dateValidate(birthday) & Validate(username) & Validate(password) & r_PasswordValidate(r_password);
 }
 
+// caricata all' onload
+function addFunction() {
+  let name = document.getElementById("name");
+  let lastName = document.getElementById("last_name");
+  let birthday = document.getElementById("birthday");
+  let username = document.getElementById("username");
+  let password = document.getElementById("password");
+  let repeatPassword = document.getElementById("repeat_password");
+
+  name.onblur = function() { Validate(name) };
+  lastName.onblur = function() { Validate(lastName) };
+  birthday.onblur = function() { dateValidate(birthday) };
+  username.onblur = function() { Validate(username) };
+  password.onblur = function() { Validate(password) };
+  repeatPassword.onblur = function() { r_PasswordValidate(repeatPassword) };
+}
 function hideFieldset() {
   // Get the the button and the target
   var targetFieldset = document.getElementById("set_username_password");
