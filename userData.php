@@ -139,25 +139,29 @@ class userData {
         return $error;
     }
    
-    private function setPassword($value){
+    private function setPassword($value,$pw_match){
         $error="";
         $value=PulisciInput($value);
-        
+        $pw_match=PulisciImput($pw_match);
         #controllo che la pw sia di 8 caratteri e che sia nel formato corretto
-        if (strlen($string)<8 || strlen($string)>20 ) {
-            $error.="<li>La password deve essere compresa tra gli otto e i sedici caratteri.</li>";
-        }elseif (!preg_match("/[0-9]/", $string) || !preg_match("/[A-Z]/", $string) || !preg_match("/[a-z]/", $string) || !preg_match("/[!£$@]/", $string)) {
-            $error.="<li>La password deve contenere almeno una lettera maiuscola, una minuscola, un numero e uno dei seguenti caratteri speciali: ! £ $ @</li>";
-        }else {
-            #la password va bene
-            $this->password=$value;
+        if($value != $pw_match){
+            $error.= "<li>le password non coicidono</li>"
+        }else{
+            if (strlen($string)<8 || strlen($string)>20 ) {
+                $error.="<li>La password deve essere compresa tra gli otto e i sedici caratteri.</li>";
+            }elseif (!preg_match("/[0-9]/", $string) || !preg_match("/[A-Z]/", $string) || !preg_match("/[a-z]/", $string) || !preg_match("/[!£$@]/", $string)) {
+                $error.="<li>La password deve contenere almeno una lettera maiuscola, una minuscola, un numero e uno dei seguenti caratteri speciali: ! £ $ @</li>";
+            }else {
+                #la password va bene
+                $this->password=$value;
+            }
         }
 
         return $error;
     }
  #costruttore, se ci sono errori errors contiene una lista ul contenente tutti i messaggi di errore   
-    public function __construct($_name,$_lastname,$_birthday,$_gender,$_school,$_username,$_password){
-        $this->errors= $this->setName($name) . $this->setLastName($_lastname).$this->setBirthday($_birthday) . $this->setGender($_gender) . $this->setSchool($_school) .$this->setUsername($_username ). $this->setPassword($_password);
+    public function __construct($_name,$_lastname,$_birthday,$_gender,$_school,$_username,$_password,$_r_password){
+        $this->errors= $this->setName($name) . $this->setLastName($_lastname).$this->setBirthday($_birthday) . $this->setGender($_gender) . $this->setSchool($_school) .$this->setUsername($_username ). $this->setPassword($_password,$_r_password);
         $this->errors= $this->errors?"<ul>".$this->errors."</ul>":"";
     }
 
@@ -193,7 +197,7 @@ class userData {
                 $errors.="<p>Errore di connessione, prova di nuovo</p>";
             }else{
                 $insertion="INSERT INTO Utente(nome,cognome,data_nascita,genere,scuola_sup,nome_utente) VALUES (\'". $this->name ."\',\'". $this->lastname ."\',\'". $this->birthday ."\',\'". $this->gender ."\',\'". $this->school ."\',\'". $this->username ."\');"."INSERT INTO Credenziale(utente,pw,attuale,data_inserimento) VALUES (\'" . $this->username."\',\'". $this->password ."\'1\','".date("Y-m-d")."\')";
-                $errors.=$db->Mquery($insertion);
+                $errors.=$db->multiInsert($insertion);
             }
             $db->disconnect();
         }

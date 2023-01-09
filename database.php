@@ -40,7 +40,7 @@ class Connection{
            
     }
 
-    public function Mquery($query){
+    public function multiInsert($query){
         if($this->conn->multi_query($query)){
             return $error_message= "<p>Errore in openDBConnection: " . $this->conn->error."</p>";
         }        

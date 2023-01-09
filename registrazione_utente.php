@@ -6,7 +6,7 @@ $paginaHTML=file_get_contents("registrazione_utente.html");
 # recupero dell' imput e salvataggio nel database
 if(isset($_POST['submit'])){
     #pulizia input e gestione eeventuali messaggi d'errore
-    $userdata= new userData($_POST['name'],$_POST['last_name'],$_POST['birthday'],$_POST['gender'],$_POST['school'],$_POST['username'],$_POST['password']);
+    $userdata= new userData($_POST['name'],$_POST['last_name'],$_POST['birthday'],$_POST['gender'],$_POST['school'],$_POST['username'],$_POST['password'],$_POST['repeat_password']);
     
     $messaggiForm='';
     if(!$userdata=""){
