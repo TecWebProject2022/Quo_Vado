@@ -252,9 +252,68 @@ header > ul{
 
 /*
 ================
-GLOSSARIO
+404
 ================
 */
+
+#error_page div{
+    background: #162636 url(css_images/festa.jpg) 85% no-repeat;
+    background-size: cover;
+    padding-bottom: 2.5%;
+    margin-bottom: 2%;
+}
+
+#error_page h1{
+    color: #FFFFFF;
+    margin-bottom: 1.5%;
+    font-size: 3em;
+    line-height: 1.5em;
+    padding-top: 2.5%;
+    padding-bottom: 0%;
+    text-shadow: 4px 4px 4px rgba(0,0,0,0.26);
+    text-align: center;
+}
+
+#error_page p{
+    color: #fff;
+    padding-top: 0.5%;
+    padding-bottom: 2.5%;
+    font-size: 2em;
+    line-height: 1.5em;
+    max-width: 1024px;
+    text-align: center;
+    margin-left: 10%;
+}
+
+#error_page a{
+    transition: all .2s ease-in-out;
+}
+
+#error_page a:link{
+    color: #162636;
+    background-color: #fff;
+    /*text-align: right;*/
+    font-size: 1.2em;
+    padding: 2%;
+    text-decoration: none;
+    border-radius: 25px;
+    box-shadow: inset 5px -10px 16px rgba(0, 0, 0, 0.25);
+    
+}
+
+#error_page a:hover{
+    transform: scale(1.02);
+    background-color: #162636;
+    color: #fff;
+    text-decoration: underline;
+}
+
+#error_page a:visited{
+    background-color: #162636;
+    color: #E36600;
+}
+
+
 
 /*
 ================
@@ -684,39 +743,84 @@ OBIETTIVO LAVORO
     background-size: cover;
 }
 
-.external_link {
-    padding: 1.5em 3em 1.5em 3em;
-    margin: 2em;
-    font-size: 1em;
-    line-height: 2em;
-    border-radius: 15px;
-    box-shadow: 1px 15px 19px 6px rgba(0,0,0,0.26);
+ #scenari p { 
+    margin: 6% 5% 6% 5%;
+    font-size: 1.05em;
+ }
+
+#scenari img {
+    border-radius: 30%;
+    margin-right: -50%;
+    float: right;
+    margin-top: -24%;
 }
 
-#utilities > a {
-    text-decoration: none;
-    font-size: 0.9em;
+#success {
+    width: 200px;
+    height: auto;
 }
 
-.external_link {
-    transition: all .2s ease-in-out;
+#scenari #progress {
+    width: 150px;
+    height: auto;
+    margin-right: -25%;
+    margin-top: -35%;
 }
 
-#utilities > a:link {
-    color:#000000;
+#scenari #rinuncia {
+    width: 150px;
+    height: auto;
+    margin-top: -35%;
+    margin-right: -42%;
 }
 
-#utilities > a:visited {
-    color:#000000;
+#job_checklist {
+    margin: 5% -5%;
 }
 
-.external_link:hover {
-    transform: scale(1.02);
+#job_checklist p{
+    font-size: 1.1em;
+    margin-bottom: 0.5em;
 }
 
-.external_link > dt {
-    font-size: 1.2em;
+#job_checklist ul li{
+    font-size: 0.8em;
 }
+
+#job_checklist ul{
+    margin-bottom: 2em;
+}
+
+#nota {
+    list-style: none;
+    margin: 1em;
+    padding: 0.8em;
+    border: #D67200 3px solid;
+    background-color: #fff;
+}
+
+#utilities {
+    margin: 5% -25% 5% 0%; 
+}
+
+#utilities dt{
+    float: left;
+    padding: 2.5em 1em; 
+}
+
+#utilities a{
+    padding: 2.5em 1.5em; 
+}
+
+
+#utilities dd{
+    padding: 2%;
+    margin-left: 27%;
+    margin-bottom: 0.9em;
+    font-size: 0.8em;
+}
+
+
 
 /*
 ================
