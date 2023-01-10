@@ -49,6 +49,7 @@ body {
 .skip {
     position: absolute; /* per evitare gli spazi */
     text-indent:-999em;
+    text-align: left;
 }
 
 /*
@@ -508,50 +509,54 @@ HOME
 }
 
 #uni {
-    background-image: linear-gradient(to right, rgba(0,0,0,0.3), rgb(0, 0, 0, 1)), url(css_images/universita.jpg);
+    background-image: linear-gradient(to right, rgba(0,0,0,0.5), rgba(0, 0, 0, 1)), url(css_images/universita.jpg);
     background-size: cover;
     min-height: 200px;
     background-position: left;
     background-repeat: no-repeat;
+    text-shadow: 4px 0px 6px rgba(0,0,0,0.69);
 }
 
 #lav {
-    background-image: url(css_images/lavoro.jpg);
+    background-image: linear-gradient(to right, rgba(0,0,0,1), rgba(0, 0, 0, 0.5)), url(css_images/lavoro.jpg);
     background-size: cover;
     min-height: 200px;
     background-position: right;
     background-repeat: no-repeat;
+    text-shadow: 4px 0px 6px rgba(0,0,0,0.69);
 }
 
 #ris_int {
-    background-image: linear-gradient(to right, rgba(0,0,0,0.3), rgb(0, 0, 0, 1)), url(css_images/risorse_interne.jpg);
+    background-image: linear-gradient(to right, rgba(0,0,0,0.5), rgba(0, 0, 0, 1)), url(css_images/risorse_interne.jpg);
     background-size: cover;
     min-height: 200px;
     background-position: left;
     background-repeat: no-repeat;
+    text-shadow: 4px 0px 6px rgba(0,0,0,0.69);
 }
 
 #ris_est {
-    background-image: url(css_images/risorse_esterne.jpg);
+    background-image: linear-gradient(to right, rgba(0,0,0,1), rgba(0, 0, 0, 0.5)), url(css_images/risorse_esterne.jpg);
     background-size: cover;
     min-height: 200px;
     background-position: right;
     background-repeat: no-repeat;
+    text-shadow: 4px 0px 6px rgba(0,0,0,0.69);
 }
 
 .block_one {
     text-align: right;
     margin: 1% 15% 2% 15%;
-    padding: 2em 2em 2em 23%;
+    padding: 2em 2em 2em 30%;
     font-size: 0.9em;
     color: #FFFFFF;
     border-radius: 10px;
 }
 
 .block_one .link {
-    text-align: right;
     font-variant: small-caps;
-    margin-top: 1em;
+    margin-top: 2em;
+    text-shadow: none;
 }
 
 .block_one a {
@@ -581,18 +586,18 @@ HOME
 }
 
 .block_two {
-    background: #0D5D70;
+    text-align: left;
     margin: 1% 15% 2% 15%;
-    padding: 2em 23% 2em 2em;
+    padding: 2em 30% 2em 2em;
     font-size: 0.9em;
     color: #FFFFFF;
     border-radius: 10px;
 }
 
 .block_two .link {
-    text-align: right;
     font-variant: small-caps;
-    margin-top: 1em;
+    margin-top: 2em;
+    text-shadow: none;
 }
 
 .block_two a {
@@ -655,25 +660,12 @@ ESPLORA CORSI
     /*transition: all .2s ease-in-out;*/
 }
 
-.area .link {
-    margin: 1em;
-}
-
 .area a:link {
-    text-decoration: none;
-    color: #162636;
-    background-color: #FFFDE8;
-    padding: 1em;
-    border-radius: 20px;
-    box-shadow: inset -5px -5px 9px rgba(255,255,255,0.45), inset 5px 5px 9px rgba(94,104,121,0.3);
+    
 }
 
 .area a:visited {
-    text-decoration: none;
-    color: #162636;
-    background-color: #E36600;
-    padding: 1em;
-    border-radius: 20px;
+    
 }
 /*
 .area:hover {
