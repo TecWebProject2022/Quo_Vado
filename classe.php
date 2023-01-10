@@ -14,13 +14,13 @@ $db=new Connection();
             $gruppo="<a href='gruppi_disciplinari.php?narea=".$classi['area_disciplinare']."'>".$classi['gruppo_disciplinare']."</a>";
             $contenuto.='<h1 id="classe">'.$target.'-'.$classi['denominazione'].'</h1>';
             $contenuto.='<h2 >descrizione</h2>';
-            $contenuto.='<img id="imgClasse" href="'.$classi['illustrazione'].'" alt="illustrazione classe di laurea'.$target.'-'.$classi['denominazione'].'"/>'
+            $contenuto.='<img id="imgClasse" href="'.$classi['illustrazione'].'" alt="illustrazione classe di laurea'.$target.'-'.$classi['denominazione'].'"/>';
             $contenuto.='<p id="descrizioneClasse">'.$classi['denominazione'].'</p>'; #temporaneo, necessario inserire descrizioni nel db
-            $contenuto.='<p>Commenti:</p>'
-            $contenuto.='<ul id="listaCommenti">';
-           
+            
             # stampa punteggio complessivo
-            $query_valComplessiva="SELECT CAST(AVG(p_complessivo) AS DECIMAL(3,2)) as \"pc\" ,CAST(AVG(p_acc_fisica) AS DECIMAL(3,2)) as \"pf\" ,CAST(AVG(p_servizio_inclusione) AS DECIMAL(3,2)) as \"ps\" ,CAST(AVG(tempestivita_burocratica) AS DECIMAL(3,2)) as \"tb\",CAST(AVG(p_insegnamento) AS DECIMAL(3,2)) as \"pi\" 
+            $query_valComplessiva="SELECT CAST(AVG(p_complessivo) AS DECIMAL(3,2)) as \"pc\" ,
+            CAST(AVG(p_acc_fisica) AS DECIMAL(3,2)) as \"pf\" ,CAST(AVG(p_servizio_inclusione) AS DECIMAL(3,2)) as \"ps\" ,
+            CAST(AVG(tempestivita_burocratica) AS DECIMAL(3,2)) as \"tb\",CAST(AVG(p_insegnamento) AS DECIMAL(3,2)) as \"pi\" 
             FROM `Valutazione` WHERE classe_laurea=\"$target\";";
             if($valComplessiva=$db->ExecQueryAssoc($query_valComplessiva)){
                 $contenuto.="<ul>
@@ -34,7 +34,8 @@ $db=new Connection();
                 $errori.='<p>Non è stato trovata alcuna valutazione</p>';
             }
             # se ottengo tag (da filtro, al primo caricamento della pagina sara sempr false) allora la query chiedera solo le valutazioni corrispondenti
-            if(isset($_GET['tag'])){$targetTag=PulisciImput($_GET['tag'])
+            if(isset($_GET['tag'])){
+                $targetTag=PulisciInput($_GET['tag']);
                 $query_valutazione="SELECT DISTINCT (nome_utente,datav,commento,p_complessivo,p_acc_fisica,p_servizio_inclusione,tempestivita_burocratica,p_insegnamento) 
                 FROM Valutazione WHERE classe_laurea=\"$target\" AND tag=\"$targetTag\";";
             }else{
@@ -42,7 +43,8 @@ $db=new Connection();
                 FROM Valutazione WHERE classe_laurea=\"$target\";";
             }
             if($valutazioni=$db->ExecQueryAssoc($query_valutazione)){
-                $contenuto.='<ul id="commenti">';
+                $contenuto.='<p>Commenti:</p>';
+                $contenuto.='<ul id="listaCommenti">';
                 foreach($valutazioni as $v){
                     $contenuto.='<li id="commento"><strong>'.$v['nome_utente']."|".$v['datav']."</strong><p id=testoCommento>".$v['commento']."</p>";
                     $contenuto.='<ul id="valutazioneCommento">
@@ -97,6 +99,4 @@ $db=new Connection();
     echo $content;
 
     
-?>
-echo $_GET['nclasse'];
 ?>
