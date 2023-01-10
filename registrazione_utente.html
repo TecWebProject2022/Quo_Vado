@@ -14,7 +14,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     
     <link rel="shortcut icon" type="image/png" href="images/icon.ico" />
-    <script src="js/registration.js"></script>  
+   
 
 </head>
     
@@ -27,40 +27,47 @@
     <a class="skip" href="#content">Vai al contenuto</a>
 
     <nav id="menu" aria-label="menù">
-        <dl> 
-            <dt lang="en"><a href="index.html">Home</a></dt>
-            <dt><a href="percorso_disciplinare.html">Esplora corsi</a></dt>
-			<dt><a href="lavoro.html">Obiettivo Lavoro</a></dt>
-			<dt><a href="risorse_interne.html">La scelta giusta per te</a></dt>
-            <dt><a href="universita_inclusiva.html">Università e Inclusione</a></dt>
-				<dd><a href="diritto_studio.html">Diritto allo studio</a></dd>
-				<dd><a href="parita_genere.html">Pari opportunità e Parità di genere</a></dd>
-				<dd><a href="disabilita.html">Servizi per la Disabilità</a></dd>
-            <dt id="currentOverLink">Area Riservata</dt>
-		</dl>
+        <input type="checkbox" id="hamburger-menu" aria-label="menu button"/>
+        <label for="hamburger-menu"><span class="fa fa-bars"></span></label> <!--TV errore perchè manca testo nella label-->
+
+        <ul id="menu-content">
+            <li lang="en"><a href="index.html">Home</a></li>
+            <li><a href="percorso_disciplinare.html">Esplora corsi</a></li>
+            <li><a href="lavoro.html">Obiettivo Lavoro</a></li>
+            <li><a href="risorse_interne.html">La scelta giusta per te</a></li>
+            <li class="sottomenu">
+                    <a href="universita_inclusiva.html">Università e Inclusione<span class="fa fa-angle-down arrow"></span></a>
+                <ul class="sottomenu-content">
+                    <li><a href="diritto_studio.html">Diritto allo studio</a></li>
+                    <li><a href="parita_genere.html">Pari opportunità e Parità di genere</a></li>
+                    <li><a href="disabilita.html">Servizi per la Disabilità</a></li>
+                </ul>
+            </li>
+            <li id="currentOverLink"><a href="login.php">Area Riservata</a></li>
+        </ul>
     </nav>
 
     <nav id="breadcrumb">
-        <p>Ti trovi in: <a href="index.html" lang="en">Home</a> &gt; &gt; Registrazione</p>
+        <p>Ti trovi in: <a href="login.php"><span lang="en">Login</span></a> &gt; &gt; Registrazione</p>
     </nav>
  
     <main id="content">
         <h1>REGISTRAZIONE</h1>
-        <form id="registration "action="registrazione_utente.php" onsubmit="return formValidate(this)" method="post">
+        <form action="registrazione_utente.php" method="post">
                 
             <fieldset id="set_personal_data">
                 
                 <legend>Inserisci i tuoi dati</legend>
                 
                 <label for="name">Nome:</label>
-                <span><input name="name" id="name" value="<valoreNome/>" placeholder="Mario" minlenght="2" maxlength="20" pattern="^(?:[^0-9]*)$" required                  
+                <span><input name="name" id="name" value="<valoreNome/>" placeholder="Mario" minlenght="2" maxlength="21" pattern="^(?:[^0-9]*)$"                   
                         data-msg-empty="Per favore, inserisci il tuo nome"
                         data-msg-invalid="Il nome deve essere compreso tra 2 e 20 caratteri e non puo' contenere numeri"/></span>
             
                 <label for="last_name">Cognome:</label>
-                <span><input id="last_name" name="last_name" value="<valoreCognome/>" placeholder="Rossi" minlenght="2" maxlength="30" pattern="^(?:[^0-9]*)$"                       
+                <span><input id="last_name" name="last_name" value="<valoreCognome/>" placeholder="Rossi" minlenght="2" maxlength="31" pattern="^(?:[^0-9]*)$"                       
                         data-msg-empty="Per favore, inserisci il tuo cognome"
-                        data-msg-invalid="Il cognome non puo' superare i 20 caratteri e non puo' contenere numeri" /></span>
+                        data-msg-invalid="Il cognome non puo' superare i 30 caratteri e non puo' contenere numeri" /></span>
                         
                 <label for="birthday">Data di nascita:</label>
                 <span><input type="date" name="birthday" id="birthday" value="<valoreDataNascita/>" min="1900-01-01" pattern="^\d{4}-\d{2}-\d{2}$"                     
@@ -68,14 +75,14 @@
                     data-msg-invalid="Formato non corretto, inserire un a data compresa tra il 01/01/1900 e oggi" /></span>  
 
                 <label for="gender">Genere:</label>
-                <span><select  name="gender" id="gender" value="<valoreGenere/>" >
+                <span><select  name="gender" id="gender" value="<valoreGenere/>" data-msg-empty="Per favore, inserisci il tuo genere">
                     <option value="ND">ND</option>
                     <option value="M">M</option>
                     <option value="F">F</option>
                 </select></span>
 
                 <label for="school">Scuola superiore frequentata:</label>
-                <span><select  name="school" id="school" value="<valoreScuola/>" >
+                <span><select  name="school" id="school" value="<valoreScuola/>" data-msg-empty="Per favore, inserisci la scuola superiore che hai frequentato" >
                     <option value="classico">liceo classico</option>
                     <option value="scientifico">liceo scientifico</option>
                     <option value="linguistico">liceo linguistico</option>
@@ -88,29 +95,27 @@
             <fieldset id="set_username_password" name="set_username_password" >
                 <legend>Scegli nome utente e <span lang="en">password</span></legend>
 
-                <label for="username"><span lang="en">username:</span></label>
-                <span><input name="username" id="username" value="<Username>" placeholder="username" minlenght="4" maxlength="40" pattern="^[a-zA-Z0-9]+$" required                    
+                <label for="username"><span lang="en">Username:</span></label>
+                <span><input name="username" id="username" value="<Username/>" placeholder="username" minlenght="4" maxlength="41"                     
                         data-msg-empty="Per favore, inserisci il tuo nome utente"
-                        data-msg-invalid="iIl nome utente deve essere compreso tra i 4 e i 40 caratteri, puo' contenere numeri ma non caratteri speciali"/></span>
+                        data-msg-invalid="Il nome utente deve essere compreso tra i 4 e i 40 caratteri, puo' contenere numeri e caratteri speciali (sono ammessi i seguenti caratteri: @ . _ - )"/></span>
             
                 <label for="password"><span lang="en">Password:</span></label>
-                <span><input id="password" type="password" name="password" value="<valorePassword>"  placeholder="password" minlength="8" maxlength="20"  
-                        pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" required                       
+                <span><input id="password" type="password" name="password" value="<valorePassword/>"  placeholder="password" minlength="8" maxlength="21"                        
                         data-msg-empty="Per favore, inserisci la tua password"
-                        data-msg-invalid='La password deve essere compresa ra 8 e 20 caratteri, deve contenere almeno un alettera maiuscola, una lettera minuscola, un numero e un carattere speciale'/></span>        
+                        data-msg-invalid='La password deve essere compresa ra 4 e 20 caratteri, (sono ammessi i seguenti caratteri: @ . _ - )'/></span>        
                 
                 <label for="repeat_password">Ripeti la tua <span lang="en">password:</span></label>
-                <span><input type="password" id="repeat_password" name="repeat_password" value="<valorePassword>" placeholder="password" minlength="8" maxlength="20" required
+                <span><input type="password" id="repeat_password" name="repeat_password" value="" placeholder="Ripeti la password" minlength="8" maxlength="20" 
                         data-msg-empty="Per favore, ripeti la tua password"
-                        data-msg-invalid='La password deve essere compresa ra 8 e 20 caratteri, deve contenere almeno un alettera maiuscola, una lettera minuscola, un numero e un carattere speciale'/></span>
+                        data-msg-invalid='La password deve essere compresa ra 4 e 20 caratteri, (sono ammessi i seguenti caratteri: @ . _ - )'/></span>
                 
-                <input type= "submit" value="Registrami"/>
-                <input type="reset" value="cancella"/>
+                <input  name="submit" id="submit" type= "submit" value="Registrami"/>
+                <input type="reset"  name="cancella" value="cancella"/>
             
             </fieldset>
-            
-            <span id=""messaggiForm></span>
        </form>
+       <errori/>
        <p>Hai gia' un <span lang="en">account</span>? <a href="login.html">Accedi</a></p>
     </main>
     
