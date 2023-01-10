@@ -5,16 +5,15 @@ $target=PulisciInput($_GET['nclasse']);
 $content=file_get_contents('classe.html');
 $errori='';
 $contenuto='';
-$query_classe="SELECT denominazione,illustrazione,area_disciplinare,gruppo_disciplinare,durata FROM ClassediLaurea WHERE num_classe=\"$target\";";
 
 $db=new Connection();
     $dbOK=$db->Connect();
     if($dbOK){
+        $query_classe="SELECT (denominazione,illustrazione,area_disciplinare,gruppo_disciplinare,durata) FROM ClassediLaurea WHERE num_classe=\"$target\";";
         if($classi=$db->ExecQueryAssoc($query_classe)){
-            $gruppo="<a href='gruppi_disciplinari.php?narea=".$classi['area_disciplinare']."'>".$classi['gruppo_disciplinare']."</a>";
-            $contenuto.='<h1 id="title">'.$target.'-'.$classi['denominazione'].'</h1>';
+            $contenuto.='<h1 id="title">'.$target.'-'.$classi[0]['denominazione'].'</h1>';
             $contenuto.='<h2 >descrizione</h2>';
-            $contenuto.='<p id="descrizioneClasse">'.$classi['illustrazione'].'</p>'; #temporaneo, necessario inserire descrizioni nel db
+            $contenuto.='<p id="descrizioneClasse">'.$classi[0]['illustrazione'].'</p>'; #temporaneo, necessario inserire descrizioni nel db
             
             # stampa punteggio complessivo
             $query_valComplessiva="SELECT CAST(AVG(p_complessivo) AS DECIMAL(3,2)) as \"pc\" ,
