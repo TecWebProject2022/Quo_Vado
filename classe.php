@@ -11,11 +11,10 @@ $db=new Connection();
     $dbOK=$db->Connect();
     if($dbOK){
         if($classi=$db->ExecQueryAssoc($query_classe)){
-            $gruppo="<a href='gruppi_disciplinari.php?narea=".$classi[0]['area_disciplinare']."'>".$classi[0]['gruppo_disciplinare']."</a>";
-            $contenuto.='<h1 id="classe">'.$target.'-'.$classi[0]['denominazione'].'</h1>';
+            $gruppo="<a href='gruppi_disciplinari.php?narea=".$classi['area_disciplinare']."'>".$classi['gruppo_disciplinare']."</a>";
+            $contenuto.='<h1 id="title">'.$target.'-'.$classi['denominazione'].'</h1>';
             $contenuto.='<h2 >descrizione</h2>';
-            $contenuto.='<img id="imgClasse" src="'.$classi[0]['illustrazione'].'" alt="illustrazione classe di laurea'.$target.'-'.$classi[0]['denominazione'].'"/>';
-            $contenuto.='<p id="descrizioneClasse">'.$classi[0]['denominazione'].'</p>'; #temporaneo, necessario inserire descrizioni nel db
+            $contenuto.='<p id="descrizioneClasse">'.$classi['illustrazione'].'</p>'; #temporaneo, necessario inserire descrizioni nel db
             
             # stampa punteggio complessivo
             $query_valComplessiva="SELECT CAST(AVG(p_complessivo) AS DECIMAL(3,2)) as \"pc\" ,
@@ -47,13 +46,13 @@ $db=new Connection();
                 $contenuto.='<p>Commenti:</p>';
                 $contenuto.='<ul id="listaCommenti">';
                 foreach($valutazioni as $v){
-                    $contenuto.='<li id="commento"><strong>'.$v[0]['nome_utente']."|".$v[0]['datav']."</strong><p id=testoCommento>".$v[0]['commento']."</p>";
+                    $contenuto.='<li id="commento"><strong>'.$v['nome_utente']."|".$v['datav']."</strong><p id=testoCommento>".$v['commento']."</p>";
                     $contenuto.='<ul id="valutazioneCommento">
-                            <li>Complessivo: '.$v[0]['p_complessivo']."</li>
-                            <li>Accessibilità fisica: ".$v[0]['p_acc_fisica']."</li>
-                            <li>Servizio inclusione: ".$v[0]['p_servizio']."</li>
-                            <li>Tempestività burocratica: ".$v[0]['tempestivita_burocratica']."</li>
-                            <li>Insegnamento: ".$v[0]['p_insegnamento']."</li></ul></li>";
+                            <li>Complessivo: '.$v['p_complessivo']."</li>
+                            <li>Accessibilità fisica: ".$v['p_acc_fisica']."</li>
+                            <li>Servizio inclusione: ".$v['p_servizio']."</li>
+                            <li>Tempestività burocratica: ".$v['tempestivita_burocratica']."</li>
+                            <li>Insegnamento: ".$v['p_insegnamento']."</li></ul></li>";
                 }
                 $contenuto.='</ul><span><input type="button" id="aggiuntaCommento" value"aggiungi un commento" onclick="addComment()"></span>
                 <span><input type="button" id="mostraCommenti" value="mostra altri commenti" onclick="showComments()"></span>';
