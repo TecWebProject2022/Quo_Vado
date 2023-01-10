@@ -259,11 +259,12 @@ header > ul{
 #error_page div{
     background: #162636 url(css_images/festa.jpg) 85% no-repeat;
     background-size: cover;
-    padding-bottom: 2.5%;
+    padding: 0% 5% 2.5% 5%;
     margin-bottom: 2%;
 }
 
 #error_page h1{
+    max-width: 1024px;
     color: #FFFFFF;
     margin-bottom: 1.5%;
     font-size: 3em;
@@ -278,11 +279,11 @@ header > ul{
     color: #fff;
     padding-top: 0.5%;
     padding-bottom: 2.5%;
-    font-size: 2em;
+    font-size: 1.5em;
     line-height: 1.5em;
     max-width: 1024px;
     text-align: center;
-    margin-left: 10%;
+    margin-left: 5%;
 }
 
 #error_page a{
@@ -292,7 +293,6 @@ header > ul{
 #error_page a:link{
     color: #162636;
     background-color: #fff;
-    /*text-align: right;*/
     font-size: 1.2em;
     padding: 2%;
     text-decoration: none;
@@ -302,10 +302,10 @@ header > ul{
 }
 
 #error_page a:hover{
-    transform: scale(1.02);
-    background-color: #162636;
+    transform: scale(1.02); /*non funziona perché?*/
+    background-color: rgba(22, 38, 54, 0.2);
+    border: #fff 2px solid;
     color: #fff;
-    text-decoration: underline;
 }
 
 #error_page a:visited{
