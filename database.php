@@ -50,6 +50,7 @@ class Connection{
         $query_result = $this->conn->query($query);
 
         if (!$query_result->num_rows){
+           
             return null;
         }
         else {
@@ -61,6 +62,14 @@ class Connection{
             return $result;
         }
     }
+    public function Insert($query){
+    $query_result = $this->conn->query($query);
+    
+    if($this->conn->affected_rows==1){
+        return true;
+    }
+    return false;
+}
     public function ExecQueryNum($query){
        
         $query_result = $this->conn->query($query);

@@ -123,8 +123,8 @@ insert into CorsodiStudio (ateneo, classe_laurea, nome, accesso, link) values
 ('Università della Calabria', 'L41', 'Corso di laurea in statistica per le aziende e le assicurazioni', 'Accesso programmato', 'https://www.unical.it-storage-cds-3557-');
 
 insert into Utente (nome_utente, nome, cognome, data_nascita, genere, scuola_sup) values
-('user', 'Utente', 'Zero', '2022-12-05', 'ND', 'scientifico'),
-('admin', 'Admin', 'Zero', '2022-12-05', 'ND', 'scientifico'),
+('user', 'user', 'Zero', '2022-12-05', 'ND', 'scientifico'),
+('admin', 'admin', 'Zero', '2022-12-05', 'ND', 'scientifico'),
 ('viscontisante@fastwebnet.it','Ida','Gremese','1977-05-13','ND', 'tecnico commerciale'),
 ('costalongalivio@hotmail.it','Rocco','Botticelli','1971-09-10','M', 'scientifico'),
 ('fiorinocatenazzi@yahoo.com','Alderano','Vecellio','1989-07-19','ND', 'linguistico'),
