@@ -5,15 +5,19 @@ $target=PulisciInput($_GET['nclasse']);
 $content=file_get_contents('classe.html');
 $errori='';
 $contenuto='';
+$area='';
+$classe='';
 
 $db=new Connection();
     $dbOK=$db->Connect();
     if($dbOK){
         $query_classe="SELECT denominazione,illustrazione,area_disciplinare,gruppo_disciplinare,durata FROM ClassediLaurea WHERE num_classe=\"$target\";";
         if($classi=$db->ExecQueryAssoc($query_classe)){
+            $area=$classi[0]['area_disciplinare'];
+            $classe=$target.$classi[0]['denominazione'];
             $contenuto.='<h1 id="title">'.$target.'-'.$classi[0]['denominazione'].'</h1>';
             $contenuto.='<h2 >descrizione</h2>';
-            $contenuto.='<p id="dettagliClasse">Area disciplinare: '.$classi[0]['area_disciplinare'].' | gruppo ,disciplinare: '.$classi[0]['gruppo_disciplinare'].' 
+            $contenuto.='<p id="dettagliClasse">Area disciplinare: '.$classi[0]['area_disciplinare'].' | gruppo disciplinare: '.$classi[0]['gruppo_disciplinare'].' 
             | tipologia: '.$classi[0]['durata'].'</p>';
             $contenuto.='<p id="illustrazioneClasse">'.$classi[0]['illustrazione'].'</p>'; #temporaneo, necessario inserire descrizioni nel db
             
@@ -89,7 +93,8 @@ $db=new Connection();
         $errori.="<p>Ci scusiamo, la connessione non e' riuscita, attendere e riprova</p>";
     } 
     
-    $content=str_replace("<classe/>",$target,$content); 
+    $content=str_replace("<area/>",$area,$content); 
+    $content=str_replace("<classe/>",$classe,$content); 
     $content=str_replace("<content/>",$contenuto,$content);
     $content=str_replace("<error/>",$errori,$content);
     echo $content;
