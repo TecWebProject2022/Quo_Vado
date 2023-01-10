@@ -59,7 +59,7 @@ $db=new Connection();
                             <li>Tempestività burocratica: ".$v['tempestivita_burocratica']."</li>
                             <li>Insegnamento: ".$v['p_insegnamento']."</li></ul></li>";
                 }
-                $contenuto.='</ul><span><input type="button" id="aggiuntaCommento" value="aggiungi un commento" onclick="addComment()"></span>
+                $contenuto.='</ul><span id="newcomment"><input type="button" id="aggiuntaCommento" value="aggiungi un commento" onclick="addComment()"></span>
                 <span><input type="button" id="mostraCommenti" value="mostra altri commenti" onclick="showComments()"></span>';
             }else{
                 $errori.="<p>Opss,si è verficato un errore di conessione: impossibile caricare i commenti. Riprova</p>";

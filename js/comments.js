@@ -1,5 +1,5 @@
 function addComment() {
-    parent=document.getElementById('newcomment');
+    var parent=document.getElementById('newcomment');
     if(parent.children.length==2){
         parent.removeChild(parent.children[1]);
     }
