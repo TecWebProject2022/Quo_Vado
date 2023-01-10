@@ -14,7 +14,7 @@ $db=new Connection();
         $query_classe="SELECT denominazione,illustrazione,area_disciplinare,gruppo_disciplinare,durata FROM ClassediLaurea WHERE num_classe=\"$target\";";
         if($classi=$db->ExecQueryAssoc($query_classe)){
             $area=$classi[0]['area_disciplinare'];
-            $classe=$target.$classi[0]['denominazione'];
+            $classe=$target.'-'.$classi[0]['denominazione'];
             $contenuto.='<h1 id="title">'.$target.'-'.$classi[0]['denominazione'].'</h1>';
             $contenuto.='<h2 >descrizione</h2>';
             $contenuto.='<p id="dettagliClasse">Area disciplinare: '.$classi[0]['area_disciplinare'].' | gruppo disciplinare: '.$classi[0]['gruppo_disciplinare'].' 
