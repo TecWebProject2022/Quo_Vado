@@ -21,9 +21,9 @@ function addComment() {
         commentLabel.appendChild(document.createTextNode('Inserisci il commento'));
         //cxreo la textarea
         var commento = document.createElement("textarea");
-        textarea.setAttribute("id", "nuovoCommento");
-        textarea.setAttribute("rows", "4");
-        textarea.setAttribute("cols", "50");
+        commento.setAttribute("id", "nuovoCommento");
+        commento.setAttribute("rows", "4");
+        commento.setAttribute("cols", "50");
         //creo il bottone per il submit
         var submitButton = document.createElement("input");
         submitButton.setAttribute("id", "addCommento");
@@ -32,8 +32,8 @@ function addComment() {
         submitButton.setAttribute("name", "Aggiungi commento");
         //submitButton.setAttribute("onsubmit", "return Validate()");
         //inserisco nel form
-        commentForm.appendChild(commentlabel);
-        commentForm.appendChild(textarea);
+        commentForm.appendChild(commentLabel);
+        commentForm.appendChild(commento);
         commentForm.appendChild(submitButton);
         //rimuovo il pulsante per aggingere un commento e aggiungo il form
         parent.removeChild(parent.children[0]);
