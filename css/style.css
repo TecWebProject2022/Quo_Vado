@@ -509,7 +509,7 @@ HOME
 }
 
 #uni {
-    background-image: linear-gradient(to right, rgba(0,0,0,0.3), rgba(0, 0, 0, 1)), url(css_images/universita.jpg);
+    background-image: linear-gradient(to right, rgba(0,0,0,0.5), rgba(0, 0, 0, 1)), url(css_images/universita.jpg);
     background-size: cover;
     min-height: 200px;
     background-position: left;
@@ -518,7 +518,7 @@ HOME
 }
 
 #lav {
-    background-image: linear-gradient(to right, rgba(0,0,0,1), rgba(0, 0, 0, 0.3)), url(css_images/lavoro.jpg);
+    background-image: linear-gradient(to right, rgba(0,0,0,1), rgba(0, 0, 0, 0.5)), url(css_images/lavoro.jpg);
     background-size: cover;
     min-height: 200px;
     background-position: right;
@@ -527,7 +527,7 @@ HOME
 }
 
 #ris_int {
-    background-image: linear-gradient(to right, rgba(0,0,0,0.3), rgba(0, 0, 0, 1)), url(css_images/risorse_interne.jpg);
+    background-image: linear-gradient(to right, rgba(0,0,0,0.5), rgba(0, 0, 0, 1)), url(css_images/risorse_interne.jpg);
     background-size: cover;
     min-height: 200px;
     background-position: left;
@@ -536,7 +536,7 @@ HOME
 }
 
 #ris_est {
-    background-image: linear-gradient(to right, rgba(0,0,0,1), rgba(0, 0, 0, 0.3)), url(css_images/risorse_esterne.jpg);
+    background-image: linear-gradient(to right, rgba(0,0,0,1), rgba(0, 0, 0, 0.5)), url(css_images/risorse_esterne.jpg);
     background-size: cover;
     min-height: 200px;
     background-position: right;
