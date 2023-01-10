@@ -666,7 +666,15 @@ ESPLORA CORSI
 
 .area a:visited {
     color: #D67200;
-    
+}
+
+.area p {
+    background: radial-gradient(circle, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0.5) 100%);
+    background-clip: content-box;
+}
+
+.area dt {
+    font-size: 1.5em;
 }
 
 .area dd {
@@ -678,14 +686,13 @@ ESPLORA CORSI
     background: url('css_images/stem.jpg');
     background-size: cover;
     background-position: center;
-    padding: 6em 0em 6em 0em;
     margin-bottom: 1.5em;
     transition: all .2s ease-in-out;
     font-size: 1.5em;
 }
 
-#stem a {
-
+#stem p {
+    padding: 5em 1em 5em 1em;
 }
 
 #stem:hover {
@@ -693,18 +700,16 @@ ESPLORA CORSI
 }
 
 #sanita {
+    display: inline-block;
     background: url('css_images/sanitaria.jpg');
     background-size: cover;
     background-position: center;
-    padding: 6em 0em 6em 0em;
     margin-bottom: 1.5em;
     transition: all .2s ease-in-out;
-    font-size: 1.4em;
 }
 
-#sanita a {
+#sanita p {
     padding: 5em 1em 5em 1em;
-    width: auto;
 }
 
 #sanita:hover {
@@ -715,13 +720,12 @@ ESPLORA CORSI
     background: url('css_images/arte.jpg');
     background-size: cover;
     background-position: center;
-    padding: 6em 0em 6em 0em;
     margin-bottom: 1.5em;
     transition: all .2s ease-in-out;
-    font-size: 1.5em;
 }
 
-#arte a {
+#arte p {
+    padding: 5em 1em 5em 1em;
 }
 
 #arte:hover {
@@ -732,13 +736,12 @@ ESPLORA CORSI
     background: url('css_images/economia.jpg');
     background-size: cover;
     background-position: center;
-    padding: 6em 0em 6em 0em;
     margin-bottom: 1.5em;
     transition: all .2s ease-in-out;
-    font-size: 1.4em;
 }
 
-#economia a {
+#economia p {
+    padding: 5em 1em 5em 1em;
 }
 
 #economia:hover {
