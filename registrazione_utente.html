@@ -36,7 +36,7 @@
 				<dd><a href="diritto_studio.html">Diritto allo studio</a></dd>
 				<dd><a href="parita_genere.html">Pari opportunità e Parità di genere</a></dd>
 				<dd><a href="disabilita.html">Servizi per la Disabilità</a></dd>
-            <dt id="currentlink">Area Riservata</dt>
+            <dt id="currentOverLink">Area Riservata</dt>
 		</dl>
     </nav>
 
@@ -46,7 +46,7 @@
  
     <main id="content">
         <h1>REGISTRAZIONE</h1>
-        <form id="registration "action="registrazione_utente.php" onsubmit="return formValidate(this))" method="post">
+        <form id="registration "action="registrazione_utente.php" onsubmit="return formValidate(this)" method="post">
                 
             <fieldset id="set_personal_data">
                 
@@ -58,24 +58,24 @@
                         data-msg-invalid="Il nome deve essere compreso tra 2 e 20 caratteri e non puo' contenere numeri"/></span>
             
                 <label for="last_name">Cognome:</label>
-                <span><input id="last_name" name="last_name" value="<valoreCognome/>" placeholder="Rossi" minlenght="2" maxlength="30" pattern="^(?:[^0-9]*)$" required                      
+                <span><input id="last_name" name="last_name" value="<valoreCognome/>" placeholder="Rossi" minlenght="2" maxlength="30" pattern="^(?:[^0-9]*)$"                       
                         data-msg-empty="Per favore, inserisci il tuo cognome"
                         data-msg-invalid="Il cognome non puo' superare i 20 caratteri e non puo' contenere numeri" /></span>
                         
                 <label for="birthday">Data di nascita:</label>
-                <span><input type="date" name="birthday" id="birthday" value="<valoreDataNascita/>" min="1900-01-01" pattern="^\d{4}-\d{2}-\d{2}$" required                    
+                <span><input type="date" name="birthday" id="birthday" value="<valoreDataNascita/>" min="1900-01-01" pattern="^\d{4}-\d{2}-\d{2}$"                     
                     data-msg-empty="Per favore, inserisci la tua data di nascita"
                     data-msg-invalid="Formato non corretto, inserire un a data compresa tra il 01/01/1900 e oggi" /></span>  
 
                 <label for="gender">Genere:</label>
-                <span><select  name="gender" id="gender" value="<valoreGenere/>" required>
+                <span><select  name="gender" id="gender" value="<valoreGenere/>" >
                     <option value="ND">ND</option>
                     <option value="M">M</option>
                     <option value="F">F</option>
                 </select></span>
 
                 <label for="school">Scuola superiore frequentata:</label>
-                <span><select  name="school" id="school" value="<valoreScuola/>" required>
+                <span><select  name="school" id="school" value="<valoreScuola/>" >
                     <option value="classico">liceo classico</option>
                     <option value="scientifico">liceo scientifico</option>
                     <option value="linguistico">liceo linguistico</option>
