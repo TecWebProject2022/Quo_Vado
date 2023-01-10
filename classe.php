@@ -36,12 +36,13 @@ $db=new Connection();
                 if($res3=$db->ExecQueryAssoc($query3)){
                     foreach($res3 as $uni){
                         $universita.='<li>'.$uni['ateneo'].'</li>'; 
-                        $query4="SELECT nome,accesso FROM `CorsodiStudio` WHERE classe_laurea=\"$target\" and ateneo=\"".$uni['ateneo']."\";";
+                        $query4="SELECT nome,accesso,link FROM `CorsodiStudio` WHERE classe_laurea=\"$target\" and ateneo=\"".$uni['ateneo']."\";";
                         
                         if($res4=$db->ExecQueryAssoc($query4)){
                             $universita.="<li><ul>";
                             foreach($res4 as $c){
                                 $universita.="<li>".$c['nome']."  ".$c['accesso']."</li>";
+                                $universita.="<li> <a href=\"".$c['link']."\">Approfondisci</a></li>";
                             }
                             $universita.="</ul>";
                             $query5="SELECT datav,commento,ateneo,Valutazione.nome_utente as n  FROM Valutazione join Iscrizione on Valutazione.nome_utente=Iscrizione.nome_utente WHERE classe_laurea=\"$target\" and dataf IS NOT NULL;";
