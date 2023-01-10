@@ -41,9 +41,11 @@ class Connection{
     }
 
     public function multiInsert($query){
-        if($this->conn->multi_query($query)){
-            return $error_message= "<p>Errore in openDBConnection: " . $this->conn->error."</p>";
-        }        
+      $query_result= $this->conn->multi_query($query);
+      if($this->conn->affected_rows==1){
+        return true;
+    }
+    return false;
     }
     public function ExecQueryAssoc($query){
        

@@ -51,8 +51,9 @@ if(isset($_POST['submit'])){
             
             else{
                 $insert="INSERT INTO Utente(nome_utente, nome, cognome,data_nascita, genere, scuola_sup) VALUES(\"".$username."\",\"".$nome."\",\"".$cognome."\",\"".$data."\",\"".$genere."\",\"".$scuola."\");";
+                $insert.="INSERT INTO Credenziale(pw, data_inserimento, utente, attuale) VALUES('".$password."',curdate(),'".$username."',1); ";
             
-                $q=$db->Insert($insert);
+                $q=$db->multiInsert($insert);
                 if($q){
                     $errori.="<li>Inserimento con successo</li>";
                 }
