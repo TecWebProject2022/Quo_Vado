@@ -696,7 +696,7 @@ ESPLORA CORSI
 }
 
 #stem:hover {
-    transform: scale(1.05);
+    transform: scale(0.95);
 }
 
 #sanita {
@@ -713,7 +713,7 @@ ESPLORA CORSI
 }
 
 #sanita:hover {
-    transform: scale(1.05);
+    transform: scale(0.95);
 }
 
 #arte {
@@ -729,7 +729,7 @@ ESPLORA CORSI
 }
 
 #arte:hover {
-    transform: scale(1.05);
+    transform: scale(0.95);
 }
 
 #economia {
@@ -745,7 +745,7 @@ ESPLORA CORSI
 }
 
 #economia:hover {
-    transform: scale(1.05);
+    transform: scale(0.95);
 }
 
 /*
