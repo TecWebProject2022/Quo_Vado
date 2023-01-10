@@ -13,7 +13,9 @@ $db=new Connection();
         if($classi=$db->ExecQueryAssoc($query_classe)){
             $contenuto.='<h1 id="title">'.$target.'-'.$classi[0]['denominazione'].'</h1>';
             $contenuto.='<h2 >descrizione</h2>';
-            $contenuto.='<p id="descrizioneClasse">'.$classi[0]['illustrazione'].'</p>'; #temporaneo, necessario inserire descrizioni nel db
+            $contenuto.='<p id="dettagliClasse">Area disciplinare: '.$classi[0]['area_disciplinare'].' | gruppo ,disciplinare: '.$classi[0]['gruppo_disciplinare'].' 
+            | tipologia: '.$classi[0]['durata'].'</p>';
+            $contenuto.='<p id="illustrazioneClasse">'.$classi[0]['illustrazione'].'</p>'; #temporaneo, necessario inserire descrizioni nel db
             
             # stampa punteggio complessivo
             $query_valComplessiva="SELECT CAST(AVG(p_complessivo) AS DECIMAL(3,2)) as \"pc\" ,
@@ -49,11 +51,11 @@ $db=new Connection();
                     $contenuto.='<ul id="valutazioneCommento">
                             <li>Complessivo: '.$v['p_complessivo']."</li>
                             <li>Accessibilità fisica: ".$v['p_acc_fisica']."</li>
-                            <li>Servizio inclusione: ".$v['p_servizio']."</li>
+                            <li>Servizio inclusione: ".$v['p_servizio_inclusione']."</li>
                             <li>Tempestività burocratica: ".$v['tempestivita_burocratica']."</li>
                             <li>Insegnamento: ".$v['p_insegnamento']."</li></ul></li>";
                 }
-                $contenuto.='</ul><span><input type="button" id="aggiuntaCommento" value"aggiungi un commento" onclick="addComment()"></span>
+                $contenuto.='</ul><span><input type="button" id="aggiuntaCommento" value="aggiungi un commento" onclick="addComment()"></span>
                 <span><input type="button" id="mostraCommenti" value="mostra altri commenti" onclick="showComments()"></span>';
             }else{
                 $errori.="<p>Opss,si è verficato un errore di conessione: impossibile caricare i commenti. Riprova</p>";
@@ -69,14 +71,12 @@ $db=new Connection();
                     $ateneo=$c['ateneo'];
                     $query_link_ateneo="SELECT link FROM Ateneo WHERE nome=\"$ateneo\";";
                     if($linkAteneo=$db->ExecQueryAssoc($query_link_ateneo)){
-                        $contenuto.=' | <a href="'.$linkAteneo['link'].'">'.$c['ateneo'].'</a>';
+                        $contenuto.=' | <a href="'.$linkAteneo[0]['link'].'">'.$c['ateneo'].'</a>';
                     }else{
                         $contenuto.=' | '.$c['ateneo']; 
                     }
                     $contenuto.='</li>';
                 }
-                $contenuto.='</ul><span><input type="button" id="aggiuntaCommento" value"aggiungi un commento" onclick="addComment()"></span>
-                <span><input type="button" id="mostraCommenti" value="mostra altri commenti" onclick="showComments()"></span>';
             }else{
                 $errori.="<p>Opss si è verficato un errore di conessione: impossibile caricare i corsi di laurea, riprova</p>";
             }
