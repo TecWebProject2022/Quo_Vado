@@ -4,10 +4,14 @@ require_once 'database.php';
 $target=PulisciInput($_GET['nclasse']);
 $content=file_get_contents('classe.html');
 $errori='';
-$contenuto='';
-$area='';
 $classe='';
-
+$illustrazione='';
+$valutazione='';
+$commenti='';
+$den='';
+$universita='';
+$db=new Connection();
+$query1="Select denominazione,illustrazione,durata from ClassediLaurea where num_classe=\"$target\";";
 $db=new Connection();
     $dbOK=$db->Connect();
     if($dbOK){
@@ -26,77 +30,75 @@ $db=new Connection();
             CAST(AVG(p_acc_fisica) AS DECIMAL(3,2)) as \"pf\" ,CAST(AVG(p_servizio_inclusione) AS DECIMAL(3,2)) as \"ps\" ,
             CAST(AVG(tempestivita_burocratica) AS DECIMAL(3,2)) as \"tb\",CAST(AVG(p_insegnamento) AS DECIMAL(3,2)) as \"pi\" 
             FROM `Valutazione` WHERE classe_laurea=\"$target\";";
-            if($valComplessiva=$db->ExecQueryAssoc($query_valComplessiva)){
-        
-                $contenuto.="<p>Valutazione degli Utenti:</p><ul>
-                            <li>Complessivo: ".$valComplessiva[0]['pc']."</li>
-                            <li>Accessibilità fisica: ".$valComplessiva[0]['pf']."</li>
-                            <li>Servizio inclusione: ".$valComplessiva[0]['ps']."</li>
-                            <li>Tempestività burocratica: ".$valComplessiva[0]['tb']."</li>
-                            <li>Insegnamento: ".$valComplessiva[0]['pi']."</li></ul>";
+            if($res2=$db->ExecQueryAssoc($query2)){
+                
+                $valutazione="<h2>Valutazione</h2>
+                            <ul>
+                            <li>Complessivo: ".$res2[0]['pc']."</li>
+                            <li>Accessibilità fisica: ".$res2[0]['pf']."</li>
+                            <li>Servizio inclusione: ".$res2[0]['ps']."</li>
+                            <li>Tempestività burocratica: ".$res2[0]['tb']."</li>
+                            <li>Insegnamento: ".$res2[0]['pi']."</li></ul>";
+                $query3="SELECT ateneo FROM `CorsodiStudio` WHERE classe_laurea=\"$target\";";
+                $universita.='<h2>Dove la puoi trovare</h2><ul>';
+                if($res3=$db->ExecQueryAssoc($query3)){
+                    foreach($res3 as $uni){
+                        $universita.='<li>'.$uni['ateneo'].'</li>'; 
+                        $query4="SELECT nome,accesso,link FROM `CorsodiStudio` WHERE classe_laurea=\"$target\" and ateneo=\"".$uni['ateneo']."\";";
+                        
+                        if($res4=$db->ExecQueryAssoc($query4)){
+                            $universita.="<li><ul>";
+                            foreach($res4 as $c){
+                                $universita.="<li>".$c['nome']."  ".$c['accesso']."</li>";
+                                $universita.="<li> <a href=\"".$c['link']."\">Approfondisci</a></li>";
+                            }
+                            $universita.="</ul>";
+                            $query5="SELECT datav,commento,ateneo,Valutazione.nome_utente as n  FROM Valutazione join Iscrizione on Valutazione.nome_utente=Iscrizione.nome_utente WHERE classe_laurea=\"$target\" and dataf IS NOT NULL;";
+                            if($res5=$db->ExecQueryAssoc($query5)){
+                                $commenti.="<dl>";
+                                foreach($res5 as $d){
+                                    $commenti.="<dt>".$d['n']."</dt>";
+                                    $commenti.="<dd>".$d['ateneo']."</dd>";
+                                    $commenti.="<dd>".$d['datav']." - ".$d['commento'];
+                                }
+                            $commenti.="</dl>";
+                            }
+                            else{
+                                $errori.='<p>Non è stato trovata alcuna Valutazione associata</p>';
+                            }
+                        }
+                        else{
+                            $errori.='<p>Non è stato trovata alcuna Corso associato alla ricerca selezionata</p>';
+                        }
+                    }  
+            
             }
+            
+            else{
+                $errori.='<p>Non è stato trovata alcuna università</p>';
+            }
+        }
             else{
                 $errori.='<p>Non è stato trovata alcuna valutazione</p>';
             }
-            # se ottengo tag (da filtro, al primo caricamento della pagina sara sempr false) allora la query chiedera solo le valutazioni corrispondenti
-            if(isset($_GET['tag'])){
-                $targetTag=PulisciInput($_GET['tag']);
-                $query_valutazione="SELECT nome_utente,datav,commento,p_complessivo,p_acc_fisica,p_servizio_inclusione,tempestivita_burocratica,p_insegnamento 
-                FROM Valutazione WHERE classe_laurea=\"$target\" AND tag=\"$targetTag\";";
-            }else{
-                $query_valutazione="SELECT nome_utente,datav,commento,p_complessivo,p_acc_fisica,p_servizio_inclusione,tempestivita_burocratica,p_insegnamento 
-                FROM Valutazione WHERE classe_laurea=\"$target\";";
-            }
-            if($valutazioni=$db->ExecQueryAssoc($query_valutazione)){
-                $contenuto.='<p>Commenti:</p>';
-                $contenuto.='<ul id="listaCommenti">';
-                foreach($valutazioni as $v){
-                    $contenuto.='<li id="commento"><strong>'.$v['nome_utente']."|".$v['datav']."</strong><p id=testoCommento>".$v['commento']."</p>";
-                    $contenuto.='<ul id="valutazioneCommento">
-                            <li>Complessivo: '.$v['p_complessivo']."</li>
-                            <li>Accessibilità fisica: ".$v['p_acc_fisica']."</li>
-                            <li>Servizio inclusione: ".$v['p_servizio_inclusione']."</li>
-                            <li>Tempestività burocratica: ".$v['tempestivita_burocratica']."</li>
-                            <li>Insegnamento: ".$v['p_insegnamento']."</li></ul></li>";
-                }
-                $contenuto.='</ul><span><input type="button" id="aggiuntaCommento" value="aggiungi un commento" onclick="addComment()"></span>
-                <span><input type="button" id="mostraCommenti" value="mostra altri commenti" onclick="showComments()"></span>';
-            }else{
-                $errori.="<p>Opss,si è verficato un errore di conessione: impossibile caricare i commenti. Riprova</p>";
-            }
-            # corsi di studio associati
-            $query_corso_di_studio="SELECT ateneo,nome,accesso,link FROM CorsodiStudio WHERE classe_laurea=\"$target\";";
-            if($corsi=$db->ExecQueryAssoc($query_corso_di_studio)){
-                #display corsi
-                $contenuto.='<ul id="corsi">';
-                foreach($corsi as $c){
-                    $contenuto.='<li id="corso"><a href="'.$c['link'].'"><strong>'.$c['nome'].'</strong></a> |'.$c['accesso'];
-                    # se riesce a procurarsi il link bene, altrimenti semplicemente non lo inserisco
-                    $ateneo=$c['ateneo'];
-                    $query_link_ateneo="SELECT link FROM Ateneo WHERE nome=\"$ateneo\";";
-                    if($linkAteneo=$db->ExecQueryAssoc($query_link_ateneo)){
-                        $contenuto.=' | <a href="'.$linkAteneo[0]['link'].'">'.$c['ateneo'].'</a>';
-                    }else{
-                        $contenuto.=' | '.$c['ateneo']; 
-                    }
-                    $contenuto.='</li>';
-                }
-            }else{
-                $errori.="<p>Opss si è verficato un errore di conessione: impossibile caricare i corsi di laurea, riprova</p>";
-            }
+        }   
+           else{
+            $errori.='<p>Non è stato trovata alcuna informazione in base alla sua ricerca</p>';
+           }
+           $db->Disconnect();
         }
-        else{
-            $errori.="<p>nessun risultato presente</p>";
-        }
-        $db->Disconnect();
-    }else{
-        $errori.="<p>Ci scusiamo, la connessione non e' riuscita, attendere e riprova</p>";
+    else{
+        $errori.='<p>Ci scusiamo la connessione non è  riuscita, attendere e riprova</p>';
     } 
-    
-    $content=str_replace("<area/>",$area,$content); 
-    $content=str_replace("<classe/>",$classe,$content); 
-    $content=str_replace("<content/>",$contenuto,$content);
-    $content=str_replace("<error/>",$errori,$content);
-    echo $content;
- 
+$content=str_replace('<name/>',$_GET['area'],$content);
+$content=str_replace('<titolo/>',$den,$content);
+$content=str_replace('<descrizione/>',$illustrazione,$content);
+
+$content=str_replace('<classe/>', $classe,$content);
+
+$content=str_replace('<val/>',$valutazione,$content);
+$content=str_replace('<universita/>',$universita,$content);
+$content=str_replace('<comment/>',$commenti,$content);
+$content=str_replace('<error/>',$errori,$content);
+echo $content;
 ?>
