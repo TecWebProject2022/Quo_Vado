@@ -41,11 +41,11 @@ class Connection{
     }
 
     public function multiInsert($query){
-      $query_result= $this->conn->multi_query($query);
-      if($this->conn->affected_rows==1){
-        return true;
-    }
-    return false;
+        $query_result= $this->conn->multi_query($query);
+        if($this->conn->affected_rows==1){
+            return true;
+        }
+        return false;
     }
     public function ExecQueryAssoc($query){
        
