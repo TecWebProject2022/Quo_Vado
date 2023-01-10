@@ -662,7 +662,7 @@ ESPLORA CORSI
 }
 
 .area a:link {
-
+    
 }
 
 .area a:visited {
@@ -676,6 +676,7 @@ ESPLORA CORSI
 #stem {
     background: url('css_images/stem.jpg');
     background-size: cover;
+    background-position: center;
     padding: 7em 0em 7em 0em;
     margin-bottom: 1.5em;
     transition: all .2s ease-in-out;
@@ -692,6 +693,7 @@ ESPLORA CORSI
 #sanita {
     background: url('css_images/sanitaria.jpg');
     background-size: cover;
+    background-position: center;
     padding: 7em 0em 7em 0em;
     margin-bottom: 1.5em;
     font-size: 1em;
@@ -708,6 +710,7 @@ ESPLORA CORSI
 #arte {
     background: url('css_images/arte.jpg');
     background-size: cover;
+    background-position: center;
     padding: 7em 0em 7em 0em;
     margin-bottom: 1.5em;
     font-size: 1em;
@@ -724,6 +727,7 @@ ESPLORA CORSI
 #economia {
     background: url('css_images/economia.jpg');
     background-size: cover;
+    background-position: center;
     padding: 7em 0em 7em 0em;
     margin-bottom: 1.5em;
     font-size: 1em;
