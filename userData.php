@@ -145,7 +145,7 @@ class userData {
         $pw_match=PulisciImput($pw_match);
         #controllo che la pw sia di 8 caratteri e che sia nel formato corretto
         if($value != $pw_match){
-            $error.= "<li>le password non coicidono</li>"
+            $error.= "<li>le password non coicidono</li>";
         }else{
             if (strlen($string)<8 || strlen($string)>20 ) {
                 $error.="<li>La password deve essere compresa tra gli otto e i sedici caratteri.</li>";
@@ -204,7 +204,4 @@ class userData {
         $errors.="<li>Impossibile effettuare la registrazione, dati non inseriti correttamente</li>";
     }
 }
-
-
-
 ?>
