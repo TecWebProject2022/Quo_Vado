@@ -9,7 +9,7 @@ $contenuto='';
 $db=new Connection();
     $dbOK=$db->Connect();
     if($dbOK){
-        $query_classe="SELECT (denominazione,illustrazione,area_disciplinare,gruppo_disciplinare,durata) FROM ClassediLaurea WHERE num_classe=\"$target\";";
+        $query_classe="SELECT denominazione,illustrazione,area_disciplinare,gruppo_disciplinare,durata FROM ClassediLaurea WHERE num_classe=\"$target\";";
         if($classi=$db->ExecQueryAssoc($query_classe)){
             $contenuto.='<h1 id="title">'.$target.'-'.$classi[0]['denominazione'].'</h1>';
             $contenuto.='<h2 >descrizione</h2>';
