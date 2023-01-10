@@ -639,6 +639,7 @@ ESPLORA CORSI
     color: #FFFFFF;
     background: var(--tittlebg) url(css_images/percorso.jpg) no-repeat;
     background-size: cover;
+    background-position: center;
    /* padding: 1em;*/
 }
 
