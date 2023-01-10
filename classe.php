@@ -2,7 +2,7 @@
 require_once 'utilita.php';
 require_once 'database.php';
 $target=PulisciInput($_GET['nclasse']);
-$content=file_get_contents('gruppi_disciplinari.html');
+$content=file_get_contents('classe.html');
 $errori='';
 $contenuto='';
 $query_classe="SELECT denominazione,illustrazione,area_disciplinare,gruppo_disciplinare,durata FROM ClassediLaurea WHERE num_classe=\"$target\";";
@@ -11,11 +11,11 @@ $db=new Connection();
     $dbOK=$db->Connect();
     if($dbOK){
         if($classi=$db->ExecQueryAssoc($query_classe)){
-            $gruppo="<a href='gruppi_disciplinari.php?narea=".$classi['area_disciplinare']."'>".$classi['gruppo_disciplinare']."</a>";
-            $contenuto.='<h1 id="classe">'.$target.'-'.$classi['denominazione'].'</h1>';
+            $gruppo="<a href='gruppi_disciplinari.php?narea=".$classi[0]['area_disciplinare']."'>".$classi[0]['gruppo_disciplinare']."</a>";
+            $contenuto.='<h1 id="classe">'.$target.'-'.$classi[0]['denominazione'].'</h1>';
             $contenuto.='<h2 >descrizione</h2>';
-            $contenuto.='<img id="imgClasse" href="'.$classi['illustrazione'].'" alt="illustrazione classe di laurea'.$target.'-'.$classi['denominazione'].'"/>';
-            $contenuto.='<p id="descrizioneClasse">'.$classi['denominazione'].'</p>'; #temporaneo, necessario inserire descrizioni nel db
+            $contenuto.='<img id="imgClasse" src="'.$classi[0]['illustrazione'].'" alt="illustrazione classe di laurea'.$target.'-'.$classi[0]['denominazione'].'"/>';
+            $contenuto.='<p id="descrizioneClasse">'.$classi[0]['denominazione'].'</p>'; #temporaneo, necessario inserire descrizioni nel db
             
             # stampa punteggio complessivo
             $query_valComplessiva="SELECT CAST(AVG(p_complessivo) AS DECIMAL(3,2)) as \"pc\" ,
@@ -23,7 +23,8 @@ $db=new Connection();
             CAST(AVG(tempestivita_burocratica) AS DECIMAL(3,2)) as \"tb\",CAST(AVG(p_insegnamento) AS DECIMAL(3,2)) as \"pi\" 
             FROM `Valutazione` WHERE classe_laurea=\"$target\";";
             if($valComplessiva=$db->ExecQueryAssoc($query_valComplessiva)){
-                $contenuto.="<ul>
+        
+                $contenuto.="<p>Valutazione degli Utenti:</p><ul>
                             <li>Complessivo: ".$valComplessiva[0]['pc']."</li>
                             <li>Accessibilità fisica: ".$valComplessiva[0]['pf']."</li>
                             <li>Servizio inclusione: ".$valComplessiva[0]['ps']."</li>
@@ -46,13 +47,13 @@ $db=new Connection();
                 $contenuto.='<p>Commenti:</p>';
                 $contenuto.='<ul id="listaCommenti">';
                 foreach($valutazioni as $v){
-                    $contenuto.='<li id="commento"><strong>'.$v['nome_utente']."|".$v['datav']."</strong><p id=testoCommento>".$v['commento']."</p>";
+                    $contenuto.='<li id="commento"><strong>'.$v[0]['nome_utente']."|".$v[0]['datav']."</strong><p id=testoCommento>".$v[0]['commento']."</p>";
                     $contenuto.='<ul id="valutazioneCommento">
-                            <li>Complessivo: '.$v['p_complessivo']."</li>
-                            <li>Accessibilità fisica: ".$v['p_acc_fisica']."</li>
-                            <li>Servizio inclusione: ".$v['p_servizio']."</li>
-                            <li>Tempestività burocratica: ".$v['tempestivita_burocratica']."</li>
-                            <li>Insegnamento: ".$v['p_insegnamento']."</li></ul></li>";
+                            <li>Complessivo: '.$v[0]['p_complessivo']."</li>
+                            <li>Accessibilità fisica: ".$v[0]['p_acc_fisica']."</li>
+                            <li>Servizio inclusione: ".$v[0]['p_servizio']."</li>
+                            <li>Tempestività burocratica: ".$v[0]['tempestivita_burocratica']."</li>
+                            <li>Insegnamento: ".$v[0]['p_insegnamento']."</li></ul></li>";
                 }
                 $contenuto.='</ul><span><input type="button" id="aggiuntaCommento" value"aggiungi un commento" onclick="addComment()"></span>
                 <span><input type="button" id="mostraCommenti" value="mostra altri commenti" onclick="showComments()"></span>';
@@ -68,7 +69,7 @@ $db=new Connection();
                     $contenuto.='<li id="corso"><a href="'.$c['link'].'"><strong>'.$c['nome'].'</strong></a> |'.$c['accesso'];
                     # se riesce a procurarsi il link bene, altrimenti semplicemente non lo inserisco
                     $ateneo=$c['ateneo'];
-                    $query_link_ateneo="SELECT link FROM Ateneo WHERE ateneo=\"$ateneo\";";
+                    $query_link_ateneo="SELECT link FROM Ateneo WHERE nome=\"$ateneo\";";
                     if($linkAteneo=$db->ExecQueryAssoc($query_link_ateneo)){
                         $contenuto.=' | <a href="'.$linkAteneo['link'].'">'.$c['ateneo'].'</a>';
                     }else{
