@@ -5,7 +5,7 @@ $target=PulisciInput($_GET['nclasse']);
 $content=file_get_contents('gruppi_disciplinari.html');
 $errori='';
 $contenuto='';
-$query_classe="SELECT DISTINCT (denominazione,illustrazione,area_disciplinare,gruppo_disciplinare,durata) FROM ClassediLaurea WHERE num_classe=\"$target\";";
+$query_classe="SELECT denominazione,illustrazione,area_disciplinare,gruppo_disciplinare,durata FROM ClassediLaurea WHERE num_classe=\"$target\";";
 
 $db=new Connection();
     $dbOK=$db->Connect();
@@ -36,10 +36,10 @@ $db=new Connection();
             # se ottengo tag (da filtro, al primo caricamento della pagina sara sempr false) allora la query chiedera solo le valutazioni corrispondenti
             if(isset($_GET['tag'])){
                 $targetTag=PulisciInput($_GET['tag']);
-                $query_valutazione="SELECT DISTINCT (nome_utente,datav,commento,p_complessivo,p_acc_fisica,p_servizio_inclusione,tempestivita_burocratica,p_insegnamento) 
+                $query_valutazione="SELECT nome_utente,datav,commento,p_complessivo,p_acc_fisica,p_servizio_inclusione,tempestivita_burocratica,p_insegnamento 
                 FROM Valutazione WHERE classe_laurea=\"$target\" AND tag=\"$targetTag\";";
             }else{
-                $query_valutazione="SELECT DISTINCT (nome_utente,datav,commento,p_complessivo,p_acc_fisica,p_servizio_inclusione,tempestivita_burocratica,p_insegnamento) 
+                $query_valutazione="SELECT nome_utente,datav,commento,p_complessivo,p_acc_fisica,p_servizio_inclusione,tempestivita_burocratica,p_insegnamento 
                 FROM Valutazione WHERE classe_laurea=\"$target\";";
             }
             if($valutazioni=$db->ExecQueryAssoc($query_valutazione)){
@@ -60,7 +60,7 @@ $db=new Connection();
                 $errori.="<p>Opss,si è verficato un errore di conessione: impossibile caricare i commenti. Riprova</p>";
             }
             # corsi di studio associati
-            $query_corso_di_studio="SELECT DISTINCT (ateneo,nome,accesso,link) FROM CorsodiStudio WHERE classe_laurea=\"$target\";";
+            $query_corso_di_studio="SELECT ateneo,nome,accesso,link FROM CorsodiStudio WHERE classe_laurea=\"$target\";";
             if($corsi=$db->ExecQueryAssoc($query_corso_di_studio)){
                 #display corsi
                 $contenuto.='<ul id="corsi">';
@@ -90,7 +90,6 @@ $db=new Connection();
         $errori.="<p>Ci scusiamo, la connessione non e' riuscita, attendere e riprova</p>";
     } 
     
-    $content=str_replace("<gruppo/>",$gruppo,$content);
     $content=str_replace("<classe/>",$target,$content); 
     $content=str_replace("<content/>",$contenuto,$content);
     $content=str_replace("<error/>",$errori,$content);
