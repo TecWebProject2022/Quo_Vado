@@ -295,7 +295,6 @@ header > ul{
     text-decoration: none;
     border-radius: 25px;
     box-shadow: inset 5px -10px 16px rgba(0, 0, 0, 0.25);
-    
 }
 
 #error_page a:hover{
@@ -649,37 +648,44 @@ ESPLORA CORSI
 .area {
     flex-grow: 1;
     flex-basis: 15%;
-    background: #0D5D70;
-    padding: 2em;
+    background: #FFFDE8;
+    padding: 1em;
+    border: 2px solid #f0ecc8;
     margin: 1em;
     text-align: center;
     line-height: 2em;
-    /*transition: all .2s ease-in-out;*/
+    box-shadow: 5px 10px 15px rgba(0, 0, 0, 0.25);
 }
 
 .area a:link {
-    
+    color: #FFFFFF;
+    background-color: #000000;
+    background-clip: content-box;
+    text-decoration: none;
 }
 
 .area a:visited {
+    color: #D67200;
     
 }
-/*
-.area:hover {
-    transform: scale(1.05);
+
+.area dd {
+    font-family: Monospace;
+    font-size: 1.3em;
 }
-*/
+
 #stem {
     background: url('css_images/stem.jpg');
     background-size: cover;
     background-position: center;
-    padding: 7em 0em 7em 0em;
+    padding: 6em 0em 6em 0em;
     margin-bottom: 1.5em;
     transition: all .2s ease-in-out;
+    font-size: 1.5em;
 }
 
 #stem a {
-    padding: 8em 9em 8em 9em;
+
 }
 
 #stem:hover {
@@ -690,13 +696,15 @@ ESPLORA CORSI
     background: url('css_images/sanitaria.jpg');
     background-size: cover;
     background-position: center;
-    padding: 7em 0em 7em 0em;
+    padding: 6em 0em 6em 0em;
     margin-bottom: 1.5em;
-    font-size: 1em;
+    transition: all .2s ease-in-out;
+    font-size: 1.4em;
 }
 
 #sanita a {
-    padding: 8em 2.9em 8em 2.9em;
+    padding: 5em 1em 5em 1em;
+    width: auto;
 }
 
 #sanita:hover {
@@ -707,13 +715,13 @@ ESPLORA CORSI
     background: url('css_images/arte.jpg');
     background-size: cover;
     background-position: center;
-    padding: 7em 0em 7em 0em;
+    padding: 6em 0em 6em 0em;
     margin-bottom: 1.5em;
-    font-size: 1em;
+    transition: all .2s ease-in-out;
+    font-size: 1.5em;
 }
 
 #arte a {
-    padding: 8em 4.67em 8em 4.67em;
 }
 
 #arte:hover {
@@ -724,13 +732,13 @@ ESPLORA CORSI
     background: url('css_images/economia.jpg');
     background-size: cover;
     background-position: center;
-    padding: 7em 0em 7em 0em;
+    padding: 6em 0em 6em 0em;
     margin-bottom: 1.5em;
-    font-size: 1em;
+    transition: all .2s ease-in-out;
+    font-size: 1.4em;
 }
 
 #economia a {
-    padding: 8em 1.9em 8em 1.9em;
 }
 
 #economia:hover {
