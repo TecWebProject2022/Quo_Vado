@@ -1,7 +1,7 @@
 //Validazione dei campi
 var test={
     "name":/^[a-zA-Z ]{2,20}$/,
-    "last_name":/^[a-zA-Z ]{2,40}$/,
+    "last_name":/^[a-zA-Z ]{3,30}$/,
     "birthday":/\d{4}\-\d{2}\-\d{2}/,
     "username":/^[@a-zA-Z0-9._-]{4,40}$/,
     "password":/^[@a-zA-Z0-9._-]{4,20}$/
