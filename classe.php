@@ -2,7 +2,7 @@
 require_once 'utilita.php';
 require_once 'database.php';
 $target=PulisciInput($_GET['nclasse']);
-content=file_get_contents('gruppi_disciplinari.html');
+$content=file_get_contents('gruppi_disciplinari.html');
 $errori='';
 $contenuto='';
 $query_classe="SELECT DISTINCT (denominazione,illustrazione,area_disciplinare,gruppo_disciplinare,durata) FROM ClassediLaurea WHERE num_classe=\"$target\";";
