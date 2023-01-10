@@ -56,8 +56,8 @@ $db=new Connection();
                 }
                 $contenuto.='</ul><span><input type="button" id="aggiuntaCommento" value"aggiungi un commento" onclick="addComment()"></span>
                 <span><input type="button" id="mostraCommenti" value="mostra altri commenti" onclick="showComments()"></span>';
-            else{
-                $errori.="<p>Opss si è verficato un errore di conessione, riprova</p>";
+            }else{
+                $errori.="<p>Opss,si è verficato un errore di conessione: impossibile caricare i commenti. Riprova</p>";
             }
             # corsi di studio associati
             $query_corso_di_studio="SELECT DISTINCT (ateneo,nome,accesso,link) FROM CorsodiStudio WHERE classe_laurea=\"$target\";";
@@ -67,7 +67,8 @@ $db=new Connection();
                 foreach($corsi as $c){
                     $contenuto.='<li id="corso"><a href="'.$c['link'].'"><strong>'.$c['nome'].'</strong></a> |'.$c['accesso'];
                     # se riesce a procurarsi il link bene, altrimenti semplicemente non lo inserisco
-                    $query_link_ateneo="SELECT link FROM Ateneo WHERE ateneo=\"$c['ateneo']\";";
+                    $ateneo=$c['ateneo'];
+                    $query_link_ateneo="SELECT link FROM Ateneo WHERE ateneo=\"$ateneo\";";
                     if($linkAteneo=$db->ExecQueryAssoc($query_link_ateneo)){
                         $contenuto.=' | <a href="'.$linkAteneo['link'].'">'.$c['ateneo'].'</a>';
                     }else{
@@ -77,26 +78,22 @@ $db=new Connection();
                 }
                 $contenuto.='</ul><span><input type="button" id="aggiuntaCommento" value"aggiungi un commento" onclick="addComment()"></span>
                 <span><input type="button" id="mostraCommenti" value="mostra altri commenti" onclick="showComments()"></span>';
-            else{
-                $errori.="<p>Opss si è verficato un errore di conessione, riprova</p>";
+            }else{
+                $errori.="<p>Opss si è verficato un errore di conessione: impossibile caricare i corsi di laurea, riprova</p>";
             }
         }
         else{
             $errori.="<p>nessun risultato presente</p>";
         }
         $db->Disconnect();
-    }
-    
-    else{
+    }else{
         $errori.="<p>Ci scusiamo, la connessione non e' riuscita, attendere e riprova</p>";
     } 
-    
     
     $content=str_replace("<gruppo/>",$gruppo,$content);
     $content=str_replace("<classe/>",$target,$content); 
     $content=str_replace("<content/>",$contenuto,$content);
     $content=str_replace("<error/>",$errori,$content);
     echo $content;
-
-    
+ 
 ?>
