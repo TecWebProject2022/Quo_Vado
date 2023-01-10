@@ -641,7 +641,7 @@ ESPLORA CORSI
 .area_disciplinare {
     display: flex;
     align-items: stretch;
-    margin: 0% 5% 1.5% 5%;
+    margin: 0% 1.3% 1.5% 1.3%;
     flex-wrap: wrap;
 }
 
@@ -651,7 +651,7 @@ ESPLORA CORSI
     background: #FFFDE8;
     padding: 1em;
     border: 2px solid #f0ecc8;
-    margin: 1em;
+    margin: 0.6em;
     text-align: center;
     line-height: 2em;
     box-shadow: 5px 10px 15px rgba(0, 0, 0, 0.25);
