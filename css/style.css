@@ -777,12 +777,13 @@ OBIETTIVO LAVORO
     padding: 1.5em; 
     border-radius: 5px; 
     flex: 1 1 200px; 
-    transition: all .2s ease-in-out;
+    /*transition: all .2s ease-in-out;*/
 }
+/*
 #external_resources li:hover {
     transform: scale(1.02);
 }
-
+*/
 
 #external_resources p{
     font-size: 0.8em;
