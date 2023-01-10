@@ -197,7 +197,7 @@ header > ul{
 #visible-sottomenu {
     position: relative;
     z-index: 1;
-    background: #162636; /* se browser non supporta linear-gradient*/
+    background: #D67200; /* se browser non supporta linear-gradient*/
     background: linear-gradient(to bottom, orange, #D67200);
 }
 
@@ -220,7 +220,6 @@ header > ul{
     padding: 0.5em;
     border-radius: 10px;
     box-shadow: -5px -5px 4px rgba(0, 0, 0, 0.25);
-    /*border: #FFFEF4 0.2px solid;*/
     color: var(--menulink);
     background-color: var(--menulinkbg);
     font-variant: small-caps;
@@ -230,7 +229,6 @@ header > ul{
     padding: 0.5em;
     border-radius: 10px;
     box-shadow: -5px -5px 3px rgba(0, 0, 0, 0.25);
-    /*border: #E36600 0.2px solid;*/
     color: var(--menulinkvisited);
     background-color: var(--menulinkvisitedbg);
 }
@@ -242,9 +240,7 @@ header > ul{
 }
 
 #visible-sottomenu #currentSubLink {
-   /* padding: 0.5em;*/
     padding-right: 1.2em;
-    /*color: #FFFEF4;*/
     color: #162636;
     font-size: 1.3em;
     
@@ -768,38 +764,54 @@ OBIETTIVO LAVORO
     background-size: cover;
 }
 
-.external_link {
-    padding: 1.5em 3em 1.5em 3em;
-    margin: 2em;
-    font-size: 1em;
-    line-height: 2em;
-    border-radius: 15px;
-    box-shadow: 1px 15px 19px 6px rgba(0,0,0,0.26);
+#external_resources{
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
 }
 
-#utilities > a {
-    text-decoration: none;
-    font-size: 0.9em;
-}
-
-.external_link {
+#external_resources li {
+    border-radius: 10px;
+    box-shadow: 5px 10px 15px rgba(0, 0, 0, 0.25);
+    margin: 1.5em; 
+    padding: 1.5em; 
+    border-radius: 5px; 
+    flex: 1 1 200px; 
     transition: all .2s ease-in-out;
 }
-
-#utilities > a:link {
-    color:#000000;
-}
-
-#utilities > a:visited {
-    color:#000000;
-}
-
-.external_link:hover {
+#external_resources li:hover {
     transform: scale(1.02);
 }
 
-.external_link > dt {
-    font-size: 1.2em;
+
+#external_resources p{
+    font-size: 0.8em;
+    margin: 5% 0% 10% 0%;
+    color: #162636;
+
+}
+
+#external_resources h3{
+    font-size: 1.5em;
+    color: #0D5D70;
+}
+
+img[src="images/almalaurea.png"]{
+    margin-bottom: 2em;
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+}
+
+img[src="images/atlanteProfessioni.svg"]{
+    margin-bottom: 2em;
+    width: 92%;
+    height: auto;
+    border-radius: 10px;
+}
+
+#external_resources a{
+    font-size: 1.5em;
 }
 
 /*
