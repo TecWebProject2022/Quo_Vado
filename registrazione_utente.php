@@ -64,7 +64,6 @@ if(isset($_POST['submit'])){
             $db->Disconnect();
         }
         else{
-            echo"hdhjdh3";
             $errori.="Connessione non riuscita";
         }
         
