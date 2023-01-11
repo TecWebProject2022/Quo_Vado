@@ -62,8 +62,8 @@ $db=new Connection();
             #sezione commenti
             
             # se ottengo tag (da filtro, al primo caricamento della pagina sara sempr false) allora la query chiedera solo le valutazioni corrispondenti
-            if(isset($_GET['tag'])){
-                $targetTag=PulisciInput($_GET['tag']);
+            if(isset($_GET['filterTag'])){
+                $targetTag=PulisciInput($_GET['filterTag']);
                 $query_valutazione="SELECT nome_utente,datav,commento,p_complessivo,p_acc_fisica,p_servizio_inclusione,tempestivita_burocratica,p_insegnamento 
                 FROM Valutazione WHERE classe_laurea=\"$target\" AND tag=\"$targetTag\";";
             }else{
@@ -92,10 +92,10 @@ $db=new Connection();
             #controllo se sono in presenza di un utente loggato
             session_start();
             if(!isset($_SESSION['user'])){
-                $contenuto.='<p>Icriviti o accedi per lasciare un commento!</p>';
+                $contenuto.='<p><a href="registrazione_utente.php">Iscriviti</a> o <a href="login.php">Accedi</a> per lasciare un commento!</p>';
             }
             else{
-                $erroriNuovoCommento=$_GET['erroriCommenti'];
+                $erroriNuovoCommento=isset($_GET['erroriCommenti'])?$_GET['erroriCommenti']:'';
                 $contenuto.='<form id="formCommento" action="addComment.php" method="post">
                 <fieldset>
                     <legend>Aggingi un commento!<legend>
@@ -122,6 +122,7 @@ $db=new Connection();
                         <option value="1">Inclusivita\'</option>
                         <option value="2">commento generale</option></select></span>
                     <input type="hidden" name="classe" value="'.$target.'">
+                    <input type="hidden" name="area" value="'.$area.'">
                 </fieldset>
                 <input type="submit" id="submit"  name="pubblica" value="pubblica"/>
                 <input type="reset"  name="cancella" value="cancella"/>

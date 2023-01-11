@@ -12,7 +12,7 @@ if(!isset($_SESSION['user']) || !isset($_SESSION['time']) || time()-$_SESSION['t
 else if($_SESSION['user']!='admin'){
     unset($_SESSION['user']); 
     unset($_SESSION['time']);
-    $_SESSION['sessione']='<p>Non hai i permessi di admin per accedere a quest\' area per accedere</p>';
+    $_SESSION['sessione']='<p>Non hai i permessi di admin per accedere a quest\' area.</p>';
     header('Location:login.php');
 }
 echo"<a href='logout.php'>LOGOUT</a>";
