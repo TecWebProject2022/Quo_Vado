@@ -95,6 +95,7 @@ $db=new Connection();
                 $contenuto.='<p>Icriviti o accedi per lasciare un commento!</p>';
             }
             else{
+                $erroriNuovoCommento=$_GET['erroriCommenti'];
                 $contenuto.='<form id="formCommento" action="addComment.php" method="post">
                 <fieldset>
                     <legend>Aggingi un commento!<legend>
@@ -116,12 +117,15 @@ $db=new Connection();
                     <label for="p_insegnamento">punteggio insegnamento:</label>
                     <span><input type="number" id="p_insegnamento" placeholder="1" value="1" min="1" max="5" required
                         msg-data-empty="inserisci il punteggio insegnamento del corso" msg-data-invalid="il punteggio deve essere compreso tra 1 e 5"/></span>   
-                    
+                    <label for="tag">Il tuo commento riguarda:</label>
+                    <span><select name="tag" id="tag" data-msg-empty="Per favore, aiutaci a capire di cosa parla il tuo commento">
+                        <option value="1">Inclusivita\'</option>
+                        <option value="2">commento generale</option></select></span>
                     <input type="hidden" name="classe" value="'.$target.'">
                 </fieldset>
                 <input type="submit" id="submit"  name="pubblica" value="pubblica"/>
                 <input type="reset"  name="cancella" value="cancella"/>
-            </form>';
+            </form><span><strong>'.$erroriNuovoCommento.'</strong></span>';
             }
 
             

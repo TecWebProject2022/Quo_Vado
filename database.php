@@ -88,6 +88,14 @@ class Connection{
             return $result;
         }
     }
+
+    public function Update($query) {
+        $query_result = $this->conn->query($query);
+        if($this->conn->affected_rows > 0) {
+            return true;
+        }
+        return false;
+    }
     
 }
     
