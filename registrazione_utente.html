@@ -14,11 +14,11 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     
     <link rel="shortcut icon" type="image/png" href="images/icon.ico" />
-   
+   <script src="js/reg.js"></script>
 
 </head>
     
-<body onload="addFunction()">
+<body onload="AddFunction()">
     <header>
         <h1>Quo vado?</h1>
 		<h2>Sito di orientamento universitario</h2>
@@ -53,7 +53,7 @@
  
     <main id="content">
         <h1>REGISTRAZIONE</h1>
-        <form action="registrazione_utente.php" method="post">
+        <form action="registrazione_utente.php"  onsubmit="Validate()" method="post">
                 
             <fieldset id="set_personal_data">
                 
@@ -103,7 +103,7 @@
                 <label for="password"><span lang="en">Password:</span></label>
                 <span><input id="password" type="password" name="password" value="<valorePassword/>"  placeholder="Password"                      
                         data-msg-empty="Password non inserita. Per favore, inserisci la tua password"
-                        data-msg-invalid='La password deve essere compresa ra 4 e 20 caratteri, (sono ammessi i seguenti caratteri: @ . _ - )'/></span>        
+                        data-msg-invalid='La password deve essere compresa tra 4 e 20 caratteri, (sono ammessi i seguenti caratteri: @ . _ - )'/></span>        
                 
                 <label for="repeat_password">Ripeti la tua <span lang="en">password:</span></label>
                 <span><input type="password" id="repeat_password" name="repeat_password" value="" placeholder="Ripeti la password" 

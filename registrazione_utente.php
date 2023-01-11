@@ -24,7 +24,7 @@ if(isset($_POST['submit'])){
     if(!preg_match('/^[a-zA-Z ]{2,20}$/',$nome)){
         $errori.='<li>Il campo nome non può essere vuoto e può contenere numeri o caratteri speciali, deve avere una lunghezza compresa da 2 a 20 caratteri</li>';
     }
-    if(!preg_match('/^[a-zA-Z ]{2,40}$/',$cognome)){
+    if(!preg_match('/^[a-zA-Z ]{3,30}$/',$cognome)){
         $errori.='<li>Il campo cognome non può essere vuoto e può contenere numeri o caratteri speciali, deve avere una lunghezza compresa da 2 a 40 caratteri</li>';
     }
     if(!preg_match('/\d{4}\-\d{2}\-\d{2}/',$data)){
@@ -51,8 +51,9 @@ if(isset($_POST['submit'])){
             
             else{
                 $insert="INSERT INTO Utente(nome_utente, nome, cognome,data_nascita, genere, scuola_sup) VALUES(\"".$username."\",\"".$nome."\",\"".$cognome."\",\"".$data."\",\"".$genere."\",\"".$scuola."\");";
+                $insert.="INSERT INTO Credenziale(pw, data_inserimento, utente, attuale) VALUES('".$password."',curdate(),'".$username."',1); ";
             
-                $q=$db->Insert($insert);
+                $q=$db->multiInsert($insert);
                 if($q){
                     $errori.="<li>Inserimento con successo</li>";
                 }
@@ -64,7 +65,6 @@ if(isset($_POST['submit'])){
             $db->Disconnect();
         }
         else{
-            echo"hdhjdh3";
             $errori.="Connessione non riuscita";
         }
         
