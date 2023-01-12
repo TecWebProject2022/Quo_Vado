@@ -72,7 +72,7 @@ if( isset($_POST['submit'])){
             }else{
                 #inserimento commento
                 $insert = "INSERT INTO Valutazione(nome_utente,classe_laurea,datav,commento,tag,p_complessivo,p_acc_fisica,p_servizio_inclusione,tempestivita_burocratica,p_insegnamento) VALUES('".$username."','".$classe."', '".$data."','".$commento."',".$tag.",".$complessivo.",".$accessibilita.",".$inclusione.",".$tempestivita.",".$insegnamento.");";
-
+                echo $insert;
                 if(!$q=$db->Insert($insert)){
                         $errori.="Inserimento non riuscito";
                 }
