@@ -10,13 +10,34 @@ if(!isset($_SESSION['user']) || !isset($_SESSION['time']) || time()-$_SESSION['t
     $_SESSION['sessione']='<p>Sessione Scaduta</p>';
     header('Location:login.php');
 }
+$menu1='<nav id="visible-sottomenu" aria-label="sotto menù di area riservata">
+<ul>
+    <li><a href="#Commenti">Commenti rilasciti</a></li>
+    <li><a href="#CambioPw">Cambia password</a></li>
+    <li><a href="logout.php">Logout</a></li>
+</ul>
+</nav>';
+$menu2='<nav id="visible-sottomenu" aria-label="sotto menù di area riservata">
+<ul>
+    <li><a href="#Commenti">Commenti rilasciti</a></li>
+    <li><a href="logout.php">Logout</a></li>
+</ul>
+</nav>';
 $vecchia='';
 $nuova='';
 $content=file_get_contents("area_riservata.html");
+$user=$_SESSION['user'];
+if($user!='user'){
+    $content=str_replace('<sottomenu/>',$menu1,$content);
+}
+else{
+    $content=str_replace('<sottomenu/>',$menu2,$content);
+}
+
 $errori1='<ul>';
 $errori='';
 $contenuto='';
-$user=$_SESSION['user'];
+
 $query1="Select  * from Utente where nome_utente=\"$user\";";
 $db=new Connection();
 $dbOK=$db->Connect();
@@ -46,6 +67,8 @@ if($dbOK){
                 $contenuto.="</li>"; 
             }
             $contenuto.="</ul>";
+            $contenuto.="<h2 id='Commenti'>Commenti rilasciati: </h2>";
+            $query3="";
         }
         else{
             $errori.="<p>Siamo spiacenti ma i dati non sono al momento dipsonibili</p>";
@@ -60,7 +83,8 @@ else{
     $errori.="<p>Siamo spiacenti ma i dati non sono al momento dipsonibili</p>";
 }
 if($user!='user'){
-    $contenuto.='<form action="area_utente.php" method="post" onsubmit="return Validate()">
+
+    $contenuto.='<h2 id="CambioPw">Cambia Password</h2><form action="area_utente.php" method="post" >
     <fieldset>Cambio password</fieldset>
     <label for="oldpassword"><span lang="en">Immetti la tua vecchia Password: </span></label>
     <span><input  value="<old>" type="password" id="oldpassword" name="Vecchiapassword" placeholder="Immetti la tua vecchia Password" maxlength="20"                      
@@ -133,5 +157,4 @@ $content=str_replace("<content/>",$contenuto,$content);
 $content=str_replace("<errori/>",$errori,$content);
 $content=str_replace("</err/>",$errori1,$content);
 echo $content;
-echo"<a href='logout.php'>LOGOUT</a>";
 ?>
