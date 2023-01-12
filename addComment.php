@@ -64,14 +64,14 @@ if( isset($_POST['submit'])){
             $query="SELECT nome_utente from Valutazione where nome_utente=\"".$username."\" AND classe_laurea=\"".$classe."\"";
             if($r=$db->ExecQueryAssoc($query)){
                 # aggiornamento commento
-                $insert = "INSERT INTO Valutazione(nome_utente,classe_laurea,datav,commento,tag,p_complessivo,p_acc_fisica,p_servizio_inclusione,tempestivita_burocratica,p_insegnamento) VALUES('".$username."','".$classe."','".$data."','".$commento."','".$tag."','".$complessivo."','".$accessibilita."','".$inclusione."','".$tempestivita."','".$insegnamento."');";
+                $insert = "INSERT INTO Valutazione(nome_utente,classe_laurea,datav,commento,tag,p_complessivo,p_acc_fisica,p_servizio_inclusione,tempestivita_burocratica,p_insegnamento) VALUES('".$username."','".$classe."','".$data."','".$commento."',".$tag.",".$complessivo.",".$accessibilita.",".$inclusione.",".$tempestivita.",".$insegnamento.");";
 
                 if(!$db->Update($update)){
                     $errori.="Impossibile aggiornare il commento";
                 }
             }else{
                 #inserimento commento
-                $insert = "INSERT INTO Valutazione(nome_utente,classe_laurea,datav,commento,tag,p_complessivo,p_acc_fisica,p_servizio_inclusione,tempestivita_burocratica,p_insegnamento) VALUES('".$username."','".$classe."', '".$data."','".$commento."','".$tag."','".$complessivo."','".$accessibilita."','".$inclusione."','".$tempestivita."','".$insegnamento."');";
+                $insert = "INSERT INTO Valutazione(nome_utente,classe_laurea,datav,commento,tag,p_complessivo,p_acc_fisica,p_servizio_inclusione,tempestivita_burocratica,p_insegnamento) VALUES('".$username."','".$classe."', '".$data."','".$commento."',".$tag.",".$complessivo.",".$accessibilita.",".$inclusione.",".$tempestivita.",".$insegnamento.");";
 
                 if(!$q=$db->Insert($insert)){
                         $errori.="Inserimento non riuscito";
