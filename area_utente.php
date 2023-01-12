@@ -110,7 +110,7 @@ if(isset($_POST['submit1'])){
                     $errori1.="<li>Password modificata con successo</li>";
                 }
                 else{
-                    $errori1.="<li>Aggiornamento della pasword  non riuscito</li>";
+                    $errori1.="<li>Aggiornamento della password  non riuscito</li>";
                 } 
             }
         }
