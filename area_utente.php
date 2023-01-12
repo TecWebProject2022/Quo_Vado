@@ -54,7 +54,7 @@ if($dbOK){
         $contenuto.="</dl>";
         $query2="Select ateneo, classe,corso, datai, dataf,punteggio_scuola_provenienza  from Iscrizione where nome_utente=\"$user\"";
         if($res2=$db->ExecQueryAssoc($query2)){
-            $contenuto.="<h2>Iscrizioni:</h2> ";
+            $contenuto.="<h2>Iscrizioni</h2> ";
             $contenuto.="<ul>";
             foreach($res2 as $i){
                 $contenuto.="<li>";
@@ -67,7 +67,7 @@ if($dbOK){
                 $contenuto.="</li>"; 
             }
             $contenuto.="</ul>";
-            $contenuto.="<h2 id='Commenti'>Commenti rilasciati: </h2>";
+            $contenuto.="<h2 id='Commenti'>Commenti rilasciati</h2>";
             $query3="";
         }
         else{
