@@ -123,9 +123,10 @@ $db=new Connection();
                         <option value="2">commento generale</option></select></span>
                     <input type="hidden" name="classe" value="'.$target.'">
                     <input type="hidden" name="area" value="'.$area.'">
+                    
+                    <input type="submit" id="submit"  name="submit" value="pubblica"/>
+                    <input type="reset"  name="cancella" value="cancella"/>
                 </fieldset>
-                <input type="submit" id="submit"  name="submit" value="pubblica"/>
-                <input type="reset"  name="cancella" value="cancella"/>
             </form><span><strong>'.$erroriNuovoCommento.'</strong></span>';
             }
 
