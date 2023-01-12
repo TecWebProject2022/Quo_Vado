@@ -150,7 +150,7 @@ $contenuto.='<h2 id="Aggiungi">Aggiungi un commento</h2><form  action="area_uten
     <option value="2">commento generale</option></select></span>
 
 <input type="submit" id="submit"  name="submit2" value="pubblica"/>
-<input type="reset"  name="cancella" value="cancella"/>
+<input type="reset"  name="cancella" value="cancella tutti i campi"/>
 </fieldset>
 </form>
 </errorform>';
