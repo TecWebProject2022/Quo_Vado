@@ -1,6 +1,5 @@
 <?php
 session_start();
-echo time()-$_SESSION['time'];
 require_once 'utilita.php';
 require_once 'database.php';
 // Se non hai fatto il login o la tua sessione (durata max 1 h di inattività) è scaduta
@@ -24,6 +23,7 @@ $menu2='<nav id="visible-sottomenu" aria-label="sotto menù di area riservata">
 </ul>
 </nav>';
 $vecchia='';
+$res3='';
 $nuova='';
 $content=file_get_contents("area_riservata.html");
 $user=$_SESSION['user'];
@@ -36,8 +36,9 @@ else{
 
 $errori1='<ul>';
 $errori='';
+$commenti='<ul>';
 $contenuto='';
-
+$cancella='';
 $query1="Select  * from Utente where nome_utente=\"$user\";";
 $db=new Connection();
 $dbOK=$db->Connect();
@@ -68,7 +69,35 @@ if($dbOK){
             }
             $contenuto.="</ul>";
             $contenuto.="<h2 id='Commenti'>Commenti rilasciati</h2>";
-            $query3="";
+            $query3="Select classe_laurea,datav,commento,p_complessivo,p_acc_fisica,p_servizio_inclusione,tempestivita_burocratica,p_insegnamento,tag FROM Valutazione WHERE nome_utente=\"$user\"";
+            if($res3=$db->ExecQueryNum($query3)){
+                $contenuto.="<label>Seleziona un commento e premi cancella per eliminarlo";
+                $contenuto.='<form  action="area_utente.php"  onsubmit="Validate()" method="post">
+                <fieldset><legend>Commenti</legend>';
+                for($i=0;$i<count($res3);$i++){
+                    
+                        $contenuto.='<span><input type="radio" id="'.$i.'" name="commento" value="'.$i.'" /></span><label for="'.$i.'">
+                        <ul><li>Data di emissione: '.$res3[$i][1].'</li>
+                        <li>Classe di laurea: '.$res3[$i][0].'</li>
+                        <li>Comemento: '.$res3[$i][2].'</li>
+                        <li>Valutazione complessiva: '.$res3[$i][3].'</li>
+                        <li>Valutazione accessibilità fisica: '.$res3[$i][4].'</li>
+                        <li>Valutazione sul servizio inclusione: '.$res3[$i][5].'</li>
+                        <li>Valutazione sulla tempestività burocratica: '.$res3[$i][6].'</li>
+                        <li>Valutazione sulla qualità di insegnamento: '.$res3[$i][7].'</li>';
+                        if($res3[$i][8]==1){
+                            $contenuto.="<li>Valutazione riguardante l'ambito dell'inclusità</li></ul></label><br />";
+                        }
+                        else{
+                            $contenuto.="<li>Valutazione riguardante l'ambito generale </li></ul></label><br />";
+                        }      
+                }
+                $contenuto.='<input type="submit" id="submit2"  name="submit2" value="cancella"/></fieldset></form></commenterror>';
+                
+            }
+            else{
+                $errori.="<p>Siamo spiacenti non hai ancora inserito alcun commento</p>";
+            }
         }
         else{
             $errori.="<p>Siamo spiacenti ma i dati non sono al momento dipsonibili</p>";
@@ -102,6 +131,25 @@ if($user!='user'){
     </form>
     </err/>';
 }
+if(isset($_POST['submit2']) && check()){
+    $cancella=isset($_POST['commento']) ? $_POST['commento'] : '' ;
+    echo $cancella;
+    if($cancella==''){
+     $commenti.='<li>Selezionare un commento per cancellarlo</li>';
+    }
+    else{
+        $db=new Connection();
+        $dbOK=$db->Connect();
+        if($dbOK){
+            $query4="DELETE FROM Valutazione Where nome_utente=\"".$user."\" && classe_laurea=\"".$res3[$cancella][0]."\";";
+            if($r=$db->Insert($query4)){
+                echo "hidih";
+                header('Location:area_utente.php');
+            }
+        $db->Disconnect();
+        }
+    }
+} 
 if(isset($_POST['submit1']) && check()){
     $vecchia=PulisciInput($_POST['Vecchiapassword']);
     $nuova=PulisciInput($_POST['newpassword']);
@@ -151,6 +199,9 @@ if(isset($_POST['submit1']) && check()){
     }
     
 }
+
+
+$contenuto=str_replace("</commenterror>",$commenti,$contenuto);
 $contenuto=str_replace("<new>",$nuova,$contenuto);
 $contenuto=str_replace("<old>",$vecchia,$contenuto);
 $content=str_replace("<content/>",$contenuto,$content);
