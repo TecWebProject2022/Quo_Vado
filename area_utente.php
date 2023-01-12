@@ -27,9 +27,20 @@ if($dbOK){
         $contenuto.="<dt>Genere: </dt><dd>".$res1[0]['genere']."</dd>";
         $contenuto.="<dt>Scuola superiore frequentata: </dt><dd>".$res1[0]['scuola_sup']."</dd>";
         $contenuto.="</dl>";
-        $query2="Select  * from Iscrizione where nome_utente=\"$user\"";
+        $query2="Select ateneo, classe,corso, datai, dataf,punteggio_scuola_provenienza  from Iscrizione where nome_utente=\"$user\"";
         if($res2=$db->ExecQueryAssoc($query2)){
-            print_r($res2);
+            $contenuto.="<ol>";
+            foreach($res2 as $i){
+                $contenuto.="<li>";
+                $contenuto.="<ul><li>Ateneo: ".$i['ateneo']."</li>";
+                $contenuto.="<ul><li>Classe di Laurea: ".$i['classe']."</li>";
+                $contenuto.="<ul><li>Corso di Studi: ".$i['corso']."</li>";
+                $contenuto.="<ul><li>Data inizio studi: ".date("d/m/Y",strtotime($i['datai']))."</li>";
+                $contenuto.="<ul><li>Data fine studi: ".date("d/m/Y",strtotime($i['dataf']))."</li>";
+                $contenuto.="<ul><li>Punteggio di affinità con la scuoa superiore frequentata: ".$i['punteggio_scuola_provenienza']."</li></ul>";
+                $contenuto.="</li>"; 
+            }
+            $contenuto.="</ol>";
         }
         else{
             $errori.="<p>Siamo spiacenti ma i dati non sono al momento dipsonibili</p>";

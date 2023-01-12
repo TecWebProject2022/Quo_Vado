@@ -74,7 +74,7 @@ create table Iscrizione(
     datai date not null,
     PRIMARY KEY(ateneo,classe,corso,nome_utente), 
     punteggio_scuola_provenienza int   not null check(punteggio_scuola_provenienza>0 and punteggio_scuola_provenienza<6), 
-    dataf date not null,
+    dataf date not null ,
     FOREIGN KEY(ateneo,classe,corso) REFERENCES CorsodiStudio(ateneo, classe_laurea, nome) ON UPDATE CASCADE ON DELETE CASCADE,
     FOREIGN KEY(nome_utente) REFERENCES Utente(nome_utente) ON UPDATE CASCADE
 );
