@@ -242,7 +242,11 @@ if(isset($_POST['submit1']) && check()){
         }
     $errori1.="</ul>";   
     }
+
     
+}
+if(isset($_POST['submit2'])){
+    echo"jjj";
 }
 $db->Disconnect();
 $contenuto=str_replace("</errorform>",$errorf,$contenuto);
