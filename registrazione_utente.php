@@ -31,7 +31,7 @@ if(isset($_POST['submit'])){
         $errori.='<li>La data  inserita non rispetta il seguente schema: dd/mm/aaaa</li>';
     }
     if (!preg_match('/^[@a-zA-Z0-9._-]{4,40}$/',$username)){
-        $errori.='<li>Il campo username  non può esseervuoto e  non può contenere spazzi e deve contenere da 4 a 40 caratteri alfanumerici (sono ammessi i seguenti caratteri: @ . _ - )</li>';
+        $errori.='<li>Il campo username  non può essere vuoto e  non può contenere spazzi e deve contenere da 4 a 40 caratteri alfanumerici (sono ammessi i seguenti caratteri: @ . _ - )</li>';
     }
     if (!preg_match('/^[@a-zA-Z0-9._-]{4,20}$/',$password)){
         $errori.='<li>Il campo password non può essere vuoto e non può contenere spazzi e deve contenere da 4 a 20 caratteri alfanumerici (sono ammessi i seguenti caratteri: @ . _ - )</li>';
