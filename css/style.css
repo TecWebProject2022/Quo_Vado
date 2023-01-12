@@ -655,7 +655,6 @@ ESPLORA CORSI
     background: var(--tittlebg) url(css_images/percorso.jpg) no-repeat;
     background-size: cover;
     background-position: center;
-   /* padding: 1em;*/
 }
 
 .area_disciplinare {
@@ -774,7 +773,7 @@ GRUPPI DISCIPLINARI
 ================
 */
 
-#gruppo {
+#macro_area {
     color: #FFFFFF;
     background-color: #0D5D70;
     padding: 1.3em;
@@ -783,6 +782,20 @@ GRUPPI DISCIPLINARI
     line-height: 1.5em;
     text-shadow: 4px 4px 4px rgba(0,0,0,0.26);
 }
+
+.gruppo {
+    background: #FFFDE8;
+    padding: 1.3em;
+    margin: 2% 40% 2% 10%;
+    text-decoration: none;
+}
+
+.prova {
+    margin: 2%;
+    text-decoration: none;
+}
+
+
 
 /*
 ================
@@ -862,9 +875,33 @@ LA SCELTA GIUSTA PER TE
 UNIVERSITA' E INCLUSIONE
 ================
 */
+
 #uni_inc{
     background: var(--tittlebg) url(css_images/inc.jpg) no-repeat bottom;
     background-size: cover;
+}
+
+/*
+================
+LOGIN
+================
+*/
+
+#login {
+    background-color: var(--tittlebg);
+    padding-bottom: 3%;
+    margin-bottom: 3%;
+}
+
+#form {
+    padding: 3em;
+    margin: 2% 40% 1% 40%;
+}
+
+#crea_account {
+    text-align: center;
+    padding: 1em;
+    margin-bottom: 5.5%;
 }
 
 /*

@@ -49,19 +49,20 @@
         <p>Ti trovi in: <a href="index.html" lang="en">Home</a> &gt; &gt; Login</p>
     </nav>
     <main id="content">
-        <h1 lang="en">LOGIN</h1>
+        <h1 id="login" lang="en">LOGIN</h1>
         <form action="login.php" method="post" onsubmit="return Validate()">
-            <fieldset>
+            <fieldset id="form">
                 <label for="username"><span lang="en">Username :</span></label>
                 <span><input value="<username/>" name="username" id="username" placeholder="username"    maxlength="40"                 
                         data-msg-invalid="Il campo username non può contenere spazzi e deve contenere da 4 a 40 caratteri alfanumerici (sono ammessi i seguenti caratteri: @ . _ - ), controlla e riprova"
                         data-msg-empty="Il campo username non può essere vuoto"
                        /></span>
+                <br>
                 <label for="password"><span lang="en">Password:</span></label>
                 <span><input  value="<password/>" type="password" id="password" name="password" placeholder="password" maxlength="20"                      
                         data-msg-invalid="Il campo password non può contenere spazzi e deve contenere da 4 a 20 caratteri alfanumerici (sono ammessi i seguenti caratteri: @ . _ - ), controlla e riprova"
                         data-msg-empty="Il campo password non può essere vuoto" /></span>
-
+                <br>
                 <input type="submit" id="submit" name="submit" value="Entra"/>
                 <input type="reset" id="reset" name="reset" value="Cancella tutto"/>
             
@@ -69,7 +70,7 @@
        </form>
        <sessione/>
        <errori /> 
-       <p>Non hai ancora un <span lang="en">account</span>? <a href="registrazione_utente.php">Registrati ora!</a></p>
+       <p id="crea_account">Non hai ancora un <span lang="en">account</span>? <a href="registrazione_utente.php">Registrati ora!</a></p>
        
     </main>
     

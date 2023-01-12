@@ -13,13 +13,13 @@ $db=new Connection();
     $dbOK=$db->Connect();
     if($dbOK){
         if($gruppi=$db->ExecQueryAssoc($query_gruppi)){
-           $contenuto.='<h2 id="gruppo">'.$target.'</h2>';
-           $contenuto.='<ul class="collapsible">';
+           $contenuto.='<h2 id="macro_area">'.$target.'</h2>';
+           $contenuto.='<ul">';
            foreach($gruppi as $r){
-            $contenuto.="<li>".$r['gruppo_disciplinare']."</li>";
+            $contenuto.="<li class='gruppo'>".$r['gruppo_disciplinare']."</li>";
             $query_classi="Select num_classe, denominazione from ClassediLaurea where gruppo_disciplinare=\"".$r['gruppo_disciplinare']."\";";
             if($classi=$db->ExecQueryAssoc($query_classi)){
-                $contenuto.="<li><ul>";
+                $contenuto.="<li class='prova'><ul>";
                 foreach($classi as $c){
                     $contenuto.="<li>".$c['num_classe']." - <a href='classe.php?nclasse=".$c['num_classe']."&area=".$target."'>".$c['denominazione']."</a></li>";
                 }
