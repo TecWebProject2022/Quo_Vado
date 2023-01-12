@@ -227,6 +227,9 @@ insert into Utente (nome_utente, nome, cognome, data_nascita, genere, scuola_sup
 ('fabriziapisano@libero.it','Rembrandt','Trincavelli','2001-08-18','ND', 'tecnico industriale');
 
 insert into Valutazione (nome_utente, classe_laurea, datav, commento, tag, p_complessivo, p_acc_fisica, p_servizio_inclusione, tempestivita_burocratica, p_insegnamento) values
+('user', 'L25', '2021-01-11', 'Pensavo meglio, il corso  è pensato  per chi ha già un background beh consolidato', 1, 4, 3, 2, 4, 5),
+('user', 'L38', '2021-03-01', 'Corso ben strutturato, è pensato anche per chi non ha conoscenze pregresse, molto consigliato.', 1, 4, 3, 2, 4, 5),
+('user', 'L01', '2021-04-01', 'Corso ben strutturato, accessibile e i professori sono preparati.', 1, 4, 3, 2, 4, 5),
 ('viscontisante@fastwebnet.it', 'L01', '2021-01-01', 'Corso ben strutturato, accessibile e i professori sono preparati.', 1, 4, 3, 2, 4, 5),
 ('costalongalivio@hotmail.it', 'L02', '2021-01-01', 'Il corso è pensato anche per chi non ha conoscenze pregresse, molto consigliato.', 1, 5, 2, 4, 5, 5),
 ('fiorinocatenazzi@yahoo.com', 'L03', '2021-01-01', 'Pensavo meglio, ci sono stati pochi laboratori che hanno messo in pratica le conoscenze acquisite.', 1, 3, 3, 4, 2, 2),
@@ -433,6 +436,9 @@ insert into Credenziale (pw, data_inserimento, utente, attuale) values
 ('senape', '2021-01-01', 'fabriziapisano@libero.it',1);
 
 insert into Iscrizione (ateneo, classe, corso, nome_utente, punteggio_scuola_provenienza, datai, dataf) values
+('Università degli studi di Bologna', 'L01', 'Corso di laurea in beni culturali', 'user', 3, '2017-09-10','2020-12-14'),
+('Università degli studi di Padova', 'L38', 'Corso di laurea in scienze e tecnologie animali', 'user', 5, '2017-09-12','2020-12-14'),
+('Università degli Studi della Tuscia', 'L25', 'Corso di laurea in scienze e tecnologie agrarie e ambientali', 'user', 3, '2017-09-12','2020-12-14'),
 ('Università degli studi di Bologna', 'L01', 'Corso di laurea in beni culturali', 'viscontisante@fastwebnet.it', 3, '2017-09-10','2020-12-14'),
 ('Università degli studi di Pisa', 'L02', 'Corso di laurea in biotecnologie', 'costalongalivio@hotmail.it', 3, '2017-09-12','2020-12-14'),
 ('Università degli studi di Padova', 'L03', 'Corso di laurea in discipline delle arti, della musica e dello spettacolo', 'fiorinocatenazzi@yahoo.com', 4, '2017-09-12','2020-12-14'),
