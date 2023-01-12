@@ -12,6 +12,7 @@ if(!isset($_SESSION['user']) || !isset($_SESSION['time']) || time()-$_SESSION['t
 $menu1='<nav id="visible-sottomenu" aria-label="sotto menù di area riservata">
 <ul>
     <li><a href="#Commenti">Commenti rilasciti</a></li>
+    <li><a href="#Aggiungi">Aggiungi un commento</a></li>
     <li><a href="#CambioPw">Cambia password</a></li>
     <li><a href="logout.php">Logout</a></li>
 </ul>
@@ -19,12 +20,14 @@ $menu1='<nav id="visible-sottomenu" aria-label="sotto menù di area riservata">
 $menu2='<nav id="visible-sottomenu" aria-label="sotto menù di area riservata">
 <ul>
     <li><a href="#Commenti">Commenti rilasciti</a></li>
+    <li><a href="#Aggiungi">Aggiungi un commento</a></li>
     <li><a href="logout.php">Logout</a></li>
 </ul>
 </nav>';
 $vecchia='';
 $res3='';
 $nuova='';
+$errorf='';
 $content=file_get_contents("area_riservata.html");
 $user=$_SESSION['user'];
 if($user!='user'){
@@ -96,7 +99,7 @@ if($dbOK){
                 
             }
             else{
-                $errori.="<p>Siamo spiacenti non hai ancora inserito alcun commento</p>";
+                $contenuto.="<p>Siamo spiacenti non hai ancora inserito alcun commento</p>";
             }
         }
         else{
@@ -106,11 +109,53 @@ if($dbOK){
     else{
         $errori.="<p>Siamo spiacenti ma i dati non sono al momento dipsonibili</p>";
     }
-    $db->Disconnect();
 }
 else{
     $errori.="<p>Siamo spiacenti ma i dati non sono al momento dipsonibili</p>";
 }
+$query5="Select classe FROM Iscrizione where nome_utente=\"".$user."\";";
+
+if($res5=$db->ExecQueryAssoc($query5)){
+    $classi="<label for='classi'>Classi di Laurea:</label>
+
+    <select id='classi'>";
+    foreach($res5 as $r){
+       $classi.="<option value=\"".$r['classe']."\">".$r['classe']."</option>";
+    }
+    $classi.="</select>";
+$contenuto.='<h2 id="Aggiungi">Aggiungi un commento</h2><form  action="area_utente.php"  onsubmit="Validate()" method="post">
+<fieldset>
+<legend>Agguingi un commento</legend>'.$classi.'
+<label for="commento"></label>
+<span><textarea id="commento" name="commento" maxlength="200"></textarea></span>
+
+<label for="p_complessivo">Punteggio complessivo:</label>
+<span><input type="number" id="p_complessivo" name="p_complessivo" placeholder="1" value="1" min="1" max="5" 
+    msg-data-empty="inserisci il punteggio complessivo del corso" msg-data-invalid="il punteggio deve essere compreso tra 1 e 5"/></span>
+<label for="p_acc_fisica">Punteggio accessibilità fisica:</label>
+<span><input type="number" id="p_acc_fisica" name="p_acc_fisica" placeholder="1" value="1" min="1" max="5" required
+    msg-data-empty="inserisci il punteggio accessibilità fisica del corso" msg-data-invalid="il punteggio deve essere compreso tra 1 e 5"/></span>
+<label for="p_inclusione">Punteggio servizio inclusione:</label>
+<span><input type="number" id="p_inclusione" name="p_inclusione" placeholder="1" value="1" min="1" max="5" required
+    msg-data-empty="inserisci il punteggio servizio inclusione del corso" msg-data-invalid="il punteggio deve essere compreso tra 1 e 5"/></span>
+<label for="p_tempestivita">Punteggio tempestivita burocratica: </label>
+<span><input type="number" id="p_tempestivita" name="p_tempestivita" placeholder="1" value="1" min="1" max="5" required
+    msg-data-empty="inserisci il punteggio tempestivita burocratica del corso" msg-data-invalid="il punteggio deve essere compreso tra 1 e 5"/></span>
+<label for="p_insegnamento">Punteggio insegnamento:</label>
+<span><input type="number" id="p_insegnamento" name="p_insegnamento"placeholder="1" value="1" min="1" max="5" required
+    msg-data-empty="inserisci il punteggio insegnamento del corso" msg-data-invalid="il punteggio deve essere compreso tra 1 e 5"/></span>   
+<label for="tag">Il tuo commento riguarda:</label>
+<span><select name="tag" id="tag" data-msg-empty="Per favore, aiutaci a capire di cosa parla il tuo commento">
+    <option value="1">Inclusività</option>
+    <option value="2">commento generale</option></select></span>
+
+<input type="submit" id="submit"  name="submit2" value="pubblica"/>
+<input type="reset"  name="cancella" value="cancella"/>
+</fieldset>
+</form>
+</errorform>';
+}
+
 if($user!='user'){
 
     $contenuto.='<h2 id="CambioPw">Cambia Password</h2><form action="area_utente.php" method="post" >
@@ -199,8 +244,8 @@ if(isset($_POST['submit1']) && check()){
     }
     
 }
-
-
+$db->Disconnect();
+$contenuto=str_replace("</errorform>",$errorf,$contenuto);
 $contenuto=str_replace("</commenterror>",$commenti,$contenuto);
 $contenuto=str_replace("<new>",$nuova,$contenuto);
 $contenuto=str_replace("<old>",$vecchia,$contenuto);
