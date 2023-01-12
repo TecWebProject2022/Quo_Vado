@@ -52,8 +52,8 @@
     </nav>
  
     <main id="content">
-        <h1>REGISTRAZIONE</h1>
-        <form action="registrazione_utente.php"  onsubmit="Validate()" method="post">
+        <h1 class="login_registrazione">REGISTRAZIONE</h1>
+        <form id="registrazione" action="registrazione_utente.php"  onsubmit="Validate()" method="post">
                 
             <fieldset id="set_personal_data">
                 
@@ -116,7 +116,7 @@
             </fieldset>
        </form>
        <errori/>
-       <p>Hai gia' un <span lang="en">account</span>? <a href="login.html">Accedi</a></p>
+       <p id="redirect_login">Hai gia' un <span lang="en">account</span>? <a href="login.html">Accedi</a></p>
     </main>
     
     <footer>
