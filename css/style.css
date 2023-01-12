@@ -350,29 +350,25 @@ main h1{
     padding: 0.5em 0em;
 }
 
-#menu_content a:link{
+a:link{
     color: #162636;
-    /*aggiungere cambiamento all'ancora*/
 }
 
 :target{
-    background-color: #0D5D70;
-    color: #fff;
-    padding: 0em 0.15em;
-    margin: 0.2em -0.2em;
+    border-top: #D67200 3px solid;
 }
 
-#menu_content a:visited{
+a:visited{
     color: var(--menulinkvisitedbg);
 }
 
 
 section, article {
-    padding: 0.5em 1.5em;
+    padding: 0.5em 1.5em 1.2em 1.5em;
     max-width: 1024px;
     margin-left: 28%;
     margin-right: 13%;
-    margin-bottom: 4em;
+    margin-bottom: 3em;
     box-shadow: 2px 5px 10px rgba(0, 0, 0, 0.25);
 }
 
@@ -384,13 +380,22 @@ section h2, article h2{
 }
 
 section p, article p{
-    font-size: 0.9em;
+    font-size: 0.95em;
+}
+
+main{
+    padding-bottom: 2em;
+    margin-bottom: 3em;
 }
 
 #up{
-    margin-top: 5%;
+    padding-top: 3em;
+    margin: -3em 3em 2em 0em;
+    background-image: url("icons/torna_su.svg");
+    background-size: 3em;
+    background-repeat: no-repeat;
+    background-position: top;
     float: right;
-    /*img replace*/
 }
 
 article ul, section ul, article ol, section ol{
@@ -401,7 +406,6 @@ article li, section li{
     font-size: 0.9em;
     padding: 0.2em;
 }
-
 
 
 
@@ -811,8 +815,82 @@ OBIETTIVO LAVORO
 */
 
 #job{
-    background: var(--tittlebg) url(css_images/job.jpg) no-repeat bottom;
+    background: var(--tittlebg) url("css_images/job.jpg") no-repeat bottom;
     background-size: cover;
+}
+
+
+#scenari li{
+    padding: 0.5em;
+    margin: 0.8em 0em;
+    list-style: none;
+    font-size: 1.1em;
+    box-shadow: 0.8px 1.5px 5px rgba(77, 76, 73, 0.25);
+}
+
+#success {
+    background: url('css_images/successo.png') right no-repeat;
+    background-size: 11em;
+}
+
+#success p{
+    padding: 0.5em 0em 1em 0em;
+    margin-right: 12em;
+}
+
+#progress {
+    background: url('css_images/studio_continuo.png') right no-repeat;
+    background-size: 9em;
+}
+
+#progress p{
+    padding: 1em 0em 1em 0em;
+    margin-right: 6.8em;
+}
+
+#lost {
+    background: url('css_images/rinuncia.png') right no-repeat;
+    background-size: 7em;
+}
+
+#lost p{
+    padding: 1em 0em 2em 0em;
+    margin-right: 6.5em;
+}
+
+#job_checklist {
+    margin-top: 1.5em;
+}
+
+#job_checklist ul li{
+    list-style: none;
+    background: url("icons/checklist.svg") left no-repeat;
+    background-size: 2em;
+    padding-left: 2.8em;
+    font-size: 0.95em;
+}
+
+#job_checklist>li{
+    margin: 1.6em 0em;
+    box-shadow: 5px 1px 3px rgba(0, 0, 0, 0.25);
+}
+
+#job_checklist p{
+    font-size: 1.25em;
+    color: #162636;
+}
+
+#job_checklist #nota {
+    /*box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.25);*/
+    background-color: #FFFDE8;
+    margin: 1em 5% 1.2em 5%;
+    padding: 1.8em;
+    padding-left: 16%;
+    font-size: 0.95em;
+    background-image: url("icons/warning.svg");
+    background-size: 15%;
+    background-repeat: no-repeat;
+    background-position: center left;
 }
 
 #external_resources{
@@ -863,7 +941,7 @@ img[src="images/atlanteProfessioni.svg"]{
 }
 
 #external_resources a{
-    font-size: 1.5em;
+    font-size: 1em;
 }
 
 /*
