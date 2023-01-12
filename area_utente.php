@@ -18,6 +18,7 @@ $db=new Connection();
 $dbOK=$db->Connect();
 if($dbOK){
     if($res1=$db->ExecQueryAssoc($query1)){
+        $contenuto.="<h2>Dati Personali";
         $contenuto.="<dl>";
         $contenuto.="<dt>Nome Utente: </dt><dd>".$res1[0]['nome_utente']."</dd>";
         $contenuto.="<dt>Nome: </dt><dd>".$res1[0]['nome']."</dd>";
@@ -26,6 +27,13 @@ if($dbOK){
         $contenuto.="<dt>Genere: </dt><dd>".$res1[0]['genere']."</dd>";
         $contenuto.="<dt>Scuola superiore frequentata: </dt><dd>".$res1[0]['scuola_sup']."</dd>";
         $contenuto.="</dl>";
+        $query2="Select  * from Iscrizione where nome_utente=\"$user\"";
+        if($res2=$db->ExecQueryAssoc($query2)){
+            print_r($res2);
+        }
+        else{
+            $errori.="<p>Siamo spiacenti ma i dati non sono al momento dipsonibili</p>";
+        }
     }
     else{
         $errori.="<p>Siamo spiacenti ma i dati non sono al momento dipsonibili</p>";
@@ -38,4 +46,5 @@ $content=file_get_contents("area_riservata.html");
 $content=str_replace("<content/>",$contenuto,$content);
 $content=str_replace("<errori/>",$errori,$content);
 echo $content;
+echo"<a href='logout.php'>LOGOUT</a>";
 ?>
