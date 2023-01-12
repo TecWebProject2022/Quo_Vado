@@ -124,7 +124,7 @@ $db=new Connection();
                     <input type="hidden" name="classe" value="'.$target.'">
                     <input type="hidden" name="area" value="'.$area.'">
                 </fieldset>
-                <input type="submit" id="submit"  name="pubblica" value="pubblica"/>
+                <input type="submit" id="submit"  name="submit" value="pubblica"/>
                 <input type="reset"  name="cancella" value="cancella"/>
             </form><span><strong>'.$erroriNuovoCommento.'</strong></span>';
             }

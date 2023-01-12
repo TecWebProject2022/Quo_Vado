@@ -23,7 +23,7 @@ if(strlen($commento) > $max_l) {
 
 $min_valore = 1;
 $max_valore = 5;
-
+/*
 if(!is_numeric($complessivo) || $complessivo < $min_valore || $complessivo > $max_valore) {
     $errori .= "<li>Il valore del parametro complessivo deve essere un numero compreso tra $min_valore e $max_valore</li>";
 }
@@ -50,7 +50,7 @@ if($tag != 1 && $tag != 2) {
 
 if(empty($classe)) {
     $errori .= "<li>La classe non può essere vuota</li>";
-}
+}*/
 
 if( isset($_POST['submit'])){
     
@@ -62,14 +62,15 @@ if( isset($_POST['submit'])){
             $query="SELECT nome_utente from Valutazione where nome_utente=\"".$username."\" AND classe_laurea=\"".$classe."\"";
             if($r=$db->ExecQueryAssoc($query)){
                 # aggiornamento commento
-                $update="UPDATE Valutazione SET datav='".curdate()."',commento='".$commento."',tag='".$tag."',p_complessivo='".$complessivo."',p_acc_fisica='".$accessibilita."',p_servizio_inclusione='".$inclusione."',tempestivita_burocratica='".$tempestivita."',p_insegnamento='".$insegnamento."' WHERE  nome_utente=\"".$username."\" AND classe_laurea=\"".$classe."\"";
+                $insert = "INSERT INTO Valutazione(nome_utente,classe_laurea,datav,commento,tag,p_complessivo,p_acc_fisica,p_servizio_inclusione,tempestivita_burocratica,p_insegnamento) VALUES('".$username."','".$classe."', CURDATE(),'".$commento."','".$tag."','".$complessivo."','".$accessibilita."','".$inclusione."','".$tempestivita."','".$insegnamento."');";
+
                 if(!$db->Update($update)){
                     $errori.="Impossibile aggiornare il commento";
                 }
             }else{
                 #inserimento commento
-                $insert="INSERT INTO Valutazione(nome_uetente,classe_laurea,datav,commento,tag,p_complessivo,p_acc_fisica,p_servizio_inclusione,tempestivita_burocratica,p_insegnamento)
-                VALUES(\"".$username."\",\"".$classe."\",\"".curdate().",\"".$commento."\",\"".$tag."\",\"".$complessivo."\",\"".$accessibilita."\",\"".$inclusione."\",\"".$tempestivita."\",\"".$insegnamento."\");";
+                $insert = "INSERT INTO Valutazione(nome_utente,classe_laurea,datav,commento,tag,p_complessivo,p_acc_fisica,p_servizio_inclusione,tempestivita_burocratica,p_insegnamento) VALUES('".$username."','".$classe."', CURDATE(),'".$commento."','".$tag."','".$complessivo."','".$accessibilita."','".$inclusione."','".$tempestivita."','".$insegnamento."');";
+
                 if(!$q=$db->Insert($insert)){
                         $errori.="Inserimento non riuscito";
                 }
@@ -81,7 +82,7 @@ if( isset($_POST['submit'])){
     }else{
         $errori='<ul>'.$errori.'</ul>';
     }
-}
+}else
 
 header('Location: classe.php?nclasse='.$classe.'&area='.pulisciInput($_POST['area']).'$&erroriCommenti='.$errori);
 ?>
