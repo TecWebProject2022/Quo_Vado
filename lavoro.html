@@ -26,8 +26,8 @@
     <a class="skip" href="#content">Vai al contenuto</a>
 
 	<nav id="menu" aria-label="menù">
-        <input type="checkbox" id="hamburger-menu" aria-label="menu button"/>
-        <label for="hamburger-menu"><span class="fa fa-bars">menu button</span></label> <!--TV errore perchè manca testo nella label, da sistemare-->
+      <!--  <input type="checkbox" id="hamburger-menu" aria-label="menu button"/>
+        <label for="hamburger-menu"><span class="fa fa-bars">menu button</span></label> --><!--TV errore perchè manca testo nella label, da sistemare-->
 
         <ul id="menu-content">
 
@@ -54,8 +54,16 @@
 	<main id="content">
         <h1 id="job">Obiettivo Lavoro</h1>
 
-        <section>
-            <h2>L'orientamento universitario inizia anche dal <strong>lavoro</strong></h2>
+        <nav id="menu_content" aria-label="contenuti">
+            <ul>
+                <li><a href="#why">Perché parlare di orientamento al lavoro</a></li>
+                <li><a href="#what">Quali informazioni sul lavoro</a></li>
+                <li><a href="#where">Dove trovare le informazioni sul lavoro</a></li>
+            </ul>
+        </nav>
+
+        <section >
+            <h2 id="why">Perché parlare di orientamento al <strong>lavoro</strong></h2>
 
             <p>Qualunque sia il percorso universitario che sceglierai, questo si concluderà con la possibilità di accedere con più <strong>competenze</strong> 
                 nel <strong>mondo del lavoro</strong>. </p>
@@ -78,9 +86,9 @@
                 guarda oltre, <strong>pensa al tuo fututo</strong> e a chi potrai essere <strong>dopo la laurea</strong>.
             </p>
         </section> 
-             
+
         <section>
-            <h2>Quali informazioni sul lavoro</h2>
+            <h2 id="what">Quali informazioni sul lavoro</h2>
             <p>Scegliere un percorso di studio comporta una scelta di <strong>competenze da acquisire</strong> e la possibilità di avere <strong>nuove opportunità lavorative</strong>. Per questo <em>Quo Vado?</em> vuole guidarti nella 
                 ricerca di informazioni relative agli sbocchi professionali.</p> 
             <p>Ora pensa al <em>tuo</em> possibile futuro professionale e individua <em>tre</em> possbili lavori che potrebbero essere adatti a te. Per ogni lavoro individuato valuta:</p>
@@ -121,7 +129,7 @@
         </section>
 
         <section> 
-            <h2>Dove trovare le informazioni sul lavoro</h2>
+            <h2 id="where">Dove trovare le informazioni sul lavoro</h2>
             <p>Il web è pieno di informazioni su tassi occupazionali, mercato del lavoro, statistiche e opinioni varie, più o meno attendibili.</p>
             <p>Sulla base dei punti <a href="#job_checklist">sopra evidenziati</a> vogliamo suggerirti alcuni siti dove poter trovare le informazioni
             necessarie:</p> 
@@ -142,8 +150,10 @@
                     <a href="https://www.almalaurea.it/i-dati/le-nostre-indagini/condizione-occupazionale-laureati" target="_blank">Apri in una nuova scheda</a>
                 </li>
             </ul>
-
+            <a id="up" href="#">Torna su</a>
         </section>
+
+        
          
 	</main>
 
