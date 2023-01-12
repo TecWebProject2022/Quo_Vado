@@ -98,24 +98,24 @@ $db=new Connection();
                 $erroriNuovoCommento=isset($_GET['erroriCommenti'])?$_GET['erroriCommenti']:'';
                 $contenuto.='<form id="formCommento" action="addComment.php" method="post">
                 <fieldset>
-                    <legend>Aggingi un commento!<legend>
+                    <legend>Agguingi un commento!</legend>
                     <label for="commento" ></label>
-                    <span><textarea id="commento"rows="4" cols="40"></textarea></span>
-            
+                    <span><textarea id="commento" name="commento" rows="4" cols="40"></textarea></span>
+
                     <label for="p_complessivo">punteggio complessivo:</label>
-                    <span><input type="number" id="p_complessivo" placeholder="1" value="1" min="1" max="5" required
+                    <span><input type="number" id="p_complessivo" name="p_complessivo" placeholder="1" value="1" min="1" max="5" required
                         msg-data-empty="inserisci il punteggio complessivo del corso" msg-data-invalid="il punteggio deve essere compreso tra 1 e 5"/></span>
                     <label for="p_acc_fisica">punteggio accessibilità fisica:</label>
-                    <span><input type="number" id="p_acc_fisica" placeholder="1" value="1" min="1" max="5" required
-                        msg-data-empty="inserisci il punteggio accessibilità fisica: del corso" msg-data-invalid="il punteggio deve essere compreso tra 1 e 5"/></span>
+                    <span><input type="number" id="p_acc_fisica" name="p_acc_fisica" placeholder="1" value="1" min="1" max="5" required
+                        msg-data-empty="inserisci il punteggio accessibilità fisica del corso" msg-data-invalid="il punteggio deve essere compreso tra 1 e 5"/></span>
                     <label for="p_inclusione">punteggio servizio inclusione:</label>
-                    <span><input type="number" id="p_inclusione" placeholder="1" value="1" min="1" max="5" required
+                    <span><input type="number" id="p_inclusione" name="p_inclusione" placeholder="1" value="1" min="1" max="5" required
                         msg-data-empty="inserisci il punteggio servizio inclusione del corso" msg-data-invalid="il punteggio deve essere compreso tra 1 e 5"/></span>
                     <label for="p_tempestivita">punteggio tempestivita burocratica: </label>
-                    <span><input type="number" id="p_pempestivita" placeholder="1" value="1" min="1" max="5" required
+                    <span><input type="number" id="p_tempestivita" name="p_tempestivita" placeholder="1" value="1" min="1" max="5" required
                         msg-data-empty="inserisci il punteggio tempestivita burocratica del corso" msg-data-invalid="il punteggio deve essere compreso tra 1 e 5"/></span>
                     <label for="p_insegnamento">punteggio insegnamento:</label>
-                    <span><input type="number" id="p_insegnamento" placeholder="1" value="1" min="1" max="5" required
+                    <span><input type="number" id="p_insegnamento" name="p_insegnamento"placeholder="1" value="1" min="1" max="5" required
                         msg-data-empty="inserisci il punteggio insegnamento del corso" msg-data-invalid="il punteggio deve essere compreso tra 1 e 5"/></span>   
                     <label for="tag">Il tuo commento riguarda:</label>
                     <span><select name="tag" id="tag" data-msg-empty="Per favore, aiutaci a capire di cosa parla il tuo commento">
@@ -123,7 +123,7 @@ $db=new Connection();
                         <option value="2">commento generale</option></select></span>
                     <input type="hidden" name="classe" value="'.$target.'">
                     <input type="hidden" name="area" value="'.$area.'">
-                    
+
                     <input type="submit" id="submit"  name="submit" value="pubblica"/>
                     <input type="reset"  name="cancella" value="cancella"/>
                 </fieldset>
