@@ -94,7 +94,7 @@ $db=new Connection();
             }
             #aggiunta commento
             #controllo se sono in presenza di un utente loggato
-            
+            session_start();
             if(!isset($_SESSION['user'])){
                 $contenuto.='<p><a href="registrazione_utente.php">Iscriviti</a> o <a href="login.php">Accedi</a> per lasciare un commento!</p>';
             }
