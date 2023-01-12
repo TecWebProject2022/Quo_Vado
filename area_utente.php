@@ -10,6 +10,8 @@ if(!isset($_SESSION['user']) || !isset($_SESSION['time']) || time()-$_SESSION['t
     $_SESSION['sessione']='<p>Sessione Scaduta</p>';
     header('Location:login.php');
 }
+$vecchia='';
+$nuova='';
 $content=file_get_contents("area_riservata.html");
 $errori1='<ul>';
 $errori='';
@@ -61,11 +63,11 @@ if($user!='user'){
     $contenuto.='<form action="area_utente.php" method="post" onsubmit="return Validate()">
     <fieldset>Cambio password</fieldset>
     <label for="oldpassword"><span lang="en">Immetti la tua vecchia Password: </span></label>
-    <span><input  value="<password/>" type="password" id="oldpassword" name="Vecchiapassword" placeholder="Immetti la tua vecchia Password" maxlength="20"                      
+    <span><input  value="<old>" type="password" id="oldpassword" name="Vecchiapassword" placeholder="Immetti la tua vecchia Password" maxlength="20"                      
         data-msg-invalid="Il campo password non può contenere spazzi e deve contenere da 4 a 20 caratteri alfanumerici (sono ammessi i seguenti caratteri: @ . _ - ), controlla e riprova"
         data-msg-empty="Il campo vecchia password non può essere vuoto" /></span>
     <label for="newpassword"><span lang="en">Immetti la tua nuova Password: </span></label>
-    <span><input  value="<newpassword/>" type="password" id="newpassword" name="newpassword" placeholder="Immetti la tu anuova password" maxlength="20"                      
+    <span><input  value="<new>" type="password" id="newpassword" name="newpassword" placeholder="Immetti la tua nuova password" maxlength="20"                      
         data-msg-invalid="Il campo password non può contenere spazzi e deve contenere da 4 a 20 caratteri alfanumerici (sono ammessi i seguenti caratteri: @ . _ - ), controlla e riprova"
         data-msg-empty="Il campo nuova password non può essere vuoto" /></span>
     <label for="repeat"><span lang="en">Ripeti la Password: </span></label>
@@ -76,8 +78,7 @@ if($user!='user'){
     </form>
     </err/>';
 }
-if(isset($_POST['submit1'])){
-    
+if(isset($_POST['submit1']) && check()){
     $vecchia=PulisciInput($_POST['Vecchiapassword']);
     $nuova=PulisciInput($_POST['newpassword']);
     $rep=PulisciInput($_POST['repepassword']);
@@ -103,6 +104,8 @@ if(isset($_POST['submit1'])){
                 $errori1.="<li>Password già usata</li>";
             }
             else{
+                $query3="Select * from Credenziale where utente=\"".$user."\" && pw=\"".$vecchia."\";";
+                if($r=$db->ExecQueryAssoc($query3)){
                 $query2="UPDATE Credenziale SET attuale=0 WHERE utente=\"".$user."\" and pw=\"".$vecchia."\";";
                 $query2.="INSERT INTO Credenziale(pw, data_inserimento, utente, attuale) VALUES('".$nuova."',curdate(),'".$user."',1);";
                 $q=$db->multiInsert($query2);
@@ -110,15 +113,22 @@ if(isset($_POST['submit1'])){
                     $errori1.="<li>Password modificata con successo</li>";
                 }
                 else{
-                    $errori1.="<li>Aggiornamento della password  non riuscito</li>";
+                    $errori1.="<li>Cambiamento password non riuscito. I sistemi sono al momentamentamnete non disponibili</li>";
                 } 
             }
+            else{
+                $errori1.="<li>la vecchia password inserita non corrisponde</li>";
+            }
+            
+            }
+        $db->Disconnect();
         }
     $errori1.="</ul>";   
     }
-
+    
 }
-
+$contenuto=str_replace("<new>",$nuova,$contenuto);
+$contenuto=str_replace("<old>",$vecchia,$contenuto);
 $content=str_replace("<content/>",$contenuto,$content);
 $content=str_replace("<errori/>",$errori,$content);
 $content=str_replace("</err/>",$errori1,$content);
