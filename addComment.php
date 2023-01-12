@@ -12,6 +12,7 @@ $tempestivita=PulisciInput($_POST['p_tempestivita']);
 $inclusione=pulisciInput($_POST['p_inclusione']);
 $insegnamento=PulisciInput($_POST['p_insegnamento']);
 $classe=PulisciInput($_POST['classe']);
+$area=PulisciInput($_POST['area']);
 $username=PulisciInput($_SESSION['user']);
 $tag=PulisciInput($_POST['tag']);
 
@@ -83,7 +84,7 @@ if( isset($_POST['submit'])){
     }else{
         $errori='<ul>'.$errori.'</ul>';
     }
-}else
+}else{}
 
-header('Location: classe.php?nclasse='.$classe.'&area='.pulisciInput($_POST['area']).'$&erroriCommenti='.$errori);
+header('Location: classe.php?nclasse='.$classe.'&area='.$area.'$&erroriCommenti='.$errori);
 ?>
