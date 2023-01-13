@@ -94,7 +94,6 @@ BREADCRUMB
     color: var(--menulinkvisitedbg);
 }
 
-
 #breadcrumb a:hover{
     color: orange;
     text-decoration: none;
