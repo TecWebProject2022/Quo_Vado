@@ -67,7 +67,7 @@ if($dbOK){
                 $contenuto.="<ul><li>Corso di Studi: ".$i['corso']."</li>";
                 $contenuto.="<ul><li>Data inizio studi: ".date("d/m/Y",strtotime($i['datai']))."</li>";
                 $contenuto.="<ul><li>Data fine studi: ".date("d/m/Y",strtotime($i['dataf']))."</li>";
-                $contenuto.="<ul><li>Punteggio di affinità con la scuoa superiore frequentata: ".$i['punteggio_scuola_provenienza']."</li></ul>";
+                $contenuto.="<ul><li>Punteggio di affinità con la scuola superiore frequentata: ".$i['punteggio_scuola_provenienza']."</li></ul>";
                 $contenuto.="</li>"; 
             }
             $contenuto.="</ul>";
