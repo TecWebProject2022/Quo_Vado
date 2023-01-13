@@ -46,7 +46,7 @@ if(isset($_POST['submit'])){
         if($dbOK){
             $query="Select nome_utente from Utente where nome_utente=\"".$username."\"";
             if($r=$db->ExecQueryAssoc($query)){
-                $errori.="Username già registrato";
+                $errori.="<li>Username già registrato</li>";
             }
             
             else{
@@ -65,7 +65,7 @@ if(isset($_POST['submit'])){
             $db->Disconnect();
         }
         else{
-            $errori.="Connessione non riuscita";
+            $errori.="<li>Connessione non riuscita</li>";
         }
         
     }
