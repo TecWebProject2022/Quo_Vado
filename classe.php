@@ -79,7 +79,10 @@ $db=new Connection();
                 $contenuto.='<pI commenti degli utenti sulla classe di laurea '.$classe.':</p>';
                 $contenuto.='<ul id="listaCommenti">';
                 foreach($valutazioni as $v){
-                    $contenuto.='<li id="commento"><strong>'.$v['n']."|".$v['datav']." | ".$v['corso']."</strong><p id=testoCommento>".$v['commento']."</p>";
+                    $american_datav=$v['datav'];
+                    $timestamp=strtotime($american_datav);
+                    $european_datav= date("d-m-Y",$timestamp)
+                    $contenuto.='<li id="commento"><strong>'.$v['n']."|".$european_datav." | ".$v['corso']."</strong><p id=testoCommento>".$v['commento']."</p>";
                     $contenuto.='<ul id="valutazioneCommento">
                             <li>Complessivo: '.$v['p_complessivo']."</li>
                             <li>Accessibilità fisica: ".$v['p_acc_fisica']."</li>
