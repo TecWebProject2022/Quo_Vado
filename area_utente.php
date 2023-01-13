@@ -27,7 +27,7 @@ $menu2='<nav id="visible-sottomenu" aria-label="sotto menù di area riservata">
 $vecchia='';
 $res3='';
 $nuova='';
-$errorf='';
+$errorf='<ul>';
 $content=file_get_contents("area_riservata.html");
 $user=$_SESSION['user'];
 if($user!='user'){
@@ -36,7 +36,7 @@ if($user!='user'){
 else{
     $content=str_replace('<sottomenu/>',$menu2,$content);
 }
-
+$commento='';
 $errori1='<ul>';
 $errori='';
 $commenti='<ul>';
@@ -74,13 +74,13 @@ if($dbOK){
             $contenuto.="<h2 id='Commenti'>Commenti rilasciati</h2>";
             $query3="Select classe_laurea,datav,commento,p_complessivo,p_acc_fisica,p_servizio_inclusione,tempestivita_burocratica,p_insegnamento,tag FROM Valutazione WHERE nome_utente=\"$user\"";
             if($res3=$db->ExecQueryNum($query3)){
-                $contenuto.="<label>Seleziona un commento e premi cancella per eliminarlo";
-                $contenuto.='<form  action="area_utente.php"  onsubmit="Validate()" method="post">
+                $contenuto.="<label id=\"cancellacomm\">Seleziona un commento e premi cancella per eliminarlo</label>";
+                $contenuto.='<form aria-describedby="cancellacomm" action="area_utente.php"  onsubmit="Validate()" method="post">
                 <fieldset><legend>Commenti</legend>';
                 for($i=0;$i<count($res3);$i++){
                     
                         $contenuto.='<span><input type="radio" id="'.$i.'" name="commento" value="'.$i.'" /></span><label for="'.$i.'">
-                        <ul><li>Data di emissione: '.$res3[$i][1].'</li>
+                        <ul><li>Data di emissione: '.date("d/m/Y",strtotime($res3[$i][1])).'</li>
                         <li>Classe di laurea: '.$res3[$i][0].'</li>
                         <li>Comemento: '.$res3[$i][2].'</li>
                         <li>Valutazione complessiva: '.$res3[$i][3].'</li>
@@ -118,16 +118,16 @@ $query5="Select classe FROM Iscrizione where nome_utente=\"".$user."\";";
 if($res5=$db->ExecQueryAssoc($query5)){
     $classi="<label for='classi'>Classi di Laurea:</label>
 
-    <select id='classi'>";
+    <select id='classi' name='classel'>";
     foreach($res5 as $r){
        $classi.="<option value=\"".$r['classe']."\">".$r['classe']."</option>";
     }
     $classi.="</select>";
-$contenuto.='<h2 id="Aggiungi">Aggiungi un commento</h2><form  action="area_utente.php"  onsubmit="Validate()" method="post">
+$contenuto.='<h2 id="Aggiungi">Aggiungi un commento</h2><label id="formdesc">Ti è consentito lasciare unn solo commento per ogni classe di laurea e il contenuto testuale del commento dovrà contenere da 10 a 200 caraterri alfanumerici (sono ammessi i seguenti caratteri: @ . _ - )</label><form  aria-describedby="formdesc"action="area_utente.php"  onsubmit="Validate()" method="post">
 <fieldset>
 <legend>Agguingi un commento</legend>'.$classi.'
 <label for="commento"></label>
-<span><textarea id="commento" name="commento" maxlength="200"></textarea></span>
+<span><textarea id="commento" name="insertcommento" maxlength="200"><areacom/></textarea></span>
 
 <label for="p_complessivo">Punteggio complessivo:</label>
 <span><input type="number" id="p_complessivo" name="p_complessivo" placeholder="1" value="1" min="1" max="5" 
@@ -149,7 +149,7 @@ $contenuto.='<h2 id="Aggiungi">Aggiungi un commento</h2><form  action="area_uten
     <option value="1">Inclusività</option>
     <option value="2">commento generale</option></select></span>
 
-<input type="submit" id="submit"  name="submit2" value="pubblica"/>
+<input type="submit" id="submit"  name="submit3" value="pubblica"/>
 <input type="reset"  name="cancella" value="cancella tutti i campi"/>
 </fieldset>
 </form>
@@ -238,17 +238,56 @@ if(isset($_POST['submit1']) && check()){
             }
             
             }
-        $db->Disconnect();
         }
     $errori1.="</ul>";   
+    $db->Disconnect();
     }
 
     
 }
-if(isset($_POST['submit2'])){
-    echo"jjj";
+if(isset($_POST['submit3']) && check()){
+   $commento=PulisciInput($_POST['insertcommento']);
+   $classlaurea=$_POST['classel'];
+   $pc=$_POST['p_complessivo'];
+   $pf=$_POST['p_acc_fisica'];
+   $ps=$_POST['p_inclusione'];
+   $tb=$_POST['p_tempestivita'];
+   $pi=$_POST['p_insegnamento'];
+   $tag=$_POST['tag'];
+   if (!preg_match('/^[@a-zA-Z 0-9._-]{10,200}$/',$commento)){
+    $errorf.='<li>Il campo commento non può essere vuoto e deve contenere da 10 a 200 caratteri alfanumerici (sono ammessi i seguenti caratteri: @ . _ - )</li>';
 }
+if($errorf=='<ul>'){
+    $db=new Connection();
+    $dbOK=$db->Connect();
+    if($dbOK){
+        $check="Select * from  Valutazione where nome_utente=\"".$user."\" && classe_laurea=\"".$classlaurea."\";";
+        if($r=$db->ExecQueryAssoc($check)){
+            $errorf.="<li>Commento già risaliscato per questa calsse di laurea</li>";
+        }
+        else{
+       $insert="INSERT INTO Valutazione(nome_utente, classe_laurea, datav, commento, tag, p_complessivo, p_acc_fisica, p_servizio_inclusione, tempestivita_burocratica, p_insegnamento) VALUES (\"".$user."\",\"".$classlaurea."\",curdate(),\"".$commento."\",\"".$tag."\",".$pc.",".$pf.",".$ps.",".$tb.",".$pi.");";
+       $q=$db->Insert($insert);
+       if($q){
+           header('Location:area_utente.php');
+           $errorf.="<li>Inserimento con successo</li>";
+           
+       }
+       else{
+           $errorf.="<li>Inserimento non riuscito</li>";
+       }
+    }
+    $db->Disconnect();
+    }
+    else{
+        $errorf.="<li>Spiacenti ma i nostri servizi sono momentaneamente non disponibili</li>"; 
+    }
+
+}
+}
+$errorf.="</ul>";
 $db->Disconnect();
+$contenuto=str_replace("<areacom/>",$commento,$contenuto);
 $contenuto=str_replace("</errorform>",$errorf,$contenuto);
 $contenuto=str_replace("</commenterror>",$commenti,$contenuto);
 $contenuto=str_replace("<new>",$nuova,$contenuto);
