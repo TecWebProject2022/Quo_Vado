@@ -196,23 +196,30 @@ if($user!='user'){
 }
 if(isset($_POST['submit2']) && check()){
     $cancella=isset($_POST['commento']) ? $_POST['commento']: '';
-    print_r($cancella);
+    
     if(!$cancella){
      $commenti.='<li>Selezionare un commento per cancellarlo</li>';
     }
     else{
+        print_r($cancella);
+        
         $db=new Connection();
         $dbOK=$db->Connect();
         if($dbOK){
             foreach($cancella as $i){
-            $query4="DELETE FROM Valutazione Where nome_utente=\"".$user."\" && classe_laurea=\"".$res3[$i][0]."\";";
-            if($r=$db->Insert($query4)){
+                echo $i;
                 
+            $query4="DELETE FROM Valutazione Where nome_utente=\"".$user."\" && classe_laurea=\"".$res3[$i][0]."\" && tag=\"".$res3[$i][8]."\";";
+            if($r=$db->Insert($query4)){
+                $commenti.='<li>Si è verificato un errori ai nostri servizi</li>';
             }
             }
+            $cancella='';
             header('Location:area_utente.php');
         }
-    }
+        
+        
+ }
 } 
 if(isset($_POST['submit1']) && check()){
     $vecchia=PulisciInput($_POST['Vecchiapassword']);
