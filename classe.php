@@ -43,6 +43,7 @@ $db=new Connection();
             $query_corso_di_studio="SELECT ateneo,nome,accesso,link FROM CorsodiStudio WHERE classe_laurea=\"$target\";";
             if($corsi=$db->ExecQueryAssoc($query_corso_di_studio)){
                 #display corsi
+                $contenuto.='<h2>I corsi di studio della classe di laurea'.$target.'</h2>';
                 $contenuto.='<ul id="corsi">';
                 foreach($corsi as $c){
                     $contenuto.='<li id="corso"><a href="'.$c['link'].'"><strong>'.$c['nome'].'</strong></a> |'.$c['accesso'];
@@ -76,10 +77,10 @@ $db=new Connection();
             }
             #stampa commenti
             if($valutazioni=$db->ExecQueryAssoc($query_valutazione)){
-                $contenuto.='<pI commenti degli utenti sulla classe di laurea '.$classe.':</p>';
+                $contenuto.='<h2>I commenti degli utenti sulla classe di laurea '.$classe.':</h2>';
                 $contenuto.='<ul id="listaCommenti">';
                 foreach($valutazioni as $v){
-                    $contenuto.='<li id="commento"><strong>'.$v['n']."|".$v['datav']." | ".$v['corso']."</strong><p id=testoCommento>".$v['commento']."</p>";
+                    $contenuto.='<li id="commento"><strong>'.$v['n']."|".date("d-m-Y",strtotime($v['datav']));." | ".$v['corso']."</strong><p id=testoCommento>".$v['commento']."</p>";
                     $contenuto.='<ul id="valutazioneCommento">
                             <li>Complessivo: '.$v['p_complessivo']."</li>
                             <li>Accessibilità fisica: ".$v['p_acc_fisica']."</li>
@@ -99,7 +100,7 @@ $db=new Connection();
                 $contenuto.='<p><a href="registrazione_utente.php">Iscriviti</a> o <a href="login.php">Accedi</a> per lasciare un commento!</p>';
             }
             else{
-                $query_iscrizione='SELECT nome_utente FROM Iscrizione WHERE classe = "'.$target.'" AND nome_utente='.pulisciInput($_SESSION['user']).';';
+                $query_iscrizione='SELECT nome_utente FROM Iscrizione WHERE classe = "'.$target.'" AND nome_utente="'.pulisciInput($_SESSION['user']).'";';
                 if($iscritto=$db->ExecQueryAssoc($query_iscrizione)){
                     $erroriNuovoCommento=isset($_GET['erroriCommenti'])?$_GET['erroriCommenti']:'';
                     $contenuto.='<form id="formCommento" action="addComment.php" method="post">
