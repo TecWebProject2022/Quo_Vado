@@ -94,9 +94,9 @@ BREADCRUMB
     color: var(--menulinkvisitedbg);
 }
 
+
 #breadcrumb a:hover{
     color: orange;
-    font-variant: normal;
     text-decoration: none;
 }
 
@@ -134,7 +134,6 @@ header > ul{
 #menu a:hover {
     background-color: var(--menulinkhoverbg);
     color: var(--menulinkhover);
-
 }
 
 #menu>ul>li>a:link, #menu>ul>li>a:visited, #menu>ul>li>a:hover { /*impostazioni specifiche per primo livello del menù*/
@@ -954,6 +953,34 @@ LA SCELTA GIUSTA PER TE
     background: var(--tittlebg) url(css_images/int_res.jpg) no-repeat bottom;
     background-size: cover;
 }
+
+/******************************************************************************************************************************************
+QUESTIONARIO
+*****************************************************************************************************************************************/
+
+#questions, #end{
+    display: none;
+}
+
+.tab{
+    display: none;
+}
+
+.pag {
+    height: 15px;
+    width: 15px;
+    margin: 0 2px;
+    background-color: #162636;
+    border: none;  
+    border-radius: 50%;
+    display: inline-block;
+    opacity: 0.5;
+  }
+  
+  .pag.active {
+    opacity: 1;
+  }
+  
 
 /*
 ================

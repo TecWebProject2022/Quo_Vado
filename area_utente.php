@@ -67,7 +67,7 @@ if($dbOK){
                 $contenuto.="<ul><li>Corso di Studi: ".$i['corso']."</li>";
                 $contenuto.="<ul><li>Data inizio studi: ".date("d/m/Y",strtotime($i['datai']))."</li>";
                 $contenuto.="<ul><li>Data fine studi: ".date("d/m/Y",strtotime($i['dataf']))."</li>";
-                $contenuto.="<ul><li>Punteggio di affinità con la scuoa superiore frequentata: ".$i['punteggio_scuola_provenienza']."</li></ul>";
+                $contenuto.="<ul><li>Punteggio di affinità con la scuola superiore frequentata: ".$i['punteggio_scuola_provenienza']."</li></ul>";
                 $contenuto.="</li>"; 
             }
             $contenuto.="</ul>";
@@ -141,7 +141,7 @@ if($res5=$db->ExecQueryAssoc($query5)){
        $classi.="<option value=\"".$r['classe']."\">".$r['classe']."</option>";
     }
     $classi.="</select>";
-$contenuto.='<h2 id="Aggiungi">Aggiungi un commento</h2><label id="formdesc">Ti è consentito lasciare unn solo commento per ogni classe di laurea e il contenuto testuale del commento dovrà contenere da 10 a 200 caraterri alfanumerici (sono ammessi i seguenti caratteri: @ . _ - )</label><form  aria-describedby="formdesc"action="area_utente.php"  onsubmit="Validate()" method="post">
+$contenuto.='<h2 id="Aggiungi">Aggiungi un commento</h2><label id="formdesc">Ti è consentito lasciare un solo commento per ogni classe di laurea e il contenuto testuale del commento dovrà contenere da 10 a 200 caraterri alfanumerici (sono ammessi i seguenti caratteri: @ . _ - )</label><form  aria-describedby="formdesc"action="area_utente.php"  onsubmit="Validate()" method="post">
 <fieldset>
 <legend>Agguingi un commento</legend>'.$classi.'
 <label for="commento"></label>
