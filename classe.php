@@ -64,22 +64,22 @@ $db=new Connection();
             # se ottengo tag (da filtro, al primo caricamento della pagina sara sempr false) allora la query chiedera solo le valutazioni corrispondenti
             if(isset($_GET['filterTag'])){
                 $targetTag=PulisciInput($_GET['filterTag']);
-                $query_valutazione='SELECT nome_utente,datav, commento, tag, p_complessivo, p_acc_fisica, p_servizio_inclusione, tempestivita_burocratica, p_insegnamento, Iscrizione.corso AS corso
+                $query_valutazione='SELECT Valutazione.nome_utente as n ,datav, commento, tag, p_complessivo, p_acc_fisica, p_servizio_inclusione, tempestivita_burocratica, p_insegnamento, Iscrizione.corso AS corso
                 FROM Valutazione
                 INNER JOIN Iscrizione ON Valutazione.nome_utente = Iscrizione.nome_utente
-                WHERE Iscrizione.classe = '.$target.' AND Valutazione.tag='.$targetTag.';';
+                WHERE Iscrizione.classe = "'.$target.'" AND Valutazione.tag='.$targetTag.';';
             }else{
-                $query_valutazione='SELECT nome_utente,datav, commento, tag, p_complessivo, p_acc_fisica, p_servizio_inclusione, tempestivita_burocratica, p_insegnamento, Iscrizione.corso AS corso
+                $query_valutazione='SELECT Valutazione.nome_utente as n ,datav, commento, tag, p_complessivo, p_acc_fisica, p_servizio_inclusione, tempestivita_burocratica, p_insegnamento, Iscrizione.corso AS corso
                 FROM Valutazione
                 INNER JOIN Iscrizione ON Valutazione.nome_utente = Iscrizione.nome_utente
-                WHERE Iscrizione.classe = '.$target.';';
+                WHERE Iscrizione.classe = "'.$target.'";';
             }
             #stampa commenti
             if($valutazioni=$db->ExecQueryAssoc($query_valutazione)){
                 $contenuto.='<pI commenti degli utenti sulla classe di laurea '.$classe.':</p>';
                 $contenuto.='<ul id="listaCommenti">';
                 foreach($valutazioni as $v){
-                    $contenuto.='<li id="commento"><strong>'.$v['nome_utente']."|".$v['datav']." | ".$v['corso']."</strong><p id=testoCommento>".$v['commento']."</p>";
+                    $contenuto.='<li id="commento"><strong>'.$v['n']."|".$v['datav']." | ".$v['corso']."</strong><p id=testoCommento>".$v['commento']."</p>";
                     $contenuto.='<ul id="valutazioneCommento">
                             <li>Complessivo: '.$v['p_complessivo']."</li>
                             <li>Accessibilità fisica: ".$v['p_acc_fisica']."</li>
@@ -99,7 +99,7 @@ $db=new Connection();
                 $contenuto.='<p><a href="registrazione_utente.php">Iscriviti</a> o <a href="login.php">Accedi</a> per lasciare un commento!</p>';
             }
             else{
-                $query_iscrizione='SELECT nome_utente FROM Iscrizione WHERE classe = '.$target.' AND nome_utente='.pulisciInput($_SESSION['user']).';';
+                $query_iscrizione='SELECT nome_utente FROM Iscrizione WHERE classe = "'.$target.'" AND nome_utente='.pulisciInput($_SESSION['user']).';';
                 if($iscritto=$db->ExecQueryAssoc($query_iscrizione)){
                     $erroriNuovoCommento=isset($_GET['erroriCommenti'])?$_GET['erroriCommenti']:'';
                     $contenuto.='<form id="formCommento" action="addComment.php" method="post">
