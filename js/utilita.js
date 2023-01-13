@@ -12,11 +12,11 @@ function VerificaJS(){
 	icon.classList.add("fa","fa-bars");
 }
 function View(){
-	var icon=document.getElementById('menu-content');
-	if (icon.style.display === "block"){
-		icon.style.display="none";
+	var icon=document.getElementsByClassName('minimenu');
+	if (icon[0].style.display === "block"){
+		icon[0].style.display="none";
 	}
 	else{
-		icon.style.display = "block";
+		icon[0].style.display = "block";
 	}
 }
