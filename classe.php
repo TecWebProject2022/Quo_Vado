@@ -81,7 +81,7 @@ $db=new Connection();
                 foreach($valutazioni as $v){
                     $american_datav=$v['datav'];
                     $timestamp=strtotime($american_datav);
-                    $european_datav= date("d-m-Y",$timestamp)
+                    $european_datav= date("d-m-Y",$timestamp);
                     $contenuto.='<li id="commento"><strong>'.$v['n']."|".$european_datav." | ".$v['corso']."</strong><p id=testoCommento>".$v['commento']."</p>";
                     $contenuto.='<ul id="valutazioneCommento">
                             <li>Complessivo: '.$v['p_complessivo']."</li>
