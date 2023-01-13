@@ -52,7 +52,7 @@ if($dbOK){
         $contenuto.="<dt>Nome Utente: </dt><dd>".$res1[0]['nome_utente']."</dd>";
         $contenuto.="<dt>Nome: </dt><dd>".$res1[0]['nome']."</dd>";
         $contenuto.="<dt>:Cognome: </dt><dd>".$res1[0]['cognome']."</dd>";
-        $contenuto.="<dt>Data di nascita: </dt><dd>".$res1[0]['data_nascita']."</dd>";
+        $contenuto.="<dt>Data di nascita: </dt><dd>".date("d/m/Y",strtotime($res1[0]['data_nascita']))."</dd>";
         $contenuto.="<dt>Genere: </dt><dd>".$res1[0]['genere']."</dd>";
         $contenuto.="<dt>Scuola superiore frequentata: </dt><dd>".$res1[0]['scuola_sup']."</dd>";
         $contenuto.="</dl>";
@@ -97,7 +97,7 @@ if($dbOK){
                 <fieldset><legend>Commenti</legend>';
                 for($i=0;$i<count($res3);$i++){
                     
-                        $contenuto.='<span><input type="radio" id="'.$i.'" name="commento" value="'.$i.'" /></span><label for="'.$i.'">
+                        $contenuto.='<span><input type="checkbox" id="'.$i.'" name="commento[]" value="'.$i.'" /></span><label for="'.$i.'">
                         <ul><li>Data di emissione: '.date("d/m/Y",strtotime($res3[$i][1])).'</li>
                         <li>Classe di laurea: '.$res3[$i][0].'</li>
                         <li>Comemento: '.$res3[$i][2].'</li>
@@ -195,21 +195,22 @@ if($user!='user'){
     </err/>';
 }
 if(isset($_POST['submit2']) && check()){
-    $cancella=isset($_POST['commento']) ? $_POST['commento'] : '' ;
-    echo $cancella;
-    if($cancella==''){
+    $cancella=isset($_POST['commento']) ? $_POST['commento']: '';
+    print_r($cancella);
+    if(!$cancella){
      $commenti.='<li>Selezionare un commento per cancellarlo</li>';
     }
     else{
         $db=new Connection();
         $dbOK=$db->Connect();
         if($dbOK){
-            $query4="DELETE FROM Valutazione Where nome_utente=\"".$user."\" && classe_laurea=\"".$res3[$cancella][0]."\";";
+            foreach($cancella as $i){
+            $query4="DELETE FROM Valutazione Where nome_utente=\"".$user."\" && classe_laurea=\"".$res3[$i][0]."\";";
             if($r=$db->Insert($query4)){
                 echo "hidih";
                 header('Location:area_utente.php');
             }
-        $db->Disconnect();
+            }
         }
     }
 } 
@@ -258,7 +259,7 @@ if(isset($_POST['submit1']) && check()){
             }
         }
     $errori1.="</ul>";   
-    $db->Disconnect();
+    
     }
 
     
@@ -279,7 +280,7 @@ if($errorf=='<ul>'){
     $db=new Connection();
     $dbOK=$db->Connect();
     if($dbOK){
-        $check="Select * from  Valutazione where nome_utente=\"".$user."\" && classe_laurea=\"".$classlaurea."\";";
+        $check="Select * from  Valutazione where nome_utente=\"".$user."\" && classe_laurea=\"".$classlaurea."\" && tag=\"".$tag."\";";
         if($r=$db->ExecQueryAssoc($check)){
             $errorf.="<li>Commento già risaliscato per questa calsse di laurea</li>";
         }
@@ -295,7 +296,7 @@ if($errorf=='<ul>'){
            $errorf.="<li>Inserimento non riuscito</li>";
        }
     }
-    $db->Disconnect();
+    
     }
     else{
         $errorf.="<li>Spiacenti ma i nostri servizi sono momentaneamente non disponibili</li>"; 

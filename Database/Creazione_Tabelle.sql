@@ -45,10 +45,10 @@ scuola_sup ENUM('tecnico industriale','tecnico commerciale','scientifico','lingu
 create table Valutazione (
 nome_utente varchar(40),
 classe_laurea char(4),
-PRIMARY KEY(nome_utente,classe_laurea),
 datav date not null,
 commento varchar(200) not null,
 tag ENUM('1','2') not null,
+PRIMARY KEY(nome_utente,classe_laurea,tag),
 p_complessivo   int not null check(p_complessivo>0 and p_complessivo<6),
 p_acc_fisica int  not null check(p_acc_fisica>0 and p_acc_fisica<6),
 p_servizio_inclusione int  not null check(p_servizio_inclusione>0 and p_servizio_inclusione<6),
