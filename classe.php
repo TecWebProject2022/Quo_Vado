@@ -76,7 +76,7 @@ $db=new Connection();
             }
             #stampa commenti
             if($valutazioni=$db->ExecQueryAssoc($query_valutazione)){
-                $contenuto.='<pI commenti degli utenti sulla classe di laurea '.$classe.':</p>';
+                $contenuto.='<p>I commenti degli utenti sulla classe di laurea '.$classe.':</p>';
                 $contenuto.='<ul id="listaCommenti">';
                 foreach($valutazioni as $v){
                     $american_datav=$v['datav'];
