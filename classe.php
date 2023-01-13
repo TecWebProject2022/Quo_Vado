@@ -43,6 +43,7 @@ $db=new Connection();
             $query_corso_di_studio="SELECT ateneo,nome,accesso,link FROM CorsodiStudio WHERE classe_laurea=\"$target\";";
             if($corsi=$db->ExecQueryAssoc($query_corso_di_studio)){
                 #display corsi
+                $contenuto.='<h2>I corsi di studio della classe di laurea'.$target.'</h2>';
                 $contenuto.='<ul id="corsi">';
                 foreach($corsi as $c){
                     $contenuto.='<li id="corso"><a href="'.$c['link'].'"><strong>'.$c['nome'].'</strong></a> |'.$c['accesso'];
@@ -76,7 +77,7 @@ $db=new Connection();
             }
             #stampa commenti
             if($valutazioni=$db->ExecQueryAssoc($query_valutazione)){
-                $contenuto.='<p>I commenti degli utenti sulla classe di laurea '.$classe.':</p>';
+                $contenuto.='<h2>I commenti degli utenti sulla classe di laurea '.$classe.':</h2>';
                 $contenuto.='<ul id="listaCommenti">';
                 foreach($valutazioni as $v){
                     $contenuto.='<li id="commento"><strong>'.$v['n']."|".date("d-m-Y",strtotime($v['datav']));." | ".$v['corso']."</strong><p id=testoCommento>".$v['commento']."</p>";
