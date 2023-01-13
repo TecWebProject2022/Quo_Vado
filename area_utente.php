@@ -93,7 +93,7 @@ if($dbOK){
                     </dl>
             </aside>";
                 $contenuto.="<label id=\"cancellacomm\">Seleziona un commento e premi cancella per eliminarlo</label>";
-                $contenuto.='<form aria-describedby="cancellacomm" action="area_utente.php"  onsubmit="Validate()" method="post">
+                $contenuto.='<form aria-describedby="cancellacomm" action="area_utente.php"  method="post">
                 <fieldset><legend>Commenti</legend>';
                 for($i=0;$i<count($res3);$i++){
                     
@@ -113,7 +113,7 @@ if($dbOK){
                             $contenuto.="<li>Valutazione riguardante l'ambito generale </li></ul></label><br />";
                         }      
                 }
-                $contenuto.='<input type="submit" id="submit2"  name="submit2" value="cancella"/></fieldset></form></commenterror>';
+                $contenuto.='<input type="submit" id="submit2"  name="submit2" onclick="Conferma_eliminazione()" value="cancella"/></fieldset></form></commenterror>';
                 
             }
             else{
@@ -141,7 +141,7 @@ if($res5=$db->ExecQueryAssoc($query5)){
        $classi.="<option value=\"".$r['classe']."\">".$r['classe']."</option>";
     }
     $classi.="</select>";
-$contenuto.='<h2 id="Aggiungi">Aggiungi un commento</h2><label id="formdesc">Ti è consentito lasciare un solo commento per ogni classe di laurea e il contenuto testuale del commento dovrà contenere da 10 a 200 caraterri alfanumerici (sono ammessi i seguenti caratteri: @ . _ - )</label><form  aria-describedby="formdesc"action="area_utente.php"  onsubmit="Validate()" method="post">
+$contenuto.='<h2 id="Aggiungi">Aggiungi un commento</h2><label id="formdesc">Ti è consentito lasciare un solo commento per ogni classe di laurea e il contenuto testuale del commento dovrà contenere da 10 a 200 caraterri alfanumerici (sono ammessi i seguenti caratteri: @ . _ - )</label><form  aria-describedby="formdesc"action="area_utente.php"   method="post">
 <fieldset>
 <legend>Agguingi un commento</legend>'.$classi.'
 <label for="commento"></label>
