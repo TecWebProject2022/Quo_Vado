@@ -18,7 +18,7 @@
     <script src="js/utilita.js"></script> 
 </head>
 
-<body>
+<body onload="VerificaJS()"> 
     <header>
 		<h1>Quo vado?</h1>
 		<h2>Sito di orientamento universitario</h2>
@@ -27,10 +27,10 @@
     <a class="skip" href="#content">Vai al contenuto</a>
 
 	<nav id="menu" aria-label="menù">
-      <!--  <input type="checkbox" id="hamburger-menu" aria-label="menu button"/>
-        <label for="hamburger-menu"><span class="fa fa-bars">menu button</span></label> --><!--TV errore perchè manca testo nella label, da sistemare-->
+       <input type="checkbox" id="hamburger-menu" aria-label="menu button"/>
+        <label for="hamburger-menu"><span id="icon">menu button</span></label><!--TV errore perchè manca testo nella label, da sistemare-->
 
-        <ul id="menu-content">
+        <ul class="minimenu">
 
             <li lang="en"><a href="index.html">Home</a></li>
             <li><a href="percorso_disciplinare.html">Esplora corsi</a></li>
