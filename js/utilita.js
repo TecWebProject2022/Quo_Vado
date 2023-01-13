@@ -13,10 +13,10 @@ function VerificaJS(){
 }
 function View(){
 	var icon=document.getElementById('menu-content');
-	if (icon.style.display === "none"){
-		icon.style.display="block";
+	if (icon.style.display === "block"){
+		icon.style.display="none";
 	}
 	else{
-		icon.style.display = "none";
+		icon.style.display = "block";
 	}
 }
