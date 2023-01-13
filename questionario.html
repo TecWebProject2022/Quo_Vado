@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="utf-8" />
+	
+	<title>Questionario - Quo Vado?</title>
+
+	<meta name="description" content="Per scegliere il giusto percorso universitario serve prima conoscere sé stessi, i propri interessi, passioni,
+    la propria storia, i propri punti di forza e di debolezza, oltre che le proprie ambizioni." />
+	<meta name="keywords" content="interessi, passioni, punti di forza, punti di debolezza, ambizioni, università, orientamento" />
+	<meta name="author" content="Marco Brugin, Valentina Caputo, Matteo Umatche, Bianca Zaghetto" />
+	<link rel="stylesheet" type="text/css" media= "screen" href="css/style.css"/> 
+    <link rel="stylesheet" type="text/css" media= "screen and (max-device-width:1200px), only screen
+	and (max-width:1200px)" href="css/mini.css"/>
+	<link rel="stylesheet" type="text/css" href="css/print.css" />
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    
+    <link rel="shortcut icon" type="image/png" href="images/icon.ico" />
+
+    <script src="js/questionario.js"></script>
+</head>
+
+<body>
+	<header>
+		<h1>Quo vado?</h1>
+		<h2>Sito di orientamento universitario</h2>
+	</header>
+
+    <a class="skip" href="#content">Vai al contenuto</a> 
+
+    <nav id="menu" aria-label="menù">
+        <button type="button" id="hamburger-menu" onclick="">Menù
+            <span class="bar"></span>
+            <span class="bar"></span>
+            <span class="bar"></span>
+        </button>
+
+        <ul id="menu-content">
+
+            <li lang="en"><a href="index.html">Home</a></li>
+            <li><a href="percorso_disciplinare.html">Esplora corsi</a></li>
+            <li><a href="lavoro.html">Obiettivo Lavoro</a></li>
+            <li id="currentOverLink"><a href="risorse_interne.html">La scelta giusta per te</a></li>
+            <li class="sottomenu">
+                    <a href="universita_inclusiva.html">Università e Inclusione <span class="fa fa-angle-down arrow"></span></a>
+                <ul class="sottomenu-content">
+                    <li><a href="diritto_studio.html">Diritto allo studio</a></li>
+                    <li><a href="parita_genere.html">Pari opportunità e Parità di genere</a></li>
+                    <li><a href="disabilita.html">Servizi per la Disabilità</a></li>
+                </ul>
+            </li>
+            <li><a href="login.php">Area Riservata</a></li>
+        </ul>
+    </nav>
+
+    <nav id="breadcrumb" aria-label="breadcrumb">
+		<p>Ti trovi in: <a href="index.html" lang="en">Home</a> &gt; &gt;<a href="risorse_interne.html">La scelta giusta per te</a> &gt; &gt; Questionario</p>
+	</nav>
+
+    <main id="content">
+
+        <section id="begin">
+            <h2 lang="en">Keep calm and Answer the Questions</h2>
+            <p>Se sai di voler proseguire con gli studi ma non sai da che parte rifarti, ti proponiamo un semplice questionario con spunti di riflessione in 4 aree diverse:</p>
+        
+            <ul>
+                <li>interessi e passioni</li>
+                <li>risultati ottenuti</li>
+                <li>punti di forza e punti di debolezza</li>
+                <li>ambizioni</li>
+            </ul>
+            
+            <p id="importante">Non ti chiediamo di dare a noi le risposte, non siamo nessuno per dirti quale strada sia più giusta per te!</p>
+
+            <p id="motivational">Tu conosci te stesso più di chiunque altro</p>
+
+            <h3>Istruzioni</h3>
+            <ul>
+                <li>Carta e penna possono bastare</li>
+                <li>Suddividi il foglio in 4 parti, una per ogni area sopra riportata</li>
+                <li>Per ogni parte del foglio riporta il nome della relativa area </li>
+                <li>Sei pronto per iniziare!</li>
+            </ul>
+
+            <nav>
+                <a href="risorse_interne.html">Non fa per me</a>
+                <button type="button" id="startBtn" onclick="startQuest()">Inizia</button> <!--funzione per iniziare-->
+            </nav>
+        </section>
+
+        <section id="questions">
+            <div class="tab">
+                <h2><strong>Interessi</strong> e passioni</h2>
+                <dl>
+                    <dt>Cosa ti piace fare nel <strong>tempo libero</strong></dt>
+                    <dd>
+                        <ul>
+                            <li>Fai sport, volontariato o fai parte di qualche associazione?</li>
+                            <li>Sei appassionato di film, libri, videogiochi?</li>
+                            <li>Il tuo mondo sono i social o ti hanno trascinato dentro gli amici?</li>
+                            <li>Dedichi molto tempo alla cura degli animali o alla cura degli altri?</li>
+                        </ul>
+                    </dd>
+                        
+                    <dt>Cosa salvi della <strong>scuola</strong></dt>
+                        <dd>
+                            <div class="focus"> Attenzione:
+                                <p>A volte l’interesse o l’odio verso la materia è legata più al docente che alla materia stessa, 
+                                    cerca di distinguere il più possibile le due cose. </p>
+                                <p>Distingui il più possibile l’interesse dal voto, non sempre vanno di pari passo.</p>
+                            </div>
+                            <ul>
+                                <li>Quali materie ti piacciono o hai trovato più interessante delle altre?</li>
+                                <li>Cosa proprio non vorresti più studiare né ora né mai?</li>
+                            </ul>
+                        </dd>
+                    <dt>In generale</dt>
+                    <dd>
+                        <ul>
+                            <li>Ti piace e ti trovi a tuo agio a comunicare in pubblico oppure preferisci che sia un altro a farlo?</li>
+                            <li>Sei orientato di più verso un lavoro che ti consenta di essere sempre a contatto con persone o preferiresti lavorare in autonomia su cose che non richiedono molta interazione umana?</li>
+                            <li>Ti piacerebbe viaggiare spesso per lavoro o sei più orientato per rimanere in un luogo fisso?</li>
+                        </ul>
+                    </dd>
+                </dl>
+    
+            </div>
+               
+            <div class="tab">
+                <h2><strong>Risultati</strong> ottenuti finora</h2>
+                <p>il <span lang="en">feedback</span> ricevuto ogni volta che ti sei cimentato o cimentata in qualcosa che dovevi o volevi fare; 
+                    ad esempio un buon voto al compito o i riconoscimenti ottenuti nello sport o per volontariato.</p>
+                <ul>
+                    <li>Dove hai collezionato più successi o senti di essere stato soddisfatto per ciò che hai fatto?</li>
+                    <li>Dove senti di aver sbagliato e che potevi fare meglio? Come hai reagito?</li>
+                    <li>Dove altri ti hanno detto di aver sbagliato? Come ti è stato detto che avevi sbagliato? Come hai reagito? </li>
+                </ul>
+                <div class="focus">
+                    <p >Spesso accade che insuccessi ottenuti alle scuole superiori portino a credere di non essere portati per lo studio e quindi per 
+                        l’università.</p> 
+                    <p><strong>Questa conseguenza logica è sbagliata!</strong></p> 
+                    <p>Sicuramente l’università richiede impegno, a volte sacrifici, perdite di ore di sonno e ad alcune rinunce, ma se sei 
+                        <strong>motivata</strong> o <strong>motivato</strong> e soprattutto ti piace ciò che fai, continua a farlo e a provarci.</p> 
+                    <p>Se non riesci chiedi aiuto, i servizi di sostegno allo studio nelle università non mancano e puoi scoprirli nella pagina Università e Inclusione!</p>
+                </div>
+            </div>
+    
+            <div class="tab">
+                <h2><strong>Punti di forza</strong> e <strong>Punti di debolezza</strong></h2>
+                <p>Concentrati su quali pensi che siano le tue qualità, in cosa ti senti particolarmente bravo o brava.</p>
+                <p>Allo stesso tempo, pensa a dove senti di non riuscire, di non avere le giuste qualità, dove proprio senti che non fa per te.</p>
+                <ul>
+                    <li>Hai buone capacità persuasive e riesci a dirottare l’attenzione e l’interesse degli altri su ciò che vuoi? </li>
+                    <li>Sai ascoltare gli altri, presti attenzione a quello che ti viene detto e gli amici si confidano con te?</li>
+                    <li>Ti senti un po’ anche tu una o uno “smanettone” e davanti ad un ostacolo tecnologico provi un sadico piacere nel cercare di risolverlo?</li>
+                    <li>Hai una memoria pazzesca e non puoi fare a meno di ricordarti ogni dettaglio, come la data di compleanno dello zio di un’amica o come 
+                        era vestita quell’amica quel famoso giorno di cinque anni fa?</li>
+                    <li>Con te non c’è storia: se dici una cosa è quella, fissi un obiettivo, fai i tuoi bei piani per raggiungerlo e poi dritto fino alla meta?</li>
+                </ul>
+            </div>
+                
+            <div class="tab">
+                <h2><strong>Ambizioni</strong></h2>
+                <p>che <strong>obiettivi</strong> ti poni nella vita, cosa <strong>sogni</strong> di diventare, se pensi al te o alla te del futuro come te lo immagini o te la immagini:</p>
+                <ul>
+                    <li>Desideri una carriera di successo, con riconoscimenti da parte della comunità?</li>
+                    <li>Sogni di essere al vertice o di guidare un’azienda tua?</li>
+                    <li>Sogni di fare ciò che più ti piace, che senti ti possa realizzare, qualunque sia lo stipendio percepito o il successo riconosciuto da altri?</li>
+                    <li>Quanto sei disposta o disposto ad aspettare per realizzare il futuro che ti immagini?</li>
+                </ul>
+            </div>
+    
+            <nav>
+                <div id="pulsanti">
+                  <button type="button" id="prevBtn" onclick="nextPrev(-1)">Indietro</button>
+                  <button type="button" id="nextBtn" onclick="nextPrev(1)">Avanti</button>
+                </div>
+              </div>
+              <!-- Per fare i cerchi in basso ad indicare la pagina -->
+                <div id="pagine">
+                    <span class="pag"></span>
+                    <span class="pag"></span>
+                    <span class="pag"></span>
+                    <span class="pag"></span>
+                </div>
+            </nav>
+        </section>
+
+        <section id="end">
+            <h2 id="motivational">Ottimo!</h2>
+            <p>Adesso guarda il tuo foglio pieno di appunti:</p>
+            <ul>
+                <li>Sei soddisfatta o soddisfatto di quello che hai scritto?</li> 
+                <li>Ci sono cose che vuoi aggiungere o modificare?</li>
+                <li>Ti rappresenta?</li>
+            </ul>
+            <p>Prova a mettere in evidenza le parole chiave, i punti che per te sono più significativi. 
+                Fai spiccare quello che conta per te!</p>
+            <p>Usa quello che è emerso per selezionare o escludere le aree disciplinari e i corsi di studio</p>
+
+            <nav>
+                <button type="button" id="endBtn" onclick="reStart()">Torna al questionario</button>
+                <a href="risorse_interne.html#step">I passi verso la scelta</a>
+            </nav>
+        </section>
+
+    </main>
+
+    <footer>
+        <img class="imgValidCode" src="images/valid-xhtml10.png" alt="W3C Valid"/>
+            <span><em>Marco Brugin, Valentina Caputo, Matteo Umatche, Bianca Zaghetto -<img src="images/cc.png" alt=""/> Quest'opera è distribuita con Licenza <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><span lang="en">Creative Commons Attribuzione</span> - Non commerciale - Condividi allo stesso modo 4.0 Internazionale</a>.</em></span>
+        <img class="imgValidCode" src="images/vcss-blue.gif" alt="W3CValid"/>
+    </footer>
+
+</body>
+
+</html>
