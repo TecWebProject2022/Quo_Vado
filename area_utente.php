@@ -47,18 +47,18 @@ $db=new Connection();
 $dbOK=$db->Connect();
 if($dbOK){
     if($res1=$db->ExecQueryAssoc($query1)){
-        $contenuto.="<h2>Dati Personali</h2>";
-        $contenuto.="<dl>";
+        $contenuto.="<h2 class='titles_utente'>Dati Personali</h2>";
+        $contenuto.="<dl id='info_utente'>";
         $contenuto.="<dt>Nome Utente: </dt><dd>".$res1[0]['nome_utente']."</dd>";
         $contenuto.="<dt>Nome: </dt><dd>".$res1[0]['nome']."</dd>";
-        $contenuto.="<dt>:Cognome: </dt><dd>".$res1[0]['cognome']."</dd>";
+        $contenuto.="<dt>Cognome: </dt><dd>".$res1[0]['cognome']."</dd>";
         $contenuto.="<dt>Data di nascita: </dt><dd>".date("d/m/Y",strtotime($res1[0]['data_nascita']))."</dd>";
         $contenuto.="<dt>Genere: </dt><dd>".$res1[0]['genere']."</dd>";
         $contenuto.="<dt>Scuola superiore frequentata: </dt><dd>".$res1[0]['scuola_sup']."</dd>";
         $contenuto.="</dl>";
         $query2="Select ateneo, classe,corso, datai, dataf,punteggio_scuola_provenienza  from Iscrizione where nome_utente=\"$user\"";
         if($res2=$db->ExecQueryAssoc($query2)){
-            $contenuto.="<h2>Iscrizioni</h2> ";
+            $contenuto.="<h2 class='titles_utente'>Iscrizioni</h2> ";
             $contenuto.="<ul>";
             foreach($res2 as $i){
                 $contenuto.="<li>";
@@ -121,15 +121,15 @@ if($dbOK){
             }
         }
         else{
-            $errori.="<p>Siamo spiacenti ma i dati non sono al momento dipsonibili</p>";
+            $errori.="<p>Siamo spiacenti ma i dati non sono al momento disponibili</p>";
         }
     }
     else{
-        $errori.="<p>Siamo spiacenti ma i dati non sono al momento dipsonibili</p>";
+        $errori.="<p>Siamo spiacenti ma i dati non sono al momento disponibili</p>";
     }
 }
 else{
-    $errori.="<p>Siamo spiacenti ma i dati non sono al momento dipsonibili</p>";
+    $errori.="<p>Siamo spiacenti ma i dati non sono al momento disponibili</p>";
 }
 $query5="Select classe FROM Iscrizione where nome_utente=\"".$user."\";";
 
@@ -176,7 +176,7 @@ $contenuto.='<h2 id="Aggiungi">Aggiungi un commento</h2><label id="formdesc">Ti 
 
 if($user!='user'){
 
-    $contenuto.='<h2 id="CambioPw">Cambia Password</h2><form action="area_utente.php" method="post" >
+    $contenuto.='<h2 id="CambioPw">Cambia Password</h2><form id="form_passw" action="area_utente.php" method="post" >
     <fieldset>Cambio password</fieldset>
     <label for="oldpassword"><span lang="en">Immetti la tua vecchia Password: </span></label>
     <span><input  value="<old>" type="password" id="oldpassword" name="Vecchiapassword" placeholder="Immetti la tua vecchia Password" maxlength="20"                      
