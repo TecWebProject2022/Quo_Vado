@@ -74,6 +74,24 @@ if($dbOK){
             $contenuto.="<h2 id='Commenti'>Commenti rilasciati</h2>";
             $query3="Select classe_laurea,datav,commento,p_complessivo,p_acc_fisica,p_servizio_inclusione,tempestivita_burocratica,p_insegnamento,tag FROM Valutazione WHERE nome_utente=\"$user\"";
             if($res3=$db->ExecQueryNum($query3)){
+                $contenuto.="<aside>
+                <h2>Glossario</h2>
+                <p>Ogni utente può esprime un giudizio con un valore da 1 a 5 su i seguenti ambiti riguardanti una classe di laurea</p>
+                    <dl>
+                        <dt>Valutazione complessiva:</dt>
+                        <dd></dd>
+                        <dt>Valutazione accessibilità fisica:</dt>
+                        <dd></dd>
+                        <dt>Valutazione sul servizio inclusione:</dt>
+                        <dd></dd>
+                        <dt>Valutazione sulla tempestività burocratica:</dt>
+                        <dd></dd>
+                        <dt>Valutazione sulla qualità di insegnamento:</dt>
+                        <dd></dd>
+                        <dt>Ambito di valutazione</dt>
+                        <dd></dd>
+                    </dl>
+            </aside>";
                 $contenuto.="<label id=\"cancellacomm\">Seleziona un commento e premi cancella per eliminarlo</label>";
                 $contenuto.='<form aria-describedby="cancellacomm" action="area_utente.php"  onsubmit="Validate()" method="post">
                 <fieldset><legend>Commenti</legend>';
