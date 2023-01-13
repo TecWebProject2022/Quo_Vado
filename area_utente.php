@@ -93,7 +93,7 @@ if($dbOK){
                     </dl>
             </aside>";
                 $contenuto.="<label id=\"cancellacomm\">Seleziona un commento e premi cancella per eliminarlo</label>";
-                $contenuto.='<form aria-describedby="cancellacomm" action="area_utente.php"  method="post">
+                $contenuto.='<form aria-describedby="cancellacomm" action="area_utente.php"  method="post" >
                 <fieldset><legend>Commenti</legend>';
                 for($i=0;$i<count($res3);$i++){
                     
@@ -113,7 +113,7 @@ if($dbOK){
                             $contenuto.="<li>Valutazione riguardante l'ambito generale </li></ul></label><br />";
                         }      
                 }
-                $contenuto.='<input type="submit" id="submit2"  name="submit2" onclick="Conferma_eliminazione()" value="cancella"/></fieldset></form></commenterror>';
+                $contenuto.='<input type="submit" id="submit2"  name="submit2" value="cancella"/></fieldset></form></commenterror>';
                 
             }
             else{
@@ -207,10 +207,10 @@ if(isset($_POST['submit2']) && check()){
             foreach($cancella as $i){
             $query4="DELETE FROM Valutazione Where nome_utente=\"".$user."\" && classe_laurea=\"".$res3[$i][0]."\";";
             if($r=$db->Insert($query4)){
-                echo "hidih";
-                header('Location:area_utente.php');
+                
             }
             }
+            header('Location:area_utente.php');
         }
     }
 } 
