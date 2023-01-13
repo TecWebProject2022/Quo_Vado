@@ -6,8 +6,17 @@ function Conferma_eliminazione(){
 	return false;
 }
 function VerificaJS(){
-	const mini = document.getElementsByClassName('minimenu');
+	var mini = document.getElementsByClassName('minimenu');
 	mini[0].setAttribute('id', 'menu-content');
-	const icon = document.getElementById('icon');
+	var  icon = document.getElementById('icon');
 	icon.classList.add("fa","fa-bars");
+}
+function View(){
+	var icon=document.getElementById('menu-content');
+	if (icon.style.display === "none"){
+		icon.style.display="block";
+	}
+	else{
+		icon.style.display = "none";
+	}
 }
