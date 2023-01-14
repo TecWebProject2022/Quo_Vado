@@ -7,8 +7,8 @@
 	<meta name="keywords" content="Gruppi disciplinari" />
 	<meta name="author" content="Marco Brugin, Valentina Caputo, Matteo Umatche, Bianca Zaghetto" />
 	<link rel="stylesheet" type="text/css" media= "screen" href="css/style.css"/> 
-    <link rel="stylesheet" type="text/css" media= "screen and (max-device-width:1200px), only screen
-	and (max-width:1200px)" href="css/mini.css"/>
+    <link rel="stylesheet" type="text/css" media= "screen and (max-device-width:600px), only screen
+	and (max-width:600px)" href="css/mini.css"/>
     <link rel="stylesheet" type="text/css" href="css/print.css" />
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -16,9 +16,10 @@
 	<link rel="shortcut icon" type="image/png" href="images/icon.ico" />
 
     <script src="js/comments.js"></script> 
+    <script src="js/utilita.js"></script> 
 </head>
     
-<body>
+<body onload="VerificaJS()">
     <header>
 		<h1>Quo vado?</h1>
 		<h2>Sito di orientamento universitario</h2>
@@ -28,9 +29,9 @@
 	
 	<nav id="menu" aria-label="menù">
         <input type="checkbox" id="hamburger-menu" aria-label="menu button"/>
-        <label for="hamburger-menu"><span class="fa fa-bars"></span></label> <!--TV errore perchè manca testo nella label-->
+        <label for="hamburger-menu"><button onclick="View()" id="icon"></button></label> <!--TV errore perchè manca testo nella label-->
 
-        <ul id="menu-content">
+        <ul class="minimenu">
 
             <li lang="en"><a href="index.html">Home</a></li>
             <li id="currentOverLink"><a href="percorso_disciplinare.html">Esplora corsi</a></li>
@@ -47,28 +48,29 @@
             <li><a href="login.php">Area Riservata</a></li>
         </ul>
     </nav>
+    
+	<nav id="breadcrumb" aria-label="breadcrumb">
+		<p>Ti trovi in: <a href="index.html" lang="en">Home</a> &gt; &gt; <a href="percorso_disciplinare.html">Esplora Corsi</a> &gt; &gt; <a href='gruppi_disciplinari.php?area=<area/>'><area/></a> &gt; &gt; <em><classe/></em></p>
+	</nav>
     <aside>
         <h2>Glossario</h2>
         <p>Ogni utente può esprime un giudizio con un valore da 1 a 5 su i seguenti ambiti riguardanti una classe di laurea</p>
             <dl>
-                <dt>Valutazione complessiva</dt>
-                <dd></dd>
-                <dt>Valutazione accessibilità fisica</dt>
-                <dd></dd>
-                <dt>Valutazione sul servizio inclusione</dt>
-                <dd></dd>
-                <dt>Valutazione sulla tempestività burocratica</dt>
-                <dd></dd>
-                <dt>Valutazione sulla qualità di insegnamento</dt>
-                <dd></dd>
-                <dt>Ambito di valutazione</dt>
-                <dd></dd>
+                <dt>Valutazione complessiva: </dt>
+                <dd>valutazione che riguarda tutti gli ambiti universitari ingenerale</dd>
+                <dt>Valutazione accessibilità fisica: </dt>
+                <dd>valutazione che riguarda la possibilità da parte di chiunque di fruire dei servizi universitari da un punto di vista fisico</dd>
+                <dt>Valutazione sul servizio inclusione: </dt>
+                <dd>valutazione riguardante l'accoglienza e l'appartenenza ad un gruppo universitario</dd>
+                <dt>Valutazione sulla tempestività burocratica: </dt>
+                <dd>valutazione attinente alla velocità di intervento e risposta da parte dei servizi amministrativi e burocratici universitari</dd>
+                <dt>Valutazione sulla qualità di insegnamento: </dt>
+                <dd>valutazione riguardante la qualità di insegnamento ricevuto e le competenze acquisite in esso</dd>
+                <dt>Ambito di valutazione: </dt>
+                <dd>cataratterrizzazione del commento</dd>
             </dl>
     </aside>
 
-	<nav id="breadcrumb" aria-label="breadcrumb">
-		<p>Ti trovi in: <a href="index.html" lang="en">Home</a> &gt; &gt; <a href="percorso_disciplinare.html">Esplora Corsi</a> &gt; &gt; <a href='gruppi_disciplinari.php?area=<area/>'><area/></a> &gt; &gt; <em><classe/></em></p>
-	</nav>
     
     <main id="content">
         <content/>

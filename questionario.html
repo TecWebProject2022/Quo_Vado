@@ -19,9 +19,10 @@
     <link rel="shortcut icon" type="image/png" href="images/icon.ico" />
 
     <script src="js/questionario.js"></script>
+    <script src="js/utilita.js"></script> 
 </head>
 
-<body>
+<body onload="VerificaJS()">
 	<header>
 		<h1>Quo vado?</h1>
 		<h2>Sito di orientamento universitario</h2>
@@ -30,12 +31,14 @@
     <a class="skip" href="#content">Vai al contenuto</a> 
 
     <nav id="menu" aria-label="menù">
-        <button type="button" id="hamburger-menu" onclick="">Menù
+       <!-- <button type="button" id="hamburger-menu" onclick="">Menù
             <span class="bar"></span>
             <span class="bar"></span>
             <span class="bar"></span>
-        </button>
-
+        </button>-->
+        <input type="checkbox" id="hamburger-menu" aria-label="menu button"/>
+        <label for="hamburger-menu"><button onclick="View()" id="icon"></button></label><!-- TotalValidator segna errore qua-->
+        
         <ul id="menu-content">
 
             <li lang="en"><a href="index.html">Home</a></li>
@@ -73,7 +76,7 @@
             
             <p id="importante">Non ti chiediamo di dare a noi le risposte, non siamo nessuno per dirti quale strada sia più giusta per te!</p>
 
-            <p id="motivational">Tu conosci te stesso più di chiunque altro</p>
+            <p class="motivational">Tu conosci te stesso più di chiunque altro</p>
 
             <h3>Istruzioni</h3>
             <ul>
@@ -83,9 +86,9 @@
                 <li>Sei pronto per iniziare!</li>
             </ul>
 
-            <nav>
-                <a href="risorse_interne.html">Non fa per me</a>
-                <button type="button" id="startBtn" onclick="startQuest()">Inizia</button> <!--funzione per iniziare-->
+            <nav aria-label="controlli avvio">
+                <a href="risorse_interne.html#step">Non fa per me</a>
+                <button type="button" id="startBtn" onclick="startQuest()">Inizia</button> 
             </nav>
         </section>
 
@@ -137,15 +140,12 @@
                     <li>Dove altri ti hanno detto di aver sbagliato? Come ti è stato detto che avevi sbagliato? Come hai reagito? </li>
                 </ul>
                 <div class="focus">
-                    <p >Spesso accade che insuccessi ottenuti alle scuole superiori portino a credere di non essere portati per lo studio e quindi per 
+                    <p>Spesso accade che insuccessi ottenuti alle scuole superiori portino a credere di non essere portati per lo studio e quindi per 
                         l’università.</p> 
-                    <p><strong>Questa conseguenza logica è sbagliata!</strong></p> 
-                    <p>Sicuramente l’università richiede impegno, a volte sacrifici, perdite di ore di sonno e ad alcune rinunce, ma se sei 
-                        <strong>motivata</strong> o <strong>motivato</strong> e soprattutto ti piace ciò che fai, continua a farlo e a provarci.</p> 
-                    <p>Se non riesci chiedi aiuto, i servizi di sostegno allo studio nelle università non mancano e puoi scoprirli nella pagina Università e Inclusione!</p>
+                    <p>Questa conseguenza logica è <strong>sbagliata</strong>!</p>
                 </div>
             </div>
-    
+   
             <div class="tab">
                 <h2><strong>Punti di forza</strong> e <strong>Punti di debolezza</strong></h2>
                 <p>Concentrati su quali pensi che siano le tue qualità, in cosa ti senti particolarmente bravo o brava.</p>
@@ -171,12 +171,12 @@
                 </ul>
             </div>
     
-            <nav>
+            <nav aria-label="controllo avanzamento">
                 <div id="pulsanti">
                   <button type="button" id="prevBtn" onclick="nextPrev(-1)">Indietro</button>
                   <button type="button" id="nextBtn" onclick="nextPrev(1)">Avanti</button>
                 </div>
-              </div>
+
               <!-- Per fare i cerchi in basso ad indicare la pagina -->
                 <div id="pagine">
                     <span class="pag"></span>
@@ -188,7 +188,7 @@
         </section>
 
         <section id="end">
-            <h2 id="motivational">Ottimo!</h2>
+            <h2 class="motivational">Ottimo!</h2>
             <p>Adesso guarda il tuo foglio pieno di appunti:</p>
             <ul>
                 <li>Sei soddisfatta o soddisfatto di quello che hai scritto?</li> 
@@ -199,7 +199,7 @@
                 Fai spiccare quello che conta per te!</p>
             <p>Usa quello che è emerso per selezionare o escludere le aree disciplinari e i corsi di studio</p>
 
-            <nav>
+            <nav aria-label="controllo fine">
                 <button type="button" id="endBtn" onclick="reStart()">Torna al questionario</button>
                 <a href="percorso_disciplinare.html">Esplora Corsi</a>
             </nav>
@@ -208,9 +208,7 @@
     </main>
 
     <footer>
-        <img class="imgValidCode" src="images/valid-xhtml10.png" alt="W3C Valid"/>
             <span><em>Marco Brugin, Valentina Caputo, Matteo Umatche, Bianca Zaghetto -<img src="images/cc.png" alt=""/> Quest'opera è distribuita con Licenza <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><span lang="en">Creative Commons Attribuzione</span> - Non commerciale - Condividi allo stesso modo 4.0 Internazionale</a>.</em></span>
-        <img class="imgValidCode" src="images/vcss-blue.gif" alt="W3CValid"/>
     </footer>
 
 </body>

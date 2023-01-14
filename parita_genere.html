@@ -17,9 +17,10 @@
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 	
 	<link rel="shortcut icon" type="image/png" href="images/icon.ico" />
+	<script src="js/utilita.js"></script> 
 </head>
 
-<body>
+<body onload="VerificaJS()">
     <header>
 		<h1>Quo vado?</h1>
 		<h2>Sito di orientamento universitario</h2>
@@ -29,9 +30,9 @@
 
 	<nav id="menu" aria-label="menù">
 		<input type="checkbox" id="hamburger-menu" aria-label="menu button"/>
-        <label for="hamburger-menu"><span class="fa fa-bars"></span></label> <!--TV errore perchè manca testo nella label-->
+        <label for="hamburger-menu"><button onclick="View()" id="icon"></button></label> <!--TV errore perchè manca testo nella label-->
 
-     	<ul id="menu-content">
+     	<ul class="minimenu">
 
             <li lang="en"><a href="index.html">Home</a></li>
             <li><a href="percorso_disciplinare.html">Esplora corsi</a></li>

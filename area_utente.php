@@ -78,22 +78,22 @@ if($dbOK){
                 <h2>Glossario</h2>
                 <p>Ogni utente può esprime un giudizio con un valore da 1 a 5 su i seguenti ambiti riguardanti una classe di laurea</p>
                     <dl>
-                        <dt>Valutazione complessiva:</dt>
-                        <dd></dd>
-                        <dt>Valutazione accessibilità fisica:</dt>
-                        <dd></dd>
-                        <dt>Valutazione sul servizio inclusione:</dt>
-                        <dd></dd>
-                        <dt>Valutazione sulla tempestività burocratica:</dt>
-                        <dd></dd>
-                        <dt>Valutazione sulla qualità di insegnamento:</dt>
-                        <dd></dd>
-                        <dt>Ambito di valutazione</dt>
-                        <dd></dd>
+                        <dt>Valutazione complessiva: </dt>
+                        <dd>valutazione che riguarda tutti gli ambiti universitari ingenerale</dd>
+                        <dt>Valutazione accessibilità fisica: </dt>
+                        <dd>valutazione che riguarda la possibilità da parte di chiunque di fruire dei servizi universitari da un punto di vista fisico</dd>
+                        <dt>Valutazione sul servizio inclusione: </dt>
+                        <dd>valutazione riguardante l'accoglienza e l'appartenenza ad un gruppo universitario</dd>
+                        <dt>Valutazione sulla tempestività burocratica: </dt>
+                        <dd>valutazione attinente alla velocità di intervento e risposta da parte dei servizi amministrativi e burocratici universitari</dd>
+                        <dt>Valutazione sulla qualità di insegnamento: </dt>
+                        <dd>valutazione riguardante la qualità di insegnamento ricevuto e le competenze acquisite in esso</dd>
+                        <dt>Ambito di valutazione: </dt>
+                        <dd>cataratterrizzazione del commento</dd>
                     </dl>
             </aside>";
                 $contenuto.="<label id=\"cancellacomm\">Seleziona un commento e premi cancella per eliminarlo</label>";
-                $contenuto.='<form aria-describedby="cancellacomm" action="area_utente.php"  method="post">
+                $contenuto.='<form aria-describedby="cancellacomm" action="area_utente.php"  method="post" >
                 <fieldset><legend>Commenti</legend>';
                 for($i=0;$i<count($res3);$i++){
                     
@@ -113,7 +113,7 @@ if($dbOK){
                             $contenuto.="<li>Valutazione riguardante l'ambito generale </li></ul></label><br />";
                         }      
                 }
-                $contenuto.='<input type="submit" id="submit2"  name="submit2" onclick="Conferma_eliminazione()" value="cancella"/></fieldset></form></commenterror>';
+                $contenuto.='<input type="submit" id="submit2"  name="submit2" value="cancella"/></fieldset></form></commenterror>';
                 
             }
             else{
@@ -141,7 +141,7 @@ if($res5=$db->ExecQueryAssoc($query5)){
        $classi.="<option value=\"".$r['classe']."\">".$r['classe']."</option>";
     }
     $classi.="</select>";
-$contenuto.='<h2 id="Aggiungi">Aggiungi un commento</h2><label id="formdesc">Ti è consentito lasciare un solo commento per ogni classe di laurea e il contenuto testuale del commento dovrà contenere da 10 a 200 caraterri alfanumerici (sono ammessi i seguenti caratteri: @ . _ - )</label><form  aria-describedby="formdesc"action="area_utente.php"   method="post">
+$contenuto.='<h2 id="Aggiungi">Aggiungi un commento</h2><label id="formdesc">Ti è consentito lasciare un solo commento per ogni ambito delle classe di laurea per le quali ti sei dichiarato iscritto  e il contenuto testuale del commento dovrà contenere da 10 a 200 caratteri alfanumerici (sono ammessi i seguenti caratteri: @ . _ - )</label><form  aria-describedby="formdesc"action="area_utente.php"   method="post">
 <fieldset>
 <legend>Agguingi un commento</legend>'.$classi.'
 <label for="commento"></label>
@@ -196,23 +196,30 @@ if($user!='user'){
 }
 if(isset($_POST['submit2']) && check()){
     $cancella=isset($_POST['commento']) ? $_POST['commento']: '';
-    print_r($cancella);
+    
     if(!$cancella){
      $commenti.='<li>Selezionare un commento per cancellarlo</li>';
     }
     else{
+        print_r($cancella);
+        
         $db=new Connection();
         $dbOK=$db->Connect();
         if($dbOK){
             foreach($cancella as $i){
-            $query4="DELETE FROM Valutazione Where nome_utente=\"".$user."\" && classe_laurea=\"".$res3[$i][0]."\";";
+                echo $i;
+                
+            $query4="DELETE FROM Valutazione Where nome_utente=\"".$user."\" && classe_laurea=\"".$res3[$i][0]."\" && tag=\"".$res3[$i][8]."\";";
             if($r=$db->Insert($query4)){
-                echo "hidih";
-                header('Location:area_utente.php');
+                $commenti.='<li>Si è verificato un errori ai nostri servizi</li>';
             }
             }
+            header('Location:area_utente.php');
+            
         }
-    }
+        
+        
+ }
 } 
 if(isset($_POST['submit1']) && check()){
     $vecchia=PulisciInput($_POST['Vecchiapassword']);
