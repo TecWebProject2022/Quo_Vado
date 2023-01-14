@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="utf-8" />
+    <title>Area Riservata - Quo Vado?</title>
+    <meta name="description" content ="Quo Vado? è un sito di orientamento universitario. L'obiettivo è aiutare la persona a 
+    scegliere il percorso universitario, selezionando, tra tutte le informazioni, quelle ritenute più utili alla scelta."/>
+    <meta name="keywords" content="area riservata"/>
+    <meta name="author" content="Matteo Umatche, Marco Brugin, Bianca, Valentina Caputo" />
+
+    <link rel="stylesheet" type="text/css" media= "screen" href="css/style.css"/> 
+    <link rel="stylesheet" type="text/css" media= "screen and (max-device-width:1200px), only screen
+	and (max-width:1200px)" href="css/mini.css"/>
+   <!-- <link rel="stylesheet" type="text/css" href="css/print.css" /> -->
+
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <link rel="shortcut icon" type="image/png" href="images/icon.ico" />
+    <script src="js/utilita.js"></script>  
+</head>
+<body>
+    <header>
+        <h1>Quo vado?</h1>
+		<h2>Sito di orientamento universitario</h2>
+    </header>
+    
+    <a class="skip" href="#content">Vai al contenuto</a>
+
+	<nav id="menu" aria-label="menù">
+        <input type="checkbox" id="hamburger-menu" aria-label="menu button"/>
+        <label for="hamburger-menu"><span class="fa fa-bars"></span></label> <!--TV errore perchè manca testo nella label-->
+
+      <ul id="menu-content">
+
+            <li lang="en"><a href="index.html">Home</a></li>
+            <li><a href="percorso_disciplinare.html">Esplora corsi</a></li>
+            <li><a href="lavoro.html">Obiettivo Lavoro</a></li>
+            <li><a href="risorse_interne.html">La scelta giusta per te</a></li>
+            <li class="sottomenu">
+                    <a href="universita_inclusiva.html">Università e Inclusione<span class="fa fa-angle-down arrow"></span></a>
+                 <ul class="sottomenu-content">
+                    <li><a href="diritto_studio.html">Diritto allo studio</a></li>
+                    <li><a href="parita_genere.html">Pari opportunità e Parità di genere</a></li>
+                    <li><a href="disabilita.html">Servizi per la Disabilità</a></li>
+                </ul>
+            </li>
+            <li id="currentlink">Area Riservata</li>
+        </ul>  
+    </nav>
+    
+    <nav id="visible-sottomenu" aria-label="sotto menù di area riservata">
+        <ul>
+            <li><a href="#Corsi">Gestisci corsi di Laurea</a></li>
+            <li><a href="#Commenti">Elimina un commento</a></li>
+            <li><a href="#CambioPw">Cambia password</a></li>
+            <li><a href="logout.php">Logout</a></li>
+        </ul>
+    </nav>
+    
+    <nav id="breadcrumb" aria-label="breadcrumb">
+	    <p>Ti trovi in: <span lang="en"><a href="index.html">Home</a></span> &gt; &gt; Area Riservata</p>
+	</nav>
+    
+    <main id="content">
+        <h1 class="area_riservata">Area Riservata</h1>
+        <!--sezione cancellazione commenti-->
+        <h2>Cancellazione commenti</h2>
+        <form id="formTrovaCommenti" action="area_admin.php" method="post">
+            <fieldset>
+                <legend>Trova i commenti da eliminare</legend>
+                <label for="com_utente">Utente:</label>
+                <span><input id="com_utente" name="com_utente" type="text" /></span>
+
+                <label for="com_classe">Classe di laurea:</label>
+                <span><input id="com_classe" name="com_classe" type="text" /></span>
+
+                <label for="com_corso">Corso di studi:</label>
+                <span><input id="com_corso" name="com_corso" type="text" /></span>
+
+                <input type="submit" name="trova" value="trova"/>
+                <input type="reset" name="cancella" value="cancella tutto"/>
+            </fieldset>
+        </form>
+        <commenti/>
+        
+        <!--sezione gestione corsi di laurea-->
+        <h2>gestione corsi di studio</h2>
+        <form id="formCorsi" action="area_admin.php" method="post">
+            <fieldset>
+                <legend>Aggiungi o elimina un corso di studi</legend>
+
+                <label for="cor_classe">Classe di laurea:</label>
+                <span><input id="cor_classe" name="cor_classe" type="text"/></span>
+                <label for="cor_ateneo">Ateneo:</label>
+                <span><input id="cor_ateneo" name="cor_ateneo" type="text"/></span>
+                <label for="cor_nome">Nome:</label>
+                <span><input id="cor_nome" name="co_nome" type="text"/></span>
+                <label for="cor_link">Link:</label>
+                <span><input id="cor_link" name="cor_link" type="url"/></span>
+                <label for="cor_accesso">Accesso:</label>
+                <span><select name="cor_accesso" id="cor_accesso">
+                    <option value="1">Accesso programmato</option>
+                    <option value="2">Accesso libero con prova</option>
+                    <option value="3">Accesso a numero chiuso</option>
+                    <option value="4">Accesso libero cronologico</option>
+                </select></span>
+                
+                <p id="aiuti_form">per aggingere un corso di studi e' necessario riempire tutti i campi, per eliminarne uno bastano nome, classe di laurea e ateneo.</p>
+                <input type="submit" id="add_corso" name="add_corso" value="Aggiungi"/>
+                <input type="submit" id="delete_corso" name="delete_corso" value="Elimina"/>
+                <input type="reset" id="reset" name="reset" value="Cancella tutto"/>
+            </fieldset>
+        </form>
+        <msgCorsi/>
+        
+        <!--sezione cambio password-->
+        <h2 id="CambioPw">Cambia Password</h2>
+        <form id="form_passw" action="area_admin.php" method="post" >
+            <fieldset>
+                <legend>Cambio password</legend>
+                <label for="oldpassword"><span lang="en">Immetti la tua vecchia Password: </span></label>
+                <span><input  value="<old>" type="password" id="oldpassword" name="Vecchiapassword" placeholder="Immetti la tua vecchia Password" maxlength="20"                      
+                    data-msg-invalid="Il campo password non può contenere spazzi e deve contenere da 4 a 20 caratteri alfanumerici (sono ammessi i seguenti caratteri: @ . _ - ), controlla e riprova"
+                    data-msg-empty="Il campo vecchia password non può essere vuoto" /></span>
+                <label for="newpassword"><span lang="en">Immetti la tua nuova Password: </span></label>
+                <span><input  value="<new>" type="password" id="newpassword" name="newpassword" placeholder="Immetti la tua nuova password" maxlength="20"                      
+                    data-msg-invalid="Il campo password non può contenere spazzi e deve contenere da 4 a 20 caratteri alfanumerici (sono ammessi i seguenti caratteri: @ . _ - ), controlla e riprova"
+                    data-msg-empty="Il campo nuova password non può essere vuoto" /></span>
+                <label for="repeat"><span lang="en">Ripeti la Password: </span></label>
+                <span><input  value="" type="password" id="repeat" name="repepassword" placeholder="Ripeti la password" maxlength="20"                      
+                    data-msg-empty="Il campo repeti password non può essere vuoto" /></span>   
+                <input type="submit" id="submit" name="salva" value="Salva"/>
+                <input type="reset" id="reset" name="reset" value="Cancella tutto"/>
+            </fieldset>
+        </form>
+        <msgCambioPw/>
+        
+        <errori/>
+    </main> 
+    <footer>
+        <img class="imgValidCode" src="images/valid-xhtml10.png" alt="W3C Valid"/>
+            <span><em>Marco Brugin, Valentina Caputo, Matteo Umatche, Bianca Zaghetto -<img src="images/cc.png" alt=""/> Quest'opera è distribuita con Licenza <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><span lang="en">Creative Commons Attribuzione</span> - Non commerciale - Condividi allo stesso modo 4.0 Internazionale</a>.</em></span>
+        <img class="imgValidCode" src="images/vcss-blue.gif" alt="W3CValid"/>
+    </footer>
+</body>
+</html>
