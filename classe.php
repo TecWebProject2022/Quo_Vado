@@ -80,7 +80,7 @@ $db=new Connection();
                 $contenuto.='<h2>I commenti degli utenti sulla classe di laurea '.$classe.':</h2>';
                 $contenuto.='<ul id="listaCommenti">';
                 foreach($valutazioni as $v){
-                    $contenuto.='<li id="commento"><strong>'.$v['n']."|".date("d-m-Y",strtotime($v['datav']));." | ".$v['corso']."</strong><p id=testoCommento>".$v['commento']."</p>";
+                    $contenuto.='<li id="commento"><strong>'.$v['n'].' | '.date("d-m-Y",strtotime($v['datav']))." | ".$v['corso']."</strong><p id=testoCommento>".$v['commento']."</p>";
                     $contenuto.='<ul id="valutazioneCommento">
                             <li>Complessivo: '.$v['p_complessivo']."</li>
                             <li>Accessibilità fisica: ".$v['p_acc_fisica']."</li>
