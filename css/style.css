@@ -266,15 +266,16 @@ header > ul{
         padding-bottom: 4%;
     
     }
+    .not_view{
+        display: none;
+    }
     
     
     /*
     comparsa / scomparsa
     */
     
-    #menu-content {  
-      display: none;
-    }
+
     
     #menu input:checked ~ #menu-content
     {

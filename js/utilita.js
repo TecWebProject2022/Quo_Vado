@@ -8,15 +8,16 @@ function Conferma_eliminazione(){
 function VerificaJS(){
 	var mini = document.getElementsByClassName('minimenu');
 	mini[0].setAttribute('id', 'menu-content');
+	mini[0].classList.add('not_view');
 	var  icon = document.getElementById('icon');
 	icon.classList.add("fa","fa-bars");
 }
 function View(){
-	var icon=document.getElementsByClassName('minimenu');
-	if (icon[0].style.display === "block"){
-		icon[0].style.display="none";
+	var icon=document.getElementById('menu-content');
+	if(icon.classList.contains('not_view')){
+		icon.classList.remove('not_view');
 	}
 	else{
-		icon[0].style.display = "block";
+		icon.classList.add('not_view');
 	}
 }
