@@ -16,10 +16,10 @@ $db=new Connection();
             $area=$classi[0]['area_disciplinare'];
             $classe=$target.'-'.$classi[0]['denominazione'];
             $contenuto.='<h1 id="title">'.$target.'-'.$classi[0]['denominazione'].'</h1>';
-            $contenuto.='<h2 >descrizione</h2>';
-            $contenuto.='<p id="dettagliClasse">Area disciplinare: '.$classi[0]['area_disciplinare'].' | gruppo disciplinare: '.$classi[0]['gruppo_disciplinare'].' 
-            | tipologia: '.$classi[0]['durata'].'</p>';
-            $contenuto.='<p id="illustrazioneClasse">'.$classi[0]['illustrazione'].'</p>'; #temporaneo, necessario inserire descrizioni nel db
+            $contenuto.='<h2>Descrizione</h2>';
+            $contenuto.='<ul id="identikit_corso"><li id="descrizione"><p id="dettagliClasse">Area disciplinare: '.$classi[0]['area_disciplinare'].' | Gruppo disciplinare: '.$classi[0]['gruppo_disciplinare'].' 
+            | Tipologia: '.$classi[0]['durata'].'</p>';
+            $contenuto.='<p id="illustrazioneClasse">'.$classi[0]['illustrazione'].'</p></li>'; #temporaneo, necessario inserire descrizioni nel db
 
             # stampa punteggio complessivo
             $query_valComplessiva="SELECT CAST(AVG(p_complessivo) AS DECIMAL(3,2)) as \"pc\" ,
@@ -28,12 +28,12 @@ $db=new Connection();
             FROM `Valutazione` WHERE classe_laurea=\"$target\";";
             if($valComplessiva=$db->ExecQueryAssoc($query_valComplessiva)){
         
-                $contenuto.="<p>Valutazione degli Utenti:</p><ul>
+                $contenuto.="<li id='valutazione'><p>Valutazione degli Utenti:</p><ul>
                             <li>Complessivo: ".$valComplessiva[0]['pc']."</li>
                             <li>Accessibilità fisica: ".$valComplessiva[0]['pf']."</li>
                             <li>Servizio inclusione: ".$valComplessiva[0]['ps']."</li>
                             <li>Tempestività burocratica: ".$valComplessiva[0]['tb']."</li>
-                            <li>Insegnamento: ".$valComplessiva[0]['pi']."</li></ul>";
+                            <li>Insegnamento: ".$valComplessiva[0]['pi']."</li></ul></li></ul>";
             }
             else{
                 $errori.='<p>Non è stato trovata alcuna valutazione</p>';

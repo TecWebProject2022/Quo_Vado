@@ -791,6 +791,7 @@ ESPLORA CORSI
 
 .area_disciplinare {
     display: flex;
+    flex-direction: row;
     align-items: stretch;
     margin: 0% 1.3% 1.5% 1.3%;
     flex-wrap: wrap;
@@ -913,16 +914,13 @@ GRUPPI DISCIPLINARI
     margin-bottom: 1.5em;
     line-height: 1.5em;
     text-shadow: 4px 4px 4px rgba(0,0,0,0.26);
+    text-align: center;
 }
 
 .gruppo {
     background: #FFFDE8;
     padding: 1.3em;
     margin: 2% 40% 2% 10%;
-    ;
-}
-
-.gruppo li {
     text-decoration: none;
 }
 
@@ -930,10 +928,51 @@ GRUPPI DISCIPLINARI
     margin: 2%;
 }
 
-.prova li {
+/*
+================
+CLASSE DI LAUREA
+================
+*/
+
+#content_classe h2 {
+    background-color: #FFFDE8;
+    padding: 1em;
+    margin: 2em 30% 2em 5%;
+    text-align: center;
+    line-height: 1.5em;
+    text-shadow: 4px 4px 4px rgba(0,0,0,0.26);
+    box-shadow: 5px 10px 15px rgba(0, 0, 0, 0.25);
+}
+
+#content_classe ul, li {
     text-decoration: none;
 }
 
+#dettagliClasse {
+    font-size: 1.3em;
+    margin-bottom: 2em;
+}
+
+#descrizione {
+    grid-column: 1;
+    color: #FFFFFF;
+}
+
+#valutazione {
+    background-color: #D67200;
+    grid-column: 2;
+    font-size: 1.2em;
+    padding: 1.5em;
+}
+
+#identikit_corso {
+    background-color: #0D5D70;
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    padding: 1.5em;
+    margin: 0% 5% 0% 5%;
+    column-gap: 2em;
+}
 
 
 /*
