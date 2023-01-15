@@ -1047,17 +1047,21 @@ OBIETTIVO LAVORO
     color: #162636;
 }
 
-#job_checklist #nota {
+#nota {
     /*box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.25);*/
     background-color: #FFFDE8;
     margin: 1em 5% 1.2em 5%;
     padding: 1.8em;
     padding-left: 16%;
-    font-size: 0.95em;
     background-image: url("icons/warning.svg");
     background-size: 15%;
     background-repeat: no-repeat;
     background-position: center left;
+}
+
+#job_checklist #nota {
+    font-size: 0.95em;
+    background-color: #FFFDE8;
 }
 
 #external_resources{
@@ -1378,9 +1382,119 @@ UNIVERSITA' E INCLUSIONE
 */
 
 #uni_inc{
-    background: var(--tittlebg) url(css_images/inc.jpg) no-repeat bottom;
+    background: var(--tittlebg) url(css_images/risorse_esterne.jpg) no-repeat center;
     background-size: cover;
+    padding-right: 40%;
 }
+
+aside #nota{
+    max-width: 1024px;
+    background-size: 7%;
+    background-position: left center;
+    padding: 2em;
+    padding-left: 8em;
+    margin-bottom: 2em;
+}
+
+#inc_txt{
+    margin: auto;
+    padding: 1em 2em;
+}
+
+#barriere{
+    margin: 0.5em 1.5em;
+}
+
+#barriere dt{
+    /*border: #000 3px solid;*/
+    padding: 0.5em 0%;
+    margin-top: 1em;
+    font-size: 1.5em;
+    color: #155471;
+}
+
+#barriere dd{
+    display: block;
+    padding: 1em 7%;
+    box-shadow: 0px 1px 5px rgba(0, 0, 0, 0.25);  
+    border-radius: 5px; 
+    padding-left: 20%; 
+    color: #333333;
+    /*border: #000 1px solid;*/
+}
+
+#barriere .problem{
+    margin: 0.5em 0em;
+    background-image: linear-gradient(to bottom, rgba(255, 165, 0,0.7), rgba(214, 114, 0,1));
+    background-repeat: no-repeat;
+    background-size: 15%;
+}
+
+
+#barriere .solution{
+    margin-bottom: 3em;
+    background-image: linear-gradient(to bottom,rgba(13, 93, 112,0.7), rgba(22, 38, 54,1));
+    background-repeat: no-repeat;
+    /*background-image: linear-gradient(to bottom, #ffa500, #D67200);*/
+    background-size: 15%;
+}
+
+#fis+.problem{
+    background-image: url("css_images/scale_parete-min.jpg");
+    background-position: left;
+    background-size: 15%;
+    background-repeat: no-repeat;
+}
+
+#fis+.problem+.solution{
+    background-image: url("css_images/scale_UD.jpg");
+    background-position: left;
+    background-size: 15%;
+    background-repeat: no-repeat;
+}
+
+#eco+.problem{
+    background-image: url("css_images/spiccioli.jpg");
+    background-position: left;
+    background-size: 15%;
+    background-repeat: no-repeat;
+}
+
+#eco+.problem+.solution{
+    background-image: url("css_images/soldi.jpg");
+    background-position: left;
+    background-size: 15%;
+    background-repeat: no-repeat;
+}
+
+#psi+.problem{
+    background-image: url("css_images/barriera_studio.jpg");
+    background-position: left;
+    background-size: 15%;
+    background-repeat: no-repeat;
+}
+
+#psi+.problem+.solution{
+    background-image: url("css_images/help.webp");
+    background-position: left;
+    background-size: 15%;
+    background-repeat: no-repeat;
+}
+
+#soc+.problem{
+    background-image: url("css_images/eggs.jpg");
+    background-position: left;
+    background-size: 15%;
+    background-repeat: no-repeat;
+}
+
+#soc+.problem+.solution{
+    background-image: url("css_images/hands.jpg");
+    background-position: left;
+    background-size: 15%;
+    background-repeat: no-repeat;
+}
+
 
 /*
 ================
