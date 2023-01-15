@@ -14,14 +14,14 @@ $db=new Connection();
     if($dbOK){
         if($gruppi=$db->ExecQueryAssoc($query_gruppi)){
             $content=str_replace("<titolo/>","<h1>".$target."</h1>",$content);
-           $contenuto.='<ul id="group_container">';
+           $contenuto.='<ul class="group_container">';
            foreach($gruppi as $r){
             $contenuto.="<li class='gruppo'>".$r['gruppo_disciplinare']."</li>";
             $query_classi="Select num_classe, denominazione from ClassediLaurea where gruppo_disciplinare=\"".$r['gruppo_disciplinare']."\";";
             if($classi=$db->ExecQueryAssoc($query_classi)){
-                $contenuto.="<li><ul>";
+                $contenuto.="<li class='elenco_classi'><ul class='decoration'>";
                 foreach($classi as $c){
-                    $contenuto.="<li>".$c['num_classe']." - <a href='classe.php?nclasse=".$c['num_classe']."&area=".$target."'>".$c['denominazione']."</a></li>";
+                    $contenuto.="<li class='noDecoration'>".$c['num_classe']." - <a href='classe.php?nclasse=".$c['num_classe']."&area=".$target."'>".$c['denominazione']."</a></li>";
                 }
                 $contenuto.="</li></ul>";
                 }
