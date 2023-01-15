@@ -1028,17 +1028,32 @@ CLASSE DI LAUREA
 
 #corsi li {
     list-style: none;
-    line-height: 1.5em;
-    font-size: 1.3em;
+    line-height: 2em;
+    font-size: 1.1em;
 }
 
 #listaCommenti {
     margin: 2em 15% 2em 15%;
 }
 
+#commento {
+    background-color: #ecebeb;
+    padding: 1.5em;
+    margin-bottom: 1em;
+    list-style: none;
+}
+
+#valutazioneCommento {
+    margin-top: 0.8em;
+}
+
 #valutazioneCommento li {
     display: inline;
-    list-style: none;
+}
+
+#newcomment, #invito {
+    margin-left: 15%;
+    padding: 1em;
 }
 
 /*

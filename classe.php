@@ -98,7 +98,7 @@ $db=new Connection();
             #controllo se sono in presenza di un utente loggato
             session_start();
             if(!isset($_SESSION['user'])){
-                $contenuto.='<p><a href="registrazione_utente.php">Iscriviti</a> o <a href="login.php">Accedi</a> per lasciare un commento!</p>';
+                $contenuto.='<p id="invito"><a href="registrazione_utente.php">Iscriviti</a> o <a href="login.php">Accedi</a> per lasciare un commento!</p>';
             }
             else{
                 $query_iscrizione='SELECT nome_utente FROM Iscrizione WHERE classe = "'.$target.'" AND nome_utente="'.pulisciInput($_SESSION['user']).'";';
