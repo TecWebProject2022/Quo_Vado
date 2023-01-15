@@ -13,7 +13,7 @@ $db=new Connection();
     $dbOK=$db->Connect();
     if($dbOK){
         if($gruppi=$db->ExecQueryAssoc($query_gruppi)){
-            $content=str_replace("<titolo/>","<h1>".$target."</h1>",$content);
+            $content=str_replace("<titolo/>","<h1 id='title'>".$target."</h1>",$content);
            $contenuto.='<ul class="group_container">';
            foreach($gruppi as $r){
             $contenuto.="<li class='gruppo'>".$r['gruppo_disciplinare']."</li>";

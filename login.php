@@ -11,7 +11,7 @@ if(check()){
 else if(isset($_SESSION['user']) &&  isset($_SESSION['time'])  && time()-$_SESSION['time']>3600){
     unset($_SESSION['user']); 
     unset($_SESSION['time']);
-    $_SESSION['sessione']='<p>Sessione Scaduta</p>';
+    $_SESSION['sessione']='<p class="error">Sessione Scaduta</p>';
 }
 
 $content='';
@@ -23,16 +23,16 @@ if(isset($_POST['submit'])){
     $username=PulisciInput($_POST['username']);
     $password=PulisciInput($_POST['password']);
     if(!strlen($username)){
-        $errori.='<li>Il campo username non può essere vuoto</li>';
+        $errori.='<li class="error">Il campo username non può essere vuoto</li>';
     }
     else if (!preg_match('/^[@a-zA-Z0-9._-]{4,40}$/',$username)){
-        $errori.='<li>Il campo username non può contenere spazi e deve contenere da 4 a 40 caratteri alfanumerici (sono ammessi i seguenti caratteri: @ . _ - )</li>';
+        $errori.='<li class="error">Il campo username non può contenere spazi e deve contenere da 4 a 40 caratteri alfanumerici (sono ammessi i seguenti caratteri: @ . _ - )</li>';
     }
     if(!strlen($password)){
-        $errori.='<li>Il campo password non può essere vuoto</li>';
+        $errori.='<li class="error">Il campo password non può essere vuoto</li>';
     }
     else if (!preg_match('/^[@a-zA-Z0-9._-]{4,20}$/',$password)){
-        $errori.='<li>Il campo password non può contenere spazi e deve contenere da 4 a 20 caratteri alfanumerici (sono ammessi i seguenti caratteri: @ . _ - )</li>';
+        $errori.='<li class="error">Il campo password non può contenere spazi e deve contenere da 4 a 20 caratteri alfanumerici (sono ammessi i seguenti caratteri: @ . _ - )</li>';
     }
 
 
@@ -50,12 +50,12 @@ if(!$errori){
             header("Location:area_admin.php");
       }
       else{
-        $errori.='<li class="errore">Username o password non correti</li>';
+        $errori.='<li class="error">Username o password non corretti</li>';
       }
     $db->Disconnect();    
     }
     else{
-        $errori.='<li class="errore">Connessione non riuscita, attendere e riprova</li>';
+        $errori.='<li class="error">Connessione non riuscita, attendere e riprovare</li>';
     }   
 }
 }

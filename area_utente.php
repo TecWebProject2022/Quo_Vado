@@ -11,7 +11,7 @@ if(!isset($_SESSION['user']) || !isset($_SESSION['time']) || time()-$_SESSION['t
 }
 $menu1='<nav id="visible-sottomenu" aria-label="sotto menù di area riservata">
 <ul>
-    <li><a href="#Commenti">Commenti rilasciti</a></li>
+    <li><a href="#Commenti">Commenti rilasciati</a></li>
     <li><a href="#Aggiungi">Aggiungi un commento</a></li>
     <li><a href="#CambioPw">Cambia password</a></li>
     <li><a href="logout.php">Logout</a></li>
@@ -19,7 +19,7 @@ $menu1='<nav id="visible-sottomenu" aria-label="sotto menù di area riservata">
 </nav>';
 $menu2='<nav id="visible-sottomenu" aria-label="sotto menù di area riservata">
 <ul>
-    <li><a href="#Commenti">Commenti rilasciti</a></li>
+    <li><a href="#Commenti">Commenti rilasciati</a></li>
     <li><a href="#Aggiungi">Aggiungi un commento</a></li>
     <li><a href="logout.php">Logout</a></li>
 </ul>
@@ -51,9 +51,9 @@ $db=new Connection();
 $dbOK=$db->Connect();
 if($dbOK){
     if($res1=$db->ExecQueryAssoc($query1)){
-        $contenuto.="<h2 class='titles_utente'>Dati Personali</h2>";
+        $contenuto.="<h2 class='titles_utente'>Dati personali</h2>";
         $contenuto.="<dl id='info_utente'>";
-        $contenuto.="<dt>Nome Utente: </dt><dd>".$res1[0]['nome_utente']."</dd>";
+        $contenuto.="<dt>Nome utente: </dt><dd>".$res1[0]['nome_utente']."</dd>";
         $contenuto.="<dt>Nome: </dt><dd>".$res1[0]['nome']."</dd>";
         $contenuto.="<dt>Cognome: </dt><dd>".$res1[0]['cognome']."</dd>";
         $contenuto.="<dt>Data di nascita: </dt><dd>".date("d/m/Y",strtotime($res1[0]['data_nascita']))."</dd>";
@@ -68,7 +68,7 @@ if($dbOK){
                 $contenuto.="<li>";
                 $contenuto.="<ul><li>Ateneo: ".$i['ateneo']."</li>";
                 $contenuto.="<ul><li>Classe di Laurea: ".$i['classe']."</li>";
-                $contenuto.="<ul><li>Corso di Studi: ".$i['corso']."</li>";
+                $contenuto.="<ul><li>Corso di studi: ".$i['corso']."</li>";
                 $contenuto.="<ul><li>Data inizio studi: ".date("d/m/Y",strtotime($i['datai']))."</li>";
                 $contenuto.="<ul><li>Data fine studi: ".date("d/m/Y",strtotime($i['dataf']))."</li>";
                 $contenuto.="<ul><li>Punteggio di affinità con la scuola superiore frequentata: ".$i['punteggio_scuola_provenienza']."</li></ul>";
@@ -80,7 +80,7 @@ if($dbOK){
             if($res3=$db->ExecQueryNum($query3)){
                 $contenuto.="<aside>
                 <h2>Glossario</h2>
-                <p>Ogni utente può esprime un giudizio con un valore da 1 a 5 su i seguenti ambiti riguardanti una classe di laurea</p>
+                <p>Ogni utente può esprime un giudizio con un valore da 1 a 5 sui seguenti ambiti riguardanti una classe di laurea</p>
                     <dl>
                         <dt>Valutazione complessiva: </dt>
                         <dd>valutazione che riguarda tutti gli ambiti universitari ingenerale</dd>
@@ -96,7 +96,7 @@ if($dbOK){
                         <dd>cataratterrizzazione del commento</dd>
                     </dl>
             </aside>";
-                $contenuto.="<label id=\"cancellacomm\">Seleziona un commento e premi cancella per eliminarlo</label>";
+                $contenuto.="<label id=\"cancellacomm\">Seleziona un commento e clicca &quot;cancella&quot; per eliminarlo</label>";
                 $contenuto.='<form aria-describedby="cancellacomm" action="area_utente.php"  method="post" onsubmit="return OnDelete()" >
                 <fieldset><legend>Commenti</legend>';
                 for($i=0;$i<count($res3);$i++){

@@ -37,6 +37,7 @@ html,body{
 
 .error {
     color: red;
+    text-align: center;
 }
 
 /*
@@ -1641,6 +1642,10 @@ LOGIN
     padding-right: 100%;
 }
 
+#form > label {
+    font-size: 1.2em;
+}
+
 #crea_account {
     text-align: center;
     padding: 1em;
@@ -1650,6 +1655,11 @@ LOGIN
 .errore {
     text-align: center;
     margin: 2em;
+}
+
+#username, #password {
+    padding: 0.5em;
+    margin-bottom: 1em;
 }
 
 /*
