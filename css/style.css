@@ -508,6 +508,17 @@ article{
     box-shadow: 2px 5px 10px rgba(0, 0, 0, 0.25);
 }
 
+article dl{
+    margin: 1em 0em;
+}
+
+article dt{
+    font-size: 1.3em;
+    margin-top: 1em;
+    margin-bottom: 0.3em;
+    color: #0D5D70;
+}
+
 article div{
     padding: 0.5em 0em 1em 0em;
 }
@@ -553,6 +564,14 @@ article li, section li{
     padding: 0.2em;
 }
 
+ins{
+    text-decoration: none;
+    font-size: larger;
+}
+
+del{
+    font-size: smaller;
+}
 
 
 /*
@@ -1581,16 +1600,6 @@ aside #nota{
 Inclusivi per scelta
 ****************************************************************************************************************************************/
 
-#cosa_significa dl{
-    margin: 1em 0em;
-}
-
-#cosa_significa dt{
-    font-size: 1.3em;
-    margin-top: 1em;
-    margin-bottom: 0.3em;
-}
-
 #conclusione .motivational{
     text-align: left;
     padding-top: 1em;
@@ -1620,6 +1629,72 @@ Inclusivi per scelta
 #return a:hover{
     opacity: 0.9;
 }
+
+/***************************************************************
+Parità di genere
+***************************************************************/
+
+#women_voices{
+    margin: 2em 5%;
+}
+
+#women_voices ul{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+#women_voices li{
+    flex: 0 1 200px;
+    list-style: none;
+    box-shadow: 1px 2px 5px rgba(13, 93, 112,0.5);
+    margin:  0.5em 0.9em;
+    color: #093e4b;
+    padding: 1em;
+
+}
+
+#women_voices li:nth-child(1){
+    background-image: url("css_images/woman1.jpg");
+    background-position: left top;
+    background-repeat: no-repeat;
+    background-size: 35%;
+    padding-left: 20%;
+}
+
+#women_voices li:nth-child(2){
+    background-image: url("css_images/woman2.jpg");
+    background-position: right top;
+    background-repeat: no-repeat;
+    background-size: 40%;
+    padding-right: 20%;
+    padding-left: 0.8em;
+}
+
+#women_voices li:nth-child(4){
+    background-image: url("css_images/woman4.jpg");
+    background-position: right top;
+    background-repeat: no-repeat;
+    background-size: 45%;
+    padding-right: 20%;
+}
+
+#women_voices li:nth-child(3){
+    background-image: url("css_images/woman3.jpg");
+    background-position: left top;
+    background-repeat: no-repeat;
+    background-size: 35%;
+    padding-left: 20%;
+}
+
+#women_voices li:nth-child(5){
+    background-image: url("css_images/woman5.jpg");
+    background-position: left;
+    background-repeat: no-repeat;
+    background-size: 40%;
+    padding-left: 20%;
+}
+
 
 /*
 ================
