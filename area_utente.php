@@ -145,7 +145,7 @@ if($res5=$db->ExecQueryAssoc($query5)){
        $classi.="<option value=\"".$r['classe']."\">".$r['classe']."</option>";
     }
     $classi.="</select>";
-$contenuto.='<h2 id="Aggiungi">Aggiungi un commento</h2><label id="formdesc">Ti è consentito lasciare un solo commento per ogni ambito delle classe di laurea per le quali ti sei dichiarato iscritto  e il contenuto testuale del commento dovrà contenere da 10 a 200 caratteri alfanumerici (sono ammessi i seguenti caratteri: @ . _ - )</label><form  aria-describedby="formdesc"action="area_utente.php"   method="post">
+$contenuto.='<h2 id="Aggiungi">Aggiungi un commento</h2><label id="formdesc">Ti è consentito lasciare un solo commento per ogni ambito delle classe di laurea per le quali ti sei dichiarato iscritto  e il contenuto testuale del commento dovrà contenere da 10 a 200 caratteri alfanumerici (sono ammessi i seguenti caratteri: @ . _ - )</label><form  aria-describedby="formdesc" action="area_utente.php"  onsubmit="return OnInsert()" method="post">
 <fieldset>
 <legend>Agguingi un commento</legend>'.$classi.'
 <label for="commento"></label>
@@ -179,7 +179,6 @@ $contenuto.='<h2 id="Aggiungi">Aggiungi un commento</h2><label id="formdesc">Ti 
 }
 
 if($user!='user'){
-
     $contenuto.='<h2 id="CambioPw">Cambia Password</h2><form id="form_passw" action="area_utente.php" method="post" >
     <fieldset>Cambio password</fieldset>
     <label for="oldpassword"><span lang="en">Immetti la tua vecchia Password: </span></label>
@@ -202,7 +201,7 @@ if(isset($_POST['submit2']) && check()){
     $cancella=isset($_POST['commento']) ? $_POST['commento']: '';
     
     if(!$cancella){
-     $commenti.='<li>Selezionare un commento per cancellarlo</li>';
+     $commenti.='<li>Selezionare un commento o dei commenti per cancellarli</li>';
     }
     else{
         print_r($cancella);
@@ -216,7 +215,7 @@ if(isset($_POST['submit2']) && check()){
             $query4="DELETE FROM Valutazione Where nome_utente=\"".$user."\" && classe_laurea=\"".$res3[$i][0]."\" && tag=\"".$res3[$i][8]."\";";
             $r=$db->Insert($query4);
             if($r==true){
-                $_SESSION['info']="<p>cancellazione avvenuta con successo</p>";
+                $_SESSION['info']="<p>Cancellazione avvenuta con successo</p>";
                 header('Location:area_utente.php');
             }
            
