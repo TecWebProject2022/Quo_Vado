@@ -23,6 +23,7 @@ $content=file_get_contents("area_admin.html");
 $msgCommenti='';
 $msgCorso='';
 $formCommenti='';
+$errori_corso='';
 
 #variabili forse da eliminare    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
 
@@ -103,6 +104,7 @@ if($dbOK){
         $link=isset($_POST['cor_link'])?pulisciInput($_POST['cor_link']):'';
         $accesso=isset($_POST['cor_accesso'])?pulisciInput($_POST['cor_accesso']):'';
         #controli sulle variabili
+
         if(!$errori_corso && $classe && $ateneo && $nome && $link && $accesso ){
             # tutte le variabili sono istanziate e valide
             $query_insert_corso="INSERT INTO CorsodiStudi(ateneo,classe_laurea,nome,accesso,link) VALUES ('".$ateneo."','".$classe."','".$nome."','".$link."',".$accesso.");";
