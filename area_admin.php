@@ -107,7 +107,7 @@ if($dbOK){
 
         if(!$errori_corso && $classe && $ateneo && $nome && $link && $accesso ){
             # tutte le variabili sono istanziate e valide
-            $query_insert_corso="INSERT INTO CorsodiStudi(ateneo,classe_laurea,nome,accesso,link) VALUES ('".$ateneo."','".$classe."','".$nome."','".$link."',".$accesso.");";
+            $query_insert_corso="INSERT INTO CorsodiStudio(ateneo,classe_laurea,nome,accesso,link) VALUES ('".$ateneo."','".$classe."','".$nome."','".$link."',".$accesso.");";
             if($db->Insert($query_insert_corso)){
                 $msgCorso.='<p>'.$nome.' aggiunto con successo</p>';
             }else{
@@ -123,7 +123,7 @@ if($dbOK){
              #controli sulle variabili
         if(!$errori_corso && $classe && $ateneo && $nome){
             # tutte le variabili sono istanziate e valide
-            $query_delete_corso="DELETE FROM CorsodiStudi WHERE  ateneo='".$ateneo."' AND classe_laurea='".$classe."' AND nome='".$nome."');";
+            $query_delete_corso="DELETE FROM CorsodiStudio WHERE  ateneo='".$ateneo."' AND classe_laurea='".$classe."' AND nome='".$nome."');";
             if($db->Insert($query_delete_corso)){
                 $msgCorso.='<p>'.$nome.' rimosso con successo</p>';
             }else{
