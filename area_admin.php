@@ -1,7 +1,6 @@
 <?php
 session_start();
-echo $_SESSION['user'];
-echo time()-$_SESSION['time'];
+
 // Se non hai fatto il login o la tua sessione (durata max 1 h di inattività) è scaduta
 if(!isset($_SESSION['user']) || !isset($_SESSION['time']) || time()-$_SESSION['time']>3600){
     unset($_SESSION['user']); 
@@ -19,7 +18,7 @@ else if($_SESSION['user']!='admin'){
 require_once 'utilita.php';
 require_once 'database.php';
 
-$content=file_get_contents("area_riservata.html");
+$content=file_get_contents("area_admin.html");
 #dichiarazioni
 $msgCommenti='';
 $msgCorso='';
