@@ -25,7 +25,8 @@ $msgCommenti='';
 $msgCorso='';
 $formCommenti='';
 
-#variabili forse da eliminare
+#variabili forse da eliminare    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
+
 /*
 $vecchia='';
 $nuova='';
@@ -190,9 +191,9 @@ $errorf.="</ul>";
 
 $db->Disconnect();
 
-$contenuto=str_replace("<formCommenti/>",$formCommenti,$contenuto);
-$contenuto=str_replace("<msgCommenti/>",$msgCommenti,$contenuto);
-$contenuto=str_replace("<msgCorsi/>",$msgCorso,$contenuto);
+$content=str_replace("<formCommenti/>",$formCommenti,$content);
+$content=str_replace("<msgCommenti/>",$msgCommenti,$content);
+$content=str_replace("<msgCorsi/>",$msgCorso,$content);
 /*
 $contenuto=str_replace("<new>",$nuova,$contenuto);
 $contenuto=str_replace("<old>",$vecchia,$contenuto);
