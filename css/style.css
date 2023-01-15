@@ -923,17 +923,6 @@ GRUPPI DISCIPLINARI
 ================
 */
 
-.macro_area {
-    color: #FFFFFF;
-    background-color: #0D5D70;
-    padding: 1.3em;
-    margin: 2% 40% 2% 10%;
-    margin-bottom: 1.5em;
-    line-height: 1.5em;
-    text-shadow: 4px 4px 4px rgba(0,0,0,0.26);
-    text-align: center;
-}
-
 .group_container {
     display: flex;
     flex-flow: row wrap;
