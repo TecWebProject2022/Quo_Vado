@@ -1,7 +1,6 @@
 <?php
 session_start();
-echo $_SESSION['user'];
-echo time()-$_SESSION['time'];
+
 // Se non hai fatto il login o la tua sessione (durata max 1 h di inattività) è scaduta
 if(!isset($_SESSION['user']) || !isset($_SESSION['time']) || time()-$_SESSION['time']>3600){
     unset($_SESSION['user']); 
@@ -19,22 +18,21 @@ else if($_SESSION['user']!='admin'){
 require_once 'utilita.php';
 require_once 'database.php';
 
-$content=file_get_contents("area_riservata.html");
+$content=file_get_contents("area_admin.html");
 #dichiarazioni
 $msgCommenti='';
+$msgCorso='';
+$formCommenti='';
 
-#variabili forse da eliminare
+#variabili forse da eliminare    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
+
+/*
 $vecchia='';
-
 $nuova='';
 $errorf='<ul>';
-
-
-
-
 $errori1='<ul>';
+*/
 
-$cancella='';
 
 #inizio
 $db=new Connection();
@@ -46,7 +44,7 @@ if($dbOK){
         $user=isset($_POST['com_utente'])?pulisciInput($_POST['com_utente']):'';
         $classe=isset($_POST['com_classe'])?pulisciInput($_POST['com_classe']):'';
         if($user || $classe ){
-            $query_commenti='SELECT nome_utente,datav,classe_laurea,commento,p_complessivo,p_acc_fisica, p_servizio_inclusione,tempestivita_burocratica, p_insegnamento FROM Valutazione WHERE ';
+            $query_commenti='SELECT nome_utente,datav,classe_laurea,tag,commento,p_complessivo,p_acc_fisica, p_servizio_inclusione,tempestivita_burocratica, p_insegnamento FROM Valutazione WHERE ';
             $query_commenti.= $user? "nome_utente='".$user."' AND ":'';
             $query_commenti.= $classe? "classe_laurea='".$classe."'":'';
             
@@ -55,24 +53,23 @@ if($dbOK){
             }
             $query_commenti.=';';
 
-            if($commenti=$db->ExecQueryAssoc($query_commenti)){
-                $formCommenti='<form id="formEliminaCommenti" action="" method="post"><fieldset><legend>seleziona i commenti da eliminare</legend>';
-                foreach($commenti as $c){
-                    $commento='<span>'.$c['nome_utente'].'|'.$c['classe_laurea'].'|'.date("d-m-Y",strtotime($v['datav'])).':';
-                    $commento.='<p>'.$c['commento'].'</p>';
+            if($commenti=$db->ExecQueryNum($query_commenti)){
+                $formCommenti='<form id="formEliminaCommenti" action="area_admin.php" method="post"><fieldset><legend>Seleziona i commenti da eliminare</legend>';
+                for($i=0;$i<count($commenti);$i++){
+                    $commento='<span>'.$commenti[$i][0].'|'.$commenti[$i][1].'|'.date("d-m-Y",strtotime($commenti[$i][2])).':';
+                    $commento.='<p>'.$commenti[$i][4].'</p>';
                     $commento.='<dl>
-                        <dt>Punteggio complessivo:</dt><dd> '.$c['p_complessivo'].' </dd>
-                        <dt>Punteggio accessibilita fisica:</dt><dd> '.$c['p_acc_fisica'].' </dd>
-                        <dt>Punteggio servizio inclusione:</dt><dd> '.$c['p_servizio_inclusione'].' </dd>
-                        <dt>Punteggio tempestivita burocratica:</dt><dd> '.$c['p_tempestivita'].' </dd>
-                        <dt>Punteggio insegnamento:</dt><dd> '.$c['p_insegnamento'].' </dd>
+                        <dt>Punteggio complessivo:</dt><dd> '.$commenti[$i][5].' </dd>
+                        <dt>Punteggio accessibilita fisica:</dt><dd> '.$commenti[$i][6].' </dd>
+                        <dt>Punteggio servizio inclusione:</dt><dd> '.$commenti[$i][7].' </dd>
+                        <dt>Punteggio tempestivita burocratica:</dt><dd> '.$commenti[$i][8].' </dd>
+                        <dt>Punteggio insegnamento:</dt><dd> '.$commenti[$i][9].' </dd>
                     </dl></span>';
 
-                    $formCommenti.='<label for="'.$c['nome_utente'].'-'.$c['classe_laurea'].'">'.$commento.'</label>';
-                    $formCommenti.='<input type="checkbox" id="'.$c['nome_utente'].'-'.$c['classe_laurea'].'" name="'.$c['nome_utente'].'-'.$c['classe_laurea'].'"/>';
+                    $formCommenti.='<label for="'.$i.'">'.$commento.'</label>';
+                    $formCommenti.='<input type="checkbox" id="'.$i.'" name="commento[]" value="'.$i.'"/>';
                     $formCommenti.= '<input type="submit" id="delete_commento" name="delete_commento value="elimina commenti selezionati"/></fieldset></form>';
                 }
-                $msgCommenti.='<msgDeleteComments>';
             }else{
                 $msgCommenti.='<p>nessun commento</p>';
             }
@@ -81,10 +78,61 @@ if($dbOK){
             $msgCommenti.='<p>riempire almeno uno dei tre campi</p>';
         }  
     }
+    # controllo se nel form per la ricerca e' stato selezionato qualcosa
+    if(isset($_POST['delete_commento'])){
+        #commenti da eliminare selezionati
+        $commenti_selezionati=isset($_POST['commento']) ? $_POST['commento']: '';
+        if($commenti_selezionati){
+            foreach($commenti_selezionati as $i){  
+                $query_delete_commenti="DELETE FROM Valutazione Where nome_utente=\"".$user."\" && classe_laurea=\"".$res3[$i][0]."\" && tag=\"".$res3[$i][8]."\";";
+                $msgCommenti.='<ul>';
+                if(!$db->Insert($query_delete_commenti)){
+                    $msgCommenti.='<li>Si è verificato un errori ai nostri servizi, commento dell\'utente '.$commenti[$i][0].' non eliminato</li>';
+                }else{
+                    $msgCommenti.='<li>Commento dell\'utente '.$commenti[$i][0].' eliminato con successo</li>';
+                }
+            }
+        }
+    }
 
     #sezione gestione corsi
-    if(isset($_POST['add_corso'])){}
-    if(isset($_POST['delete_corso'])){}
+    if(isset($_POST['add_corso'])){
+        $classe=isset($_POST['cor_classe'])?pulisciInput($_POST['cor_classe']):'';
+        $ateneo=isset($_POST['cor_ateneo'])?pulisciInput($_POST['cor_ateneo']):'';
+        $nome=isset($_POST['cor_nome'])?pulisciInput($_POST['cor_nome']):'';
+        $link=isset($_POST['cor_link'])?pulisciInput($_POST['cor_link']):'';
+        $accesso=isset($_POST['cor_accesso'])?pulisciInput($_POST['cor_accesso']):'';
+        #controli sulle variabili
+        if(!$errori_corso && $classe && $ateneo && $nome && $link && $accesso ){
+            # tutte le variabili sono istanziate e valide
+            $query_insert_corso="INSERT INTO CorsodiStudi(ateneo,classe_laurea,nome,accesso,link) VALUES ('".$ateneo."','".$classe."','".$nome."','".$link."',".$accesso.");";
+            if($db->Insert($query_insert_corso)){
+                $msgCorso.='<p>'.$nome.' aggiunto con successo</p>';
+            }else{
+                $msgCorso.='<p>Inserimento di '.$nome.' non riuscito, riprova</p>';
+            }
+        }
+        $msgCorso.='<ul>'.$errori_corso.'</ul>';
+    }else{
+        if(isset($_POST['delete_corso'])){
+            $classe=isset($_POST['cor_classe'])?pulisciInput($_POST['cor_classe']):'';
+            $ateneo=isset($_POST['cor_ateneo'])?pulisciInput($_POST['cor_ateneo']):'';
+            $nome=isset($_POST['cor_nome'])?pulisciInput($_POST['cor_nome']):'';
+             #controli sulle variabili
+        if(!$errori_corso && $classe && $ateneo && $nome){
+            # tutte le variabili sono istanziate e valide
+            $query_delete_corso="DELETE FROM CorsodiStudi WHERE  ateneo='".$ateneo."' AND classe_laurea='".$classe."' AND nome='".$nome."');";
+            if($db->Insert($query_delete_corso)){
+                $msgCorso.='<p>'.$nome.' rimosso con successo</p>';
+            }else{
+                $msgCorso.='<p>Cancellazione di '.$nome.' non riuscita, riprova</p>';
+            }
+        }
+        $msgCorso.='<ul>'.$errori_corso.'</ul>';
+        }
+    }
+}
+    /*
     #sezione  cambio password da gestire 
     if(isset($_POST['submit1']) && check()){
         $vecchia=PulisciInput($_POST['Vecchiapassword']);
@@ -136,57 +184,22 @@ if($dbOK){
 
         
     }
-    if(isset($_POST['submit3']) && check()){
-    $commento=PulisciInput($_POST['insertcommento']);
-    $classlaurea=$_POST['classel'];
-    $pc=$_POST['p_complessivo'];
-    $pf=$_POST['p_acc_fisica'];
-    $ps=$_POST['p_inclusione'];
-    $tb=$_POST['p_tempestivita'];
-    $pi=$_POST['p_insegnamento'];
-    $tag=$_POST['tag'];
-    if (!preg_match('/^[@a-zA-Z 0-9._-]{10,200}$/',$commento)){
-        $errorf.='<li>Il campo commento non può essere vuoto e deve contenere da 10 a 200 caratteri alfanumerici (sono ammessi i seguenti caratteri: @ . _ - )</li>';
-    }
-    if($errorf=='<ul>'){
-        $db=new Connection();
-        $dbOK=$db->Connect();
-        if($dbOK){
-            $check="Select * from  Valutazione where nome_utente=\"".$user."\" && classe_laurea=\"".$classlaurea."\" && tag=\"".$tag."\";";
-            if($r=$db->ExecQueryAssoc($check)){
-                $errorf.="<li>Commento già risaliscato per questa calsse di laurea</li>";
-            }
-            else{
-        $insert="INSERT INTO Valutazione(nome_utente, classe_laurea, datav, commento, tag, p_complessivo, p_acc_fisica, p_servizio_inclusione, tempestivita_burocratica, p_insegnamento) VALUES (\"".$user."\",\"".$classlaurea."\",curdate(),\"".$commento."\",\"".$tag."\",".$pc.",".$pf.",".$ps.",".$tb.",".$pi.");";
-        $q=$db->Insert($insert);
-        if($q){
-            header('Location:area_utente.php');
-            $errorf.="<li>Inserimento con successo</li>";
-            
-        }
-        else{
-            $errorf.="<li>Inserimento non riuscito</li>";
-        }
-        }
-        
-        }
-        else{
-            $errorf.="<li>Spiacenti ma i nostri servizi sono momentaneamente non disponibili</li>"; 
-        }
-
-    }
-}
 }
 $errorf.="</ul>";
+*/
+
 $db->Disconnect();
-$contenuto=str_replace("<areacom/>",$commento,$contenuto);
-$contenuto=str_replace("</errorform>",$errorf,$contenuto);
-$contenuto=str_replace("</commenterror>",$commenti,$contenuto);
+
+$content=str_replace("<formCommenti/>",$formCommenti,$content);
+$content=str_replace("<msgCommenti/>",$msgCommenti,$content);
+$content=str_replace("<msgCorsi/>",$msgCorso,$content);
+/*
 $contenuto=str_replace("<new>",$nuova,$contenuto);
 $contenuto=str_replace("<old>",$vecchia,$contenuto);
 $content=str_replace("<content/>",$contenuto,$content);
 $content=str_replace("<errori/>",$errori,$content);
 $content=str_replace("</err/>",$errori1,$content);
+*/
 echo $content;
 
 ?>
