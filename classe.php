@@ -28,12 +28,12 @@ $db=new Connection();
             FROM `Valutazione` WHERE classe_laurea=\"$target\";";
             if($valComplessiva=$db->ExecQueryAssoc($query_valComplessiva)){
         
-                $contenuto.="<li id='valutazione'><p>Valutazione degli Utenti:</p><ul>
-                            <li>Complessivo: ".$valComplessiva[0]['pc']."</li>
+                $contenuto.="<li id='valutazione'><p>Valutazione degli utenti</p><ul>
+                            <li class='highlight'>Complessivo: ".$valComplessiva[0]['pc']."</li>
                             <li>Accessibilità fisica: ".$valComplessiva[0]['pf']."</li>
-                            <li>Servizio inclusione: ".$valComplessiva[0]['ps']."</li>
+                            <li class='highlight'>Servizio inclusione: ".$valComplessiva[0]['ps']."</li>
                             <li>Tempestività burocratica: ".$valComplessiva[0]['tb']."</li>
-                            <li>Insegnamento: ".$valComplessiva[0]['pi']."</li></ul></li></ul>";
+                            <li class='highlight'>Insegnamento: ".$valComplessiva[0]['pi']."</li></ul></li></ul>";
             }
             else{
                 $errori.='<p>Non è stato trovata alcuna valutazione</p>';
@@ -43,10 +43,10 @@ $db=new Connection();
             $query_corso_di_studio="SELECT ateneo,nome,accesso,link FROM CorsodiStudio WHERE classe_laurea=\"$target\";";
             if($corsi=$db->ExecQueryAssoc($query_corso_di_studio)){
                 #display corsi
-                $contenuto.='<h2>I corsi di studio della classe di laurea'.$target.'</h2>';
+                $contenuto.='<h2>I corsi di studio di questa classe di laurea</h2>';
                 $contenuto.='<ul id="corsi">';
                 foreach($corsi as $c){
-                    $contenuto.='<li id="corso"><a href="'.$c['link'].'"><strong>'.$c['nome'].'</strong></a> |'.$c['accesso'];
+                    $contenuto.='<li><a href="'.$c['link'].'"><strong>'.$c['nome'].'</strong></a> | '.$c['accesso'];
                     # se riesce a procurarsi il link bene, altrimenti semplicemente non lo inserisco
                     $ateneo=$c['ateneo'];
                     $query_link_ateneo="SELECT link FROM Ateneo WHERE nome=\"$ateneo\";";
@@ -57,6 +57,7 @@ $db=new Connection();
                     }
                     $contenuto.='</li>';
                 }
+                $contenuto.='</ul>';
             }else{
                 $errori.="<p>Opss si è verficato un errore di conessione: impossibile caricare i corsi di laurea, riprova</p>";
             }    
@@ -77,7 +78,7 @@ $db=new Connection();
             }
             #stampa commenti
             if($valutazioni=$db->ExecQueryAssoc($query_valutazione)){
-                $contenuto.='<h2>I commenti degli utenti sulla classe di laurea '.$classe.':</h2>';
+                $contenuto.='<h2>I commenti degli utenti su questa classe di laurea</h2>';
                 $contenuto.='<ul id="listaCommenti">';
                 foreach($valutazioni as $v){
                     $contenuto.='<li id="commento"><strong>'.$v['n'].' | '.date("d-m-Y",strtotime($v['datav']))." | ".$v['corso']."</strong><p id=testoCommento>".$v['commento']."</p>";
