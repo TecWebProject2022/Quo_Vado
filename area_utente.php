@@ -36,6 +36,10 @@ if($user!='user'){
 else{
     $content=str_replace('<sottomenu/>',$menu2,$content);
 }
+if(isset($_SESSION['info'])){
+    $content=str_replace('<info/>',$_SESSION['info'],$content);
+    $_SESSION['info']='';
+}
 $commento='';
 $errori1='<ul>';
 $errori='';
@@ -93,14 +97,14 @@ if($dbOK){
                     </dl>
             </aside>";
                 $contenuto.="<label id=\"cancellacomm\">Seleziona un commento e premi cancella per eliminarlo</label>";
-                $contenuto.='<form aria-describedby="cancellacomm" action="area_utente.php"  method="post" >
+                $contenuto.='<form aria-describedby="cancellacomm" action="area_utente.php"  method="post" onsubmit="return OnDelete()" >
                 <fieldset><legend>Commenti</legend>';
                 for($i=0;$i<count($res3);$i++){
                     
                         $contenuto.='<span><input type="checkbox" id="'.$i.'" name="commento[]" value="'.$i.'" /></span><label for="'.$i.'">
                         <ul><li>Data di emissione: '.date("d/m/Y",strtotime($res3[$i][1])).'</li>
                         <li>Classe di laurea: '.$res3[$i][0].'</li>
-                        <li>Comemento: '.$res3[$i][2].'</li>
+                        <li>Commento: '.$res3[$i][2].'</li>
                         <li>Valutazione complessiva: '.$res3[$i][3].'</li>
                         <li>Valutazione accessibilità fisica: '.$res3[$i][4].'</li>
                         <li>Valutazione sul servizio inclusione: '.$res3[$i][5].'</li>
@@ -113,7 +117,7 @@ if($dbOK){
                             $contenuto.="<li>Valutazione riguardante l'ambito generale </li></ul></label><br />";
                         }      
                 }
-                $contenuto.='<input type="submit" id="submit2"  name="submit2" value="cancella"/></fieldset></form></commenterror>';
+                $contenuto.='<input type="submit" id="submit2"  name="submit2" value="cancella commento selezionato"/></fieldset></form></commenterror>';
                 
             }
             else{
@@ -205,29 +209,28 @@ if(isset($_POST['submit2']) && check()){
         
         $db=new Connection();
         $dbOK=$db->Connect();
+        $r='';
         if($dbOK){
             foreach($cancella as $i){
-                echo $i;
                 
             $query4="DELETE FROM Valutazione Where nome_utente=\"".$user."\" && classe_laurea=\"".$res3[$i][0]."\" && tag=\"".$res3[$i][8]."\";";
-            if($r=$db->Insert($query4)){
-                $commenti.='<li>Si è verificato un errori ai nostri servizi</li>';
+            $r=$db->Insert($query4);
+            if($r==true){
+                $_SESSION['info']="<p>cancellazione avvenuta con successo</p>";
+                header('Location:area_utente.php');
             }
-            }
-            header('Location:area_utente.php');
+           
             
         }
         
         
  }
 } 
+}
 if(isset($_POST['submit1']) && check()){
     $vecchia=PulisciInput($_POST['Vecchiapassword']);
     $nuova=PulisciInput($_POST['newpassword']);
     $rep=PulisciInput($_POST['repepassword']);
-    echo $vecchia;
-    echo $nuova;
-    echo $rep;
     $errori1='<ul>';
     if (!preg_match('/^[@a-zA-Z0-9._-]{4,20}$/',$vecchia)){
         $errori1.='<li>Il campo vecchia password non può essere vuoto e non può contenere spazzi e deve contenere da 4 a 20 caratteri alfanumerici (sono ammessi i seguenti caratteri: @ . _ - )</li>';
@@ -295,8 +298,8 @@ if($errorf=='<ul>'){
        $insert="INSERT INTO Valutazione(nome_utente, classe_laurea, datav, commento, tag, p_complessivo, p_acc_fisica, p_servizio_inclusione, tempestivita_burocratica, p_insegnamento) VALUES (\"".$user."\",\"".$classlaurea."\",curdate(),\"".$commento."\",\"".$tag."\",".$pc.",".$pf.",".$ps.",".$tb.",".$pi.");";
        $q=$db->Insert($insert);
        if($q){
-           header('Location:area_utente.php');
-           $errorf.="<li>Inserimento con successo</li>";
+            $_SESSION['info']="<p>Inserimento avvenuto con successo</p>";
+            header('Location:area_utente.php');
            
        }
        else{
@@ -311,6 +314,7 @@ if($errorf=='<ul>'){
 
 }
 }
+
 $errorf.="</ul>";
 $db->Disconnect();
 $contenuto=str_replace("<areacom/>",$commento,$contenuto);
