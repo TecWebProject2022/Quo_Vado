@@ -46,11 +46,11 @@ if($dbOK){
         $classe=isset($_POST['com_classe'])?pulisciInput($_POST['com_classe']):'';
         if($user || $classe ){
             $query_commenti='SELECT nome_utente,datav,classe_laurea,tag,commento,p_complessivo,p_acc_fisica, p_servizio_inclusione,tempestivita_burocratica, p_insegnamento FROM Valutazione WHERE ';
-            $query_commenti.= $user? "nome_utente='".$user."' AND ":'';
-            $query_commenti.= $classe? "classe_laurea='".$classe."'":'';
+            $query_commenti.= $user? "nome_utente='".$user."' AND " : '';
+            $query_commenti.= $classe? "classe_laurea='".$classe."'" : '';
             
             if (substr($query_commenti, -4) == " AND ") {
-                $query = substr($query, 0, -4);
+                $query_commenti = substr($query, 0, -4);
             }
             $query_commenti.=';';
 
@@ -85,7 +85,7 @@ if($dbOK){
         $commenti_selezionati=isset($_POST['commento']) ? $_POST['commento']: '';
         if($commenti_selezionati){
             foreach($commenti_selezionati as $i){  
-                $query_delete_commenti="DELETE FROM Valutazione Where nome_utente=\"".$user."\" && classe_laurea=\"".$res3[$i][0]."\" && tag=\"".$res3[$i][8]."\";";
+                $query_delete_commenti="DELETE FROM Valutazione Where nome_utente=\"".$commenti[$i][0]."\" && classe_laurea=\"".$commenti[$i][1]."\" && tag=\"".$commenti[$i][3]."\";";
                 $msgCommenti.='<ul>';
                 if(!$db->Insert($query_delete_commenti)){
                     $msgCommenti.='<li>Si è verificato un errori ai nostri servizi, commento dell\'utente '.$commenti[$i][0].' non eliminato</li>';
@@ -107,7 +107,7 @@ if($dbOK){
 
         if(!$errori_corso && $classe && $ateneo && $nome && $link && $accesso ){
             # tutte le variabili sono istanziate e valide
-            $query_insert_corso="INSERT INTO CorsodiStudio(ateneo,classe_laurea,nome,accesso,link) VALUES ('".$ateneo."','".$classe."','".$nome."','".$link."',".$accesso.");";
+            $query_insert_corso="INSERT INTO CorsodiStudio   (ateneo,classe_laurea,nome,accesso,link) VALUES ('".$ateneo."','".$classe."','".$nome."','".$link."',".$accesso.");";
             if($db->Insert($query_insert_corso)){
                 $msgCorso.='<p>'.$nome.' aggiunto con successo</p>';
             }else{
