@@ -34,7 +34,7 @@ if(isset($_POST['submit'])){
             $insert="INSERT INTO Domande(nome, cognome, email, data, descrizione) VALUES(\"".$nome."\",\"".$cognome."\",\"".$email."\",curdate(),\"".$commento."\");";
             $q=$db->Insert($insert);
             if($q){
-                $errori.="<li>Inserimento con successo</li>";
+                $errori.="<li>Inserimento con successo, Grazie di cuore del tuo aiuto</li>";
             }
             else{
                 $errori.="<li>Inserimento non riuscito</li>";
