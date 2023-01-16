@@ -1080,10 +1080,10 @@ CLASSE DI LAUREA
     display: inline;
 }
 
-#invito {
+.invito {
     border: 1.5px solid #000000;
     padding: 1em;
-    margin-right: 20%;
+    margin: 3em 20%;
     margin-left: 20%;
     text-align: center;
 }
