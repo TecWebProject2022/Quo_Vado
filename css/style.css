@@ -1087,21 +1087,7 @@ CLASSE DI LAUREA
     margin-left: 20%;
     text-align: center;
 }
-/*
-#aggiuntaCommento, #mostraCommenti {
-    background-color: #093e4b;
-    color: #FFFFFF;
-    border: none;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 1em;
-    cursor: pointer;
-    font-variant: small-caps;
-    border-radius: 30px;
-    box-shadow: inset -5px -5px 7px rgba(255,255,255,0.3), inset 5px 5px 9px rgba(94,104,121,0.3)
-}
-*/
+
 /*
 ================
 OBIETTIVO LAVORO
@@ -1774,17 +1760,27 @@ LOGIN
     margin-bottom: 3%;
 }
 
-#form {
-    padding: 3em;
-    margin: 2% 40% 1% 40%;
+#form_container {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    justify-content: center;
 }
 
+#form {
+    flex-basis: 15%;
+    background-color: #ecebeb;
+    padding: 3em;
+    margin: 0% 42.4% 0% 42.4%;
+}
+/*
 #form > span {
     padding-right: 100%;
 }
-
+*/
 #form > label {
-    font-size: 1.2em;
+    font-size: 1.1em;
 }
 
 #crea_account {
@@ -1801,6 +1797,26 @@ LOGIN
 #username, #password {
     padding: 0.5em;
     margin-bottom: 1em;
+}
+
+#submit {
+    background-color: #093e4b;
+    color: #FFFFFF;
+    padding: 0.7em 1em 0.7em 1em;
+    border: none;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 1em;
+    cursor: pointer;
+    font-variant: small-caps;
+    border-radius: 15px;
+    box-shadow: inset -5px -5px 7px rgba(255,255,255,0.3), inset 5px 5px 9px rgba(94,104,121,0.3);
+    transition: box-shadow 0.1s linear;
+}
+
+#submit:hover {
+    box-shadow: inset -5px -5px 9px rgba(94,104,121,0.3), inset 5px 5px 7px rgba(255,255,255,0.3);
 }
 
 /*
@@ -1820,16 +1836,18 @@ REGISTRAZIONE
 }
 
 #registrazione > fieldset {
+    background-color: #ecebeb;
     flex-basis: 15%;
     padding: 2em;
 }
 
 #registrazione fieldset > span {
-    padding-right: 100%;
+    padding-right: 40%;
 }
 
 #registrazione input, select {
     margin-bottom: 1em;
+    padding: 0.5em;
 }
 
 #redirect_login {
@@ -1837,6 +1855,15 @@ REGISTRAZIONE
     margin-bottom: 5%;
     text-align: center;
 }
+
+#set_personal_data legend, #set_username_password legend {
+    font-variant: small-caps;
+}
+
+#set_personal_data > label, #set_username_password > label {
+    font-size: 1.1em;
+}
+
 
 /*
 ================
