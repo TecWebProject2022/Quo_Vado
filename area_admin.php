@@ -58,7 +58,7 @@ if($dbOK){
             if($commenti=$db->ExecQueryNum($query_commenti)){
                 $formCommenti='<form id="formEliminaCommenti" action="area_admin.php" method="post"><fieldset><legend>Seleziona i commenti da eliminare</legend>';
                 for($i=0;$i<count($commenti);$i++){
-                    $commento='<span>'.$commenti[$i][0].'|'.$commenti[$i][1].'|'.date("d-m-Y",strtotime($commenti[$i][2])).':';
+                    $commento='<span>'.$commenti[$i][0].'|'.$commenti[$i][2].'|'.date("d-m-Y",strtotime($commenti[$i][1])).':';
                     $commento.='<p>'.$commenti[$i][4].'</p>';
                     $commento.='<dl>
                         <dt>Punteggio complessivo:</dt><dd> '.$commenti[$i][5].' </dd>
@@ -69,7 +69,7 @@ if($dbOK){
                     </dl></span>';
 
                     $formCommenti.='<label for="'.$i.'">'.$commento.'</label>';
-                    $formCommenti.='<input type="checkbox" id="'.$i.'" name="commento[]" value="'.$i.'"/>';
+                    $formCommenti.='<input type="checkbox" id="'.$i.'" name="commento[]" value="'.$commenti[$i][0].'-'.$commenti[$i][2].'-'.$commenti[$i][3].'"/>';
                 }
                 $formCommenti.= '<input type="submit" id="delete_commento" name="delete_commento" value="elimina commenti selezionati"/></fieldset></form>';
             }else{
@@ -86,12 +86,13 @@ if($dbOK){
         $commenti_selezionati=isset($_POST['commento']) ? $_POST['commento']: '';
         if($commenti_selezionati){
             foreach($commenti_selezionati as $i){  
-                $query_delete_commenti="DELETE FROM Valutazione Where nome_utente=\"".$commenti[$i][0]."\" && classe_laurea=\"".$commenti[$i][1]."\" && tag=\"".$commenti[$i][3]."\";";
+                $userdata=explode("-",$i);
+                $query_delete_commenti="DELETE FROM Valutazione Where nome_utente=\"".$userdata[0]."\" && classe_laurea=\"".$userdata[1]."\" && tag=\"".$userdata[2]."\";";
                 $msgCommenti.='<ul>';
                 if(!$db->Insert($query_delete_commenti)){
-                    $msgCommenti.='<li>Si è verificato un errori ai nostri servizi, commento dell\'utente '.$commenti[$i][0].' non eliminato</li>';
+                    $msgCommenti.='<li>Si è verificato un errori ai nostri servizi, commento dell\'utente '.$userdata[0].' non eliminato</li>';
                 }else{
-                    $msgCommenti.='<li>Commento dell\'utente '.$commenti[$i][0].' eliminato con successo</li>';
+                    $msgCommenti.='<li>Commento dell\'utente '.$userdata[0].' eliminato con successo</li>';
                 }
             }
         }
