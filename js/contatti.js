@@ -1,12 +1,8 @@
 var test={
-    "name":/^[a-zA-Z ]{2,20}$/,
-    "last_name":/^[a-zA-Z ]{3,30}$/,
     "email":/^([\w\-\+\.]+)\@([\w\-\+\.]+)\.([\w\-\+\.]+)$/,
     "commento":/^[!?@a-zA-Z .,_-]{10,500}$/
    }; 
    var respond={
-    "name":"Il campo nome non può essere vuoto e può contenere numeri o caratteri speciali, deve avere una lunghezza compresa da 2 a 20 caratteri",
-    "last_name":"Il campo cognome non può essere vuoto e può contenere numeri o caratteri speciali, deve avere una lunghezza compresa da 2 a 40 caratteri",
     "commento":"Il campo commento/mesaggio può contenere da 10 a 500 caratteri (sono amessi i seguenti simboli: .,_-!?@)",
     "email": "Il campo email non corrisponde ad una email valida"
    }
@@ -27,11 +23,9 @@ var test={
     return true;
    }
    function Validate(){
-    var name= document.getElementById('name');
-    var surname= document.getElementById('last_name');
     var email=document.getElementById('email');
     var commento=document.getElementById('commento');
-    if(Validation(name) & Validation(surname) & Validation(commento) & Validation(email) ){
+    if(Validation(commento) & Validation(email) ){
         return true;
     }
     return false; 

@@ -89,9 +89,9 @@ $db=new Connection();
                             <li>Tempestività burocratica: ".$v['tempestivita_burocratica']."</li>
                             <li>Insegnamento: ".$v['p_insegnamento']."</li></ul></li>";
                 }
-                $contenuto.='</ul><span id="newcomment"><input type="button" id="aggiuntaCommento" value="aggiungi un commento" onclick="addComment("$target")"></span>
-                <span><input type="button" id="mostraCommenti" value="mostra altri commenti" onclick="showComments()"></span>';
-            }else{
+                
+            }
+            else{
                 $errori.="<p>Opss,si è verficato un errore di conessione: impossibile caricare i commenti. Riprova</p>";
             }
             #aggiunta commento
@@ -137,7 +137,7 @@ $db=new Connection();
                     </fieldset>
                     </form><span><strong>'.$erroriNuovoCommento.'</strong></span>';
                 }else{
-                    $errori='Ciao '.$_SESSION['user'].' per lasciare un commento aggiungi il corso di laurea appartenente alla classe '.$classe.' che hai frequentato nella tua <a href="area_utente.php">area personale</a>!';
+                    $errori='<p>Ciao '.$_SESSION['user'].' per lasciare un commento aggiungi il corso di laurea appartenente alla classe '.$classe.' che hai frequentato nella tua <a href="area_utente.php">area personale</a>!</p>';
                 }
             }
         }
