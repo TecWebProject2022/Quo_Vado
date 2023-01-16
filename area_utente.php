@@ -129,7 +129,7 @@ if($dbOK){
         }
     }
     else{
-        $errori.="<p>Siamo spiacenti ma i dati non sono al momento disponibili</p>";
+        $errori.="<p>Siamo spiacenti ma i dati non sono al momento disponibili <a href='contatti.php'>Contattaci</a> per avere un suppoorto/p>";
     }
 }
 else{
