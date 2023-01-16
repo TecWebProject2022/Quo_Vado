@@ -56,6 +56,14 @@ if(isset($_POST['submit'])){
                 $q=$db->multiInsert($insert);
                 if($q){
                     $errori.="<li>Inserimento con successo</li>";
+                    $nome='';
+                    $cognome='';
+                    $data='';
+                    $genere='';
+                    $scuola='';
+                    $username='';
+                    $password='';
+                    $rippassword='';
                 }
                 else{
                     $errori.="<li>Inserimento non riuscito</li>";
