@@ -1847,6 +1847,13 @@ REGISTRAZIONE
 
 #registrazione input, select {
     margin-bottom: 1em;
+}
+
+#set_username_password span > input {
+    padding: 0.5em;
+}
+
+#set_personal_data span > input, select {
     padding: 0.5em;
 }
 
