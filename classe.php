@@ -137,11 +137,7 @@ $db=new Connection();
                     </fieldset>
                     </form><span><strong>'.$erroriNuovoCommento.'</strong></span>';
                 }else{
-<<<<<<< Updated upstream
                     $errori='<p>Ciao '.$_SESSION['user'].' per lasciare un commento aggiungi il corso di laurea appartenente alla classe '.$classe.' che hai frequentato nella tua <a href="area_utente.php">area personale</a>!</p>';
-=======
-                    $errori='Ciao '.$_SESSION['user'].', per lasciare un commento aggiungi il corso di laurea appartenente alla classe '.$classe.' che hai frequentato nella tua <a href="area_utente.php">area personale</a>!';
->>>>>>> Stashed changes
                 }
             }
         }
