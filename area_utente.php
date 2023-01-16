@@ -80,7 +80,7 @@ if($dbOK){
             if($res3=$db->ExecQueryNum($query3)){
                 
                 $contenuto.="<label id='cancellacomm'>Seleziona un commento e clicca &quot;cancella commento selezionato&quot; per eliminarlo</label>";
-                $contenuto.='<form aria-describedby="cancellacomm" action="area_utente.php"  method="post" onsubmit="return OnDelete()" >
+                $contenuto.='<form aria-describedby="cancellacomm" id="form_cancellacomm" action="area_utente.php" method="post" onsubmit="return OnDelete()" >
                 <fieldset><legend>Commenti</legend>';
                 for($i=0;$i<count($res3);$i++){
                     
