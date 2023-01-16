@@ -83,10 +83,10 @@ $db=new Connection();
                 foreach($valutazioni as $v){
                     $contenuto.='<li id="commento"><strong>'.$v['n'].' | '.date("d-m-Y",strtotime($v['datav']))." | ".$v['corso']."</strong><p id=testoCommento>".$v['commento']."</p>";
                     $contenuto.='<ul id="valutazioneCommento">
-                            <li>Complessivo: '.$v['p_complessivo']."</li>
-                            <li>Accessibilità fisica: ".$v['p_acc_fisica']."</li>
-                            <li>Servizio inclusione: ".$v['p_servizio_inclusione']."</li>
-                            <li>Tempestività burocratica: ".$v['tempestivita_burocratica']."</li>
+                            <li>Complessivo: '.$v['p_complessivo']." | </li>
+                            <li>Accessibilità fisica: ".$v['p_acc_fisica']." | </li>
+                            <li>Servizio inclusione: ".$v['p_servizio_inclusione']." | </li>
+                            <li>Tempestività burocratica: ".$v['tempestivita_burocratica']." | </li>
                             <li>Insegnamento: ".$v['p_insegnamento']."</li></ul></li>";
                 }
                 
@@ -142,12 +142,12 @@ $db=new Connection();
             }
         }
         else{
-            $errori.="<p>nessun risultato presente</p>";
+            $errori.="<p class='error'>Nessun risultato presente</p>";
         }
         $db->Disconnect();
     }else{
-        $errori.="<p>Ci scusiamo, la connessione non e' riuscita, attendere e riprova</p>";
-    } 
+        $errori.="<p class='error'>Ci scusiamo, la connessione non &egrave; riuscita. Per favore, attendere e riprovare.</p>";
+    }
  
     $content=str_replace("<area/>",$area,$content); 
     $content=str_replace("<classe/>",$classe,$content); 
