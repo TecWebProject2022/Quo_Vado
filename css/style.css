@@ -1009,7 +1009,7 @@ CLASSE DI LAUREA
 }
 
 #illustrazioneClasse {
-    font-size: 1.2em;
+    font-size: 1.1em;
 }
 
 #valutazione {
@@ -1067,6 +1067,7 @@ CLASSE DI LAUREA
 #commento {
     background-color: #ecebeb;
     padding: 1.5em;
+    border-left: 5px solid #093e4b;
     margin-bottom: 1em;
     list-style: none;
 }
@@ -1079,11 +1080,28 @@ CLASSE DI LAUREA
     display: inline;
 }
 
-#newcomment, #invito {
-    margin-left: 15%;
+#invito {
+    border: 1.5px solid #000000;
     padding: 1em;
+    margin-right: 20%;
+    margin-left: 20%;
+    text-align: center;
 }
-
+/*
+#aggiuntaCommento, #mostraCommenti {
+    background-color: #093e4b;
+    color: #FFFFFF;
+    border: none;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 1em;
+    cursor: pointer;
+    font-variant: small-caps;
+    border-radius: 30px;
+    box-shadow: inset -5px -5px 7px rgba(255,255,255,0.3), inset 5px 5px 9px rgba(94,104,121,0.3)
+}
+*/
 /*
 ================
 OBIETTIVO LAVORO
