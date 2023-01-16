@@ -22,18 +22,10 @@ $content=file_get_contents("area_admin.html");
 #dichiarazioni
 $msgCommenti='';
 $msgCorso='';
-$formCommenti='';
+$msgPassword='';
 $msgCommenti_delete='<ul>';
-$errori_corso='';
+$formCommenti='';
 
-#variabili forse da eliminare    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
-
-/*
-$vecchia='';
-$nuova='';
-$errorf='<ul>';
-$errori1='<ul>';
-*/
 
 
 #inizio
@@ -111,7 +103,7 @@ if($dbOK){
         $accesso=isset($_POST['cor_accesso'])?pulisciInput($_POST['cor_accesso']):'';
         #controlli sulle variabili
 
-        if(!$errori_corso && $classe && $ateneo && $nome && $link && $accesso ){
+        if(!$msgCorso && $classe && $ateneo && $nome && $link && $accesso ){
             # tutte le variabili sono istanziate e valide
             $query_insert_corso="INSERT INTO CorsodiStudio(ateneo,classe_laurea,nome,accesso,link) VALUES ('".$ateneo."','".$classe."','".$nome."','".$accesso."','".$link."');";
             if($db->Insert($query_insert_corso)){
@@ -120,14 +112,14 @@ if($dbOK){
                 $msgCorso.='<p>Inserimento di '.$nome.' non riuscito, riprova</p>';
             }
         }
-        $msgCorso.='<ul>'.$errori_corso.'</ul>';
+        $msgCorso.='<ul>'.$msgCorso.'</ul>';
     }else{
         if(isset($_POST['delete_corso'])){
             $classe=isset($_POST['cor_classe'])?pulisciInput($_POST['cor_classe']):'';
             $ateneo=isset($_POST['cor_ateneo'])?pulisciInput($_POST['cor_ateneo']):'';
             $nome=isset($_POST['cor_nome'])?pulisciInput($_POST['cor_nome']):'';
              #controlli sulle variabili
-        if(!$errori_corso && $classe && $ateneo && $nome){
+        if(!$msgCorso && $classe && $ateneo && $nome){
             # tutte le variabili sono istanziate e valide
             $query_delete_corso="DELETE FROM CorsodiStudio WHERE  ateneo='".$ateneo."' AND classe_laurea='".$classe."' AND nome='".$nome."';";
             if($db->Insert($query_delete_corso)){
@@ -136,65 +128,51 @@ if($dbOK){
                 $msgCorso.='<p>Cancellazione di '.$nome.' non riuscita, riprova</p>';
             }
         }
-        $msgCorso.='<ul>'.$errori_corso.'</ul>';
+        $msgCorso.='<ul>'.$msgCorso.'</ul>';
         }
     }
 }
-    /*
-    #sezione  cambio password da gestire 
-    if(isset($_POST['submit1']) && check()){
-        $vecchia=PulisciInput($_POST['Vecchiapassword']);
-        $nuova=PulisciInput($_POST['newpassword']);
-        $rep=PulisciInput($_POST['repepassword']);
-        echo $vecchia;
-        echo $nuova;
-        echo $rep;
-        $errori1='<ul>';
-        if (!preg_match('/^[@a-zA-Z0-9._-]{4,20}$/',$vecchia)){
-            $errori1.='<li>Il campo vecchia password non può essere vuoto e non può contenere spazi e deve contenere da 4 a 20 caratteri alfanumerici (sono ammessi i seguenti caratteri: @ . _ - )</li>';
-        }
-        if (!preg_match('/^[@a-zA-Z0-9._-]{4,20}$/',$nuova)){
-            $errori1.='<li>Il campo nuova password non può essere vuoto e non può contenere spazzi e deve contenere da 4 a 20 caratteri alfanumerici (sono ammessi i seguenti caratteri: @ . _ - )</li>';
-        }
-        if($nuova!=$rep){
-            $errori1.='<li>Il campo nuova password e ripeti la password non corrispondono</li>';
-        }
-        if($errori1=='<ul>'){
-            $db=new Connection();
-            $dbOK=$db->Connect();
-            if($dbOK){
-                $query="Select * from Credenziale where utente='admin' && pw=\"".$nuova."\";";
-                if($r=$db->ExecQueryAssoc($query)){
-                    $errori1.="<li>Password già usata</li>";
-                }
-                else{
-                    $query3="Select * from Credenziale where utente='admin' && pw=\"".$vecchia."\";";
-                    if($r=$db->ExecQueryAssoc($query3)){
-                    $query2="UPDATE Credenziale SET attuale=0 WHERE utente='admin' and pw=\"".$vecchia."\";";
-                    $query2.="INSERT INTO Credenziale(pw, data_inserimento, utente, attuale) VALUES('".$nuova."',curdate(),'admin',1);";
-                    $q=$db->multiInsert($query2);
-                    if($q){
-                        $errori1.="<li>Password modificata con successo</li>";
-                    }
-                    else{
-                        $errori1.="<li>Cambiamento password non riuscito. I sistemi sono al momentamentamnete non disponibili</li>";
-                    } 
-                }
-                else{
-                    $errori1.="<li>la vecchia password inserita non corrisponde</li>";
-                }
-                
-                }
+    
+#sezione  cambio password da gestire 
+if(isset($_POST['salva']) && check()){
+    $vecchia=PulisciInput($_POST['Vecchiapassword']);
+    $nuova=PulisciInput($_POST['newpassword']);
+    $rep=PulisciInput($_POST['repepassword']);
+    
+    if (!preg_match('/^[@a-zA-Z0-9._-]{4,20}$/',$vecchia)){
+        $msgPassword.='<li>Il campo vecchia password non può essere vuoto e non può contenere spazi e deve contenere da 4 a 20 caratteri alfanumerici (sono ammessi i seguenti caratteri: @ . _ - )</li>';
+    }
+    if (!preg_match('/^[@a-zA-Z0-9._-]{4,20}$/',$nuova)){
+        $msgPassword.='<li>Il campo nuova password non può essere vuoto e non può contenere spazzi e deve contenere da 4 a 20 caratteri alfanumerici (sono ammessi i seguenti caratteri: @ . _ - )</li>';
+    }
+    if($nuova!=$rep){
+        $msgPassword.='<li>Il campo nuova password e ripeti la password non corrispondono</li>';
+    }
+    
+    if(!$msgPassword){
+        $query="Select * from Credenziale where utente='admin' && pw=\"".$nuova."\";";
+        if($r=$db->ExecQueryAssoc($query)){
+            $msgPassword.="<strong>Password già usata</strong>";
+        }else{
+            $query_controllo_pw="Select * from Credenziale where utente='admin' && pw=\"".$vecchia."\";";
+            if($db->ExecQueryAssoc($query_controllo_pw)){
+                $query_update_pw="UPDATE Credenziale SET attuale=0 WHERE utente='admin' and pw=\"".$vecchia."\";";
+                $query_update_pw.="INSERT INTO Credenziale(pw, data_inserimento, utente, attuale) VALUES('".$nuova."','".date('Y-m-d')."','admin',1);";
+                if($db->multiInsert($query_update_pw)){
+                    $msgPassword.="<strong>Password modificata con successo</strong>";
+                }else{
+                    $msgPassword.="<strong>Cambiamento password non riuscito, i sistemi sono al momentamentamnete non disponibili</strong>";
+                } 
+            }else{
+                $msgPassword.="<li>la vecchia password inserita non corrisponde</li>";
             }
-        $errori1.="</ul>";   
-        
         }
-
-        
+    }else{
+        $msgPassword.="<strong><ul>".$msgPassword."</ul></strong>";   
     }
 }
-$errorf.="</ul>";
-*/
+
+
 
 $db->Disconnect();
 
@@ -202,13 +180,8 @@ $content=str_replace("<formCommenti/>",$formCommenti,$content);
 $content=str_replace("<msgCommenti/>",$msgCommenti,$content);
 $content=str_replace("<msgCommenti_delete/>",$msgCommenti_delete,$content);
 $content=str_replace("<msgCorsi/>",$msgCorso,$content);
-/*
-$contenuto=str_replace("<new>",$nuova,$contenuto);
-$contenuto=str_replace("<old>",$vecchia,$contenuto);
-$content=str_replace("<content/>",$contenuto,$content);
-$content=str_replace("<errori/>",$errori,$content);
-$content=str_replace("</err/>",$errori1,$content);
-*/
+$content=str_replace("<msgPassword/>",$msgPassword,$content);
+
 echo $content;
 
 ?>
