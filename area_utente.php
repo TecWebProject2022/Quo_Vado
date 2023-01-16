@@ -75,27 +75,10 @@ if($dbOK){
                 $contenuto.="</li>"; 
             }
             $contenuto.="</ul>";
-            $contenuto.="<h2 id='Commenti'>Commenti rilasciati</h2>";
+            $contenuto.="<h2 class='titles_utente' id='Commenti'>Commenti rilasciati</h2>";
             $query3="Select classe_laurea,datav,commento,p_complessivo,p_acc_fisica,p_servizio_inclusione,tempestivita_burocratica,p_insegnamento,tag FROM Valutazione WHERE nome_utente=\"$user\"";
             if($res3=$db->ExecQueryNum($query3)){
-                $contenuto.="<aside>
-                <h2>Glossario</h2>
-                <p>Ogni utente può esprime un giudizio con un valore da 1 a 5 sui seguenti ambiti riguardanti una classe di laurea</p>
-                    <dl>
-                        <dt>Valutazione complessiva: </dt>
-                        <dd>valutazione che riguarda tutti gli ambiti universitari ingenerale</dd>
-                        <dt>Valutazione accessibilità fisica: </dt>
-                        <dd>valutazione che riguarda la possibilità da parte di chiunque di fruire dei servizi universitari da un punto di vista fisico</dd>
-                        <dt>Valutazione sul servizio inclusione: </dt>
-                        <dd>valutazione riguardante l'accoglienza e l'appartenenza ad un gruppo universitario</dd>
-                        <dt>Valutazione sulla tempestività burocratica: </dt>
-                        <dd>valutazione attinente alla velocità di intervento e risposta da parte dei servizi amministrativi e burocratici universitari</dd>
-                        <dt>Valutazione sulla qualità di insegnamento: </dt>
-                        <dd>valutazione riguardante la qualità di insegnamento ricevuto e le competenze acquisite in esso</dd>
-                        <dt>Ambito di valutazione: </dt>
-                        <dd>cataratterrizzazione del commento</dd>
-                    </dl>
-            </aside>";
+                
                 $contenuto.="<label id=\"cancellacomm\">Seleziona un commento e clicca &quot;cancella&quot; per eliminarlo</label>";
                 $contenuto.='<form aria-describedby="cancellacomm" action="area_utente.php"  method="post" onsubmit="return OnDelete()" >
                 <fieldset><legend>Commenti</legend>';
@@ -117,7 +100,7 @@ if($dbOK){
                             $contenuto.="<li>Valutazione riguardante l'ambito generale </li></ul></label><br />";
                         }      
                 }
-                $contenuto.='<input type="submit" id="submit2"  name="submit2" value="cancella commento selezionato"/></fieldset></form></commenterror>';
+                $contenuto.='<input type="submit" class="submit" id="submit2" name="submit2" value="cancella commento selezionato"/></fieldset></form></commenterror>';
                 
             }
             else{
@@ -135,6 +118,24 @@ if($dbOK){
 else{
     $errori.="<p>Siamo spiacenti ma i dati non sono al momento disponibili</p>";
 }
+
+$contenuto.="<aside>
+                <h2 class='titles_utente'>Legenda valutazione</h2>
+                <p>Ogni utente può esprime un giudizio con un valore da 1 a 5 sui seguenti ambiti riguardanti una classe di laurea</p>
+                    <dl>
+                        <dt>Complessiva: </dt>
+                        <dd>valutazione che riguarda tutti gli ambiti universitari in generale</dd>
+                        <dt>Accessibilità fisica: </dt>
+                        <dd>valutazione che riguarda la possibilità da parte di chiunque di fruire dei servizi universitari da un punto di vista fisico</dd>
+                        <dt>Servizio inclusione: </dt>
+                        <dd>valutazione riguardante l'accoglienza e l'appartenenza ad un gruppo universitario</dd>
+                        <dt>Tempestività burocratica: </dt>
+                        <dd>valutazione attinente alla velocità di intervento e risposta da parte dei servizi amministrativi e burocratici universitari</dd>
+                        <dt>Qualità di insegnamento: </dt>
+                        <dd>valutazione riguardante la qualità di insegnamento ricevuto e le competenze acquisite in esso</dd>
+                    </dl>
+            </aside>";
+
 $query5="Select classe FROM Iscrizione where nome_utente=\"".$user."\";";
 
 if($res5=$db->ExecQueryAssoc($query5)){
@@ -145,7 +146,7 @@ if($res5=$db->ExecQueryAssoc($query5)){
        $classi.="<option value=\"".$r['classe']."\">".$r['classe']."</option>";
     }
     $classi.="</select>";
-$contenuto.='<h2 id="Aggiungi">Aggiungi un commento</h2><label id="formdesc">Ti è consentito lasciare un solo commento per ogni ambito delle classe di laurea per le quali ti sei dichiarato iscritto  e il contenuto testuale del commento dovrà contenere da 10 a 200 caratteri alfanumerici (sono ammessi i seguenti caratteri: @ . _ - )</label><form  aria-describedby="formdesc" action="area_utente.php"  onsubmit="return OnInsert()" method="post">
+$contenuto.='<h2 class="titles_utente" id="Aggiungi">Aggiungi un commento</h2><label id="formdesc">Ti è consentito lasciare un solo commento per ogni ambito delle classe di laurea per le quali ti sei dichiarato iscritto  e il contenuto testuale del commento dovrà contenere da 10 a 200 caratteri alfanumerici (sono ammessi i seguenti caratteri: @ . _ - )</label><form  aria-describedby="formdesc" action="area_utente.php"  onsubmit="return OnInsert()" method="post">
 <fieldset>
 <legend>Agguingi un commento</legend>'.$classi.'
 <label for="commento"></label>
@@ -178,7 +179,7 @@ $contenuto.='<h2 id="Aggiungi">Aggiungi un commento</h2><label id="formdesc">Ti 
 }
 
 if($user!='user'){
-    $contenuto.='<h2 id="CambioPw">Cambia Password</h2><form id="form_passw" action="area_utente.php" method="post" >
+    $contenuto.='<h2 class="titles_utente" id="CambioPw">Cambia Password</h2><form id="form_passw" action="area_utente.php" method="post" >
     <fieldset>Cambio password</fieldset>
     <label for="oldpassword"><span lang="en">Immetti la tua vecchia Password: </span></label>
     <span><input  value="<old>" type="password" id="oldpassword" name="Vecchiapassword" placeholder="Immetti la tua vecchia Password" maxlength="20"                      
