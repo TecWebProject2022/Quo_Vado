@@ -85,19 +85,19 @@ if($dbOK){
                 for($i=0;$i<count($res3);$i++){
                     
                         $contenuto.='<span><input type="checkbox" id="'.$i.'" name="commento[]" value="'.$i.'" /></span><label for="'.$i.'">
-                        <ul><li>Data di emissione: '.date("d/m/Y",strtotime($res3[$i][1])).'</li>
-                        <li>Classe di laurea: '.$res3[$i][0].'</li>
-                        <li>Commento: '.$res3[$i][2].'</li>
-                        <li>Valutazione complessiva: '.$res3[$i][3].'</li>
-                        <li>Valutazione accessibilità fisica: '.$res3[$i][4].'</li>
-                        <li>Valutazione sul servizio inclusione: '.$res3[$i][5].'</li>
-                        <li>Valutazione sulla tempestività burocratica: '.$res3[$i][6].'</li>
-                        <li>Valutazione sulla qualità di insegnamento: '.$res3[$i][7].'</li>';
+                        <dl><dt>Data di emissione:</dt> <dd>'.date("d/m/Y",strtotime($res3[$i][1])).'</dd>
+                        <dt>Classe di laurea: </dt> <dd>'.$res3[$i][0].'</dd>
+                        <dt>Commento:</dt> <dd>'.$res3[$i][2].'</dd>
+                        <dt>Valutazione complessiva: </dt> <dd>'.$res3[$i][3].'</dd>
+                        <dt>Valutazione accessibilità fisica: </dt> <dd>'.$res3[$i][4].'</dd>
+                        <dt>Valutazione sul servizio inclusione: </dt> <dd> '.$res3[$i][5].'</dd>
+                        <dt>Valutazione sulla tempestività burocratica: </dt> <dd>'.$res3[$i][6].'</dd>
+                        <dt>Valutazione sulla qualità di insegnamento: </dt> <dd>'.$res3[$i][7].'</dd>';
                         if($res3[$i][8]==1){
-                            $contenuto.="<li>Valutazione riguardante l'ambito dell'inclusità</li></ul></label><br />";
+                            $contenuto.="<dt>Valutazione riguardante l'ambito dell'inclusità</dt></dl></label><br />";
                         }
                         else{
-                            $contenuto.="<li>Valutazione riguardante l'ambito generale </li></ul></label><br />";
+                            $contenuto.="<dt>Valutazione riguardante l'ambito generale </dt></dl></label><br />";
                         }      
                 }
                 $contenuto.='<input type="submit"  class="submit" name="submit2" value="cancella i commenti selezionati"/></fieldset></form></commenterror>';
