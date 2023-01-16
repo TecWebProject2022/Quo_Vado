@@ -172,7 +172,6 @@ $contenuto.='<h2 id="Aggiungi">Aggiungi un commento</h2><label id="formdesc">Ti 
     <option value="2">commento generale</option></select></span>
 
 <input type="submit" id="submit"  name="submit3" value="pubblica"/>
-<input type="reset"  name="cancella" value="cancella tutti i campi"/>
 </fieldset>
 </form>
 </errorform>';
@@ -193,7 +192,6 @@ if($user!='user'){
     <span><input  value="" type="password" id="repeat" name="repepassword" placeholder="Ripeti la password" maxlength="20"                      
         data-msg-empty="Il campo repeti password non può essere vuoto" /></span>   
     <input type="submit" id="submit" name="submit1" value="Salva"/>
-    <input type="reset" id="reset" name="reset" value="Cancella tutto"/>
     </form>
     </err/>';
 }
