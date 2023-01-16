@@ -63,7 +63,7 @@ if($dbOK){
         $query2="Select ateneo, classe,corso, datai, dataf,punteggio_scuola_provenienza  from Iscrizione where nome_utente=\"$user\"";
         if($res2=$db->ExecQueryAssoc($query2)){
             $contenuto.="<h2 class='titles_utente'>Iscrizioni</h2> ";
-            $contenuto.="<ul>";
+            $contenuto.="<ul class='iscrizione'>";
             foreach($res2 as $i){
                 $contenuto.="<li>";
                 $contenuto.="<ul><li>Ateneo: ".$i['ateneo']."</li>";
@@ -79,7 +79,7 @@ if($dbOK){
             $query3="Select classe_laurea,datav,commento,p_complessivo,p_acc_fisica,p_servizio_inclusione,tempestivita_burocratica,p_insegnamento,tag FROM Valutazione WHERE nome_utente=\"$user\"";
             if($res3=$db->ExecQueryNum($query3)){
                 
-                $contenuto.="<label id=\"cancellacomm\">Seleziona un commento e clicca &quot;cancella&quot; per eliminarlo</label>";
+                $contenuto.="<label id='cancellacomm'>Seleziona un commento e clicca &quot;cancella commento selezionato&quot; per eliminarlo</label>";
                 $contenuto.='<form aria-describedby="cancellacomm" action="area_utente.php"  method="post" onsubmit="return OnDelete()" >
                 <fieldset><legend>Commenti</legend>';
                 for($i=0;$i<count($res3);$i++){
@@ -179,7 +179,7 @@ $contenuto.='<h2 class="titles_utente" id="Aggiungi">Aggiungi un commento</h2><l
 }
 
 if($user!='user'){
-    $contenuto.='<h2 class="titles_utente" id="CambioPw">Cambia Password</h2><form id="form_passw" action="area_utente.php" method="post" >
+    $contenuto.='<h2 class="titles_utente" id="CambioPw"> Password</h2><form id="form_passw" action="area_utente.php" method="post" >
     <fieldset>Cambio password</fieldset>
     <label for="oldpassword"><span lang="en">Immetti la tua vecchia Password: </span></label>
     <span><input  value="<old>" type="password" id="oldpassword" name="Vecchiapassword" placeholder="Immetti la tua vecchia Password" maxlength="20"                      
