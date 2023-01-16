@@ -22,22 +22,22 @@ if(isset($_POST['submit'])){
     $password=PulisciInput($_POST['password']);
     $rippassword=PulisciInput($_POST['repeat_password']);
     if(!preg_match('/^[a-zA-Z ]{2,20}$/',$nome)){
-        $errori.='<li>Il campo nome non può essere vuoto e può contenere numeri o caratteri speciali, deve avere una lunghezza compresa da 2 a 20 caratteri</li>';
+        $errori.='<li class="error">Il campo nome non può essere vuoto e può contenere numeri o caratteri speciali, deve avere una lunghezza compresa da 2 a 20 caratteri</li>';
     }
     if(!preg_match('/^[a-zA-Z ]{3,30}$/',$cognome)){
-        $errori.='<li>Il campo cognome non può essere vuoto e può contenere numeri o caratteri speciali, deve avere una lunghezza compresa da 2 a 40 caratteri</li>';
+        $errori.='<li class="error">Il campo cognome non può essere vuoto e può contenere numeri o caratteri speciali, deve avere una lunghezza compresa da 2 a 40 caratteri</li>';
     }
     if(!preg_match('/\d{4}\-\d{2}\-\d{2}/',$data)){
-        $errori.='<li>La data  inserita non rispetta il seguente schema: dd/mm/aaaa</li>';
+        $errori.='<li class="error">La data  inserita non rispetta il seguente schema: dd/mm/aaaa</li>';
     }
     if (!preg_match('/^[@a-zA-Z0-9._-]{4,40}$/',$username)){
-        $errori.='<li>Il campo username  non può essere vuoto e  non può contenere spazzi e deve contenere da 4 a 40 caratteri alfanumerici (sono ammessi i seguenti caratteri: @ . _ - )</li>';
+        $errori.='<li class="error">Il campo username  non può essere vuoto e  non può contenere spazzi e deve contenere da 4 a 40 caratteri alfanumerici (sono ammessi i seguenti caratteri: @ . _ - )</li>';
     }
     if (!preg_match('/^[@a-zA-Z0-9._-]{4,20}$/',$password)){
-        $errori.='<li>Il campo password non può essere vuoto e non può contenere spazzi e deve contenere da 4 a 20 caratteri alfanumerici (sono ammessi i seguenti caratteri: @ . _ - )</li>';
+        $errori.='<li class="error">Il campo password non può essere vuoto e non può contenere spazzi e deve contenere da 4 a 20 caratteri alfanumerici (sono ammessi i seguenti caratteri: @ . _ - )</li>';
     }
     if($password!=$rippassword){
-        $errori.='<li>Le due password inserite non corrispondono</li>';
+        $errori.='<li class="error">Le due password inserite non corrispondono</li>';
     }
     if($errori=="<ul>"){
        
@@ -46,7 +46,7 @@ if(isset($_POST['submit'])){
         if($dbOK){
             $query="Select nome_utente from Utente where nome_utente=\"".$username."\"";
             if($r=$db->ExecQueryAssoc($query)){
-                $errori.="<li>Username già registrato</li>";
+                $errori.="<li class='invito'>Username già registrato</li>";
             }
             
             else{
@@ -55,7 +55,7 @@ if(isset($_POST['submit'])){
             
                 $q=$db->multiInsert($insert);
                 if($q){
-                    $errori.="<li>Inserimento con successo</li>";
+                    $errori.="<li class='invito'>Inserimento con successo</li>";
                     $nome='';
                     $cognome='';
                     $data='';
@@ -66,14 +66,14 @@ if(isset($_POST['submit'])){
                     $rippassword='';
                 }
                 else{
-                    $errori.="<li>Inserimento non riuscito</li>";
+                    $errori.="<li class='error'>Inserimento non riuscito</li>";
                 }
                 
             }
             $db->Disconnect();
         }
         else{
-            $errori.="<li>Connessione non riuscita</li>";
+            $errori.="<li class='error'>Connessione non riuscita</li>";
         }
         
     }

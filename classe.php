@@ -59,7 +59,7 @@ $db=new Connection();
                 }
                 $contenuto.='</ul>';
             }else{
-                $errori.="<p>Opss, si è verficato un errore di connessione: impossibile caricare i corsi di laurea. Per favore, riprova più tardi.</p>";
+                $errori.="<p class='error'>Opss, si è verficato un errore di connessione: impossibile caricare i corsi di laurea. Per favore, riprova più tardi.</p>";
             }    
             #sezione commenti
             
@@ -92,7 +92,7 @@ $db=new Connection();
                 
             }
             else{
-                $errori.="<p>Opss, si è verficato un errore di connessione: impossibile caricare i commenti. Per favore, riprova più tardi.</p>";
+                $errori.="<p class='error'>Opss, si è verficato un errore di connessione: impossibile caricare i commenti. Per favore, riprova più tardi</p>";
             }
             #aggiunta commento
             #controllo se sono in presenza di un utente loggato
@@ -142,11 +142,11 @@ $db=new Connection();
             }
         }
         else{
-            $errori.="<p class='error'>Nessun risultato presente.</p>";
+            $errori.="<p class='error'>Nessun risultato presente</p>";
         }
         $db->Disconnect();
     }else{
-        $errori.="<p class='error'>Ci scusiamo, la connessione non &egrave; riuscita. Per favore, attendere e riprovare.</p>";
+        $errori.="<p class='error'>Ci scusiamo, la connessione non &egrave; riuscita. Per favore, attendere e riprovare</p>";
     }
  
     $content=str_replace("<area/>",$area,$content); 
