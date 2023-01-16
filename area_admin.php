@@ -71,14 +71,15 @@ if($dbOK){
                     $formCommenti.='<label for="'.$i.'">'.$commento.'</label>';
                     $formCommenti.='<input type="checkbox" id="'.$i.'" name="commento[]" value="'.$commenti[$i][0].'-'.$commenti[$i][2].'-'.$commenti[$i][3].'"/>';
                 }
-                $formCommenti.= '<input type="submit" id="delete_commento" name="delete_commento" value="elimina commenti selezionati"/></fieldset></form>';
+                $formCommenti.= '<input type="submit" id="delete_commento" name="delete_commento" value="elimina commenti selezionati"/></fieldset></form><msgCommenti_delete/>';
             }else{
                 $msgCommenti.='<p>nessun commento</p>';
             }
         }else{
             #nessun valore inserito nel form perla ricerca
             $msgCommenti.='<p>riempire almeno uno dei tre campi</p>';
-        }  
+        } 
+        $content=str_replace("<msgCommenti/>",$msgCommenti,$content); 
     }
     # controllo se nel form per la ricerca e' stato selezionato qualcosa
     if(isset($_POST['delete_commento'])){
@@ -88,14 +89,15 @@ if($dbOK){
             foreach($commenti_selezionati as $i){  
                 $userdata=explode("-",$i);
                 $query_delete_commenti="DELETE FROM Valutazione Where nome_utente=\"".$userdata[0]."\" && classe_laurea=\"".$userdata[1]."\" && tag=\"".$userdata[2]."\";";
-                $msgCommenti.='<ul>';
+                $msgCommenti_delete.='<ul>';
                 if(!$db->Insert($query_delete_commenti)){
-                    $msgCommenti.='<li>Si è verificato un errori ai nostri servizi, commento dell\'utente '.$userdata[0].' non eliminato</li>';
+                    $msgCommenti_delete.='<li>Si è verificato un errori ai nostri servizi, commento dell\'utente '.$userdata[0].' non eliminato</li>';
                 }else{
-                    $msgCommenti.='<li>Commento dell\'utente '.$userdata[0].' eliminato con successo</li>';
+                    $msgCommenti_delete.='<li>Commento dell\'utente '.$userdata[0].' eliminato con successo</li>';
                 }
             }
         }
+        $content=str_replace("<msgCommenti_delete/>",$msgCommenti_delete,$content);
     }
 
     #sezione gestione corsi
@@ -195,7 +197,7 @@ $errorf.="</ul>";
 $db->Disconnect();
 
 $content=str_replace("<formCommenti/>",$formCommenti,$content);
-$content=str_replace("<msgCommenti/>",$msgCommenti,$content);
+
 $content=str_replace("<msgCorsi/>",$msgCorso,$content);
 /*
 $contenuto=str_replace("<new>",$nuova,$contenuto);
