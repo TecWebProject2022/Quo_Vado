@@ -53,24 +53,24 @@ if($dbOK){
     if($res1=$db->ExecQueryAssoc($query1)){
         $contenuto.="<h2 class='titles_utente'>Dati personali</h2>";
         $contenuto.="<dl id='info_utente'>";
-        $contenuto.="<dt>Nome utente: </dt><dd>".$res1[0]['nome_utente']."</dd>";
+        $contenuto.="<dt class='highlight'>Nome utente: </dt><dd class='highlight'>".$res1[0]['nome_utente']."</dd>";
         $contenuto.="<dt>Nome: </dt><dd>".$res1[0]['nome']."</dd>";
-        $contenuto.="<dt>Cognome: </dt><dd>".$res1[0]['cognome']."</dd>";
+        $contenuto.="<dt class='highlight'>Cognome: </dt><dd class='highlight'>".$res1[0]['cognome']."</dd>";
         $contenuto.="<dt>Data di nascita: </dt><dd>".date("d/m/Y",strtotime($res1[0]['data_nascita']))."</dd>";
-        $contenuto.="<dt>Genere: </dt><dd>".$res1[0]['genere']."</dd>";
+        $contenuto.="<dt class='highlight'>Genere: </dt><dd class='highlight'>".$res1[0]['genere']."</dd>";
         $contenuto.="<dt>Scuola superiore frequentata: </dt><dd>".$res1[0]['scuola_sup']."</dd>";
         $contenuto.="</dl>";
         $query2="Select ateneo, classe,corso, datai, dataf,punteggio_scuola_provenienza  from Iscrizione where nome_utente=\"$user\"";
         if($res2=$db->ExecQueryAssoc($query2)){
             $contenuto.="<h2 class='titles_utente'>Iscrizioni</h2> ";
-            $contenuto.="<dl>";
+            $contenuto.="<dl id='info_iscrizione'>";
             foreach($res2 as $i){
-                $contenuto.="<dt>Ateneo: </dt><dd>".$i['ateneo']."</dd>";
+                $contenuto.="<dt class='highlight'>Ateneo: </dt><dd class='highlight'>".$i['ateneo']."</dd>";
                 $contenuto.="<dt>Classe di Laurea: </dt><dd>".$i['classe']."</dd>";
-                $contenuto.="<dt>Corso di studi: </dt><dd>".$i['corso']."</dd>";
+                $contenuto.="<dt class='highlight'>Corso di studi: </dt><dd class='highlight'>".$i['corso']."</dd>";
                 $contenuto.="<dt>Data inizio studi: </dt><dd>".date("d/m/Y",strtotime($i['datai']))."</dd>";
-                $contenuto.="<dt>Data fine studi: </dt><dd>".date("d/m/Y",strtotime($i['dataf']))."</dd>";
-                $contenuto.="<dt>Punteggio di affinità con la scuola superiore frequentata: </dt><dd>".$i['punteggio_scuola_provenienza']."</dd>";
+                $contenuto.="<dt class='highlight'>Data fine studi: </dt><dd class='highlight'>".date("d/m/Y",strtotime($i['dataf']))."</dd>";
+                $contenuto.="<dt>Punteggio affinità scuola superiore: </dt><dd>".$i['punteggio_scuola_provenienza']."</dd>";
             }
             $contenuto.="</dl>";
             $contenuto.="<h2 class='titles_utente' id='Commenti'>Commenti rilasciati</h2>";
@@ -78,27 +78,28 @@ if($dbOK){
             if($res3=$db->ExecQueryNum($query3)){
                 
                 $contenuto.="<label id='cancellacomm'>Seleziona un commento e clicca &quot;cancella commento selezionato&quot; per eliminarlo</label>";
-                $contenuto.='<form aria-describedby="cancellacomm" id="form_cancellacomm" action="area_utente.php" method="post" onsubmit="return OnDelete()" >
+                $contenuto.='<form aria-describedby="cancellacomm" id="cancellacomm_container" action="area_utente.php" method="post" onsubmit="return OnDelete()" >
                 <fieldset><legend>Commenti</legend>';
                 for($i=0;$i<count($res3);$i++){
                     
-                        $contenuto.='<span><input type="checkbox" id="'.$i.'" name="commento[]" value="'.$i.'" /></span><label for="'.$i.'">
-                        <dl><dt>Data di emissione:</dt> <dd>'.date("d/m/Y",strtotime($res3[$i][1])).'</dd>
+                        $contenuto.='<ul><li class="cancellacomm_elem"><span><input type="checkbox" id="'.$i.'" name="commento[]" value="'.$i.'" /></span><label for="'.$i.'">
+                        <dl class="form_cancellacomm"><dt class="highlight">Data di emissione:</dt> <dd class="highlight">'.date("d/m/Y",strtotime($res3[$i][1])).'</dd>
                         <dt>Classe di laurea: </dt> <dd>'.$res3[$i][0].'</dd>
-                        <dt>Commento:</dt> <dd>'.$res3[$i][2].'</dd>
+                        <dt class="highlight">Commento:</dt> <dd class="highlight">'.$res3[$i][2].'</dd>
                         <dt>Valutazione complessiva: </dt> <dd>'.$res3[$i][3].'</dd>
-                        <dt>Valutazione accessibilità fisica: </dt> <dd>'.$res3[$i][4].'</dd>
-                        <dt>Valutazione sul servizio inclusione: </dt> <dd> '.$res3[$i][5].'</dd>
-                        <dt>Valutazione sulla tempestività burocratica: </dt> <dd>'.$res3[$i][6].'</dd>
-                        <dt>Valutazione sulla qualità di insegnamento: </dt> <dd>'.$res3[$i][7].'</dd>';
+                        <dt class="highlight">Valutazione accessibilità fisica: </dt> <dd class="highlight">'.$res3[$i][4].'</dd>
+                        <dt>Valutazione servizio inclusione: </dt> <dd> '.$res3[$i][5].'</dd>
+                        <dt class="highlight">Valutazione tempestività burocratica: </dt> <dd class="highlight">'.$res3[$i][6].'</dd>
+                        <dt>Valutazione qualità di insegnamento: </dt> <dd>'.$res3[$i][7].'</dd></dl>';
                         if($res3[$i][8]==1){
-                            $contenuto.="<dt>Valutazione riguardante l'ambito dell'inclusità</dt></dl></label><br />";
+                            $contenuto.="<p class='tipo_valutazione'>Valutazione riguardante l'ambito dell'inclusità</p></label></li><br />";
                         }
                         else{
-                            $contenuto.="<dt>Valutazione riguardante l'ambito generale </dt></dl></label><br />";
+                            $contenuto.="<p>Valutazione riguardante l'ambito generale </p></label><br />";
                         }      
                 }
-                $contenuto.='<input type="submit"  class="submit" name="submit2" value="cancella i commenti selezionati"/></fieldset></form></commenterror>';
+
+                $contenuto.='<input type="submit"  class="submit" name="submit2" value="cancella i commenti selezionati"/></ul></fieldset></form></commenterror>';
                 
             }
             else{
