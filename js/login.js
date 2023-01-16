@@ -19,8 +19,6 @@ function Validation(element){
        return false;
     }
     else if(element.value.search(test[element.id])==-1){
-        console.log(element.dataset.control);
-        console.log(element.value);
         var b=document.createElement('strong');
         b.appendChild(document.createTextNode(element.dataset.msgInvalid));
         parent.appendChild(b); 

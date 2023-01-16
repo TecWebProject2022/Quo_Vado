@@ -18,28 +18,28 @@ if(isset($_POST['submit'])){
     if(!preg_match('/^[a-zA-Z ]{3,30}$/',$cognome)){
         $errori.='<li>Il campo cognome non può essere vuoto e può contenere numeri o caratteri speciali, deve avere una lunghezza compresa da 2 a 40 caratteri</li>';
     }
-    if(!$email){
-        $errori.='<li>Il campo email non può essere vuoto</li>';
-    }
     if(!preg_match('/^([\w\-\+\.]+)\@([\w\-\+\.]+)\.([\w\-\+\.]+)$/',$email)){
         $errori.='<li>Il campo email non corrisponde ad una email valida</li>';
     }
-    if(!preg_match('/^[!?@a-zA-Z.,_-]{10,500}$/',$commento)){
+    if(!preg_match('/^[!?@a-zA-Z .,_-]{10,500}$/',$commento)){
         $errori.='<li>Il campo commento/mesaggio può contenere da 10 a 500 caratteri (sono amessi i seguenti simboli: .,_-!?@)</li>';
     }
     if($errori=="<ul>"){
         $db=new Connection();
         $dbOK=$db->Connect();
         if($dbOK){
-            $insert="INSERT INTO Domande(nome, cognome, email, data, descrizione) VALUES(\"".$nome."\",\"".$cognome."\",\"".$email."\",curdate(),\"".$commento."\");";
+            $insert="INSERT INTO Domande(nome, cognome, email, data, descrizione) VALUES(\"".$nome."\",\"".$cognome."\",\"".$email."\",now(),\"".$commento."\");";
             $q=$db->Insert($insert);
             if($q){
-                $errori.="<li>Inserimento con successo, Grazie di cuore del tuo aiuto</li>";
+                $errori.="<li>Inserimento con successo, Grazie di cuore del tuo aiuto, a presto.</li>";
+                $nome='';
+                $cognome='';
+                $email='';
+                $commento='';
             }
             else{
                 $errori.="<li>Inserimento non riuscito</li>";
             }
-
         }
         else{
             $errori.="<li>Connessione non riuscita</li>";

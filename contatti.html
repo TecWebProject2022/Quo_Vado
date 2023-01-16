@@ -14,7 +14,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     
     <link rel="shortcut icon" type="image/png" href="images/icon.ico" />
-   <script src="js/.js"></script>
+   <script src="js/contatti.js"></script>
    <script src="js/utilita.js"></script> 
 </head>
     
@@ -47,13 +47,13 @@
     </nav>
 
     <nav id="breadcrumb">
-        <p>Ti trovi in: <a href="index.php"><span lang="en">Home</span></a> &gt; &gt; Contatti</p>
+        <p>Ti trovi in: <a href="index.html"><span lang="en">Home</span></a> &gt; &gt; Contatti</p>
     </nav>
  
     <main id="content">
         <h1 class="area_riservata">CONTATTACI</h1>
         <p>Per curiosità consigli o quant'altro compila il seguente form, noi siamo sempre disposti a raddrizzare la nostra busola</p>
-        <form id="contatti" action="contatti.php"  onsubmit="Validate()" method="post">
+        <form id="contatti"   onsubmit="return Validate()" method="post">
                 
             <fieldset>
                 
@@ -73,7 +73,7 @@
                         data-msg-empty="Email non inserito. Per favore, inserisci il tuo cognome"
                         data-msg-invalid="la tua email deve essere compreso da 4 a 40 caratteri" /></span>        
                 <label for="commento">Commento o messaggio:</label>
-                <span><textarea id="comemnto" name="commento" placeholder="Commento o Messaggio" minlenght="10" maxlength="500"                       
+                <span><textarea id="commento" name="commento" placeholder="Commento o Messaggio" minlenght="10" maxlength="500"                       
                         data-msg-empty="Il messaggio ci risulta essere vuoto"
                         data-msg-invalid="Il messaggio o commento deve avere una lunghezza compresa tra i 10 e 500 caraterri" ><valoreMessagio/></textarea></span>     
             </fieldset>

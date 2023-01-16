@@ -82,7 +82,7 @@ create table Domande(
   nome varchar(20) not null,
   cognome varchar(30) not null, 
   email varchar(40), 
-  data date,
+  data datetime,
   descrizione varchar(500),
   visto boolean default false,
   PRIMARY KEY(email,data,descrizione)
