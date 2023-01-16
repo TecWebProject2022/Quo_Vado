@@ -63,18 +63,16 @@ if($dbOK){
         $query2="Select ateneo, classe,corso, datai, dataf,punteggio_scuola_provenienza  from Iscrizione where nome_utente=\"$user\"";
         if($res2=$db->ExecQueryAssoc($query2)){
             $contenuto.="<h2 class='titles_utente'>Iscrizioni</h2> ";
-            $contenuto.="<ul>";
+            $contenuto.="<dl>";
             foreach($res2 as $i){
-                $contenuto.="<li>";
-                $contenuto.="<ul><li>Ateneo: ".$i['ateneo']."</li>";
-                $contenuto.="<ul><li>Classe di Laurea: ".$i['classe']."</li>";
-                $contenuto.="<ul><li>Corso di studi: ".$i['corso']."</li>";
-                $contenuto.="<ul><li>Data inizio studi: ".date("d/m/Y",strtotime($i['datai']))."</li>";
-                $contenuto.="<ul><li>Data fine studi: ".date("d/m/Y",strtotime($i['dataf']))."</li>";
-                $contenuto.="<ul><li>Punteggio di affinità con la scuola superiore frequentata: ".$i['punteggio_scuola_provenienza']."</li></ul>";
-                $contenuto.="</li>"; 
+                $contenuto.="<dt>Ateneo: </dt><dd>".$i['ateneo']."</dd>";
+                $contenuto.="<dt>Classe di Laurea: </dt><dd>".$i['classe']."</dd>";
+                $contenuto.="<dt>Corso di studi: </dt><dd>".$i['corso']."</dd>";
+                $contenuto.="<dt>Data inizio studi: </dt><dd>".date("d/m/Y",strtotime($i['datai']))."</dd>";
+                $contenuto.="<dt>Data fine studi: </dt><dd>".date("d/m/Y",strtotime($i['dataf']))."</dd>";
+                $contenuto.="<dt>Punteggio di affinità con la scuola superiore frequentata: </dt><dd>".$i['punteggio_scuola_provenienza']."</dd>";
             }
-            $contenuto.="</ul>";
+            $contenuto.="</dl>";
             $contenuto.="<h2 class='titles_utente' id='Commenti'>Commenti rilasciati</h2>";
             $query3="Select classe_laurea,datav,commento,p_complessivo,p_acc_fisica,p_servizio_inclusione,tempestivita_burocratica,p_insegnamento,tag FROM Valutazione WHERE nome_utente=\"$user\"";
             if($res3=$db->ExecQueryNum($query3)){
