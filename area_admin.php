@@ -23,6 +23,7 @@ $content=file_get_contents("area_admin.html");
 $msgCommenti='';
 $msgCorso='';
 $formCommenti='';
+$msgCommenti_delete.='<ul>';
 $errori_corso='';
 
 #variabili forse da eliminare    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
@@ -71,7 +72,7 @@ if($dbOK){
                     $formCommenti.='<label for="'.$i.'">'.$commento.'</label>';
                     $formCommenti.='<input type="checkbox" id="'.$i.'" name="commento[]" value="'.$commenti[$i][0].'-'.$commenti[$i][2].'-'.$commenti[$i][3].'"/>';
                 }
-                $formCommenti.= '<input type="submit" id="delete_commento" name="delete_commento" value="elimina commenti selezionati"/></fieldset></form><msgCommenti_delete/>';
+                $formCommenti.= '<input type="submit" id="delete_commento" name="delete_commento" value="elimina commenti selezionati"/></fieldset></form>';
             }else{
                 $msgCommenti.='<p>nessun commento</p>';
             }
@@ -79,7 +80,7 @@ if($dbOK){
             #nessun valore inserito nel form perla ricerca
             $msgCommenti.='<p>riempire almeno uno dei tre campi</p>';
         } 
-        $content=str_replace("<msgCommenti/>",$msgCommenti,$content); 
+         
     }
     # controllo se nel form per la ricerca e' stato selezionato qualcosa
     if(isset($_POST['delete_commento'])){
@@ -89,16 +90,17 @@ if($dbOK){
             foreach($commenti_selezionati as $i){  
                 $userdata=explode("-",$i);
                 $query_delete_commenti="DELETE FROM Valutazione Where nome_utente=\"".$userdata[0]."\" && classe_laurea=\"".$userdata[1]."\" && tag=\"".$userdata[2]."\";";
-                $msgCommenti_delete.='<ul>';
                 if(!$db->Insert($query_delete_commenti)){
                     $msgCommenti_delete.='<li>Si è verificato un errori ai nostri servizi, commento dell\'utente '.$userdata[0].' non eliminato</li>';
                 }else{
                     $msgCommenti_delete.='<li>Commento dell\'utente '.$userdata[0].' eliminato con successo</li>';
                 }
             }
+        }else{
+            $msgCommenti_delete.='<li>Selezionare almeno un commento</li>';
         }
-        $content=str_replace("<msgCommenti_delete/>",$msgCommenti_delete,$content);
     }
+    $msgCommenti_delete.='</ul>';
 
     #sezione gestione corsi
     if(isset($_POST['add_corso'])){
@@ -107,11 +109,11 @@ if($dbOK){
         $nome=isset($_POST['cor_nome'])?pulisciInput($_POST['cor_nome']):'';
         $link=isset($_POST['cor_link'])?pulisciInput($_POST['cor_link']):'';
         $accesso=isset($_POST['cor_accesso'])?pulisciInput($_POST['cor_accesso']):'';
-        #controli sulle variabili
+        #controlli sulle variabili
 
         if(!$errori_corso && $classe && $ateneo && $nome && $link && $accesso ){
             # tutte le variabili sono istanziate e valide
-            $query_insert_corso="INSERT INTO CorsodiStudio   (ateneo,classe_laurea,nome,accesso,link) VALUES ('".$ateneo."','".$classe."','".$nome."','".$link."',".$accesso.");";
+            $query_insert_corso="INSERT INTO CorsodiStudio(ateneo,classe_laurea,nome,accesso,link) VALUES ('".$ateneo."','".$classe."','".$nome."','".$link."','".$accesso."');";
             if($db->Insert($query_insert_corso)){
                 $msgCorso.='<p>'.$nome.' aggiunto con successo</p>';
             }else{
@@ -124,7 +126,7 @@ if($dbOK){
             $classe=isset($_POST['cor_classe'])?pulisciInput($_POST['cor_classe']):'';
             $ateneo=isset($_POST['cor_ateneo'])?pulisciInput($_POST['cor_ateneo']):'';
             $nome=isset($_POST['cor_nome'])?pulisciInput($_POST['cor_nome']):'';
-             #controli sulle variabili
+             #controlli sulle variabili
         if(!$errori_corso && $classe && $ateneo && $nome){
             # tutte le variabili sono istanziate e valide
             $query_delete_corso="DELETE FROM CorsodiStudio WHERE  ateneo='".$ateneo."' AND classe_laurea='".$classe."' AND nome='".$nome."');";
@@ -197,7 +199,8 @@ $errorf.="</ul>";
 $db->Disconnect();
 
 $content=str_replace("<formCommenti/>",$formCommenti,$content);
-
+$content=str_replace("<msgCommenti/>",$msgCommenti,$content);
+$content=str_replace("<msgCommenti_delete/>",$msgCommenti_delete,$content);
 $content=str_replace("<msgCorsi/>",$msgCorso,$content);
 /*
 $contenuto=str_replace("<new>",$nuova,$contenuto);
