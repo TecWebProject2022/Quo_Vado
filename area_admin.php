@@ -103,7 +103,7 @@ if($dbOK){
         $accesso=isset($_POST['cor_accesso'])?pulisciInput($_POST['cor_accesso']):'';
         #controlli sulle variabili
 
-        if(!$msgCorso && $classe && $ateneo && $nome && $link && $accesso ){
+        if(!$msgCorso){
             # tutte le variabili sono istanziate e valide
             $query_insert_corso="INSERT INTO CorsodiStudio(ateneo,classe_laurea,nome,accesso,link) VALUES ('".$ateneo."','".$classe."','".$nome."','".$accesso."','".$link."');";
             if($db->Insert($query_insert_corso)){
@@ -111,24 +111,26 @@ if($dbOK){
             }else{
                 $msgCorso.='<p>Inserimento di '.$nome.' non riuscito, riprova</p>';
             }
+        }else{
+            $msgCorso.='<ul>'.$msgCorso.'</ul>';
         }
-        $msgCorso.='<ul>'.$msgCorso.'</ul>';
     }else{
         if(isset($_POST['delete_corso'])){
             $classe=isset($_POST['cor_classe'])?pulisciInput($_POST['cor_classe']):'';
             $ateneo=isset($_POST['cor_ateneo'])?pulisciInput($_POST['cor_ateneo']):'';
             $nome=isset($_POST['cor_nome'])?pulisciInput($_POST['cor_nome']):'';
              #controlli sulle variabili
-        if(!$msgCorso && $classe && $ateneo && $nome){
-            # tutte le variabili sono istanziate e valide
-            $query_delete_corso="DELETE FROM CorsodiStudio WHERE  ateneo='".$ateneo."' AND classe_laurea='".$classe."' AND nome='".$nome."';";
-            if($db->Insert($query_delete_corso)){
-                $msgCorso.='<p>'.$nome.' rimosso con successo</p>';
+            if(!$msgCorso){
+                # tutte le variabili sono istanziate e valide
+                $query_delete_corso="DELETE FROM CorsodiStudio WHERE  ateneo='".$ateneo."' AND classe_laurea='".$classe."' AND nome='".$nome."';";
+                if($db->Insert($query_delete_corso)){
+                    $msgCorso.='<p>'.$nome.' rimosso con successo</p>';
+                }else{
+                    $msgCorso.='<p>Cancellazione di '.$nome.' non riuscita, riprova</p>';
+                }
             }else{
-                $msgCorso.='<p>Cancellazione di '.$nome.' non riuscita, riprova</p>';
+                $msgCorso.='<ul>'.$msgCorso.'</ul>';
             }
-        }
-        $msgCorso.='<ul>'.$msgCorso.'</ul>';
         }
     }
 }
