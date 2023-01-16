@@ -2,7 +2,7 @@
 <html lang="it">
 <head>
     <meta charset="utf-8" />
-    <title>Area Riservata - Quo Vado?</title>
+    <title>Pannello di controllo - Quo Vado?</title>
     <meta name="description" content ="Quo Vado? è un sito di orientamento universitario. L'obiettivo è aiutare la persona a 
     scegliere il percorso universitario, selezionando, tra tutte le informazioni, quelle ritenute più utili alla scelta."/>
     <meta name="keywords" content="area riservata"/>
@@ -17,6 +17,7 @@
 
     <link rel="shortcut icon" type="image/png" href="images/icon.ico" />
     <script src="js/utilita.js"></script>  
+    <script src="js/admin.js"></script> 
 </head>
 <body onload="VerificaJS()">
     <header>
@@ -43,7 +44,7 @@
                     <li><a href="disabilita.html">Servizi per la Disabilità</a></li>
                 </ul>
             </li>
-            <li id="currentlink">Area Riservata</li>
+            <li id="currentlink">Pannello di controllo</li>
         </ul>  
     </nav>
     
@@ -86,7 +87,9 @@
         <form id="formCorsi" action="area_admin.php" method="post">
             <fieldset>
                 <legend>Aggiungi o elimina un corso di studi</legend>
-
+                
+                <p id="aiuti_form">per aggiungere un corso di studi e' necessario riempire tutti i campi, per eliminarne uno bastano nome, classe di laurea e ateneo.</p>
+                
                 <label for="cor_classe">Classe di laurea:</label>
                 <span><input id="cor_classe" name="cor_classe" type="text"/></span>
                 <label for="cor_ateneo">Ateneo:</label>
@@ -102,8 +105,7 @@
                     <option value="Accesso a numero chiuso">Accesso a numero chiuso</option>
                     <option value="Accesso libero cronologico">Accesso libero cronologico</option>
                 </select></span>
-                
-                <p id="aiuti_form">per aggingere un corso di studi e' necessario riempire tutti i campi, per eliminarne uno bastano nome, classe di laurea e ateneo.</p>
+
                 <input type="submit" id="add_corso" name="add_corso" value="Aggiungi"/>
                 <input type="submit" id="delete_corso" name="delete_corso" value="Elimina"/>
                 <input type="reset" id="reset" name="reset" value="Cancella tutto"/>
