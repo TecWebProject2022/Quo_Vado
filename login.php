@@ -55,7 +55,7 @@ if(!$errori){
     $db->Disconnect();    
     }
     else{
-        $errori.='<li class="error">Connessione non riuscita, attendere e riprovare</li>';
+        $errori.='<li class="error">Ci scusiamo, la connessione non &egrave; riuscita. Per favore, attendere e riprovare</li>';
     }   
 }
 }
