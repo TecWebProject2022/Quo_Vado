@@ -172,11 +172,7 @@ $contenuto.='<h2 class="titles_utente" id="Aggiungi">Aggiungi un commento</h2><l
     <option value="1">Inclusività</option>
     <option value="2">commento generale</option></select></span>
 
-<<<<<<< Updated upstream
 <input type="submit" class="submit"  name="submit3" value="pubblica"/>
-=======
-<input type="submit" class="submit" name="submit3" value="pubblica"/>
->>>>>>> Stashed changes
 </fieldset>
 </form>
 </errorform>';
