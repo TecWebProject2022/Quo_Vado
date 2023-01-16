@@ -40,13 +40,6 @@ function Validate(){
     return false; 
 }
 //Aggiunta funzioni all'onload
-function AddFunction(){
-    var user= document.getElementById('username');
-    var pw= document.getElementById('password');
-    user.onblur=function(){Validation(user);};
-    pw.onblur=function(){Validation(pw);};
-}
-
 
 
 

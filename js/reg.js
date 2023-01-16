@@ -44,14 +44,6 @@ function Validate(){
 
 }
 //Aggiunta funzioni all'onload
-function AddFunction(){
-   for(var i in test){
-    var element=document.getElementById(i);
-    element.onblur=function(){Validation(this);};
-    element.onblur=function(){Validation(this);};
-   }
-    
-}
 
 
 

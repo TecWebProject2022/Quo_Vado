@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="utf-8" />
+    <title>Quo Vado?</title>
+    <meta name="description" content ="Quo Vado? pagina contattarci, inviarci consigi o quan'altro."/>
+    <meta name="keywords" content="contatti, comsigli e curiosità" />
+    <meta name="author" content="Matteo Umatche, Marco Brugin, Bianca Zaghetto, Valentina Caputo" />
+
+    <link rel="stylesheet" type="text/css" media= "screen" href="css/style.css"/> 
+    <link rel="stylesheet" type="text/css" media= "screen and (max-device-width:1200px), only screen
+	and (max-width:1200px)" href="css/mini.css"/>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    
+    <link rel="shortcut icon" type="image/png" href="images/icon.ico" />
+   <script src="js/.js"></script>
+   <script src="js/utilita.js"></script> 
+</head>
+    
+<body onload="VerificaJS()">
+    <header>
+        <h1>Quo vado?</h1>
+		<h2>Sito di orientamento universitario</h2>
+    </header>
+    
+    <a class="skip" href="#content">Vai al contenuto</a>
+
+    <nav id="menu" aria-label="menù">
+        <button onclick="View()" id="icon" aria-label="Menù a panino"></button> <!--TV errore perchè manca testo nella label-->
+
+        <ul class="minimenu">
+            <li  id="currentOverLink" lang="en"><a href="index.html">Home</a></li>
+            <li><a href="percorso_disciplinare.html">Esplora corsi</a></li>
+            <li><a href="lavoro.html">Obiettivo Lavoro</a></li>
+            <li><a href="risorse_interne.html">La scelta giusta per te</a></li>
+            <li class="sottomenu">
+                    <a href="universita_inclusiva.html">Università e Inclusione<span class="fa fa-angle-down arrow"></span></a>
+                <ul class="sottomenu-content">
+                    <li><a href="diritto_studio.html">Diritto allo studio</a></li>
+                    <li><a href="parita_genere.html">Pari opportunità e Parità di genere</a></li>
+                    <li><a href="disabilita.html">Servizi per la Disabilità</a></li>
+                </ul>
+            </li>
+            <li><a href="login.php">Area Riservata</a></li>
+        </ul>
+    </nav>
+
+    <nav id="breadcrumb">
+        <p>Ti trovi in: <a href="index.php"><span lang="en">Home</span></a> &gt; &gt; Contatti</p>
+    </nav>
+ 
+    <main id="content">
+        <h1 class="area_riservata">CONTATTACI</h1>
+        <p>Per curiosità consigli o quant'altro compila il seguente form, noi siamo sempre disposti a raddrizzare la nostra busola</p>
+        <form id="contatti" action="contatti.php"  onsubmit="Validate()" method="post">
+                
+            <fieldset>
+                
+                <legend>Inserisci i tuoi dati</legend>
+                
+                <label for="name">Nome:</label>
+                <span><input name="name" id="name" value="<valoreNome/>" placeholder="Mario" minlenght="2" maxlength="20"                    
+                        data-msg-empty="Nome non inserito. Per favore, inserisci il tuo nome"
+                        data-msg-invalid="Il nome deve essere compreso tra 2 e 20 caratteri e non puo' contenere numeri o caratteri speciali"/></span>
+            
+                <label for="last_name">Cognome:</label>
+                <span><input id="last_name" name="last_name" value="<valoreCognome/>" placeholder="Rossi" minlenght="2" maxlength="30"                       
+                        data-msg-empty="Cognome non inserito. Per favore, inserisci il tuo cognome"
+                        data-msg-invalid="Il cognome deve essere compreso da 3 a 30 caratteri e non può contenere numeri o caratteri speciali" /></span>
+                 <label for="email">Email:</label>
+                <span><input id="email" name="email" value="<valoreEmail/>" placeholder="Email" minlenght="4" maxlength="40"                       
+                        data-msg-empty="Email non inserito. Per favore, inserisci il tuo cognome"
+                        data-msg-invalid="la tua email deve essere compreso da 4 a 40 caratteri" /></span>        
+                <label for="commento">Commento o messaggio:</label>
+                <span><textarea id="comemnto" name="commento" placeholder="Commento o Messaggio" minlenght="10" maxlength="500"                       
+                        data-msg-empty="Il messaggio ci risulta essere vuoto"
+                        data-msg-invalid="Il messaggio o commento deve avere una lunghezza compresa tra i 10 e 500 caraterri" ><valoreMessagio/></textarea></span>     
+            </fieldset>
+            <input  name="submit" id="submit" type= "submit" value="Invia"/>
+       </form>
+       <errori/>
+    </main>
+    
+    <footer>
+        <img class="imgValidCode" src="images\valid-xhtml10.png" alt="W3C Valid"/>
+            <span><em>Marco Brugin, Valentina Caputo, Matteo Umatche, Bianca Zaghetto -<img src="images/cc.png"/> Quest'opera è distribuita con Licenza <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/">Creative Commons Attribuzione - Non commerciale - Condividi allo stesso modo 4.0 Internazionale</a>.</em></span>
+        <img class="imgValidCode" src="images\vcss-blue.gif" alt="W3CValid"/>
+    </footer>
+</body>
+</html>

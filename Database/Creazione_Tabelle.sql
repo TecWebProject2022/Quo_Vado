@@ -5,7 +5,7 @@ drop table if exists Utente;
 drop table if exists CorsodiStudio;
 drop table if exists ClassediLaurea;
 drop table if exists Ateneo;
-
+drop table if exists Domande;
 create table Ateneo (
 nome varchar(50) primary key,
 link varchar(30) not null,
@@ -77,4 +77,13 @@ create table Iscrizione(
     dataf date not null ,
     FOREIGN KEY(ateneo,classe,corso) REFERENCES CorsodiStudio(ateneo, classe_laurea, nome) ON UPDATE CASCADE ON DELETE CASCADE,
     FOREIGN KEY(nome_utente) REFERENCES Utente(nome_utente) ON UPDATE CASCADE
+);
+create table Domande(
+  nome varchar(20) not null,
+  cognome varchar(30) not null, 
+  email varchar(40), 
+  data date,
+  descrizione varchar(500),
+  visto boolean default false,
+  PRIMARY KEY(email,data,descrizione)
 );

@@ -52,7 +52,7 @@
  
     <main id="content">
         <h1 class="area_riservata">REGISTRAZIONE</h1>
-        <form id="registrazione" action="registrazione_utente.php"  onsubmit="Validate()" method="post">
+        <form id="registrazione" action="registrazione_utente.php"  onsubmit=" return Validate()" method="post">
                 
             <fieldset id="set_personal_data">
                 
@@ -64,7 +64,7 @@
                         data-msg-invalid="Il nome deve essere compreso tra 2 e 20 caratteri e non puo' contenere numeri o caratteri speciali"/></span>
             
                 <label for="last_name">Cognome:</label>
-                <span><input id="last_name" name="last_name" value="<valoreCognome/>" placeholder="Rossi" minlenght="2" maxlength="30"                       
+                <span><input id="last_name" name="last_name" value="<valoreCognome/>" placeholder="Rossi" minlenght="3" maxlength="30"                       
                         data-msg-empty="Cognome non inserito. Per favore, inserisci il tuo cognome"
                         data-msg-invalid="Il cognome deve essere compreso da 3 a 30 caratteri e non può contenere numeri o caratteri speciali" /></span>
                         

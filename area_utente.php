@@ -214,12 +214,16 @@ if(isset($_POST['submit2']) && check()){
                 
             $query4="DELETE FROM Valutazione Where nome_utente=\"".$user."\" && classe_laurea=\"".$res3[$i][0]."\" && tag=\"".$res3[$i][8]."\";";
             $r=$db->Insert($query4);
-            if($r==true){
-                $_SESSION['info']="<p>Cancellazione avvenuta con successo</p>";
-                header('Location:area_utente.php');
+            if($r==null){
+                break;
             }
-           
-            
+        }
+        if($r==true){
+            $_SESSION['info']="<p>Cancellazione avvenuta con successo</p>";
+            header('Location:area_utente.php');
+        }
+        else{
+            $commenti.="<li>Inserimento non riuscito</li>";
         }
         
         
