@@ -1802,7 +1802,7 @@ LOGIN
     margin-bottom: 1em;
 }
 
-#submit {
+.submit {
     background-color: #093e4b;
     color: #FFFFFF;
     padding: 0.7em 1em 0.7em 1em;

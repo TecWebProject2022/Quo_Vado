@@ -100,7 +100,7 @@ if($dbOK){
                             $contenuto.="<li>Valutazione riguardante l'ambito generale </li></ul></label><br />";
                         }      
                 }
-                $contenuto.='<input type="submit" class="submit" id="submit2" name="submit2" value="cancella commento selezionato"/></fieldset></form></commenterror>';
+                $contenuto.='<input type="submit"  class="submit" name="submit2" value="cancella commento selezionato"/></fieldset></form></commenterror>';
                 
             }
             else{
@@ -172,7 +172,7 @@ $contenuto.='<h2 class="titles_utente" id="Aggiungi">Aggiungi un commento</h2><l
     <option value="1">Inclusività</option>
     <option value="2">commento generale</option></select></span>
 
-<input type="submit" id="submit"  name="submit3" value="pubblica"/>
+<input type="submit" class="submit"  name="submit3" value="pubblica"/>
 </fieldset>
 </form>
 </errorform>';
@@ -192,7 +192,7 @@ if($user!='user'){
     <label for="repeat"><span lang="en">Ripeti la Password: </span></label>
     <span><input  value="" type="password" id="repeat" name="repepassword" placeholder="Ripeti la password" maxlength="20"                      
         data-msg-empty="Il campo repeti password non può essere vuoto" /></span>   
-    <input type="submit" id="submit" name="submit1" value="Salva"/>
+    <input type="submit" class="submit" name="submit1" value="Salva"/>
     </form>
     </err/>';
 }
