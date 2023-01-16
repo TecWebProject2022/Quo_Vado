@@ -1891,30 +1891,67 @@ AREA PERSONALE UTENTE
     box-shadow: 5px 10px 15px rgba(0, 0, 0, 0.25);
 }
 
-#info_utente {
-    display: grid;
-    grid-template-columns: 1.5fr 3fr;
-    padding: 1em;
+#info_utente,  #info_iscrizione {
+    display: flex;
+    flex-wrap: wrap;
+    padding: 1%;
     border: 2px solid #000000;
     margin: 0% 20% 0% 20%;
+    font-size: 1.2em;
+    font-family: monospace;
 }
 
 #info_utente > dt {
-    grid-column: 1;
+    flex-basis: 30%;
 }
 
 #info_utente > dd {
-    grid-column: 2;
+    flex-basis: 70%;
 }
 
-.iscrizione {
+#info_iscrizione > dt {
+    flex-basis: 30%;
+}
 
+#info_iscrizione > dd {
+    flex-basis: 70%;
 }
 
 #cancellacomm {
     margin-left: 15%;
     margin-right: 15%;
-    
+}
+
+#cancellacomm_container {
+    padding: 1em;
+    margin: 0% 15% 2% 15%;
+}
+
+.cancellacomm_elem {
+    padding: 0.5em;
+    border: 1px solid #000000;
+    margin-left: 3%;
+    margin-right: 20%;
+    list-style: none;
+}
+
+.form_cancellacomm {
+    display: flex;
+    flex-wrap: wrap;
+    font-size: 1.2em;
+    font-family: monospace;
+}
+
+.form_cancellacomm dt {
+    flex-basis: 40%;
+}
+
+.form_cancellacomm dd {
+    flex-basis: 60%;
+}
+
+.tipo_valutazione {
+    text-align: center;
 }
 
 
