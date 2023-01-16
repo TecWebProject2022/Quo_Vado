@@ -46,7 +46,8 @@ if($dbOK){
         $classe=isset($_POST['com_classe'])?pulisciInput($_POST['com_classe']):'';
         if($user || $classe ){
             $query_commenti='SELECT nome_utente,datav,classe_laurea,tag,commento,p_complessivo,p_acc_fisica, p_servizio_inclusione,tempestivita_burocratica, p_insegnamento FROM Valutazione WHERE ';
-            $query_commenti.= $user? "nome_utente='".$user."' AND " : '';
+            $query_commenti.= $user? "nome_utente='".$user."'" : '';
+            $query_commenti.= ($user && $classe)? ' AND ' : '';
             $query_commenti.= $classe? "classe_laurea='".$classe."'" : '';
             
             if (substr($query_commenti, -4) == " AND ") {
@@ -69,8 +70,8 @@ if($dbOK){
 
                     $formCommenti.='<label for="'.$i.'">'.$commento.'</label>';
                     $formCommenti.='<input type="checkbox" id="'.$i.'" name="commento[]" value="'.$i.'"/>';
-                    $formCommenti.= '<input type="submit" id="delete_commento" name="delete_commento value="elimina commenti selezionati"/></fieldset></form>';
                 }
+                $formCommenti.= '<input type="submit" id="delete_commento" name="delete_commento" value="elimina commenti selezionati"/></fieldset></form>';
             }else{
                 $msgCommenti.='<p>nessun commento</p>';
             }
