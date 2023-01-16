@@ -36,7 +36,7 @@ $db=new Connection();
                             <li class='highlight'>Insegnamento: ".$valComplessiva[0]['pi']."</li></ul></li></ul>";
             }
             else{
-                $errori.='<p>Non è stato trovata alcuna valutazione</p>';
+                $errori.='<p>Non è stata trovata alcuna valutazione</p>';
             }
 
             # corsi di studio associati
@@ -59,7 +59,7 @@ $db=new Connection();
                 }
                 $contenuto.='</ul>';
             }else{
-                $errori.="<p>Opss si è verficato un errore di conessione: impossibile caricare i corsi di laurea, riprova</p>";
+                $errori.="<p>Opss, si è verficato un errore di connessione: impossibile caricare i corsi di laurea. Per favore, riprova più tardi.</p>";
             }    
             #sezione commenti
             
@@ -78,7 +78,7 @@ $db=new Connection();
             }
             #stampa commenti
             if($valutazioni=$db->ExecQueryAssoc($query_valutazione)){
-                $contenuto.='<h2>I commenti degli utenti su questa classe di laurea</h2>';
+                $contenuto.='<h2>I commenti degli studenti di questa classe di laurea</h2>';
                 $contenuto.='<ul id="listaCommenti">';
                 foreach($valutazioni as $v){
                     $contenuto.='<li id="commento"><strong>'.$v['n'].' | '.date("d-m-Y",strtotime($v['datav']))." | ".$v['corso']."</strong><p id=testoCommento>".$v['commento']."</p>";
@@ -92,13 +92,13 @@ $db=new Connection();
                 
             }
             else{
-                $errori.="<p>Opss,si è verficato un errore di conessione: impossibile caricare i commenti. Riprova</p>";
+                $errori.="<p>Opss, si è verficato un errore di connessione: impossibile caricare i commenti. Per favore, riprova più tardi.</p>";
             }
             #aggiunta commento
             #controllo se sono in presenza di un utente loggato
             session_start();
             if(!isset($_SESSION['user'])){
-                $contenuto.='<p id="invito"><a href="registrazione_utente.php">Iscriviti</a> o <a href="login.php">Accedi</a> per lasciare un commento!</p>';
+                $contenuto.='<p class="invito"><a href="registrazione_utente.php">Iscriviti</a> o <a href="login.php">Accedi</a> per lasciare un commento!</p>';
             }
             else{
                 $query_iscrizione='SELECT nome_utente FROM Iscrizione WHERE classe = "'.$target.'" AND nome_utente="'.pulisciInput($_SESSION['user']).'";';
@@ -137,12 +137,12 @@ $db=new Connection();
                     </fieldset>
                     </form><span><strong>'.$erroriNuovoCommento.'</strong></span>';
                 }else{
-                    $errori='<p>Ciao '.$_SESSION['user'].' per lasciare un commento aggiungi il corso di laurea appartenente alla classe '.$classe.' che hai frequentato nella tua <a href="area_utente.php">area personale</a>!</p>';
+                    $errori='<p class="invito">Ciao '.$_SESSION['user'].', per lasciare un commento aggiungi il corso di laurea appartenente alla classe '.$classe.' che hai frequentato nella tua <a href="area_utente.php">area personale</a>!</p>';
                 }
             }
         }
         else{
-            $errori.="<p class='error'>Nessun risultato presente</p>";
+            $errori.="<p class='error'>Nessun risultato presente.</p>";
         }
         $db->Disconnect();
     }else{
