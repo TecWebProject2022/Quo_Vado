@@ -100,7 +100,7 @@ if($dbOK){
                             $contenuto.="<li>Valutazione riguardante l'ambito generale </li></ul></label><br />";
                         }      
                 }
-                $contenuto.='<input type="submit"  class="submit" name="submit2" value="cancella commento selezionato"/></fieldset></form></commenterror>';
+                $contenuto.='<input type="submit"  class="submit" name="submit2" value="cancella i commenti selezionati"/></fieldset></form></commenterror>';
                 
             }
             else{
