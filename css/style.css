@@ -1193,7 +1193,7 @@ OBIETTIVO LAVORO
 
 }
 
-#external_resources h3{
+#external_resources h3, #external_resources h4{
     font-size: 1.5em;
     color: #0D5D70;
 }
@@ -1300,18 +1300,18 @@ LA SCELTA GIUSTA PER TE
     margin: 0.8em 0em;
 }
 
-.esempio {
-    padding: 0.5em 3em;
+.quote {
+    padding: 1em 2.5em;
     background: url("icons/quotation-marks_left.svg") left top no-repeat,
                 url("icons/quotation-marks_rigth.svg") right bottom no-repeat;
-    background-size: 3.5%, 3.5%;
-    margin-bottom: 1em;
+    background-size: 3%, 3%;
+    margin: 1.5em 4.2em;
     font-size: 0.95em;
     /*color: #616161;*/
     color: #093e4b;
 }
 
-.esempio em{
+.quote em{
     font-weight: bold;
     font-style: normal;
     font-size: 1.1em; 
@@ -1651,7 +1651,11 @@ Parità di genere
     margin:  0.5em 0.9em;
     color: #093e4b;
     padding: 1em;
+}
 
+article h3{
+    margin: 2em 0 1em;
+    font-size: 1.5em;
 }
 
 #women_voices li:nth-child(1){
@@ -1695,6 +1699,42 @@ Parità di genere
     padding-left: 20%;
 }
 
+img[src="css/css_images/par_gen.webp"]{
+    width: 60%;
+    height: auto;
+    margin: 1em 20% 2.5em 20%;
+}
+
+img[src="images/progettonerd.jpg"]{
+    width: 100%;
+    height: auto;
+    margin-bottom: 3.5em;
+}
+
+img[src="images/gict.jpg"]{
+    width: 100%;
+    height: auto;
+    margin-bottom: 2em;
+}
+
+#interventi{
+    box-shadow: 1px 5px 2px rgba(0, 0, 0, 0.25);
+    padding: 0.5em;
+}
+
+#interventi li, #interventi p{
+    font-size: 1em;
+}
+
+.metafora {
+    margin: 1.5em 2.5em;
+    padding: 1.5em;
+    padding-right: 15%;
+    background: url("icons/quotation-marks_left.svg") left top no-repeat,
+                url("icons/quotation-marks_rigth.svg") right bottom no-repeat,
+                url("css_images/tubo_acqua.png") right center no-repeat;
+    background-size: 2%, 2%, 15%;
+}
 
 /*
 ================
