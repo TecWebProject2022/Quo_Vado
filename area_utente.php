@@ -63,61 +63,42 @@ if($dbOK){
         $query2="Select ateneo, classe,corso, datai, dataf,punteggio_scuola_provenienza  from Iscrizione where nome_utente=\"$user\"";
         if($res2=$db->ExecQueryAssoc($query2)){
             $contenuto.="<h2 class='titles_utente'>Iscrizioni</h2> ";
-            $contenuto.="<ul>";
+            $contenuto.="<dl>";
             foreach($res2 as $i){
-                $contenuto.="<li>";
-                $contenuto.="<ul><li>Ateneo: ".$i['ateneo']."</li>";
-                $contenuto.="<ul><li>Classe di Laurea: ".$i['classe']."</li>";
-                $contenuto.="<ul><li>Corso di studi: ".$i['corso']."</li>";
-                $contenuto.="<ul><li>Data inizio studi: ".date("d/m/Y",strtotime($i['datai']))."</li>";
-                $contenuto.="<ul><li>Data fine studi: ".date("d/m/Y",strtotime($i['dataf']))."</li>";
-                $contenuto.="<ul><li>Punteggio di affinità con la scuola superiore frequentata: ".$i['punteggio_scuola_provenienza']."</li></ul>";
-                $contenuto.="</li>"; 
+                $contenuto.="<dt>Ateneo: </dt><dd>".$i['ateneo']."</dd>";
+                $contenuto.="<dt>Classe di Laurea: </dt><dd>".$i['classe']."</dd>";
+                $contenuto.="<dt>Corso di studi: </dt><dd>".$i['corso']."</dd>";
+                $contenuto.="<dt>Data inizio studi: </dt><dd>".date("d/m/Y",strtotime($i['datai']))."</dd>";
+                $contenuto.="<dt>Data fine studi: </dt><dd>".date("d/m/Y",strtotime($i['dataf']))."</dd>";
+                $contenuto.="<dt>Punteggio di affinità con la scuola superiore frequentata: </dt><dd>".$i['punteggio_scuola_provenienza']."</dd>";
             }
-            $contenuto.="</ul>";
-            $contenuto.="<h2 id='Commenti'>Commenti rilasciati</h2>";
+            $contenuto.="</dl>";
+            $contenuto.="<h2 class='titles_utente' id='Commenti'>Commenti rilasciati</h2>";
             $query3="Select classe_laurea,datav,commento,p_complessivo,p_acc_fisica,p_servizio_inclusione,tempestivita_burocratica,p_insegnamento,tag FROM Valutazione WHERE nome_utente=\"$user\"";
             if($res3=$db->ExecQueryNum($query3)){
-                $contenuto.="<aside>
-                <h2>Glossario</h2>
-                <p>Ogni utente può esprime un giudizio con un valore da 1 a 5 sui seguenti ambiti riguardanti una classe di laurea</p>
-                    <dl>
-                        <dt>Valutazione complessiva: </dt>
-                        <dd>valutazione che riguarda tutti gli ambiti universitari ingenerale</dd>
-                        <dt>Valutazione accessibilità fisica: </dt>
-                        <dd>valutazione che riguarda la possibilità da parte di chiunque di fruire dei servizi universitari da un punto di vista fisico</dd>
-                        <dt>Valutazione sul servizio inclusione: </dt>
-                        <dd>valutazione riguardante l'accoglienza e l'appartenenza ad un gruppo universitario</dd>
-                        <dt>Valutazione sulla tempestività burocratica: </dt>
-                        <dd>valutazione attinente alla velocità di intervento e risposta da parte dei servizi amministrativi e burocratici universitari</dd>
-                        <dt>Valutazione sulla qualità di insegnamento: </dt>
-                        <dd>valutazione riguardante la qualità di insegnamento ricevuto e le competenze acquisite in esso</dd>
-                        <dt>Ambito di valutazione: </dt>
-                        <dd>cataratterrizzazione del commento</dd>
-                    </dl>
-            </aside>";
-                $contenuto.="<label id=\"cancellacomm\">Seleziona un commento e clicca &quot;cancella&quot; per eliminarlo</label>";
-                $contenuto.='<form aria-describedby="cancellacomm" action="area_utente.php"  method="post" onsubmit="return OnDelete()" >
+                
+                $contenuto.="<label id='cancellacomm'>Seleziona un commento e clicca &quot;cancella commento selezionato&quot; per eliminarlo</label>";
+                $contenuto.='<form aria-describedby="cancellacomm" id="form_cancellacomm" action="area_utente.php" method="post" onsubmit="return OnDelete()" >
                 <fieldset><legend>Commenti</legend>';
                 for($i=0;$i<count($res3);$i++){
                     
                         $contenuto.='<span><input type="checkbox" id="'.$i.'" name="commento[]" value="'.$i.'" /></span><label for="'.$i.'">
-                        <ul><li>Data di emissione: '.date("d/m/Y",strtotime($res3[$i][1])).'</li>
-                        <li>Classe di laurea: '.$res3[$i][0].'</li>
-                        <li>Commento: '.$res3[$i][2].'</li>
-                        <li>Valutazione complessiva: '.$res3[$i][3].'</li>
-                        <li>Valutazione accessibilità fisica: '.$res3[$i][4].'</li>
-                        <li>Valutazione sul servizio inclusione: '.$res3[$i][5].'</li>
-                        <li>Valutazione sulla tempestività burocratica: '.$res3[$i][6].'</li>
-                        <li>Valutazione sulla qualità di insegnamento: '.$res3[$i][7].'</li>';
+                        <dl><dt>Data di emissione:</dt> <dd>'.date("d/m/Y",strtotime($res3[$i][1])).'</dd>
+                        <dt>Classe di laurea: </dt> <dd>'.$res3[$i][0].'</dd>
+                        <dt>Commento:</dt> <dd>'.$res3[$i][2].'</dd>
+                        <dt>Valutazione complessiva: </dt> <dd>'.$res3[$i][3].'</dd>
+                        <dt>Valutazione accessibilità fisica: </dt> <dd>'.$res3[$i][4].'</dd>
+                        <dt>Valutazione sul servizio inclusione: </dt> <dd> '.$res3[$i][5].'</dd>
+                        <dt>Valutazione sulla tempestività burocratica: </dt> <dd>'.$res3[$i][6].'</dd>
+                        <dt>Valutazione sulla qualità di insegnamento: </dt> <dd>'.$res3[$i][7].'</dd>';
                         if($res3[$i][8]==1){
-                            $contenuto.="<li>Valutazione riguardante l'ambito dell'inclusità</li></ul></label><br />";
+                            $contenuto.="<dt>Valutazione riguardante l'ambito dell'inclusità</dt></dl></label><br />";
                         }
                         else{
-                            $contenuto.="<li>Valutazione riguardante l'ambito generale </li></ul></label><br />";
+                            $contenuto.="<dt>Valutazione riguardante l'ambito generale </dt></dl></label><br />";
                         }      
                 }
-                $contenuto.='<input type="submit" id="submit2"  name="submit2" value="cancella commento selezionato"/></fieldset></form></commenterror>';
+                $contenuto.='<input type="submit"  class="submit" name="submit2" value="cancella i commenti selezionati"/></fieldset></form></commenterror>';
                 
             }
             else{
@@ -135,6 +116,24 @@ if($dbOK){
 else{
     $errori.="<p>Siamo spiacenti ma i dati non sono al momento disponibili</p>";
 }
+
+$contenuto.="<aside>
+                <h2 class='titles_utente'>Legenda valutazione</h2>
+                <p>Ogni utente può esprime un giudizio con un valore da 1 a 5 sui seguenti ambiti riguardanti una classe di laurea</p>
+                    <dl>
+                        <dt>Complessiva: </dt>
+                        <dd>valutazione che riguarda tutti gli ambiti universitari in generale</dd>
+                        <dt>Accessibilità fisica: </dt>
+                        <dd>valutazione che riguarda la possibilità da parte di chiunque di fruire dei servizi universitari da un punto di vista fisico</dd>
+                        <dt>Servizio inclusione: </dt>
+                        <dd>valutazione riguardante l'accoglienza e l'appartenenza ad un gruppo universitario</dd>
+                        <dt>Tempestività burocratica: </dt>
+                        <dd>valutazione attinente alla velocità di intervento e risposta da parte dei servizi amministrativi e burocratici universitari</dd>
+                        <dt>Qualità di insegnamento: </dt>
+                        <dd>valutazione riguardante la qualità di insegnamento ricevuto e le competenze acquisite in esso</dd>
+                    </dl>
+            </aside>";
+
 $query5="Select classe FROM Iscrizione where nome_utente=\"".$user."\";";
 
 if($res5=$db->ExecQueryAssoc($query5)){
@@ -145,7 +144,7 @@ if($res5=$db->ExecQueryAssoc($query5)){
        $classi.="<option value=\"".$r['classe']."\">".$r['classe']."</option>";
     }
     $classi.="</select>";
-$contenuto.='<h2 id="Aggiungi">Aggiungi un commento</h2><label id="formdesc">Ti è consentito lasciare un solo commento per ogni ambito delle classe di laurea per le quali ti sei dichiarato iscritto  e il contenuto testuale del commento dovrà contenere da 10 a 200 caratteri alfanumerici (sono ammessi i seguenti caratteri: @ . _ - )</label><form  aria-describedby="formdesc" action="area_utente.php"  onsubmit="return OnInsert()" method="post">
+$contenuto.='<h2 class="titles_utente" id="Aggiungi">Aggiungi un commento</h2><label id="formdesc">Ti è consentito lasciare un solo commento per ogni ambito delle classe di laurea per le quali ti sei dichiarato iscritto  e il contenuto testuale del commento dovrà contenere da 10 a 200 caratteri alfanumerici (sono ammessi i seguenti caratteri: @ . _ - )</label><form  aria-describedby="formdesc" action="area_utente.php"  onsubmit="return OnInsert()" method="post">
 <fieldset>
 <legend>Agguingi un commento</legend>'.$classi.'
 <label for="commento"></label>
@@ -171,15 +170,14 @@ $contenuto.='<h2 id="Aggiungi">Aggiungi un commento</h2><label id="formdesc">Ti 
     <option value="1">Inclusività</option>
     <option value="2">commento generale</option></select></span>
 
-<input type="submit" id="submit"  name="submit3" value="pubblica"/>
-<input type="reset"  name="cancella" value="cancella tutti i campi"/>
+<input type="submit" class="submit"  name="submit3" value="pubblica"/>
 </fieldset>
 </form>
 </errorform>';
 }
 
 if($user!='user'){
-    $contenuto.='<h2 id="CambioPw">Cambia Password</h2><form id="form_passw" action="area_utente.php" method="post" >
+    $contenuto.='<h2 class="titles_utente" id="CambioPw"> Password</h2><form id="form_passw" action="area_utente.php" method="post" >
     <fieldset>Cambio password</fieldset>
     <label for="oldpassword"><span lang="en">Immetti la tua vecchia Password: </span></label>
     <span><input  value="<old>" type="password" id="oldpassword" name="Vecchiapassword" placeholder="Immetti la tua vecchia Password" maxlength="20"                      
@@ -192,8 +190,7 @@ if($user!='user'){
     <label for="repeat"><span lang="en">Ripeti la Password: </span></label>
     <span><input  value="" type="password" id="repeat" name="repepassword" placeholder="Ripeti la password" maxlength="20"                      
         data-msg-empty="Il campo repeti password non può essere vuoto" /></span>   
-    <input type="submit" id="submit" name="submit1" value="Salva"/>
-    <input type="reset" id="reset" name="reset" value="Cancella tutto"/>
+    <input type="submit" class="submit" name="submit1" value="Salva"/>
     </form>
     </err/>';
 }
