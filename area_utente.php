@@ -306,7 +306,7 @@ if($errorf=='<ul>'){
 
 }
 }
-$commenti="</ul>";
+$commenti.="</ul>";
 $errorf.="</ul>";
 $db->Disconnect();
 $contenuto=str_replace("<areacom/>",$commento,$contenuto);
