@@ -268,6 +268,7 @@ if(isset($_POST['submit1']) && check()){
     
 }
 if(isset($_POST['submit3']) && check()){
+    echo"hsj";
    $commento=PulisciInput($_POST['insertcommento']);
    $classlaurea=$_POST['classel'];
    $pc=$_POST['p_complessivo'];
@@ -279,7 +280,7 @@ if(isset($_POST['submit3']) && check()){
    if (!preg_match('/^[@a-zA-Z 0-9._-]{10,200}$/',$commento)){
     $errorf.='<li>Il campo commento non può essere vuoto e deve contenere da 10 a 200 caratteri alfanumerici (sono ammessi i seguenti caratteri: @ . _ - )</li>';
 }
-if($errorf=='<ul>'){
+if($errorf=='<ul class="error">'){
     $db=new Connection();
     $dbOK=$db->Connect();
     if($dbOK){
