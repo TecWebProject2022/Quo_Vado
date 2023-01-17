@@ -60,7 +60,7 @@ if($dbOK){
                 $query_commenti.=';';
 
                 if($commenti=$db->ExecQueryNum($query_commenti)){
-                    $formCommenti='<form id="formEliminaCommenti" action="area_admin.php" method="post"><fieldset><legend>Seleziona i commenti da eliminare</legend>';
+                    $formCommenti='<form id="formEliminaCommenti" action="area_admin.php" method="post" onsubmit="return OnCommentDelete()"><fieldset><legend>Seleziona i commenti da eliminare</legend>';
                     for($i=0;$i<count($commenti);$i++){
                         $commento='<span> utente: '.$commenti[$i][0].'| classe di laurea: '.$commenti[$i][2].'| data commento:'.date("d-m-Y",strtotime($commenti[$i][1]));
                         $commento.='<p>commento :'.$commenti[$i][4].'</p>';
@@ -190,16 +190,16 @@ if($dbOK){
         if(!$msgPassword){
             $query="Select * from Credenziale where utente='admin' && pw=\"".$nuova."\";";
             if($r=$db->ExecQueryAssoc($query)){
-                $msgPassword.="<p class="error">Password già usata</strong>";
+                $msgPassword.='<p class="error">Password già usata</strong>';
             }else{
                 $query_controllo_pw="Select * from Credenziale where utente='admin' && pw=\"".$vecchia."\";";
                 if($db->ExecQueryAssoc($query_controllo_pw)){
                     $query_update_pw="UPDATE Credenziale SET attuale=0 WHERE utente='admin' and pw=\"".$vecchia."\";";
                     $query_update_pw.="INSERT INTO Credenziale(pw, data_inserimento, utente, attuale) VALUES('".$nuova."','".date('Y-m-d')."','admin',1);";
                     if($db->multiInsert($query_update_pw)){
-                        $msgPassword.="<p class="error">Password modificata con successo</strong>";
+                        $msgPassword.='<p class="error">Password modificata con successo</strong>';
                     }else{
-                        $msgPassword.="<p class="error">Cambiamento password non riuscito, i sistemi sono al momentamentamnete non disponibili</strong>";
+                        $msgPassword.='<p class="error">Cambiamento password non riuscito, i sistemi sono al momentamentamnete non disponibili</strong>';
                     } 
                 }else{
                     $msgPassword.='<p class="error">la vecchia password inserita non corrisponde</strong>';

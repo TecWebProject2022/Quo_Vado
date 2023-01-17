@@ -65,41 +65,52 @@
         <h1 class="area_riservata">Area Riservata</h1>
         <!--sezione cancellazione commenti-->
         <h2>Cancellazione commenti</h2>
-        <form id="formTrovaCommenti" action="area_admin.php" method="post">
+        <span><form id="formTrovaCommenti" action="area_admin.php" method="post" onsubmit="return OnCommentFind()">
             <fieldset>
                 <legend>Trova i commenti da eliminare</legend>
                 <label for="com_utente">Utente:</label>
-                <span><input id="com_utente" name="com_utente" type="text" /></span>
+                <span><input id="com_utente" name="com_utente" type="text" onblur="Validate(this)"
+                    data-msg-invalid=""/></span>
 
                 <label for="com_classe">Classe di laurea:</label>
-                <span><input id="com_classe" name="com_classe" type="text" /></span>
+                <span><input id="com_classe" name="com_classe" type="text" onblur="Validate(this)"
+                    data-msg-invalid=""/></span>
 
                 <input type="submit" name="trova" value="trova"/>
                 <input type="reset" name="reset" value="cancella tutto"/>
             </fieldset>
-        </form>
+        </form></span>
         <formCommenti/>
         <msgCommenti/>
         <msgCommenti_delete/>
         
         <!--sezione gestione corsi di laurea-->
         <h2>gestione corsi di studio</h2>
+        <p id="aiuti_form">per aggiungere un corso di studi e' necessario riempire tutti i campi, per eliminarne uno bastano nome, classe di laurea e ateneo.</p>
         <form id="formCorsi" action="area_admin.php" method="post">
             <fieldset>
                 <legend>Aggiungi o elimina un corso di studi</legend>
                 
-                <p id="aiuti_form">per aggiungere un corso di studi e' necessario riempire tutti i campi, per eliminarne uno bastano nome, classe di laurea e ateneo.</p>
-                
                 <label for="cor_classe">Classe di laurea:</label>
-                <span><input id="cor_classe" name="cor_classe" type="text"/></span>
+                <span><input id="cor_classe" name="cor_classe" type="text" onblur="Validate(this)"
+                    data-msg-invalid=""
+                    data-msg-empty=""/></span>
                 <label for="cor_ateneo">Ateneo:</label>
-                <span><input id="cor_ateneo" name="cor_ateneo" type="text"/></span>
+                <span><input id="cor_ateneo" name="cor_ateneo" type="text" onblur="Validate(this)"
+                    data-msg-invalid=""
+                    data-msg-empty=""/></span>
                 <label for="cor_nome">Nome:</label>
-                <span><input id="cor_nome" name="cor_nome" type="text"/></span>
+                <span><input id="cor_nome" name="cor_nome" type="text" onblur="Validate(this)"
+                    data-msg-invalid=""
+                    data-msg-empty=""/></span>
                 <label for="cor_link">Link:</label>
-                <span><input id="cor_link" name="cor_link" type="url"/></span>
+                <span><input id="cor_link" name="cor_link" type="url" 
+                    data-msg-invalid=""
+                    data-msg-empty=""/></span>
                 <label for="cor_accesso">Accesso:</label>
-                <span><select name="cor_accesso" id="cor_accesso">
+                <span><select name="cor_accesso" id="cor_accesso" 
+                    data-msg-invalid=""
+                    data-msg-empty="">
                     <option value="Accesso programmato">Accesso programmato</option>
                     <option value="Accesso libero con prova">Accesso libero con prova</option>
                     <option value="Accesso a numero chiuso">Accesso a numero chiuso</option>
