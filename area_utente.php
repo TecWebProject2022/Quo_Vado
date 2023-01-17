@@ -177,7 +177,7 @@ $contenuto.='<h2 class="titles_utente" id="Aggiungi">Aggiungi un commento</h2><l
 </errorform>';
 }
 
-if($user!='user'){
+
     $contenuto.='<h2 class="titles_utente" id="CambioPw"> Password</h2><form id="form_passw" action="area_utente.php" method="post" >
     <fieldset>Cambio password</fieldset>
     <label for="oldpassword"><span lang="en">Immetti la tua vecchia Password: </span></label>
@@ -194,7 +194,6 @@ if($user!='user'){
     <input type="submit" class="submit" name="submit1" value="Salva"/>
     </form>
     </err/>';
-}
 if(isset($_POST['submit2']) && check()){
     $cancella=isset($_POST['commento']) ? $_POST['commento']: '';
     
