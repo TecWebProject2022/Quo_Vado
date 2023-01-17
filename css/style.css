@@ -1942,6 +1942,10 @@ AREA UTENTE
     font-variant: small-caps;
 }
 
+#cancellacomm_container > fieldset {
+    padding: 1em;
+}
+
 .cancellacomm_elem {
     padding: 1em;
     border: 1px solid #000000;
@@ -1980,10 +1984,6 @@ AREA UTENTE
 #comm_list {
     flex-basis: 35%;
     list-style: none;
-}
-
-#pubblicaComm {
-    margin: 0em;
 }
 
 #val_list {
