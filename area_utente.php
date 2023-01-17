@@ -92,7 +92,7 @@ if($dbOK){
                         <dt class="highlight">Valutazione tempestività burocratica: </dt> <dd class="highlight">'.$res3[$i][6].'</dd>
                         <dt>Valutazione qualità di insegnamento: </dt> <dd>'.$res3[$i][7].'</dd></dl>';
                         if($res3[$i][8]==1){
-                            $contenuto.="<p class='tipo_valutazione'>Valutazione riguardante l'ambito dell'inclusità</p></label></li><br />";
+                            $contenuto.="<p class='tipo_valutazione'>Valutazione riguardante l'inclusività</p></label></li><br />";
                         }
                         else{
                             $contenuto.="<p>Valutazione riguardante l'ambito generale </p></label><br />";
@@ -117,7 +117,7 @@ if($dbOK){
 else{
     $errori.="<p>Siamo spiacenti ma i dati non sono al momento disponibili</p>";
 }
-
+/*
 $contenuto.="<aside>
                 <h2 class='titles_utente'>Legenda valutazione</h2>
                 <p>Ogni utente può esprime un giudizio con un valore da 1 a 5 sui seguenti ambiti riguardanti una classe di laurea</p>
@@ -134,7 +134,7 @@ $contenuto.="<aside>
                         <dd>valutazione riguardante la qualità di insegnamento ricevuto e le competenze acquisite in esso</dd>
                     </dl>
             </aside>";
-
+*/
 $query5="Select classe FROM Iscrizione where nome_utente=\"".$user."\";";
 
 if($res5=$db->ExecQueryAssoc($query5)){
@@ -145,10 +145,10 @@ if($res5=$db->ExecQueryAssoc($query5)){
        $classi.="<option value=\"".$r['classe']."\">".$r['classe']."</option>";
     }
     $classi.="</select>";
-$contenuto.='<h2 class="titles_utente" id="Aggiungi">Aggiungi un commento</h2><label id="formdesc">Ti è consentito lasciare un solo commento per ogni ambito delle classe di laurea per le quali ti sei dichiarato iscritto  e il contenuto testuale del commento dovrà contenere da 10 a 200 caratteri alfanumerici (sono ammessi i seguenti caratteri: @ . _ - )</label><form  aria-describedby="formdesc" action="area_utente.php"  onsubmit="return OnInsert()" method="post">
+$contenuto.='<h2 class="titles_utente" id="Aggiungi">Aggiungi un commento</h2><label id="formdesc">Ti è consentito lasciare un solo commento per ogni ambito delle classe di laurea per le quali ti sei dichiarato iscritto  e il contenuto testuale del commento dovrà contenere da 10 a 200 caratteri alfanumerici (sono ammessi i seguenti caratteri: @ . _ - )</label><form id="aggiungicomm_container" aria-describedby="formdesc" action="area_utente.php"  onsubmit="return OnInsert()" method="post">
 <fieldset>
-<legend>Agguingi un commento</legend>'.$classi.'
-<label for="commento"></label>
+<legend>Aggiungi un commento</legend>'.$classi.'
+<label for="commento">Commento:</label>
 <span><textarea id="commento" name="insertcommento" maxlength="200"><areacom/></textarea></span>
 
 <label for="p_complessivo">Punteggio complessivo:</label>
@@ -169,7 +169,7 @@ $contenuto.='<h2 class="titles_utente" id="Aggiungi">Aggiungi un commento</h2><l
 <label for="tag">Il tuo commento riguarda:</label>
 <span><select name="tag" id="tag" data-msg-empty="Per favore, aiutaci a capire di cosa parla il tuo commento">
     <option value="1">Inclusività</option>
-    <option value="2">commento generale</option></select></span>
+    <option value="2">Commento generale</option></select></span>
 
 <input type="submit" class="submit"  name="submit3" value="pubblica"/>
 </fieldset>

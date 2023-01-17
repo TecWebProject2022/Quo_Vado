@@ -1815,6 +1815,7 @@ LOGIN
     color: #FFFFFF;
     padding: 0.7em 1em 0.7em 1em;
     border: none;
+    margin: 0.5em;
     text-align: center;
     text-decoration: none;
     display: inline-block;
@@ -1886,7 +1887,7 @@ REGISTRAZIONE
 
 /*
 ================
-AREA PERSONALE UTENTE
+AREA UTENTE
 ================
 */
 
@@ -1925,21 +1926,26 @@ AREA PERSONALE UTENTE
     flex-basis: 70%;
 }
 
-#cancellacomm {
-    margin-left: 15%;
-    margin-right: 15%;
+#cancellacomm, #formdesc {
+    display: block;
+    margin-left: 18%;
+    margin-right: 18%;
+    font-style: italic;
 }
 
-#cancellacomm_container {
+#cancellacomm_container, #aggiungicomm_container {
     padding: 1em;
-    margin: 0% 15% 2% 15%;
+    margin: 0% 15% 0% 15%;
+}
+
+#cancellacomm_container legend {
+    font-variant: small-caps;
 }
 
 .cancellacomm_elem {
-    padding: 0.5em;
+    padding: 1em;
     border: 1px solid #000000;
-    margin-left: 3%;
-    margin-right: 20%;
+    margin: 1em 20% 1em 3%;
     list-style: none;
 }
 
@@ -1959,8 +1965,12 @@ AREA PERSONALE UTENTE
 }
 
 .tipo_valutazione {
+    background-color: #ecebeb;
+    padding: 0.5em;
+    margin: 1em;
     text-align: center;
 }
+
 
 
 /*
