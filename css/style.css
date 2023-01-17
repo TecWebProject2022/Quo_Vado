@@ -1913,17 +1913,23 @@ AREA UTENTE
 }
 
 /*DATI PERSONALI*/
-
+#no_border{
+    border:0px;
+}
+.no_disc{
+    list-style-type: none;
+}
 #container_info, .container_iscrizione {
     display: flex;
     flex-wrap: wrap;
     align-items: stretch;
     padding: 1%;
     border: 2px solid #000000;
-    margin: 0.5em 20% 0.5em 20%;
+    margin: 3% 15% 2% 15%;
     column-gap: 3%;
     font-size: 1.2em;
     font-family: monospace;
+    list-style-type: none;
 }
 
 #container_info > dt {
@@ -1940,8 +1946,9 @@ AREA UTENTE
 
 #container_iscrizioni {
     display: flex;
-    flex-wrap: wrap;
+    flex-wrap: nowrap;
     flex-direction: column;
+   
 }
 .container_iscrizione > dt {
     flex-basis: 30%;
@@ -1955,7 +1962,7 @@ AREA UTENTE
 
 #container_commrilasc, #aggiungicomm_container {
     padding: 1em;
-    margin: 0% 15% 0% 15%;
+    margin: 2% 15% 2% 15%;
 }
 
 #container_commrilasc legend {
@@ -1965,12 +1972,18 @@ AREA UTENTE
 #container_commrilasc > fieldset {
     padding: 1em;
 }
-
+.verde{
+    color:green;
+    text-align: center;
+    margin-top: 1em;
+    margin-bottom: 1em;
+}
 .container_commento {
-    padding: 1em;
+    padding: 0.4em;
     border: 1px solid #000000;
-    margin: 1em 20% 1em 3%;
+    margin: 1% 2% 1% 2%;
     list-style: none;
+    flex-wrap: wrap;
 }
 
 .container_daticomm {

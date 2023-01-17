@@ -75,15 +75,15 @@ if($dbOK){
             $query3="Select classe_laurea,datav,commento,p_complessivo,p_acc_fisica,p_servizio_inclusione,tempestivita_burocratica,p_insegnamento,tag FROM Valutazione WHERE nome_utente=\"$user\"";
             if($res3=$db->ExecQueryNum($query3)){
                 
-                $contenuto.="<label class='formdesc'>Seleziona un commento e clicca &quot;cancella commento selezionato&quot; per eliminarlo</label>";
-                $contenuto.='<form aria-describedby="cancellacomm" action="area_utente.php" method="post" onsubmit="return OnDelete()" >
+                $contenuto.="<label class='container_iscrizione'>Seleziona un commento e clicca &quot;cancella commento selezionato&quot; per eliminarlo</label>";
+                $contenuto.='<form aria-describedby="cancellacomm" id="no_border" class="container_iscrizione" action="area_utente.php" method="post" onsubmit="return OnDelete()" >
                 <fieldset><legend>Commenti</legend>';
                 /*flexbox esterna*/
-                $contenuto.="<ul id='container_commrilasc'>";
+                $contenuto.="<ul class=' no_disc container_iscrizioni'>";
                 for($i=0;$i<count($res3);$i++){
                         /*flexbox interna*/
-                        $contenuto.='<li class="container_commento"><span><input type="checkbox" id="'.$i.'" name="commento[]" value="'.$i.'" /></span><label for="'.$i.'">
-                        <dl class="container_daticomm"><dt class="highlight">Data di emissione:</dt> <dd class="highlight">'.date("d/m/Y",strtotime($res3[$i][1])).'</dd>
+                        $contenuto.='<li ><span><input type="checkbox" id="'.$i.'" name="commento[]" value="'.$i.'" /></span><label for="'.$i.'">
+                        <dl><dt class="highlight">Data di emissione:</dt><dd class="highlight">'.date("d/m/Y",strtotime($res3[$i][1])).'</dd>
                         <dt>Classe di laurea: </dt> <dd>'.$res3[$i][0].'</dd>
                         <dt class="highlight">Commento:</dt> <dd class="highlight">'.$res3[$i][2].'</dd>
                         <dt>Valutazione complessiva: </dt> <dd>'.$res3[$i][3].'</dd>
@@ -220,11 +220,11 @@ if(isset($_POST['submit2']) && check()){
             }
         }
         if($r==true){
-            $_SESSION['info']="<p>Cancellazione avvenuta con successo</p>";
+            $_SESSION['info']="<p class='verde'>Cancellazione con successo</p>";
             header('Location:area_utente.php');
         }
         else{
-            $commenti.="<li>Inserimento non riuscito</li>";
+            $_SESSION['info']="<p class='error'>Cancellazione non riuscita</p>";
         } 
     }
 } 
@@ -235,12 +235,15 @@ if(isset($_POST['submit1']) && check()){
     $rep=PulisciInput($_POST['repepassword']);
     if (!preg_match('/^[@a-zA-Z0-9._-]{4,20}$/',$vecchia)){
         $errori1.='<li>Il campo vecchia password non può essere vuoto e non può contenere spazzi e deve contenere da 4 a 20 caratteri alfanumerici (sono ammessi i seguenti caratteri: @ . _ - )</li>';
+        $_SESSION['info']="<p class='error'>Cambiamento non risucito</p>";
     }
     if (!preg_match('/^[@a-zA-Z0-9._-]{4,20}$/',$nuova)){
         $errori1.='<li>Il campo nuova password non può essere vuoto e non può contenere spazzi e deve contenere da 4 a 20 caratteri alfanumerici (sono ammessi i seguenti caratteri: @ . _ - )</li>';
+        $_SESSION['info']="<p class='error'>Cambiamento non risucito</p>";
     }
     if($nuova!=$rep){
         $errori1.='<li>Il campo nuova password e ripeti la password non corrispondono</li>';
+        $_SESSION['info']="<p class='error'>Cambiamento non risucito</p>";
     }
     if($errori1=='<ul class="error">'){
         $db=new Connection();
@@ -257,14 +260,15 @@ if(isset($_POST['submit1']) && check()){
                 $query2.="INSERT INTO Credenziale(pw, data_inserimento, utente, attuale) VALUES('".$nuova."',curdate(),'".$user."',1);";
                 $q=$db->multiInsert($query2);
                 if($q){
-                    $errori1.="<li>Password modificata con successo</li>";
+                    $_SESSION['info']="<p class='verde'>password modificata con successo</p>";
+                    header('Location:area_utente.php');
                 }
                 else{
-                    $errori1.="<li>Cambiamento password non riuscito. I sistemi sono al momentamentamnete non disponibili</li>";
+                    $_SESSION['info']="<p class='error'>Cambiamento non risucito</p>";
                 } 
             }
             else{
-                $errori1.="<li>la vecchia password inserita non corrisponde</li>";
+                $_SESSION['info']="<p class='error'>La vecchia password inserita non corrisposnde</p>";
             }
             
             }
@@ -294,24 +298,24 @@ if($errorf=='<ul class="error">'){
     if($dbOK){
         $check="Select * from  Valutazione where nome_utente=\"".$user."\" && classe_laurea=\"".$classlaurea."\" && tag=\"".$tag."\";";
         if($r=$db->ExecQueryAssoc($check)){
-            $errorf.="<li>Commento già risaliscato per questa calsse di laurea</li>";
+            $$_SESSION['info']="<p class='error'>Commento già rialasciato per quesat classe di laurea</p>";
         }
         else{
        $insert="INSERT INTO Valutazione(nome_utente, classe_laurea, datav, commento, tag, p_complessivo, p_acc_fisica, p_servizio_inclusione, tempestivita_burocratica, p_insegnamento) VALUES (\"".$user."\",\"".$classlaurea."\",curdate(),\"".$commento."\",\"".$tag."\",".$pc.",".$pf.",".$ps.",".$tb.",".$pi.");";
        $q=$db->Insert($insert);
        if($q){
-            $_SESSION['info']="<p>Inserimento avvenuto con successo</p>";
+            $_SESSION['info']="<p class='verde'>Inserimento avvenuto con successo</p>";
             header('Location:area_utente.php');
            
        }
        else{
-           $errorf.="<li>Inserimento non riuscito</li>";
+        $_SESSION['info']="<p class='error'>inserimento non riuscito</p>";
        }
     }
     
     }
     else{
-        $errorf.="<li>Spiacenti ma i nostri servizi sono momentaneamente non disponibili</li>"; 
+       $_SESSION['info']="<p class='error'>Siamo spiacebti i nostri sistemi sono al moemtno non accessibili. Per urgenze <a href='contatti.php'>Contattaci</a> per avere un suppoorto</p>";
     }
 
 }
