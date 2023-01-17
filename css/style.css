@@ -66,9 +66,17 @@ header {
     text-align: left;
     padding: 1em;
     padding-top: 0.7em;
-    padding-bottom: 2em;
+    padding-bottom: 2.5em;
     border: 1px;
     background-color: var(--headerbg); 
+    background-image: url(css_images/logo.png);
+    background-repeat: no-repeat;
+    background-position: top left;
+    background-size: 18%;
+}
+
+header h1, header h2{
+    text-indent: -999999em;
 }
 
 
