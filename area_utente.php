@@ -92,10 +92,10 @@ if($dbOK){
                         <dt class="highlight">Valutazione tempestività burocratica: </dt> <dd class="highlight">'.$res3[$i][6].'</dd>
                         <dt>Valutazione qualità di insegnamento: </dt> <dd>'.$res3[$i][7].'</dd></dl>';
                         if($res3[$i][8]==1){
-                            $contenuto.="<p class='tipo_valutazione'>Valutazione riguardante l'inclusività</p></label></li><br />";
+                            $contenuto.="<p class='tipo_valutazione'>Valutazione riguardante l'inclusività</p></label></li></ul>";
                         }
                         else{
-                            $contenuto.="<p>Valutazione riguardante l'ambito generale </p></label><br />";
+                            $contenuto.="<p>Valutazione riguardante l'ambito generale </p></label></li><ul/>";
                         }      
                 }
 
