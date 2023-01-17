@@ -53,16 +53,18 @@ if($dbOK){
         $query2="Select ateneo, classe,corso, datai, dataf,punteggio_scuola_provenienza  from Iscrizione where nome_utente=\"$user\"";
         if($res2=$db->ExecQueryAssoc($query2)){
             $contenuto.="<h2  id ='iscrizione' class='titles_utente'>Iscrizioni</h2> ";
-            $contenuto.="<dl id='info_iscrizione'>";
+            $contenuto.="<ul>";
             foreach($res2 as $i){
+                $contenuto.="<li><dl id='info_iscrizione'>";
                 $contenuto.="<dt class='highlight'>Ateneo: </dt><dd class='highlight'>".$i['ateneo']."</dd>";
                 $contenuto.="<dt>Classe di Laurea: </dt><dd>".$i['classe']."</dd>";
                 $contenuto.="<dt class='highlight'>Corso di studi: </dt><dd class='highlight'>".$i['corso']."</dd>";
                 $contenuto.="<dt>Data inizio studi: </dt><dd>".date("d/m/Y",strtotime($i['datai']))."</dd>";
                 $contenuto.="<dt class='highlight'>Data fine studi: </dt><dd class='highlight'>".date("d/m/Y",strtotime($i['dataf']))."</dd>";
                 $contenuto.="<dt>Punteggio affinità scuola superiore: </dt><dd>".$i['punteggio_scuola_provenienza']."</dd>";
+                $contenuto.="</li></dl>";
             }
-            $contenuto.="</dl>";
+            $contenuto.="</ul>";
             $contenuto.="<h2 class='titles_utente' id='Commenti'>Commenti rilasciati</h2>";
             $query3="Select classe_laurea,datav,commento,p_complessivo,p_acc_fisica,p_servizio_inclusione,tempestivita_burocratica,p_insegnamento,tag FROM Valutazione WHERE nome_utente=\"$user\"";
             if($res3=$db->ExecQueryNum($query3)){
