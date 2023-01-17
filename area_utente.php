@@ -223,7 +223,7 @@ if(isset($_POST['submit1']) && check()){
     if($nuova!=$rep){
         $errori1.='<li>Il campo nuova password e ripeti la password non corrispondono</li>';
     }
-    if($errori1=='<ul>'){
+    if($errori1=='<ul class="error">'){
         $db=new Connection();
         $dbOK=$db->Connect();
         if($dbOK){
