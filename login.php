@@ -11,7 +11,7 @@ if(check()){
 else if(isset($_SESSION['user']) &&  isset($_SESSION['time'])  && time()-$_SESSION['time']>3600){
     unset($_SESSION['user']); 
     unset($_SESSION['time']);
-    $_SESSION['sessione']='<p class="error">Sessione Scaduta</p>';
+    $_SESSION['sessione']='<p class="papera">Sessione Scaduta</p>';
 }
 
 $content='';
