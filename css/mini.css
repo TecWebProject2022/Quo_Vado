@@ -40,6 +40,10 @@ CONTENUTO
 ================
 */
 
+main h1 {
+    font-size: 1.5em;
+}
+
 section {
     padding: 7%;
 }
@@ -50,82 +54,6 @@ HOME
 ================
 */
 
-#intro_text {
-    display: none;
-}
-
-#info {
-    display: none;
-}
-
-.grid_container {
-    display: none;
-}
-
-#uni {
-    background-image: url(css_images/universita.jpg);
-    background-size: 80%;
-    min-height: 200px;
-    background-position: top;
-    background-repeat: no-repeat;
-}
-#lav {
-    background-image: url(css_images/lavoro.jpg);
-    background-size: 80%;
-    min-height: 200px;
-    background-position: top;
-    background-repeat: no-repeat;
-}
-
-#ris_int {
-    background-image: url(css_images/risorse_interne.jpg);
-    background-size: 80%;
-    min-height: 200px;
-    background-position: top;
-    background-repeat: no-repeat;
-}
-
-#ris_est {
-    background-image: url(css_images/risorse_esterne.jpg);
-    background-size: 80%;
-    min-height: 200px;
-    background-position: top;
-    background-repeat: no-repeat;
-}
-
-.block_one {
-    background: #0D5D70;
-    margin: 1% 10% 5% 10%;
-    padding: 4em;
-    padding-top: 50%;
-    font-size: 0.9em;
-    color: #FFFFFF;
-    border-radius: 10px;
-    text-align: center;
-}
-
-.block_one .link {
-    text-align: center;
-    font-variant: small-caps;
-    margin-top: 3em;
-}
-
-.block_two {
-    background: #0D5D70;
-    margin: 1% 10% 5% 10%;
-    padding: 4em;
-    padding-top: 50%;
-    font-size: 0.9em;
-    color: #FFFFFF;
-    border-radius: 10px;
-    text-align: center;
-}
-
-.block_two .link {
-    text-align: center;
-    font-variant: small-caps;
-    margin-top: 3em;
-}
 
 /*
 ================
@@ -133,17 +61,7 @@ ESPLORA CORSI
 ================
 */
 
-.area_disciplinare {
-    display: flex;
-    flex-direction: column;
-    align-items: stretch;
-    margin: 0% 5% 1.5% 5%;
-}
 
-.area {
-    flex-basis: 20%;
-    font-size: 2em;
-}
 
 
 /*
@@ -154,4 +72,41 @@ OBIETTIVO LAVORO
 
 section > h2 {
     margin-right: 0%;
+}
+
+/*
+================
+REGISTRAZIONE
+================
+*/
+
+#registrazione fieldset > span {
+    padding-right: 5%;
+}
+
+/*
+================
+AREA UTENTE
+================
+*/
+
+#cancellacomm_container {
+    margin: 0%;
+}
+
+.form_cancellacomm {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    font-size: 1.2em;
+    font-family: monospace;
+}
+
+.form_cancellacomm dt {
+    flex-basis: 100%;
+}
+
+.form_cancellacomm dd {
+    flex-basis: 100%;
+
 }
