@@ -24,8 +24,6 @@ $nuova='';
 $errorf='<ul>';
 $content=file_get_contents("area_riservata.html");
 $user=$_SESSION['user'];
-
-
 $content=str_replace('<sottomenu/>',$menu2,$content);
 
 if(isset($_SESSION['info'])){
