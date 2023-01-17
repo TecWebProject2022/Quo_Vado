@@ -72,7 +72,7 @@ header {
     background-image: url(css_images/logo.png);
     background-repeat: no-repeat;
     background-position: top left;
-    background-size: 18%;
+    background-size: 15em;
 }
 
 header h1, header h2{
