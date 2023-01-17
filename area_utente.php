@@ -11,16 +11,10 @@ if(!isset($_SESSION['user']) || !isset($_SESSION['time']) || time()-$_SESSION['t
 }
 $menu1='<nav id="visible-sottomenu" aria-label="sotto menù di area riservata">
 <ul>
+    <li><a href="#iscrizione">Iscrizioni</a></li>
     <li><a href="#Commenti">Commenti rilasciati</a></li>
     <li><a href="#Aggiungi">Aggiungi un commento</a></li>
     <li><a href="#CambioPw">Cambia password</a></li>
-    <li><a href="logout.php">Logout</a></li>
-</ul>
-</nav>';
-$menu2='<nav id="visible-sottomenu" aria-label="sotto menù di area riservata">
-<ul>
-    <li><a href="#Commenti">Commenti rilasciati</a></li>
-    <li><a href="#Aggiungi">Aggiungi un commento</a></li>
     <li><a href="logout.php">Logout</a></li>
 </ul>
 </nav>';
@@ -30,12 +24,10 @@ $nuova='';
 $errorf='<ul>';
 $content=file_get_contents("area_riservata.html");
 $user=$_SESSION['user'];
-if($user!='user'){
-    $content=str_replace('<sottomenu/>',$menu1,$content);
-}
-else{
-    $content=str_replace('<sottomenu/>',$menu2,$content);
-}
+
+
+$content=str_replace('<sottomenu/>',$menu2,$content);
+
 if(isset($_SESSION['info'])){
     $content=str_replace('<info/>',$_SESSION['info'],$content);
     $_SESSION['info']='';
@@ -62,7 +54,7 @@ if($dbOK){
         $contenuto.="</dl>";
         $query2="Select ateneo, classe,corso, datai, dataf,punteggio_scuola_provenienza  from Iscrizione where nome_utente=\"$user\"";
         if($res2=$db->ExecQueryAssoc($query2)){
-            $contenuto.="<h2 class='titles_utente'>Iscrizioni</h2> ";
+            $contenuto.="<h2  id ='iscrizione' class='titles_utente'>Iscrizioni</h2> ";
             $contenuto.="<dl id='info_iscrizione'>";
             foreach($res2 as $i){
                 $contenuto.="<dt class='highlight'>Ateneo: </dt><dd class='highlight'>".$i['ateneo']."</dd>";
