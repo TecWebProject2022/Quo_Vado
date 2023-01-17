@@ -53,9 +53,9 @@ if($dbOK){
         $query2="Select ateneo, classe,corso, datai, dataf,punteggio_scuola_provenienza  from Iscrizione where nome_utente=\"$user\"";
         if($res2=$db->ExecQueryAssoc($query2)){
             $contenuto.="<h2  id ='iscrizione' class='titles_utente'>Iscrizioni</h2> ";
-            $contenuto.="<ul>";
+            $contenuto.="<ul id='container_iscrizioni'>";
             foreach($res2 as $i){
-                $contenuto.="<li><dl id='info_iscrizione'>";
+                $contenuto.="<li><dl class='info_iscrizione'>";
                 $contenuto.="<dt class='highlight'>Ateneo: </dt><dd class='highlight'>".$i['ateneo']."</dd>";
                 $contenuto.="<dt>Classe di Laurea: </dt><dd>".$i['classe']."</dd>";
                 $contenuto.="<dt class='highlight'>Corso di studi: </dt><dd class='highlight'>".$i['corso']."</dd>";
