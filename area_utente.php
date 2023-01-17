@@ -85,7 +85,7 @@ if($dbOK){
                             $contenuto.="<p class='tipo_valutazione'>Valutazione riguardante l'inclusività</p></label></li></ul>";
                         }
                         else{
-                            $contenuto.="<p>Valutazione riguardante l'ambito generale </p></label></li><ul/>";
+                            $contenuto.="<p class='tipo_valutazione'>Valutazione riguardante l'ambito generale </p></label></li><ul/>";
                         }      
                 }
 
