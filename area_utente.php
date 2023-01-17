@@ -40,6 +40,8 @@ $query1="Select  * from Utente where nome_utente=\"$user\";";
 $db=new Connection();
 $dbOK=$db->Connect();
 if($dbOK){
+
+    //DATI PERSONALI//
     if($res1=$db->ExecQueryAssoc($query1)){
         $contenuto.="<h2 class='titles_utente'>Dati personali</h2>";
         $contenuto.="<dl id='info_utente'>";
@@ -51,6 +53,8 @@ if($dbOK){
         $contenuto.="<dt>Scuola superiore frequentata: </dt><dd>".$res1[0]['scuola_sup']."</dd>";
         $contenuto.="</dl>";
         $query2="Select ateneo, classe,corso, datai, dataf,punteggio_scuola_provenienza  from Iscrizione where nome_utente=\"$user\"";
+
+    //ISCRIZIONI
         if($res2=$db->ExecQueryAssoc($query2)){
             $contenuto.="<h2  id ='iscrizione' class='titles_utente'>Iscrizioni</h2> ";
             $contenuto.="<ul id='container_iscrizioni'>";
@@ -65,6 +69,8 @@ if($dbOK){
                 $contenuto.="</li></dl>";
             }
             $contenuto.="</ul>";
+
+    //COMMENTI RILASCIATI
             $contenuto.="<h2 class='titles_utente' id='Commenti'>Commenti rilasciati</h2>";
             $query3="Select classe_laurea,datav,commento,p_complessivo,p_acc_fisica,p_servizio_inclusione,tempestivita_burocratica,p_insegnamento,tag FROM Valutazione WHERE nome_utente=\"$user\"";
             if($res3=$db->ExecQueryNum($query3)){
@@ -109,26 +115,11 @@ if($dbOK){
 else{
     $errori.="<p class='error'>Siamo spiacenti ma i dati non sono al momento disponibili</p>";
 }
-/*
-$contenuto.="<aside>
-                <h2 class='titles_utente'>Legenda valutazione</h2>
-                <p>Ogni utente può esprime un giudizio con un valore da 1 a 5 sui seguenti ambiti riguardanti una classe di laurea</p>
-                    <dl>
-                        <dt>Complessiva: </dt>
-                        <dd>valutazione che riguarda tutti gli ambiti universitari in generale</dd>
-                        <dt>Accessibilità fisica: </dt>
-                        <dd>valutazione che riguarda la possibilità da parte di chiunque di fruire dei servizi universitari da un punto di vista fisico</dd>
-                        <dt>Servizio inclusione: </dt>
-                        <dd>valutazione riguardante l'accoglienza e l'appartenenza ad un gruppo universitario</dd>
-                        <dt>Tempestività burocratica: </dt>
-                        <dd>valutazione attinente alla velocità di intervento e risposta da parte dei servizi amministrativi e burocratici universitari</dd>
-                        <dt>Qualità di insegnamento: </dt>
-                        <dd>valutazione riguardante la qualità di insegnamento ricevuto e le competenze acquisite in esso</dd>
-                    </dl>
-            </aside>";
-*/
+
 $query5="Select classe FROM Iscrizione where nome_utente=\"".$user."\";";
 
+
+    //AGGIUNGI COMMENTO
 if($res5=$db->ExecQueryAssoc($query5)){
     $classi="<ul id='comm_list'><li><label for='classi'>Classi di Laurea:</label>
 
@@ -169,7 +160,7 @@ $contenuto.='<h2 class="titles_utente" id="Aggiungi">Aggiungi un commento</h2><l
 </errorform>';
 }
 
-
+    //CAMBIO PASSWORD
     $contenuto.='<h2 class="titles_utente" id="CambioPw">Cambio password</h2><form id="form_passw" action="area_utente.php" method="post" >
     <fieldset>
     <ul id="changePw">
@@ -215,10 +206,8 @@ if(isset($_POST['submit2']) && check()){
         }
         else{
             $commenti.="<li>Inserimento non riuscito</li>";
-        }
-        
-        
- }
+        } 
+    }
 } 
 }
 if(isset($_POST['submit1']) && check()){
@@ -319,4 +308,24 @@ $content=str_replace("<content/>",$contenuto,$content);
 $content=str_replace("<errori/>",$errori,$content);
 $content=str_replace("</err/>",$errori1,$content);
 echo $content;
+
+/*
+$contenuto.="<aside>
+                <h2 class='titles_utente'>Legenda valutazione</h2>
+                <p>Ogni utente può esprime un giudizio con un valore da 1 a 5 sui seguenti ambiti riguardanti una classe di laurea</p>
+                    <dl>
+                        <dt>Complessiva: </dt>
+                        <dd>valutazione che riguarda tutti gli ambiti universitari in generale</dd>
+                        <dt>Accessibilità fisica: </dt>
+                        <dd>valutazione che riguarda la possibilità da parte di chiunque di fruire dei servizi universitari da un punto di vista fisico</dd>
+                        <dt>Servizio inclusione: </dt>
+                        <dd>valutazione riguardante l'accoglienza e l'appartenenza ad un gruppo universitario</dd>
+                        <dt>Tempestività burocratica: </dt>
+                        <dd>valutazione attinente alla velocità di intervento e risposta da parte dei servizi amministrativi e burocratici universitari</dd>
+                        <dt>Qualità di insegnamento: </dt>
+                        <dd>valutazione riguardante la qualità di insegnamento ricevuto e le competenze acquisite in esso</dd>
+                    </dl>
+            </aside>";
+*/
 ?>
+
