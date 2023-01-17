@@ -1912,6 +1912,10 @@ AREA UTENTE
     font-style: italic;
 }
 
+.field_legend {
+    font-variant: small-caps;
+}
+
 /*DATI PERSONALI*/
 #no_border{
     border:0px;
@@ -1960,26 +1964,25 @@ AREA UTENTE
 
 /*COMMENTI RILASCIATI*/
 
-#container_commrilasc, #aggiungicomm_container {
+#form_cancellacomm, #form_aggiungicomm {
     padding: 1em;
     margin: 2% 15% 2% 15%;
 }
 
-#container_commrilasc legend {
+#form_cancellacomm fieldset {
+    padding: 1em;
+}
+
+#commrilasc legend {
     font-variant: small-caps;
 }
 
-#container_commrilasc > fieldset {
+#commrilasc > fieldset {
     padding: 1em;
 }
-.verde{
-    color:green;
-    text-align: center;
-    margin-top: 1em;
-    margin-bottom: 1em;
-}
+
 .container_commento {
-    padding: 0.4em;
+    padding: 1em;
     border: 1px solid #000000;
     margin: 1% 2% 1% 2%;
     list-style: none;
@@ -1989,6 +1992,7 @@ AREA UTENTE
 .container_daticomm {
     display: flex;
     flex-wrap: wrap;
+    align-items: stretch;
     font-size: 1.2em;
     font-family: monospace;
 }
