@@ -128,60 +128,62 @@ $contenuto.="<aside>
 $query5="Select classe FROM Iscrizione where nome_utente=\"".$user."\";";
 
 if($res5=$db->ExecQueryAssoc($query5)){
-    $classi="<label for='classi'>Classi di Laurea:</label>
+    $classi="<ul id='comm_list'><li><label for='classi'>Classi di Laurea:</label>
 
     <select id='classi' name='classel'>";
     foreach($res5 as $r){
        $classi.="<option value=\"".$r['classe']."\">".$r['classe']."</option>";
     }
-    $classi.="</select>";
+    $classi.="</select></li>";
 $contenuto.='<h2 class="titles_utente" id="Aggiungi">Aggiungi un commento</h2><label id="formdesc">Ti è consentito lasciare un solo commento per ogni ambito delle classe di laurea per le quali ti sei dichiarato iscritto  e il contenuto testuale del commento dovrà contenere da 10 a 200 caratteri alfanumerici (sono ammessi i seguenti caratteri: @ . _ - )</label><form id="aggiungicomm_container" aria-describedby="formdesc" action="area_utente.php"  onsubmit="return OnInsert()" method="post">
-<fieldset>
+<fieldset id="commlist_container">
 <legend>Aggiungi un commento</legend>'.$classi.'
-<label for="commento">Commento:</label>
-<span><textarea id="commento" name="insertcommento" maxlength="200"><areacom/></textarea></span>
-
-<label for="p_complessivo">Punteggio complessivo:</label>
-<span><input type="number" id="p_complessivo" name="p_complessivo" placeholder="1" value="1" min="1" max="5" 
-    msg-data-empty="inserisci il punteggio complessivo del corso" msg-data-invalid="il punteggio deve essere compreso tra 1 e 5"/></span>
-<label for="p_acc_fisica">Punteggio accessibilità fisica:</label>
-<span><input type="number" id="p_acc_fisica" name="p_acc_fisica" placeholder="1" value="1" min="1" max="5" required
-    msg-data-empty="inserisci il punteggio accessibilità fisica del corso" msg-data-invalid="il punteggio deve essere compreso tra 1 e 5"/></span>
-<label for="p_inclusione">Punteggio servizio inclusione:</label>
-<span><input type="number" id="p_inclusione" name="p_inclusione" placeholder="1" value="1" min="1" max="5" required
-    msg-data-empty="inserisci il punteggio servizio inclusione del corso" msg-data-invalid="il punteggio deve essere compreso tra 1 e 5"/></span>
-<label for="p_tempestivita">Punteggio tempestivita burocratica: </label>
-<span><input type="number" id="p_tempestivita" name="p_tempestivita" placeholder="1" value="1" min="1" max="5" required
-    msg-data-empty="inserisci il punteggio tempestivita burocratica del corso" msg-data-invalid="il punteggio deve essere compreso tra 1 e 5"/></span>
-<label for="p_insegnamento">Punteggio insegnamento:</label>
-<span><input type="number" id="p_insegnamento" name="p_insegnamento"placeholder="1" value="1" min="1" max="5" required
-    msg-data-empty="inserisci il punteggio insegnamento del corso" msg-data-invalid="il punteggio deve essere compreso tra 1 e 5"/></span>   
-<label for="tag">Il tuo commento riguarda:</label>
+<li><label for="commento">Commento:</label>
+<span><textarea id="commento" name="insertcommento" maxlength="200"><areacom/></textarea></span></li>
+<li><label for="tag">Il tuo commento riguarda:</label>
 <span><select name="tag" id="tag" data-msg-empty="Per favore, aiutaci a capire di cosa parla il tuo commento">
     <option value="1">Inclusività</option>
-    <option value="2">Commento generale</option></select></span>
+    <option value="2">Commento generale</option></select></span></li></ul>
 
-<input type="submit" class="submit"  name="submit3" value="pubblica"/>
+<ul id="val_list"><li><label for="p_complessivo">Punteggio complessivo:</label>
+<span><input type="number" id="p_complessivo" name="p_complessivo" placeholder="1" value="1" min="1" max="5" 
+    msg-data-empty="inserisci il punteggio complessivo del corso" msg-data-invalid="il punteggio deve essere compreso tra 1 e 5"/></span></li>
+    <li><label for="p_acc_fisica">Punteggio accessibilità fisica:</label>
+<span><input type="number" id="p_acc_fisica" name="p_acc_fisica" placeholder="1" value="1" min="1" max="5" required
+    msg-data-empty="inserisci il punteggio accessibilità fisica del corso" msg-data-invalid="il punteggio deve essere compreso tra 1 e 5"/></span></li>
+    <li><label for="p_inclusione">Punteggio servizio inclusione:</label>
+<span><input type="number" id="p_inclusione" name="p_inclusione" placeholder="1" value="1" min="1" max="5" required
+    msg-data-empty="inserisci il punteggio servizio inclusione del corso" msg-data-invalid="il punteggio deve essere compreso tra 1 e 5"/></span></li>
+    <li><label for="p_tempestivita">Punteggio tempestivita burocratica: </label>
+<span><input type="number" id="p_tempestivita" name="p_tempestivita" placeholder="1" value="1" min="1" max="5" required
+    msg-data-empty="inserisci il punteggio tempestivita burocratica del corso" msg-data-invalid="il punteggio deve essere compreso tra 1 e 5"/></span></li>
+    <li><label for="p_insegnamento">Punteggio insegnamento:</label>
+<span><input type="number" id="p_insegnamento" name="p_insegnamento"placeholder="1" value="1" min="1" max="5" required
+    msg-data-empty="inserisci il punteggio insegnamento del corso" msg-data-invalid="il punteggio deve essere compreso tra 1 e 5"/></span></li></ul>
+
+<input type="submit" id="pubblicaComm" class="submit"  name="submit3" value="pubblica"/>
 </fieldset>
 </form>
 </errorform>';
 }
 
 
-    $contenuto.='<h2 class="titles_utente" id="CambioPw"> Password</h2><form id="form_passw" action="area_utente.php" method="post" >
-    <fieldset>Cambio password</fieldset>
-    <label for="oldpassword"><span lang="en">Immetti la tua vecchia Password: </span></label>
+    $contenuto.='<h2 class="titles_utente" id="CambioPw">Cambio password</h2><form id="form_passw" action="area_utente.php" method="post" >
+    <fieldset>
+    <ul id="changePw">
+    <li><label for="oldpassword"><span lang="en">Immetti la tua vecchia Password: </span></label>
     <span><input  value="<old>" type="password" id="oldpassword" name="Vecchiapassword" placeholder="Immetti la tua vecchia Password" maxlength="20"                      
         data-msg-invalid="Il campo password non può contenere spazzi e deve contenere da 4 a 20 caratteri alfanumerici (sono ammessi i seguenti caratteri: @ . _ - ), controlla e riprova"
-        data-msg-empty="Il campo vecchia password non può essere vuoto" /></span>
-    <label for="newpassword"><span lang="en">Immetti la tua nuova Password: </span></label>
+        data-msg-empty="Il campo vecchia password non può essere vuoto" /></span></li>
+    <li><label for="newpassword"><span lang="en">Immetti la tua nuova Password: </span></label>
     <span><input  value="<new>" type="password" id="newpassword" name="newpassword" placeholder="Immetti la tua nuova password" maxlength="20"                      
         data-msg-invalid="Il campo password non può contenere spazzi e deve contenere da 4 a 20 caratteri alfanumerici (sono ammessi i seguenti caratteri: @ . _ - ), controlla e riprova"
-        data-msg-empty="Il campo nuova password non può essere vuoto" /></span>
-    <label for="repeat"><span lang="en">Ripeti la Password: </span></label>
+        data-msg-empty="Il campo nuova password non può essere vuoto" /></span></li>
+    <li><label for="repeat"><span lang="en">Ripeti la Password: </span></label>
     <span><input  value="" type="password" id="repeat" name="repepassword" placeholder="Ripeti la password" maxlength="20"                      
-        data-msg-empty="Il campo repeti password non può essere vuoto" /></span>   
+        data-msg-empty="Il campo repeti password non può essere vuoto" /></span></li></ul> 
     <input type="submit" class="submit" name="submit1" value="Salva"/>
+    </fieldset>
     </form>
     </err/>';
 if(isset($_POST['submit2']) && check()){

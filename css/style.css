@@ -1971,7 +1971,39 @@ AREA UTENTE
     text-align: center;
 }
 
+#commlist_container {
+    display: flex;
+    flex-wrap: wrap;
+    padding: 1em;
+}
 
+#comm_list {
+    flex-basis: 35%;
+    list-style: none;
+}
+
+#pubblicaComm {
+    margin: 0em;
+}
+
+#val_list {
+    flex-basis: 62%;
+    list-style: none;
+}
+
+#form_passw {
+    padding: 1em;
+    margin: 0% 15% 0% 15%;
+}
+
+#form_passw > fieldset {
+    padding: 1em;
+}
+
+#changePw {
+    margin: 1%;
+    list-style: none;
+}
 
 /*
 ================
