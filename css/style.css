@@ -20,7 +20,7 @@
     --txtcolor: #000000;
     --contentbgcolor: ;
     --contentcolor: ;
-    --linkcolor: ;
+    --linkcolor: #FFFFFF;
     --visitedcolor: #E36600;
     --blocks: #548E9C;
 }
@@ -497,7 +497,7 @@ main h1{
     padding: 0.5em 0em;
 }
 
-a:link{
+a{
     color: #030508;
 }
 
@@ -2028,6 +2028,6 @@ footer a {
     color: var(--linkcolor);
 }
 
-footer a:visited {
+footer>a:visited {
     color: var(--visitedcolor);
 }
