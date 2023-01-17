@@ -90,23 +90,7 @@ AREA UTENTE
 ================
 */
 
-#cancellacomm_container {
-    margin: 0%;
-}
-
-.form_cancellacomm {
-    display: flex;
-    flex-wrap: wrap;
+#container_info, .container_iscrizione {
     flex-direction: column;
-    font-size: 1.2em;
-    font-family: monospace;
-}
-
-.form_cancellacomm dt {
-    flex-basis: 100%;
-}
-
-.form_cancellacomm dd {
-    flex-basis: 100%;
-
+    margin: 3%;
 }

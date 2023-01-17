@@ -1899,85 +1899,92 @@ AREA UTENTE
 .titles_utente {
     background-color: #FFFDE8;
     padding: 1em;
-    margin: 2% 15% 2% 15%;
+    margin: 1.3em 15% 1.3em 15%;
     text-align: left;
     text-shadow: 4px 4px 4px rgba(0,0,0,0.26);
     box-shadow: 5px 10px 15px rgba(0, 0, 0, 0.25);
 }
 
-#container_iscrizioni {
-    display: flex;
-    flex-wrap: wrap;
-    flex-direction: column;
-}
-
-#info_utente,  .info_iscrizione {
-    display: flex;
-    flex-wrap: wrap;
-    padding: 1%;
-    border: 2px solid #000000;
-    margin: 0% 20% 0% 20%;
-    font-size: 1.2em;
-    font-family: monospace;
-}
-
-#info_utente > dt {
-    flex-grow: 1;
-    flex-basis: 30%;
-}
-
-#info_utente > dd {
-    flex-grow: 2;
-    flex-basis: 70%;
-}
-
-.info_iscrizione > dt {
-    flex-basis: 30%;
-}
-
-.info_iscrizione > dd {
-    flex-basis: 70%;
-}
-
-#cancellacomm, #formdesc {
+.formdesc {
     display: block;
     margin-left: 18%;
     margin-right: 18%;
     font-style: italic;
 }
 
-#cancellacomm_container, #aggiungicomm_container {
+/*DATI PERSONALI*/
+
+#container_info, .container_iscrizione {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: stretch;
+    padding: 1%;
+    border: 2px solid #000000;
+    margin: 0.5em 20% 0.5em 20%;
+    column-gap: 3%;
+    font-size: 1.2em;
+    font-family: monospace;
+}
+
+#container_info > dt {
+    flex-grow: 1;
+    flex-basis: 30%;
+}
+
+#container_info > dd {
+    flex-grow: 2;
+    flex-basis: 67%;
+}
+
+/*ISCRIZIONI*/
+
+#container_iscrizioni {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+}
+.container_iscrizione > dt {
+    flex-basis: 30%;
+}
+
+.container_iscrizione > dd {
+    flex-basis: 67%;
+}
+
+/*COMMENTI RILASCIATI*/
+
+#container_commrilasc, #aggiungicomm_container {
     padding: 1em;
     margin: 0% 15% 0% 15%;
 }
 
-#cancellacomm_container legend {
+#container_commrilasc legend {
     font-variant: small-caps;
 }
 
-#cancellacomm_container > fieldset {
+#container_commrilasc > fieldset {
     padding: 1em;
 }
 
-.cancellacomm_elem {
+.container_commento {
     padding: 1em;
     border: 1px solid #000000;
     margin: 1em 20% 1em 3%;
     list-style: none;
 }
 
-.form_cancellacomm {
+.container_daticomm {
     display: flex;
     flex-wrap: wrap;
     font-size: 1.2em;
     font-family: monospace;
 }
 
-.form_cancellacomm dt {
+.container_daticomm dt {
     flex-basis: 40%;
 }
 
-.form_cancellacomm dd {
+.container_daticomm dd {
     flex-basis: 60%;
 }
 
@@ -1988,7 +1995,9 @@ AREA UTENTE
     text-align: center;
 }
 
-#commlist_container {
+/*AGGIUNGI COMMENTO*/
+
+#container_aggiungi {
     display: flex;
     flex-wrap: wrap;
     padding: 1em;
@@ -2003,6 +2012,8 @@ AREA UTENTE
     flex-basis: 62%;
     list-style: none;
 }
+
+/*CAMBIA PASSWORD*/
 
 #form_passw {
     padding: 1em;
