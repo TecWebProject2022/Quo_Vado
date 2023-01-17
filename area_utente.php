@@ -6,7 +6,7 @@ require_once 'database.php';
 if(!isset($_SESSION['user']) || !isset($_SESSION['time']) || time()-$_SESSION['time']>3600){
     unset($_SESSION['user']); 
     unset($_SESSION['time']);
-    $_SESSION['sessione']='<p>Sessione Scaduta</p>';
+    $_SESSION['sessione']='<p class="error">Sessione Scaduta</p>';
     header('Location:login.php');
 }
 $menu1='<nav id="visible-sottomenu" aria-label="sotto menù di area riservata">
@@ -21,7 +21,7 @@ $menu1='<nav id="visible-sottomenu" aria-label="sotto menù di area riservata">
 $vecchia='';
 $res3='';
 $nuova='';
-$errorf='<ul>';
+$errorf='<ul class="error">';
 $content=file_get_contents("area_riservata.html");
 $user=$_SESSION['user'];
 $content=str_replace('<sottomenu/>',$menu1,$content);
@@ -31,9 +31,9 @@ if(isset($_SESSION['info'])){
     $_SESSION['info']='';
 }
 $commento='';
-$errori1='<ul>';
+$errori1='<ul class="error">';
 $errori='';
-$commenti='<ul>';
+$commenti='<ul class="error">';
 $contenuto='';
 $cancella='';
 $query1="Select  * from Utente where nome_utente=\"$user\";";
@@ -93,19 +93,19 @@ if($dbOK){
                 
             }
             else{
-                $contenuto.="<p>Siamo spiacenti non hai ancora inserito alcun commento</p>";
+                $contenuto.="<p class='error'>Siamo spiacenti non hai ancora inserito alcun commento</p>";
             }
         }
         else{
-            $errori.="<p>Siamo spiacenti ma i dati non sono al momento disponibili <a href='contatti.php'>Contattaci</a> per avere un suppoorto</p>";
+            $errori.="<p class='error'>Siamo spiacenti ma i dati non sono al momento disponibili <a href='contatti.php'>Contattaci</a> per avere un suppoorto</p>";
         }
     }
     else{
-        $errori.="<p>Siamo spiacenti ma i dati non sono al momento disponibili <a href='contatti.php'>Contattaci</a> per avere un suppoorto</p>";
+        $errori.="<p class='error'>Siamo spiacenti ma i dati non sono al momento disponibili <a href='contatti.php'>Contattaci</a> per avere un suppoorto</p>";
     }
 }
 else{
-    $errori.="<p>Siamo spiacenti ma i dati non sono al momento disponibili</p>";
+    $errori.="<p class='error'>Siamo spiacenti ma i dati non sono al momento disponibili</p>";
 }
 /*
 $contenuto.="<aside>
@@ -138,7 +138,7 @@ if($res5=$db->ExecQueryAssoc($query5)){
 $contenuto.='<h2 class="titles_utente" id="Aggiungi">Aggiungi un commento</h2><label id="formdesc">Ti è consentito lasciare un solo commento per ogni ambito delle classe di laurea per le quali ti sei dichiarato iscritto  e il contenuto testuale del commento dovrà contenere da 10 a 200 caratteri alfanumerici (sono ammessi i seguenti caratteri: @ . _ - )</label><form id="aggiungicomm_container" aria-describedby="formdesc" action="area_utente.php"  onsubmit="return OnInsert()" method="post">
 <fieldset id="commlist_container">
 <legend>Aggiungi un commento</legend>'.$classi.'
-<li><label for="commento">Commento:</label>
+<li><label for="commento">Commento:</label><br/>
 <span><textarea id="commento" name="insertcommento" maxlength="200"><areacom/></textarea></span></li>
 <li><label for="tag">Il tuo commento riguarda:</label>
 <span><select name="tag" id="tag" data-msg-empty="Per favore, aiutaci a capire di cosa parla il tuo commento">
