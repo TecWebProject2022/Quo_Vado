@@ -66,9 +66,17 @@ header {
     text-align: left;
     padding: 1em;
     padding-top: 0.7em;
-    padding-bottom: 2em;
+    padding-bottom: 2.5em;
     border: 1px;
     background-color: var(--headerbg); 
+    background-image: url(css_images/logo.png);
+    background-repeat: no-repeat;
+    background-position: top left;
+    background-size: 15em;
+}
+
+header h1, header h2{
+    text-indent: -999999em;
 }
 
 
@@ -1807,6 +1815,7 @@ LOGIN
     color: #FFFFFF;
     padding: 0.7em 1em 0.7em 1em;
     border: none;
+    margin: 0.5em;
     text-align: center;
     text-decoration: none;
     display: inline-block;
@@ -1878,7 +1887,7 @@ REGISTRAZIONE
 
 /*
 ================
-AREA PERSONALE UTENTE
+AREA UTENTE
 ================
 */
 
@@ -1891,7 +1900,13 @@ AREA PERSONALE UTENTE
     box-shadow: 5px 10px 15px rgba(0, 0, 0, 0.25);
 }
 
-#info_utente,  #info_iscrizione {
+#container_iscrizioni {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+}
+
+#info_utente,  .info_iscrizione {
     display: flex;
     flex-wrap: wrap;
     padding: 1%;
@@ -1909,29 +1924,38 @@ AREA PERSONALE UTENTE
     flex-basis: 70%;
 }
 
-#info_iscrizione > dt {
+.info_iscrizione > dt {
     flex-basis: 30%;
 }
 
-#info_iscrizione > dd {
+.info_iscrizione > dd {
     flex-basis: 70%;
 }
 
-#cancellacomm {
-    margin-left: 15%;
-    margin-right: 15%;
+#cancellacomm, #formdesc {
+    display: block;
+    margin-left: 18%;
+    margin-right: 18%;
+    font-style: italic;
 }
 
-#cancellacomm_container {
+#cancellacomm_container, #aggiungicomm_container {
     padding: 1em;
-    margin: 0% 15% 2% 15%;
+    margin: 0% 15% 0% 15%;
+}
+
+#cancellacomm_container legend {
+    font-variant: small-caps;
+}
+
+#cancellacomm_container > fieldset {
+    padding: 1em;
 }
 
 .cancellacomm_elem {
-    padding: 0.5em;
+    padding: 1em;
     border: 1px solid #000000;
-    margin-left: 3%;
-    margin-right: 20%;
+    margin: 1em 20% 1em 3%;
     list-style: none;
 }
 
@@ -1951,9 +1975,41 @@ AREA PERSONALE UTENTE
 }
 
 .tipo_valutazione {
+    background-color: #ecebeb;
+    padding: 0.5em;
+    margin: 1em;
     text-align: center;
 }
 
+#commlist_container {
+    display: flex;
+    flex-wrap: wrap;
+    padding: 1em;
+}
+
+#comm_list {
+    flex-basis: 35%;
+    list-style: none;
+}
+
+#val_list {
+    flex-basis: 62%;
+    list-style: none;
+}
+
+#form_passw {
+    padding: 1em;
+    margin: 0% 15% 0% 15%;
+}
+
+#form_passw > fieldset {
+    padding: 1em;
+}
+
+#changePw {
+    margin: 1%;
+    list-style: none;
+}
 
 /*
 ================

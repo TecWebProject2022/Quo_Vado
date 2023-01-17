@@ -6,44 +6,34 @@ require_once 'database.php';
 if(!isset($_SESSION['user']) || !isset($_SESSION['time']) || time()-$_SESSION['time']>3600){
     unset($_SESSION['user']); 
     unset($_SESSION['time']);
-    $_SESSION['sessione']='<p>Sessione Scaduta</p>';
+    $_SESSION['sessione']='<p class="error">Sessione Scaduta</p>';
     header('Location:login.php');
 }
 $menu1='<nav id="visible-sottomenu" aria-label="sotto menù di area riservata">
 <ul>
+    <li><a href="#iscrizione">Iscrizioni</a></li>
     <li><a href="#Commenti">Commenti rilasciati</a></li>
     <li><a href="#Aggiungi">Aggiungi un commento</a></li>
     <li><a href="#CambioPw">Cambia password</a></li>
     <li><a href="logout.php">Logout</a></li>
 </ul>
 </nav>';
-$menu2='<nav id="visible-sottomenu" aria-label="sotto menù di area riservata">
-<ul>
-    <li><a href="#Commenti">Commenti rilasciati</a></li>
-    <li><a href="#Aggiungi">Aggiungi un commento</a></li>
-    <li><a href="logout.php">Logout</a></li>
-</ul>
-</nav>';
 $vecchia='';
 $res3='';
 $nuova='';
-$errorf='<ul>';
+$errorf='<ul class="error">';
 $content=file_get_contents("area_riservata.html");
 $user=$_SESSION['user'];
-if($user!='user'){
-    $content=str_replace('<sottomenu/>',$menu1,$content);
-}
-else{
-    $content=str_replace('<sottomenu/>',$menu2,$content);
-}
+$content=str_replace('<sottomenu/>',$menu1,$content);
+
 if(isset($_SESSION['info'])){
     $content=str_replace('<info/>',$_SESSION['info'],$content);
     $_SESSION['info']='';
 }
 $commento='';
-$errori1='<ul>';
+$errori1='<ul class="error">';
 $errori='';
-$commenti='<ul>';
+$commenti='<ul class="error">';
 $contenuto='';
 $cancella='';
 $query1="Select  * from Utente where nome_utente=\"$user\";";
@@ -62,17 +52,19 @@ if($dbOK){
         $contenuto.="</dl>";
         $query2="Select ateneo, classe,corso, datai, dataf,punteggio_scuola_provenienza  from Iscrizione where nome_utente=\"$user\"";
         if($res2=$db->ExecQueryAssoc($query2)){
-            $contenuto.="<h2 class='titles_utente'>Iscrizioni</h2> ";
-            $contenuto.="<dl id='info_iscrizione'>";
+            $contenuto.="<h2  id ='iscrizione' class='titles_utente'>Iscrizioni</h2> ";
+            $contenuto.="<ul id='container_iscrizioni'>";
             foreach($res2 as $i){
+                $contenuto.="<li><dl class='info_iscrizione'>";
                 $contenuto.="<dt class='highlight'>Ateneo: </dt><dd class='highlight'>".$i['ateneo']."</dd>";
                 $contenuto.="<dt>Classe di Laurea: </dt><dd>".$i['classe']."</dd>";
                 $contenuto.="<dt class='highlight'>Corso di studi: </dt><dd class='highlight'>".$i['corso']."</dd>";
                 $contenuto.="<dt>Data inizio studi: </dt><dd>".date("d/m/Y",strtotime($i['datai']))."</dd>";
                 $contenuto.="<dt class='highlight'>Data fine studi: </dt><dd class='highlight'>".date("d/m/Y",strtotime($i['dataf']))."</dd>";
                 $contenuto.="<dt>Punteggio affinità scuola superiore: </dt><dd>".$i['punteggio_scuola_provenienza']."</dd>";
+                $contenuto.="</li></dl>";
             }
-            $contenuto.="</dl>";
+            $contenuto.="</ul>";
             $contenuto.="<h2 class='titles_utente' id='Commenti'>Commenti rilasciati</h2>";
             $query3="Select classe_laurea,datav,commento,p_complessivo,p_acc_fisica,p_servizio_inclusione,tempestivita_burocratica,p_insegnamento,tag FROM Valutazione WHERE nome_utente=\"$user\"";
             if($res3=$db->ExecQueryNum($query3)){
@@ -92,10 +84,10 @@ if($dbOK){
                         <dt class="highlight">Valutazione tempestività burocratica: </dt> <dd class="highlight">'.$res3[$i][6].'</dd>
                         <dt>Valutazione qualità di insegnamento: </dt> <dd>'.$res3[$i][7].'</dd></dl>';
                         if($res3[$i][8]==1){
-                            $contenuto.="<p class='tipo_valutazione'>Valutazione riguardante l'ambito dell'inclusità</p></label></li><br />";
+                            $contenuto.="<p class='tipo_valutazione'>Valutazione riguardante l'inclusività</p></label></li></ul>";
                         }
                         else{
-                            $contenuto.="<p>Valutazione riguardante l'ambito generale </p></label><br />";
+                            $contenuto.="<p class='tipo_valutazione'>Valutazione riguardante l'ambito generale </p></label></li><ul/>";
                         }      
                 }
 
@@ -103,21 +95,21 @@ if($dbOK){
                 
             }
             else{
-                $contenuto.="<p>Siamo spiacenti non hai ancora inserito alcun commento</p>";
+                $contenuto.="<p class='error'>Siamo spiacenti non hai ancora inserito alcun commento</p>";
             }
         }
         else{
-            $errori.="<p>Siamo spiacenti ma i dati non sono al momento disponibili <a href='contatti.php'>Contattaci</a> per avere un suppoorto</p>";
+            $errori.="<p class='error'>Siamo spiacenti ma i dati non sono al momento disponibili <a href='contatti.php'>Contattaci</a> per avere un suppoorto</p>";
         }
     }
     else{
-        $errori.="<p>Siamo spiacenti ma i dati non sono al momento disponibili <a href='contatti.php'>Contattaci</a> per avere un suppoorto</p>";
+        $errori.="<p class='error'>Siamo spiacenti ma i dati non sono al momento disponibili <a href='contatti.php'>Contattaci</a> per avere un suppoorto</p>";
     }
 }
 else{
-    $errori.="<p>Siamo spiacenti ma i dati non sono al momento disponibili</p>";
+    $errori.="<p class='error'>Siamo spiacenti ma i dati non sono al momento disponibili</p>";
 }
-
+/*
 $contenuto.="<aside>
                 <h2 class='titles_utente'>Legenda valutazione</h2>
                 <p>Ogni utente può esprime un giudizio con un valore da 1 a 5 sui seguenti ambiti riguardanti una classe di laurea</p>
@@ -134,67 +126,68 @@ $contenuto.="<aside>
                         <dd>valutazione riguardante la qualità di insegnamento ricevuto e le competenze acquisite in esso</dd>
                     </dl>
             </aside>";
-
+*/
 $query5="Select classe FROM Iscrizione where nome_utente=\"".$user."\";";
 
 if($res5=$db->ExecQueryAssoc($query5)){
-    $classi="<label for='classi'>Classi di Laurea:</label>
+    $classi="<ul id='comm_list'><li><label for='classi'>Classi di Laurea:</label>
 
     <select id='classi' name='classel'>";
     foreach($res5 as $r){
        $classi.="<option value=\"".$r['classe']."\">".$r['classe']."</option>";
     }
-    $classi.="</select>";
-$contenuto.='<h2 class="titles_utente" id="Aggiungi">Aggiungi un commento</h2><label id="formdesc">Ti è consentito lasciare un solo commento per ogni ambito delle classe di laurea per le quali ti sei dichiarato iscritto  e il contenuto testuale del commento dovrà contenere da 10 a 200 caratteri alfanumerici (sono ammessi i seguenti caratteri: @ . _ - )</label><form  aria-describedby="formdesc" action="area_utente.php"  onsubmit="return OnInsert()" method="post">
-<fieldset>
-<legend>Agguingi un commento</legend>'.$classi.'
-<label for="commento"></label>
-<span><textarea id="commento" name="insertcommento" maxlength="200"><areacom/></textarea></span>
-
-<label for="p_complessivo">Punteggio complessivo:</label>
-<span><input type="number" id="p_complessivo" name="p_complessivo" placeholder="1" value="1" min="1" max="5" 
-    msg-data-empty="inserisci il punteggio complessivo del corso" msg-data-invalid="il punteggio deve essere compreso tra 1 e 5"/></span>
-<label for="p_acc_fisica">Punteggio accessibilità fisica:</label>
-<span><input type="number" id="p_acc_fisica" name="p_acc_fisica" placeholder="1" value="1" min="1" max="5" required
-    msg-data-empty="inserisci il punteggio accessibilità fisica del corso" msg-data-invalid="il punteggio deve essere compreso tra 1 e 5"/></span>
-<label for="p_inclusione">Punteggio servizio inclusione:</label>
-<span><input type="number" id="p_inclusione" name="p_inclusione" placeholder="1" value="1" min="1" max="5" required
-    msg-data-empty="inserisci il punteggio servizio inclusione del corso" msg-data-invalid="il punteggio deve essere compreso tra 1 e 5"/></span>
-<label for="p_tempestivita">Punteggio tempestivita burocratica: </label>
-<span><input type="number" id="p_tempestivita" name="p_tempestivita" placeholder="1" value="1" min="1" max="5" required
-    msg-data-empty="inserisci il punteggio tempestivita burocratica del corso" msg-data-invalid="il punteggio deve essere compreso tra 1 e 5"/></span>
-<label for="p_insegnamento">Punteggio insegnamento:</label>
-<span><input type="number" id="p_insegnamento" name="p_insegnamento"placeholder="1" value="1" min="1" max="5" required
-    msg-data-empty="inserisci il punteggio insegnamento del corso" msg-data-invalid="il punteggio deve essere compreso tra 1 e 5"/></span>   
-<label for="tag">Il tuo commento riguarda:</label>
+    $classi.="</select></li>";
+$contenuto.='<h2 class="titles_utente" id="Aggiungi">Aggiungi un commento</h2><label id="formdesc">Ti è consentito lasciare un solo commento per ogni ambito delle classe di laurea per le quali ti sei dichiarato iscritto  e il contenuto testuale del commento dovrà contenere da 10 a 200 caratteri alfanumerici (sono ammessi i seguenti caratteri: @ . _ - )</label><form id="aggiungicomm_container" aria-describedby="formdesc" action="area_utente.php"  onsubmit="return OnInsert()" method="post">
+<fieldset id="commlist_container">
+<legend>Aggiungi un commento</legend>'.$classi.'
+<li><label for="commento">Commento:</label><br/>
+<span><textarea id="commento" name="insertcommento" maxlength="200"><areacom/></textarea></span></li>
+<li><label for="tag">Il tuo commento riguarda:</label>
 <span><select name="tag" id="tag" data-msg-empty="Per favore, aiutaci a capire di cosa parla il tuo commento">
     <option value="1">Inclusività</option>
-    <option value="2">commento generale</option></select></span>
+    <option value="2">Commento generale</option></select></span></li></ul>
 
-<input type="submit" class="submit"  name="submit3" value="pubblica"/>
+<ul id="val_list"><li><label for="p_complessivo">Punteggio complessivo:</label>
+<span><input type="number" id="p_complessivo" name="p_complessivo" placeholder="1" value="1" min="1" max="5" 
+    msg-data-empty="inserisci il punteggio complessivo del corso" msg-data-invalid="il punteggio deve essere compreso tra 1 e 5"/></span></li>
+    <li><label for="p_acc_fisica">Punteggio accessibilità fisica:</label>
+<span><input type="number" id="p_acc_fisica" name="p_acc_fisica" placeholder="1" value="1" min="1" max="5" required
+    msg-data-empty="inserisci il punteggio accessibilità fisica del corso" msg-data-invalid="il punteggio deve essere compreso tra 1 e 5"/></span></li>
+    <li><label for="p_inclusione">Punteggio servizio inclusione:</label>
+<span><input type="number" id="p_inclusione" name="p_inclusione" placeholder="1" value="1" min="1" max="5" required
+    msg-data-empty="inserisci il punteggio servizio inclusione del corso" msg-data-invalid="il punteggio deve essere compreso tra 1 e 5"/></span></li>
+    <li><label for="p_tempestivita">Punteggio tempestivita burocratica: </label>
+<span><input type="number" id="p_tempestivita" name="p_tempestivita" placeholder="1" value="1" min="1" max="5" required
+    msg-data-empty="inserisci il punteggio tempestivita burocratica del corso" msg-data-invalid="il punteggio deve essere compreso tra 1 e 5"/></span></li>
+    <li><label for="p_insegnamento">Punteggio insegnamento:</label>
+<span><input type="number" id="p_insegnamento" name="p_insegnamento"placeholder="1" value="1" min="1" max="5" required
+    msg-data-empty="inserisci il punteggio insegnamento del corso" msg-data-invalid="il punteggio deve essere compreso tra 1 e 5"/></span></li></ul>
+
+<input type="submit" id="pubblicaComm" class="submit"  name="submit3" value="pubblica"/>
 </fieldset>
 </form>
 </errorform>';
 }
 
-if($user!='user'){
-    $contenuto.='<h2 class="titles_utente" id="CambioPw"> Password</h2><form id="form_passw" action="area_utente.php" method="post" >
-    <fieldset>Cambio password</fieldset>
-    <label for="oldpassword"><span lang="en">Immetti la tua vecchia Password: </span></label>
+
+    $contenuto.='<h2 class="titles_utente" id="CambioPw">Cambio password</h2><form id="form_passw" action="area_utente.php" method="post" >
+    <fieldset>
+    <ul id="changePw">
+    <li><label for="oldpassword"><span lang="en">Immetti la tua vecchia Password: </span></label>
     <span><input  value="<old>" type="password" id="oldpassword" name="Vecchiapassword" placeholder="Immetti la tua vecchia Password" maxlength="20"                      
         data-msg-invalid="Il campo password non può contenere spazzi e deve contenere da 4 a 20 caratteri alfanumerici (sono ammessi i seguenti caratteri: @ . _ - ), controlla e riprova"
-        data-msg-empty="Il campo vecchia password non può essere vuoto" /></span>
-    <label for="newpassword"><span lang="en">Immetti la tua nuova Password: </span></label>
+        data-msg-empty="Il campo vecchia password non può essere vuoto" /></span></li>
+    <li><label for="newpassword"><span lang="en">Immetti la tua nuova Password: </span></label>
     <span><input  value="<new>" type="password" id="newpassword" name="newpassword" placeholder="Immetti la tua nuova password" maxlength="20"                      
         data-msg-invalid="Il campo password non può contenere spazzi e deve contenere da 4 a 20 caratteri alfanumerici (sono ammessi i seguenti caratteri: @ . _ - ), controlla e riprova"
-        data-msg-empty="Il campo nuova password non può essere vuoto" /></span>
-    <label for="repeat"><span lang="en">Ripeti la Password: </span></label>
+        data-msg-empty="Il campo nuova password non può essere vuoto" /></span></li>
+    <li><label for="repeat"><span lang="en">Ripeti la Password: </span></label>
     <span><input  value="" type="password" id="repeat" name="repepassword" placeholder="Ripeti la password" maxlength="20"                      
-        data-msg-empty="Il campo repeti password non può essere vuoto" /></span>   
+        data-msg-empty="Il campo repeti password non può essere vuoto" /></span></li></ul> 
     <input type="submit" class="submit" name="submit1" value="Salva"/>
+    </fieldset>
     </form>
     </err/>';
-}
 if(isset($_POST['submit2']) && check()){
     $cancella=isset($_POST['commento']) ? $_POST['commento']: '';
     
@@ -232,7 +225,6 @@ if(isset($_POST['submit1']) && check()){
     $vecchia=PulisciInput($_POST['Vecchiapassword']);
     $nuova=PulisciInput($_POST['newpassword']);
     $rep=PulisciInput($_POST['repepassword']);
-    $errori1='<ul>';
     if (!preg_match('/^[@a-zA-Z0-9._-]{4,20}$/',$vecchia)){
         $errori1.='<li>Il campo vecchia password non può essere vuoto e non può contenere spazzi e deve contenere da 4 a 20 caratteri alfanumerici (sono ammessi i seguenti caratteri: @ . _ - )</li>';
     }
@@ -315,7 +307,7 @@ if($errorf=='<ul>'){
 
 }
 }
-
+$commenti.="</ul>";
 $errorf.="</ul>";
 $db->Disconnect();
 $contenuto=str_replace("<areacom/>",$commento,$contenuto);
