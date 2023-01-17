@@ -90,7 +90,35 @@ AREA UTENTE
 ================
 */
 
+.formdesc {
+    display: block;
+    margin-left: 5%;
+    margin-right: 5%;
+    font-style: italic;
+}
+
 #container_info, .container_iscrizione {
-    flex-direction: column;
+    display: block;
+    margin: 3%;
+}
+
+#form_cancellacomm, #form_aggiungicomm {
+    padding: 0em;
+    margin: 3%;
+}
+
+.container_daticomm {
+    display: block;
+}
+
+.blocco_commento {
+    margin: 1em 2% 1em 2%;
+}
+
+#container_aggiungi {
+    display: block;
+}
+
+#form_passw {
     margin: 3%;
 }

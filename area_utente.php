@@ -75,14 +75,14 @@ if($dbOK){
             $query3="Select classe_laurea,datav,commento,p_complessivo,p_acc_fisica,p_servizio_inclusione,tempestivita_burocratica,p_insegnamento,tag FROM Valutazione WHERE nome_utente=\"$user\"";
             if($res3=$db->ExecQueryNum($query3)){
                 
-                $contenuto.="<label class='formdesc'>Seleziona un commento e clicca &quot;cancella commento selezionato&quot; per eliminarlo</label>";
-                $contenuto.='<form aria-describedby="cancellacomm" action="area_utente.php" method="post" onsubmit="return OnDelete()" >
-                <fieldset><legend>Commenti</legend>';
+                $contenuto.="<label class='formdesc'>Seleziona un commento e clicca &quot;cancella&quot; per eliminarlo</label>";
+                $contenuto.='<form id="form_cancellacomm" aria-describedby="cancellacomm" action="area_utente.php" method="post" onsubmit="return OnDelete()" >
+                <fieldset><legend class="field_legend">Commenti</legend>';
                 /*flexbox esterna*/
-                $contenuto.="<ul id='container_commrilasc'>";
+                $contenuto.="<ul id='commrilasc'>";
                 for($i=0;$i<count($res3);$i++){
                         /*flexbox interna*/
-                        $contenuto.='<li class="container_commento"><span><input type="checkbox" id="'.$i.'" name="commento[]" value="'.$i.'" /></span><label for="'.$i.'">
+                        $contenuto.='<li class="blocco_commento"><span><input type="checkbox" id="'.$i.'" name="commento[]" value="'.$i.'" /></span><label for="'.$i.'">
                         <dl class="container_daticomm"><dt class="highlight">Data di emissione:</dt> <dd class="highlight">'.date("d/m/Y",strtotime($res3[$i][1])).'</dd>
                         <dt>Classe di laurea: </dt> <dd>'.$res3[$i][0].'</dd>
                         <dt class="highlight">Commento:</dt> <dd class="highlight">'.$res3[$i][2].'</dd>
@@ -135,10 +135,10 @@ $contenuto.='<h2 class="titles_utente">Aggiungi un commento</h2>';
 $contenuto.='<label class="formdesc">Ti è consentito lasciare un solo commento per ogni ambito delle classe di laurea per le quali ti sei dichiarato iscritto  e il contenuto testuale del 
 commento dovrà contenere da 10 a 200 caratteri alfanumerici (sono ammessi i seguenti caratteri: @ . _ - )</label>';
 
-$contenuto.='<form id="aggiungicomm_container" aria-describedby="formdesc" action="area_utente.php"  onsubmit="return OnInsert()" method="post">
+$contenuto.='<form id="form_aggiungicomm" aria-describedby="formdesc" action="area_utente.php"  onsubmit="return OnInsert()" method="post">
 <fieldset id="container_aggiungi">
 
-<legend>Aggiungi un commento</legend>'.$classi.'
+<legend class="field_legend">Aggiungi un commento</legend>'.$classi.'
 
 
 <li><label for="commento">Commento:</label><br/><span><textarea id="commento" name="insertcommento" maxlength="200"><areacom/></textarea></span></li>
@@ -174,21 +174,21 @@ $contenuto.='<form id="aggiungicomm_container" aria-describedby="formdesc" actio
 }
 
     //CAMBIO PASSWORD
-    $contenuto.='<h2 class="titles_utente">Cambio password</h2>';
+    $contenuto.='<h2 class="titles_utente">Password</h2>';
     $contenuto.='<form id="form_passw" action="area_utente.php" method="post" >';
-    $contenuto.='<fieldset>
+    $contenuto.='<fieldset><legend class="field_legend">Cambia password</legend>
 
     <ul id="changePw">
 
-    <li><label for="oldpassword"><span lang="en">Immetti la tua vecchia Password: </span></label><span><input  value="<old>" type="password" id="oldpassword" name="Vecchiapassword" placeholder="Immetti la tua vecchia Password" maxlength="20"                      
+    <li><label for="oldpassword"><span lang="en">Immetti la tua vecchia password: </span></label><span><input  value="<old>" type="password" id="oldpassword" name="Vecchiapassword" placeholder="Immetti la tua vecchia password" maxlength="20"                      
         data-msg-invalid="Il campo password non può contenere spazzi e deve contenere da 4 a 20 caratteri alfanumerici (sono ammessi i seguenti caratteri: @ . _ - ), controlla e riprova"
         data-msg-empty="Il campo vecchia password non può essere vuoto" /></span></li>
 
-    <li><label for="newpassword"><span lang="en">Immetti la tua nuova Password: </span></label><span><input  value="<new>" type="password" id="newpassword" name="newpassword" placeholder="Immetti la tua nuova password" maxlength="20"                      
+    <li><label for="newpassword"><span lang="en">Immetti la tua nuova password: </span></label><span><input  value="<new>" type="password" id="newpassword" name="newpassword" placeholder="Immetti la tua nuova password" maxlength="20"                      
         data-msg-invalid="Il campo password non può contenere spazzi e deve contenere da 4 a 20 caratteri alfanumerici (sono ammessi i seguenti caratteri: @ . _ - ), controlla e riprova"
         data-msg-empty="Il campo nuova password non può essere vuoto" /></span></li>
 
-    <li><label for="repeat"><span lang="en">Ripeti la Password: </span></label><span><input  value="" type="password" id="repeat" name="repepassword" placeholder="Ripeti la password" maxlength="20"                      
+    <li><label for="repeat"><span lang="en">Ripeti la password: </span></label><span><input  value="" type="password" id="repeat" name="repepassword" placeholder="Ripeti la password" maxlength="20"                      
         data-msg-empty="Il campo repeti password non può essere vuoto" /></span></li>
         
     </ul>
