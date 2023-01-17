@@ -223,7 +223,6 @@ if(isset($_POST['submit1']) && check()){
     $vecchia=PulisciInput($_POST['Vecchiapassword']);
     $nuova=PulisciInput($_POST['newpassword']);
     $rep=PulisciInput($_POST['repepassword']);
-    $errori1='<ul>';
     if (!preg_match('/^[@a-zA-Z0-9._-]{4,20}$/',$vecchia)){
         $errori1.='<li>Il campo vecchia password non può essere vuoto e non può contenere spazzi e deve contenere da 4 a 20 caratteri alfanumerici (sono ammessi i seguenti caratteri: @ . _ - )</li>';
     }
