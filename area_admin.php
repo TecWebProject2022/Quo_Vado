@@ -75,7 +75,7 @@ if($dbOK){
                         $formCommenti.='<label for="'.$i.'">'.$commento.'</label>';
                         $formCommenti.='<input type="checkbox" id="'.$i.'" name="commento[]" value="'.$commenti[$i][0].'-'.$commenti[$i][2].'-'.$commenti[$i][3].'"/>';
                     }
-                    $formCommenti.= '<input type="submit" id="delete_commento" name="delete_commento" value="elimina commenti selezionati"/></fieldset></form>';
+                    $formCommenti.='<input type="submit" id="delete_commento" name="delete_commento" value="elimina commenti selezionati"/></fieldset></form>';
                 }else{
                     $msgCommenti.='<p class="error">nessun commento</p>';
                 }
@@ -138,7 +138,7 @@ if($dbOK){
                 $msgCorso.='<p class="error">Inserimento di '.$nome.' non riuscito, riprova</p>';
             }
         }else{
-            $msgCorso.='<ul>'.$msgCorso.'</ul>';
+            $msgCorso='<ul>'.$msgCorso.'</ul>';
         }
     }else{
         if(isset($_POST['delete_corso'])){
@@ -165,7 +165,7 @@ if($dbOK){
                     $msgCorso.='<p class="error">Cancellazione di '.$nome.' non riuscita, riprova</p>';
                 }
             }else{
-                $msgCorso.='<ul>'.$msgCorso.'</ul>';
+                $msgCorso='<ul>'.$msgCorso.'</ul>';
             }
         }
     }
@@ -206,7 +206,7 @@ if($dbOK){
                 }
             }
         }else{
-            $msgPassword.="<ul>".$msgPassword."</ul>";   
+            $msgPassword="<ul>".$msgPassword."</ul>";   
         }
     }
     $db->Disconnect();
