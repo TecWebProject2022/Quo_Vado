@@ -80,7 +80,6 @@ header h1, header h2{
     text-indent: -999999em;
 }
 
-
 /*
 ================
 BREADCRUMB
@@ -116,10 +115,10 @@ BREADCRUMB
 MENU
 ================
 */
-#hamburger-menu, #menu label,#menu button {
+
+#hamburger-menu, #menu label, #menu button {
     display: none;
 }
-
 
 header > ul{
     list-style: none;   
@@ -216,6 +215,7 @@ header > ul{
     margin-left: 10%;
     
 }
+
 #visible-sottomenu li{
     display: inline;
     padding-right: 1.2em;
