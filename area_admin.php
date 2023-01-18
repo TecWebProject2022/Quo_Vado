@@ -42,11 +42,11 @@ if($dbOK){
             $msgCommenti.='<li class="error">Il campo username non può contenere spazi e deve contenere da 4 a 40 caratteri alfanumerici (sono ammessi i seguenti caratteri: @ . _ - )</li>';
         }
         if (($classe?(!preg_match('/^(L|LM)[0-9]{2}$/',$classe)): false)){
-            $msgCommenti.='<li class="error">La classe di laurea non puo\' contenere spazi e vanno dalla classe L01 alla L43 e dalla LM01 alla LM94</li>';
+            $msgCommenti.='<li class="error">La classe di laurea non puo\' contenere spazi.Le classi di laurea vanno dalla classe L01 alla L43 e dalla LM01 alla LM94</li>';
         }
 
         if($msgCommenti){
-            $msgCommenti.='<ul>'.$msgCommenti.'</ul>';
+            $msgCommenti='<ul>'.$msgCommenti.'</ul>';
         }else{
             if($user || $classe ){
                 $query_commenti='SELECT nome_utente,datav,classe_laurea,tag,commento,p_complessivo,p_acc_fisica, p_servizio_inclusione,tempestivita_burocratica, p_insegnamento FROM Valutazione WHERE ';
@@ -115,7 +115,7 @@ if($dbOK){
         $accesso=isset($_POST['cor_accesso'])?pulisciInput($_POST['cor_accesso']):'';
         #controlli sulle variabili
         if (!preg_match('/^(L|LM)[0-9]{2}$/',$classe)){
-            $msgCorso.='<li class="error">La classe di laurea non puo\' contenere spazi e vanno dalla classe L01 alla L43 e dalla LM01 alla LM94</li>';
+            $msgCorso.='<li class="error">La classe di laurea non puo\' contenere spazi.Le classi di laurea vanno dalla L01 alla L43 e dalla LM01 alla LM94</li>';
         }
         if (!preg_match('/^(Accesso programmato|Accesso libero con prova|Accesso a numero chiuso|Accesso libero cronologico)$/',$classe)){
             $msgCorso.='<li class="error">Le modalita di accesso sono Accesso programmato,Accesso libero con prova,Accesso a numero chiuso,Accesso libero cronologico</li>';
@@ -147,7 +147,7 @@ if($dbOK){
             $nome=isset($_POST['cor_nome'])?pulisciInput($_POST['cor_nome']):'';
             #controlli sulle variabili
             if (!preg_match('/^(L|LM)[0-9]{2}$/',$classe)){
-                $msgCorso.='<li class="error">La classe di laurea non puo\' contenere spazi e vanno dalla classe L01 alla L43 e dalla LM01 alla LM94</li>';
+                $msgCorso.='<li class="error">La classe di laurea non puo\' contenere spazi.Le classi di laurea vanno dalla classe L01 alla L43 e dalla LM01 alla LM94</li>';
             }
             if (!preg_match('/^[a-zA-Z\s]+$/',$ateneo)){
                 $msgCorso.='<li class="error">Il nome dell\'ateneo non puo\' contenere numeri o caratteri speciali<li>';
