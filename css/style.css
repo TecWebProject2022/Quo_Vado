@@ -43,17 +43,10 @@ html,body{
     list-style-type: none;
 }
 
-/*
-body {
-    max-width: 1200px;
-}
-*/
-
 /* Rimuovo dalla vista gli aiuti alla navigazione*/
 .skip {
     position: absolute; /* per evitare gli spazi */
-    text-indent:-999em;
-    text-align: left;
+    left: -99999em;
 }
 
 /*
@@ -65,15 +58,12 @@ HEADER
 header {
     color: var(--txtcolor);
     text-align: left;
-    padding: 1em;
-    padding-top: 0.7em;
-    padding-bottom: 2.5em;
-    border: 1px;
+    padding: 0.7em 1em 2em;
     background-color: var(--headerbg); 
     background-image: url(css_images/logo.png);
     background-repeat: no-repeat;
     background-position: top left;
-    background-size: 15em;
+    background-size: 13em;
 }
 
 header h1, header h2{
@@ -111,12 +101,16 @@ BREADCRUMB
 }
 
 /*
-================
+===========================================================================================================
 MENU
-================
+===========================================================================================================
 */
+/*
+#hamburger-menu,#menu label, #menu button {
+    display: none;
+}*/
 
-#hamburger-menu, #menu label, #menu button {
+#menu button {
     display: none;
 }
 
@@ -482,7 +476,7 @@ main h1{
     top: 0;
     float: left;
     width: 18%;
-    padding-left: 5%;
+    padding-left: 5%; /* si deve allineare con il titolo della pagina*/
 }
 
 #menu_content ul{
@@ -1327,6 +1321,7 @@ QUESTIONARIO
 .questionnaire header{
     background-color: #162636;
     padding: 0;
+    background-image: none;
 }
 
 .questionnaire header h2{
@@ -1334,6 +1329,7 @@ QUESTIONARIO
     color: white;
     padding: 0.5em;
     font-variant: small-caps;
+    text-indent: 0;
 }
 
 .questionnaire footer{
