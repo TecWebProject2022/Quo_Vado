@@ -63,7 +63,7 @@ $db=new Connection();
             }    
             #sezione commenti
             
-            # se ottengo tag (da filtro, al primo caricamento della pagina sara sempr false) allora la query chiedera solo le valutazioni corrispondenti
+            # se ottengo tag (da filtro, al primo caricamento della pagina sara sempre false) allora la query chiedera solo le valutazioni corrispondenti
             if(isset($_GET['filterTag'])){
                 $targetTag=PulisciInput($_GET['filterTag']);
                 $query_valutazione='SELECT Valutazione.nome_utente as n ,datav, commento, tag, p_complessivo, p_acc_fisica, p_servizio_inclusione, tempestivita_burocratica, p_insegnamento, Iscrizione.corso AS corso
