@@ -11,10 +11,10 @@ if(!isset($_SESSION['user']) || !isset($_SESSION['time']) || time()-$_SESSION['t
 }
 $menu1='<nav id="visible-sottomenu" aria-label="sotto menù di area riservata">
 <ul>
-    <li><a href="#iscrizione">Iscrizioni</a></li>
-    <li><a href="#Commenti">Commenti rilasciati</a></li>
-    <li><a href="#Aggiungi">Aggiungi un commento</a></li>
-    <li><a href="#CambioPw">Cambia password</a></li>
+    <li><a href="#iscrizioni">Iscrizioni</a></li>
+    <li><a href="#commenti">Commenti rilasciati</a></li>
+    <li><a href="#aggiungi">Aggiungi un commento</a></li>
+    <li><a href="#form_passw">Cambia password</a></li>
     <li><a href="logout.php">Logout</a></li>
 </ul>
 </nav>';
@@ -56,7 +56,7 @@ if($dbOK){
 
     //ISCRIZIONI
         if($res2=$db->ExecQueryAssoc($query2)){
-            $contenuto.="<h2 class='titles_utente'>Iscrizioni</h2> ";
+            $contenuto.="<h2 id='iscrizioni' class='titles_utente'>Iscrizioni</h2> ";
             $contenuto.="<ul id='container_iscrizioni'>";
             foreach($res2 as $i){
                 $contenuto.="<li><dl class='container_iscrizione'>";
@@ -71,7 +71,7 @@ if($dbOK){
             $contenuto.="</ul>";
 
     //COMMENTI RILASCIATI
-            $contenuto.="<h2 class='titles_utente'>Commenti rilasciati</h2>";
+            $contenuto.="<h2 id='commenti' class='titles_utente'>Commenti rilasciati</h2>";
             $query3="Select classe_laurea,datav,commento,p_complessivo,p_acc_fisica,p_servizio_inclusione,tempestivita_burocratica,p_insegnamento,tag FROM Valutazione WHERE nome_utente=\"$user\"";
             if($res3=$db->ExecQueryNum($query3)){
                 
@@ -130,7 +130,7 @@ if($res5=$db->ExecQueryAssoc($query5)){
        $classi.="<option value=\"".$r['classe']."\">".$r['classe']."</option>";
     }
     $classi.="</select></li>";
-$contenuto.='<h2 class="titles_utente">Aggiungi un commento</h2>';
+$contenuto.='<h2 id="aggiungi" class="titles_utente">Aggiungi un commento</h2>';
 $contenuto.='<label class="formdesc">Ti è consentito lasciare un solo commento per ogni ambito delle classe di laurea per le quali ti sei dichiarato iscritto  e il contenuto testuale del 
 commento dovrà contenere da 10 a 200 caratteri alfanumerici (sono ammessi i seguenti caratteri: @ . _ - )</label>';
 
@@ -165,7 +165,7 @@ $contenuto.='<form id="form_aggiungicomm" aria-describedby="formdesc" action="ar
 }
 
     //CAMBIO PASSWORD
-    $contenuto.='<h2 class="titles_utente">Password</h2>';
+    $contenuto.='<h2 class="titles_utente">Cambio password</h2>';
     $contenuto.='<form id="form_passw" action="area_utente.php" method="post" >';
     $contenuto.='<fieldset><legend class="field_legend">Cambia password</legend>
     <ul id="changePw">
