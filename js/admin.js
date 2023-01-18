@@ -55,8 +55,14 @@ function OnCourseDelete(){
 function OnCommentFind(){
     var username=document.getElementById('com_utente');         
     var classe_laurea=document.getElementById('com_classe');    
-    if (Validate(username) | Validate(classe)){ return true;}
+    
+    if (username.value.lenght && classe.value.lenght){ return Validate(username) && Validate(classe);} //entrambi utilizzati li verifico tutti e due
     else{
+        if(username.value.lenght || classe.value.lenght) {
+            //almeno uno utilizzato
+            return username.value.lenght?Validate(username):Validate(classe);
+        }
+        //nessuno dei due utilizzato
         var parent= document.getElementById('formTrovaCommenti').parentNode;
         var a=document.createElement('strong');
         a.classList.add('error');
