@@ -137,8 +137,12 @@ CLASSE DI LAUREA
 }
 
 #corsi li {
-    list-style: circle;
+    list-style: disc;
     margin-bottom: 1em;
+}
+
+#listaCommenti {
+    margin: 2em 0.5em 2em 0.5em;
 }
 
 /*
