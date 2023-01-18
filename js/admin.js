@@ -53,13 +53,13 @@ function OnCommentFind(){
     var username=document.getElementById('com_utente');         
     var classe=document.getElementById('com_classe');    
     
-    if (username.value.lenght>0 && classe.value.lenght>0){ 
+    if (username.value.length && classe.value.length){ 
         return Validate(username) & Validate(classe);//entrambi utilizzati li verifico tutti e due
     } 
     else{
-        if(username.value.lenght>0 || classe.value.lenght>0) {
+        if(username.value.length || classe.value.length) {
             //almeno uno utilizzato
-            return (username.value.lenght>0) ? Validate(username) : Validate(classe);
+            return (username.value.length) ? Validate(username) : Validate(classe);
         }
         //nessuno dei due utilizzato
         var parent= document.getElementById('formTrovaCommenti').parentNode;
