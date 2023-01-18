@@ -1044,9 +1044,9 @@ CLASSE DI LAUREA
 }
 
 /*
-================
+=====================================================
 OBIETTIVO LAVORO
-================
+====================================================
 */
 
 #job{
@@ -1065,32 +1065,32 @@ OBIETTIVO LAVORO
 
 #success {
     background: url('css_images/successo.png') right no-repeat;
-    background-size: 11em;
+    background-size: 8em;
 }
 
 #success p{
     padding: 0.5em 0em 1em 0em;
-    margin-right: 12em;
+    margin-right: 9em;
 }
 
 #progress {
     background: url('css_images/studio_continuo.png') right no-repeat;
-    background-size: 9em;
+    background-size: 6em;
 }
 
 #progress p{
     padding: 1em 0em 1em 0em;
-    margin-right: 6.8em;
+    margin-right: 7em;
 }
 
 #lost {
     background: url('css_images/rinuncia.png') right no-repeat;
-    background-size: 7em;
+    background-size: 5em;
 }
 
 #lost p{
     padding: 1em 0em 2em 0em;
-    margin-right: 6.5em;
+    margin-right: 6em;
 }
 
 #job_checklist {
@@ -1167,14 +1167,14 @@ OBIETTIVO LAVORO
 
 img[src="images/almalaurea.png"]{
     margin-bottom: 2em;
-    width: 100%;
+    width: 50%;
     height: auto;
     border-radius: 10px;
 }
 
 img[src="images/atlanteProfessioni.svg"]{
     margin-bottom: 2em;
-    width: 92%;
+    width: 50%;
     height: auto;
     border-radius: 10px;
 }
@@ -1182,6 +1182,14 @@ img[src="images/atlanteProfessioni.svg"]{
 #external_resources a{
     font-size: 1em;
 }
+
+@media screen and (max-width:1200px) {
+    section {
+        margin-right: 5%;
+    }
+}
+
+
 
 /*
 ===========================================================================================================================
