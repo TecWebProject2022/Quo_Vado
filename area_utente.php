@@ -32,7 +32,7 @@ if(isset($_SESSION['info'])){
     $_SESSION['info']='';
 }
 $commento='';
-$errori1='<ul class="error">';
+
 $errori='';
 $commenti='<ul class="error">';
 $contenuto='';
@@ -56,7 +56,7 @@ if($dbOK){
         $query2="Select ateneo, classe,corso, datai, dataf,punteggio_scuola_provenienza  from Iscrizione where nome_utente=\"$user\"";
     }
     else{
-        $errori.="<p class='error'>Siamo spiacenti ma i dati non sono al momento disponibili <a href='contatti.php'>Contattaci</a> per avere un suppoorto</p>";
+        $contenuto.="<p class='error'>Siamo spiacenti ma i dati non sono al momento disponibili <a href='contatti.php'>Contattaci</a> per avere un suppoorto</p>";
     }
     //ISCRIZIONI
         if($res2=$db->ExecQueryAssoc($query2)){
@@ -160,10 +160,18 @@ $contenuto.='<form id="form_aggiungicomm" aria-describedby="formdesc" action="ar
 </form>
 </errorform>';
 }
-}
+
 else{
-    $errori.="<p class='error'>Siamo spiacenti ma i dati non sono al momento disponibili</p>";
+    $contenuto.="<p class='error'>Siamo spiacenti ma i dati non sono al momento disponibili</p>";
 }
+$query5="Select classe FROM Iscrizione where nome_utente=\"".$user."\";";
+if($res5=$db->ExecQueryAssoc($query5)){
+    $classi="<ul id='comm_list'><li><label for='classi'>Corsi di Studio disponibili:</label>
+    <select id='corsi' name='corsi'>";
+    foreach($res5 as $r){
+       $classi.="<option value=\"".$r['classe']."\">".$r['classe']."</option>";
+    }
+    $classi.="</select></li>";
 
     $contenuto.='<h2 class="titles_utente">Cambio password</h2>';
     $contenuto.='<form id="form_passw" action="area_utente.php" method="post" >';
@@ -183,11 +191,15 @@ else{
     </fieldset>
     </form>
     </err/>';
+}
+}
 if(isset($_POST['submit2']) && check()){
     $cancella=isset($_POST['commento']) ? $_POST['commento']: '';
     
     if(!$cancella){
      $commenti.='<li>Selezionare un commento o dei commenti per cancellarli</li>';
+     $_SESSION['info']="<p  class='error'>Cancellazione  non riuscita</p>";
+    header('Location:area_utente.php');
     }
     else{
         print_r($cancella);
@@ -209,23 +221,30 @@ if(isset($_POST['submit2']) && check()){
             header('Location:area_utente.php');
         }
         else{
-            $commenti.="<li>Inserimento non riuscito</li>";
+            $errori.="<p  class='error'>Cancellazione  non riuscita</p>";
         } 
     }
 } 
 }
 if(isset($_POST['submit1']) && check()){
+    $errori1='<ul class="error">';
     $vecchia=PulisciInput($_POST['Vecchiapassword']);
     $nuova=PulisciInput($_POST['newpassword']);
     $rep=PulisciInput($_POST['repepassword']);
     if (!preg_match('/^[@a-zA-Z0-9._-]{4,20}$/',$vecchia)){
         $errori1.='<li>Il campo vecchia password non può essere vuoto e non può contenere spazzi e deve contenere da 4 a 20 caratteri alfanumerici (sono ammessi i seguenti caratteri: @ . _ - )</li>';
+        $errori.="<p class='error'>Errore nell'aggiornamento della password</p>";
+        
     }
     if (!preg_match('/^[@a-zA-Z0-9._-]{4,20}$/',$nuova)){
         $errori1.='<li>Il campo nuova password non può essere vuoto e non può contenere spazzi e deve contenere da 4 a 20 caratteri alfanumerici (sono ammessi i seguenti caratteri: @ . _ - )</li>';
+        $errori.="<p class='error'>Errore nell'aggiornamento della password</p>";
+       
     }
     if($nuova!=$rep){
         $errori1.='<li>Il campo nuova password e ripeti la password non corrispondono</li>';
+        $errori.="<p class='error'>Errore nell'aggiornamento della password</p>";
+        
     }
     if($errori1=='<ul class="error">'){
         $db=new Connection();
@@ -234,6 +253,7 @@ if(isset($_POST['submit1']) && check()){
             $query="Select * from Credenziale where utente=\"".$user."\" && pw=\"".$nuova."\";";
             if($r=$db->ExecQueryAssoc($query)){
                 $errori1.="<li>Password già usata</li>";
+                $errori.="<p class='error'>Errore nell'aggiornamento della password</p>";
             }
             else{
                 $query3="Select * from Credenziale where utente=\"".$user."\" && pw=\"".$vecchia."\";";
@@ -242,14 +262,16 @@ if(isset($_POST['submit1']) && check()){
                 $query2.="INSERT INTO Credenziale(pw, data_inserimento, utente, attuale) VALUES('".$nuova."',curdate(),'".$user."',1);";
                 $q=$db->multiInsert($query2);
                 if($q){
-                    $_SESSION['info']="<p  class='invito'>Password modificata con successo</p>";
+                    $_SESSION['info']="<p class='invito'>Password modificata con successo</p>";
+                    header('Location:area_utente.php');
                 }
                 else{
-                    $errori1.="<li>Cambiamento password non riuscito. I sistemi sono al momentamentamnete non disponibili</li>";
+                    $errori."<p class='error'>Al momento non è possibile modificare la password</p>";
+                    
                 } 
             }
             else{
-                $errori1.="<li>la vecchia password inserita non corrisponde</li>";
+                $errori.="<p class='error'>La vecchia password inserita non corrisponde</p>";
             }
             
             }
@@ -257,11 +279,9 @@ if(isset($_POST['submit1']) && check()){
    
     
     }
-
-    
+ $errori1.="</ul>";      
 }
 if(isset($_POST['submit3']) && check()){
-    echo"hsj";
    $commento=PulisciInput($_POST['insertcommento']);
    $classlaurea=$_POST['classel'];
    $pc=$_POST['p_complessivo'];
@@ -272,6 +292,7 @@ if(isset($_POST['submit3']) && check()){
    $tag=$_POST['tag'];
    if (!preg_match('/^[@a-zA-Z 0-9._-]{10,200}$/',$commento)){
     $errorf.='<li>Il campo commento non può essere vuoto e deve contenere da 10 a 200 caratteri alfanumerici (sono ammessi i seguenti caratteri: @ . _ - )</li>';
+    $errori.="<p class='error'>Errore nell'inserimento del commento</p>";
 }
 if($errorf=='<ul class="error">'){
     $db=new Connection();
@@ -280,6 +301,7 @@ if($errorf=='<ul class="error">'){
         $check="Select * from  Valutazione where nome_utente=\"".$user."\" && classe_laurea=\"".$classlaurea."\" && tag=\"".$tag."\";";
         if($r=$db->ExecQueryAssoc($check)){
             $errorf.="<li>Commento già risaliscato per questa calsse di laurea</li>";
+            $errori.="<p class='error'>Errore nell'inserimento del commento</p>";
         }
         else{
        $insert="INSERT INTO Valutazione(nome_utente, classe_laurea, datav, commento, tag, p_complessivo, p_acc_fisica, p_servizio_inclusione, tempestivita_burocratica, p_insegnamento) VALUES (\"".$user."\",\"".$classlaurea."\",curdate(),\"".$commento."\",\"".$tag."\",".$pc.",".$pf.",".$ps.",".$tb.",".$pi.");";
@@ -289,18 +311,22 @@ if($errorf=='<ul class="error">'){
             header('Location:area_utente.php');
        }
        else{
-           $errorf.="<li>Inserimento non riuscito</li>";
+        $errori.="<p class='error'>Al momento non è possibile inserire commenti</p>";
        }
     }
     
     }
     else{
         $errorf.="<li>Spiacenti ma i nostri servizi sono momentaneamente non disponibili</li>"; 
+        $errori.="<p class='error'>Al momento non è possibile inserire commenti</p>";
+        
     }
 
 }
 }
-$errori1.="</ul>";   
+if(!isset($errori1)){
+    $errori1='';
+}
 $commenti.="</ul>";
 $errorf.="</ul>";
 $db->Disconnect();
