@@ -1917,23 +1917,17 @@ AREA UTENTE
 }
 
 /*DATI PERSONALI*/
-#no_border{
-    border:0px;
-}
-.no_disc{
-    list-style-type: none;
-}
+
 #container_info, .container_iscrizione {
     display: flex;
     flex-wrap: wrap;
     align-items: stretch;
     padding: 1%;
     border: 2px solid #000000;
-    margin: 3% 15% 2% 15%;
+    margin: 0.5em 20% 0.5em 20%;
     column-gap: 3%;
     font-size: 1.2em;
     font-family: monospace;
-    list-style-type: none;
 }
 
 #container_info > dt {
@@ -1950,9 +1944,8 @@ AREA UTENTE
 
 #container_iscrizioni {
     display: flex;
-    flex-wrap: nowrap;
+    flex-wrap: wrap;
     flex-direction: column;
-   
 }
 .container_iscrizione > dt {
     flex-basis: 30%;
@@ -1966,7 +1959,7 @@ AREA UTENTE
 
 #form_cancellacomm, #form_aggiungicomm {
     padding: 1em;
-    margin: 2% 15% 2% 15%;
+    margin: 0% 15% 0% 15%;
 }
 
 #form_cancellacomm fieldset {
@@ -1981,16 +1974,14 @@ AREA UTENTE
     padding: 1em;
 }
 
-.container_commento {
+.blocco_commento {
     padding: 1em;
     border: 1px solid #000000;
-    margin: 1% 2% 1% 2%;
+    margin: 1em 20% 1em 3%;
     list-style: none;
-    flex-wrap: wrap;
 }
 
 .container_daticomm {
-    display: flex;
     flex-wrap: wrap;
     align-items: stretch;
     font-size: 1.2em;
