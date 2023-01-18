@@ -75,14 +75,14 @@ if($dbOK){
             $contenuto.="</ul>";
 
     //COMMENTI RILASCIATI
-            $contenuto.="<h2 id='commenti' class='titles_utente'>Commenti rilasciati</h2>";
-            $query3="Select classe_laurea,datav,commento,p_complessivo,p_acc_fisica,p_servizio_inclusione,tempestivita_burocratica,p_insegnamento,tag FROM Valutazione WHERE nome_utente=\"$user\"";
             
         }
         else{
-            $errori.="<p class='error'>Siamo spiacenti ma i dati non sono al momento disponibili <a href='contatti.php'>Contattaci</a> per avere un suppoorto</p>";
+            $contenuto.="<p class='error'>Siamo spiacenti non  hai ancora inserito una iscrizione</p>";
         }
-   
+$contenuto.="<h2 id='commenti' class='titles_utente'>Commenti rilasciati</h2>";
+$query3="Select classe_laurea,datav,commento,p_complessivo,p_acc_fisica,p_servizio_inclusione,tempestivita_burocratica,p_insegnamento,tag FROM Valutazione WHERE nome_utente=\"$user\"";
+             
 if($res3=$db->ExecQueryNum($query3)){
                 
     $contenuto.="<label id='cancellacomm' class='formdesc'>Seleziona un commento e clicca &quot;cancella&quot; per eliminarlo</label>";

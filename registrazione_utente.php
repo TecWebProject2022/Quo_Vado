@@ -46,7 +46,7 @@ if(isset($_POST['submit'])){
         if($dbOK){
             $query="Select nome_utente from Utente where nome_utente=\"".$username."\"";
             if($r=$db->ExecQueryAssoc($query)){
-                $errori.="<li class='invito'>Username già registrato</li>";
+                $errori.="<li class='error'>Username già registrato</li>";
             }
             
             else{
