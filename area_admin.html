@@ -69,12 +69,12 @@
             <fieldset>
                 <legend>Trova i commenti da eliminare</legend>
                 <label for="com_utente">Utente:</label>
-                <span><input id="com_utente" name="com_utente" type="text" onblur="Validate(this)"
-                    data-msg-invalid=""/></span>
+                <span><input id="com_utente" name="com_utente" type="text" 
+                    data-msg-invalid="ciaspole"/></span>
 
                 <label for="com_classe">Classe di laurea:</label>
-                <span><input id="com_classe" name="com_classe" type="text" onblur="Validate(this)"
-                    data-msg-invalid=""/></span>
+                <span><input id="com_classe" name="com_classe" type="text" 
+                    data-msg-invalid="ciaspole"/></span>
 
                 <input type="submit" name="trova" value="trova"/>
                 <input type="reset" name="reset" value="cancella tutto"/>
@@ -92,15 +92,15 @@
                 <legend>Aggiungi o elimina un corso di studi</legend>
                 
                 <label for="cor_classe">Classe di laurea:</label>
-                <span><input id="cor_classe" name="cor_classe" type="text" onblur="Validate(this)"
+                <span><input id="cor_classe" name="cor_classe" type="text" 
                     data-msg-invalid=""
                     data-msg-empty=""/></span>
                 <label for="cor_ateneo">Ateneo:</label>
-                <span><input id="cor_ateneo" name="cor_ateneo" type="text" onblur="Validate(this)"
+                <span><input id="cor_ateneo" name="cor_ateneo" type="text" 
                     data-msg-invalid=""
                     data-msg-empty=""/></span>
                 <label for="cor_nome">Nome:</label>
-                <span><input id="cor_nome" name="cor_nome" type="text" onblur="Validate(this)"
+                <span><input id="cor_nome" name="cor_nome" type="text" 
                     data-msg-invalid=""
                     data-msg-empty=""/></span>
                 <label for="cor_link">Link:</label>
@@ -117,8 +117,8 @@
                     <option value="Accesso libero cronologico">Accesso libero cronologico</option>
                 </select></span>
 
-                <input type="submit" id="add_corso" name="add_corso" value="Aggiungi"/>
-                <input type="submit" id="delete_corso" name="delete_corso" value="Elimina"/>
+                <input type="submit" id="add_corso" name="add_corso" value="Aggiungi" onclick="return OnCourseAdd()"/>
+                <input type="submit" id="delete_corso" name="delete_corso" value="Elimina" onclick="return OnCourseDelete()"/>
                 <input type="reset" id="reset" name="reset" value="Cancella tutto"/>
             </fieldset>
         </form>
