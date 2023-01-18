@@ -39,11 +39,11 @@ function Validate(element){
 }
 
 function OnCourseAdd(){
-    return Validate(document.getElementById('cor_nome')) && Validate(document.getElementById('cor_classe')) && Validate(document.getElementById('cor_ateneo')) && Validate(document.getElementById('cor_accesso')) && Validate(document.getElementById('cor_link'));
+    return Validate(document.getElementById('cor_nome')) & Validate(document.getElementById('cor_classe')) & Validate(document.getElementById('cor_ateneo')) & Validate(document.getElementById('cor_accesso')) & Validate(document.getElementById('cor_link'));
 }
 
 function OnCourseDelete(){
-    if(Validate(document.getElementById('cor_nome')) && Validate(document.getElementById('cor_classe')) && Validate(document.getElementById('cor_ateneo'))){
+    if(Validate(document.getElementById('cor_nome')) & Validate(document.getElementById('cor_classe')) & Validate(document.getElementById('cor_ateneo'))){
         return window.confirm("Sei sicuro di voler eliminare questo corso?");
     }
     return false;
@@ -53,16 +53,19 @@ function OnCommentFind(){
     var username=document.getElementById('com_utente');         
     var classe=document.getElementById('com_classe');    
     
-    if (username.value.lenght && classe.value.lenght){ 
+    if (username.value.lenght>0 && classe.value.lenght>0){ 
         return Validate(username) & Validate(classe);//entrambi utilizzati li verifico tutti e due
     } 
     else{
-        if(username.value.lenght || classe.value.lenght) {
+        if(username.value.lenght>0 || classe.value.lenght>0) {
             //almeno uno utilizzato
-            return username.value.lenght ? Validate(username) : Validate(classe);
+            return (username.value.lenght>0) ? Validate(username) : Validate(classe);
         }
         //nessuno dei due utilizzato
         var parent= document.getElementById('formTrovaCommenti').parentNode;
+        if(parent.children.length==2){
+            parent.removeChild(parent.children[1]);
+        }
         var a=document.createElement('strong');
         a.classList.add('error');
         a.appendChild(document.createTextNode('riempire almeno uno dei due campi'));
