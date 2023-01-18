@@ -85,7 +85,7 @@ if($dbOK){
    
 if($res3=$db->ExecQueryNum($query3)){
                 
-    $contenuto.="<label class='formdesc'>Seleziona un commento e clicca &quot;cancella&quot; per eliminarlo</label>";
+    $contenuto.="<label id='cancellacomm' class='formdesc'>Seleziona un commento e clicca &quot;cancella&quot; per eliminarlo</label>";
     $contenuto.='<form id="form_cancellacomm" aria-describedby="cancellacomm" action="area_utente.php" method="post" onsubmit="return OnDelete()" >
     <fieldset><legend class="field_legend">Commenti</legend>';
     /*flexbox esterna*/
@@ -102,15 +102,15 @@ if($res3=$db->ExecQueryNum($query3)){
             <dt class="highlight">Valutazione tempestività burocratica: </dt> <dd class="highlight">'.$res3[$i][6].'</dd>
             <dt>Valutazione qualità di insegnamento: </dt> <dd>'.$res3[$i][7].'</dd></dl>';
             if($res3[$i][8]==1){
-                $contenuto.="<p class='tipo_valutazione'>Valutazione riguardante l'inclusività</p></label></li>";
+                $contenuto.="<p class='tipo_valutazione'>Valutazione riguardante l'inclusività</p></li>";
             }
             else{
                 $contenuto.="<p class='tipo_valutazione'>Valutazione riguardante l'ambito generale </p></li>";
             }      
     }
 
-    $contenuto.="<ul/>";
-    $contenuto.='<input type="submit"  class="submit" name="submit2" value="cancella"/></ul></fieldset></form></commenterror>';
+    $contenuto.="</ul>";
+    $contenuto.='<input type="submit"  class="submit" name="submit2" value="cancella"/></fieldset></form></commenterror>';
     
 }
 else{
@@ -128,7 +128,7 @@ if($res5=$db->ExecQueryAssoc($query5)){
     }
     $classi.="</select></li>";
 $contenuto.='<h2 id="aggiungi" class="titles_utente">Aggiungi un commento</h2>';
-$contenuto.='<label class="formdesc">Ti è consentito lasciare un solo commento per ogni ambito delle classe di laurea per le quali ti sei dichiarato iscritto  e il contenuto testuale del 
+$contenuto.='<label id="formdesc" class="formdesc">Ti è consentito lasciare un solo commento per ogni ambito delle classe di laurea per le quali ti sei dichiarato iscritto  e il contenuto testuale del 
 commento dovrà contenere da 10 a 200 caratteri alfanumerici (sono ammessi i seguenti caratteri: @ . _ - )</label>';
 
 $contenuto.='<form id="form_aggiungicomm" aria-describedby="formdesc" action="area_utente.php"  onsubmit="return OnInsert()" method="post">
@@ -141,19 +141,19 @@ $contenuto.='<form id="form_aggiungicomm" aria-describedby="formdesc" action="ar
 </ul>
 <ul id="val_list">
 <li><label for="p_complessivo">Punteggio complessivo:</label><span><input type="number" id="p_complessivo" name="p_complessivo" placeholder="1" value="1" min="1" max="5" 
-    msg-data-empty="inserisci il punteggio complessivo del corso" msg-data-invalid="il punteggio deve essere compreso tra 1 e 5"/></span></li>
+   /></span></li>
     
 <li><label for="p_acc_fisica">Punteggio accessibilità fisica:</label><span><input type="number" id="p_acc_fisica" name="p_acc_fisica" placeholder="1" value="1" min="1" max="5" required
-    msg-data-empty="inserisci il punteggio accessibilità fisica del corso" msg-data-invalid="il punteggio deve essere compreso tra 1 e 5"/></span></li>
+   /></span></li>
     
 <li><label for="p_inclusione">Punteggio servizio inclusione:</label><span><input type="number" id="p_inclusione" name="p_inclusione" placeholder="1" value="1" min="1" max="5" required
-    msg-data-empty="inserisci il punteggio servizio inclusione del corso" msg-data-invalid="il punteggio deve essere compreso tra 1 e 5"/></span></li>
+    /></span></li>
     
 <li><label for="p_tempestivita">Punteggio tempestivita burocratica: </label><span><input type="number" id="p_tempestivita" name="p_tempestivita" placeholder="1" value="1" min="1" max="5" required
-    msg-data-empty="inserisci il punteggio tempestivita burocratica del corso" msg-data-invalid="il punteggio deve essere compreso tra 1 e 5"/></span></li>
+    /></span></li>
     
-<li><label for="p_insegnamento">Punteggio insegnamento:</label><span><input type="number" id="p_insegnamento" name="p_insegnamento"placeholder="1" value="1" min="1" max="5" required
-    msg-data-empty="inserisci il punteggio insegnamento del corso" msg-data-invalid="il punteggio deve essere compreso tra 1 e 5"/></span></li>
+<li><label for="p_insegnamento">Punteggio insegnamento:</label><span><input type="number" id="p_insegnamento" name="p_insegnamento" placeholder="1" value="1" min="1" max="5" required
+    /></span></li>
 </ul>
 <input type="submit" class="submit"  name="submit3" value="pubblica"/>
 </fieldset>
@@ -254,7 +254,7 @@ if(isset($_POST['submit1']) && check()){
             
             }
         }
-    $errori1.="</ul>";   
+   
     
     }
 
@@ -300,6 +300,7 @@ if($errorf=='<ul class="error">'){
 
 }
 }
+$errori1.="</ul>";   
 $commenti.="</ul>";
 $errorf.="</ul>";
 $db->Disconnect();
