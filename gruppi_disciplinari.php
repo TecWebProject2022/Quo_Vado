@@ -12,8 +12,11 @@ $query_gruppi="Select DISTINCT(gruppo_disciplinare) from ClassediLaurea where ar
 $db=new Connection();
     $dbOK=$db->Connect();
     if($dbOK){
+        //TITOLO
         if($gruppi=$db->ExecQueryAssoc($query_gruppi)){
             $content=str_replace("<titolo/>","<h1 id='title'>".str_replace("_"," ",$target)."</h1>",$content);
+        
+        //ELENCO
            $contenuto.='<ul class="group_container">';
            foreach($gruppi as $r){
             $contenuto.="<li class='gruppo'>".$r['gruppo_disciplinare']."</li>";
