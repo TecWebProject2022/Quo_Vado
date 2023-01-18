@@ -12,7 +12,7 @@ if(!isset($_SESSION['user']) || !isset($_SESSION['time']) || time()-$_SESSION['t
 $menu1='<nav id="visible-sottomenu" aria-label="sotto menù di area riservata">
 <ul>
     <li><a href="#iscrizioni">Iscrizioni</a></li>
-    <li><a href="">Aggiungi iscrizione</a></li>
+    <li><a href="">Aggiungii Iscrizione</a></li>
     <li><a href="#commenti">Commenti rilasciati</a></li>
     <li><a href="#aggiungi">Aggiungi un commento</a></li>
     <li><a href="#form_passw">Cambia password</a></li>
@@ -20,7 +20,6 @@ $menu1='<nav id="visible-sottomenu" aria-label="sotto menù di area riservata">
 </ul>
 </nav>';
 $vecchia='';
-$res3='';
 $nuova='';
 $errorf='<ul class="error">';
 $content=file_get_contents("area_riservata.html");
@@ -82,13 +81,29 @@ if($dbOK){
         else{
             $errori.="<p class='error'>Siamo spiacenti, i dati non sono al momento disponibili <a href='contatti.php'>Contattaci</a> per avere un suppoorto</p>";
         }
+
+$query6="Select num_classe FROM ClassediLaurea";
+if($res5=$db->ExecQueryAssoc($query6)){
+    $contenuto.="<h2 id='aggiscrizione' class='titles_utente'>Inserisci una nuova iscrizione</h2> ";
+    $contenuto.="<label for='selectclass' class='formdesc'>Qui ti è consentito inserire una nuova iscrizione, fai molta attenzione ai passaggi</label>";
+    $contenuto.='<form  id="selectclass" action="area_utente.php" method="post" ><fieldset class="container"><legend class="field_legend">Seleziona Classe</legend>';
+    $contenuto.="<label for='classi'>classi disponibili:</label>
+    <select id='classi' name='classe'>";
+    foreach($res5 as $r){
+        $contenuto.="<option value=\"".$r['num_classe']."\">".$r['num_classe']."</option>";
+    }
+    $contenuto.="</select>";
+    $contenuto.=' <input type="submit" class="submit" name="submit4" value="Avanti"/> </fieldset>
+    </form>';
+    $contenuto.="<span id='ins'></span>";
+}
 $contenuto.="<h2 id='commenti' class='titles_utente'>Commenti rilasciati</h2>";
 $query3="Select classe_laurea,datav,commento,p_complessivo,p_acc_fisica,p_servizio_inclusione,tempestivita_burocratica,p_insegnamento,tag FROM Valutazione WHERE nome_utente=\"$user\"";
              
 if($res3=$db->ExecQueryNum($query3)){
                 
     $contenuto.="<label id='cancellacomm' class='formdesc'>Seleziona un commento e clicca &quot;cancella&quot; per eliminarlo</label>";
-    $contenuto.='<form id="form_cancellacomm" aria-describedby="cancellacomm" action="area_utente.php" method="post" onsubmit="return OnDelete()" >
+    $contenuto.='<form id="form_cancellacomm" aria-describedby="cancellacomm" action="area_utente.php" method="post" onsubmit="return OnDelete()">
     <fieldset><legend class="field_legend">Commenti</legend>';
     /*flexbox esterna*/
     $contenuto.="<ul id='commrilasc'>";
@@ -178,7 +193,7 @@ if($res5=$db->ExecQueryAssoc($query5)){
     $contenuto.='<h2 class="titles_UtenteClasse">Cambio password</h2>';
     $contenuto.='<form id="form_passw" action="area_utente.php" method="post" >';
     $contenuto.='<fieldset><legend class="field_legend">Cambia password</legend>
-    <ul id="changePw">
+    <ul class="none">
     <li><label for="oldpassword"><span lang="en">Immetti la tua vecchia password: </span></label><span><input  value="<old>" type="password" id="oldpassword" name="Vecchiapassword" placeholder="Immetti la tua vecchia password" maxlength="20"                      
         data-msg-invalid="Il campo password non può contenere spazzi e deve contenere da 4 a 20 caratteri alfanumerici (sono ammessi i seguenti caratteri: @ . _ - ), controlla e riprova"
         data-msg-empty="Il campo vecchia password non può essere vuoto" /></span></li>
@@ -194,7 +209,65 @@ if($res5=$db->ExecQueryAssoc($query5)){
     </form>
     </err/>';
 }
+if(!isset($r)){
+    $r='';
 }
+
+if(isset($_POST['submit4']) && check()){
+    $_SESSION['LAUREA']=$_POST['classe'];
+    $db=new Connection();
+    $content=str_replace('<span id="2"></span>',"<p class='invito'>Continua con l'inserimento in selecziona corsi di studio, hai scelto la classe di laurea: ".$_POST['classe']."</p>",$content);
+    $dbOK=$db->Connect();
+    if($dbOK){
+        $query7="Select ateneo, nome FROM CorsodiStudio where classe_laurea=\"".$_POST['classe']."\";";
+        if($r=$db->ExecQueryNum($query7)){
+           $_SESSION['data']=$r;
+            $form='<form id="selectcorso" action="area_utente.php" method="post">';
+            $form.="<fieldset class='container'><legend>Seleziona corso di studi</legend>";
+            $form.='<label for="corso">Seleziona il corso:</label>';
+            $form.='<select id="corso" name="corso">';
+            for($i=0; $i<count($r);$i++){
+                $form.="<option value=\"".$i."\">".$r[$i][0]."|".$r[$i][1]."</option>";
+            }
+            $form.="</select>";
+            $form.='<br/><label for="datai">Data di iscrizione:</label>
+            <input type="date" id="datai" name="datai" value="1960-01-01" min="1960-01-01" max="2100-01-01"/>';
+            $form.='<br/><label for="dataf">Data di fine studi:</label>
+            <input type="date" id="dataf" name="dataf" value="1960-01-01" min="1960-01-01" max="2100-01-01"/>';
+            $form.='<br/><label for="punteggio">Punteggio scuola di provenienza:</label>
+            <input type="number" id="punteggio" name="punteggio" value="1" min="1" max="5"/>';
+            $form.='<br/> <input type="submit" class="submit" name="submit5" value="Inserisci"/>';
+            $form.="</fieldset></form>";
+            $contenuto=str_replace("<span id='ins'></span>",$form,$contenuto);
+        }
+        else{
+            $contentuo.="<p  class='error'>Impossibile recuperare le informazioni richieste</p>";
+        }
+        
+    }else{
+        $contentuo.="<p  class='error'>Impossibile recuperare le informazioni richieste</p>";
+    }
+   
+}
+if(isset($_POST['submit5']) && check()){
+    $r=$_SESSION['data'];
+   print_r($r[$_POST['corso']]);
+   echo $_SESSION['LAUREA'];
+   echo $_POST['datai'];
+   echo $_POST['dataf'];
+   echo $_POST['punteggio'];
+   echo $_SESSION['user'];
+   $db=new Connection();
+   $dbOK=$db->Connect();
+   if($dbOK){
+    
+   }
+   else{
+    $errori.="<p  class='error'>Inseriemtno  non riuscito</p>";
+   }
+
+}
+
 if(isset($_POST['submit2']) && check()){
     $cancella=isset($_POST['commento']) ? $_POST['commento']: '';
     
@@ -226,8 +299,13 @@ if(isset($_POST['submit2']) && check()){
             $errori.="<p  class='error'>Cancellazione  non riuscita</p>";
         } 
     }
+    else{
+        $errori.="<p  class='error'>Cancellazione  non riuscita</p>";
+    } 
+    }
+
 } 
-}
+
 if(isset($_POST['submit1']) && check()){
     $errori1='<ul class="error">';
     $vecchia=PulisciInput($_POST['Vecchiapassword']);
