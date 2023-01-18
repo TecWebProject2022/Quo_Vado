@@ -458,15 +458,11 @@ header > ul{
     color: #E36600;
 }
 
-
-
 /*
 ================
 CONTENUTO
 ================
 */
-
-
 
 main h1{
     color: #FFFFFF;
@@ -489,7 +485,6 @@ main h1{
     padding-left: 5%;
 }
 
-
 #menu_content ul{
     list-style: none;  
 }
@@ -509,7 +504,6 @@ a{
 a:visited{
     color: #E66707;
 }
-
 
 section {
     padding: 0.5em 1.5em 3.5em 1.5em;
@@ -592,13 +586,13 @@ del{
     font-size: smaller;
 }
 
-
 /*
 ================
 HOME
 ================
 */
 
+/*nascondo descrizione per il mini*/
 .mini_desc {
     display: none;
 }
@@ -623,7 +617,6 @@ HOME
     margin-left: -1.5em;
     padding: 1.5em;    
     border-radius: 10px;
-
     color: #FFFFFF;
     font-size: 0.9em;
 }
@@ -642,18 +635,19 @@ HOME
     margin: 0% 15% 0% 15%;
 }
 
+#item1, #item2, #item4, #item5 {
+    font-variant: small-caps;
+    font-size: 1.4em;
+}
+
 #item1 {
     grid-area: a;
     justify-self: center;
-    font-variant: small-caps;
-    font-size: 1.4em;
 }
 
 #item2 {
     grid-area: b;
     justify-self: start;
-    font-variant: small-caps;
-    font-size: 1.4em;
 }
 
 #item3 {
@@ -665,15 +659,11 @@ HOME
 #item4 {
     grid-area: d;
     justify-self: end;
-    font-variant: small-caps;
-    font-size: 1.4em;
 }
 
 #item5 {
     grid-area: e;
     justify-self: center;
-    font-variant: small-caps;
-    font-size: 1.4em;
 }
 
 .grid_container {
@@ -831,13 +821,14 @@ ESPLORA CORSI
 ================
 */
 
+/*vale per tutta la pagina dinamica*/
 #title {
-    color: #FFFFFF;
     background: var(--tittlebg) url(css_images/percorso.jpg) no-repeat;
     background-size: cover;
     background-position: center;
 }
 
+/*flexbox parent*/
 .area_disciplinare {
     display: flex;
     flex-direction: row;
@@ -846,6 +837,7 @@ ESPLORA CORSI
     flex-wrap: wrap;
 }
 
+/*flexbox child*/
 .area {
     flex-grow: 1;
     flex-basis: 15%;
@@ -870,7 +862,7 @@ ESPLORA CORSI
 }
 
 .area p {
-    background: radial-gradient(circle, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0.5) 100%);
+    background: linear-gradient(to right, rgba(0,0,0,0.7), rgba(0,0,0,0.5));
     background-clip: content-box;
 }
 
