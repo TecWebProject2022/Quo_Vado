@@ -54,6 +54,40 @@ HOME
 ================
 */
 
+.description {
+    display: none;
+}
+
+.mini_desc {
+    display: block;
+}
+
+#intro_text {
+    display: none;
+}
+
+#quattro {
+    font-size: 1.2em;
+}
+
+#info {
+    display: none;
+}
+
+.grid_container {
+    display: none;
+}
+
+#uni, #lav, #ris_int, #ris_est {
+    background-color: #0D5D70;
+    min-height: 100px;
+}
+
+.block_one, .block_two {
+    text-align: left;
+    padding: 2em;
+    margin: 1em;
+}
 
 /*
 ================
@@ -66,7 +100,46 @@ ESPLORA CORSI
     margin-left: 3%;
 }
 
+#stem p, #sanita p, #arte p, #economia p {
+    padding: 2em 1em 2em 1em;
+    text-decoration: underline;
+}
 
+/*
+================
+GRUPPI DISCIPLINARI
+================
+*/
+
+.group_container {
+    margin: 0.5em;
+}
+
+/*
+================
+CLASSE DI LAUREA
+================
+*/
+
+#identikit_corso {
+    display: block;
+    padding: 1.5em;
+    margin: 0%;
+}
+
+#dettagliClasse {
+    font-size: 1.2em;
+    margin-bottom: 2em;
+}
+
+#corsi {
+    margin: 2em 0% 2em 0%;
+}
+
+#corsi li {
+    list-style: circle;
+    margin-bottom: 1em;
+}
 
 /*
 ================
@@ -93,6 +166,13 @@ REGISTRAZIONE
 AREA UTENTE
 ================
 */
+
+.titles_UtenteClasse {
+    padding: 0.5em;
+    margin: 1.3em 10% 1.3em 10%;
+    font-size: 1.2em;
+    line-height: 1.3em;
+}
 
 .formdesc {
     display: block;
@@ -124,5 +204,6 @@ AREA UTENTE
 }
 
 #form_passw {
+    padding: 0em;
     margin: 3%;
 }

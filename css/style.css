@@ -599,6 +599,10 @@ HOME
 ================
 */
 
+.mini_desc {
+    display: none;
+}
+
 #intro {
     background: #0D5D70 url(css_images/faro_3.jpg) 85% no-repeat;
     background-size: cover;
@@ -711,49 +715,41 @@ HOME
     border-radius: 30px;
 }
 
-#uni {
-    background-image: linear-gradient(to right, rgba(0,0,0,0.5), rgba(0, 0, 0, 1)), url(css_images/universita.jpg);
+#uni, #lav, #ris_int, #ris_est {
     background-size: cover;
     min-height: 200px;
     background-position: left;
     background-repeat: no-repeat;
     text-shadow: 4px 0px 6px rgba(0,0,0,0.69);
+}
+
+#uni {
+    background-image: linear-gradient(to right, rgba(0,0,0,0.5), rgba(0, 0, 0, 1)), url(css_images/universita.jpg);
 }
 
 #lav {
     background-image: linear-gradient(to right, rgba(0,0,0,1), rgba(0, 0, 0, 0.5)), url(css_images/lavoro.jpg);
-    background-size: cover;
-    min-height: 200px;
-    background-position: right;
-    background-repeat: no-repeat;
-    text-shadow: 4px 0px 6px rgba(0,0,0,0.69);
 }
 
 #ris_int {
     background-image: linear-gradient(to right, rgba(0,0,0,0.5), rgba(0, 0, 0, 1)), url(css_images/risorse_interne.jpg);
-    background-size: cover;
-    min-height: 200px;
-    background-position: left;
-    background-repeat: no-repeat;
-    text-shadow: 4px 0px 6px rgba(0,0,0,0.69);
 }
 
 #ris_est {
     background-image: linear-gradient(to right, rgba(0,0,0,1), rgba(0, 0, 0, 0.5)), url(css_images/risorse_esterne.jpg);
-    background-size: cover;
-    min-height: 200px;
-    background-position: right;
-    background-repeat: no-repeat;
-    text-shadow: 4px 0px 6px rgba(0,0,0,0.69);
 }
 
-.block_one {
-    text-align: right;
+.block_one, .block_two {
     margin: 1% 15% 2% 15%;
-    padding: 2em 2em 2em 30%;
     font-size: 0.9em;
     color: #FFFFFF;
     border-radius: 10px;
+}
+
+/*blocchi 1 e 3*/
+.block_one {
+    text-align: right;
+    padding: 2em 2em 2em 30%;
 }
 
 .block_one .link {
@@ -788,13 +784,10 @@ HOME
     line-height: 1.5em;
 }
 
+/*blocchi 2 e 4*/
 .block_two {
     text-align: left;
-    margin: 1% 15% 2% 15%;
     padding: 2em 30% 2em 2em;
-    font-size: 0.9em;
-    color: #FFFFFF;
-    border-radius: 10px;
 }
 
 .block_two .link {
@@ -890,21 +883,20 @@ ESPLORA CORSI
     font-size: 1.3em;
 }
 
+#stem p, #sanita p, #arte p, #economia p {
+    padding: 5em 1em 5em 1em;
+}
+
+#stem:hover, #sanita:hover, #arte:hover, #economia:hover {
+    transform: scale(0.95);
+}
+
 #stem {
     background: url('css_images/stem.jpg');
     background-size: cover;
     background-position: center;
     margin-bottom: 1.5em;
     transition: all .2s ease-in-out;
-    font-size: 1.5em;
-}
-
-#stem p {
-    padding: 5em 1em 5em 1em;
-}
-
-#stem:hover {
-    transform: scale(0.95);
 }
 
 #sanita {
@@ -916,14 +908,6 @@ ESPLORA CORSI
     transition: all .2s ease-in-out;
 }
 
-#sanita p {
-    padding: 5em 1em 5em 1em;
-}
-
-#sanita:hover {
-    transform: scale(0.95);
-}
-
 #arte {
     background: url('css_images/arte.jpg');
     background-size: cover;
@@ -932,28 +916,12 @@ ESPLORA CORSI
     transition: all .2s ease-in-out;
 }
 
-#arte p {
-    padding: 5em 1em 5em 1em;
-}
-
-#arte:hover {
-    transform: scale(0.95);
-}
-
 #economia {
     background: url('css_images/economia.jpg');
     background-size: cover;
     background-position: center;
     margin-bottom: 1.5em;
     transition: all .2s ease-in-out;
-}
-
-#economia p {
-    padding: 5em 1em 5em 1em;
-}
-
-#economia:hover {
-    transform: scale(0.95);
 }
 
 /*
@@ -998,48 +966,46 @@ CLASSE DI LAUREA
 ================
 */
 
-#content_classe h2 {
-    background-color: #FFFDE8;
-    padding: 1em;
-    margin: 2em 15% 2em 15%;
-    text-align: left;
-    line-height: 1.5em;
-    text-shadow: 4px 4px 4px rgba(0,0,0,0.26);
-    box-shadow: 5px 10px 15px rgba(0, 0, 0, 0.25);
-}
-
-#dettagli {
+#dettagliClasse {
     font-size: 1.3em;
     margin-bottom: 2em;
 }
 
+#identikit_corso {
+    background-color: #0D5D70;
+    display: flex;
+    column-gap: 3%;
+    padding: 1.5em;
+    margin: 0% 15% 0% 15%;
+}
+
 #descrizione {
-    grid-column: 1;
+    flex-basis: 71.666%;
     color: #FFFFFF;
     padding: 1em;
 }
 
 #illustrazioneClasse {
-    font-size: 1.1em;
+    font-size: 1em;
 }
 
 #valutazione {
+    flex-basis: 25%;
     background-color: #D67200;
-    grid-column: 2;
-    font-size: 1.2em;
+    font-size: 1em;
     padding: 1.5em;
     border-radius: 10px;
 }
 
 #valutazione p {
     text-align: center;
+    font-size: 1.2em;
     padding-bottom: 0.6em;
-    font-size: 1.3em;
     font-variant: small-caps;
 }
 
 #valutazione li {
-    padding-bottom: 1em;
+    padding: 0.5em;
 }
 
 .highlight {
@@ -1048,15 +1014,6 @@ CLASSE DI LAUREA
 
 #descrizione, #valutazione, #valutazione li {
     list-style: none;
-}
-
-#identikit_corso {
-    background-color: #0D5D70;
-    display: grid;
-    grid-template-columns: 3fr 1.3fr;
-    padding: 1.5em;
-    margin: 0% 15% 0% 15%;
-    column-gap: 2em;
 }
 
 #corsi {
@@ -1898,11 +1855,12 @@ AREA UTENTE
 ================
 */
 
-.titles_utente {
+.titles_UtenteClasse {
     background-color: #FFFDE8;
     padding: 1em;
     margin: 1.3em 15% 1.3em 15%;
     text-align: left;
+    line-height: 1.7em;
     text-shadow: 4px 4px 4px rgba(0,0,0,0.26);
     box-shadow: 5px 10px 15px rgba(0, 0, 0, 0.25);
 }

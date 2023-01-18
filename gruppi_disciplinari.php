@@ -33,7 +33,7 @@ $db=new Connection();
         $contenuto.="</ul>";
         }
         else{
-            $errori.="<p>nessun risultato presente</p>";
+            $errori.="<p class='invito'>Nessun risultato presente</p>";
         }
         $db->Disconnect();
     }
