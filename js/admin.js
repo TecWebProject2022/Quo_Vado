@@ -39,28 +39,27 @@ function Validate(element){
 }
 
 function OnCourseAdd(){
-    if(Validate(document.getElementById('cor_nome')) && Validate(document.getElementById('cor_classe')) && Validate(document.getElementById('cor_ateneo')) &&  && Validate(document.getElementById('cor_accesso')) && Validate(document.getElementById('cor_link'))){
-        return window.confirm("Sei sicuro di voler eliminare questo corso?")
-    }
-    return false;
+    return Validate(document.getElementById('cor_nome')) && Validate(document.getElementById('cor_classe')) && Validate(document.getElementById('cor_ateneo')) && Validate(document.getElementById('cor_accesso')) && Validate(document.getElementById('cor_link'));
 }
 
 function OnCourseDelete(){
     if(Validate(document.getElementById('cor_nome')) && Validate(document.getElementById('cor_classe')) && Validate(document.getElementById('cor_ateneo'))){
-        return window.confirm("Sei sicuro di voler eliminare questo corso?")
+        return window.confirm("Sei sicuro di voler eliminare questo corso?");
     }
     return false;
 }
 
 function OnCommentFind(){
     var username=document.getElementById('com_utente');         
-    var classe_laurea=document.getElementById('com_classe');    
+    var classe=document.getElementById('com_classe');    
     
-    if (username.value.lenght && classe.value.lenght){ return Validate(username) && Validate(classe);} //entrambi utilizzati li verifico tutti e due
+    if (username.value.lenght && classe.value.lenght){ 
+        return Validate(username) & Validate(classe);//entrambi utilizzati li verifico tutti e due
+    } 
     else{
         if(username.value.lenght || classe.value.lenght) {
             //almeno uno utilizzato
-            return username.value.lenght?Validate(username):Validate(classe);
+            return username.value.lenght ? Validate(username) : Validate(classe);
         }
         //nessuno dei due utilizzato
         var parent= document.getElementById('formTrovaCommenti').parentNode;
@@ -93,7 +92,7 @@ function Box_Validate(){
 
 function OnCommentDelete(){
     if(Box_Validate()){
-        return window.confirm("Sei sicuro di voler elminirare gli elementi selezionati?")
+        return window.confirm("Sei sicuro di voler elminirare gli elementi selezionati?");
     }
     return false;
 }

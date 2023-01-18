@@ -1,5 +1,5 @@
 function Box_Validate(){
-    var box=document.getElementsByName('commento[]'); // è un alista quindi devo verificare se esiste al meno un elemento selezionato altrimenti do un errore
+    var box=document.getElementsByName('commento[]'); // è una lista quindi devo verificare se esiste al meno un elemento selezionato altrimenti do un errore
     for(var i=0; i<box.length; i++){
         if(box[i].checked){
             return true;
@@ -16,9 +16,10 @@ function Box_Validate(){
        box[0].select();
    return false;
 }
+
 function OnDelete(){
     if(Box_Validate()){
-        return window.confirm("Sei sicuro di voler elminirare gli elementi selezionati?")
+        return window.confirm("Sei sicuro di voler elminirare gli elementi selezionati?");
     }
     return false;
 }
