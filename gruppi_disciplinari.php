@@ -12,8 +12,11 @@ $query_gruppi="Select DISTINCT(gruppo_disciplinare) from ClassediLaurea where ar
 $db=new Connection();
     $dbOK=$db->Connect();
     if($dbOK){
+        //TITOLO
         if($gruppi=$db->ExecQueryAssoc($query_gruppi)){
-            $content=str_replace("<titolo/>","<h1 id='title'>".$target."</h1>",$content);
+            $content=str_replace("<titolo/>","<h1 id='title'>".str_replace("_"," ",$target)."</h1>",$content);
+        
+        //ELENCO
            $contenuto.='<ul class="group_container">';
            foreach($gruppi as $r){
             $contenuto.="<li class='gruppo'>".$r['gruppo_disciplinare']."</li>";
@@ -23,7 +26,7 @@ $db=new Connection();
                 foreach($classi as $c){
                     $contenuto.="<li class='noDecoration'>".$c['num_classe']." - <a href='classe.php?nclasse=".$c['num_classe']."&area=".$target."'>".$c['denominazione']."</a></li>";
                 }
-                $contenuto.="</li></ul>";
+                $contenuto.="</ul>";
                 }
             else{
                 $errori.="<p>Opss si è verficato un errore di conessione, riprova</p>";
@@ -33,7 +36,7 @@ $db=new Connection();
         $contenuto.="</ul>";
         }
         else{
-            $errori.="<p>nessun risultato presente</p>";
+            $errori.="<p class='invito'>Nessun risultato presente</p>";
         }
         $db->Disconnect();
     }
@@ -41,7 +44,7 @@ $db=new Connection();
     else{
         $errori.='<p>Ci scusiamo la connessione non riuscita, attendere e riprova</p>';
     }  
-    $content=str_replace("<name/>","<span>".$target."</span>",$content); 
+    $content=str_replace("<name/>","<span>".str_replace("_"," ",$target)."</span>",$content); 
     $content=str_replace("<content/>",$contenuto,$content);
     $content=str_replace("<error/>",$errori,$content);
     echo $content;

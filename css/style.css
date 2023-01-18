@@ -40,19 +40,13 @@ html,body{
     text-align: center;
     margin-top: 1em;
     margin-bottom: 1em;
+    list-style-type: none;
 }
-
-/*
-body {
-    max-width: 1200px;
-}
-*/
 
 /* Rimuovo dalla vista gli aiuti alla navigazione*/
 .skip {
     position: absolute; /* per evitare gli spazi */
-    text-indent:-999em;
-    text-align: left;
+    left: -99999em;
 }
 
 /*
@@ -64,21 +58,17 @@ HEADER
 header {
     color: var(--txtcolor);
     text-align: left;
-    padding: 1em;
-    padding-top: 0.7em;
-    padding-bottom: 2.5em;
-    border: 1px;
+    padding: 0.7em 1em 2em;
     background-color: var(--headerbg); 
     background-image: url(css_images/logo.png);
     background-repeat: no-repeat;
     background-position: top left;
-    background-size: 15em;
+    background-size: 13em;
 }
 
 header h1, header h2{
     text-indent: -999999em;
 }
-
 
 /*
 ================
@@ -111,14 +101,18 @@ BREADCRUMB
 }
 
 /*
-================
+===========================================================================================================
 MENU
-================
+===========================================================================================================
 */
-#hamburger-menu, #menu label,#menu button {
+/*
+#hamburger-menu,#menu label, #menu button {
+    display: none;
+}*/
+
+#menu button {
     display: none;
 }
-
 
 header > ul{
     list-style: none;   
@@ -215,6 +209,7 @@ header > ul{
     margin-left: 10%;
     
 }
+
 #visible-sottomenu li{
     display: inline;
     padding-right: 1.2em;
@@ -457,15 +452,11 @@ header > ul{
     color: #E36600;
 }
 
-
-
 /*
 ================
 CONTENUTO
 ================
 */
-
-
 
 main h1{
     color: #FFFFFF;
@@ -485,9 +476,8 @@ main h1{
     top: 0;
     float: left;
     width: 18%;
-    padding-left: 5%;
+    padding-left: 5%; /* si deve allineare con il titolo della pagina*/
 }
-
 
 #menu_content ul{
     list-style: none;  
@@ -508,7 +498,6 @@ a{
 a:visited{
     color: #E66707;
 }
-
 
 section {
     padding: 0.5em 1.5em 3.5em 1.5em;
@@ -591,12 +580,16 @@ del{
     font-size: smaller;
 }
 
-
 /*
 ================
 HOME
 ================
 */
+
+/*nascondo descrizione per il mini*/
+.mini_desc {
+    display: none;
+}
 
 #intro {
     background: #0D5D70 url(css_images/faro_3.jpg) 85% no-repeat;
@@ -618,7 +611,6 @@ HOME
     margin-left: -1.5em;
     padding: 1.5em;    
     border-radius: 10px;
-
     color: #FFFFFF;
     font-size: 0.9em;
 }
@@ -637,18 +629,19 @@ HOME
     margin: 0% 15% 0% 15%;
 }
 
+#item1, #item2, #item4, #item5 {
+    font-variant: small-caps;
+    font-size: 1.4em;
+}
+
 #item1 {
     grid-area: a;
     justify-self: center;
-    font-variant: small-caps;
-    font-size: 1.4em;
 }
 
 #item2 {
     grid-area: b;
     justify-self: start;
-    font-variant: small-caps;
-    font-size: 1.4em;
 }
 
 #item3 {
@@ -660,15 +653,11 @@ HOME
 #item4 {
     grid-area: d;
     justify-self: end;
-    font-variant: small-caps;
-    font-size: 1.4em;
 }
 
 #item5 {
     grid-area: e;
     justify-self: center;
-    font-variant: small-caps;
-    font-size: 1.4em;
 }
 
 .grid_container {
@@ -710,49 +699,41 @@ HOME
     border-radius: 30px;
 }
 
-#uni {
-    background-image: linear-gradient(to right, rgba(0,0,0,0.5), rgba(0, 0, 0, 1)), url(css_images/universita.jpg);
+#uni, #lav, #ris_int, #ris_est {
     background-size: cover;
     min-height: 200px;
     background-position: left;
     background-repeat: no-repeat;
     text-shadow: 4px 0px 6px rgba(0,0,0,0.69);
+}
+
+#uni {
+    background-image: linear-gradient(to right, rgba(0,0,0,0.5), rgba(0, 0, 0, 1)), url(css_images/universita.jpg);
 }
 
 #lav {
     background-image: linear-gradient(to right, rgba(0,0,0,1), rgba(0, 0, 0, 0.5)), url(css_images/lavoro.jpg);
-    background-size: cover;
-    min-height: 200px;
-    background-position: right;
-    background-repeat: no-repeat;
-    text-shadow: 4px 0px 6px rgba(0,0,0,0.69);
 }
 
 #ris_int {
     background-image: linear-gradient(to right, rgba(0,0,0,0.5), rgba(0, 0, 0, 1)), url(css_images/risorse_interne.jpg);
-    background-size: cover;
-    min-height: 200px;
-    background-position: left;
-    background-repeat: no-repeat;
-    text-shadow: 4px 0px 6px rgba(0,0,0,0.69);
 }
 
 #ris_est {
     background-image: linear-gradient(to right, rgba(0,0,0,1), rgba(0, 0, 0, 0.5)), url(css_images/risorse_esterne.jpg);
-    background-size: cover;
-    min-height: 200px;
-    background-position: right;
-    background-repeat: no-repeat;
-    text-shadow: 4px 0px 6px rgba(0,0,0,0.69);
 }
 
-.block_one {
-    text-align: right;
+.block_one, .block_two {
     margin: 1% 15% 2% 15%;
-    padding: 2em 2em 2em 30%;
     font-size: 0.9em;
     color: #FFFFFF;
     border-radius: 10px;
+}
+
+/*blocchi 1 e 3*/
+.block_one {
+    text-align: right;
+    padding: 2em 2em 2em 30%;
 }
 
 .block_one .link {
@@ -787,13 +768,10 @@ HOME
     line-height: 1.5em;
 }
 
+/*blocchi 2 e 4*/
 .block_two {
     text-align: left;
-    margin: 1% 15% 2% 15%;
     padding: 2em 30% 2em 2em;
-    font-size: 0.9em;
-    color: #FFFFFF;
-    border-radius: 10px;
 }
 
 .block_two .link {
@@ -837,13 +815,14 @@ ESPLORA CORSI
 ================
 */
 
+/*vale per tutta la pagina dinamica*/
 #title {
-    color: #FFFFFF;
     background: var(--tittlebg) url(css_images/percorso.jpg) no-repeat;
     background-size: cover;
     background-position: center;
 }
 
+/*flexbox parent*/
 .area_disciplinare {
     display: flex;
     flex-direction: row;
@@ -852,6 +831,7 @@ ESPLORA CORSI
     flex-wrap: wrap;
 }
 
+/*flexbox child*/
 .area {
     flex-grow: 1;
     flex-basis: 15%;
@@ -876,7 +856,7 @@ ESPLORA CORSI
 }
 
 .area p {
-    background: radial-gradient(circle, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0.5) 100%);
+    background: linear-gradient(to right, rgba(0,0,0,0.7), rgba(0,0,0,0.5));
     background-clip: content-box;
 }
 
@@ -889,21 +869,20 @@ ESPLORA CORSI
     font-size: 1.3em;
 }
 
+#stem p, #sanita p, #arte p, #economia p {
+    padding: 5em 1em 5em 1em;
+}
+
+#stem:hover, #sanita:hover, #arte:hover, #economia:hover {
+    transform: scale(0.95);
+}
+
 #stem {
     background: url('css_images/stem.jpg');
     background-size: cover;
     background-position: center;
     margin-bottom: 1.5em;
     transition: all .2s ease-in-out;
-    font-size: 1.5em;
-}
-
-#stem p {
-    padding: 5em 1em 5em 1em;
-}
-
-#stem:hover {
-    transform: scale(0.95);
 }
 
 #sanita {
@@ -915,14 +894,6 @@ ESPLORA CORSI
     transition: all .2s ease-in-out;
 }
 
-#sanita p {
-    padding: 5em 1em 5em 1em;
-}
-
-#sanita:hover {
-    transform: scale(0.95);
-}
-
 #arte {
     background: url('css_images/arte.jpg');
     background-size: cover;
@@ -931,28 +902,12 @@ ESPLORA CORSI
     transition: all .2s ease-in-out;
 }
 
-#arte p {
-    padding: 5em 1em 5em 1em;
-}
-
-#arte:hover {
-    transform: scale(0.95);
-}
-
 #economia {
     background: url('css_images/economia.jpg');
     background-size: cover;
     background-position: center;
     margin-bottom: 1.5em;
     transition: all .2s ease-in-out;
-}
-
-#economia p {
-    padding: 5em 1em 5em 1em;
-}
-
-#economia:hover {
-    transform: scale(0.95);
 }
 
 /*
@@ -997,48 +952,46 @@ CLASSE DI LAUREA
 ================
 */
 
-#content_classe h2 {
-    background-color: #FFFDE8;
-    padding: 1em;
-    margin: 2em 15% 2em 15%;
-    text-align: left;
-    line-height: 1.5em;
-    text-shadow: 4px 4px 4px rgba(0,0,0,0.26);
-    box-shadow: 5px 10px 15px rgba(0, 0, 0, 0.25);
-}
-
-#dettagli {
+#dettagliClasse {
     font-size: 1.3em;
     margin-bottom: 2em;
 }
 
+#identikit_corso {
+    background-color: #0D5D70;
+    display: flex;
+    column-gap: 3%;
+    padding: 1.5em;
+    margin: 0% 15% 0% 15%;
+}
+
 #descrizione {
-    grid-column: 1;
+    flex-basis: 71.666%;
     color: #FFFFFF;
     padding: 1em;
 }
 
 #illustrazioneClasse {
-    font-size: 1.1em;
+    font-size: 1em;
 }
 
 #valutazione {
+    flex-basis: 25%;
     background-color: #D67200;
-    grid-column: 2;
-    font-size: 1.2em;
+    font-size: 1em;
     padding: 1.5em;
     border-radius: 10px;
 }
 
 #valutazione p {
     text-align: center;
+    font-size: 1.2em;
     padding-bottom: 0.6em;
-    font-size: 1.3em;
     font-variant: small-caps;
 }
 
 #valutazione li {
-    padding-bottom: 1em;
+    padding: 0.5em;
 }
 
 .highlight {
@@ -1047,15 +1000,6 @@ CLASSE DI LAUREA
 
 #descrizione, #valutazione, #valutazione li {
     list-style: none;
-}
-
-#identikit_corso {
-    background-color: #0D5D70;
-    display: grid;
-    grid-template-columns: 3fr 1.3fr;
-    padding: 1.5em;
-    margin: 0% 15% 0% 15%;
-    column-gap: 2em;
 }
 
 #corsi {
@@ -1096,12 +1040,13 @@ CLASSE DI LAUREA
     margin: 3em 20%;
     margin-left: 20%;
     text-align: center;
+    list-style-type: none;
 }
 
 /*
-================
+=====================================================
 OBIETTIVO LAVORO
-================
+====================================================
 */
 
 #job{
@@ -1120,32 +1065,32 @@ OBIETTIVO LAVORO
 
 #success {
     background: url('css_images/successo.png') right no-repeat;
-    background-size: 11em;
+    background-size: 8em;
 }
 
 #success p{
     padding: 0.5em 0em 1em 0em;
-    margin-right: 12em;
+    margin-right: 9em;
 }
 
 #progress {
     background: url('css_images/studio_continuo.png') right no-repeat;
-    background-size: 9em;
+    background-size: 6em;
 }
 
 #progress p{
     padding: 1em 0em 1em 0em;
-    margin-right: 6.8em;
+    margin-right: 7em;
 }
 
 #lost {
     background: url('css_images/rinuncia.png') right no-repeat;
-    background-size: 7em;
+    background-size: 5em;
 }
 
 #lost p{
     padding: 1em 0em 2em 0em;
-    margin-right: 6.5em;
+    margin-right: 6em;
 }
 
 #job_checklist {
@@ -1222,14 +1167,14 @@ OBIETTIVO LAVORO
 
 img[src="images/almalaurea.png"]{
     margin-bottom: 2em;
-    width: 100%;
+    width: 50%;
     height: auto;
     border-radius: 10px;
 }
 
 img[src="images/atlanteProfessioni.svg"]{
     margin-bottom: 2em;
-    width: 92%;
+    width: 50%;
     height: auto;
     border-radius: 10px;
 }
@@ -1237,6 +1182,14 @@ img[src="images/atlanteProfessioni.svg"]{
 #external_resources a{
     font-size: 1em;
 }
+
+@media screen and (max-width:1200px) {
+    section {
+        margin-right: 5%;
+    }
+}
+
+
 
 /*
 ===========================================================================================================================
@@ -1376,6 +1329,7 @@ QUESTIONARIO
 .questionnaire header{
     background-color: #162636;
     padding: 0;
+    background-image: none;
 }
 
 .questionnaire header h2{
@@ -1383,6 +1337,7 @@ QUESTIONARIO
     color: white;
     padding: 0.5em;
     font-variant: small-caps;
+    text-indent: 0;
 }
 
 .questionnaire footer{
@@ -1896,11 +1851,12 @@ AREA UTENTE
 ================
 */
 
-.titles_utente {
+.titles_UtenteClasse {
     background-color: #FFFDE8;
     padding: 1em;
     margin: 1.3em 15% 1.3em 15%;
     text-align: left;
+    line-height: 1.7em;
     text-shadow: 4px 4px 4px rgba(0,0,0,0.26);
     box-shadow: 5px 10px 15px rgba(0, 0, 0, 0.25);
 }

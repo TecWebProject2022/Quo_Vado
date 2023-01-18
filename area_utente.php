@@ -12,6 +12,7 @@ if(!isset($_SESSION['user']) || !isset($_SESSION['time']) || time()-$_SESSION['t
 $menu1='<nav id="visible-sottomenu" aria-label="sotto menù di area riservata">
 <ul>
     <li><a href="#iscrizioni">Iscrizioni</a></li>
+    <li><a href="">Aggiungi iscrizione</a></li>
     <li><a href="#commenti">Commenti rilasciati</a></li>
     <li><a href="#aggiungi">Aggiungi un commento</a></li>
     <li><a href="#form_passw">Cambia password</a></li>
@@ -31,7 +32,7 @@ if(isset($_SESSION['info'])){
     $_SESSION['info']='';
 }
 $commento='';
-$errori1='<ul class="error">';
+
 $errori='';
 $commenti='<ul class="error">';
 $contenuto='';
@@ -43,7 +44,7 @@ if($dbOK){
 
     //DATI PERSONALI//
     if($res1=$db->ExecQueryAssoc($query1)){
-        $contenuto.="<h2 class='titles_utente'>Dati personali</h2>";
+        $contenuto.="<h2 class='titles_UtenteClasse'>Dati personali</h2>";
         $contenuto.="<dl id='container_info'>";
         $contenuto.="<dt class='highlight'>Nome utente: </dt><dd class='highlight'>".$res1[0]['nome_utente']."</dd>";
         $contenuto.="<dt>Nome: </dt><dd>".$res1[0]['nome']."</dd>";
@@ -53,10 +54,13 @@ if($dbOK){
         $contenuto.="<dt>Scuola superiore frequentata: </dt><dd>".$res1[0]['scuola_sup']."</dd>";
         $contenuto.="</dl>";
         $query2="Select ateneo, classe,corso, datai, dataf,punteggio_scuola_provenienza  from Iscrizione where nome_utente=\"$user\"";
-
+    }
+    else{
+        $errori.="<p class='error'>Siamo spiacenti, i dati non sono al momento disponibili <a href='contatti.php'>Contattaci</a> per avere un suppoorto</p>";
+    }
     //ISCRIZIONI
         if($res2=$db->ExecQueryAssoc($query2)){
-            $contenuto.="<h2 id='iscrizioni' class='titles_utente'>Iscrizioni</h2> ";
+            $contenuto.="<h2 id='iscrizioni' class='titles_UtenteClasse'>Iscrizioni</h2> ";
             $contenuto.="<ul id='container_iscrizioni'>";
             foreach($res2 as $i){
                 $contenuto.="<li><dl class='container_iscrizione'>";
@@ -71,54 +75,49 @@ if($dbOK){
             $contenuto.="</ul>";
 
     //COMMENTI RILASCIATI
-            $contenuto.="<h2 id='commenti' class='titles_utente'>Commenti rilasciati</h2>";
+            $contenuto.="<h2 id='commenti' class='titles_UtenteClasse'>Commenti rilasciati</h2>";
             $query3="Select classe_laurea,datav,commento,p_complessivo,p_acc_fisica,p_servizio_inclusione,tempestivita_burocratica,p_insegnamento,tag FROM Valutazione WHERE nome_utente=\"$user\"";
-            if($res3=$db->ExecQueryNum($query3)){
-                
-                $contenuto.="<label class='formdesc'>Seleziona un commento e clicca &quot;cancella&quot; per eliminarlo</label>";
-                $contenuto.='<form id="form_cancellacomm" aria-describedby="cancellacomm" action="area_utente.php" method="post" onsubmit="return OnDelete()" >
-                <fieldset><legend class="field_legend">Commenti</legend>';
-                /*flexbox esterna*/
-                $contenuto.="<ul id='commrilasc'>";
-                for($i=0;$i<count($res3);$i++){
-                        /*flexbox interna*/
-                        $contenuto.='<li class="blocco_commento"><span><input type="checkbox" id="'.$i.'" name="commento[]" value="'.$i.'" /></span><label for="'.$i.'">
-                        <dl class="container_daticomm"><dt class="highlight">Data di emissione:</dt> <dd class="highlight">'.date("d/m/Y",strtotime($res3[$i][1])).'</dd>
-                        <dt>Classe di laurea: </dt> <dd>'.$res3[$i][0].'</dd>
-                        <dt class="highlight">Commento:</dt> <dd class="highlight">'.$res3[$i][2].'</dd>
-                        <dt>Valutazione complessiva: </dt> <dd>'.$res3[$i][3].'</dd>
-                        <dt class="highlight">Valutazione accessibilità fisica: </dt> <dd class="highlight">'.$res3[$i][4].'</dd>
-                        <dt>Valutazione servizio inclusione: </dt> <dd> '.$res3[$i][5].'</dd>
-                        <dt class="highlight">Valutazione tempestività burocratica: </dt> <dd class="highlight">'.$res3[$i][6].'</dd>
-                        <dt>Valutazione qualità di insegnamento: </dt> <dd>'.$res3[$i][7].'</dd></dl>';
-                        if($res3[$i][8]==1){
-                            $contenuto.="<p class='tipo_valutazione'>Valutazione riguardante l'inclusività</p></label></li>";
-                        }
-                        else{
-                            $contenuto.="<p class='tipo_valutazione'>Valutazione riguardante l'ambito generale </p></label></li>";
-                        }      
-                }
-
-                $contenuto.="<ul/>";
-                $contenuto.='<input type="submit"  class="submit" name="submit2" value="cancella"/></ul></fieldset></form></commenterror>';
-                
-            }
-            else{
-                $contenuto.="<p class='error'>Siamo spiacenti non hai ancora inserito alcun commento</p>";
-            }
+            
         }
         else{
-            $errori.="<p class='error'>Siamo spiacenti ma i dati non sono al momento disponibili <a href='contatti.php'>Contattaci</a> per avere un suppoorto</p>";
+            $errori.="<p class='error'>Siamo spiacenti, i dati non sono al momento disponibili <a href='contatti.php'>Contattaci</a> per avere un suppoorto</p>";
         }
+$contenuto.="<h2 id='commenti' class='titles_utente'>Commenti rilasciati</h2>";
+$query3="Select classe_laurea,datav,commento,p_complessivo,p_acc_fisica,p_servizio_inclusione,tempestivita_burocratica,p_insegnamento,tag FROM Valutazione WHERE nome_utente=\"$user\"";
+             
+if($res3=$db->ExecQueryNum($query3)){
+                
+    $contenuto.="<label id='cancellacomm' class='formdesc'>Seleziona un commento e clicca &quot;cancella&quot; per eliminarlo</label>";
+    $contenuto.='<form id="form_cancellacomm" aria-describedby="cancellacomm" action="area_utente.php" method="post" onsubmit="return OnDelete()" >
+    <fieldset><legend class="field_legend">Commenti</legend>';
+    /*flexbox esterna*/
+    $contenuto.="<ul id='commrilasc'>";
+    for($i=0;$i<count($res3);$i++){
+            /*flexbox interna*/
+            $contenuto.='<li class="blocco_commento"><span><input type="checkbox" id="'.$i.'" name="commento[]" value="'.$i.'" /></span>
+            <dl class="container_daticomm"><dt class="highlight">Data di emissione:</dt> <dd class="highlight">'.date("d/m/Y",strtotime($res3[$i][1])).'</dd>
+            <dt>Classe di laurea: </dt> <dd>'.$res3[$i][0].'</dd>
+            <dt class="highlight">Commento:</dt> <dd class="highlight">'.$res3[$i][2].'</dd>
+            <dt>Valutazione complessiva: </dt> <dd>'.$res3[$i][3].'</dd>
+            <dt class="highlight">Valutazione accessibilità fisica: </dt> <dd class="highlight">'.$res3[$i][4].'</dd>
+            <dt>Valutazione servizio inclusione: </dt> <dd> '.$res3[$i][5].'</dd>
+            <dt class="highlight">Valutazione tempestività burocratica: </dt> <dd class="highlight">'.$res3[$i][6].'</dd>
+            <dt>Valutazione qualità di insegnamento: </dt> <dd>'.$res3[$i][7].'</dd></dl>';
+            if($res3[$i][8]==1){
+                $contenuto.="<p class='tipo_valutazione'>Valutazione riguardante l'inclusività</p></li>";
+            }
+            else{
+                $contenuto.="<p class='tipo_valutazione'>Valutazione riguardante l'ambito generale </p></li>";
+            }      
     }
-    else{
-        $errori.="<p class='error'>Siamo spiacenti ma i dati non sono al momento disponibili <a href='contatti.php'>Contattaci</a> per avere un suppoorto</p>";
-    }
+
+    $contenuto.="</ul>";
+    $contenuto.='<input type="submit"  class="submit" name="submit2" value="cancella"/></fieldset></form></commenterror>';
+    
 }
 else{
-    $errori.="<p class='error'>Siamo spiacenti ma i dati non sono al momento disponibili</p>";
+    $contenuto.="<p class='invito'>Siamo spiacenti, non hai ancora inserito alcun commento</p>";
 }
-
 $query5="Select classe FROM Iscrizione where nome_utente=\"".$user."\";";
 
 
@@ -130,7 +129,7 @@ if($res5=$db->ExecQueryAssoc($query5)){
        $classi.="<option value=\"".$r['classe']."\">".$r['classe']."</option>";
     }
     $classi.="</select></li>";
-$contenuto.='<h2 id="aggiungi" class="titles_utente">Aggiungi un commento</h2>';
+$contenuto.='<h2 id="aggiungi" class="titles_UtenteClasse">Aggiungi un commento</h2>';
 $contenuto.='<label class="formdesc">Ti è consentito lasciare un solo commento per ogni ambito delle classe di laurea per le quali ti sei dichiarato iscritto  e il contenuto testuale del 
 commento dovrà contenere da 10 a 200 caratteri alfanumerici (sono ammessi i seguenti caratteri: @ . _ - )</label>';
 
@@ -144,19 +143,19 @@ $contenuto.='<form id="form_aggiungicomm" aria-describedby="formdesc" action="ar
 </ul>
 <ul id="val_list">
 <li><label for="p_complessivo">Punteggio complessivo:</label><span><input type="number" id="p_complessivo" name="p_complessivo" placeholder="1" value="1" min="1" max="5" 
-    msg-data-empty="inserisci il punteggio complessivo del corso" msg-data-invalid="il punteggio deve essere compreso tra 1 e 5"/></span></li>
+   /></span></li>
     
 <li><label for="p_acc_fisica">Punteggio accessibilità fisica:</label><span><input type="number" id="p_acc_fisica" name="p_acc_fisica" placeholder="1" value="1" min="1" max="5" required
-    msg-data-empty="inserisci il punteggio accessibilità fisica del corso" msg-data-invalid="il punteggio deve essere compreso tra 1 e 5"/></span></li>
+   /></span></li>
     
 <li><label for="p_inclusione">Punteggio servizio inclusione:</label><span><input type="number" id="p_inclusione" name="p_inclusione" placeholder="1" value="1" min="1" max="5" required
-    msg-data-empty="inserisci il punteggio servizio inclusione del corso" msg-data-invalid="il punteggio deve essere compreso tra 1 e 5"/></span></li>
+    /></span></li>
     
 <li><label for="p_tempestivita">Punteggio tempestivita burocratica: </label><span><input type="number" id="p_tempestivita" name="p_tempestivita" placeholder="1" value="1" min="1" max="5" required
-    msg-data-empty="inserisci il punteggio tempestivita burocratica del corso" msg-data-invalid="il punteggio deve essere compreso tra 1 e 5"/></span></li>
+    /></span></li>
     
-<li><label for="p_insegnamento">Punteggio insegnamento:</label><span><input type="number" id="p_insegnamento" name="p_insegnamento"placeholder="1" value="1" min="1" max="5" required
-    msg-data-empty="inserisci il punteggio insegnamento del corso" msg-data-invalid="il punteggio deve essere compreso tra 1 e 5"/></span></li>
+<li><label for="p_insegnamento">Punteggio insegnamento:</label><span><input type="number" id="p_insegnamento" name="p_insegnamento" placeholder="1" value="1" min="1" max="5" required
+    /></span></li>
 </ul>
 <input type="submit" class="submit"  name="submit3" value="pubblica"/>
 </fieldset>
@@ -164,8 +163,19 @@ $contenuto.='<form id="form_aggiungicomm" aria-describedby="formdesc" action="ar
 </errorform>';
 }
 
-    //CAMBIO PASSWORD
-    $contenuto.='<h2 class="titles_utente">Cambio password</h2>';
+else{
+    $errori.="<p class='error'>Siamo spiacenti, i dati non sono al momento disponibili</p>";
+}
+$query5="Select classe FROM Iscrizione where nome_utente=\"".$user."\";";
+if($res5=$db->ExecQueryAssoc($query5)){
+    $classi="<ul id='comm_list'><li><label for='classi'>Corsi di Studio disponibili:</label>
+    <select id='corsi' name='corsi'>";
+    foreach($res5 as $r){
+       $classi.="<option value=\"".$r['classe']."\">".$r['classe']."</option>";
+    }
+    $classi.="</select></li>";
+
+    $contenuto.='<h2 class="titles_UtenteClasse">Cambio password</h2>';
     $contenuto.='<form id="form_passw" action="area_utente.php" method="post" >';
     $contenuto.='<fieldset><legend class="field_legend">Cambia password</legend>
     <ul id="changePw">
@@ -183,11 +193,15 @@ $contenuto.='<form id="form_aggiungicomm" aria-describedby="formdesc" action="ar
     </fieldset>
     </form>
     </err/>';
+}
+}
 if(isset($_POST['submit2']) && check()){
     $cancella=isset($_POST['commento']) ? $_POST['commento']: '';
     
     if(!$cancella){
      $commenti.='<li>Selezionare un commento o dei commenti per cancellarli</li>';
+     $_SESSION['info']="<p  class='error'>Cancellazione  non riuscita</p>";
+    header('Location:area_utente.php');
     }
     else{
         print_r($cancella);
@@ -205,35 +219,43 @@ if(isset($_POST['submit2']) && check()){
             }
         }
         if($r==true){
-            $_SESSION['info']="<p>Cancellazione avvenuta con successo</p>";
+            $_SESSION['info']="<p  class='invito'>Cancellazione avvenuta con successo</p>";
             header('Location:area_utente.php');
         }
         else{
-            $commenti.="<li>Inserimento non riuscito</li>";
+            $errori.="<p  class='error'>Cancellazione  non riuscita</p>";
         } 
     }
 } 
 }
 if(isset($_POST['submit1']) && check()){
+    $errori1='<ul class="error">';
     $vecchia=PulisciInput($_POST['Vecchiapassword']);
     $nuova=PulisciInput($_POST['newpassword']);
     $rep=PulisciInput($_POST['repepassword']);
     if (!preg_match('/^[@a-zA-Z0-9._-]{4,20}$/',$vecchia)){
         $errori1.='<li>Il campo vecchia password non può essere vuoto e non può contenere spazzi e deve contenere da 4 a 20 caratteri alfanumerici (sono ammessi i seguenti caratteri: @ . _ - )</li>';
+        $errori.="<p class='error'>Errore nell'aggiornamento della password</p>";
+        
     }
     if (!preg_match('/^[@a-zA-Z0-9._-]{4,20}$/',$nuova)){
         $errori1.='<li>Il campo nuova password non può essere vuoto e non può contenere spazzi e deve contenere da 4 a 20 caratteri alfanumerici (sono ammessi i seguenti caratteri: @ . _ - )</li>';
+        $errori.="<p class='error'>Errore nell'aggiornamento della password</p>";
+       
     }
     if($nuova!=$rep){
         $errori1.='<li>Il campo nuova password e ripeti la password non corrispondono</li>';
+        $errori.="<p class='error'>Errore nell'aggiornamento della password</p>";
+        
     }
-    if($errori1=='<ul>'){
+    if($errori1=='<ul class="error">'){
         $db=new Connection();
         $dbOK=$db->Connect();
         if($dbOK){
             $query="Select * from Credenziale where utente=\"".$user."\" && pw=\"".$nuova."\";";
             if($r=$db->ExecQueryAssoc($query)){
                 $errori1.="<li>Password già usata</li>";
+                $errori.="<p class='error'>Errore nell'aggiornamento della password</p>";
             }
             else{
                 $query3="Select * from Credenziale where utente=\"".$user."\" && pw=\"".$vecchia."\";";
@@ -242,26 +264,26 @@ if(isset($_POST['submit1']) && check()){
                 $query2.="INSERT INTO Credenziale(pw, data_inserimento, utente, attuale) VALUES('".$nuova."',curdate(),'".$user."',1);";
                 $q=$db->multiInsert($query2);
                 if($q){
-                    $errori1.="<li>Password modificata con successo</li>";
+                    $_SESSION['info']="<p class='invito'>Password modificata con successo</p>";
+                    header('Location:area_utente.php');
                 }
                 else{
-                    $errori1.="<li>Cambiamento password non riuscito. I sistemi sono al momentamentamnete non disponibili</li>";
+                    $errori."<p class='error'>Al momento non è possibile modificare la password</p>";
+                    
                 } 
             }
             else{
-                $errori1.="<li>la vecchia password inserita non corrisponde</li>";
+                $errori.="<p class='error'>La vecchia password inserita non corrisponde</p>";
             }
             
             }
         }
-    $errori1.="</ul>";   
+   
     
     }
-
-    
+ $errori1.="</ul>";      
 }
 if(isset($_POST['submit3']) && check()){
-    echo"hsj";
    $commento=PulisciInput($_POST['insertcommento']);
    $classlaurea=$_POST['classel'];
    $pc=$_POST['p_complessivo'];
@@ -272,6 +294,7 @@ if(isset($_POST['submit3']) && check()){
    $tag=$_POST['tag'];
    if (!preg_match('/^[@a-zA-Z 0-9._-]{10,200}$/',$commento)){
     $errorf.='<li>Il campo commento non può essere vuoto e deve contenere da 10 a 200 caratteri alfanumerici (sono ammessi i seguenti caratteri: @ . _ - )</li>';
+    $errori.="<p class='error'>Errore nell'inserimento del commento</p>";
 }
 if($errorf=='<ul class="error">'){
     $db=new Connection();
@@ -280,26 +303,31 @@ if($errorf=='<ul class="error">'){
         $check="Select * from  Valutazione where nome_utente=\"".$user."\" && classe_laurea=\"".$classlaurea."\" && tag=\"".$tag."\";";
         if($r=$db->ExecQueryAssoc($check)){
             $errorf.="<li>Commento già risaliscato per questa calsse di laurea</li>";
+            $errori.="<p class='error'>Errore nell'inserimento del commento</p>";
         }
         else{
        $insert="INSERT INTO Valutazione(nome_utente, classe_laurea, datav, commento, tag, p_complessivo, p_acc_fisica, p_servizio_inclusione, tempestivita_burocratica, p_insegnamento) VALUES (\"".$user."\",\"".$classlaurea."\",curdate(),\"".$commento."\",\"".$tag."\",".$pc.",".$pf.",".$ps.",".$tb.",".$pi.");";
        $q=$db->Insert($insert);
        if($q){
-            $_SESSION['info']="<p>Inserimento avvenuto con successo</p>";
+            $_SESSION['info']="<p class='invito'>Inserimento avvenuto con successo</p>";
             header('Location:area_utente.php');
-           
        }
        else{
-           $errorf.="<li>Inserimento non riuscito</li>";
+        $errori.="<p class='error'>Al momento non è possibile inserire commenti</p>";
        }
     }
     
     }
     else{
         $errorf.="<li>Spiacenti ma i nostri servizi sono momentaneamente non disponibili</li>"; 
+        $errori.="<p class='error'>Al momento non è possibile inserire commenti</p>";
+        
     }
 
 }
+}
+if(!isset($errori1)){
+    $errori1='';
 }
 $commenti.="</ul>";
 $errorf.="</ul>";
@@ -316,7 +344,7 @@ echo $content;
 
 /*
 $contenuto.="<aside>
-                <h2 class='titles_utente'>Legenda valutazione</h2>
+                <h2 class='titles_UtenteClasse'>Legenda valutazione</h2>
                 <p>Ogni utente può esprime un giudizio con un valore da 1 a 5 sui seguenti ambiti riguardanti una classe di laurea</p>
                     <dl>
                         <dt>Complessiva: </dt>

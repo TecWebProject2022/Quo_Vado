@@ -1,0 +1,45 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+
+\title{Relazione progetto TecWeb}
+\author{Marco Brugin 2010012 \and Valentina Caputo 1224456 \and Matteo Umatche 3333333 \and Bianca Zaghetto 1167741 }
+\date{November 2022}
+
+\begin{document}
+
+\maketitle
+\tableofcontents
+
+\newpage
+\section{Abstract}
+\textit{Quo Vado?} è un sito di orientamento che si rivolge ad un pubblico di studenti diplomati per aiutarli e guidarli nella scelta del loro percorso di studi universitari.
+
+Il sito vuole essere uno strumento completo per lo studente, infatti offre principalmente tre sezioni: la ricerca del corso di studio, le pagine informative sui vari aspetti da tenere in considerazione prima di scegliere e un'area dedicata all'utente già iscritto all'università.
+
+\begin{enumerate}
+\item La ricerca del corso di studio si svolge in tre tappe - dal generale al particolare: aree disciplinari, gruppi disciplinari e classe di laurea.
+\item Le pagine informative offrono spunti di riflessione riguardo i propri obiettivi e le risorse a disposizione, nonché un test di orientamento.
+\item L'area utente permette agli studenti universitari di registrarsi e lasciare un commento con valutazione per la propria classe di laurea. Tali dati tornano utili per l'orientamento dello studente diplomato che, infatti, li troverà sotto forma di tabelle valutative e commenti nella pagina della classe di laurea.
+\end{enumerate}
+
+Il sito quindi include nel proprio target non solo gli studenti diplomati, ma anche quelli già iscritti all'università.
+
+Abbiamo posto attenzione nel tema del sito, cercando di renderlo semplice, intuitivo e "giocoso", introducendo la metafora del faro che aiuta gli studenti ad orientarsi nel "mare" degli studi universitari.
+
+\newpage
+\section{Analisi}
+\subsection{Utenti}
+
+
+\subsection{Ricerca}
+
+\newpage
+\section{Progettazione}
+
+\newpage
+\section{Realizzazione}
+
+\newpage
+\section{Test}
+
+\end{document}

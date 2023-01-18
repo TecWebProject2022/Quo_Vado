@@ -21,17 +21,16 @@
 }
 
 
-header{
-    padding-right: 20%;
+
+header {
+    padding: 0.7em 0.5em;
+    background-size: 12em;
 }
 
-/*
-=================================
-MENU
-=================================
-*/
 
-
+#breadcrumb {
+    font-size: 0.9em;
+}
 
 
  /*
@@ -41,12 +40,55 @@ CONTENUTO
 */
 
 main h1 {
-    font-size: 1.5em;
+    font-size: 2em;
 }
 
-section {
-    padding: 7%;
+#menu_content{
+    position:static;
+    float: none;
+    width: auto;
+    padding-left: 5%;
+    margin-bottom: 1em;
 }
+
+
+section {
+    padding: 1em 1.5em;
+    margin: 0;
+    margin-bottom: 1em;
+}
+
+
+article div{
+    padding: 0.5em 0em 1em 0em;
+}
+
+
+section h2, article h2{
+    font-size: 1.4em;
+    margin-bottom: 0.5em;
+}
+
+
+main{
+    margin-bottom: 0em;
+}
+
+#up{
+    padding-top: 3em;
+    margin: -3.5em 0.5em 2em 0em;
+    background-image: url("icons/torna_su.svg");
+    background-size: 3em;
+    background-repeat: no-repeat;
+    background-position: top;
+    float: right;
+}
+
+
+article li, section li{
+    font-size: 1em;
+}
+
 
 /*
 ================
@@ -54,6 +96,40 @@ HOME
 ================
 */
 
+.description {
+    display: none;
+}
+
+.mini_desc {
+    display: block;
+}
+
+#intro_text {
+    display: none;
+}
+
+#quattro {
+    font-size: 1.2em;
+}
+
+#info {
+    display: none;
+}
+
+.grid_container {
+    display: none;
+}
+
+#uni, #lav, #ris_int, #ris_est {
+    background-color: #0D5D70;
+    min-height: 100px;
+}
+
+.block_one, .block_two {
+    text-align: left;
+    padding: 2em;
+    margin: 1em;
+}
 
 /*
 ================
@@ -66,17 +142,130 @@ ESPLORA CORSI
     margin-left: 3%;
 }
 
-
+#stem p, #sanita p, #arte p, #economia p {
+    padding: 2em 1em 2em 1em;
+    text-decoration: underline;
+}
 
 /*
 ================
-OBIETTIVO LAVORO
+GRUPPI DISCIPLINARI
 ================
 */
 
-section > h2 {
-    margin-right: 0%;
+.group_container {
+    margin: 0.5em;
 }
+
+/*
+================
+CLASSE DI LAUREA
+================
+*/
+
+#identikit_corso {
+    display: block;
+    padding: 1.5em;
+    margin: 0%;
+}
+
+#dettagliClasse {
+    font-size: 1.2em;
+    margin-bottom: 2em;
+}
+
+#corsi {
+    margin: 2em 0% 2em 0%;
+}
+
+#corsi li {
+    list-style: disc;
+    margin-bottom: 1em;
+}
+
+#listaCommenti {
+    margin: 2em 0.5em 2em 0.5em;
+}
+
+/*
+=================================================
+OBIETTIVO LAVORO
+=================================================
+*/
+
+#scenari li{
+    padding: 0.5em 0;
+    font-size: 1em;
+}
+
+#success {
+    background: url('css_images/successo.png') bottom right no-repeat;
+    background-size: 10em;
+}
+
+#success p{
+    padding: 0em 0.8em 1em;
+    margin-right: 0;
+    margin-bottom: 5em;
+}
+
+#progress {
+    background: url('css_images/studio_continuo.png') bottom right no-repeat;
+    background-size: 6.5em;
+}
+
+#progress p{
+    padding: 0em 0.8em 1em;
+    margin-bottom: 5em;
+    margin-right: 0em;
+
+}
+
+#lost {
+    background: url('css_images/rinuncia.png') bottom right no-repeat;
+    background-size: 5.8em;
+}
+
+#lost p{
+    padding: 0em 0.8em 1em;
+    margin-bottom: 5em;
+    margin-right: 0em;
+}
+
+
+
+#nota {
+    margin: 1em 0;
+    padding: 0.5em;
+    padding-left: 0;
+    padding-top: 5em;
+    background-size: 4em;
+    background-position: top;
+    text-align: center;
+}
+
+#job_checklist #nota {
+    font-size: 0.9em;
+}
+
+
+#external_resources li {
+    margin: 1em 0.5em 0.5em; 
+    padding: 1em; 
+}
+
+
+
+img[src="images/almalaurea.png"]{
+    width: 45%;
+}
+
+img[src="images/atlanteProfessioni.svg"]{
+    width: 45%;
+}
+
+
+
 
 /*
 ================
@@ -93,6 +282,13 @@ REGISTRAZIONE
 AREA UTENTE
 ================
 */
+
+.titles_UtenteClasse {
+    padding: 0.5em;
+    margin: 1.3em 10% 1.3em 10%;
+    font-size: 1.2em;
+    line-height: 1.3em;
+}
 
 .formdesc {
     display: block;
@@ -124,5 +320,6 @@ AREA UTENTE
 }
 
 #form_passw {
+    padding: 0em;
     margin: 3%;
 }

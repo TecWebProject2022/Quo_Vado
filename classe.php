@@ -16,7 +16,7 @@ $db=new Connection();
             $area=$classi[0]['area_disciplinare'];
             $classe=$target.'-'.$classi[0]['denominazione'];
             $contenuto.='<h1 id="title">'.$target.' - '.$classi[0]['denominazione'].'</h1>';
-            $contenuto.='<h2>Descrizione</h2>';
+            $contenuto.='<h2 class="titles_UtenteClasse">Descrizione</h2>';
             $contenuto.='<ul id="identikit_corso"><li id="descrizione"><p id="dettagliClasse">Area disciplinare: '.$classi[0]['area_disciplinare'].' | Gruppo disciplinare: '.$classi[0]['gruppo_disciplinare'].' 
             | Tipologia: '.$classi[0]['durata'].'</p>';
             $contenuto.='<p id="illustrazioneClasse">'.$classi[0]['illustrazione'].'</p></li>'; #temporaneo, necessario inserire descrizioni nel db
@@ -43,7 +43,7 @@ $db=new Connection();
             $query_corso_di_studio="SELECT ateneo,nome,accesso,link FROM CorsodiStudio WHERE classe_laurea=\"$target\";";
             if($corsi=$db->ExecQueryAssoc($query_corso_di_studio)){
                 #display corsi
-                $contenuto.='<h2>I corsi di studio di questa classe di laurea</h2>';
+                $contenuto.='<h2 class="titles_UtenteClasse">I corsi di studio di questa classe di laurea</h2>';
                 $contenuto.='<ul id="corsi">';
                 foreach($corsi as $c){
                     $contenuto.='<li><a href="'.$c['link'].'"><strong>'.$c['nome'].'</strong></a> | '.$c['accesso'];
@@ -78,7 +78,7 @@ $db=new Connection();
             }
             #stampa commenti
             if($valutazioni=$db->ExecQueryAssoc($query_valutazione)){
-                $contenuto.='<h2>I commenti degli studenti di questa classe di laurea</h2>';
+                $contenuto.='<h2 class="titles_UtenteClasse">I commenti degli studenti di questa classe di laurea</h2>';
                 $contenuto.='<ul id="listaCommenti">';
                 foreach($valutazioni as $v){
                     $contenuto.='<li id="commento"><strong>'.$v['n'].' | '.date("d-m-Y",strtotime($v['datav']))." | ".$v['corso']."</strong><p id=testoCommento>".$v['commento']."</p>";

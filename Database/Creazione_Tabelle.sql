@@ -17,7 +17,7 @@ create table ClassediLaurea (
 num_classe char(4) primary key,
 denominazione varchar(250) not null,
 illustrazione text,
-area_disciplinare varchar(30) not null,
+area_disciplinare varchar(40) not null,
 gruppo_disciplinare varchar(50) not null,
 durata ENUM('triennale', 'magistrale', 'a ciclo unico') not null
 );
