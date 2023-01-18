@@ -115,19 +115,19 @@ if($dbOK){
         $accesso=isset($_POST['cor_accesso'])?pulisciInput($_POST['cor_accesso']):'';
         #controlli sulle variabili
         if (!preg_match('/^(L|LM)[0-9]{2}$/',$classe)){
-            $msgCorso.='<li class="error">La classe di laurea non puo\' contenere spazi.Le classi di laurea vanno dalla L01 alla L43 e dalla LM01 alla LM94</li>';
+            $msgCorso.='<li class="error">La classe di laurea non puo\' essere vuoto o contenere spazi.Le classi di laurea vanno dalla L01 alla L43 e dalla LM01 alla LM94</li>';
         }
         if (!preg_match('/^(Accesso programmato|Accesso libero con prova|Accesso a numero chiuso|Accesso libero cronologico)$/',$classe)){
             $msgCorso.='<li class="error">Le modalita di accesso sono Accesso programmato,Accesso libero con prova,Accesso a numero chiuso,Accesso libero cronologico</li>';
         }
         if (!preg_match('/^[a-zA-Z\s]+$/',$ateneo)){
-            $msgCorso.='<li class="error">Il nome dell\'ateneo non puo\' contenere numeri o caratteri speciali<li>';
+            $msgCorso.='<li class="error">Il nome dell\'ateneo non puo\' essere vuoto o contenere numeri o caratteri speciali</li>';
         }
         if (!preg_match('/^[a-zA-Z\s]+$/',$nome)){
-            $msgCorso.='<li class="error">Il nome del corso di laurea non puo\' contenere numeri o caratteri speciali<li>';
+            $msgCorso.='<li class="error">Il nome del corso di laurea non puo\' essere vuoto o contenere numeri o caratteri speciali</li>';
         }
-        if(filter_var($link, FILTER_VALIDATE_URL)){
-            $msgCorso.='<li class="error">Formato del ink non valido, inserire un url corretto</li>';
+        if(!filter_var($link, FILTER_VALIDATE_URL)){
+            $msgCorso.='<li class="error">Link non valido, inserire un url corretto</li>';
         }
         if(!$msgCorso){
             # tutte le variabili sono istanziate e valide
@@ -147,13 +147,13 @@ if($dbOK){
             $nome=isset($_POST['cor_nome'])?pulisciInput($_POST['cor_nome']):'';
             #controlli sulle variabili
             if (!preg_match('/^(L|LM)[0-9]{2}$/',$classe)){
-                $msgCorso.='<li class="error">La classe di laurea non puo\' contenere spazi.Le classi di laurea vanno dalla classe L01 alla L43 e dalla LM01 alla LM94</li>';
+                $msgCorso.='<li class="error">La classe di laurea non puo\' essere vuoto o contenere spazi.Le classi di laurea vanno dalla classe L01 alla L43 e dalla LM01 alla LM94</li>';
             }
             if (!preg_match('/^[a-zA-Z\s]+$/',$ateneo)){
-                $msgCorso.='<li class="error">Il nome dell\'ateneo non puo\' contenere numeri o caratteri speciali<li>';
+                $msgCorso.='<li class="error">Il nome dell\'ateneo non puo\' essere vuoto o contenere numeri o caratteri speciali</li>';
             }
             if (!preg_match('/^[a-zA-Z\s]+$/',$nome)){
-                $msgCorso.='<li class="error">Il nome del corso di laurea non puo\' contenere numeri o caratteri speciali<li>';
+                $msgCorso.='<li class="error">Il nome del corso di laurea non puo\' essere vuoto o contenere numeri o caratteri speciali</li>';
             }
 
             if(!$msgCorso){
