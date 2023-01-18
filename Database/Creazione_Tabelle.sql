@@ -39,7 +39,7 @@ nome varchar(20) not null,
 cognome varchar(30) not null,
 data_nascita date not null,
 genere ENUM('M','F','ND') not null,
-scuola_sup ENUM('tecnico industriale','tecnico commerciale','scientifico','linguistico','classico') not null
+scuola_sup ENUM('industriale','commerciale','scientifico','linguistico','classico') not null
 );
 
 create table Valutazione (
