@@ -53,9 +53,10 @@ main h1 {
 
 
 section {
-    padding: 1em 1.5em;
+    padding: 1em 1.5em 4em;
     margin: 0;
     margin-bottom: 1em;
+    
 }
 
 
@@ -233,7 +234,6 @@ OBIETTIVO LAVORO
 }
 
 
-
 #nota {
     margin: 1em 0;
     padding: 0.5em;
@@ -265,7 +265,71 @@ img[src="images/atlanteProfessioni.svg"]{
 }
 
 
+/*
+===========================================================================================================================
+LA SCELTA GIUSTA PER TE
+===========================================================================================================================
+*/
 
+
+#introduzione {
+    padding-bottom: 0;
+    margin-bottom: 0em;
+    background-position: top;
+    background-size: 100%; 
+}
+
+#introduzione_text{
+    background-image: none;
+    padding-top: 70%;
+}
+
+#quest_link{
+    margin: em 0;
+}
+
+
+
+#step_list h3{
+    font-size: 1.1em;
+}
+
+#step_list>li{
+    font-size: 0.9em;
+    margin-bottom: 3em;
+}
+
+
+
+.importante{
+    font-size: 1em;
+}
+
+.quote {
+    padding: 0.5em;
+    margin: 1em 1.2em;
+    font-size: 0.9em;
+}
+
+.quote em{
+    font-size: 1em; 
+}
+
+#step_list li>ul li{
+    font-size: 1em;
+} 
+
+img[src="css/css_images/struzzo.png"]{
+    width: 50%;
+    height: auto;
+    margin: 0em 20% 1em;
+    border-radius: 20px;
+}
+
+.motivational{
+    margin: 0.5em 0em 0;
+    font-size: 1.5em;
+}
 
 /*
 ================

@@ -1,9 +1,9 @@
 var test={
     "email":/^([\w\-\+\.]+)\@([\w\-\+\.]+)\.([\w\-\+\.]+)$/,
-    "commento":/^[!?@a-zA-Z .,_-]{10,500}$/
+    "commento":/^[!?@a-zA-Z .,_-]{10,100}$/
    }; 
    var respond={
-    "commento":"Il campo commento/mesaggio può contenere da 10 a 500 caratteri (sono amessi i seguenti simboli: .,_-!?@)",
+    "commento":"Il campo commento/mesaggio può contenere da 10 a 100 caratteri (sono amessi i seguenti simboli: .,_-!?@)",
     "email": "Il campo email non corrisponde ad una email valida"
    }
    function Validation(element){
