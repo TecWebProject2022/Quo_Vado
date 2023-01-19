@@ -37,6 +37,15 @@ function Validate(element){
     }
     return true;
 }
+//chiamata al s8bmit
+function onFormSubmit(event) {
+    event.preventDefault();
+    if (event.target.classList.contains("add-button")) {
+        return OnCourseAdd();
+    } else if (event.target.classList.contains("delete-button")) {
+        return OnCourseDelete();
+    }
+}
 
 function OnCourseAdd(){
     return Validate(document.getElementById('cor_nome')) & Validate(document.getElementById('cor_classe')) & Validate(document.getElementById('cor_ateneo')) & Validate(document.getElementById('cor_accesso')) & Validate(document.getElementById('cor_link'));
@@ -49,7 +58,7 @@ function OnCourseDelete(){
     return false;
 }
 
-function OnCommentFind(){
+function OnCommentFind(event){
     var username=document.getElementById('com_utente');         
     var classe=document.getElementById('com_classe');    
     
@@ -70,6 +79,7 @@ function OnCommentFind(){
         a.classList.add('error');
         a.appendChild(document.createTextNode('riempire almeno uno dei due campi'));
         parent.appendChild(a);
+        event.preventDefault();
         return false;
     }  
 }
