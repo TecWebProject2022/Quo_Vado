@@ -1324,8 +1324,7 @@ QUESTIONARIO
 
 
 .questionnaire {
-    margin: 0;
-    margin-left: 10%;
+    margin: 0 10%;
     background-color: #162636;
 }
 
@@ -1354,7 +1353,14 @@ QUESTIONARIO
 }
 
 .questionnaire nav{
-    margin-left: 60%;
+    margin-top: 2.5%;
+    margin-left: 55%;
+}
+
+@media screen and (max-width:1200px) {
+    .questionnaire nav{
+        margin-left: 0%;
+    }
 }
 
 .questionnaire a:link{
@@ -1439,8 +1445,8 @@ QUESTIONARIO
 }
 
 .pag {
-    height: 2em;
-    width: 8em;
+    height: 30px;
+    width: 90px;
     margin: 0;
     background-color: #f0ecc8;
     border: none;  
