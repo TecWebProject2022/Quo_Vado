@@ -3,8 +3,8 @@ var test={
     "com_utente":/^[@a-zA-Z0-9._-]{4,40}$/,
     "com_classe":/^(L|LM)[0-9]{2}$/,
     "cor_classe":/^(L|LM)[0-9]{2}$/,
-    "cor_nome":/^[a-zA-Z\s]+$/,
-    "cor_ateneo":/^[a-zA-Z\s]+$/,
+    "cor_nome":/^[a-zA-Z\s]{1,80}$/,
+    "cor_ateneo":/^[a-zA-Z\s]{1,50}$/,
     "cor_link": /^(http:\/\/www\.|https:\/\/www\.|http:\/\/|https:\/\/)?[a-z0-9]+([\-\.]{1}[a-z0-9]+)*\.[a-z]{2,5}(:[0-9]{1,5})?(\/.*)?$/,
     "cor_accesso":/^(Accesso programmato|Accesso libero con prova|Accesso a numero chiuso|Accesso libero cronologico)$/
    }; 
@@ -54,12 +54,12 @@ function OnCommentFind(){
     var classe=document.getElementById('com_classe');    
     
     if (username.value.length && classe.value.length){ 
-        return Validate(username) & Validate(classe);//entrambi utilizzati li verifico tutti e due
+        return (Validate(username) & Validate(classe));//entrambi utilizzati li verifico tutti e due
     } 
     else{
         if(username.value.length || classe.value.length) {
             //almeno uno utilizzato
-            return (username.value.length) ? Validate(username) : Validate(classe);
+            return (Validate(username) || Validate(classe));
         }
         //nessuno dei due utilizzato
         var parent= document.getElementById('formTrovaCommenti').parentNode;

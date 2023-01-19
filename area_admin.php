@@ -112,7 +112,7 @@ if($dbOK){
         $ateneo=isset($_POST['cor_ateneo'])?pulisciInput($_POST['cor_ateneo']):'';
         $nome=isset($_POST['cor_nome'])?pulisciInput($_POST['cor_nome']):'';
         $link=isset($_POST['cor_link'])?pulisciInput($_POST['cor_link']):'';
-        $accesso=isset($_POST['cor_accesso'])?pulisciInput($_POST['cor_accesso']):'';
+        $accesso=isset($_POST['cor_accesso'])?$_POST['cor_accesso']:'';
         #controlli sulle variabili
         if (!preg_match('/^(L|LM)[0-9]{2}$/',$classe)){
             $msgCorso.='<li class="error">La classe di laurea non puo\' essere vuoto o contenere spazi.Le classi di laurea vanno dalla L01 alla L43 e dalla LM01 alla LM94</li>';
