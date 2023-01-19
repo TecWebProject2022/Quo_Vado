@@ -78,7 +78,14 @@ function OnCommentFind(event){
             //almeno uno utilizzato
             isValid=(Validate(username) || Validate(classe));
         }
-        //nessuno dei due utilizzato
+        //nessuno dei due utilizzato tolgo eventuali messaggi precedenti
+        if(username.parentNode.children.length==2){
+            username.parentNode.removeChild(parent.children[1]);
+        }
+        if(classe.parentNode.children.length==2){
+            classe.parentNode.removeChild(parent.children[1]);
+        }
+        //aggiungo mesaggio di errore
         var parent= document.getElementById('formTrovaCommenti').parentNode;
         if(parent.children.length==2){
             parent.removeChild(parent.children[1]);
