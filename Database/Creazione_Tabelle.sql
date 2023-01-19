@@ -79,9 +79,9 @@ create table Iscrizione(
     FOREIGN KEY(nome_utente) REFERENCES Utente(nome_utente) ON UPDATE CASCADE
 );
 create table Domande(
-  email varchar(40), 
+  email varchar(319), 
   data datetime,
-  descrizione varchar(500),
+  descrizione varchar(400),
   visto boolean default false,
   PRIMARY KEY(email,data,descrizione)
 );
