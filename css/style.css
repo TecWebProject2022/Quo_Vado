@@ -1324,8 +1324,7 @@ QUESTIONARIO
 
 
 .questionnaire {
-    margin: 0;
-    margin-left: 10%;
+    margin: 0 10%;
     background-color: #162636;
 }
 
@@ -1354,7 +1353,14 @@ QUESTIONARIO
 }
 
 .questionnaire nav{
-    margin-left: 60%;
+    margin-top: 2.5%;
+    margin-left: 55%;
+}
+
+@media screen and (max-width:1200px) {
+    .questionnaire nav{
+        margin-left: 0%;
+    }
 }
 
 .questionnaire a:link{
@@ -1439,8 +1445,8 @@ QUESTIONARIO
 }
 
 .pag {
-    height: 2em;
-    width: 8em;
+    height: 30px;
+    width: 90px;
     margin: 0;
     background-color: #f0ecc8;
     border: none;  
@@ -1470,10 +1476,10 @@ UNIVERSITA' E INCLUSIONE
 
 aside #nota{
     max-width: 1024px;
-    background-size: 7%;
+    background-size: 5.5em;
     background-position: left center;
     padding: 2em;
-    padding-left: 8em;
+    padding-left: 6.5em;
     margin-bottom: 2em;
 }
 
@@ -1501,79 +1507,55 @@ aside #nota{
     border-radius: 5px; 
     padding-left: 20%; 
     color: #333333;
-    /*border: #000 1px solid;*/
 }
 
 #barriere .problem{
     margin: 0.5em 0em;
-    background-image: linear-gradient(to bottom, rgba(255, 165, 0,0.7), rgba(214, 114, 0,1));
-    background-repeat: no-repeat;
-    background-size: 15%;
 }
 
 
 #barriere .solution{
     margin-bottom: 3em;
-    background-image: linear-gradient(to bottom,rgba(13, 93, 112,0.7), rgba(22, 38, 54,1));
-    background-repeat: no-repeat;
-    /*background-image: linear-gradient(to bottom, #ffa500, #D67200);*/
-    background-size: 15%;
 }
 
 #fis+.problem{
-    background-image: url("css_images/scale_parete-min.jpg");
-    background-position: left;
+    background: url("css_images/scale_parete-min.jpg") left repeat-y;
     background-size: 15%;
-    background-repeat: no-repeat;
 }
 
 #fis+.problem+.solution{
-    background-image: url("css_images/scale_UD.jpg");
-    background-position: left;
+    background: url("css_images/scale_UD.jpg") left repeat-y;
     background-size: 15%;
-    background-repeat: no-repeat;
 }
 
 #eco+.problem{
-    background-image: url("css_images/spiccioli.jpg");
-    background-position: left;
+    background: url("css_images/spiccioli.jpg") left repeat-y;
     background-size: 15%;
-    background-repeat: no-repeat;
 }
 
 #eco+.problem+.solution{
-    background-image: url("css_images/soldi.jpg");
-    background-position: left;
+    background: url("css_images/soldi.jpg") left repeat-y;
     background-size: 15%;
-    background-repeat: no-repeat;
 }
 
 #psi+.problem{
-    background-image: url("css_images/barriera_studio.jpg");
-    background-position: left;
+    background: url("css_images/barriera_studio.jpg") left repeat-y;
     background-size: 15%;
-    background-repeat: no-repeat;
 }
 
 #psi+.problem+.solution{
-    background-image: url("css_images/help.webp");
-    background-position: left;
+    background: url("css_images/help.webp") left repeat-y;
     background-size: 15%;
-    background-repeat: no-repeat;
 }
 
 #soc+.problem{
-    background-image: url("css_images/eggs.jpg");
-    background-position: left;
+    background: url("css_images/eggs.jpg") left repeat-y;
     background-size: 15%;
-    background-repeat: no-repeat;
 }
 
 #soc+.problem+.solution{
-    background-image: url("css_images/hands.jpg");
-    background-position: left;
+    background: url("css_images/hands.jpg") left repeat-y;
     background-size: 15%;
-    background-repeat: no-repeat;
 }
 
 /***************************************************************************************************************************************
@@ -1589,6 +1571,12 @@ Inclusivi per scelta
     text-align: right;
     margin-right: 10%;
     margin-top: 3%;
+}
+
+@media screen and (max-width:1200px) {
+    #return{
+        margin-right: 2.5%;
+    }
 }
 
 #return a:link{
