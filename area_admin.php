@@ -131,11 +131,16 @@ if($dbOK){
         }
         if(!$msgCorso){
             # tutte le variabili sono istanziate e valide
-            $query_insert_corso="INSERT INTO CorsodiStudio(ateneo,classe_laurea,nome,accesso,link) VALUES ('".$ateneo."','".$classe."','".$nome."','".$accesso."','".$link."');";
-            if($db->Insert($query_insert_corso)){
-                $msgCorso.='<p class="error">'.$nome.' aggiunto con successo</p>';
+            $query_controllo_ateneo="SELECT * FROM Ateneo WHERE nome ='".$ateneo."';";
+            if($db->ExecQueryAssoc($query_controllo_ateneo)){
+                $query_insert_corso="INSERT INTO CorsodiStudio(ateneo,classe_laurea,nome,accesso,link) VALUES ('".$ateneo."','".$classe."','".$nome."','".$accesso."','".$link."');";
+                if($db->Insert($query_insert_corso)){
+                    $msgCorso.='<p class="error">'.$nome.' aggiunto con successo</p>';
+                }else{
+                    $msgCorso.='<p class="error">Inserimento di '.$nome.' non riuscito, riprova</p>';
+                }
             }else{
-                $msgCorso.='<p class="error">Inserimento di '.$nome.' non riuscito, riprova</p>';
+                $msgCorso.='<p class="error">Inserimento di '.$nome.' non riuscito, '.$ateneo.' non presente nella lista atenei, riprova</p>';
             }
         }else{
             $msgCorso='<ul>'.$msgCorso.'</ul>';
