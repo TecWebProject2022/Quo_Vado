@@ -64,7 +64,7 @@ $db=new Connection();
             }    
             #sezione commenti
             #filtro, con solo due elementi ma potenzialmente potrei averne n
-            $contenuto.='<form id="filtro" class="filter" action="classe.php?nclasse='.$target.'&area='.$area.'" method="get" onsubmit="return ">
+            $contenuto.='<form id="filtro" class="filter" action="'.$_SERVER['PHP_SELF'].'" method="get" >
             <legend>Seleziona i commenti che vuoi visualizzare</legend>
                 <fieldset>
                     <input type="checkbox" name="filtri[]" id="commento_generale" name="commento_generale" value="1"/>
@@ -82,10 +82,10 @@ $db=new Connection();
                 }
             }
             if($targetTag && preg_match('/^\d+(,\d+)*$/',$targetTag)){
-                $query_valutazione='SELECT Valutazione.nome_utente as n ,datav, commento, tag, p_complessivo, p_acc_fisica, p_servizio_inclusione, tempestivita_burocratica, p_insegnamento, Iscrizione.corso AS corso Iscrizione.ateneo AS ateneo
+                $query_valutazione='SELECT Valutazione.nome_utente as n ,datav, commento, tag, p_complessivo, p_acc_fisica, p_servizio_inclusione, tempestivita_burocratica, p_insegnamento, Iscrizione.corso AS corso, Iscrizione.ateneo AS ateneo
                 FROM Valutazione
                 INNER JOIN Iscrizione ON Valutazione.nome_utente = Iscrizione.nome_utente
-                WHERE Iscrizione.classe = "'.$target.'" AND Valutazione.tag IN ('.$targetTag.');';
+                WHERE Iscrizione.classe = "'.$target.'" AND tag IN ('.$targetTag.');';
             }else{
                 $query_valutazione='SELECT Valutazione.nome_utente as n ,datav, commento, tag, p_complessivo, p_acc_fisica, p_servizio_inclusione, tempestivita_burocratica, p_insegnamento, Iscrizione.corso AS corso, Iscrizione.ateneo AS ateneo
                 FROM Valutazione
