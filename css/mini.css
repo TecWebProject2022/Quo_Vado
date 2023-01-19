@@ -131,9 +131,12 @@ HOME
 }
 
 .block_one, .block_two {
-    text-align: left;
     padding: 2em;
     margin: 1em;
+}
+
+.link {
+    text-align: center;
 }
 
 /*
