@@ -41,20 +41,27 @@ function Validate(element){
 function onFormSubmit(event) {
     event.preventDefault();
     if (event.target.classList.contains("add-button")) {
-        return OnCourseAdd();
+        return OnCourseAdd(event);
     } else if (event.target.classList.contains("delete-button")) {
-        return OnCourseDelete();
+        return OnCourseDelete(event);
     }
 }
 
-function OnCourseAdd(){
-    return Validate(document.getElementById('cor_nome')) & Validate(document.getElementById('cor_classe')) & Validate(document.getElementById('cor_ateneo')) & Validate(document.getElementById('cor_accesso')) & Validate(document.getElementById('cor_link'));
+function OnCourseAdd(event){
+    if( Validate(document.getElementById('cor_nome')) & Validate(document.getElementById('cor_classe')) & Validate(document.getElementById('cor_ateneo')) & Validate(document.getElementById('cor_accesso')) & Validate(document.getElementById('cor_link'))){
+        return true;
+    }else{
+        event.preventDefault();
+        return false;
+    }
+   
 }
 
-function OnCourseDelete(){
+function OnCourseDelete(event){
     if(Validate(document.getElementById('cor_nome')) & Validate(document.getElementById('cor_classe')) & Validate(document.getElementById('cor_ateneo'))){
         return window.confirm("Sei sicuro di voler eliminare questo corso?");
     }
+    event.preventDefault();
     return false;
 }
 

@@ -65,7 +65,7 @@
         <h1 class="area_riservata">Area Riservata</h1>
         <!--sezione cancellazione commenti-->
         <h2>Cancellazione commenti</h2>
-        <span><form id="formTrovaCommenti" action="area_admin.php" method="post" onsubmit="OnCommentFind(event)">
+        <span><form id="formTrovaCommenti" action="area_admin.php" method="post" onsubmit="return OnCommentFind(event)">
             <fieldset>
                 <legend>Trova i commenti da eliminare</legend>
                 <label for="com_utente">Utente:</label>
@@ -89,7 +89,7 @@
         <!--sezione gestione corsi di laurea-->
         <h2>gestione corsi di studio</h2>
         <p id="aiuti_form">per aggiungere un corso di studi e' necessario riempire tutti i campi, per eliminarne uno bastano nome, classe di laurea e ateneo.</p>
-        <form id="formCorsi" action="area_admin.php" method="post" onsubmit="onFormSubmit(event)">
+        <form id="formCorsi" action="area_admin.php" method="post" >
             <fieldset>
                 <legend>Aggiungi o elimina un corso di studi</legend>
                 
@@ -120,8 +120,8 @@
                         <option value="Accesso libero cronologico">Accesso libero cronologico</option>
                 </select></span>
 
-                <input type="submit" class="add-button" id="add_corso" name="add_corso" value="Aggiungi" />
-                <input type="submit" class="delete-button" id="delete_corso" name="delete_corso" value="Elimina" />
+                <input type="submit" class="add-button" id="add_corso" name="add_corso" value="Aggiungi" onclick="return OnCourseAdd(event)"/>/>
+                <input type="submit" class="delete-button" id="delete_corso" name="delete_corso" value="Elimina" onclick="return OnCourseDelete(event)"/>/>
                 <input type="reset" id="reset" name="reset" value="Cancella tutto"/>
             </fieldset>
         </form>
