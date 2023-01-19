@@ -67,10 +67,10 @@ $db=new Connection();
             $contenuto.='<form id="filtro" class="filter" action="classe.php?nclasse='.$target.'&area='.$area.'" method="get" onsubmit="return ">
             <legend>Seleziona i commenti che vuoi visualizzare</legend>
                 <fieldset>
-                    <input type="checkbox" name="filtri[]" id="commento generale" value="1"/>
-                    <label for="filtro1">tuti i commenti</label>
-                    <input type="checkbox" name="filtri[]" id="inclusivita" value="2" />
-                    <label for="filtro1">inclusivita</label>
+                    <input type="checkbox" name="filtri[]" id="commento_generale" name="commento_generale" value="1"/>
+                    <label for="commento_generale">commento generale</label>
+                    <input type="checkbox" name="filtri[]" id="inclusivita" name="inclusivita" value="2" />
+                    <label for="inclusivita">inclusivita</label>
                     <input type="submit" class="submit" name="filterTags" id="filter_button" value="filtra commenti">
                 </fieldset>
             </form>';
