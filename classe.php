@@ -66,12 +66,12 @@ $db=new Connection();
             # se ottengo tag (da filtro, al primo caricamento della pagina sara sempre false) allora la query chiedera solo le valutazioni corrispondenti
             if(isset($_GET['filterTag'])){
                 $targetTag=PulisciInput($_GET['filterTag']);
-                $query_valutazione='SELECT Valutazione.nome_utente as n ,datav, commento, tag, p_complessivo, p_acc_fisica, p_servizio_inclusione, tempestivita_burocratica, p_insegnamento, Iscrizione.corso AS corso
+                $query_valutazione='SELECT Valutazione.nome_utente as n ,datav, commento, tag, p_complessivo, p_acc_fisica, p_servizio_inclusione, tempestivita_burocratica, p_insegnamento, Iscrizione.corso AS corso Iscrizione.ateneo AS ateneo
                 FROM Valutazione
                 INNER JOIN Iscrizione ON Valutazione.nome_utente = Iscrizione.nome_utente
                 WHERE Iscrizione.classe = "'.$target.'" AND Valutazione.tag='.$targetTag.';';
             }else{
-                $query_valutazione='SELECT Valutazione.nome_utente as n ,datav, commento, tag, p_complessivo, p_acc_fisica, p_servizio_inclusione, tempestivita_burocratica, p_insegnamento, Iscrizione.corso AS corso
+                $query_valutazione='SELECT Valutazione.nome_utente as n ,datav, commento, tag, p_complessivo, p_acc_fisica, p_servizio_inclusione, tempestivita_burocratica, p_insegnamento, Iscrizione.corso AS corso, Iscrizione.ateneo AS ateneo
                 FROM Valutazione
                 INNER JOIN Iscrizione ON Valutazione.nome_utente = Iscrizione.nome_utente
                 WHERE Iscrizione.classe = "'.$target.'";';
@@ -81,7 +81,7 @@ $db=new Connection();
                 $contenuto.='<h2 class="titles_UtenteClasse">I commenti degli studenti di questa classe di laurea</h2>';
                 $contenuto.='<ul id="listaCommenti">';
                 foreach($valutazioni as $v){
-                    $contenuto.='<li id="commento"><strong>'.$v['n'].' | '.date("d-m-Y",strtotime($v['datav']))." | ".$v['corso']."</strong><p id=testoCommento>".$v['commento']."</p>";
+                    $contenuto.='<li id="commento"><strong>'.$v['n'].' | '.date("d-m-Y",strtotime($v['datav']))." | ".$v['corso']."-".$v['ateneo']."</strong><p id=testoCommento>".$v['commento']."</p>";
                     $contenuto.='<ul id="valutazioneCommento">
                             <li>Complessivo: '.$v['p_complessivo']." | </li>
                             <li>Accessibilità fisica: ".$v['p_acc_fisica']." | </li>
@@ -104,11 +104,12 @@ $db=new Connection();
                 $query_iscrizione='SELECT nome_utente FROM Iscrizione WHERE classe = "'.$target.'" AND nome_utente="'.pulisciInput($_SESSION['user']).'";';
                 if($iscritto=$db->ExecQueryAssoc($query_iscrizione)){
                     $erroriNuovoCommento=isset($_GET['erroriCommenti'])?$_GET['erroriCommenti']:'';
-                    $contenuto.='<form id="formCommento" action="addComment.php" method="post" onsubmit=" return addCommentValidate(event)">
+                    $contenuto.='<form id="formCommento" action="addComment.php" method="post" onsubmit=" return Validate(event)">
                     <fieldset>
                         <legend>Agguingi un commento!</legend>
-                        <label for="commento" ></label>
-                        <span><textarea id="commento" name="commento" rows="4" cols="40"></textarea></span>
+                        <label for="commento" >commento:</label>
+                        <span><textarea id="commento" name="commento" rows="4" cols="40"
+                        msg-data-empty="inserisci il commento" msg-data-invalid="il commento non puo contenere caratteri speciali e deve essere compreso tra 1 e 200 caratteri"></textarea></span>
 
                         <label for="p_complessivo">punteggio complessivo:</label>
                         <span><input type="number" id="p_complessivo" name="p_complessivo" placeholder="1" value="1" min="1" max="5" required
