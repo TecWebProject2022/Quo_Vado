@@ -251,18 +251,11 @@ header > ul{
 }
 
 @media screen and (max-width:1200px){
-    #menu label {
-        color: #162636;
-        display: block;
-        position: absolute;
-        right: 5%;
-        top: 2%;
-        cursor: pointer;
-        font-size: 2.5em;
-    } /* ATTENZIONE per il tab devo far coincidere la casella dell'input con l'hamburger in modo che si attivi! */
-    
+      
     #menu>button{
         color: #162636;
+        background-color: var(--headerbg);
+        border: none;
         display: block;
         position: absolute;
         right: 5%;
@@ -270,6 +263,16 @@ header > ul{
         cursor: pointer;
         font-size: 2.5em;
     }
+
+    /* Menù chiuso */
+    .not_view{
+        display: none;
+    }
+    
+    /*******/
+    
+    
+    /* Vista menù quando è aperto */
     #menu>#menu-content {
         position: relative;
         z-index: 1;
@@ -280,25 +283,7 @@ header > ul{
         padding-bottom: 4%;
     
     }
-    .not_view{
-        display: none;
-    }
-    
-    
-    /*
-    comparsa / scomparsa
-    */
-    
 
-    
-    #menu input:checked ~ #menu-content
-    {
-      display: block;
-    }
-    
-    /*******/
-    
-    
     #menu li {
         display: block;  
     }
@@ -361,7 +346,8 @@ header > ul{
         border-right: #009d9d 5px solid;
     }
     
-    
+    /**********************************************************************************/
+
     #visible-sottomenu {
         position: relative;
         z-index: 1;
@@ -546,6 +532,7 @@ section h2, article h2{
 
 section p, article p{
     font-size: 0.95em;
+    line-height: 2em;
 }
 
 main{
@@ -568,7 +555,7 @@ article ul, section ul, article ol, section ol{
 }
 
 article li, section li{
-    font-size: 0.9em;
+    font-size: 0.95em;
     padding: 0.2em;
 }
 
