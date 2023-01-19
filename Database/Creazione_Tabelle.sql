@@ -72,7 +72,7 @@ create table Iscrizione(
     corso varchar(80), 
     nome_utente varchar(40),
     datai date not null,
-    PRIMARY KEY(ateneo,classe,corso,nome_utente), 
+    PRIMARY KEY(ateneo,classe,corso,nome_utente,datai), 
     punteggio_scuola_provenienza int   not null check(punteggio_scuola_provenienza>0 and punteggio_scuola_provenienza<6), 
     dataf date not null ,
     FOREIGN KEY(ateneo,classe,corso) REFERENCES CorsodiStudio(ateneo, classe_laurea, nome) ON UPDATE CASCADE ON DELETE CASCADE,
