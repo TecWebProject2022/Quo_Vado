@@ -29,17 +29,116 @@ Abbiamo posto attenzione nel tema del sito, cercando di renderlo semplice, intui
 \newpage
 \section{Analisi}
 \subsection{Utenti}
-
-
 \subsection{Ricerca}
 
 \newpage
 \section{Progettazione}
+\subsection{Obiettivi}
+%Valentina
+
+\subsection{Accessibilità}
 
 \newpage
-\section{Realizzazione}
+\section{Struttura}
+\subsection{Header}
+L'header si presenta sempre uguale in tutto il sito. Abbiamo scelto uno stile semplice usando un colore tenue e collocando il logo sulla sinistra.
+\subsection{Menu di navigazione}
+Il menu del sito si presenta in versione desktop con un layout a schede. Consci del fatto che qualora venissero aggiunte nuove pagine non sarebbe più ottimale questo tipo di layout, abbiamo deciso di trasformare tale menu con un layout a tendina nel momento in cui quello a schede non fosse più contenibile dallo schermo.
+%spiegare meglio il menu a tendina e come viene triggerato
+
+\subsection{Breadcrumb}
+Sotto il menu di navigazione si presenta la breadcrumb che aiuta l'utente a mantenere l'orientamento nel sito.
+Contiene tutti i passi effettuati nel visitare il sito. Tutti i passi precedenti sono link cliccabili. L'ultimo punto non è un link in quanto sarebbe un link circolare.
+
+\subsection{Pagine e contenuto}
+\subsubsection{Home}
+Pagina iniziale del sito. Nella versione desktop contiene indicazioni utili per prepararsi al percorso orientativo.
+Dopo una breve introduzione, si presenta una bussola decorativa che aiuta a dare l'idea dei punti cardinali da tenere in considerazione.
+Ogni punto porta al relativo blocco descrittivo sottostante.
+Ogni blocco presenta poi un link che portera alla relativa pagina del sito.
+Abbiamo pensato a questo percorso iniziale per accompagnare l'utente.
+%da raffinare
+
+\subsubsection{Aree disciplinari}
+Cliccando "Esplora corsi" nel menu di navigazione si arriva a questa pagina. È la prima tappa nel percorso di ricerca dell'utente.
+Dopo l'intestazione si presentano quattro blocchi, uno per ogni area disciplinare. Per guidare meglio l'utente è stata aggiunta una descrizione più dettagliata delle tematiche che ogni area comprende.
+%spiegare la somiglianza con le foto istantanee?
+
+\subsubsection{Gruppi disciplinari}
+Una volta scelta un'area si arriva nella pagina con i relativi gruppi disciplinari. Abbiamo optato per un layout semplice per non disorientare l'utente nella scelta.
+Ogni gruppo di laurea presenta le classi di laurea sottostanti tra cui poter scegliere.
+
+\subsubsection{Classe di laurea}
+La pagina della classe di laurea è la destinazione finale della pagina "Esplora corsi". L'utente ora può visualizzare molteplici informazioni utili.
+In primis, visualizza un riepilogo dell'area e del gruppo disciplinare di appartenenza, nonché la tipologia di laurea (nel sito sono state implementate solamente classi di laurea triennale).
+A seguire, una breve descrizione della classe e una tabella valutativa.
+Tale tabella mostra i punteggi medi ottenuti dalla classe tramite i commenti degli utenti.
+
+\subsubsection{Obiettivo lavoro}
+%Valentina
+
+\subsubsection{La scelta giusta per te}
+%Valentina
+
+\subsubsection{Università e inclusione}
+%Valentina
+
+\subsubsection{Login e Registrazione}
+Cliccando su "Area riservata" nel menu di navigazione si arriva in principio alla pagina di Login. Qualora ci si voglia registrare, c'è un link apposito al di sotto del form.
+Una volta completato il login, l'utente (o l'admin) vedrà la sua pagina personale (vedi 4.4.9/4.4.10). Anche cliccando su altri link del menu di navigazione, la sessione personale rimarrà aperta e l'utente può tornarvi cliccando sempre su "Area personale".
+Trascorsa un'ora dall'accesso, la sessione scadrà.
+%sistemare il riferimento
+
+\subsubsection{Area utente}
+L'area utente si suddivide in sezioni. Ogni sezione è raggiungibile tramite il menu utente a disposizione.
+In questa pagina si possono visualizzare le proprie informazioni di registrazione, le proprie iscrizioni e i propri commenti. Inoltre è possibile pubblicare o eliminare un commento.
+Infine è possibile anche modificare la propria password personale.
+%raffinare
+
+\subsubsection{Area admin}
+\subsubsection{Contatti}
+\subsubsection{Pagina Error: 404}
+%Valentina
+
+\subsection{Footer}
+Il footer è collocato in fondo ad ogni pagina del sito. Presenta le/gli autrici/autori del sito e il link a disposizione per contattarli.
 
 \newpage
-\section{Test}
+\section{Implementazione}
+\subsection{SQL}
+\subsection{HTML}
+\subsection{PHP}
+\subsection{CSS}
+\subsection{JavaScript}
+
+\newpage
+\section{Validazione}
+\subsection{Total Validator}
+
+\newpage
+\section{Divisione del lavoro}
+\begin{itemize}
+    \item Marco Brugin;
+    \begin{itemize}
+        \item PHP;
+        \item Schema Database;
+    \end{itemize}
+    \item Valentina Caputo;
+    \begin{itemize}
+        \item Schema Database;
+        \item CSS;
+    \end{itemize}
+    \item Matteo Umatche;
+    \begin{itemize}
+        \item Schema Database;
+        \item Popolamento database;
+        \item PHP;
+    \end{itemize}
+    \item Bianca Zaghetto;
+    \begin{itemize}
+        \item Popolamento database;
+        \item CSS
+    \end{itemize}
+\end{itemize}
 
 \end{document}
