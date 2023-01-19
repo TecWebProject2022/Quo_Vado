@@ -104,7 +104,7 @@ $db=new Connection();
                 $query_iscrizione='SELECT nome_utente FROM Iscrizione WHERE classe = "'.$target.'" AND nome_utente="'.pulisciInput($_SESSION['user']).'";';
                 if($iscritto=$db->ExecQueryAssoc($query_iscrizione)){
                     $erroriNuovoCommento=isset($_GET['erroriCommenti'])?$_GET['erroriCommenti']:'';
-                    $contenuto.='<form id="formCommento" action="addComment.php" method="post">
+                    $contenuto.='<form id="formCommento" action="addComment.php" method="post" onsubmit=" return addCommentValidate(event)">
                     <fieldset>
                         <legend>Agguingi un commento!</legend>
                         <label for="commento" ></label>
@@ -137,7 +137,11 @@ $db=new Connection();
                     </fieldset>
                     </form><span><strong>'.$erroriNuovoCommento.'</strong></span>';
                 }else{
-                    $errori='<p class="invito">Ciao '.$_SESSION['user'].', per lasciare un commento aggiungi il corso di laurea appartenente alla classe '.$classe.' che hai frequentato nella tua <a href="area_utente.php">area personale</a>!</p>';
+                    if($_SESSION['user']!='admin'){
+                        $errori='<p class="invito">Ciao '.$_SESSION['user'].', per lasciare un commento aggiungi il corso di laurea appartenente alla classe '.$classe.' che hai frequentato nella tua <a href="area_utente.php">area personale</a>!</p>';
+                    }else{
+                        $errori='<p class="invito">Gestisci i corsi e i commenti della classe di laurea '.$classe.' dal <a href="area_admin.php">pannello di controllo</a>!</p>';
+                    }
                 }
             }
         }
