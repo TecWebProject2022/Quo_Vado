@@ -64,7 +64,7 @@ $db=new Connection();
             }    
             #sezione commenti
             #filtro, con solo due elementi ma potenzialmente potrei averne n
-            $contenuto.='<form id="filtro" class="filter" action="classe.php" method="get" onsubmit="return ">
+            $contenuto.='<form id="filtro" class="filter" action="classe.php?nclasse='.$target.'&area='.$area.'" method="get" onsubmit="return ">
             <legend>Seleziona i commenti che vuoi visualizzare</legend>
                 <fieldset>
                     <input type="checkbox" name="filtri[]" id="commento generale" value="1"/>
