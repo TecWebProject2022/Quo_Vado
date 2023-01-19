@@ -120,10 +120,10 @@ if($dbOK){
         if (!preg_match('/^(Accesso programmato|Accesso libero con prova|Accesso a numero chiuso|Accesso libero cronologico)$/',$accesso)){
             $msgCorso.='<li class="error">Le modalita di accesso sono Accesso programmato,Accesso libero con prova,Accesso a numero chiuso,Accesso libero cronologico</li>';
         }
-        if (!preg_match('/^[a-zA-Z\s]{1,50}$/',utf8_decode($ateneo))){
+        if (!preg_match('/^[a-zA-ZÀ-ÿ\s]{1,50}$/',$ateneo)){
             $msgCorso.='<li class="error">Il nome dell\'ateneo non puo\' essere vuoto o contenere numeri o caratteri speciali</li>';
         }
-        if (!preg_match('/^[a-zA-Z\s]{1,80}$/',utf8_decode($nome))){
+        if (!preg_match('/^[a-zA-ZÀ-ÿ\s]{1,50}$/',$nome)){
             $msgCorso.='<li class="error">Il nome del corso di laurea non puo\' essere vuoto o contenere numeri o caratteri speciali</li>';
         }
         if(!filter_var($link, FILTER_VALIDATE_URL)){
