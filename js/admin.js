@@ -3,8 +3,8 @@ var test={
     "com_utente":/^[@a-zA-Z0-9._-]{4,40}$/,
     "com_classe":/^(L|LM)[0-9]{2}$/,
     "cor_classe":/^(L|LM)[0-9]{2}$/,
-    "cor_nome":/^[a-zA-Z\s]{1,80}$/,
-    "cor_ateneo":/^[a-zA-Z\s]{1,50}$/,
+    "cor_nome":/^[a-zA-ZÀ-ÿ\s]{1,50}$/,
+    "cor_ateneo":/^[a-zA-ZÀ-ÿ\s]{1,50}$/,
     "cor_link": /^(http:\/\/www\.|https:\/\/www\.|http:\/\/|https:\/\/)?[a-z0-9]+([\-\.]{1}[a-z0-9]+)*\.[a-z]{2,5}(:[0-9]{1,5})?(\/.*)?$/,
     "cor_accesso":/^(Accesso programmato|Accesso libero con prova|Accesso a numero chiuso|Accesso libero cronologico)$/
    }; 
