@@ -67,15 +67,16 @@ function OnCourseDelete(event){
 
 function OnCommentFind(event){
     var username=document.getElementById('com_utente');         
-    var classe=document.getElementById('com_classe');    
+    var classe=document.getElementById('com_classe');
+    var isValid=true;    
     
     if (username.value.length && classe.value.length){ 
-        return (Validate(username) & Validate(classe));//entrambi utilizzati li verifico tutti e due
+        isValid=(Validate(username) & Validate(classe));//entrambi utilizzati li verifico tutti e due
     } 
     else{
         if(username.value.length || classe.value.length) {
             //almeno uno utilizzato
-            return (Validate(username) || Validate(classe));
+            isValid=(Validate(username) || Validate(classe));
         }
         //nessuno dei due utilizzato
         var parent= document.getElementById('formTrovaCommenti').parentNode;
@@ -86,9 +87,13 @@ function OnCommentFind(event){
         a.classList.add('error');
         a.appendChild(document.createTextNode('riempire almeno uno dei due campi'));
         parent.appendChild(a);
+        isValid=false;
+    }
+    
+    if(!isValid){
         event.preventDefault();
-        return false;
-    }  
+    }
+    return isValid;
 }
 
 function Box_Validate(){
