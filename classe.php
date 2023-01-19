@@ -7,6 +7,7 @@ $errori='';
 $contenuto='';
 $area='';
 $classe='';
+$targetTag='';
 
 $db=new Connection();
     $dbOK=$db->Connect();
@@ -62,14 +63,29 @@ $db=new Connection();
                 $errori.="<p class='error'>Opss, si è verficato un errore di connessione: impossibile caricare i corsi di laurea. Per favore, riprova più tardi.</p>";
             }    
             #sezione commenti
-            
+            #filtro, con solo due elementi ma potenzialmente potrei averne n
+            $contenuto.='<form id="filtro" class="filter" action="classe.php" method="get" onsubmit="return ">
+            <legend>Seleziona i commenti che vuoi visualizzare</legend>
+                <fieldset>
+                    <input type="checkbox" name="filtri[]" id="commento generale" value="1"/>
+                    <label for="filtro1">tuti i commenti</label>
+                    <input type="checkbox" name="filtri[]" id="inclusivita" value="2" />
+                    <label for="filtro1">inclusivita</label>
+                    <input type="submit" class="submit" name="filterTags" id="filter_button" value="filtra commenti">
+                </fieldset>
+            </form>';
             # se ottengo tag (da filtro, al primo caricamento della pagina sara sempre false) allora la query chiedera solo le valutazioni corrispondenti
-            if(isset($_GET['filterTag'])){
-                $targetTag=PulisciInput($_GET['filterTag']);
+            if(isset($_GET['filterTags'])){
+                $filtri=isset($_GET['filtri'])?$_GET['filtri']:'';
+                if(count($filtri)>0){
+                    $targetTag=implode(',',$filtri);
+                }
+            }
+            if($targetTag && preg_match('/^\d+(,\d+)*$/',$targetTag)){
                 $query_valutazione='SELECT Valutazione.nome_utente as n ,datav, commento, tag, p_complessivo, p_acc_fisica, p_servizio_inclusione, tempestivita_burocratica, p_insegnamento, Iscrizione.corso AS corso Iscrizione.ateneo AS ateneo
                 FROM Valutazione
                 INNER JOIN Iscrizione ON Valutazione.nome_utente = Iscrizione.nome_utente
-                WHERE Iscrizione.classe = "'.$target.'" AND Valutazione.tag='.$targetTag.';';
+                WHERE Iscrizione.classe = "'.$target.'" AND Valutazione.tag IN ('.$targetTag.');';
             }else{
                 $query_valutazione='SELECT Valutazione.nome_utente as n ,datav, commento, tag, p_complessivo, p_acc_fisica, p_servizio_inclusione, tempestivita_burocratica, p_insegnamento, Iscrizione.corso AS corso, Iscrizione.ateneo AS ateneo
                 FROM Valutazione

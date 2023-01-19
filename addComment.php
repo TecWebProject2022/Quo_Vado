@@ -64,7 +64,7 @@ if( isset($_POST['submit'])){
             $query="SELECT nome_utente from Valutazione where nome_utente=\"".$username."\" AND classe_laurea=\"".$classe."\" AND tag=\"".$tag."\"";
             if($r=$db->ExecQueryAssoc($query)){
                 # aggiornamento commento
-                $update = "UPDATE Valutazione SET datav='" . $data. "',commento='" . $commento . "',tag=" . $tag . ",p_complessivo=" . $complessivo . ",p_acc_fisica=" . $accessibilita . ",p_servizio_inclusione=" . $inclusione . ",tempestivita_burocratica=" . $tempestivita . ",p_insegnamento=" . $insegnamento . " WHERE nome_utente='" . $username . "' AND classe_laurea='" . $classe . "'";
+                $update = "UPDATE Valutazione SET datav='" . $data. "',commento='" . $commento . "',tag=" . $tag . ",p_complessivo=" . $complessivo . ",p_acc_fisica=" . $accessibilita . ",p_servizio_inclusione=" . $inclusione . ",tempestivita_burocratica=" . $tempestivita . ",p_insegnamento=" . $insegnamento . " WHERE nome_utente='" . $username . "' AND classe_laurea='" . $classe . "' AND tag=" . $tag . ";";
 
                 if(!$db->Update($update)){
                     $errori.='<p class="error">Impossibile aggiornare il commento</p>';
