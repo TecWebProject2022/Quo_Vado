@@ -9,9 +9,9 @@
     <meta name="author" content="Matteo Umatche, Marco Brugin, Bianca, Valentina Caputo" />
     <meta name="viewport" content="width=device-width" />
     <link rel="stylesheet"  media= "screen" href="css/style.css"/> 
-    <link rel="stylesheet"  media= "screen and (max-device-width:1200px), only screen
-	and (max-width:1200px)" href="css/mini.css"/>
-   <!-- <link rel="stylesheet"  href="css/print.css" /> -->
+    <link rel="stylesheet"  media= "screen and (max-device-width:600px), only screen
+	and (max-width:600px)" href="css/mini.css"/>
+   <link rel="stylesheet"  href="css/print.css" /> 
 
    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
@@ -22,7 +22,7 @@
 <body onload="VerificaJS()">
     <header>
         <h1>Quo vado?</h1>
-		<h2>Sito di orientamento universitario</h2>
+		<h2>Fai la scelta giusta!</h2>
     </header>
     
     <a class="skip" href="#content">Vai al contenuto</a>
@@ -65,16 +65,18 @@
         <h1 class="area_riservata">Area Riservata</h1>
         <!--sezione cancellazione commenti-->
         <h2>Cancellazione commenti</h2>
-        <span><form id="formTrovaCommenti" action="area_admin.php" method="post" onsubmit="return OnCommentFind()">
+        <span><form id="formTrovaCommenti" action="area_admin.php" method="post" onsubmit="OnCommentFind(event)">
             <fieldset>
                 <legend>Trova i commenti da eliminare</legend>
                 <label for="com_utente">Utente:</label>
                 <span><input id="com_utente" name="com_utente" type="text" 
-                    data-msg-invalid="Il campo username non può contenere spazi e deve contenere da 4 a 40 caratteri alfanumerici (sono ammessi i seguenti caratteri: @ . _ - )"/></span>
+                    data-msg-invalid="Il campo username non può contenere spazi e deve contenere da 4 a 40 caratteri alfanumerici (sono ammessi i seguenti caratteri: @ . _ - )"
+                    data-msg-empty=""/></span>
 
                 <label for="com_classe">Classe di laurea:</label>
                 <span><input id="com_classe" name="com_classe" type="text" 
-                    data-msg-invalid="La classe di laurea non puo\' contenere spazi.Le classi di laurea vanno dalla classe L01 alla L43 e dalla LM01 alla LM94"/></span>
+                    data-msg-invalid="La classe di laurea non puo\' contenere spazi.Le classi di laurea vanno dalla classe L01 alla L43 e dalla LM01 alla LM94"
+                    data-msg-empty=""/></span>
 
                 <input type="submit" name="trova" value="trova"/>
                 <input type="reset" name="reset" value="cancella tutto"/>
@@ -87,7 +89,7 @@
         <!--sezione gestione corsi di laurea-->
         <h2>gestione corsi di studio</h2>
         <p id="aiuti_form">per aggiungere un corso di studi e' necessario riempire tutti i campi, per eliminarne uno bastano nome, classe di laurea e ateneo.</p>
-        <form id="formCorsi" action="area_admin.php" method="post">
+        <form id="formCorsi" action="area_admin.php" method="post" onsubmit="onFormSubmit(event)">
             <fieldset>
                 <legend>Aggiungi o elimina un corso di studi</legend>
                 
@@ -111,14 +113,15 @@
                 <span><select name="cor_accesso" id="cor_accesso" 
                     data-msg-invalid="Le modalita di accesso sono Accesso programmato,Accesso libero con prova,Accesso a numero chiuso,Accesso libero cronologico"
                     data-msg-empty="il campo accesso non puo essere vuoto">
+                        <option value="" disabled selected>Selezionare un'opzione</option>
                         <option value="Accesso programmato">Accesso programmato</option>
                         <option value="Accesso libero con prova">Accesso libero con prova</option>
                         <option value="Accesso a numero chiuso">Accesso a numero chiuso</option>
                         <option value="Accesso libero cronologico">Accesso libero cronologico</option>
                 </select></span>
 
-                <input type="submit" id="add_corso" name="add_corso" value="Aggiungi" onclick="return OnCourseAdd()"/>
-                <input type="submit" id="delete_corso" name="delete_corso" value="Elimina" onclick="return OnCourseDelete()"/>
+                <input type="submit" class="add-button" id="add_corso" name="add_corso" value="Aggiungi" />
+                <input type="submit" class="delete-button" id="delete_corso" name="delete_corso" value="Elimina" />
                 <input type="reset" id="reset" name="reset" value="Cancella tutto"/>
             </fieldset>
         </form>
