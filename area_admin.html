@@ -75,10 +75,10 @@
 
                 <label for="com_classe">Classe di laurea:</label>
                 <span><input id="com_classe" name="com_classe" type="text" 
-                    data-msg-invalid="La classe di laurea non puo\' contenere spazi.Le classi di laurea vanno dalla classe L01 alla L43 e dalla LM01 alla LM94"
+                    data-msg-invalid="La classe di laurea non puo' contenere spazi. Le classi di laurea vanno dalla classe L01 alla L43 e dalla LM01 alla LM94"
                     data-msg-empty=""/></span>
 
-                <input type="submit" name="trova" value="trova"/>
+                <input type="submit" class="submit"  name="trova" value="trova"/>
                 <input type="reset" name="reset" value="cancella tutto"/>
             </fieldset>
         </form></span>
@@ -120,8 +120,8 @@
                         <option value="Accesso libero cronologico">Accesso libero cronologico</option>
                 </select></span>
 
-                <input type="submit" class="add-button" id="add_corso" name="add_corso" value="Aggiungi" onclick="return OnCourseAdd(event)"/>
-                <input type="submit" class="delete-button" id="delete_corso" name="delete_corso" value="Elimina" onclick="return OnCourseDelete(event)"/>
+                <input type="submit"  class="submit"  id="add_corso" name="add_corso" value="Aggiungi" onclick="return OnCourseAdd(event)"/>
+                <input type="submit"  class="submit"  id="delete_corso" name="delete_corso" value="Elimina" onclick="return OnCourseDelete(event)"/>
                 <input type="reset" id="reset" name="reset" value="Cancella tutto"/>
             </fieldset>
         </form>
@@ -143,7 +143,7 @@
                 <label for="repeat"><span lang="en">Ripeti la Password: </span></label>
                 <span><input  value="" type="password" id="repeat" name="repepassword" placeholder="Ripeti la password" maxlength="20"                      
                     data-msg-empty="Il campo repeti password non può essere vuoto" /></span>   
-                <input type="submit" id="submit" name="salva" value="Salva"/>
+                <input type="submit"  class="submit" id="submit" name="salva" value="Salva"/>
                 <input type="reset" id="reset" name="reset" value="Cancella tutto"/>
             </fieldset>
         </form>

@@ -75,7 +75,7 @@ if($dbOK){
                         $formCommenti.='<label for="'.$i.'">'.$commento.'</label>';
                         $formCommenti.='<input type="checkbox" id="'.$i.'" name="commento[]" value="'.$commenti[$i][0].'-'.$commenti[$i][2].'-'.$commenti[$i][3].'"/>';
                     }
-                    $formCommenti.='<input type="submit" id="delete_commento" name="delete_commento" value="elimina commenti selezionati"/></fieldset></form>';
+                    $formCommenti.='<input type="submit" class="submit" id="delete_commento" name="delete_commento" value="elimina commenti selezionati"/></fieldset></form>';
                 }else{
                     $msgCommenti.='<p class="error">nessun commento</p>';
                 }
