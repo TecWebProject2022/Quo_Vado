@@ -399,6 +399,25 @@ QUESTIONARIO
     margin-top: 0;
   }
 
+/*
+================
+UNIVERSITA' E INCLUSIONE
+================
+*/
+
+#uni_inc{
+    padding-right: 30%;
+}
+
+aside #nota{
+    text-align: left;
+    font-size: 0.95em;
+}
+
+
+#barriere{
+    margin: 0.5em 0;
+}
 
 /*
 ================
