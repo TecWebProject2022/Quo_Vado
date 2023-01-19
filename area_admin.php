@@ -149,10 +149,10 @@ if($dbOK){
             if (!preg_match('/^(L|LM)[0-9]{2}$/',$classe)){
                 $msgCorso.='<li class="error">La classe di laurea non puo\' essere vuoto o contenere spazi.Le classi di laurea vanno dalla classe L01 alla L43 e dalla LM01 alla LM94</li>';
             }
-            if (!preg_match('/^[a-zA-Z\s]{1,50}$/',utf8_decode($ateneo))){
+            if (!preg_match('/^[a-zA-ZÀ-ÿ\s]{1,50}$/',$ateneo)){
                 $msgCorso.='<li class="error">Il nome dell\'ateneo non puo\' essere vuoto o contenere numeri o caratteri speciali</li>';
             }
-            if (!preg_match('/^[a-zA-Z\s]{1,80}$/',utf8_decode($nome))){
+            if (!preg_match('/^[a-zA-ZÀ-ÿ\s]{1,80}$/',$nome)){
                 $msgCorso.='<li class="error">Il nome del corso di laurea non puo\' essere vuoto o contenere numeri o caratteri speciali</li>';
             }
 
