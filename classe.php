@@ -64,14 +64,17 @@ $db=new Connection();
             }    
             #sezione commenti
             #filtro, con solo due elementi ma potenzialmente potrei averne n
-            $contenuto.='<form id="filtro" class="filter" action="'.$_SERVER['PHP_SELF'].'" method="get" >
+            $contenuto.='<form id="filtro" class="filter" action="classe.php?nclasse='.$classe.'" method="get" >
             <legend>Seleziona i commenti che vuoi visualizzare</legend>
                 <fieldset>
                     <input type="checkbox" name="filtri[]" id="commento_generale" name="commento_generale" value="1"/>
                     <label for="commento_generale">commento generale</label>
                     <input type="checkbox" name="filtri[]" id="inclusivita" name="inclusivita" value="2" />
                     <label for="inclusivita">inclusivita</label>
-                    <input type="submit" class="submit" name="filterTags" id="filter_button" value="filtra commenti">
+                    <input type="submit" class="submit" name="filterTags" id="filter_button" value="filtra commenti"/>
+
+                    <input type="hidden" name="nclasse" value="'.$target.'"/>
+                        <input type="hidden" name="area" value="'.$area.'"/>
                 </fieldset>
             </form>';
             # se ottengo tag (da filtro, al primo caricamento della pagina sara sempre false) allora la query chiedera solo le valutazioni corrispondenti
@@ -146,8 +149,8 @@ $db=new Connection();
                         <span><select name="tag" id="tag" data-msg-empty="Per favore, aiutaci a capire di cosa parla il tuo commento">
                             <option value="1">Inclusivita\'</option>
                             <option value="2">commento generale</option></select></span>
-                        <input type="hidden" name="classe" value="'.$target.'">
-                        <input type="hidden" name="area" value="'.$area.'">
+                        <input type="hidden" name="classe" value="'.$target.'"/>
+                        <input type="hidden" name="area" value="'.$area.'"/>
 
                         <input type="submit" class="submit"  name="submit" value="pubblica"/>
                         <input type="reset"  name="cancella" value="cancella"/>
