@@ -40,7 +40,7 @@ CONTENUTO
 */
 
 main h1 {
-    font-size: 3em;
+    font-size: 2em;
 }
 
 #menu_content{
@@ -425,6 +425,41 @@ aside #nota{
 #barriere{
     margin: 0.5em 0;
 }
+
+
+#fis+.problem{
+    background-image: linear-gradient(to bottom, rgba(255, 165, 0,0.7), rgba(214, 114, 0,1));
+}
+
+#fis+.problem+.solution{
+    background-image: linear-gradient(to bottom,rgba(13, 93, 112,0.7), rgba(22, 38, 54,1));
+}
+
+#eco+.problem{
+    background-image: linear-gradient(to bottom, rgba(255, 165, 0,0.7), rgba(214, 114, 0,1));
+}
+
+#eco+.problem+.solution{
+    background-image: linear-gradient(to bottom,rgba(13, 93, 112,0.7), rgba(22, 38, 54,1));
+}
+
+#psi+.problem{
+    background-image: linear-gradient(to bottom, rgba(255, 165, 0,0.7), rgba(214, 114, 0,1));
+}
+
+#psi+.problem+.solution{
+    background-image: linear-gradient(to bottom,rgba(13, 93, 112,0.7), rgba(22, 38, 54,1));
+}
+
+#soc+.problem{
+    background-image: linear-gradient(to bottom, rgba(255, 165, 0,0.7), rgba(214, 114, 0,1));
+}
+
+#soc+.problem+.solution{
+    background-image: linear-gradient(to bottom,rgba(13, 93, 112,0.7), rgba(22, 38, 54,1));
+}
+
+
 
 /**************************************************************
 Parità di genere

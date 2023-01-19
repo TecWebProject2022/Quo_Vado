@@ -539,7 +539,7 @@ q{
 
 section h2, article h2{
     font-size: 2em;
-    line-height: 1.5;
+    line-height: 1.5em;
     color: #0D5D70;
     margin-bottom: 1em;
 }
@@ -1310,7 +1310,7 @@ img[src="css/css_images/struzzo.png"]{
     margin: 0.2em 0em;
     font-family: 'Brush Script MT',cursive;
     font-size: 1.8em;
-    line-height: 1.5;
+    line-height: 1.5em;
     text-align: center;
 }
 
