@@ -1573,6 +1573,12 @@ Inclusivi per scelta
     margin-top: 3%;
 }
 
+@media screen and (max-width:1200px) {
+    #return{
+        margin-right: 2.5%;
+    }
+}
+
 #return a:link{
     padding: 1em;
     border-radius: 20px;

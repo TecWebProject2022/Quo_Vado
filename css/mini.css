@@ -40,7 +40,7 @@ CONTENUTO
 */
 
 main h1 {
-    font-size: 2em;
+    font-size: 3em;
 }
 
 #menu_content{
@@ -66,7 +66,7 @@ article div{
 
 
 section h2, article h2{
-    font-size: 1.4em;
+    font-size: 1.5em;
     margin-bottom: 0.5em;
 }
 
@@ -87,7 +87,11 @@ main{
 
 
 article li, section li{
-    font-size: 1em;
+    font-size: 0.95em;
+}
+
+article p{
+    font-size: 0.95em;
 }
 
 
@@ -417,6 +421,14 @@ aside #nota{
 
 #barriere{
     margin: 0.5em 0;
+}
+
+/**************************************************************
+Parità di genere
+**************************************************************/
+
+#women_voices{
+    display: none;
 }
 
 /*
