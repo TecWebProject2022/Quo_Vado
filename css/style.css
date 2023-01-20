@@ -22,11 +22,16 @@
     --tittlebg: #0D5D70;
     --bgcolor: #FFFFFF;
     --txtcolor: #000000;
-    --contentbgcolor: ;
-    --contentcolor: ;
     --linkcolor: #FFFFFF;
     --visitedcolor: #E36600;
     --blocks: #548E9C;
+
+    --footerbg: #162636;
+    --footertxt: #FFFEF4;
+    --footerlinkbg: #0D5D70;
+    --footerlink: #FFFEF4;
+    --footerlinkvisitedbg: #162636;
+    --footerlinkvisited: #D67200;
 }
 
 html,body{
@@ -2011,17 +2016,55 @@ FOOTER
 ================
 */
 footer {
-    background-color: var(--breadcolor);
-    color: #FFFFFF;
+    background-color: var(--footerbg);
+    color: var(--footertxt);
     text-align: center;
-    padding: 1.0em;  
-    border: 1px solid var(--contentxtcolor);
+    padding: 2em 0;  
+    font-size: 0.8em;
 }
 
 footer a {
-    color: var(--linkcolor);
+    color: var(--footerlink);
+    background-color: var(--footerlinkbg);
+    font-size: 1em;
+    padding: 0.25em;
+    border-radius: 2px;
 }
 
-footer>a:visited {
-    color: var(--visitedcolor);
+footer a:visited {
+    color: var(--footerlinkvisited);
+    background-color: var(--footerlinkvisitedbg);
+}
+#riferimenti{
+    float: left;
+    width: 40%;
+    margin-left: 7%;
+}
+
+#credits{
+    float: right;
+    width: 40%;
+    margin-right: 7%;
+}
+
+#credits ul{
+    list-style: none;
+}
+
+#licenza{
+    clear: both;
+    padding: 3em 0.5em 0;
+}
+
+#licenza img{
+    width: 5em;
+}
+
+@media screen and (max-width:768px){
+    #credits, #riferimenti{
+        float: none;
+        margin: 0;
+        width: auto;
+        margin-top: 2em;
+    }
 }
