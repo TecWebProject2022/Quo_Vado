@@ -597,15 +597,6 @@ article li, section li{
     padding: 0.2em;
 }
 
-ins{
-    text-decoration: none;
-    font-size: larger;
-}
-
-del{
-    font-size: smaller;
-}
-
 @media screen and (max-width:1200px) {
     section {
         margin-right: 5%;
