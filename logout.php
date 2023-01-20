@@ -3,6 +3,7 @@ session_start();
 unset($_SESSION['user']); 
 unset($_SESSION['time']);
 unset($_SESSION['info']);
+unset($_SESSION['errorf']);
 unset($_SESSION['LAUREA']);
 unset($_SESSION['data']);
 unset($_SESSION['errori1']);

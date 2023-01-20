@@ -433,7 +433,7 @@ if(isset($_POST['submit1']) && check()){
  $errori1.="</ul>";      
 }
 if(isset($_POST['submit3']) && check()){
-   $errorf='';
+   $errorf='<ul class="error">';
    $_SESSION['errorf']='';
    $commento=PulisciInput($_POST['insertcommento']);
    $classlaurea=$_POST['classel'];
