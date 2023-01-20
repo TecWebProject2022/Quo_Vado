@@ -111,10 +111,6 @@ if($res5=$db->ExecQueryAssoc($query6)){
     $contenuto.=' <input type="submit" class="submit" name="submit4" value="Avanti"/> </fieldset>
     </form>';
     $contenuto.="<span id=\"ins\"></span>";
-    if(isset($_SESSION['error'])){
-        $contenuto=str_replace('<span id="error1"></span>',$_SESSION['error'],$contenuto);
-        $_SESSION['error']='';
-    }   
 }
 else{
     $contenuto.="<p class=\"error\">Siamo spaicenti ma non è  presente alcuna classe di laurea</p>";
@@ -285,7 +281,7 @@ if(isset($_POST['submit5']) && check()){
         $db=new Connection();
         $dbOK=$db->Connect();
    if($dbOK){
-        $check=" SELECT * FROM Iscrizione where ateneo=\"".$corso[0]."\" && classe=\"".$classe."\" && corso=\"".$corso[1]."\" && nome_utente=\"".$_SESSION['user']."\" && datai='".$datai."';";
+        $check=" SELECT * FROM Iscrizione where  classe=\"".$classe."\" && nome_utente=\"".$_SESSION['user']."\";";
         if($resc=$db->ExecQueryNum($check)){
             $_SESSION['error']='<p class="error">Iscrizione già inserita</p>';
             header('Location:area_utente.php#aggiscrizione'); 
@@ -506,8 +502,12 @@ if(!isset($_SESSION['vecchia'])){
 if(!isset($_SESSION['nuova'])){
     $_SESSION['nuova']='';
 }
-
+if(!isset($_SESSION['error'])){
+    $_SESSION['error']='';
+}   
+echo $_SESSION['error'];
 $db->Disconnect();
+$contenuto=str_replace("<span id=\"ins\"></span>",$_SESSION['error'],$contenuto);
 $contenuto=str_replace("<areacom/>",$commento,$contenuto);
 $contenuto=str_replace("</errorform>",$_SESSION['errorf'],$contenuto);
 $contenuto=str_replace("</commenterror>",$_SESSION['commenti'],$contenuto);
