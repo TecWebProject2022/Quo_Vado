@@ -130,19 +130,19 @@ if($res3=$db->ExecQueryNum($query3)){
     for($i=0;$i<count($res3);$i++){
             /*flexbox interna*/
             $contenuto.='<li class="blocco_commento"><label><span><input type="checkbox" id="'.$i.'" name="commento[]" value="'.$i.'" /></span>
-            <span class="container_daticomm highlight">Data di emissione: '.date("d/m/Y",strtotime($res3[$i][1])).'</span>
-            <span class="container_daticomm" >Classe di laurea: '.$res3[$i][0].'</span>
-            <span class="container_daticomm highlight">Commento: '.$res3[$i][2].'</span>
-            <span class="container_daticomm">Valutazione complessiva:  '.$res3[$i][3].'</span>
-            <span class="container_daticomm highlight">Valutazione accessibilità fisica:  '.$res3[$i][4].'</span>
-            <span class="container_daticomm">Valutazione servizio inclusione:   '.$res3[$i][5].'</span>
-            <span class="container_daticomm highlight">Valutazione tempestività burocratica:  '.$res3[$i][6].'</span>
-            <span class="container_daticomm">Valutazione qualità di insegnamento:  '.$res3[$i][7].'</span>';
+            <span class="highlight">Data di emissione: '.date("d/m/Y",strtotime($res3[$i][1])).'</span>
+            <span>Classe di laurea: '.$res3[$i][0].'</span>
+            <span class="highlight">Commento: '.$res3[$i][2].'</span>
+            <span>Valutazione complessiva:  '.$res3[$i][3].'</span>
+            <span class="highlight">Valutazione accessibilità fisica:  '.$res3[$i][4].'</span>
+            <span>Valutazione servizio inclusione:   '.$res3[$i][5].'</span>
+            <span class="highlight">Valutazione tempestività burocratica:  '.$res3[$i][6].'</span>
+            <span>Valutazione qualità di insegnamento:  '.$res3[$i][7].'</span>';
             if($res3[$i][8]==1){
-                $contenuto.="<span class=\"tipo_valutazione\">Valutazione riguardante l'inclusività</span></label></li>";
+                $contenuto.="<span class='tipo_valutazione'>Valutazione riguardante l'inclusività</span></label></li>";
             }
             else{
-                $contenuto.="<span class=\"tipo_valutazione\">Valutazione riguardante l'ambito generale </span></label></li>";
+                $contenuto.="<span class='tipo_valutazione'>Valutazione riguardante l'ambito generale </span></label></li>";
             }      
     }
 
@@ -219,7 +219,7 @@ if($res5=$db->ExecQueryAssoc($query5)){
 $contenuto.='<h2 class="titles_area_classi">Cambio password</h2>';
 $contenuto.='<form id="form_passw" action="area_utente.php" method="post" >';
 $contenuto.='<fieldset><legend class="field_legend">Cambio password</legend>
-<ul class="none">
+<ul class="none" id="changePw">
 <li><label for="oldpassword"><span lang="en">Immetti la tua vecchia password: </span></label><span><input  value="<old>" type="password" id="oldpassword" name="Vecchiapassword" placeholder="Immetti la tua vecchia password" maxlength="20"                      
     data-msg-invalid="Il campo password non può contenere spazzi e deve contenere da 4 a 20 caratteri alfanumerici (sono ammessi i seguenti caratteri: @ . _ - ), controlla e riprova"
     data-msg-empty="Il campo vecchia password non può essere vuoto" /></span></li>

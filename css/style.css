@@ -1944,6 +1944,7 @@ AREA UTENTE
     list-style: none;
 }
 
+/*
 .container_daticomm {
     display: flex;
     flex-wrap: wrap;
@@ -1966,6 +1967,7 @@ AREA UTENTE
     margin: 1em;
     text-align: center;
 }
+*/
 
 /*AGGIUNGI COMMENTO*/
 
