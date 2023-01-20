@@ -66,7 +66,7 @@ if($dbOK){
                 if($commenti=$db->ExecQueryNum($query_commenti)){
                     $formCommenti='<form id="formEliminaCommenti" action="area_admin.php" method="post" onsubmit="return OnCommentDelete()"><fieldset><legend class="field_legend">Seleziona i commenti da eliminare</legend>';
                     for($i=0;$i<count($commenti);$i++){
-                        $commento='<span > utente: '.$commenti[$i][0].'| classe di laurea: '.$commenti[$i][2].'| data commento:'.date("d-m-Y",strtotime($commenti[$i][1]));
+                        $commento='<span class="blocco_commento"> utente: '.$commenti[$i][0].'| classe di laurea: '.$commenti[$i][2].'| data commento:'.date("d-m-Y",strtotime($commenti[$i][1]));
                         $commento.='<p>commento :'.$commenti[$i][4].'</p>';
                         $commento.='<dl class="container_daticomm">
                             <dt class="highlight">Punteggio complessivo:</dt><dd class="highlight"> '.$commenti[$i][5].' </dd>
@@ -76,8 +76,9 @@ if($dbOK){
                             <dt class="highlight">Punteggio insegnamento:</dt><dd class="highlight"> '.$commenti[$i][9].' </dd>
                         </dl><p class="tipo_valutazione">'.$tags[$commenti[$i][3]].'</p></span>';
 
-                        $formCommenti.='<label for="'.$i.'">'.$commento.'</label>';
                         $formCommenti.='<input type="checkbox" id="'.$i.'" name="commento[]" value="'.$commenti[$i][0].'-'.$commenti[$i][2].'-'.$commenti[$i][3].'"/>';
+                        $formCommenti.='<label for="'.$i.'">'.$commento.'</label>';
+                        
                     }
                     $formCommenti.='<input type="submit" class="submit" id="delete_commento" name="delete_commento" value="elimina commenti selezionati"/></fieldset></form>';
                 }else{
