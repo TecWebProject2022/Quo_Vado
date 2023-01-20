@@ -121,7 +121,7 @@ $contenuto.="<h2 id=\"commenti\"  class='titles_area_classi'>Commenti rilasciati
 $query3="Select classe_laurea,datav,commento,p_complessivo,p_acc_fisica,p_servizio_inclusione,tempestivita_burocratica,p_insegnamento,tag FROM Valutazione WHERE nome_utente=\"$user\"";
              
 if($res3=$db->ExecQueryNum($query3)){
-                
+
     $contenuto.="<label id=\"cancellacomm\" class=\"formdesc\">Seleziona un commento e clicca &quot;cancella&quot; per eliminarlo</label>";
     $contenuto.='<form id="form_cancellacomm" aria-describedby="cancellacomm" action="area_utente.php" method="post" onsubmit="return OnDelete()">
     <fieldset><legend class="field_legend">Commenti</legend>';
