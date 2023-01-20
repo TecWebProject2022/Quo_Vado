@@ -65,7 +65,7 @@
     <main id="content">
         <h1 class="area_riservata">Area Riservata</h1>
         <!--sezione cancellazione commenti-->
-        <h2 class="titles_UtenteClasse">Cancellazione commenti</h2>
+        <h2 class="titles_area_classi">Cancellazione commenti</h2>
         <span><form id="formTrovaCommenti" action="area_admin.php" method="post" onsubmit="return OnCommentFind(event)">
             <fieldset>
                 <legend>Trova i commenti da eliminare</legend>
@@ -88,8 +88,8 @@
         <msgCommenti_delete/>
         
         <!--sezione gestione corsi di laurea-->
-        <h2 class="titles_UtenteClasse">Gestione corsi di studio</h2>
-        <p id="aiuti_form">per aggiungere un corso di studi e' necessario riempire tutti i campi, per eliminarne uno bastano nome, classe di laurea e ateneo.</p>
+        <h2 class="titles_area_classi">Gestione corsi di studio</h2>
+        <p class="formdesc">Per aggiungere un corso di studi e' necessario riempire tutti i campi, per eliminarne uno bastano nome, classe di laurea e ateneo.</p>
         <form id="formCorsi" action="area_admin.php" method="post" >
             <fieldset>
                 <legend>Aggiungi o elimina un corso di studi</legend>
@@ -129,7 +129,7 @@
         <msgCorsi/>
         
         <!--sezione cambio password-->
-        <h2 id="CambioPw" class="titles_UtenteClasse">Cambia Password</h2>
+        <h2 id="CambioPw" class="titles_area_classi">Cambia Password</h2>
         <form id="form_passw" action="area_admin.php" method="post" >
             <fieldset>
                 <legend>Cambio password</legend>

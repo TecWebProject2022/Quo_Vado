@@ -1862,7 +1862,7 @@ AREA UTENTE
 ================
 */
 
-.titles_UtenteClasse {
+.titles_area_classi {
     background-color: #FFFDE8;
     padding: 1em;
     margin: 1.3em 15% 1.3em 15%;
@@ -1949,6 +1949,7 @@ AREA UTENTE
 }
 
 .container_daticomm {
+    display: flex;
     flex-wrap: wrap;
     align-items: stretch;
     font-size: 1.2em;
