@@ -216,6 +216,8 @@ if($res5=$db->ExecQueryAssoc($query5)){
    
 }
 }
+
+    //CAMBIO PASSWORD
 $contenuto.='<h2 class="titles_Utente">Cambio password</h2>';
 $contenuto.='<form id="form_passw" action="area_utente.php" method="post" >';
 $contenuto.='<fieldset><legend class="field_legend">Cambio password</legend>
