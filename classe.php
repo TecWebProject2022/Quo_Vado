@@ -8,6 +8,10 @@ $contenuto='';
 $area='';
 $classe='';
 $targetTag='';
+$tags=array(
+    1=>"commento generale",
+    2=>"commento riguardante l'inclusivita"
+);
 
 $db=new Connection();
     $dbOK=$db->Connect();
@@ -17,7 +21,7 @@ $db=new Connection();
             $area=$classi[0]['area_disciplinare'];
             $classe=$target.'-'.$classi[0]['denominazione'];
             $contenuto.='<h1 id="title">'.$target.' - '.$classi[0]['denominazione'].'</h1>';
-            $contenuto.='<h2 class="titles_UtenteClasse">Descrizione</h2>';
+            $contenuto.='<h2 class="titles_area_classi">Descrizione</h2>';
             $contenuto.='<ul id="identikit_corso"><li id="descrizione"><p id="dettagliClasse">Area disciplinare: '.$classi[0]['area_disciplinare'].' | Gruppo disciplinare: '.$classi[0]['gruppo_disciplinare'].' 
             | Tipologia: '.$classi[0]['durata'].'</p>';
             $contenuto.='<p id="illustrazioneClasse">'.$classi[0]['illustrazione'].'</p></li>'; #temporaneo, necessario inserire descrizioni nel db
@@ -44,7 +48,7 @@ $db=new Connection();
             $query_corso_di_studio="SELECT ateneo,nome,accesso,link FROM CorsodiStudio WHERE classe_laurea=\"$target\";";
             if($corsi=$db->ExecQueryAssoc($query_corso_di_studio)){
                 #display corsi
-                $contenuto.='<h2 class="titles_UtenteClasse">I corsi di studio di questa classe di laurea</h2>';
+                $contenuto.='<h2 class="titles_area_classi">I corsi di studio di questa classe di laurea</h2>';
                 $contenuto.='<ul id="corsi">';
                 foreach($corsi as $c){
                     $contenuto.='<li><a href="'.$c['link'].'"><strong>'.$c['nome'].'</strong></a> | '.$c['accesso'];
@@ -97,7 +101,7 @@ $db=new Connection();
             }
             #stampa commenti
             if($valutazioni=$db->ExecQueryAssoc($query_valutazione)){
-                $contenuto.='<h2 class="titles_UtenteClasse">I commenti degli studenti di questa classe di laurea</h2>';
+                $contenuto.='<h2 class="titles_area_classi">I commenti degli studenti di questa classe di laurea</h2>';
                 $contenuto.='<ul id="listaCommenti">';
                 foreach($valutazioni as $v){
                     $contenuto.='<li id="commento"><strong>'.$v['n'].' | '.date("d-m-Y",strtotime($v['datav']))." | ".$v['corso']."-".$v['ateneo']."</strong><p id=testoCommento>".$v['commento']."</p>";
@@ -106,7 +110,8 @@ $db=new Connection();
                             <li>Accessibilità fisica: ".$v['p_acc_fisica']." | </li>
                             <li>Servizio inclusione: ".$v['p_servizio_inclusione']." | </li>
                             <li>Tempestività burocratica: ".$v['tempestivita_burocratica']." | </li>
-                            <li>Insegnamento: ".$v['p_insegnamento']."</li></ul></li>";
+                            <li>Insegnamento: ".$v['p_insegnamento']."</li>
+                            <li>Tag: ".$tags[$v['tag']]."</li></ul></li>";
                 }
                 
             }
@@ -120,7 +125,7 @@ $db=new Connection();
                 $contenuto.='<p class="invito"><a href="registrazione_utente.php">Iscriviti</a> o <a href="login.php">Accedi</a> per lasciare un commento!</p>';
             }
             else{
-                $query_iscrizione='SELECT nome_utente FROM Iscrizione WHERE classe = "'.$target.'" AND nome_utente="'.pulisciInput($_SESSION['user']).'";';
+                $query_iscrizione='SELECT nome_utente,corso FROM Iscrizione WHERE classe = "'.$target.'" AND nome_utente="'.pulisciInput($_SESSION['user']).'";';
                 if($iscritto=$db->ExecQueryAssoc($query_iscrizione)){
                     $erroriNuovoCommento=isset($_GET['erroriCommenti'])?$_GET['erroriCommenti']:'';
                     $contenuto.='<form id="formCommento" action="addComment.php" method="post" onsubmit=" return Validate(event)">
@@ -149,6 +154,7 @@ $db=new Connection();
                         <span><select name="tag" id="tag" data-msg-empty="Per favore, aiutaci a capire di cosa parla il tuo commento">
                             <option value="1">Inclusivita\'</option>
                             <option value="2">commento generale</option></select></span>
+                        
                         <input type="hidden" name="classe" value="'.$target.'"/>
                         <input type="hidden" name="area" value="'.$area.'"/>
 

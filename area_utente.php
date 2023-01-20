@@ -57,7 +57,7 @@ if($dbOK){
 
     //DATI PERSONALI//
     if($res1=$db->ExecQueryAssoc($query1)){
-        $contenuto.="<h2 class='titles_Utente'>Dati personali</h2>";
+        $contenuto.="<h2 class='titles_area_classi'>Dati personali</h2>";
         $contenuto.="<dl id='container_info'>";
         $contenuto.="<dt class='highlight'>Nome utente: </dt><dd class='highlight'>".$res1[0]['nome_utente']."</dd>";
         $contenuto.="<dt>Nome: </dt><dd>".$res1[0]['nome']."</dd>";
@@ -74,7 +74,7 @@ if($dbOK){
     $query2="Select ateneo, classe,corso, datai, dataf,punteggio_scuola_provenienza  from Iscrizione where nome_utente=\"$user\"";
     //ISCRIZIONI
         if($res2=$db->ExecQueryAssoc($query2)){
-            $contenuto.="<h2 id='iscrizioni' class='titles_Utente'>Iscrizioni</h2> ";
+            $contenuto.="<h2 id='iscrizioni' class='titles_area_classi'>Iscrizioni</h2> ";
             $contenuto.="<ul id='container_iscrizioni'>";
             foreach($res2 as $i){
                 $contenuto.="<li><dl class=\"container_iscrizione\">";
@@ -88,7 +88,6 @@ if($dbOK){
             }
             $contenuto.="</ul>";
 
-    //COMMENTI RILASCIATI
             $query3="Select classe_laurea,datav,commento,p_complessivo,p_acc_fisica,p_servizio_inclusione,tempestivita_burocratica,p_insegnamento,tag FROM Valutazione WHERE nome_utente=\"$user\"";
             
         }
@@ -98,7 +97,7 @@ if($dbOK){
 
 $query6="Select num_classe FROM ClassediLaurea";
 if($res5=$db->ExecQueryAssoc($query6)){
-    $contenuto.="<h2 id=\"aggiscrizione\" class=\"titles_utente\">Inserisci una nuova iscrizione</h2>";
+    $contenuto.="<h2 id=\"aggiscrizione\"  class='titles_area_classi'>Inserisci una nuova iscrizione</h2>";
     $contenuto.='<span id="error"></span>';
     $contenuto.="<label id=\"descseclect\" class=\"formdesc\"  >Qui ti è consentito inserire una nuova iscrizione, fai molta attenzione ai passaggi</label>";
     $contenuto.='<form  aria-describedby="descseclect" id="selectclass" action="area_utente.php#aggiscrizione" method="post" ><fieldset class="container"><legend class="field_legend">Seleziona Classe</legend>';
@@ -115,7 +114,10 @@ if($res5=$db->ExecQueryAssoc($query6)){
 else{
     $contenuto.="<p class=\"error\">Siamo spaicenti ma non è  presente alcuna classe di laurea</p>";
 }
-$contenuto.="<h2 id=\"commenti\" class=\"titles_utente\">Commenti rilasciati</h2>";
+
+
+    //COMMENTI RILASCIATI
+$contenuto.="<h2 id=\"commenti\"  class='titles_area_classi'>Commenti rilasciati</h2>";
 $query3="Select classe_laurea,datav,commento,p_complessivo,p_acc_fisica,p_servizio_inclusione,tempestivita_burocratica,p_insegnamento,tag FROM Valutazione WHERE nome_utente=\"$user\"";
              
 if($res3=$db->ExecQueryNum($query3)){
@@ -163,7 +165,7 @@ if($res5=$db->ExecQueryAssoc($query5)){
     }
     $classi.="</select></li>";
 
-$contenuto.='<h2 id="aggiungi" class="titles_Utente">Aggiungi un commento</h2>';
+$contenuto.='<h2 id="aggiungi" class="titles_area_classi">Aggiungi un commento</h2>';
 $contenuto.='<label id="aggiungi_commento" class="formdesc">Ti è consentito lasciare un solo commento per ogni ambito delle classe di laurea per le quali ti sei dichiarato iscritto  e il contenuto testuale del 
 commento dovrà contenere da 10 a 200 caratteri alfanumerici (sono ammessi i seguenti caratteri: @ . _ - )</label>';
 
@@ -212,7 +214,9 @@ if($res5=$db->ExecQueryAssoc($query5)){
    
 }
 }
-$contenuto.='<h2 class="titles_Utente">Cambio password</h2>';
+
+    //CAMBIO PASSWORD
+$contenuto.='<h2 class="titles_area_classi">Cambio password</h2>';
 $contenuto.='<form id="form_passw" action="area_utente.php" method="post" >';
 $contenuto.='<fieldset><legend class="field_legend">Cambio password</legend>
 <ul class="none">
@@ -519,7 +523,7 @@ echo $content;
 
 /*
 $contenuto.="<aside>
-                <h2 class='titles_Utente'>Legenda valutazione</h2>
+                <h2 class="titles_area_classi">Legenda valutazione</h2>
                 <p>Ogni utente può esprime un giudizio con un valore da 1 a 5 sui seguenti ambiti riguardanti una classe di laurea</p>
                     <dl>
                         <dt>Complessiva: </dt>
