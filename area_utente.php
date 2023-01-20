@@ -131,7 +131,7 @@ if($res3=$db->ExecQueryNum($query3)){
     $contenuto.="<ul id=\"commrilasc\">";
     for($i=0;$i<count($res3);$i++){
             /*flexbox interna*/
-            $contenuto.='<li class="blocco_commento"><span><input type="checkbox" id="'.$i.'" name="commento[]" value="'.$i.'" /></span>
+            $contenuto.='<li class="blocco_commento"><label><span><input type="checkbox" id="'.$i.'" name="commento[]" value="'.$i.'" /></span>
             <dl class="container_daticomm"><dt class="highlight">Data di emissione:</dt> <dd class="highlight">'.date("d/m/Y",strtotime($res3[$i][1])).'</dd>
             <dt>Classe di laurea: </dt> <dd>'.$res3[$i][0].'</dd>
             <dt class="highlight">Commento:</dt> <dd class="highlight">'.$res3[$i][2].'</dd>
@@ -141,10 +141,10 @@ if($res3=$db->ExecQueryNum($query3)){
             <dt class="highlight">Valutazione tempestività burocratica: </dt> <dd class="highlight">'.$res3[$i][6].'</dd>
             <dt>Valutazione qualità di insegnamento: </dt> <dd>'.$res3[$i][7].'</dd></dl>';
             if($res3[$i][8]==1){
-                $contenuto.="<p class=\"tipo_valutazione\">Valutazione riguardante l'inclusività</p></li>";
+                $contenuto.="<p class=\"tipo_valutazione\">Valutazione riguardante l'inclusività</p></label></li>";
             }
             else{
-                $contenuto.="<p class=\"tipo_valutazione\">Valutazione riguardante l'ambito generale </p></li>";
+                $contenuto.="<p class=\"tipo_valutazione\">Valutazione riguardante l'ambito generale </p></label></li>";
             }      
     }
 
