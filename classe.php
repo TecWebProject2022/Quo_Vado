@@ -116,11 +116,12 @@ $db=new Connection();
                 
             }
             else{
-                $errori.="<p class='error'>Opss, si è verficato un errore di connessione: impossibile caricare i commenti. Per favore, riprova più tardi</p>";
+                $errori.="<p class='error'>Nessun commento presente per il filtro selezionato</p>";
             }
             #aggiunta commento
             #controllo se sono in presenza di un utente loggato
             session_start();
+            $contenuto.='<error/>';
             if(!isset($_SESSION['user'])){
                 $contenuto.='<p class="invito"><a href="registrazione_utente.php">Iscriviti</a> o <a href="login.php">Accedi</a> per lasciare un commento!</p>';
             }
