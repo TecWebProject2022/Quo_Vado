@@ -91,13 +91,13 @@ $db=new Connection();
             if($targetTag && preg_match('/^\d+(,\d+)*$/',$targetTag)){
                 $query_valutazione='SELECT Valutazione.nome_utente as n ,datav, commento, tag, p_complessivo, p_acc_fisica, p_servizio_inclusione, tempestivita_burocratica, p_insegnamento, Iscrizione.corso AS corso, Iscrizione.ateneo AS ateneo
                 FROM Valutazione
-                INNER JOIN Iscrizione ON Valutazione.nome_utente = Iscrizione.nome_utente
-                WHERE Iscrizione.classe = "'.$target.'" AND tag IN ('.$targetTag.');';
+                INNER JOIN Iscrizione ON Valutazione.nome_utente = Iscrizione.nome_utente and Valutazione.classe_laurea=Iscrizione.classe
+                WHERE Valutazione.classe_laurea = "'.$target.'" AND tag IN ('.$targetTag.');';
             }else{
                 $query_valutazione='SELECT Valutazione.nome_utente as n ,datav, commento, tag, p_complessivo, p_acc_fisica, p_servizio_inclusione, tempestivita_burocratica, p_insegnamento, Iscrizione.corso AS corso, Iscrizione.ateneo AS ateneo
                 FROM Valutazione
-                INNER JOIN Iscrizione ON Valutazione.nome_utente = Iscrizione.nome_utente
-                WHERE Iscrizione.classe = "'.$target.'";';
+                INNER JOIN Iscrizione ON Valutazione.nome_utente = Iscrizione.nome_utente and Valutazione.classe_laurea=Iscrizione.classe
+                WHERE Valutazione.classe_laurea = "'.$target.'";';
             }
             #stampa commenti
             if($valutazioni=$db->ExecQueryAssoc($query_valutazione)){
