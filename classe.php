@@ -8,6 +8,10 @@ $contenuto='';
 $area='';
 $classe='';
 $targetTag='';
+$tags=array(
+    1=>"commento generale",
+    2=>"commento riguardante l'inclusivita"
+);
 
 $db=new Connection();
     $dbOK=$db->Connect();
@@ -106,7 +110,8 @@ $db=new Connection();
                             <li>Accessibilità fisica: ".$v['p_acc_fisica']." | </li>
                             <li>Servizio inclusione: ".$v['p_servizio_inclusione']." | </li>
                             <li>Tempestività burocratica: ".$v['tempestivita_burocratica']." | </li>
-                            <li>Insegnamento: ".$v['p_insegnamento']."</li></ul></li>";
+                            <li>Insegnamento: ".$v['p_insegnamento']."</li>
+                            <li>Tag: ".$tags[$v['tag']]."</li></ul></li>";
                 }
                 
             }
@@ -120,7 +125,7 @@ $db=new Connection();
                 $contenuto.='<p class="invito"><a href="registrazione_utente.php">Iscriviti</a> o <a href="login.php">Accedi</a> per lasciare un commento!</p>';
             }
             else{
-                $query_iscrizione='SELECT nome_utente FROM Iscrizione WHERE classe = "'.$target.'" AND nome_utente="'.pulisciInput($_SESSION['user']).'";';
+                $query_iscrizione='SELECT nome_utente,corso FROM Iscrizione WHERE classe = "'.$target.'" AND nome_utente="'.pulisciInput($_SESSION['user']).'";';
                 if($iscritto=$db->ExecQueryAssoc($query_iscrizione)){
                     $erroriNuovoCommento=isset($_GET['erroriCommenti'])?$_GET['erroriCommenti']:'';
                     $contenuto.='<form id="formCommento" action="addComment.php" method="post" onsubmit=" return Validate(event)">
@@ -149,6 +154,7 @@ $db=new Connection();
                         <span><select name="tag" id="tag" data-msg-empty="Per favore, aiutaci a capire di cosa parla il tuo commento">
                             <option value="1">Inclusivita\'</option>
                             <option value="2">commento generale</option></select></span>
+                        
                         <input type="hidden" name="classe" value="'.$target.'"/>
                         <input type="hidden" name="area" value="'.$area.'"/>
 
