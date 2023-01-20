@@ -1051,7 +1051,7 @@ CLASSE DI LAUREA
     margin: 2em 15% 2em 15%;
 }
 
-#commento {
+.commento {
     background-color: #ecebeb;
     padding: 1.5em;
     border-left: 5px solid #093e4b;
@@ -1059,11 +1059,11 @@ CLASSE DI LAUREA
     list-style: none;
 }
 
-#valutazioneCommento {
+.valutazioneCommento {
     margin-top: 0.8em;
 }
 
-#valutazioneCommento li {
+.valutazioneCommento li {
     display: inline;
 }
 

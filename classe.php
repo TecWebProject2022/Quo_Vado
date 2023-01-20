@@ -68,12 +68,12 @@ $db=new Connection();
             }    
             #sezione commenti
             #filtro, con solo due elementi ma potenzialmente potrei averne n
-            $contenuto.='<form id="filtro" class="filter" action="classe.php?nclasse='.$classe.'" method="get" >
+            $contenuto.='<form id="filtro" class="filter" action="classe.php?nclasse='.$target.'" method="get" >
+            <fieldset>
             <legend>Seleziona i commenti che vuoi visualizzare</legend>
-                <fieldset>
-                    <input type="checkbox" name="filtri[]" id="commento_generale" name="commento_generale" value="1"/>
+                    <input type="checkbox" name="filtri[]" id="commento_generale"  value="1"/>
                     <label for="commento_generale">commento generale</label>
-                    <input type="checkbox" name="filtri[]" id="inclusivita" name="inclusivita" value="2" />
+                    <input type="checkbox" name="filtri[]" id="inclusivita"  value="2" />
                     <label for="inclusivita">inclusivita</label>
                     <input type="submit" class="submit" name="filterTags" id="filter_button" value="filtra commenti"/>
 
@@ -104,8 +104,8 @@ $db=new Connection();
                 $contenuto.='<h2 class="titles_area_classi">I commenti degli studenti di questa classe di laurea</h2>';
                 $contenuto.='<ul id="listaCommenti">';
                 foreach($valutazioni as $v){
-                    $contenuto.='<li id="commento"><strong>'.$v['n'].' | '.date("d-m-Y",strtotime($v['datav']))." | ".$v['corso']."-".$v['ateneo']."</strong><p id=testoCommento>".$v['commento']."</p>";
-                    $contenuto.='<ul id="valutazioneCommento">
+                    $contenuto.='<li class="commento"><strong>'.$v['n'].' | '.date("d-m-Y",strtotime($v['datav']))." | ".$v['corso']."-".$v['ateneo']."</strong><p class=\"testoCommento\">".$v['commento']."</p>";
+                    $contenuto.='<ul class="valutazioneCommento">
                             <li>Complessivo: '.$v['p_complessivo']." | </li>
                             <li>Accessibilità fisica: ".$v['p_acc_fisica']." | </li>
                             <li>Servizio inclusione: ".$v['p_servizio_inclusione']." | </li>
@@ -113,7 +113,7 @@ $db=new Connection();
                             <li>Insegnamento: ".$v['p_insegnamento']."</li>
                             <li>Tag: ".$tags[$v['tag']]."</li></ul></li>";
                 }
-                
+                $contenuto.="</ul>";
             }
             else{
                 $errori.="<p class='error'>Nessun commento presente per il filtro selezionato</p>";
