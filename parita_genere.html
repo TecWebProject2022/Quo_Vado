@@ -23,6 +23,7 @@
 
 <body onload="VerificaJS()">
     <header>
+		<a href="index.html"><img src="images/logo.png" alt="home"/></a>
 		<h1>Quo vado?</h1>
 		<h2>Fai la scelta giusta!</h2>
 	</header>
@@ -33,23 +34,29 @@
 		<button onclick="View()" id="icon" aria-label="Menù a panino"></button> <!--TV errore perchè manca testo nella label-->
 
      	<ul class="minimenu">
-
             <li lang="en"><a href="index.html">Home</a></li>
             <li><a href="percorso_disciplinare.html">Esplora corsi</a></li>
             <li><a href="lavoro.html">Obiettivo Lavoro</a></li>
             <li><a href="risorse_interne.html">La scelta giusta per te</a></li>
-            <li id="currentOverLink"><a href="universita_inclusiva.html">Università e Inclusione</a> </li>
+            <li id="currentOverLink" class="sottomenu">
+				<a href="universita_inclusiva.html">Università e Inclusione <span class="fa fa-angle-down arrow"></span></a>
+				<ul class="sottomenu-content">
+                    <li><a href="diritto_studio.html">Diritto allo studio</a></li>
+                    <li id="currentSubLink">Pari opportunità e Parità di genere</li>
+                    <li><a href="disabilita.html">Servizi per la Disabilità</a></li>
+                </ul>
+			</li>
             <li><a href="login.php">Area Riservata</a></li>
         </ul>
     </nav>
-    
+    <!--
     <nav id="visible-sottomenu" aria-label="sotto menù di università inclusiva">
         <ul>
             <li><a href="diritto_studio.html">Diritto allo studio</a></li>
             <li id="currentSubLink">Pari opportunità e Parità di genere</li>
             <li><a href="disabilita.html">Servizi per la Disabilità</a></li>
         </ul>
-    </nav>
+    </nav>-->
 
  	<nav id="breadcrumb" aria-label="breadcrumb">
 		<p>Ti trovi in: <a href="index.html" lang="en">Home</a> &gt; &gt; <a href="universita_inclusiva.html">Università e Inclusione</a> &gt; &gt; Pari opportunità e Parità di genere</p>
