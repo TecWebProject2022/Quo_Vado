@@ -2,6 +2,9 @@
 session_start();
 unset($_SESSION['user']); 
 unset($_SESSION['time']);
+unset($_SESSION['info']);
+unset($_SESSION['LAUREA']);
+unset($_SESSION['data']);
 unset($_SESSION['errori1']);
 unset($_SESSION['commenti']);
 unset($_SESSION['errorf']);
