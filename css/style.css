@@ -295,33 +295,30 @@ MENU
         display: none;
     }
     
-    /*******/
     
-    
-    /* Vista menù quando è aperto */
+    /* Menù aperto */
     #menu>#menu-content {
-        position: relative;
+        position: static;
         z-index: 1;
         padding-top: 4%;
-        text-align: right;
+        text-align: center;
         background-color: #162636;
         color: #FFFDE8;
-        padding-bottom: 4%;
-    
+        padding-bottom: 8%;
     }
 
     #menu li {
         display: block;  
     }
-    
+   
     #menu>ul>li {
         padding: 0.5em 0em;
-        margin-right: 5%;
     }
     
-    #menu>ul>li>a:link {
-        border-radius: 0%;
+    #menu>ul>li>a {
+        border-radius: 0px;
         box-shadow: none;
+        padding: 0.5em;
     }
     
     #menu a:link{
@@ -336,43 +333,53 @@ MENU
     }
     
     #menu a:hover {
-        background-color: var(--breadcolor);
         color: #009d9d;
-        font-variant: normal;
-        border-right: #009d9d 2px solid;
-    
     }
-    
+
     .sottomenu-content { 
-        position:relative; 
-        margin-top: 1em;
+        position:relative;
         text-indent: 0;
         background-color: #162636;
         box-shadow: none;
-        margin-bottom: -0.2em;
-        margin-right: 8%;
-        margin-left: 8%;
+        margin: 1em 15% -0.2em;
         border-top: #FFFDE8 2px solid;
         border-bottom: #FFFDE8 2px solid;
         font-size: 0.95em;  /*font troppo piccolo per mobile*/
     }
     
     .sottomenu-content a{
-        border-top:none;
-        width:auto;
+        display: block;
+        width: auto;
+        padding: 0.5em;
+        border-top: none;
     }
     
     
-    #menu #currentlink {
+    #currentlink, #menu #currentSMLink{
         font-size: 1.2em;
         padding: 0.5em;
         border-top-left-radius: 0px;
         border-top-right-radius: 0px;
         color: #009d9d;
-        border-right: #009d9d 5px solid;
+    }
+
+    #menu #currentSMLink:hover{
+        background-color: var(--breadcolor);
+    }
+
+    #currentSMLink>.sottomenu-content{
+        font-size: 0.8em;
+    }
+
+    #menu #currentSubLink{
+        padding: 0em;
+        color: #009d9d;
+        font-size: 1em; 
+        border-top: none;
+        width: auto;
     }
     
-    /**********************************************************************************/
+    /*********************************  DA RIVEDERE  *********************************/
 
     #visible-sottomenu {
         position: relative;
