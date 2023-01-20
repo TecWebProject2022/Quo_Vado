@@ -509,7 +509,6 @@ if(!isset($_SESSION['nuova'])){
 if(!isset($_SESSION['error'])){
     $_SESSION['error']='';
 }   
-echo $_SESSION['error'];
 $db->Disconnect();
 $contenuto=str_replace("<span id=\"ins\"></span>",$_SESSION['error'],$contenuto);
 $contenuto=str_replace("<areacom/>",$commento,$contenuto);
