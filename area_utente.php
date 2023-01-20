@@ -112,7 +112,7 @@ if($res5=$db->ExecQueryAssoc($query6)){
     </form>';
     $contenuto.="<span id=\"ins\"></span>";
     if(isset($_SESSION['error'])){
-        $contenuto=str_replace('<span id="error"></span>',$_SESSION['error'],$contenuto);
+        $contenuto=str_replace('<span id="error1"></span>',$_SESSION['error'],$contenuto);
         $_SESSION['error']='';
     }   
 }
@@ -132,19 +132,19 @@ if($res3=$db->ExecQueryNum($query3)){
     for($i=0;$i<count($res3);$i++){
             /*flexbox interna*/
             $contenuto.='<li class="blocco_commento"><label><span><input type="checkbox" id="'.$i.'" name="commento[]" value="'.$i.'" /></span>
-            <dl class="container_daticomm"><dt class="highlight">Data di emissione:</dt> <dd class="highlight">'.date("d/m/Y",strtotime($res3[$i][1])).'</dd>
-            <dt>Classe di laurea: </dt> <dd>'.$res3[$i][0].'</dd>
-            <dt class="highlight">Commento:</dt> <dd class="highlight">'.$res3[$i][2].'</dd>
-            <dt>Valutazione complessiva: </dt> <dd>'.$res3[$i][3].'</dd>
-            <dt class="highlight">Valutazione accessibilità fisica: </dt> <dd class="highlight">'.$res3[$i][4].'</dd>
-            <dt>Valutazione servizio inclusione: </dt> <dd> '.$res3[$i][5].'</dd>
-            <dt class="highlight">Valutazione tempestività burocratica: </dt> <dd class="highlight">'.$res3[$i][6].'</dd>
-            <dt>Valutazione qualità di insegnamento: </dt> <dd>'.$res3[$i][7].'</dd></dl>';
+            <span class="container_daticomm highlight">Data di emissione: '.date("d/m/Y",strtotime($res3[$i][1])).'</span>
+            <span class="container_daticomm" >Classe di laurea: '.$res3[$i][0].'</span>
+            <span class="container_daticomm highlight">Commento: '.$res3[$i][2].'</span>
+            <span class="container_daticomm">Valutazione complessiva:  '.$res3[$i][3].'</span>
+            <span class="container_daticomm highlight">Valutazione accessibilità fisica:  '.$res3[$i][4].'</span>
+            <span class="container_daticomm">Valutazione servizio inclusione:   '.$res3[$i][5].'</span>
+            <span class="container_daticomm highlight">Valutazione tempestività burocratica:  '.$res3[$i][6].'</span>
+            <span class="container_daticomm">Valutazione qualità di insegnamento:  '.$res3[$i][7].'</span>';
             if($res3[$i][8]==1){
-                $contenuto.="<p class=\"tipo_valutazione\">Valutazione riguardante l'inclusività</p></label></li>";
+                $contenuto.="<span class=\"tipo_valutazione\">Valutazione riguardante l'inclusività</span></label></li>";
             }
             else{
-                $contenuto.="<p class=\"tipo_valutazione\">Valutazione riguardante l'ambito generale </p></label></li>";
+                $contenuto.="<span class=\"tipo_valutazione\">Valutazione riguardante l'ambito generale </span></label></li>";
             }      
     }
 
