@@ -102,7 +102,7 @@ if($res5=$db->ExecQueryAssoc($query6)){
     $contenuto.="<h2 id=\"aggiscrizione\" class='titles_area_classi'>Inserisci una nuova iscrizione</h2>";
     $contenuto.='<span id="error"></span>';
     $contenuto.="<label id=\"descseclect\" class=\"formdesc\">Qui ti è consentito inserire una nuova iscrizione, fai molta attenzione ai passaggi</label>";
-    $contenuto.='<form  aria-describedby="descseclect" id="selectclass" action="area_utente.php#aggiscrizione" method="post" ><fieldset class="container"><legend class="field_legend">Seleziona classe</legend>';
+    $contenuto.='<form  aria-describedby="descseclect" id="selectclass" action="area_utente.php#aggiscrizione" method="post" ><fieldset><legend class="field_legend">Seleziona classe</legend>';
     $contenuto.="<label for=\"classi\">Classi disponibili:</label>
     <select id=\"classi\" name=\"classe\">";
     foreach($res5 as $r){
@@ -221,17 +221,16 @@ if($res5=$db->ExecQueryAssoc($query5)){
 $contenuto.='<h2 class="titles_area_classi">Cambio password</h2>';
 $contenuto.='<form id="form_passw" action="area_utente.php" method="post" >';
 $contenuto.='<fieldset><legend class="field_legend">Cambio password</legend>
-<ul class="none" id="changePw">
-<li><label for="oldpassword"><span lang="en">Immetti la tua vecchia password: </span></label><span><input  value="<old>" type="password" id="oldpassword" name="Vecchiapassword" placeholder="Immetti la tua vecchia password" maxlength="20"                      
+
+<label for="oldpassword"><span lang="en">Immetti la tua vecchia password: </span><span><input  value="<old>" type="password" id="oldpassword" name="Vecchiapassword" placeholder="Immetti la tua vecchia password" maxlength="20"                      
     data-msg-invalid="Il campo password non può contenere spazzi e deve contenere da 4 a 20 caratteri alfanumerici (sono ammessi i seguenti caratteri: @ . _ - ), controlla e riprova"
-    data-msg-empty="Il campo vecchia password non può essere vuoto" /></span></li>
-<li><label for="newpassword"><span lang="en">Immetti la tua nuova password: </span></label><span><input  value="<new>" type="password" id="newpassword" name="newpassword" placeholder="Immetti la tua nuova password" maxlength="20"                      
+    data-msg-empty="Il campo vecchia password non può essere vuoto" /></span></label>
+<label for="newpassword"><span lang="en">Immetti la tua nuova password: </span><span><input  value="<new>" type="password" id="newpassword" name="newpassword" placeholder="Immetti la tua nuova password" maxlength="20"                      
     data-msg-invalid="Il campo password non può contenere spazzi e deve contenere da 4 a 20 caratteri alfanumerici (sono ammessi i seguenti caratteri: @ . _ - ), controlla e riprova"
-    data-msg-empty="Il campo nuova password non può essere vuoto" /></span></li>
-<li><label for="repeat"><span lang="en">Ripeti la password: </span></label><span><input  value="" type="password" id="repeat" name="repepassword" placeholder="Ripeti la password" maxlength="20"                      
-    data-msg-empty="Il campo repeti password non può essere vuoto" /></span></li>
+    data-msg-empty="Il campo nuova password non può essere vuoto" /></span></label>
+<label for="repeat"><span lang="en">Ripeti la password: </span><span><input  value="" type="password" id="repeat" name="repepassword" placeholder="Ripeti la password" maxlength="20"                      
+    data-msg-empty="Il campo repeti password non può essere vuoto" /></span></label>
     
-</ul>
 <input type="submit" class="submit" name="submit1" value="Salva"/>
 </fieldset>
 </form>
@@ -255,7 +254,7 @@ if(isset($_POST['submit4']) && check()){
         if($r=$db->ExecQueryNum($query7)){
            $_SESSION['data']=$r;
             $form='<p class="formdesc">Inserimento per la classe di laurea: '.$_SESSION['LAUREA'].'<form id="selectcorso" action="area_utente.php" method="post">';
-            $form.="<fieldset class=\"container\"><legend class='field_legend'>Seleziona corso di studi</legend>";
+            $form.="<fieldset><legend class='field_legend'>Seleziona corso di studi</legend>";
             $form.='<label for="corso">Seleziona il corso: </label>';
             $form.='<select id="corso" name="corso">';
             for($i=0; $i<count($r);$i++){
