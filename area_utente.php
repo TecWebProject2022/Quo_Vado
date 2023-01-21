@@ -221,17 +221,16 @@ if($res5=$db->ExecQueryAssoc($query5)){
 $contenuto.='<h2 class="titles_area_classi">Cambio password</h2>';
 $contenuto.='<form id="form_passw" action="area_utente.php" method="post" >';
 $contenuto.='<fieldset><legend class="field_legend">Cambio password</legend>
-<ul class="none" id="changePw">
-<li><label for="oldpassword"><span lang="en">Immetti la tua vecchia password: </span></label><span><input  value="<old>" type="password" id="oldpassword" name="Vecchiapassword" placeholder="Immetti la tua vecchia password" maxlength="20"                      
+
+<label for="oldpassword"><span lang="en">Immetti la tua vecchia password: </span><span><input  value="<old>" type="password" id="oldpassword" name="Vecchiapassword" placeholder="Immetti la tua vecchia password" maxlength="20"                      
     data-msg-invalid="Il campo password non può contenere spazzi e deve contenere da 4 a 20 caratteri alfanumerici (sono ammessi i seguenti caratteri: @ . _ - ), controlla e riprova"
-    data-msg-empty="Il campo vecchia password non può essere vuoto" /></span></li>
-<li><label for="newpassword"><span lang="en">Immetti la tua nuova password: </span></label><span><input  value="<new>" type="password" id="newpassword" name="newpassword" placeholder="Immetti la tua nuova password" maxlength="20"                      
+    data-msg-empty="Il campo vecchia password non può essere vuoto" /></span></label>
+<label for="newpassword"><span lang="en">Immetti la tua nuova password: </span><span><input  value="<new>" type="password" id="newpassword" name="newpassword" placeholder="Immetti la tua nuova password" maxlength="20"                      
     data-msg-invalid="Il campo password non può contenere spazzi e deve contenere da 4 a 20 caratteri alfanumerici (sono ammessi i seguenti caratteri: @ . _ - ), controlla e riprova"
-    data-msg-empty="Il campo nuova password non può essere vuoto" /></span></li>
-<li><label for="repeat"><span lang="en">Ripeti la password: </span></label><span><input  value="" type="password" id="repeat" name="repepassword" placeholder="Ripeti la password" maxlength="20"                      
-    data-msg-empty="Il campo repeti password non può essere vuoto" /></span></li>
+    data-msg-empty="Il campo nuova password non può essere vuoto" /></span></label>
+<label for="repeat"><span lang="en">Ripeti la password: </span><span><input  value="" type="password" id="repeat" name="repepassword" placeholder="Ripeti la password" maxlength="20"                      
+    data-msg-empty="Il campo repeti password non può essere vuoto" /></span></label>
     
-</ul>
 <input type="submit" class="submit" name="submit1" value="Salva"/>
 </fieldset>
 </form>

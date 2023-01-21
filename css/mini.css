@@ -521,11 +521,17 @@ AREA UTENTE
     display: block;
 }
 
-#form_passw {
-    padding: 0em;
-    margin: 3%;
-}
-
 #selectclass, #selectcorso {
     margin: 0% 2% 0% 2%;
+}
+
+/*
+================
+AREA ADMIN
+================
+*/
+
+#formTrovaCommenti, #formCorsi, #form_passw {
+    padding: 0em;
+    margin: 3%;
 }
