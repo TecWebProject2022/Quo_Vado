@@ -2038,18 +2038,45 @@ AREA UTENTE
 
 /*CAMBIA PASSWORD*/
 
-#form_passw {
-    padding: 1em;
-    margin: 0% 15% 0% 15%;
-}
-
 #form_passw > fieldset {
     padding: 1em;
 }
 
-#changePw {
-    margin: 1%;
-    list-style: none;
+/*
+================
+AREA ADMIN
+================
+*/
+
+#formTrovaCommenti, #formCorsi, #form_passw {
+    padding: 1em;
+    margin: 0% 15% 0% 15%;
+}
+
+#formTrovaCommenti > fieldset {
+    padding: 1em;
+}
+
+#formCorsi > fieldset {
+    padding: 1em;
+}
+
+#formTrovaCommenti label {
+    display: block;
+    margin-top: 0.2em;
+    margin-bottom: 0.2em;
+}
+
+#formCorsi label {
+    display: block;
+    margin-top: 0.2em;
+    margin-bottom: 0.2em;
+}
+
+#form_passw label {
+    display: block;
+    margin-top: 0.2em;
+    margin-bottom: 0.2em;
 }
 
 /*
