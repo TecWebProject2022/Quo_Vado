@@ -256,7 +256,7 @@ if(isset($_POST['submit4']) && check()){
             $form='<p class="formdesc">Inserimento per la classe di laurea: '.$_SESSION['LAUREA'].'<form id="selectcorso" action="area_utente.php" method="post">';
             $form.="<fieldset><legend class='field_legend'>Seleziona corso di studi</legend>";
             $form.='<label for="corso">Seleziona il corso: </label>';
-            $form.='<select id="corso" name="corso">';
+            $form.='<select style="width: 60%" id="corso" name="corso">';
             for($i=0; $i<count($r);$i++){
                 $form.="<option value=\"".$i."\">".$r[$i][0]." ".$r[$i][1]."</option>";
             }
