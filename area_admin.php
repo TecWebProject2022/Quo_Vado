@@ -140,23 +140,23 @@ if($dbOK){
                 $query_commenti.=';';
 
                 if($commenti=$db->ExecQueryNum($query_commenti)){
-                    $formCommenti='<form id="formEliminaCommenti" action="area_admin.php" method="post" onsubmit="return OnCommentDelete()"><fieldset><legend class="field_legend">Seleziona i commenti da eliminare</legend>';
+                    $formCommenti='<form id="formEliminaCommenti" action="area_admin.php" method="post" onsubmit="return OnCommentDelete()"><fieldset><legend class="field_legend">Seleziona i commenti da eliminare</legend><ul>';
                     for($i=0;$i<count($commenti);$i++){
-                        $commento='<ul class="blocco_commento"><li>utente: '.$commenti[$i][0].'| classe di laurea: '.$commenti[$i][2].'| data commento:'.date("d-m-Y",strtotime($commenti[$i][1])).'</li>';
-                        $commento.='<li><p>commento :'.$commenti[$i][4].'</p></li>';
-                        $commento.='<li><dl class="container_daticomm">
-                            <dt class="highlight">Punteggio complessivo:</dt><dd class="highlight"> '.$commenti[$i][5].' </dd>
-                            <dt>Punteggio accessibilita fisica:</dt><dd> '.$commenti[$i][6].' </dd>
-                            <dt class="highlight">Punteggio servizio inclusione:</dt><dd class="highlight"> '.$commenti[$i][7].' </dd>
-                            <dt>Punteggio tempestivita burocratica:</dt><dd> '.$commenti[$i][8].' </dd>
-                            <dt class="highlight">Punteggio insegnamento:</dt><dd class="highlight"> '.$commenti[$i][9].' </dd>
-                        </dl></li><li class="tipo_valutazione">'.$tags[$commenti[$i][3]].'</li></ul>';
+                        $commento='
+                            <span class="highlight">utente: '.$commenti[$i][0].'| classe di laurea: '.$commenti[$i][2].'| data commento:'.date("d-m-Y",strtotime($commenti[$i][1])).'</span>
+                            <span >commento : '.$commenti[$i][4].'</span>
+                            <span class="highlight">Punteggio complessivo: '.$commenti[$i][5].' </dd>
+				            <span>Punteggio accessibispanta fisica: '.$commenti[$i][6].' </dd>
+				            <span class="highlight">Punteggio servizio inclusione: '.$commenti[$i][7].' </dd>
+				            <span>Punteggio tempestivita burocratica: '.$commenti[$i][8].' </dd>
+				            <span class="highlight">Punteggio insegnamento: '.$commenti[$i][9].'</span>
+				            <span class="tipo_valutazione">'.$tags[$commenti[$i][3]].'</span>';
 
-                        $formCommenti.='<input type="checkbox" id="'.$i.'" name="commento[]" value="'.$commenti[$i][0].'-'.$commenti[$i][2].'-'.$commenti[$i][3].'"/>';
-                        $formCommenti.='<label for="'.$i.'">'.$commento.'</label>';
+                        $formCommenti.='<li class="blocco_commento"><input type="checkbox" id="'.$i.'" name="commento[]" value="'.$commenti[$i][0].'-'.$commenti[$i][2].'-'.$commenti[$i][3].'"/>';
+                        $formCommenti.='<label for="'.$i.'">'.$commento.'</label></li>';
                         
                     }
-                    $formCommenti.='<input type="submit" class="submit" id="delete_commento" name="delete_commento" value="elimina commenti selezionati"/></fieldset></form>';
+                    $formCommenti.='<ul><input type="submit" class="submit" id="delete_commento" name="delete_commento" value="elimina commenti selezionati"/></fieldset></form>';
                 }else{
                     $msgCommenti.='<p class="error">nessun commento</p>';
                 }
