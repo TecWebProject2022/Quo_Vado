@@ -32,7 +32,7 @@ $tags=array(
 
 $formSelezioneCommenti='
 <h2 class="titles_area_classi">Cancellazione commenti</h2>
-<span><form id="formTrovaCommenti" action="area_admin.php" method="post" onsubmit="return OnCommentFind(event)">
+<form id="formTrovaCommenti" action="area_admin.php" method="post" onsubmit="return OnCommentFind(event)">
     <fieldset>
         <legend>Trova i commenti da eliminare</legend>
         <label for="com_utente">Utente:</label>
@@ -47,7 +47,7 @@ $formSelezioneCommenti='
 
         <input type="submit" class="submit"  name="trova" value="trova"/>
     </fieldset>
-</form></span>';
+</form>';
 
 $formGestioneCorsi='
 <h2 class="titles_area_classi">Gestione corsi di studio</h2>
@@ -142,15 +142,15 @@ if($dbOK){
                 if($commenti=$db->ExecQueryNum($query_commenti)){
                     $formCommenti='<form id="formEliminaCommenti" action="area_admin.php" method="post" onsubmit="return OnCommentDelete()"><fieldset><legend class="field_legend">Seleziona i commenti da eliminare</legend>';
                     for($i=0;$i<count($commenti);$i++){
-                        $commento='<span class="blocco_commento"> utente: '.$commenti[$i][0].'| classe di laurea: '.$commenti[$i][2].'| data commento:'.date("d-m-Y",strtotime($commenti[$i][1]));
-                        $commento.='<p>commento :'.$commenti[$i][4].'</p>';
-                        $commento.='<dl class="container_daticomm">
+                        $commento='<ul class="blocco_commento"><li>utente: '.$commenti[$i][0].'| classe di laurea: '.$commenti[$i][2].'| data commento:'.date("d-m-Y",strtotime($commenti[$i][1])).'</li>';
+                        $commento.='<li><p>commento :'.$commenti[$i][4].'</p></li>';
+                        $commento.='<li><dl class="container_daticomm">
                             <dt class="highlight">Punteggio complessivo:</dt><dd class="highlight"> '.$commenti[$i][5].' </dd>
                             <dt>Punteggio accessibilita fisica:</dt><dd> '.$commenti[$i][6].' </dd>
                             <dt class="highlight">Punteggio servizio inclusione:</dt><dd class="highlight"> '.$commenti[$i][7].' </dd>
                             <dt>Punteggio tempestivita burocratica:</dt><dd> '.$commenti[$i][8].' </dd>
                             <dt class="highlight">Punteggio insegnamento:</dt><dd class="highlight"> '.$commenti[$i][9].' </dd>
-                        </dl><p class="tipo_valutazione">'.$tags[$commenti[$i][3]].'</p></span>';
+                        </dl></li><li class="tipo_valutazione">'.$tags[$commenti[$i][3]].'</li></ul>';
 
                         $formCommenti.='<input type="checkbox" id="'.$i.'" name="commento[]" value="'.$commenti[$i][0].'-'.$commenti[$i][2].'-'.$commenti[$i][3].'"/>';
                         $formCommenti.='<label for="'.$i.'">'.$commento.'</label>';
