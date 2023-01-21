@@ -49,22 +49,24 @@
  
     <main id="content">
         <h1 id="contatti_title">CONTATTACI</h1>
-        <p>Per curiosità consigli o quant'altro compila il seguente form, noi siamo sempre disposti a raddrizzare la nostra bussola</p>
-        <form id="contatti"   onsubmit="return Validate()" method="post">
+        <p class="invito">Per curiosità, consigli o quant'altro compila il seguente form! Siamo sempre disposti a raddrizzare la nostra bussola.</p>
+        <form id="contatti" onsubmit="return Validate()" method="post">
                 
             <fieldset>
                 
                 <legend>Inserisci i tuoi dati</legend>
-                 <label for="email">Email:</label>
+                <label for="email">Email:
                 <span><input id="email" name="email" value="<valoreEmail/>" placeholder="Email" minlenght="4" maxlength="319"                       
                         data-msg-empty="Email non inserito. Per favore, inserisci il tuo cognome"
-                        data-msg-invalid="la tua email deve essere compreso da 4 a 319 caratteri" /></span>        
-                <label for="commento">Commento o messaggio:</label>
+                        data-msg-invalid="la tua email deve essere compreso da 4 a 319 caratteri" /></span></label>       
+                <label for="commento">Commento o messaggio:
                 <span><textarea id="commento" name="commento" placeholder="Commento o Messaggio" minlenght="10" maxlength="400"                       
                         data-msg-empty="Il messaggio ci risulta essere vuoto"
-                        data-msg-invalid="Il messaggio o commento deve avere una lunghezza compresa tra i 10 e 400 caratteri" ><valoreMessagio/></textarea></span>     
+                        data-msg-invalid="Il messaggio o commento deve avere una lunghezza compresa tra i 10 e 400 caratteri" ><valoreMessagio/></textarea></span></label>     
+                        
+                <input  name="submit" class="submit" type= "submit" value="Invia"/>
+
             </fieldset>
-            <input  name="submit" class="submit" type= "submit" value="Invia"/>
        </form>
        <errori/>
     </main>
