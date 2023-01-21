@@ -102,7 +102,7 @@ if($res5=$db->ExecQueryAssoc($query6)){
     $contenuto.="<h2 id=\"aggiscrizione\" class='titles_area_classi'>Inserisci una nuova iscrizione</h2>";
     $contenuto.='<span id="error"></span>';
     $contenuto.="<label id=\"descseclect\" class=\"formdesc\">Qui ti è consentito inserire una nuova iscrizione, fai molta attenzione ai passaggi</label>";
-    $contenuto.='<form  aria-describedby="descseclect" id="selectclass" action="area_utente.php#aggiscrizione" method="post" ><fieldset class="container"><legend class="field_legend">Seleziona classe</legend>';
+    $contenuto.='<form  aria-describedby="descseclect" id="selectclass" action="area_utente.php#aggiscrizione" method="post" ><fieldset><legend class="field_legend">Seleziona classe</legend>';
     $contenuto.="<label for=\"classi\">Classi disponibili:</label>
     <select id=\"classi\" name=\"classe\">";
     foreach($res5 as $r){
@@ -249,7 +249,7 @@ if(isset($_POST['submit4']) && check()){
         if($r=$db->ExecQueryNum($query7)){
            $_SESSION['data']=$r;
             $form='<p class="formdesc">Inserimento per la classe di laurea: '.$_SESSION['LAUREA'].'<form id="selectcorso" action="area_utente.php" method="post">';
-            $form.="<fieldset class=\"container\"><legend class='field_legend'>Seleziona corso di studi</legend>";
+            $form.="<fieldset><legend class='field_legend'>Seleziona corso di studi</legend>";
             $form.='<label for="corso">Seleziona il corso: </label>';
             $form.='<select id="corso" name="corso">';
             for($i=0; $i<count($r);$i++){
