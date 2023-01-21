@@ -244,6 +244,12 @@ if(isset($_POST['submit4']) && check()){
     $db=new Connection();
     $dbOK=$db->Connect();
     if($dbOK){
+        $check=" SELECT * FROM Iscrizione where  classe=\"".$_POST['classe']."\" && nome_utente=\"".$_SESSION['user']."\";";
+        if($resc=$db->ExecQueryNum($check)){
+            $_SESSION['error']='<p class="error">Iscrizione già inserita</p>';
+            header('Location:area_utente.php#aggiscrizione'); 
+        }
+        else{
         $query7="Select ateneo, nome FROM CorsodiStudio where classe_laurea=\"".$_POST['classe']."\";";
         if($r=$db->ExecQueryNum($query7)){
            $_SESSION['data']=$r;
@@ -252,7 +258,7 @@ if(isset($_POST['submit4']) && check()){
             $form.='<label for="corso">Seleziona il corso: </label>';
             $form.='<select id="corso" name="corso">';
             for($i=0; $i<count($r);$i++){
-                $form.="<option value=\"".$i."\">".$r[$i][0]."|".$r[$i][1]."</option>";
+                $form.="<option value=\"".$i."\">".$r[$i][0]." ".$r[$i][1]."</option>";
             }
             $form.="</select>";
             $form.='<br/><label for="datai">Data di iscrizione: </label>
@@ -270,7 +276,7 @@ if(isset($_POST['submit4']) && check()){
 
         }
         
-    }else{
+    }}else{
         $contentuo.="<p  class=\"error\">Impossibile recuperare le informazioni richieste</p>";
        
     }
@@ -298,9 +304,9 @@ if(isset($_POST['submit5']) && check()){
         echo $query8;
         $q=$db->Insert($query8);
        if($q){
-            $_SESSION['info']="<p class=\"invito\">Inserimento avvenuto con successo</p>";
+            $_SESSION['info']="<p id=\"ok\" class=\"invito\">Iscrizione  avvenuta con successo</p>";
             unset($_SESSION['error']);
-            header('Location:area_utente.php');
+            header('Location:area_utente.php#ok');
        }
        else{
         $_SESSION['error']='<p class="error">L\'inserimento non è andato a buon fine</p>';
@@ -344,9 +350,9 @@ if(isset($_POST['submit2']) && check()){
             }
         }
         if($r==true){
-            $_SESSION['info'].="<p  class=\"invito\">Cancellazione avvenuta con successo</p>";
+            $_SESSION['info'].="<p if=\"ok\" class=\"invito\">Cancellazione avvenuta con successo</p>";
             unset($_SESSION['commenti']);
-            header('Location:area_utente.php');
+            header('Location:area_utente.php#ok');
         }
         else{
            
@@ -409,11 +415,11 @@ if(isset($_POST['submit1']) && check()){
                 $query2.="INSERT INTO Credenziale(pw, data_inserimento, utente, attuale) VALUES('".$nuova."',curdate(),'".$user."',1);";
                 $q=$db->multiInsert($query2);
                 if($q){
-                    $_SESSION['info']="<p class=\"invito\">Password modificata con successo</p>";
+                    $_SESSION['info']="<p  id =\"ok\"class=\"invito\">Password modificata con successo</p>";
                     unset($_SESSION['errori1']);
                     $_SESSION['nuova']='';
                     $_SESSION['vecchia']='';
-                    header('Location:area_utente.php');
+                    header('Location:area_utente.php#ok');
                     
                 }
                 else{
@@ -467,9 +473,9 @@ if($errorf=='<ul class="error">'){
        $insert="INSERT INTO Valutazione(nome_utente, classe_laurea, datav, commento, tag, p_complessivo, p_acc_fisica, p_servizio_inclusione, tempestivita_burocratica, p_insegnamento) VALUES (\"".$user."\",\"".$classlaurea."\",curdate(),\"".$commento."\",\"".$tag."\",".$pc.",".$pf.",".$ps.",".$tb.",".$pi.");";
        $q=$db->Insert($insert);
        if($q){
-            $_SESSION['info']="<p class=\"invito\">Inserimento avvenuto con successo</p>";
+            $_SESSION['info']="<p id=\"ok\" class=\"invito\">Inserimento avvenuto con successo</p>";
             unset($_SESSION['errorf']);
-            header('Location:area_utente.php');
+            header('Location:area_utente.php#ok');
        }
        else{
         $_SESSION['errorf'].='<p class="error">Al momento non è possibile inserire commenti</p>';
