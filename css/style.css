@@ -1147,7 +1147,7 @@ OBIETTIVO LAVORO
 
 #job_checklist ul li{
     list-style: none;
-    background: url("icons/checklist.svg") left no-repeat;
+    background: url("icons/checklist.svg") top left no-repeat;
     background-size: 2em;
     padding-left: 2.8em;
     font-size: 0.95em;

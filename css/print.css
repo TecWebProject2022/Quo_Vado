@@ -1,1 +1,75 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
+html,body{
+    font-size: 12px; 
+    font-family: Georgia, Garamond, "Times New Roman", serif; 
+    line-height: 1.5;
+    margin:auto;
+}
+
+header h1, header h2, .skip, nav:not(#breadcrumb), footer, #up{
+    display: none;
+}
+
+#breadcrumb {
+    font-size: 12px;
+    padding: 7px 0;
+
+}
+
+p, li, a{
+    padding-bottom: 5px;
+}
+
+dt,h2,h3{
+    padding-top: 8px;
+}
+
+ul li{
+    padding-left: 20px;
+    list-style: inside;
+}
+
+section, article {
+    padding-bottom: 10px;
+}
+
+div, section, article, dd {
+    text-align: justify;
+}
+
+a{
+    color: black;
+    text-decoration: none;
+}
+
+main a:after{
+    content: " [ http://www.quoVado.it/"attr(href) "] ";
+    font-size: 10px;
+}
+
+
+/*********************************** NEL DETTAGLIO ********************************************************************/
+
+/* Index */
+/*
+.link a:after{
+    content: " [ http://www.quoVado.it/"attr(href) "] ";
+    font-size: 10px;
+}
+*/
+
+
+/* Università e inclusione */
+.mini_desc, .link{
+    display: none;
+}
+
+#soc{
+    page-break-before: always;
+}
+
 
