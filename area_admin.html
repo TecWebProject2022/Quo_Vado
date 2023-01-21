@@ -10,7 +10,7 @@
     <meta name="viewport" content="width=device-width" />
     <link rel="stylesheet"  media= "screen" href="css/style.css"/> 
     <link rel="stylesheet"  media= "screen and (max-device-width:600px), only screen and (max-width:600px)" href="css/mini.css"/>
-   <link rel="stylesheet"  href="css/print.css" /> 
+    <!-- <link rel="stylesheet" type="text/css" href="css/print.css" /> -->
 
    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
@@ -47,22 +47,13 @@
         </ul>  
     </nav>
     
-    <nav id="visible-sottomenu" aria-label="sotto menù di area riservata">
-        <ul>
-            <li><a href="#formCorsi">Gestisci corsi di Laurea</a></li>
-            <li><a href="#formCommenti">Elimina un commento</a></li>
-            <li><a href="#CambioPw">Cambia password</a></li>
-            <li><a href="logout.php">Logout</a></li>
-        </ul>
-    </nav>
-    
     <nav id="breadcrumb" aria-label="breadcrumb">
 	    <p>Ti trovi in: <span lang="en"><a href="index.html">Home</a></span> &gt; &gt; Area Riservata</p>
 	</nav>
     
     <main id="content">
         <h1 class="area_riservata">Area Riservata</h1>
-
+        <sottomenu/>    
         <formSelezioneCommenti/>
         <formCommenti/>
         <msgCommenti/>

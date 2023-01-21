@@ -18,7 +18,24 @@ else if($_SESSION['user']!='admin'){
 require_once 'utilita.php';
 require_once 'database.php';
 
+#PER MATTEO: i tasti cancella tutto li ho eliminati per correttezza, non sono da nessun'altra parte
+
+
+#PER MATTEO: ho aggiunto questo, non sapevo come fare ma ho scopiazzato da area_utente.php
+$menu1='
+<nav id="visible-sottomenu" aria-label="sotto menù di area riservata">
+<ul>
+    <li><a href="#gestione_corsi">Gestione corsi di studio</a></li>
+    <li><a href="#CambioPw">Cambia password</a></li>
+    <li><a href="logout.php">Logout</a></li>
+</ul>
+</nav>';
+
 $content=file_get_contents("area_admin.html");
+
+#PER MATTEO: non so se ho messo queste cose nelle posizioni giuste
+$content=str_replace('<sottomenu/>',$menu1,$content);
+
 #dichiarazioni
 $msgCommenti='';
 $msgCorso='';
@@ -30,6 +47,7 @@ $tags=array(
     2=>"commento riguardante l'inclusivita"
 );
 
+#PER MATTEO: si può rendere Classe di Laurea una select? come su area utente, sezione nuove iscrizioni
 $formSelezioneCommenti='
 <h2 class="titles_area_classi">Cancellazione commenti</h2>
     <form id="formTrovaCommenti" action="area_admin.php" method="post" onsubmit="return OnCommentFind(event)">
@@ -46,12 +64,12 @@ $formSelezioneCommenti='
                 data-msg-empty=""/></span></label>
 
             <input type="submit" class="submit"  name="trova" value="trova"/>
-            <input type="reset" name="reset" value="cancella tutto"/>
         </fieldset>
     </form>';
 
+#PER MATTEO: si può rendere Classe di Laurea una select? come su area utente, sezione nuove iscrizioni
 $formGestioneCorsi='
-<h2 class="titles_area_classi">Gestione corsi di studio</h2>
+<h2 class="titles_area_classi" id="gestione_corsi">Gestione corsi di studio</h2>
 <p class="formdesc">Per aggiungere un corso di studi &egrave; necessario riempire tutti i campi, per eliminarne uno bastano nome, classe di laurea e ateneo.</p>
 <form id="formCorsi" action="area_admin.php" method="post" >
     <fieldset>
@@ -86,7 +104,6 @@ $formGestioneCorsi='
 
         <input type="submit"  class="submit"  id="add_corso" name="add_corso" value="Aggiungi" onclick="return OnCourseAdd(event)"/>
         <input type="submit"  class="submit"  id="delete_corso" name="delete_corso" value="Elimina" onclick="return OnCourseDelete(event)"/>
-        <input type="reset" id="reset" name="reset" value="Cancella tutto"/>
     </fieldset>
 </form>';
 
@@ -107,7 +124,6 @@ $formCambioPw='
         <span><input  value="" type="password" id="repeat" name="repepassword" placeholder="Ripeti la password" maxlength="20"                      
             data-msg-empty="Il campo repeti password non pu&ograve; essere vuoto" /></span></label>   
         <input type="submit"  class="submit" id="submit" name="salva" value="Salva"/>
-        <input type="reset" id="reset" name="reset" value="Cancella tutto"/>
     </fieldset>
 </form>';
 
