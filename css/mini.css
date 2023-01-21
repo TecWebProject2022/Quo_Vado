@@ -147,6 +147,14 @@ ESPLORA CORSI
     text-decoration: underline;
 }
 
+#filtro fieldset {
+    margin: 3% 5% 0% 5%;
+}
+
+#filtro label {
+    display: block;
+}
+
 /*
 ================
 GRUPPI DISCIPLINARI
