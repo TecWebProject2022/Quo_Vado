@@ -96,13 +96,14 @@ if($dbOK){
             $errori.="<p class=\"error\">Siamo spiacenti, hai nessuna iscrizione nel tuo profilo</p>";
         }
 
+    //NUOVA ISCRIZIONE
 $query6="Select num_classe FROM ClassediLaurea";
 if($res5=$db->ExecQueryAssoc($query6)){
-    $contenuto.="<h2 id=\"aggiscrizione\"  class='titles_area_classi'>Inserisci una nuova iscrizione</h2>";
+    $contenuto.="<h2 id=\"aggiscrizione\" class='titles_area_classi'>Inserisci una nuova iscrizione</h2>";
     $contenuto.='<span id="error"></span>';
-    $contenuto.="<label id=\"descseclect\" class=\"formdesc\"  >Qui ti è consentito inserire una nuova iscrizione, fai molta attenzione ai passaggi</label>";
-    $contenuto.='<form  aria-describedby="descseclect" id="selectclass" action="area_utente.php#aggiscrizione" method="post" ><fieldset class="container"><legend class="field_legend">Seleziona Classe</legend>';
-    $contenuto.="<label for=\"classi\">classi disponibili:</label>
+    $contenuto.="<label id=\"descseclect\" class=\"formdesc\">Qui ti è consentito inserire una nuova iscrizione, fai molta attenzione ai passaggi</label>";
+    $contenuto.='<form  aria-describedby="descseclect" id="selectclass" action="area_utente.php#aggiscrizione" method="post" ><fieldset><legend class="field_legend">Seleziona classe</legend>';
+    $contenuto.="<label for=\"classi\">Classi disponibili:</label>
     <select id=\"classi\" name=\"classe\">";
     foreach($res5 as $r){
         $contenuto.="<option value=\"".$r['num_classe']."\">".$r['num_classe']."</option>";
@@ -236,6 +237,8 @@ $contenuto.='<fieldset><legend class="field_legend">Cambio password</legend>
 </form>
 </err/>';
 
+
+    //NUOVA ISCRIZIONE PT2
 if(isset($_POST['submit4']) && check()){
     
     $_SESSION['LAUREA']=$_POST['classe'];
@@ -245,19 +248,19 @@ if(isset($_POST['submit4']) && check()){
         $query7="Select ateneo, nome FROM CorsodiStudio where classe_laurea=\"".$_POST['classe']."\";";
         if($r=$db->ExecQueryNum($query7)){
            $_SESSION['data']=$r;
-            $form='<p>Inserimento per la classe di laurea: '.$_SESSION['LAUREA'].'<form id="selectcorso" action="area_utente.php" method="post">';
-            $form.="<fieldset class=\"container\"><legend>Seleziona corso di studi</legend>";
-            $form.='<label for="corso">Seleziona il corso:</label>';
+            $form='<p class="formdesc">Inserimento per la classe di laurea: '.$_SESSION['LAUREA'].'<form id="selectcorso" action="area_utente.php" method="post">';
+            $form.="<fieldset><legend class='field_legend'>Seleziona corso di studi</legend>";
+            $form.='<label for="corso">Seleziona il corso: </label>';
             $form.='<select id="corso" name="corso">';
             for($i=0; $i<count($r);$i++){
                 $form.="<option value=\"".$i."\">".$r[$i][0]."|".$r[$i][1]."</option>";
             }
             $form.="</select>";
-            $form.='<br/><label for="datai">Data di iscrizione:</label>
+            $form.='<br/><label for="datai">Data di iscrizione: </label>
             <input type="date" id="datai" name="datai" value="1960-01-01" min="1960-01-01" max="2100-01-01"/>';
-            $form.='<br/><label for="dataf">Data di fine studi:</label>
+            $form.='<br/><label for="dataf">Data di fine studi: </label>
             <input type="date" id="dataf" name="dataf" value="1960-01-01" min="1960-01-01" max="2100-01-01"/>';
-            $form.='<br/><label for="punteggio">Punteggio scuola di provenienza:</label>
+            $form.='<br/><label for="punteggio">Punteggio scuola di provenienza: </label>
             <input type="number" id="punteggio" name="punteggio" value="1" min="1" max="5"/>';
             $form.='<br/> <input type="submit" class="submit" name="submit5" value="Inserisci"/>';
             $form.="</fieldset></form>";
@@ -314,7 +317,7 @@ else{
    }
 }
 else{
-    $_SESSION['error']='<p class="error">La data di fine studi deve essere maggiore della data di inizio studi</p>';
+    $_SESSION['error']='<p class="error">La data di fine studi deve essere successiva alla data di inizio studi</p>';
     header('Location:area_utente.php#aggiscrizione');
 }
 }

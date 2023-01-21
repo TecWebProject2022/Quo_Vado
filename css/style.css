@@ -1960,6 +1960,25 @@ AREA UTENTE
     flex-basis: 67%;
 }
 
+/*NUOVE ISCRIZIONI*/
+
+#selectclass, #selectcorso {
+    padding: 1em;
+    margin: 0% 15% 0% 15%;
+}
+
+#selectclass > fieldset {
+    padding: 1em;
+}
+
+#selectclass .submit {
+    display: block;
+}
+
+#selectcorso > fieldset {
+    padding: 1em;
+}
+
 /*COMMENTI RILASCIATI*/
 
 #form_cancellacomm, #form_aggiungicomm {
@@ -1986,21 +2005,9 @@ AREA UTENTE
     list-style: none;
 }
 
-/*
-.container_daticomm {
-    display: flex;
-    flex-wrap: wrap;
-    align-items: stretch;
-    font-size: 1.2em;
-    font-family: monospace;
-}
-
-.container_daticomm dt {
-    flex-basis: 40%;
-}
-
-.container_daticomm dd {
-    flex-basis: 60%;
+.blocco_commento span {
+    display: block;
+    padding: 0.2em;
 }
 
 .tipo_valutazione {
@@ -2009,7 +2016,7 @@ AREA UTENTE
     margin: 1em;
     text-align: center;
 }
-*/
+
 
 /*AGGIUNGI COMMENTO*/
 
