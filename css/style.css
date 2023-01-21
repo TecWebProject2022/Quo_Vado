@@ -1646,41 +1646,40 @@ article h3{
     background-image: url("css_images/woman1.jpg");
     background-position: left top;
     background-repeat: no-repeat;
-    background-size: 35%;
-    padding-left: 20%;
+    background-size: 12em;
+    padding-left: 14em;
 }
 
 #women_voices li:nth-child(2){
     background-image: url("css_images/woman2.jpg");
     background-position: right top;
     background-repeat: no-repeat;
-    background-size: 40%;
-    padding-right: 20%;
-    padding-left: 0.8em;
+    background-size: 12em;
+    padding-right: 14em;
 }
 
 #women_voices li:nth-child(4){
     background-image: url("css_images/woman4.jpg");
     background-position: right top;
     background-repeat: no-repeat;
-    background-size: 45%;
-    padding-right: 20%;
+    background-size: 12em;
+    padding-right: 14em;
 }
 
 #women_voices li:nth-child(3){
     background-image: url("css_images/woman3.jpg");
     background-position: left top;
     background-repeat: no-repeat;
-    background-size: 35%;
-    padding-left: 20%;
+    background-size: 12em;
+    padding-left: 14em;
 }
 
 #women_voices li:nth-child(5){
     background-image: url("css_images/woman5.jpg");
     background-position: left;
     background-repeat: no-repeat;
-    background-size: 40%;
-    padding-left: 20%;
+    background-size: 12em;
+    padding-left: 14em;
 }
 
 img[src="css/css_images/par_gen.webp"]{
