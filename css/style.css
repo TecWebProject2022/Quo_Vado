@@ -1076,7 +1076,8 @@ CLASSE DI LAUREA
 }
 
 #tag_commento {
-    float: right;
+    font-style: italic;
+    padding: 0.5em;
 }
 
 .invito {

@@ -116,7 +116,7 @@ $db=new Connection();
                             <li>Accessibilità fisica: ".$v['p_acc_fisica']." | </li>
                             <li>Servizio inclusione: ".$v['p_servizio_inclusione']." | </li>
                             <li>Tempestività burocratica: ".$v['tempestivita_burocratica']." | </li>
-                            <li>Insegnamento: ".$v['p_insegnamento']."</li>
+                            <li>Insegnamento: ".$v['p_insegnamento']." | </li>
                             <li id='tag_commento'>Tag: ".$tags[$v['tag']]."</li></ul></li>";
                 }
                 $contenuto.="</ul>";
