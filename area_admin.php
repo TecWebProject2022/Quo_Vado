@@ -159,7 +159,7 @@ if($dbOK){
                             </li>';
                         
                     }
-                    $formCommenti.='<ul><input type="submit" class="submit" id="delete_commento" name="delete_commento" value="elimina commenti selezionati"/></fieldset></form>';
+                    $formCommenti.='</ul><input type="submit" class="submit" id="delete_commento" name="delete_commento" value="elimina commenti selezionati"/></fieldset></form>';
                 }else{
                     $msgCommenti.='<p class="error">nessun commento</p>';
                 }
