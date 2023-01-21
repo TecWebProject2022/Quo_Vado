@@ -146,7 +146,7 @@ if($dbOK){
                             <span class="highlight">utente: '.$commenti[$i][0].'| classe di laurea: '.$commenti[$i][2].'| data commento:'.date("d-m-Y",strtotime($commenti[$i][1])).'</span>
                             <span >commento : '.$commenti[$i][4].'</span>
                             <span class="highlight">Punteggio complessivo: '.$commenti[$i][5].' </span>
-				            <span>Punteggio accessibispanta fisica: '.$commenti[$i][6].' </span>
+				            <span>Punteggio accessibita fisica: '.$commenti[$i][6].' </span>
 				            <span class="highlight">Punteggio servizio inclusione: '.$commenti[$i][7].' </span>
 				            <span>Punteggio tempestivita burocratica: '.$commenti[$i][8].' </span>
 				            <span class="highlight">Punteggio insegnamento: '.$commenti[$i][9].'</span>
