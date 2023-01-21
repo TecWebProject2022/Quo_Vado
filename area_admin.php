@@ -152,8 +152,11 @@ if($dbOK){
 				            <span class="highlight">Punteggio insegnamento: '.$commenti[$i][9].'</span>
 				            <span class="tipo_valutazione">'.$tags[$commenti[$i][3]].'</span>';
 
-                        $formCommenti.='<li class="blocco_commento"><input type="checkbox" id="'.$i.'" name="commento[]" value="'.$commenti[$i][0].'-'.$commenti[$i][2].'-'.$commenti[$i][3].'"/>';
-                        $formCommenti.='<label for="'.$i.'">'.$commento.'</label></li>';
+                        $formCommenti.='
+                            <li class="blocco_commento">
+                                <input type="checkbox" id="'.$i.'" name="commento[]" value="'.$commenti[$i][0].'-'.$commenti[$i][2].'-'.$commenti[$i][3].'"/>
+                                <label for="'.$i.'">'.$commento.'</label>
+                            </li>';
                         
                     }
                     $formCommenti.='<ul><input type="submit" class="submit" id="delete_commento" name="delete_commento" value="elimina commenti selezionati"/></fieldset></form>';
