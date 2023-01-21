@@ -971,7 +971,7 @@ GRUPPI DISCIPLINARI
 }
 
 /*
-================
+================a
 CLASSE DI LAUREA
 ================
 */
@@ -1038,6 +1038,23 @@ CLASSE DI LAUREA
     font-size: 1.1em;
 }
 
+#filtro fieldset {
+    margin: 3% 20% 0% 20%;
+    padding: 1em;
+}
+
+#filtro legend {
+    font-variant: small-caps;
+}
+
+#filtro label {
+    margin-right: 1em;
+}
+
+#filter_button {
+    float: right;
+}
+
 #listaCommenti {
     margin: 2em 15% 2em 15%;
 }
@@ -1056,6 +1073,10 @@ CLASSE DI LAUREA
 
 .valutazioneCommento li {
     display: inline;
+}
+
+#tag_commento {
+    float: right;
 }
 
 .invito {

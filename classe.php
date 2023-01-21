@@ -71,10 +71,16 @@ $db=new Connection();
             $contenuto.='<form id="filtro" class="filter" action="classe.php?nclasse='.$target.'" method="get" >
             <fieldset>
             <legend>Seleziona i commenti che vuoi visualizzare</legend>
+                <label for="commento_generale">
                     <input type="checkbox" name="filtri[]" id="commento_generale"  value="1"/>
-                    <label for="commento_generale">commento generale</label>
+                    commento generale
+                </label>
+
+                <label for="inclusivita">
                     <input type="checkbox" name="filtri[]" id="inclusivita"  value="2" />
-                    <label for="inclusivita">inclusivita</label>
+                    inclusività
+                </label>
+                
                     <input type="submit" class="submit" name="filterTags" id="filter_button" value="filtra commenti"/>
 
                     <input type="hidden" name="nclasse" value="'.$target.'"/>
@@ -111,7 +117,7 @@ $db=new Connection();
                             <li>Servizio inclusione: ".$v['p_servizio_inclusione']." | </li>
                             <li>Tempestività burocratica: ".$v['tempestivita_burocratica']." | </li>
                             <li>Insegnamento: ".$v['p_insegnamento']."</li>
-                            <li>Tag: ".$tags[$v['tag']]."</li></ul></li>";
+                            <li id='tag_commento'>Tag: ".$tags[$v['tag']]."</li></ul></li>";
                 }
                 $contenuto.="</ul>";
             }
