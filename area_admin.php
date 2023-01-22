@@ -46,7 +46,6 @@ $formSelezioneCommenti='
                 data-msg-empty=""/></span></label>
 
             <input type="submit" class="submit"  name="trova" value="trova"/>
-            <input type="reset" name="reset" value="cancella tutto"/>
         </fieldset>
     </form>';
 
@@ -86,7 +85,6 @@ $formGestioneCorsi='
 
         <input type="submit"  class="submit"  id="add_corso" name="add_corso" value="Aggiungi" onclick="return OnCourseAdd(event)"/>
         <input type="submit"  class="submit"  id="delete_corso" name="delete_corso" value="Elimina" onclick="return OnCourseDelete(event)"/>
-        <input type="reset" id="reset" name="reset" value="Cancella tutto"/>
     </fieldset>
 </form>';
 
@@ -107,7 +105,6 @@ $formCambioPw='
         <span><input  value="" type="password" id="repeat" name="repepassword" placeholder="Ripeti la password" maxlength="20"                      
             data-msg-empty="Il campo repeti password non pu&ograve; essere vuoto" /></span></label>   
         <input type="submit"  class="submit" id="submit" name="salva" value="Salva"/>
-        <input type="reset" id="reset" name="reset" value="Cancella tutto"/>
     </fieldset>
 </form>';
 

@@ -67,21 +67,18 @@ HEADER
 header {
     color: var(--txtcolor);
     text-align: left;
-    padding: 0.7em 1em 2em;
+    padding: 0.7em 0.5em 0.5em;
     background-color: var(--headerbg); 
 }
 header h1{
     background-image: url("css_images/logo.png");
     background-repeat: no-repeat;
     background-size: contain;
-    font-size: 4.5em;
-    line-height: 1em;
+    font-size: 3em;
+    line-height: 1.5em;
    
 }
-header img {
-    position: absolute;
-    top: 1%;
-}
+
 
 header h1, header h2{
     text-indent: -999999em;
