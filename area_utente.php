@@ -294,12 +294,6 @@ if(isset($_POST['submit5']) && check()){
         $db=new Connection();
         $dbOK=$db->Connect();
    if($dbOK){
-        $check=" SELECT * FROM Iscrizione where  classe=\"".$classe."\" && nome_utente=\"".$_SESSION['user']."\";";
-        if($resc=$db->ExecQueryNum($check)){
-            $_SESSION['error']='<p class="error">Iscrizione già inserita</p>';
-            header('Location:area_utente.php#aggiscrizione'); 
-        }
-        else{
         $query8="INSERT INTO Iscrizione (ateneo, classe, corso, nome_utente, datai, punteggio_scuola_provenienza, dataf) VALUES(\"".$corso[0]."\",\"".$classe."\",\"".$corso[1]."\",\"".$_SESSION['user']."\",'".$datai."',".$punteggio.",'".$dataf."');";
         echo $query8;
         $q=$db->Insert($query8);
@@ -310,10 +304,7 @@ if(isset($_POST['submit5']) && check()){
        }
        else{
         $_SESSION['error']='<p class="error">L\'inserimento non è andato a buon fine</p>';
-        header('Location:area_utente.php#aggiscrizione');
-       }
-    
-   
+        header('Location:area_utente.php#aggiscrizione'); 
 }
 }
 else{
