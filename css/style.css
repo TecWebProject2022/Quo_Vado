@@ -247,14 +247,12 @@ MENU
 }
 
 #visible-sottomenu ul{
-    padding: 2em;
-    margin-left: 10%;
-    
+    padding: 2em 1em;    
 }
 
 #visible-sottomenu li{
     display: inline;
-    padding-right: 1.2em;
+    padding-right: 1em;
     font-size: 1.1em;
 }
 
