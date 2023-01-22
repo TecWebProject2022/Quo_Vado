@@ -253,7 +253,7 @@ if(isset($_POST['submit4']) && check()){
         $query7="Select ateneo, nome FROM CorsodiStudio where classe_laurea=\"".$_POST['classe']."\";";
         if($r=$db->ExecQueryNum($query7)){
            $_SESSION['data']=$r;
-            $form='<p class="formdesc">Inserimento per la classe di laurea: '.$_SESSION['LAUREA'].'<form id="selectcorso" action="area_utente.php" method="post">';
+            $form='<p class="formdesc">Inserimento per la classe di laurea: '.$_SESSION['LAUREA'].':  seleziona il corso di studi da te frequentato ed inserissci la data di inizio, la data di fine studi e un avalutazione da 1 a 5 sulla affinità della scuola supeiore da te frequentata con il corso di studio selezionato</p><form id="selectcorso" action="area_utente.php" method="post">';
             $form.="<fieldset><legend class='field_legend'>Seleziona corso di studi</legend>";
             $form.='<label for="corso">Seleziona il corso: </label>';
             $form.='<select class="select" id="corso" name="corso">';
