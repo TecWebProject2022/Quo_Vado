@@ -51,12 +51,12 @@ $db=new Connection();
                 $contenuto.='<h2 class="titles_area_classi">I corsi di studio di questa classe di laurea</h2>';
                 $contenuto.='<ul id="corsi">';
                 foreach($corsi as $c){
-                    $contenuto.='<li><a href="'.$c['link'].'"><strong>'.$c['nome'].'</strong></a> | '.$c['accesso'];
+                    $contenuto.='<li><a href="'.$c['link'].'" target="_blank"><strong>'.$c['nome'].'</strong></a> | '.$c['accesso'];
                     # se riesce a procurarsi il link bene, altrimenti semplicemente non lo inserisco
                     $ateneo=$c['ateneo'];
                     $query_link_ateneo="SELECT link FROM Ateneo WHERE nome=\"$ateneo\";";
                     if($linkAteneo=$db->ExecQueryAssoc($query_link_ateneo)){
-                        $contenuto.=' | <a href="'.$linkAteneo[0]['link'].'">'.$c['ateneo'].'</a>';
+                        $contenuto.=' | <a href="'.$linkAteneo[0]['link'].'" target="_blank">'.$c['ateneo'].'</a>';
                     }else{
                         $contenuto.=' | '.$c['ateneo']; 
                     }
