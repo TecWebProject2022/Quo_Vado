@@ -3,9 +3,8 @@ showTab(currentTab); // Mostralo
 
 //Predispone la pagina per iniziare il questionario
 function startQuest() { 
-    document.getElementById("begin").classList.add("none");
-    document.getElementById("questions").classList.add("block");
-    
+    document.getElementById("begin").style.display = "none";
+    document.getElementById("questions").style.display = "block";
     currentTab = 0; 
     showTab(currentTab); 
 }
@@ -14,14 +13,13 @@ function startQuest() {
 function showTab(n) {
     // mostra il testo
     var x = document.getElementsByClassName("tab");
-    x[n].classList.remove('tab');
-    x[n].classList.add('block');
+    x[n].style.display = "block";
 
     //sistema i pulsanti di controllo
     if (n == 0) {
-        document.getElementById("prevBtn").classList.add("none");
+        document.getElementById("prevBtn").style.display = "none";
     } else {
-        document.getElementById("prevBtn").classList.add("inline");
+        document.getElementById("prevBtn").style.display = "inline";
     }
     if (n == (x.length - 1)) {
         document.getElementById("nextBtn").innerHTML = "Fine";
@@ -36,10 +34,9 @@ function showTab(n) {
 
 //avanzamento  e mostra il successivo
 function nextPrev(n) {
-var x = document.getElementsByClassName("block");
+var x = document.getElementsByClassName("tab");
     //nasconde tab attuale
-    x[currentTab].classList.remove('block');
-    x[currentTab].classList.add('tab');
+    x[currentTab].style.display = "none";
     // mostra il successivo se esiste
     currentTab = currentTab + n;
     if (currentTab < x.length) {
@@ -63,16 +60,12 @@ x[n].className += " active";
 
 //Esce dal questionario e mostra messaggio finale
 function exitQuest(){
-    document.getElementById("questions").classList.remove("block");
-    document.getElementById("questions").classList.add("none");
-    document.getElementById("end").classList.remove('none');
-    document.getElementById("end").classList.add('block');
+    document.getElementById("questions").style.display = "none";
+    document.getElementById("end").style.display = "block";
 }
 
 //consente di ripetere il questionario
 function reStart(){
-    document.getElementById('begin').classList.remove('none');
-    document.getElementById("begin").classList.add('block');
-    document.getElementById("end").classList.remove('block');
-    document.getElementById("end").classList.add('none');
+    document.getElementById("begin").style.display = "block";
+    document.getElementById("end").style.display = "none";
 }

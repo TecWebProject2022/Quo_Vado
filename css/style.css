@@ -1448,7 +1448,9 @@ QUESTIONARIO
     background-color: #F29C38;
     color: #162636;
 }
-
+#questions,#end{
+    display: none;
+}
 
 
 
