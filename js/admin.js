@@ -91,6 +91,7 @@ function OnCommentFind(event){
                 parent.removeChild(parent.children[1]);
             }
             var a=document.createElement('strong');
+            a.setAttribute('id', 'comment_selector_error')
             a.classList.add('error');
             a.appendChild(document.createTextNode('riempire almeno uno dei due campi'));
             parent.insertBefore(a, document.getElementById('formTrovaCommenti').nextSibling);
