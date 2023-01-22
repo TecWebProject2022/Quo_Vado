@@ -77,24 +77,25 @@ function OnCommentFind(event){
         if(username.value.length || classe.value.length) {
             //almeno uno utilizzato
             isValid=(Validate(username) || Validate(classe));
+        }else{
+            //nessuno dei due utilizzato tolgo eventuali messaggi precedenti
+            if(username.parentNode.children.length==2){
+                username.parentNode.removeChild(parent.children[1]);
+            }
+            if(classe.parentNode.children.length==2){
+                classe.parentNode.removeChild(parent.children[1]);
+            }
+            //aggiungo mesaggio di errore
+            var parent= document.getElementById('formTrovaCommenti').parentNode;
+            if(parent.children.length==2){
+                parent.removeChild(parent.children[1]);
+            }
+            var a=document.createElement('strong');
+            a.classList.add('error');
+            a.appendChild(document.createTextNode('riempire almeno uno dei due campi'));
+            parent.insertBefore(a, document.getElementById('formTrovaCommenti').nextSibling);
+            isValid=false;
         }
-        //nessuno dei due utilizzato tolgo eventuali messaggi precedenti
-        if(username.parentNode.children.length==2){
-            username.parentNode.removeChild(parent.children[1]);
-        }
-        if(classe.parentNode.children.length==2){
-            classe.parentNode.removeChild(parent.children[1]);
-        }
-        //aggiungo mesaggio di errore
-        var parent= document.getElementById('formTrovaCommenti').parentNode;
-        if(parent.children.length==2){
-            parent.removeChild(parent.children[1]);
-        }
-        var a=document.createElement('strong');
-        a.classList.add('error');
-        a.appendChild(document.createTextNode('riempire almeno uno dei due campi'));
-        parent.appendChild(a);
-        isValid=false;
     }
     
     if(!isValid){
