@@ -10,7 +10,7 @@ html,body{
     margin:auto;
 }
 
-header h1, header h2:not(section header h2), .skip, nav:not(#breadcrumb), footer, #up{
+header h1, header h2:not(section header h2), .skip, nav:not(#breadcrumb), footer, #up, form{
     display: none;
 }
 
@@ -180,3 +180,33 @@ img[src="css/css_images/par_gen.webp"]{
 }
 
 
+/* Gruppi Disciplinari */
+
+.elenco_classi{
+	list-style: none;
+}
+
+.noDecoration a{
+	display:inline;
+}
+
+/* Classe Laurea */
+#descrizione #dettagliClasse{
+	display:block;
+}
+
+#identikit_corso{
+	list-style: none;
+}
+
+#dettagliClasse, #valutazione{
+	font-size: 14px;
+}
+
+#corsi a{
+	display:inline;
+}
+
+#listaCommenti .testoCommento{
+	display:block;
+}
