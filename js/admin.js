@@ -86,9 +86,9 @@ function OnCommentFind(event){
                 classe.parentNode.removeChild(parent.children[1]);
             }
             //aggiungo mesaggio di errore
-            var parent= document.getElementById('formTrovaCommenti').parentNode;
-            if(parent.children.length==2){
-                parent.removeChild(parent.children[1]);
+            var errore= document.getElementById('comment_selector_error');
+            if(errore){
+                errore.remove();
             }
             var a=document.createElement('strong');
             a.setAttribute('id', 'comment_selector_error')
