@@ -424,11 +424,15 @@ MENU
 ================
 */
 
+#error_page{
+    margin-bottom: 0;
+}
+
 #error_page div{
     background: #162636 url(css_images/festa.jpg) 85% no-repeat;
     background-size: cover;
     padding: 0% 5% 2.5% 5%;
-    margin-bottom: 2%;
+    margin-bottom: 1%;
 }
 
 #error_page h1{
@@ -1197,13 +1201,8 @@ OBIETTIVO LAVORO
     padding: 1.5em; 
     border-radius: 5px; 
     flex: 1 1 200px; 
-    /*transition: all .2s ease-in-out;*/
 }
-/*
-#external_resources li:hover {
-    transform: scale(1.02);
-}
-*/
+
 
 #external_resources p{
     font-size: 0.8em;
