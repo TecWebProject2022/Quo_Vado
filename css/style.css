@@ -63,7 +63,15 @@ html,body{
 HEADER
 ================
 */
-
+.none{
+    display: none;
+}
+.inline{
+    display:inline;
+}
+.block{
+    display: block;
+}
 header {
     color: var(--txtcolor);
     text-align: left;
@@ -1443,9 +1451,7 @@ QUESTIONARIO
 
 
 
-#questions, #end{
-    display: none;
-}
+
 
 #questions .section_content{
     background-color: #E07800;
