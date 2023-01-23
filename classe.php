@@ -1,7 +1,12 @@
 <?php 
 require_once 'utilita.php';
 require_once 'database.php';
+if(!isset($_GET['nclasse'])){
+    $target='';
+}
+else{
 $target=PulisciInput($_GET['nclasse']);
+}
 $content=file_get_contents('classe.html');
 $errori='';
 $contenuto='';
@@ -84,15 +89,24 @@ $db=new Connection();
                     <input type="submit" class="submit" name="filterTags" id="filter_button" value="filtra commenti"/>
 
                     <input type="hidden" name="nclasse" value="'.$target.'"/>
-                        <input type="hidden" name="area" value="'.$area.'"/>
+                    <input type="hidden" name="area" value="'.$area.'"/>
                 </fieldset>
             </form>';
             # se ottengo tag (da filtro, al primo caricamento della pagina sara sempre false) allora la query chiedera solo le valutazioni corrispondenti
+            
             if(isset($_GET['filterTags'])){
-                $filtri=isset($_GET['filtri'])?$_GET['filtri']:'';
-                if(count($filtri)>0){
-                    $targetTag=implode(',',$filtri);
+                $filtri=isset($_GET['filtri']) ? $_GET['filtri'] :'';
+                if($filtri!=''){
+                    if(count($filtri)>0){
+                        $targetTag=implode(',',$filtri);
+                    }
                 }
+                else{
+                   "<p class=\"error\">Attenzione non hai selezionato alcun filtro</p>";
+                   header('classe.php#filtro');
+                }
+                
+               
             }
             if($targetTag && preg_match('/^\d+(,\d+)*$/',$targetTag)){
                 $query_valutazione='SELECT Valutazione.nome_utente as n ,datav, commento, tag, p_complessivo, p_acc_fisica, p_servizio_inclusione, tempestivita_burocratica, p_insegnamento, Iscrizione.corso AS corso, Iscrizione.ateneo AS ateneo
