@@ -2074,7 +2074,7 @@ AREA ADMIN
 ================
 */
 
-#formTrovaCommenti, #formCorsi, #form_passw {
+#formTrovaCommenti, #formEliminaCommenti, #formCorsi, #form_passw {
     padding: 1em;
     margin: 0% 15% 0% 15%;
 }
@@ -2084,6 +2084,10 @@ AREA ADMIN
 }
 
 #formCorsi > fieldset {
+    padding: 1em;
+}
+
+#formEliminaCommenti > fieldset {
     padding: 1em;
 }
 
