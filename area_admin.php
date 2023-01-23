@@ -52,10 +52,10 @@ if($dbOK){
         $input_classi_corsi='<select id="cor_classe" name="cor_classe"  data-msg-invalid="La classe di laurea non pu&ograve; contenere spazi. Le classi di laurea vanno dalla classe L01 alla L43 e dalla LM01 alla LM94"
         data-msg-empty=""><option value="" disabled selected>Seleziona una classe di laurea</option>'.$opzioni.'</select>';
     }else{
-        $input_classi_commenti='<input id="com_classe" name="com_classe" type="text" 
+        $input_classi_commenti='<input id="com_classe" name="com_classe" type="text" placeholder="L01" 
         data-msg-invalid="La classe di laurea non pu&ograve; contenere spazi. Le classi di laurea vanno dalla classe L01 alla L43 e dalla LM01 alla LM94"
         data-msg-empty=""/>';
-        $input_classi_corsi='<input id="cor_classe" name="cor_classe" type="text" 
+        $input_classi_corsi='<input id="cor_classe" name="cor_classe" type="text" placeholder="L01"
         data-msg-invalid="La classe di laurea non pu&ograve; contenere spazi. Le classi di laurea vanno dalla classe L01 alla L43 e dalla LM01 alla LM94"
         data-msg-empty=""/>';
     }
@@ -70,7 +70,7 @@ if($dbOK){
         $input_atenei='<select id="cor_ateneo" name="cor_ateneo" data-msg-invalid="Il nome dell\'ateneo non pu&ograve; contenere numeri o caratteri speciali"
         data-msg-empty="Il nome dell\'ateneo non puo essere vuoto"><option value="" disabled selected>Seleziona un ateneo</option>'.$opzioni.'</select>';
     }else{
-        $input_atenei='<input id="cor_ateneo" name="cor_ateneo" type="text" 
+        $input_atenei='<input id="cor_ateneo" name="cor_ateneo" type="text" placeholder="Politecnico di milano"
         data-msg-invalid="Il nome dell\'ateneo non pu&ograve; contenere numeri o caratteri speciali"
         data-msg-empty="Il nome dell\'ateneo non puo essere vuoto"/>';
     }
@@ -81,12 +81,12 @@ if($dbOK){
             <fieldset>
                 <legend class="field_legend">Trova i commenti da eliminare</legend>
                 <label for="com_utente">Utente: 
-                <span><input id="com_utente" name="com_utente" type="text" 
+                <span><input id="com_utente" name="com_utente" type="text" placeholder="user" 
                     data-msg-invalid="Il campo username non pu&ograve; contenere spazi e deve contenere da 4 a 40 caratteri alfanumerici (sono ammessi i seguenti caratteri: @ . _ - )"
                     data-msg-empty=""/></span></label>
 
                 <label for="com_classe">Classe di laurea: 
-                <span>'.$input_classi.'</span></label>
+                <span>'.$input_classi_commenti.'</span></label>
 
                 <input type="submit" class="submit"  name="trova" value="trova"/>
             </fieldset>
@@ -161,11 +161,11 @@ if($dbOK){
                 <label for="cor_ateneo">Ateneo: 
                 <span>'.$input_atenei.'</span></label>
                 <label for="cor_nome">Nome: 
-                <span><input id="cor_nome" name="cor_nome" type="text" 
+                <span><input id="cor_nome" name="cor_nome" type="text" placeholder="corso di laurea in informatica"
                     data-msg-invalid="Il nome del corso di laurea non pu&ograve; contenere numeri o caratteri speciali"
                     data-msg-empty="il campo nome non puo essere vuoto"/></span></label>
                 <label for="cor_link">Link: 
-                <span><input id="cor_link" name="cor_link" type="url" 
+                <span><input id="cor_link" name="cor_link" type="url" placeholder="https://www.unipd.it/informatica"
                     data-msg-invalid="Il link del corso non &egrave; nel formato corretto"
                     data-msg-empty="il campo link non puo essere vuoto"/></span></label>
                 <label for="cor_accesso">Accesso: 
