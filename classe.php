@@ -21,6 +21,7 @@ $tags=array(
 $db=new Connection();
     $dbOK=$db->Connect();
     if($dbOK){
+        $contenuto.='<error/>';
         $query_classe="SELECT denominazione,illustrazione,area_disciplinare,gruppo_disciplinare,durata FROM ClassediLaurea WHERE num_classe=\"$target\";";
         if($classi=$db->ExecQueryAssoc($query_classe)){
             $area=$classi[0]['area_disciplinare'];
@@ -102,8 +103,7 @@ $db=new Connection();
                     }
                 }
                 else{
-                   "<p class=\"error\">Attenzione non hai selezionato alcun filtro</p>";
-                   header('classe.php#filtro');
+                   $errori.="<p class=\"error\">Attenzione non hai selezionato alcun filtro</p>";
                 }
                 
                
@@ -141,7 +141,7 @@ $db=new Connection();
             #aggiunta commento
             #controllo se sono in presenza di un utente loggato
             session_start();
-            $contenuto.='<error/>';
+           
             if(!isset($_SESSION['user'])){
                 $contenuto.='<p class="invito"><a href="registrazione_utente.php">Iscriviti</a> o <a href="login.php">Accedi</a> per lasciare un commento!</p>';
             }
