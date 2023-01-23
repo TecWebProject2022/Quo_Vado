@@ -246,7 +246,8 @@ MENU
 }
 
 #visible-sottomenu ul{
-    padding: 2em 1em;    
+    padding: 2em 1em;
+    margin-left: 2%;    
 }
 
 #visible-sottomenu li{
@@ -403,14 +404,17 @@ MENU
     }
     
     #visible-sottomenu ul{
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
         padding: 1em;
         margin-left: 5%;
-        
     }
+
     #visible-sottomenu li, #visible-menu a{
         display: block;
         padding: 0.8em 0em;
         font-size: 1.1em;
+        line-height: 3em;
     }
     
     #visible-sottomenu #currentSubLink {

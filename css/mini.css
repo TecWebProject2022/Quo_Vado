@@ -490,11 +490,14 @@ AREA UTENTE
 */
 
 #visible-sottomenu ul{
-    padding: 1em;    
+    display: block;
+    padding: 1em;
+    margin-left: 0%;
 }
 
 #visible-sottomenu li{
     text-align: center;
+    line-height: normal;
 }
 
 .titles_UtenteClasse {
