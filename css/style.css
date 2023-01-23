@@ -404,7 +404,8 @@ MENU
     }
     
     #visible-sottomenu ul{
-        display: grid;
+        display: flex;
+        flex-wrap: wrap;
         grid-template-columns: 1fr 1fr 1fr;
         padding: 1em;
         margin-left: 5%;
@@ -413,8 +414,11 @@ MENU
     #visible-sottomenu li, #visible-menu a{
         display: block;
         padding: 0.8em 0em;
+        margin-left: 0.5em;
+        margin-right: 0.5em;
         font-size: 1.1em;
         line-height: 3em;
+        flex: 1 1 1;
     }
     
     #visible-sottomenu #currentSubLink {
