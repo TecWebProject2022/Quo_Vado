@@ -17,7 +17,7 @@ $tags=array(
     1=>"commento generale",
     2=>"commento riguardante l'inclusivita"
 );
-
+$Com='';
 $db=new Connection();
     $dbOK=$db->Connect();
     if($dbOK){
