@@ -26,9 +26,9 @@ $db=new Connection();
         if($classi=$db->ExecQueryAssoc($query_classe)){
             $area=$classi[0]['area_disciplinare'];
             $classe=$target.'-'.$classi[0]['denominazione'];
-            $contenuto.='<h1 id="title">'.$target.' - '.$classi[0]['denominazione'].'</h1>';
+            $contenuto.='<h1 id="title">'.str_replace("_"," ",$target).' - '.$classi[0]['denominazione'].'</h1>';
             $contenuto.='<h2 class="titles_area_classi">Descrizione</h2>';
-            $contenuto.='<ul id="identikit_corso"><li id="descrizione"><p id="dettagliClasse">Area disciplinare: '.$classi[0]['area_disciplinare'].' | Gruppo disciplinare: '.$classi[0]['gruppo_disciplinare'].' 
+            $contenuto.='<ul id="identikit_corso"><li id="descrizione"><p id="dettagliClasse">Area disciplinare: '.str_replace("_"," ",$classi[0]['area_disciplinare']).' | Gruppo disciplinare: '.$classi[0]['gruppo_disciplinare'].' 
             | Tipologia: '.$classi[0]['durata'].'</p>';
             $contenuto.='<p id="illustrazioneClasse">'.$classi[0]['illustrazione'].'</p></li>'; #temporaneo, necessario inserire descrizioni nel db
 

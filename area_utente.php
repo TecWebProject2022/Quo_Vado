@@ -101,7 +101,7 @@ $query6="Select num_classe FROM ClassediLaurea";
 if($res5=$db->ExecQueryAssoc($query6)){
     $contenuto.="<h2 id=\"aggiscrizione\" class='titles_area_classi'>Inserisci una nuova iscrizione</h2>";
     $contenuto.='<span id="error"></span>';
-    $contenuto.="<label id=\"descseclect\" class=\"formdesc\">Qui puoi inserire una nuova iscrizione, presta molta attenzione ai passaggi</label>";
+    $contenuto.="<label id=\"descseclect\" class=\"formdesc\">Qui ti è consentito inserire una nuova iscrizione, fai molta attenzione ai passaggi</label>";
     $contenuto.='<form  aria-describedby="descseclect" id="selectclass" action="area_utente.php#aggiscrizione" method="post" ><fieldset><legend class="field_legend">Seleziona classe</legend>';
     $contenuto.="<label for=\"classi\">Classi disponibili:</label>
     <select id=\"classi\" name=\"classe\">";
@@ -168,30 +168,30 @@ if($res5=$db->ExecQueryAssoc($query5)){
     $classi.="</select></li>";
 
 $contenuto.='<h2 id="aggiungi" class="titles_area_classi">Aggiungi un commento</h2>';
-$contenuto.='<label id="aggiungi_commento" class="formdesc">Ti è consentito lasciare un solo commento per ogni ambito delle classe di laurea per le quali ti sei dichiarato iscritto. Il contenuto testuale del 
-commento dovrà contenere da 10 a 200 caratteri alfanumerici (sono ammessi i seguenti caratteri: @ . _ - )</label>';
+$contenuto.='<label id="aggiungi_commento" class="formdesc">Ti è consentito lasciare un solo commento per ogni ambito delle classe di laurea per le quali ti sei dichiarato iscritto.</label>';
 $contenuto.='<form id="form_aggiungicomm" aria-describedby="aggiungi_commento" action="area_utente.php"  onsubmit="return OnInsert()" method="post">
 <fieldset id="container_aggiungi">
 <legend class="field_legend">Aggiungi un commento</legend>'.$classi.'
-<li><label for="commento">Commento: </label><br/><span><textarea id="commento" name="insertcommento" maxlength="200"><areacom/></textarea></span></li>
+<li><label for="commento">Commento:</label><br/><span><textarea title="Il contenuto testuale del 
+commento dovrà contenere da 10 a 200 caratteri alfanumerici (sono ammessi i seguenti caratteri: @ . _ - )" id="commento" name="insertcommento" maxlength="200"><areacom/></textarea></span></li>
 <li><label for="tag">Il tuo commento riguarda:</label><span><select name="tag" id="tag" data-msg-empty="Per favore, aiutaci a capire di cosa parla il tuo commento">
     <option value="1">Inclusività</option>
     <option value="2">Commento generale</option></select></span></li>
 </ul>
 <ul id="val_list">
-<li><label for="p_complessivo">Punteggio complessivo: </label><span><input type="number" id="p_complessivo" name="p_complessivo" placeholder="1" value="1" min="1" max="5" 
+<li><label for="p_complessivo">Punteggio complessivo:</label><span><input title="valutazione che riguarda tutti gli ambiti universitari in generale" type="number" id="p_complessivo" name="p_complessivo" placeholder="1" value="1" min="1" max="5" 
    /></span></li>
     
-<li><label for="p_acc_fisica">Punteggio accessibilità fisica: </label><span><input type="number" id="p_acc_fisica" name="p_acc_fisica" placeholder="1" value="1" min="1" max="5" required
+<li><label for="p_acc_fisica">Punteggio accessibilità fisica:</label><span><input title="valutazione su quanto sono raggiungibile i servizi universitari da un punto di vista motorio"  type="number" id="p_acc_fisica" name="p_acc_fisica" placeholder="1" value="1" min="1" max="5" 
    /></span></li>
     
-<li><label for="p_inclusione">Punteggio servizio inclusione: </label><span><input type="number" id="p_inclusione" name="p_inclusione" placeholder="1" value="1" min="1" max="5" required
+<li><label for="p_inclusione">Punteggio servizio inclusione:</label><span><input title="valutazione riguardante l\'accoglienza e l\'appartenenza ad un gruppo universitario" type="number" id="p_inclusione" name="p_inclusione" placeholder="1" value="1" min="1" max="5" required
     /></span></li>
     
-<li><label for="p_tempestivita">Punteggio tempestivita burocratica: </label><span><input type="number" id="p_tempestivita" name="p_tempestivita" placeholder="1" value="1" min="1" max="5" required
+<li><label for="p_tempestivita">Punteggio tempestivita burocratica: </label><span><input title="valutazione attinente alla velocità di intervento e risposta da parte dei servizi amministrativi e burocratici universitari" type="number" id="p_tempestivita" name="p_tempestivita" placeholder="1" value="1" min="1" max="5" required
     /></span></li>
     
-<li><label for="p_insegnamento">Punteggio insegnamento: </label><span><input type="number" id="p_insegnamento" name="p_insegnamento" placeholder="1" value="1" min="1" max="5" required
+<li><label for="p_insegnamento">Punteggio qualità di insegnamento:</label><span><input title="valutazione riguardante la qualità di insegnamento ricevuto e le competenze acquisite in esso" type="number" id="p_insegnamento" name="p_insegnamento" placeholder="1" value="1" min="1" max="5" required
     /></span></li>
 </ul>
 <input type="submit" class="submit"  name="submit3" value="pubblica"/>
@@ -252,7 +252,7 @@ if(isset($_POST['submit4']) && check()){
         $query7="Select ateneo, nome FROM CorsodiStudio where classe_laurea=\"".$_POST['classe']."\";";
         if($r=$db->ExecQueryNum($query7)){
            $_SESSION['data']=$r;
-            $form='<p class="formdesc">Inserimento per la classe di laurea: '.$_SESSION['LAUREA'].':  seleziona il corso di studi da te frequentato ed inserisci la data di inizio, la data di fine ed una valutazione da 1 a 5 sull\'affinità della scuola superiore da te frequentata con il corso di studi selezionato</p><form id="selectcorso" action="area_utente.php" method="post">';
+            $form='<p class="formdesc">Inserimento per la classe di laurea: '.$_SESSION['LAUREA'].':  seleziona il corso di studi da te frequentato ed inserissci la data di inizio, la data di fine studi e un avalutazione da 1 a 5 sulla affinità della scuola supeiore da te frequentata con il corso di studio selezionato</p><form id="selectcorso" action="area_utente.php" method="post">';
             $form.="<fieldset><legend class='field_legend'>Seleziona corso di studi</legend>";
             $form.='<label for="corso">Seleziona il corso: </label>';
             $form.='<select class="select" id="corso" name="corso">';
