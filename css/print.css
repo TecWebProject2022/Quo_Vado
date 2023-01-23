@@ -228,7 +228,9 @@ img[src="css/css_images/par_gen.webp"]{
 #container_info{
 	margin: 5px 15px 5px 30px;
 }
-
+#canc{
+    display: none;
+}
 .highlight{
 	font-weight: bold;
 }

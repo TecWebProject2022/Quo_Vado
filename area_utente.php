@@ -149,7 +149,7 @@ if($res3=$db->ExecQueryNum($query3)){
     }
 
     $contenuto.="</ul>";
-    $contenuto.='<input type="submit"  class="submit" name="submit2" value="cancella"/></fieldset></form></commenterror>';
+    $contenuto.='<input type="submit"   id="canc" class="submit" name="submit2" value="cancella"/></fieldset></form></commenterror>';
     
 }
 else{
