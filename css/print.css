@@ -41,8 +41,7 @@ li {
 }
 
 section, article {
-    margin-top: 10px;
-    margin-bottom: 25px;
+    margin: 2.5px 0;
 }
 
 div, section, article, dd {
