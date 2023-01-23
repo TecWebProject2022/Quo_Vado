@@ -147,48 +147,15 @@ $db=new Connection();
             }
             else{
                 $query_iscrizione='SELECT nome_utente,corso FROM Iscrizione WHERE classe = "'.$target.'" AND nome_utente="'.pulisciInput($_SESSION['user']).'";';
-                if($iscritto=$db->ExecQueryAssoc($query_iscrizione)){
-                    $erroriNuovoCommento=isset($_GET['erroriCommenti'])?$_GET['erroriCommenti']:'';
-                    $contenuto.='<form id="formCommento" action="addComment.php" method="post" onsubmit=" return Validate(event)">
-                    <fieldset>
-                        <legend>Agguingi un commento!</legend>
-                        <label for="commento" >commento:</label>
-                        <span><textarea id="commento" name="commento" rows="4" cols="40"
-                        msg-data-empty="inserisci il commento" msg-data-invalid="il commento non puo contenere caratteri speciali e deve essere compreso tra 1 e 200 caratteri"></textarea></span>
-
-                        <label for="p_complessivo">punteggio complessivo:</label>
-                        <span><input type="number" id="p_complessivo" name="p_complessivo" placeholder="1" value="1" min="1" max="5" required
-                            msg-data-empty="inserisci il punteggio complessivo del corso" msg-data-invalid="il punteggio deve essere compreso tra 1 e 5"/></span>
-                        <label for="p_acc_fisica">punteggio accessibilità fisica:</label>
-                        <span><input type="number" id="p_acc_fisica" name="p_acc_fisica" placeholder="1" value="1" min="1" max="5" required
-                            msg-data-empty="inserisci il punteggio accessibilità fisica del corso" msg-data-invalid="il punteggio deve essere compreso tra 1 e 5"/></span>
-                        <label for="p_inclusione">punteggio servizio inclusione:</label>
-                        <span><input type="number" id="p_inclusione" name="p_inclusione" placeholder="1" value="1" min="1" max="5" required
-                            msg-data-empty="inserisci il punteggio servizio inclusione del corso" msg-data-invalid="il punteggio deve essere compreso tra 1 e 5"/></span>
-                        <label for="p_tempestivita">punteggio tempestivita burocratica: </label>
-                        <span><input type="number" id="p_tempestivita" name="p_tempestivita" placeholder="1" value="1" min="1" max="5" required
-                            msg-data-empty="inserisci il punteggio tempestivita burocratica del corso" msg-data-invalid="il punteggio deve essere compreso tra 1 e 5"/></span>
-                        <label for="p_insegnamento">punteggio insegnamento:</label>
-                        <span><input type="number" id="p_insegnamento" name="p_insegnamento"placeholder="1" value="1" min="1" max="5" required
-                            msg-data-empty="inserisci il punteggio insegnamento del corso" msg-data-invalid="il punteggio deve essere compreso tra 1 e 5"/></span>   
-                        <label for="tag">Il tuo commento riguarda:</label>
-                        <span><select name="tag" id="tag" data-msg-empty="Per favore, aiutaci a capire di cosa parla il tuo commento">
-                            <option value="1">Inclusivita\'</option>
-                            <option value="2">commento generale</option></select></span>
-                        
-                        <input type="hidden" name="classe" value="'.$target.'"/>
-                        <input type="hidden" name="area" value="'.$area.'"/>
-
-                        <input type="submit" class="submit"  name="submit" value="pubblica"/>
-                        <input type="reset"  name="cancella" value="cancella"/>
-                    </fieldset>
-                    </form><span><strong>'.$erroriNuovoCommento.'</strong></span>';
-                }else{
+                if(!$iscritto=$db->ExecQueryAssoc($query_iscrizione)){
                     if($_SESSION['user']!='admin'){
-                        $errori='<p class="invito">Ciao '.$_SESSION['user'].', per lasciare un commento aggiungi il corso di laurea appartenente alla classe '.$classe.' che hai frequentato nella tua <a href="area_utente.php">area personale</a>!</p>';
+                        $Com='<p class="invito">Ciao '.$_SESSION['user'].', per lasciare un commento aggiungi il corso di laurea appartenente alla classe '.$classe.' che hai frequentato nella tua <a href="area_utente.php">area personale</a>!</p>';
                     }else{
-                        $errori='<p class="invito">Gestisci i corsi e i commenti della classe di laurea '.$classe.' dal <a href="area_admin.php">pannello di controllo</a>!</p>';
+                        $Com='<p class="invito">Gestisci i corsi e i commenti della classe di laurea '.$classe.' dal <a href="area_admin.php">pannello di controllo</a>!</p>';
                     }
+                }
+                else{
+                    $Com='';
                 }
             }
         }
@@ -204,6 +171,7 @@ $db=new Connection();
     $content=str_replace("<classe/>",$classe,$content); 
     $content=str_replace("<content/>",$contenuto,$content);
     $content=str_replace("<error/>",$errori,$content);
+    $content=str_replace("<com/>",$Com,$content);
     echo $content;
  
 ?>
