@@ -10,12 +10,12 @@ html,body{
     margin:auto;
 }
 
-header h1, header h2, .skip, nav:not(#breadcrumb), footer, #up{
+header h1, header h2:not(section header h2), .skip, nav:not(#breadcrumb), footer, #up, form:not(#form_cancellacomm, #formEliminaCommenti){
     display: none;
 }
 
-header{
-    content: url("css_images/logo.png");
+header:not(section header){
+    content: url("css_images/logo.png");  /* DA SEGNARE IN RELAZIONE! */
 }
 
 #breadcrumb {
@@ -29,16 +29,20 @@ p, li, a{
 }
 
 dt,h2,h3{
-    padding-top: 8px;
+    padding-top: 5px;
 }
 
 ul li{
     padding-left: 20px;
-    list-style: inside;
+}
+
+li {
+    list-style-position: inside;
 }
 
 section, article {
-    padding-bottom: 10px;
+    margin-top: 10px;
+    margin-bottom: 25px;
 }
 
 div, section, article, dd {
@@ -48,32 +52,256 @@ div, section, article, dd {
 a{
     color: black;
     text-decoration: none;
+    text-align: left;
 }
+
+
 
 main a:after{
     content: " [ http://www.quoVado.it/"attr(href) "] ";
     font-size: 10px;
 }
 
+abbr{
+    text-decoration: none;
+}
+
+abbr[title]::after{
+    content: " (" attr(title) ")";
+}
+
+a[target]::after{
+    content: " [ "attr(href) "] ";
+    font-size: 10px;
+}
+
+li p:not(#nota){
+    display: inline;
+}
 
 /*********************************** NEL DETTAGLIO ********************************************************************/
 
 /* Index */
-/*
-.link a:after{
-    content: " [ http://www.quoVado.it/"attr(href) "] ";
-    font-size: 10px;
-}
-*/
-
-
-/* Università e inclusione */
+/* ??? */
 .mini_desc, .link{
     display: none;
 }
 
+/* Obiettivo Lavoro */
+
+#nota{
+    border: rgb(65, 65, 65) 1px solid;
+    padding: 2.5px;
+    margin: 2.5px;
+}
+
+#external_resources li{
+    list-style: none;
+}
+
+#external_resources img{
+    width: 2.5cm;
+    height: auto;
+    border-radius: 10px;
+    margin-top: 10px;
+}
+
+#external_resources a{
+    display: block;
+}
+
+/* Risorse interne */
+#step_list li{
+    padding: 10px 5px;
+}
+
+.importante{
+    border: rgb(65, 65, 65) 1px solid;
+    padding: 2.5px;
+    margin: 2.5px;
+}
+
+.quote::before{
+    content: " \000AB ";
+}
+
+.quote::after{
+    content: " \000BB ";
+}
+
+li a, #step_list li p.importante, #step_list li p.quote{
+    display: block;
+}
+
+#step_list ul>li{
+    padding: 2px;
+    padding-left: 10px;
+}
+
+img[src="css/css_images/struzzo.png"]{
+    width: 4cm;
+    height: auto;
+    float: right;
+    margin-bottom: 80px;
+}
+
+.motivational{
+    margin: 10px;
+    font-family: 'Brush Script MT',cursive;
+    font-size: 20px;
+    line-height: 1.5;
+    text-align: center;
+}
+
+.importante>.motivational{
+    margin: 0px;
+    text-align: left;
+}
+
+
+.tab{
+    display: block;
+    margin-top: 15px;
+}
+
+/* Università e inclusione */
 #soc{
     page-break-before: always;
 }
 
+.solution li a{
+    display: inline;
+}
 
+img[src="css/css_images/par_gen.webp"]{
+    width: 5cm;
+    height: auto;
+    margin: 15px 40%;
+}
+
+
+/* Gruppi Disciplinari */
+
+.elenco_classi{
+	list-style: none;
+}
+
+.noDecoration a{
+	display:inline;
+}
+
+/* Classe Laurea */
+#descrizione #dettagliClasse{
+	display:block;
+}
+
+#identikit_corso{
+	list-style: none;
+}
+
+#dettagliClasse, #valutazione{
+	font-size: 14px;
+}
+
+#corsi a{
+	display:inline;
+}
+
+#listaCommenti .testoCommento{
+	display:block;
+}
+
+/* Area Riservata user */
+
+#container_info, .container_iscrizione {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    padding: 5px;
+    border: 1px solid #000000;
+    margin: 5px 15px;
+    column-gap: 3%;
+    font-size: 12px;
+    font-family: monospace;
+}
+
+#container_info{
+	margin: 5px 15px 5px 30px;
+}
+#canc{
+    display: none;
+}
+.highlight{
+	font-weight: bold;
+}
+
+#container_info dt {
+    flex-grow: 1;
+    flex-basis: 30%;
+}
+
+#container_info dd {
+    flex-grow: 2;
+    flex-basis: 67%;
+}
+
+/*ISCRIZIONI*/
+
+#container_iscrizioni{
+	list-style:none;
+}
+
+#container_iscrizioni {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+}
+.container_iscrizione > dt {
+    flex-basis: 30%;
+}
+
+.container_iscrizione > dd {
+    flex-basis: 67%;
+}
+
+
+#aggiscrizione, #error, .formdesc, #aggiungi{
+	display:none;
+}
+
+/*COMMENTI RILASCIATI*/
+
+#form_cancellacomm, #form_aggiungicomm {
+    padding: 1em;
+    margin: 0% 15px;
+}
+
+#form_cancellacomm fieldset {
+    padding: 1em;
+}
+
+#commrilasc legend {
+    font-variant: small-caps;
+}
+
+#commrilasc > fieldset {
+    padding: 1em;
+}
+
+.blocco_commento {
+    padding: 1em;
+    border: 1px solid #000000;
+    margin: 0;
+    list-style: none;
+}
+
+.blocco_commento span {
+    display: block;
+    padding: 0.2em;
+}
+
+.tipo_valutazione {
+    padding: 0.5em;
+    margin: 1em;
+    text-align: center;
+}

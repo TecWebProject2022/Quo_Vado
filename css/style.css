@@ -47,9 +47,8 @@ html,body{
 .error {
     color: red;
     text-align: center;
-    margin-top: 1em;
-    margin-bottom: 1em;
     list-style-type: none;
+    margin: 1em 15em;
 }
 
 /* Rimuovo dalla vista gli aiuti alla navigazione*/
@@ -63,7 +62,15 @@ html,body{
 HEADER
 ================
 */
-
+.none{
+    display: none;
+}
+.inline{
+    display:inline;
+}
+.block{
+    display: block;
+}
 header {
     color: var(--txtcolor);
     text-align: left;
@@ -239,14 +246,13 @@ MENU
 }
 
 #visible-sottomenu ul{
-    padding: 2em;
-    margin-left: 10%;
-    
+    padding: 2em 1em;
+    margin-left: 2%;    
 }
 
 #visible-sottomenu li{
     display: inline;
-    padding-right: 1.2em;
+    padding-right: 1em;
     font-size: 1.1em;
 }
 
@@ -398,14 +404,20 @@ MENU
     }
     
     #visible-sottomenu ul{
+        display: flex;
+        flex-wrap: wrap;
+        grid-template-columns: 1fr 1fr 1fr;
         padding: 1em;
         margin-left: 5%;
-        
     }
+
     #visible-sottomenu li, #visible-menu a{
         display: block;
         padding: 0.8em 0em;
+        margin-left: 0.5em;
+        margin-right: 0.5em;
         font-size: 1.1em;
+        line-height: 3em;
     }
     
     #visible-sottomenu #currentSubLink {
@@ -424,11 +436,15 @@ MENU
 ================
 */
 
+#error_page{
+    margin-bottom: 0;
+}
+
 #error_page div{
     background: #162636 url(css_images/festa.jpg) 85% no-repeat;
     background-size: cover;
     padding: 0% 5% 2.5% 5%;
-    margin-bottom: 2%;
+    margin-bottom: 1%;
 }
 
 #error_page h1{
@@ -1079,13 +1095,15 @@ CLASSE DI LAUREA
     display: inline;
 }
 
-#tag_commento {
+.tag_commento {
     font-style: italic;
     padding: 0.5em;
 }
+
 .select{
     width: 70%;
 }
+
 .invito {
     border: 1.5px solid #000000;
     padding: 1em;
@@ -1197,13 +1215,8 @@ OBIETTIVO LAVORO
     padding: 1.5em; 
     border-radius: 5px; 
     flex: 1 1 200px; 
-    /*transition: all .2s ease-in-out;*/
 }
-/*
-#external_resources li:hover {
-    transform: scale(1.02);
-}
-*/
+
 
 #external_resources p{
     font-size: 0.8em;
@@ -1441,12 +1454,12 @@ QUESTIONARIO
     background-color: #F29C38;
     color: #162636;
 }
-
-
-
-#questions, #end{
+#questions,#end{
     display: none;
 }
+
+
+
 
 #questions .section_content{
     background-color: #E07800;
@@ -1920,7 +1933,6 @@ AREA UTENTE
     display: block;
     margin-left: 18%;
     margin-right: 18%;
-    font-style: italic;
 }
 
 .field_legend {
@@ -2040,6 +2052,14 @@ AREA UTENTE
 #val_list {
     flex-basis: 62%;
     list-style: none;
+}
+
+#commento{
+	width:20em;
+	height: 10em;
+	max-width:30em;
+	max-height:10em;
+	margin: 0.5em 1em 0.5em 0;
 }
 
 /*CAMBIA PASSWORD*/

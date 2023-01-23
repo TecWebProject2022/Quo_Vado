@@ -195,6 +195,10 @@ CLASSE DI LAUREA
     margin: 2em 0.5em 2em 0.5em;
 }
 
+.select{
+    width: 80%;
+}
+
 /*
 =================================================
 OBIETTIVO LAVORO
@@ -485,6 +489,17 @@ AREA UTENTE
 ================
 */
 
+#visible-sottomenu ul{
+    display: block;
+    padding: 1em;
+    margin-left: 0%;
+}
+
+#visible-sottomenu li{
+    text-align: center;
+    line-height: normal;
+}
+
 .titles_UtenteClasse {
     padding: 0.5em;
     margin: 1.3em 10% 1.3em 10%;
@@ -496,7 +511,6 @@ AREA UTENTE
     display: block;
     margin-left: 5%;
     margin-right: 5%;
-    font-style: italic;
 }
 
 #container_info, .container_iscrizione {

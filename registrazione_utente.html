@@ -20,7 +20,7 @@
     
 <body onload="VerificaJS()">
     <header>
-        <a href="index.html"><h1>Quo vado?</h1></a>
+        <h1>Quo vado?</h1>
 		<h2>Fai la scelta giusta!</h2>
     </header>
     
@@ -47,7 +47,7 @@
     </nav>
 
     <nav id="breadcrumb">
-        <p>Ti trovi in: <a href="login.php"><span lang="en">Login</span></a> &gt; &gt; Registrazione</p>
+        <p>Ti trovi in: <a href="index.html" lang="en">Home</a> &gt; &gt; <a href="login.php"><span lang="en">Login</span></a> &gt; &gt; Registrazione</p>
     </nav>
  
     <main id="content">
@@ -58,29 +58,29 @@
                 
                 <legend>Inserisci i tuoi dati</legend>
                 
-                <label for="name">Nome:</label>
+                <label for="name">Nome: </label>
                 <span><input name="name" id="name" value="<valoreNome/>" placeholder="Mario"  maxlength="20"                    
                         data-msg-empty="Nome non inserito. Per favore, inserisci il tuo nome"
                         data-msg-invalid="Il nome deve essere compreso tra 2 e 20 caratteri e non può contenere numeri o caratteri speciali"/></span>
             
-                <label for="last_name">Cognome:</label>
+                <label for="last_name">Cognome: </label>
                 <span><input id="last_name" name="last_name" value="<valoreCognome/>" placeholder="Rossi"  maxlength="30"                       
                         data-msg-empty="Cognome non inserito. Per favore, inserisci il tuo cognome"
                         data-msg-invalid="Il cognome deve essere compreso da 3 a 30 caratteri e non può contenere numeri o caratteri speciali" /></span>
                         
-                <label for="birthday">Data di nascita:</label>
+                <label for="birthday">Data di nascita: </label>
                 <span><input type="date" name="birthday" id="birthday" value="<valoreDataNascita/>" min="1900-01-01"                 
                     data-msg-empty="Data di nascita non inserita. Per favore, inserisci la tua data di nascita"
                     data-msg-invalid="Formato non corretto, inserire un a data compresa tra il 01/01/1900 e oggi" /></span>  
 
-                <label for="gender">Genere:</label>
+                <label for="gender">Genere: </label>
                 <span><select  name="gender" id="gender" data-msg-empty="Genere non inserito. Per favore, inserisci il tuo genere">
                     <option value="ND">ND</option>
                     <option value="M">M</option>
                     <option value="F">F</option>
                 </select></span>
 
-                <label for="school">Scuola superiore frequentata:</label>
+                <label for="school">Scuola superiore frequentata: </label>
                 <span><select  name="school" id="school" data-msg-empty=" Scuola superiore non inserita. Per favore, inserisci la scuola superiore che hai frequentato" >
                     <option value="classico">liceo classico</option>
                     <option value="scientifico">liceo scientifico</option>
@@ -119,15 +119,14 @@
     
     <footer>
         <div id="riferimenti">
-            <h3>Quo vado? Fai la scelta giusta!</h3>
+            <h2>Quo vado? Fai la scelta giusta!</h2>
             <p>Sito di orientamento <em>dagli</em> studenti <em>per</em> gli studenti.</p>
             <p>Realizzato da <em>Marco Brugin, Valentina Caputo, Matteo Umatche, Bianca Zaghetto</em></p>
             <p>Per qualsiasi dubbio, curiosità o difficoltà </p><a href="contatti.php">Contattaci</a>
-            <p></p>
         </div>
         
         <div id="credits">
-            <h3 lang="en">Credits</h3>
+            <h2 lang="en">Credits</h2>
             <ul>
                 <li lang="en">Home - faro: <a href="https://www.freepik.com/free-vector/lighthouse-sea-shore-beacon-building-nature-landscape_13875697.htm">Image by upklyak</a> on Freepik</li>
                 <li>Obiettivo Lavoro - sfondo titolo: <a lang="en" href="https://www.freepik.com/free-photo/business-strategy-success-target-goals_1211528.htm">Image by ijeab</a> on Freepik</li>
