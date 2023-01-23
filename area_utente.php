@@ -168,30 +168,30 @@ if($res5=$db->ExecQueryAssoc($query5)){
     $classi.="</select></li>";
 
 $contenuto.='<h2 id="aggiungi" class="titles_area_classi">Aggiungi un commento</h2>';
-$contenuto.='<label id="aggiungi_commento" class="formdesc">Ti è consentito lasciare un solo commento per ogni ambito delle classe di laurea per le quali ti sei dichiarato iscritto. Il contenuto testuale del 
-commento dovrà contenere da 10 a 200 caratteri alfanumerici (sono ammessi i seguenti caratteri: @ . _ - )</label>';
+$contenuto.='<label id="aggiungi_commento" class="formdesc">Ti è consentito lasciare un solo commento per ogni ambito delle classe di laurea per le quali ti sei dichiarato iscritto. </label>';
 $contenuto.='<form id="form_aggiungicomm" aria-describedby="aggiungi_commento" action="area_utente.php"  onsubmit="return OnInsert()" method="post">
 <fieldset id="container_aggiungi">
 <legend class="field_legend">Aggiungi un commento</legend>'.$classi.'
-<li><label for="commento">Commento:</label><br/><span><textarea id="commento" name="insertcommento" maxlength="200"><areacom/></textarea></span></li>
-<li><label for="tag">Il tuo commento riguarda:</label><span><select name="tag" id="tag" data-msg-empty="Per favore, aiutaci a capire di cosa parla il tuo commento">
+<li><label for="commento">Commento:</label><br/><span><textarea title="Il contenuto testuale del 
+commento dovrà contenere da 10 a 200 caratteri alfanumerici (sono ammessi i seguenti caratteri: @ . _ - )"  id="commento" name="insertcommento" maxlength="200"><areacom/></textarea></span></li>
+<li><label for="tag">Il tuo commento riguarda:</label><span><select  name="tag" id="tag" data-msg-empty="Per favore, aiutaci a capire di cosa parla il tuo commento">
     <option value="1">Inclusività</option>
     <option value="2">Commento generale</option></select></span></li>
 </ul>
 <ul id="val_list">
-<li><label for="p_complessivo">Punteggio complessivo:</label><span><input type="number" id="p_complessivo" name="p_complessivo" placeholder="1" value="1" min="1" max="5" 
+<li><label for="p_complessivo">Punteggio complessivo:</label><span><input title="valutazione che riguarda tutti gli ambiti universitari in generale" type="number" id="p_complessivo" name="p_complessivo" placeholder="1" value="1" min="1" max="5" 
    /></span></li>
     
-<li><label for="p_acc_fisica">Punteggio accessibilità fisica:</label><span><input type="number" id="p_acc_fisica" name="p_acc_fisica" placeholder="1" value="1" min="1" max="5" required
+<li><label for="p_acc_fisica">Punteggio accessibilità fisica:</label><span><input title="valutazione che riguarda la possibilità da parte di chiunque di fruire dei servizi universitari da un punto di vista fisico" type="number" id="p_acc_fisica" name="p_acc_fisica" placeholder="1" value="1" min="1" max="5" 
    /></span></li>
     
-<li><label for="p_inclusione">Punteggio servizio inclusione:</label><span><input type="number" id="p_inclusione" name="p_inclusione" placeholder="1" value="1" min="1" max="5" required
+<li><label for="p_inclusione">Punteggio servizio inclusione:</label><span><input title="valutazione riguardante l\'accoglienza e l\'appartenenza ad un gruppo universitario" type="number" id="p_inclusione" name="p_inclusione" placeholder="1" value="1" min="1" max="5" 
     /></span></li>
     
-<li><label for="p_tempestivita">Punteggio tempestivita burocratica: </label><span><input type="number" id="p_tempestivita" name="p_tempestivita" placeholder="1" value="1" min="1" max="5" required
+<li><label for="p_tempestivita">Punteggio tempestivita burocratica: </label><span><input type="number" title="valutazione attinente alla velocità di intervento e risposta da parte dei servizi amministrativi e burocratici universitari" id="p_tempestivita" name="p_tempestivita" placeholder="1" value="1" min="1" max="5" 
     /></span></li>
     
-<li><label for="p_insegnamento">Punteggio insegnamento:</label><span><input type="number" id="p_insegnamento" name="p_insegnamento" placeholder="1" value="1" min="1" max="5" required
+<li><label for="p_insegnamento">Punteggio insegnamento:</label><span><input type="number" title="valutazione riguardante la qualità di insegnamento ricevuto e le competenze acquisite in esso"  id="p_insegnamento" name="p_insegnamento" placeholder="1" value="1" min="1" max="5" 
     /></span></li>
 </ul>
 <input type="submit" class="submit"  name="submit3" value="pubblica"/>
