@@ -1088,13 +1088,15 @@ CLASSE DI LAUREA
     display: inline;
 }
 
-#tag_commento {
+.tag_commento {
     font-style: italic;
     padding: 0.5em;
 }
+
 .select{
     width: 70%;
 }
+
 .invito {
     border: 1.5px solid #000000;
     padding: 1em;
