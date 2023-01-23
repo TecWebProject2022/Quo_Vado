@@ -47,9 +47,8 @@ html,body{
 .error {
     color: red;
     text-align: center;
-    margin-top: 1em;
-    margin-bottom: 1em;
     list-style-type: none;
+    margin: 1em 15em;
 }
 
 /* Rimuovo dalla vista gli aiuti alla navigazione*/
