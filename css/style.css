@@ -2047,6 +2047,14 @@ AREA UTENTE
     list-style: none;
 }
 
+#commento{
+	width:20em;
+	height: 10em;
+	max-width:30em;
+	max-height:10em;
+	margin: 0.5em 1em 0.5em 0;
+}
+
 /*CAMBIA PASSWORD*/
 
 #form_passw > fieldset {
