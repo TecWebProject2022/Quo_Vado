@@ -489,6 +489,14 @@ AREA UTENTE
 ================
 */
 
+#visible-sottomenu ul{
+    padding: 1em;    
+}
+
+#visible-sottomenu li{
+    text-align: center;
+}
+
 .titles_UtenteClasse {
     padding: 0.5em;
     margin: 1.3em 10% 1.3em 10%;
