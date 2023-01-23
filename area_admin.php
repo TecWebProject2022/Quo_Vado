@@ -68,7 +68,7 @@ if($dbOK){
     }
     if($opzioni){ 
         $input_atenei='<select id="cor_ateneo" name="cor_ateneo" data-msg-invalid="Il nome dell\'ateneo non pu&ograve; contenere numeri o caratteri speciali"
-        data-msg-empty="Il nome dell\'ateneo non puo essere vuoto"><option value="" disabled selected>Seleziona una classe di laurea</option>'.$opzioni.'</select>';
+        data-msg-empty="Il nome dell\'ateneo non puo essere vuoto"><option value="" disabled selected>Seleziona un ateneo</option>'.$opzioni.'</select>';
     }else{
         $input_atenei='<input id="cor_ateneo" name="cor_ateneo" type="text" 
         data-msg-invalid="Il nome dell\'ateneo non pu&ograve; contenere numeri o caratteri speciali"
@@ -333,7 +333,7 @@ if($dbOK){
     }
     $db->Disconnect();
 }else{
-    $conn_error.='<strong class="error">Spiacente, i sistemi sono al momentamentamnete non disponibili, <a href="contatti.php">Contattaci</a> per avere un suppoorto</strong>';
+    $conn_error.='<strong class="error">Spiacente, i sistemi sono al momentamentamnete non disponibili, <a href="contatti.php">Contattaci</a> per avere un supporto</strong>';
 }
 
 #stampa sezione commenti
