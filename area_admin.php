@@ -29,89 +29,68 @@ $tags=array(
     1=>"commento generale",
     2=>"commento riguardante l'inclusivita"
 );
-
-$formSelezioneCommenti='
-<h2 class="titles_area_classi">Cancellazione commenti</h2>
-    <form id="formTrovaCommenti" action="area_admin.php" method="post" onsubmit="return OnCommentFind(event)">
-        <fieldset>
-            <legend class="field_legend">Trova i commenti da eliminare</legend>
-            <label for="com_utente">Utente: 
-            <span><input id="com_utente" name="com_utente" type="text" 
-                data-msg-invalid="Il campo username non pu&ograve; contenere spazi e deve contenere da 4 a 40 caratteri alfanumerici (sono ammessi i seguenti caratteri: @ . _ - )"
-                data-msg-empty=""/></span></label>
-
-            <label for="com_classe">Classe di laurea: 
-            <span><input id="com_classe" name="com_classe" type="text" 
-                data-msg-invalid="La classe di laurea non pu&ograve; contenere spazi. Le classi di laurea vanno dalla classe L01 alla L43 e dalla LM01 alla LM94"
-                data-msg-empty=""/></span></label>
-
-            <input type="submit" class="submit"  name="trova" value="trova"/>
-        </fieldset>
-    </form>';
-
-$formGestioneCorsi='
-<h2 class="titles_area_classi">Gestione corsi di studio</h2>
-<p class="formdesc">Per aggiungere un corso di studi &egrave; necessario riempire tutti i campi, per eliminarne uno bastano nome, classe di laurea e ateneo.</p>
-<form id="formCorsi" action="area_admin.php" method="post" >
-    <fieldset>
-        <legend class="field_legend">Aggiungi o elimina un corso di studi</legend>
-        
-        <label for="cor_classe">Classe di laurea: 
-        <span><input id="cor_classe" name="cor_classe" type="text" 
-            data-msg-invalid="La classe di laurea non pu&ograve; contenere spazi.Le classi di laurea vanno dalla classe L01 alla L43 e dalla LM01 alla LM94"
-            data-msg-empty="La classe di laurea non puo essere vuota"/></span></label>
-        <label for="cor_ateneo">Ateneo: 
-        <span><input id="cor_ateneo" name="cor_ateneo" type="text" 
-            data-msg-invalid="Il nome dell\'ateneo non pu&ograve; contenere numeri o caratteri speciali"
-            data-msg-empty="Il nome dell\'ateneo non puo essere vuoto"/></span></label>
-        <label for="cor_nome">Nome: 
-        <span><input id="cor_nome" name="cor_nome" type="text" 
-            data-msg-invalid="Il nome del corso di laurea non pu&ograve; contenere numeri o caratteri speciali"
-            data-msg-empty="il campo nome non puo essere vuoto"/></span></label>
-        <label for="cor_link">Link: 
-        <span><input id="cor_link" name="cor_link" type="url" 
-            data-msg-invalid="Il link del corso non &egrave; nel formato corretto"
-            data-msg-empty="il campo link non puo essere vuoto"/></span></label>
-        <label for="cor_accesso">Accesso: 
-        <span><select name="cor_accesso" id="cor_accesso" 
-            data-msg-invalid="Le modalita di accesso sono Accesso programmato,Accesso libero con prova,Accesso a numero chiuso,Accesso libero cronologico"
-            data-msg-empty="il campo accesso non puo essere vuoto">
-                <option value="" disabled selected>Selezionare un\'opzione</option>
-                <option value="Accesso programmato">Accesso programmato</option>
-                <option value="Accesso libero con prova">Accesso libero con prova</option>
-                <option value="Accesso a numero chiuso">Accesso a numero chiuso</option>
-                <option value="Accesso libero cronologico">Accesso libero cronologico</option>
-        </select></span></label>
-
-        <input type="submit"  class="submit"  id="add_corso" name="add_corso" value="Aggiungi" onclick="return OnCourseAdd(event)"/>
-        <input type="submit"  class="submit"  id="delete_corso" name="delete_corso" value="Elimina" onclick="return OnCourseDelete(event)"/>
-    </fieldset>
-</form>';
-
-$formCambioPw=' 
-<h2 id="CambioPw" class="titles_area_classi">Cambia Password</h2>
-<form id="form_passw" action="area_admin.php" method="post" >
-    <fieldset>
-        <legend class="field_legend">Cambio password</legend>
-        <label for="oldpassword"><span lang="en">Immetti la tua vecchia Password: </span>
-        <span><input  value="<old>" type="password" id="oldpassword" name="Vecchiapassword" placeholder="Immetti la tua vecchia Password" maxlength="20"                      
-            data-msg-invalid="Il campo password non pu&ograve; contenere spazzi e deve contenere da 4 a 20 caratteri alfanumerici (sono ammessi i seguenti caratteri: @ . _ - ), controlla e riprova"
-            data-msg-empty="Il campo vecchia password non pu&ograve; essere vuoto" /></span></label>
-        <label for="newpassword"><span lang="en">Immetti la tua nuova Password: </span>
-        <span><input  value="<new>" type="password" id="newpassword" name="newpassword" placeholder="Immetti la tua nuova password" maxlength="20"                      
-            data-msg-invalid="Il campo password non pu&ograve; contenere spazzi e deve contenere da 4 a 20 caratteri alfanumerici (sono ammessi i seguenti caratteri: @ . _ - ), controlla e riprova"
-            data-msg-empty="Il campo nuova password non pu&ograve; essere vuoto" /></span></label>
-        <label for="repeat"><span lang="en">Ripeti la Password: </span>
-        <span><input  value="" type="password" id="repeat" name="repepassword" placeholder="Ripeti la password" maxlength="20"                      
-            data-msg-empty="Il campo repeti password non pu&ograve; essere vuoto" /></span></label>   
-        <input type="submit"  class="submit" id="submit" name="salva" value="Salva"/>
-    </fieldset>
-</form>';
+$formSelezioneCommenti='';
+$formGestioneCorsi='';
+$formCambioPw='';
+$conn_error='';
 
 #inizio
 $db=new Connection();
 $dbOK=$db->Connect();
 if($dbOK){
+    #preparazione elementi select classi e atenei
+    $query_get_classi='SELECT num_classe FROM ClassediLaurea ;';
+    $opzioni='';
+    if($lista_classi=$db->ExecQueryAssoc($query_get_classi)){
+        foreach($lista_classi as $l){
+            $opzioni.='<option value="'.$l['num_classe'].'">'.$l['num_classe'].'</option>';
+        }
+    }
+    if($opzioni){    
+        $input_classi_commenti='<select id="com_classe" name="com_classe"  data-msg-invalid="La classe di laurea non pu&ograve; contenere spazi. Le classi di laurea vanno dalla classe L01 alla L43 e dalla LM01 alla LM94"
+        data-msg-empty=""><option value="" disabled selected>Seleziona una classe di laurea</option>'.$opzioni.'</select>';
+        $input_classi_corsi='<select id="cor_classe" name="cor_classe"  data-msg-invalid="La classe di laurea non pu&ograve; contenere spazi. Le classi di laurea vanno dalla classe L01 alla L43 e dalla LM01 alla LM94"
+        data-msg-empty=""><option value="" disabled selected>Seleziona una classe di laurea</option>'.$opzioni.'</select>';
+    }else{
+        $input_classi_commenti='<input id="com_classe" name="com_classe" type="text" 
+        data-msg-invalid="La classe di laurea non pu&ograve; contenere spazi. Le classi di laurea vanno dalla classe L01 alla L43 e dalla LM01 alla LM94"
+        data-msg-empty=""/>';
+        $input_classi_corsi='<input id="cor_classe" name="cor_classe" type="text" 
+        data-msg-invalid="La classe di laurea non pu&ograve; contenere spazi. Le classi di laurea vanno dalla classe L01 alla L43 e dalla LM01 alla LM94"
+        data-msg-empty=""/>';
+    }
+    $query_get_atenei='SELECT nome FROM Ateneo;';
+    $opzioni='';
+    if($lista_atenei=$db->ExecQueryAssoc($query_get_atenei)){
+        foreach($lista_atenei as $l){
+            $opzioni.='<option value="'.$l['nome'].'">'.$l['nome'].'</option>';
+        }
+    }
+    if($opzioni){ 
+        $input_atenei='<select id="cor_ateneo" name="cor_ateneo" data-msg-invalid="Il nome dell\'ateneo non pu&ograve; contenere numeri o caratteri speciali"
+        data-msg-empty="Il nome dell\'ateneo non puo essere vuoto"><option value="" disabled selected>Seleziona una classe di laurea</option>'.$opzioni.'</select>';
+    }else{
+        $input_atenei='<input id="cor_ateneo" name="cor_ateneo" type="text" 
+        data-msg-invalid="Il nome dell\'ateneo non pu&ograve; contenere numeri o caratteri speciali"
+        data-msg-empty="Il nome dell\'ateneo non puo essere vuoto"/>';
+    }
+    # preparazione form commenti
+    $formSelezioneCommenti.='
+    <h2 class="titles_area_classi">Cancellazione commenti</h2>
+        <form id="formTrovaCommenti" action="area_admin.php" method="post" onsubmit="return OnCommentFind(event)">
+            <fieldset>
+                <legend class="field_legend">Trova i commenti da eliminare</legend>
+                <label for="com_utente">Utente: 
+                <span><input id="com_utente" name="com_utente" type="text" 
+                    data-msg-invalid="Il campo username non pu&ograve; contenere spazi e deve contenere da 4 a 40 caratteri alfanumerici (sono ammessi i seguenti caratteri: @ . _ - )"
+                    data-msg-empty=""/></span></label>
+
+                <label for="com_classe">Classe di laurea: 
+                <span>'.$input_classi.'</span></label>
+
+                <input type="submit" class="submit"  name="trova" value="trova"/>
+            </fieldset>
+        </form>';
     # sezione elimina commenti
     if(isset($_POST['trova'])){
         # in base ai campi inseriti imposto la query
@@ -169,7 +148,43 @@ if($dbOK){
             } 
         }  
     }
-    # controllo se nel form per la ricerca e' stato selezionato qualcosa
+    #preparazione form corsi
+    $formGestioneCorsi='
+        <h2 class="titles_area_classi">Gestione corsi di studio</h2>
+        <p class="formdesc">Per aggiungere un corso di studi &egrave; necessario riempire tutti i campi, per eliminarne uno bastano nome, classe di laurea e ateneo.</p>
+        <form id="formCorsi" action="area_admin.php" method="post" >
+            <fieldset>
+                <legend class="field_legend">Aggiungi o elimina un corso di studi</legend>
+                
+                <label for="cor_classe">Classe di laurea: 
+                <span>'.$input_classi_corsi.'</span></label>
+                <label for="cor_ateneo">Ateneo: 
+                <span>'.$input_atenei.'</span></label>
+                <label for="cor_nome">Nome: 
+                <span><input id="cor_nome" name="cor_nome" type="text" 
+                    data-msg-invalid="Il nome del corso di laurea non pu&ograve; contenere numeri o caratteri speciali"
+                    data-msg-empty="il campo nome non puo essere vuoto"/></span></label>
+                <label for="cor_link">Link: 
+                <span><input id="cor_link" name="cor_link" type="url" 
+                    data-msg-invalid="Il link del corso non &egrave; nel formato corretto"
+                    data-msg-empty="il campo link non puo essere vuoto"/></span></label>
+                <label for="cor_accesso">Accesso: 
+                <span><select name="cor_accesso" id="cor_accesso" 
+                    data-msg-invalid="Le modalita di accesso sono Accesso programmato,Accesso libero con prova,Accesso a numero chiuso,Accesso libero cronologico"
+                    data-msg-empty="il campo accesso non puo essere vuoto">
+                        <option value="" disabled selected>Selezionare un\'opzione</option>
+                        <option value="Accesso programmato">Accesso programmato</option>
+                        <option value="Accesso libero con prova">Accesso libero con prova</option>
+                        <option value="Accesso a numero chiuso">Accesso a numero chiuso</option>
+                        <option value="Accesso libero cronologico">Accesso libero cronologico</option>
+                </select></span></label>
+
+                <input type="submit"  class="submit"  id="add_corso" name="add_corso" value="Aggiungi" onclick="return OnCourseAdd(event)"/>
+                <input type="submit"  class="submit"  id="delete_corso" name="delete_corso" value="Elimina" onclick="return OnCourseDelete(event)"/>
+            </fieldset>
+        </form>';
+    
+        # controllo se nel form per la ricerca e' stato selezionato qualcosa
     if(isset($_POST['delete_commento'])){
         #commenti da eliminare selezionati
         $msgCommenti_delete.='<ul>';
@@ -258,7 +273,26 @@ if($dbOK){
             }
         }
     }
-
+    #preparazione form cambio password
+    $formCambioPw=' 
+    <h2 id="CambioPw" class="titles_area_classi">Cambia Password</h2>
+    <form id="form_passw" action="area_admin.php" method="post" >
+        <fieldset>
+            <legend class="field_legend">Cambio password</legend>
+            <label for="oldpassword"><span lang="en">Immetti la tua vecchia Password: </span>
+            <span><input  value="<old>" type="password" id="oldpassword" name="Vecchiapassword" placeholder="Immetti la tua vecchia Password" maxlength="20"                      
+                data-msg-invalid="Il campo password non pu&ograve; contenere spazzi e deve contenere da 4 a 20 caratteri alfanumerici (sono ammessi i seguenti caratteri: @ . _ - ), controlla e riprova"
+                data-msg-empty="Il campo vecchia password non pu&ograve; essere vuoto" /></span></label>
+            <label for="newpassword"><span lang="en">Immetti la tua nuova Password: </span>
+            <span><input  value="<new>" type="password" id="newpassword" name="newpassword" placeholder="Immetti la tua nuova password" maxlength="20"                      
+                data-msg-invalid="Il campo password non pu&ograve; contenere spazzi e deve contenere da 4 a 20 caratteri alfanumerici (sono ammessi i seguenti caratteri: @ . _ - ), controlla e riprova"
+                data-msg-empty="Il campo nuova password non pu&ograve; essere vuoto" /></span></label>
+            <label for="repeat"><span lang="en">Ripeti la Password: </span>
+            <span><input  value="" type="password" id="repeat" name="repepassword" placeholder="Ripeti la password" maxlength="20"                      
+                data-msg-empty="Il campo repeti password non pu&ograve; essere vuoto" /></span></label>   
+            <input type="submit"  class="submit" id="submit" name="salva" value="Salva"/>
+        </fieldset>
+    </form>';
     #sezione  cambio password da gestire 
     if(isset($_POST['salva']) && check()){
         $vecchia=PulisciInput($_POST['Vecchiapassword']);
@@ -287,7 +321,7 @@ if($dbOK){
                     if($db->multiInsert($query_update_pw)){
                         $msgPassword.='<p class="error">Password modificata con successo</strong>';
                     }else{
-                        $msgPassword.='<p class="error">Cambiamento password non riuscito, i sistemi sono al momentamentamnete non disponibili</strong>';
+                        $msgPassword.='<p class="error">Cambiamento password non riuscito, i sistemi sono al momentamentamnete non disponibili, <a href="contatti.php">Contattaci</a> per avere un suppoorto</strong>';
                     } 
                 }else{
                     $msgPassword.='<p class="error">la vecchia password inserita non corrisponde</strong>';
@@ -298,6 +332,8 @@ if($dbOK){
         }
     }
     $db->Disconnect();
+}else{
+    $conn_error.='<strong class="error">Spiacente, i sistemi sono al momentamentamnete non disponibili, <a href="contatti.php">Contattaci</a> per avere un suppoorto</strong>';
 }
 
 #stampa sezione commenti
@@ -311,6 +347,7 @@ $content=str_replace("<msgCorsi/>",$msgCorso,$content);
 #stampa cambio pw
 $content=str_replace("<formCambioPw/>",$formCambioPw,$content);
 $content=str_replace("<msgPassword/>",$msgPassword,$content);
+$content=str_replace("<msgConnError/>",$conn_error,$content);
 
 echo $content;
 
