@@ -37,23 +37,28 @@ function Validate(element){
     }
     return true;
 }
-//chiamata al s8bmit
+//chiamata al submit
 function onFormSubmit(event) {
     event.preventDefault();
-    if (event.target.classList.contains("add-button")) {
+    if (event.target.id === "add_corso") {
         return OnCourseAdd(event);
-    } else if (event.target.classList.contains("delete-button")) {
+    } else if (event.target.id === "delete_corso") {
         return OnCourseDelete(event);
     }
 }
 
 function OnCourseAdd(event){
-    if( Validate(document.getElementById('cor_nome')) & Validate(document.getElementById('cor_classe')) & Validate(document.getElementById('cor_ateneo')) & Validate(document.getElementById('cor_accesso')) & Validate(document.getElementById('cor_link'))){
-        return true;
-    }else{
-        event.preventDefault();
-        return false;
+    var isValid=true;
+    if(!( Validate(document.getElementById('cor_nome')) & Validate(document.getElementById('cor_classe')) & Validate(document.getElementById('cor_ateneo')) & Validate(document.getElementById('cor_accesso')) & Validate(document.getElementById('cor_link')))){
+        
+        isValid=false;
     }
+    if(!isValid){
+        event.preventDefault();
+        return isValid;
+    }
+
+    return isValid;
    
 }
 
@@ -72,8 +77,7 @@ function OnCommentFind(event){
     
     if (username.value.length && classe.value.length){ 
         isValid=(Validate(username) & Validate(classe));//entrambi utilizzati li verifico tutti e due
-    } 
-    else{
+    }else{
         if(username.value.length || classe.value.length) {
             //almeno uno utilizzato
             isValid=(Validate(username) || Validate(classe));
