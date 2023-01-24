@@ -2,9 +2,22 @@
     padding: 0em;
     margin: 0em;
 }
-.error_js{
-    color:red;
+
+@font-face {
+    font-family: OpenDyslexic;
+    src: url(font/OpenDyslexic/OpenDyslexic-Regular.otf);
 }
+
+@font-face {
+    font-family: OpenDyslexicBold;
+    src: url(font/OpenDyslexic/OpenDyslexic-Bold.otf);
+}
+
+@font-face {
+    font-family: OpenDyslexicItalic;
+    src: url(font/OpenDyslexic/OpenDyslexic-Italic.otf);
+}
+
 :root {
     --headerbg: #FFFDE8;
 
@@ -38,7 +51,7 @@
 
 html,body{
     font-size: 100%; 
-    font-family: "Verdana",sans-serif; /* aggiungere altri font così sono troppo pochi*/
+    font-family: OpenDyslexic, Verdana, Geneva, Tahoma, sans-serif; 
     line-height: 1.5em;
     margin:auto;
     background-color: var(--bgcolor);
@@ -47,10 +60,10 @@ html,body{
 }
 
 .error {
-    color: red;
+    color: #E61B10;
     text-align: center;
     list-style-type: none;
-    margin: 1em 15em;
+    margin: 1em 5em;
 }
 
 /* Rimuovo dalla vista gli aiuti alla navigazione*/
@@ -598,7 +611,7 @@ article div{
 }
 
 q{
-    font-family: monospace, sans-serif;
+    font-family: OpenDyslexicItalic ,monospace, sans-serif;
     font-size: 1.2em;
     color: #093e4b;
 }
@@ -1387,7 +1400,7 @@ img[src="css/css_images/struzzo.png"]{
 
 .motivational{
     margin: 0.2em 0em;
-    font-family: 'Brush Script MT',cursive;
+    font-family: OpenDyslexicBold, Verdana, Geneva, Tahoma, sans-serif;
     font-size: 1.8em;
     line-height: 1.5em;
     text-align: center;
