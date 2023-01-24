@@ -14,5 +14,7 @@ unset($_SESSION['user']);
     unset($_SESSION['vecchia']);
     unset($_SESSION['error']);
     unset( $_SESSION['commento']);
+    unset($_SESSION['password']);
+    unset($_SESSION['add']);
 header('Location:index.html');
 ?>

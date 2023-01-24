@@ -5,6 +5,8 @@ session_start();
 if(!isset($_SESSION['user']) || !isset($_SESSION['time']) || time()-$_SESSION['time']>3600){
     unset($_SESSION['user']); 
     unset($_SESSION['time']);
+    unset($_SESSION['password']);
+    unset($_SESSION['add']);
     $_SESSION['sessione']='<p class="error">Sessione Scaduta</p>';
     header('Location:login.php');
 }
@@ -181,7 +183,7 @@ if($dbOK){
                 </select></span></label>
 
                 <input type="submit"  class="submit"  id="add_corso" name="add_corso" value="Aggiungi" />
-                <input type="submit"  class="submit"  id="delete_corso" onsubmit=" name="delete_corso" value="Elimina" />
+                <input type="submit"  class="submit"  id="delete_corso" name="delete_corso" value="Elimina" />
             </fieldset>
         </form><msgCorsi/>';
     
@@ -197,11 +199,11 @@ if($dbOK){
                 $query_delete_commenti="DELETE FROM Valutazione Where nome_utente=\"".$userdata[0]."\" && classe_laurea=\"".$userdata[1]."\" && tag=\"".$userdata[2]."\";";
                 if($db->Insert($query_delete_commenti)){
                     $_SESSION['info'].='<p class="invito">Commento dell\'utente '.$userdata[0].' eliminato con successo</p>';
-                    header("Location:area_admin.php");
+                    header("Location:area_admin.php#formCorsi");
                 }else{
                     $msgCommenti_delete.='<li class="error">Si è verificato un errori ai nostri servizi, commento dell\'utente '.$userdata[0].' non eliminato</li>';
                     $_SESSION['add']='<p class="error">Si è verificato un errori ai nostri servizi, commento dell\'utente '.$userdata[0].' non eliminato</p>';
-                    header("Location:area_admin.php");
+                    header("Location:area_admin.php#formCorsi");
                 }
             }
         }else{
@@ -278,17 +280,17 @@ if($dbOK){
             if (!preg_match('/^(L|LM)[0-9]{2}$/',$classe)){
                 $msgCorso.='<li class="error">La classe di laurea non pu&ograve; essere vuoto o contenere spazi.Le classi di laurea vanno dalla classe L01 alla L43 e dalla LM01 alla LM94</li>';
                 $_SESSION['add']='<p class="error">La classe di laurea non pu&ograve; essere vuoto o contenere spazi.Le classi di laurea vanno dalla classe L01 alla L43 e dalla LM01 alla LM94</p>';
-                header("Location:area_admin.php");
+                header("Location:area_admin.php#formCorsi");
             }
             if (!preg_match('/^[a-zA-ZÀ-ÿ\s]{1,50}$/',$ateneo)){
                 $msgCorso.='<li class="error">Il nome dell\'ateneo non pu&ograve; essere vuoto o contenere numeri o caratteri speciali</li>';
                 $_SESSION['add']='<p class="error">Il nome dell\'ateneo non pu&ograve; essere vuoto o contenere numeri o caratteri speciali</p>';
-                header("Location:area_admin.php");
+                header("Location:area_admin.php#formCorsi");
             }
             if (!preg_match('/^[a-zA-ZÀ-ÿ\s]{1,80}$/',$nome)){
                 $msgCorso.='<li class="error">Il nome del corso di laurea non pu&ograve; essere vuoto o contenere numeri o caratteri speciali</li>';
                 $_SESSION['add']='<p class="error">Il nome del corso di laurea non pu&ograve; essere vuoto o contenere numeri o caratteri speciali</p>';
-                header("Location:area_admin.php");
+                header("Location:area_admin.php#formCorsi");
             }
 
             if(!$msgCorso){
@@ -300,7 +302,7 @@ if($dbOK){
                 }else{
                     $msgCorso.='<p class="error">Cancellazione di '.$nome.' non riuscita, riprova</p>';
                     $_SESSION['add']='<p class="error">Cancellazione di '.$nome.' non riuscita, riprova</p>';
-                    header("Location:area_admin.php");
+                    header("Location:area_admin.php#formCorsi");
                 }
             }else{
                 $msgCorso='<ul>'.$msgCorso.'</ul>';
@@ -386,6 +388,9 @@ if($dbOK){
 }
 if(!isset($_SESSION['add'])){
     $_SESSION['add']='';
+}
+if(!isset($_SESSION['password'])){
+    $_SESSION['password']='';
 }
 #stampa sezione commenti
 $content=str_replace("<formSelezioneCommenti/>",$formSelezioneCommenti,$content);
