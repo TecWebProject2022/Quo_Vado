@@ -152,7 +152,7 @@ if($dbOK){
     $formGestioneCorsi='
         <h2 class="titles_area_classi">Gestione corsi di studio</h2>
         <p class="formdesc">Per aggiungere un corso di studi &egrave; necessario riempire tutti i campi, per eliminarne uno bastano nome, classe di laurea e ateneo.</p>
-        <form id="formCorsi" action="area_admin.php" method="post" >
+        <form id="formCorsi" action="area_admin.php" method="post" onsubmit="return onFormSubmit(event)" >
             <fieldset>
                 <legend class="field_legend">Aggiungi o elimina un corso di studi</legend>
                 
@@ -179,8 +179,8 @@ if($dbOK){
                         <option value="Accesso libero cronologico">Accesso libero cronologico</option>
                 </select></span></label>
 
-                <input type="submit"  class="submit"  id="add_corso" name="add_corso" value="Aggiungi" onclick="return OnCourseAdd(event)"/>
-                <input type="submit"  class="submit"  id="delete_corso" name="delete_corso" value="Elimina" onclick="return OnCourseDelete(event)"/>
+                <input type="submit"  class="submit"  id="add_corso" name="add_corso" value="Aggiungi" />
+                <input type="submit"  class="submit"  id="delete_corso" name="delete_corso" value="Elimina" />
             </fieldset>
         </form>';
     
