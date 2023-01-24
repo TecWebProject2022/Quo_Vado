@@ -2098,8 +2098,6 @@ AREA UTENTE
 }
 
 #commento{
-    min-width: 25em;
-    min-height: 3em;
 	max-width:30em;
 	max-height:10em;
 	margin: 0.5em 1em 0.5em 0;
