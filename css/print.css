@@ -23,7 +23,9 @@ header:not(section header){
     padding: 7px 0;
 
 }
-
+main{
+    text-align: justify;
+}
 p, li, a{
     padding-bottom: 5px;
 }
