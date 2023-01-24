@@ -60,10 +60,10 @@ html,body{
 }
 
 .error {
-    color: red;
+    color: #E61B10;
     text-align: center;
     list-style-type: none;
-    margin: 1em 15em;
+    margin: 1em 5em;
 }
 
 /* Rimuovo dalla vista gli aiuti alla navigazione*/
