@@ -1,5 +1,5 @@
 //Validazione dei campi
-var test={
+/*var test={
     "com_utente":/^[@a-zA-Z0-9._-]{4,40}$/,
     "com_classe":/^(L|LM)[0-9]{2}$/,
     "cor_classe":/^(L|LM)[0-9]{2}$/,
@@ -59,13 +59,38 @@ function OnCourseAdd(event){
 
     return isValid;
    
+}*/
+function Box_Validate(){
+    var box=document.getElementsByName('commento[]'); // è una lista quindi devo verificare se esiste al meno un elemento selezionato altrimenti do un errore
+    for(var i=0; i<box.length; i++){
+        if(box[i].checked){
+            return true;
+        }
+    }
+    var parent= box[0].parentNode;
+    if(parent.children.length==2){
+        parent.removeChild(parent.children[1]);
+    }
+    var a=document.createElement('strong');
+       a.appendChild(document.createTextNode("Selezionare un commento per cancellarlo"));
+       a.classList.add('error_js');
+       parent.appendChild(a);
+       box[0].focus();
+       box[0].select();
+   return false;
 }
 
-function OnCourseDelete(event){
-    if(Validate(document.getElementById('cor_nome')) & Validate(document.getElementById('cor_classe')) & Validate(document.getElementById('cor_ateneo'))){
-        return window.confirm("Sei sicuro di voler eliminare questo corso?");
+function OnDelete(){
+    if(Box_Validate()){
+        return window.confirm("Sei sicuro di voler elminirare gli elementi selezionati?");
     }
-    event.preventDefault();
+    return false;
+}
+/*   
+function OnCourseDelete(event){
+    if(Box_Validate()){
+        return window.confirm("Sei sicuro di voler elminirare gli elementi selezionati?");
+    }
     return false;
 }
 
@@ -132,4 +157,4 @@ function OnCommentDelete(){
         return window.confirm("Sei sicuro di voler elminirare gli elementi selezionati?");
     }
     return false;
-}
+}*/

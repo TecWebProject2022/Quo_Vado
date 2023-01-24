@@ -2,7 +2,9 @@
     padding: 0em;
     margin: 0em;
 }
-
+.error_js{
+    color:red;
+}
 :root {
     --headerbg: #FFFDE8;
 
