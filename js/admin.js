@@ -39,7 +39,6 @@ function Validate(element){
 }
 //chiamata al submit
 function onFormSubmit(event) {
-    event.preventDefault();
     if (event.target.id === "add_corso") {
         return OnCourseAdd(event);
     } else if (event.target.id === "delete_corso") {
