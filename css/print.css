@@ -23,9 +23,6 @@ header:not(section header){
     padding: 7px 0;
 
 }
-main{
-    text-align: justify;
-}
 p, li, a{
     padding-bottom: 5px;
 }
@@ -46,7 +43,7 @@ section, article {
     margin: 2.5px 0;
 }
 
-div, section, article, dd {
+div,main, section, article, dd {
     text-align: justify;
 }
 
