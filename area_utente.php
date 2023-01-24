@@ -17,6 +17,7 @@ if(!isset($_SESSION['user']) || !isset($_SESSION['time']) || time()-$_SESSION['t
     unset($_SESSION['nuova']);
     unset($_SESSION['vecchia']);
     unset($_SESSION['error']);
+    unset( $_SESSION['commento']);
     $_SESSION['sessione']='<p class="error">Sessione Scaduta</p>';
     header('Location:login.php');
 }
@@ -161,7 +162,7 @@ $query5="Select classe FROM Iscrizione where nome_utente=\"".$user."\";";
     //AGGIUNGI COMMENTO
 if($res5=$db->ExecQueryAssoc($query5)){
     $classi="<ul id=\"comm_list\"><li><label for=\"classi2\">Classi di Laurea:</label>
-    <select id=\"classi2\" name=\"classel\">";
+    <select   id=\"classi2\" name=\"classel\">";
     foreach($res5 as $r){
        $classi.="<option value=\"".$r['classe']."\">".$r['classe']."</option>";
     }
@@ -169,29 +170,46 @@ if($res5=$db->ExecQueryAssoc($query5)){
 
 $contenuto.='<h2 id="aggiungi" class="titles_area_classi">Aggiungi un commento</h2>';
 $contenuto.='<label id="aggiungi_commento" class="formdesc">Ti è consentito lasciare un solo commento e una valutazione da 1 a 5 per ogni ambito di valutazione delle classe di laurea per le quali ti sei dichiarato iscritto. Inoltre ti verrà richiesto di specificare per che settore stai lasciando il commento</label>';
+$contenuto.='<aside class="formdesc">
+<h3 class="formdesc">Glossario</h3>
+<ul class="invito1">
+<li>Il contenuto testuale del commento dovrà contenere da 10 a 200 caratteri alfanumerici (sono ammessi i seguenti caratteri: @._ - )</li>
+<li>Inoltre Puoi esprime un giudizio con un valore da 1 a 5 su i seguenti ambiti riguardanti una classe di laurea</li>
+    
+        <li>Punteggio complessivo: 
+        valutazione che riguarda tutti gli ambiti universitari in generale</li>
+        <li>Punteggio accessibilità fisica: 
+       valutazione su quanto sono raggiungibile i servizi universitari da un punto di vista motorio</li>
+        <li>Punteggio sul servizio inclusione: 
+        valutazione riguardante l\'accoglienza e l\'appartenenza ad un gruppo universitario</li>
+        <li>Punteggio sulla tempestività burocratica: 
+        valutazione attinente alla velocità di intervento e risposta da parte dei servizi amministrativi e burocratici universitari</li>
+        <li>Punteggio sulla qualità di insegnamento:
+       valutazione riguardante la qualità di insegnamento ricevuto e le competenze acquisite in esso</li>
+    
+</ul></aside>';
 $contenuto.='<form id="form_aggiungicomm" aria-describedby="aggiungi_commento" action="area_utente.php"  onsubmit="return OnInsert()" method="post">
 <fieldset id="container_aggiungi">
 <legend class="field_legend">Aggiungi un commento</legend>'.$classi.'
-<li><label for="commento">Commento:</label><br/><span><textarea title="Il contenuto testuale del 
-commento dovrà contenere da 10 a 200 caratteri alfanumerici (sono ammessi i seguenti caratteri: @ . _ - )" id="commento" name="insertcommento" maxlength="200"><areacom/></textarea></span></li>
-<li><label for="tag">Il tuo commento riguarda:</label><span><select name="tag" id="tag" data-msg-empty="Per favore, aiutaci a capire di cosa parla il tuo commento">
+<li><label for="commento">Commento:</label><br/><span><textarea  placeholder="Inserisci un commento" rows="2" cols="40" class="commento" id="commento" name="insertcommento" maxlength="200"><areacom/></textarea></span></li>
+<li><label for="tag">Settore per il quale stai rilasciando il commento:</label><span><select name="tag" id="tag" data-msg-empty="Per favore, aiutaci a capire di cosa parla il tuo commento">
     <option value="1">Inclusività</option>
     <option value="2">Commento generale</option></select></span></li>
 </ul>
 <ul id="val_list">
-<li><label for="p_complessivo">Punteggio complessivo:</label><span><input title="valutazione che riguarda tutti gli ambiti universitari in generale" type="number" id="p_complessivo" name="p_complessivo" placeholder="1" value="1" min="1" max="5" 
+<li><label for="p_complessivo">Punteggio complessivo :</label><span><input  type="number" id="p_complessivo" name="p_complessivo" placeholder="1" value="1" min="1" max="5" 
    /></span></li>
     
-<li><label for="p_acc_fisica">Punteggio accessibilità fisica:</label><span><input title="valutazione su quanto sono raggiungibile i servizi universitari da un punto di vista motorio"  type="number" id="p_acc_fisica" name="p_acc_fisica" placeholder="1" value="1" min="1" max="5" 
+<li><label for="p_acc_fisica">Punteggio accessibilità fisica :</label><span><input  type="number" id="p_acc_fisica" name="p_acc_fisica" placeholder="1" value="1" min="1" max="5" 
    /></span></li>
     
-<li><label for="p_inclusione">Punteggio servizio inclusione:</label><span><input title="valutazione riguardante l\'accoglienza e l\'appartenenza ad un gruppo universitario" type="number" id="p_inclusione" name="p_inclusione" placeholder="1" value="1" min="1" max="5" required
+<li><label for="p_inclusione">Punteggio servizio inclusione:</label><span><input type="number" id="p_inclusione" name="p_inclusione" placeholder="1" value="1" min="1" max="5" required
     /></span></li>
     
-<li><label for="p_tempestivita">Punteggio tempestivita burocratica: </label><span><input title="valutazione attinente alla velocità di intervento e risposta da parte dei servizi amministrativi e burocratici universitari" type="number" id="p_tempestivita" name="p_tempestivita" placeholder="1" value="1" min="1" max="5" required
+<li><label for="p_tempestivita">Punteggio tempestivita burocratica: </label><span><input type="number" id="p_tempestivita" name="p_tempestivita" placeholder="1" value="1" min="1" max="5" required
     /></span></li>
     
-<li><label for="p_insegnamento">Punteggio qualità di insegnamento:</label><span><input title="valutazione riguardante la qualità di insegnamento ricevuto e le competenze acquisite in esso" type="number" id="p_insegnamento" name="p_insegnamento" placeholder="1" value="1" min="1" max="5" required
+<li><label for="p_insegnamento">Punteggio qualità di insegnamento :</label><span><input  type="number" id="p_insegnamento" name="p_insegnamento" placeholder="1" value="1" min="1" max="5" required
     /></span></li>
 </ul>
 <input type="submit" class="submit"  name="submit3" value="pubblica"/>
@@ -435,6 +453,7 @@ if(isset($_POST['submit3']) && check()){
    $errorf='<ul class="error">';
    $_SESSION['errorf']='';
    $commento=PulisciInput($_POST['insertcommento']);
+   $_SESSION['commento']=$_POST['insertcommento'];
    $classlaurea=$_POST['classel'];
    $pc=$_POST['p_complessivo'];
    $pf=$_POST['p_acc_fisica'];
@@ -442,11 +461,11 @@ if(isset($_POST['submit3']) && check()){
    $tb=$_POST['p_tempestivita'];
    $pi=$_POST['p_insegnamento'];
    $tag=$_POST['tag'];
-   if (!preg_match('/^[@a-zA-Z 0-9._-]{10,200}$/',$commento)){
+   if (!preg_match('/^[ @a-zA-Z0-9\._-]{10,200}$/',$commento)){
     $_SESSION['errorf'].='<p class="error">Il campo commento non può essere vuoto e deve contenere da 10 a 200 caratteri alfanumerici (sono ammessi i seguenti caratteri: @ . _ - )</p>';
     $errorf.='<li>Il campo commento non può essere vuoto e deve contenere da 10 a 200 caratteri alfanumerici (sono ammessi i seguenti caratteri: @ . _ - )</li>';
     $errori.="<p class=\"error\">Errore nell'inserimento del commento</p>";
-    header('Location:area_utente.php#aggiungi');
+    header('Location:area_utente.php#form_aggiungicomm');
 }
 if($errorf=='<ul class="error">'){
     $db=new Connection();
@@ -457,7 +476,7 @@ if($errorf=='<ul class="error">'){
             $_SESSION['errorf'].='<p class="error">Commento già risaliscato per questa calsse di laurea</p>';
             $errorf.="<li>Commento già risaliscato per questa calsse di laurea</li>";
             $errori.="<p class=\"error\">Errore nell'inserimento del commento</p>";
-            header('Location:area_utente.php#aggiungi');
+            header('Location:area_utente.php#form_aggiungicomm');
         }
         else{
        $insert="INSERT INTO Valutazione(nome_utente, classe_laurea, datav, commento, tag, p_complessivo, p_acc_fisica, p_servizio_inclusione, tempestivita_burocratica, p_insegnamento) VALUES (\"".$user."\",\"".$classlaurea."\",curdate(),\"".$commento."\",\"".$tag."\",".$pc.",".$pf.",".$ps.",".$tb.",".$pi.");";
@@ -465,12 +484,13 @@ if($errorf=='<ul class="error">'){
        if($q){
             $_SESSION['info']="<p id=\"ok\" class=\"invito\">Inserimento avvenuto con successo</p>";
             unset($_SESSION['errorf']);
+            unset( $_SESSION['commento']);
             header('Location:area_utente.php#ok');
        }
        else{
         $_SESSION['errorf'].='<p class="error">Al momento non è possibile inserire commenti</p>';
         $errori.="<p class=\"error\">Al momento non è possibile inserire commenti</p>";
-        header('Location:area_utente.php#aggiungi');
+        header('Location:area_utente.php#form_aggiungicomm');
        }
     }
     
@@ -507,10 +527,13 @@ if(!isset($_SESSION['nuova'])){
 }
 if(!isset($_SESSION['error'])){
     $_SESSION['error']='';
-}   
+}  
+if(!isset($_SESSION['commento'])){
+    $_SESSION['commento']='';
+} 
 $db->Disconnect();
 $contenuto=str_replace("<span id=\"ins\"></span>",$_SESSION['error'],$contenuto);
-$contenuto=str_replace("<areacom/>",$commento,$contenuto);
+$contenuto=str_replace("<areacom/>",$_SESSION['commento'],$contenuto);
 $contenuto=str_replace("</errorform>",$_SESSION['errorf'],$contenuto);
 $contenuto=str_replace("</commenterror>",$_SESSION['commenti'],$contenuto);
 $contenuto=str_replace("<new>",$_SESSION['nuova'],$contenuto);

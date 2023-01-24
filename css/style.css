@@ -1933,6 +1933,7 @@ AREA UTENTE
     display: block;
     margin-left: 18%;
     margin-right: 18%;
+    margin-top: 1em;
 }
 
 .field_legend {
@@ -1964,7 +1965,12 @@ AREA UTENTE
 }
 
 /*ISCRIZIONI*/
-
+.invito1{
+    border: 1.5px solid #000000;
+    padding: 2em;
+    margin: 1em 20%;
+    margin-left: 20%;
+}
 #container_iscrizioni {
     display: flex;
     flex-wrap: wrap;
@@ -2054,9 +2060,9 @@ AREA UTENTE
     list-style: none;
 }
 
-#commento{
-	width:20em;
-	height: 10em;
+.commento{
+    min-width: 25em;
+    min-height: 3em;
 	max-width:30em;
 	max-height:10em;
 	margin: 0.5em 1em 0.5em 0;
