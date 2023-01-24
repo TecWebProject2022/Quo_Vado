@@ -11,6 +11,7 @@ function Box_Validate(){
     }
     var a=document.createElement('strong');
        a.appendChild(document.createTextNode("Selezionare un commento per cancellarlo"));
+       a.classList.add('error_js');
        parent.appendChild(a);
        box[0].focus();
        box[0].select();

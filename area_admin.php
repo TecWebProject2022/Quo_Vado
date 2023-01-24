@@ -54,16 +54,16 @@ if($dbOK){
         }
     }
     if($opzioni){    
-        $input_classi_commenti='<select id="com_classe" name="com_classe"  data-msg-invalid="La classe di laurea non pu&ograve; contenere spazi. Le classi di laurea vanno dalla classe L01 alla L43 e dalla LM01 alla LM94"
+        $input_classi_commenti='<select id="com_classe" name="com_classe"  data-msg-invalid="La classe di laurea non può contenere spazi."
         data-msg-empty=""><option value="" disabled selected>Seleziona una classe di laurea</option>'.$opzioni.'</select>';
-        $input_classi_corsi='<select id="cor_classe" name="cor_classe"  data-msg-invalid="La classe di laurea non pu&ograve; contenere spazi. Le classi di laurea vanno dalla classe L01 alla L43 e dalla LM01 alla LM94"
+        $input_classi_corsi='<select id="cor_classe" name="cor_classe"  data-msg-invalid="La classe di laurea non può contenere spazi. "
         data-msg-empty=""><option value="" disabled selected>Seleziona una classe di laurea</option>'.$opzioni.'</select>';
     }else{
         $input_classi_commenti='<input id="com_classe" name="com_classe" type="text" placeholder="L01" 
-        data-msg-invalid="La classe di laurea non pu&ograve; contenere spazi. Le classi di laurea vanno dalla classe L01 alla L43 e dalla LM01 alla LM94"
+        data-msg-invalid="La classe di laurea non può contenere spazi. "
         data-msg-empty=""/>';
         $input_classi_corsi='<input id="cor_classe" name="cor_classe" type="text" placeholder="L01"
-        data-msg-invalid="La classe di laurea non pu&ograve; contenere spazi. Le classi di laurea vanno dalla classe L01 alla L43 e dalla LM01 alla LM94"
+        data-msg-invalid="La classe di laurea non può contenere spazi."
         data-msg-empty=""/>';
     }
     $query_get_atenei='SELECT nome FROM Ateneo;';
@@ -74,11 +74,11 @@ if($dbOK){
         }
     }
     if($opzioni){ 
-        $input_atenei='<select id="cor_ateneo" name="cor_ateneo" data-msg-invalid="Il nome dell\'ateneo non pu&ograve; contenere numeri o caratteri speciali"
+        $input_atenei='<select id="cor_ateneo" name="cor_ateneo" data-msg-invalid="Il nome dell\'ateneo non può contenere numeri o caratteri speciali"
         data-msg-empty="Il nome dell\'ateneo non puo essere vuoto"><option value="" disabled selected>Seleziona un ateneo</option>'.$opzioni.'</select>';
     }else{
         $input_atenei='<input id="cor_ateneo" name="cor_ateneo" type="text" placeholder="Politecnico di milano"
-        data-msg-invalid="Il nome dell\'ateneo non pu&ograve; contenere numeri o caratteri speciali"
+        data-msg-invalid="Il nome dell\'ateneo non può contenere numeri o caratteri speciali"
         data-msg-empty="Il nome dell\'ateneo non puo essere vuoto"/>';
     }
     # preparazione form commenti
@@ -89,7 +89,7 @@ if($dbOK){
                 <legend class="field_legend">Trova i commenti da eliminare</legend>
                 <label for="com_utente">Utente: 
                 <span><input id="com_utente" name="com_utente" type="text" placeholder="user" 
-                    data-msg-invalid="Il campo username non pu&ograve; contenere spazi e deve contenere da 4 a 40 caratteri alfanumerici (sono ammessi i seguenti caratteri: @ . _ - )"
+                    data-msg-invalid="Il campo username non può contenere spazi e deve contenere da 4 a 40 caratteri alfanumerici (sono ammessi i seguenti caratteri: @ . _ - )"
                     data-msg-empty=""/></span></label>
 
                 <label for="com_classe">Classe di laurea: 
@@ -124,8 +124,10 @@ if($dbOK){
 
                 if($commenti=$db->ExecQueryNum($query_commenti)){
                     $formCommenti='<form id="formEliminaCommenti" action="area_admin.php" method="post" onsubmit="return OnDelete()"><fieldset><legend class="field_legend">Seleziona i commenti da eliminare</legend>';
+                    $formCommenti.= "<ul id=\"commrilasc\">";
                     for($i=0;$i<count($commenti);$i++){
                         $commento='
+
                             <span class="highlight">utente: '.$commenti[$i][0].'| classe di laurea: '.$commenti[$i][2].'| data commento:'.date("d-m-Y",strtotime($commenti[$i][1])).'</span>
                             <span >commento : '.$commenti[$i][4].'</span>
                             <span class="highlight">Punteggio complessivo: '.$commenti[$i][5].' </span>
@@ -136,11 +138,12 @@ if($dbOK){
 				            <span class="tipo_valutazione">'.$tags[$commenti[$i][3]].'</span>';
 
                         $formCommenti.='
-                                <span><input type="checkbox" id="'.$i.'" name="commento[]" value="'.$commenti[$i][0].'-'.$commenti[$i][2].'-'.$commenti[$i][3].'"/></span>
-                                <label for="'.$i.'">'.$commento.'</label>
+                        <li class="blocco_commento"> <span><input type="checkbox" id="'.$i.'" name="commento[]" value="'.$commenti[$i][0].'-'.$commenti[$i][2].'-'.$commenti[$i][3].'"/></span>
+                                <label for="'.$i.'">'.$commento.'</li></label>
                            ';
                         
                     }
+                    $formCommenti.="</ul>";
                     $formCommenti.='<input type="submit" class="submit" id="delete_commento" name="delete_commento"  value="elimina commenti selezionati"/></fieldset></form>';
                 }else{
                     $msgCommenti.='<p class="error">nessun commento</p>';
@@ -154,7 +157,7 @@ if($dbOK){
     #preparazione form corsi
     $formGestioneCorsi='
         <h2 class="titles_area_classi">Gestione corsi di studio</h2>
-        <p class="formdesc">Per aggiungere un corso di studi &egrave; necessario riempire tutti i campi, per eliminarne uno bastano nome, classe di laurea e ateneo.</p>
+        <p class="formdesc">Per aggiungere un corso di studi è necessario riempire tutti i campi, per eliminarne uno bastano nome, classe di laurea e ateneo.</p>
         <form id="formCorsi" action="area_admin.php" method="post" onsubmit="return onFormSubmit(event)" >
             <fieldset>
                 <legend class="field_legend">Aggiungi o elimina un corso di studi</legend>
@@ -165,11 +168,11 @@ if($dbOK){
                 <span>'.$input_atenei.'</span></label>
                 <label for="cor_nome">Nome: 
                 <span><input id="cor_nome" name="cor_nome" type="text" placeholder="corso di laurea in informatica"
-                    data-msg-invalid="Il nome del corso di laurea non pu&ograve; contenere numeri o caratteri speciali"
+                    data-msg-invalid="Il nome del corso di laurea non può contenere numeri o caratteri speciali"
                     data-msg-empty="il campo nome non puo essere vuoto"/></span></label>
                 <label for="cor_link">Link: 
                 <span><input id="cor_link" name="cor_link" type="text" placeholder="https://www.unipd.it/informatica"
-                    data-msg-invalid="Il link del corso non &egrave; nel formato corretto"
+                    data-msg-invalid="Il link del corso non è nel formato corretto"
                     data-msg-empty="il campo link non puo essere vuoto"/></span></label>
                 <label for="cor_accesso">Accesso: 
                 <span><select name="cor_accesso" id="cor_accesso" 
@@ -224,8 +227,8 @@ if($dbOK){
         $accesso=isset($_POST['cor_accesso'])?$_POST['cor_accesso']:'';
         #controlli sulle variabili
         if (!preg_match('/^(L|LM)[0-9]{2}$/',$classe)){
-            $msgCorso.='<li class="error">La classe di laurea non pu&ograve; essere vuoto o contenere spazi.Le classi di laurea vanno dalla L01 alla L43 e dalla LM01 alla LM94</li>';
-            $_SESSION['add']='<p class="error">La classe di laurea non pu&ograve; essere vuoto o contenere spazi.Le classi di laurea vanno dalla L01 alla L43 e dalla LM01 alla LM94</p>';
+            $msgCorso.='<li class="error">La classe di laurea non può essere vuoto o contenere spazi.Le classi di laurea vanno dalla L01 alla L43 e dalla LM01 alla LM94</li>';
+            $_SESSION['add']='<p class="error">La classe di laurea non può essere vuoto o contenere spazi.Le classi di laurea vanno dalla L01 alla L43 e dalla LM01 alla LM94</p>';
             header("Location:area_admin.php#formCorsi");
         }
         if (!preg_match('/^(Accesso programmato|Accesso libero con prova|Accesso a numero chiuso|Accesso libero cronologico)$/',$accesso)){
@@ -234,13 +237,13 @@ if($dbOK){
             header("Location:area_admin.php#formCorsi");
         }
         if (!preg_match('/^[a-zA-ZÀ-ÿ\s]{1,50}$/',$ateneo)){
-            $msgCorso.='<li class="error">Il nome dell\'ateneo non pu&ograve; essere vuoto o contenere numeri o caratteri speciali</li>';
-            $_SESSION['add']='<p class="error">Il nome dell\'ateneo non pu&ograve; essere vuoto o contenere numeri o caratteri speciali</p>';
+            $msgCorso.='<li class="error">Il nome dell\'ateneo non può essere vuoto o contenere numeri o caratteri speciali</li>';
+            $_SESSION['add']='<p class="error">Il nome dell\'ateneo non può essere vuoto o contenere numeri o caratteri speciali</p>';
             header("Location:area_admin.php#formCorsi");
         }
         if (!preg_match('/^[a-zA-ZÀ-ÿ\s]{1,50}$/',$nome)){
-            $msgCorso.='<li class="error">Il nome del corso di laurea non pu&ograve; essere vuoto o contenere numeri o caratteri speciali</li>';
-            $_SESSION['add']='<p class="error">Il nome del corso di laurea non pu&ograve; essere vuoto o contenere numeri o caratteri speciali</p>';
+            $msgCorso.='<li class="error">Il nome del corso di laurea non può essere vuoto o contenere numeri o caratteri speciali</li>';
+            $_SESSION['add']='<p class="error">Il nome del corso di laurea non può essere vuoto o contenere numeri o caratteri speciali</p>';
             header("Location:area_admin.php#formCorsi");
         }
         if(!filter_var($link, FILTER_VALIDATE_URL)){
@@ -278,18 +281,18 @@ if($dbOK){
             $nome=isset($_POST['cor_nome'])?pulisciInput($_POST['cor_nome']):'';
             #controlli sulle variabili
             if (!preg_match('/^(L|LM)[0-9]{2}$/',$classe)){
-                $msgCorso.='<li class="error">La classe di laurea non pu&ograve; essere vuoto o contenere spazi.Le classi di laurea vanno dalla classe L01 alla L43 e dalla LM01 alla LM94</li>';
-                $_SESSION['add']='<p class="error">La classe di laurea non pu&ograve; essere vuoto o contenere spazi.Le classi di laurea vanno dalla classe L01 alla L43 e dalla LM01 alla LM94</p>';
+                $msgCorso.='<li class="error">La classe di laurea non può essere vuoto o contenere spazi.Le classi di laurea vanno dalla classe L01 alla L43 e dalla LM01 alla LM94</li>';
+                $_SESSION['add']='<p class="error">La classe di laurea non può essere vuoto o contenere spazi.Le classi di laurea vanno dalla classe L01 alla L43 e dalla LM01 alla LM94</p>';
                 header("Location:area_admin.php#formCorsi");
             }
             if (!preg_match('/^[a-zA-ZÀ-ÿ\s]{1,50}$/',$ateneo)){
-                $msgCorso.='<li class="error">Il nome dell\'ateneo non pu&ograve; essere vuoto o contenere numeri o caratteri speciali</li>';
-                $_SESSION['add']='<p class="error">Il nome dell\'ateneo non pu&ograve; essere vuoto o contenere numeri o caratteri speciali</p>';
+                $msgCorso.='<li class="error">Il nome dell\'ateneo non può essere vuoto o contenere numeri o caratteri speciali</li>';
+                $_SESSION['add']='<p class="error">Il nome dell\'ateneo non può essere vuoto o contenere numeri o caratteri speciali</p>';
                 header("Location:area_admin.php#formCorsi");
             }
             if (!preg_match('/^[a-zA-ZÀ-ÿ\s]{1,80}$/',$nome)){
-                $msgCorso.='<li class="error">Il nome del corso di laurea non pu&ograve; essere vuoto o contenere numeri o caratteri speciali</li>';
-                $_SESSION['add']='<p class="error">Il nome del corso di laurea non pu&ograve; essere vuoto o contenere numeri o caratteri speciali</p>';
+                $msgCorso.='<li class="error">Il nome del corso di laurea non può essere vuoto o contenere numeri o caratteri speciali</li>';
+                $_SESSION['add']='<p class="error">Il nome del corso di laurea non può essere vuoto o contenere numeri o caratteri speciali</p>';
                 header("Location:area_admin.php#formCorsi");
             }
 
@@ -317,15 +320,15 @@ if($dbOK){
             <legend class="field_legend">Cambio password</legend>
             <label for="oldpassword"><span lang="en">Immetti la tua vecchia Password: </span>
             <span><input  value="<old>" type="password" id="oldpassword" name="Vecchiapassword" placeholder="Immetti la tua vecchia Password" maxlength="20"                      
-                data-msg-invalid="Il campo password non pu&ograve; contenere spazzi e deve contenere da 4 a 20 caratteri alfanumerici (sono ammessi i seguenti caratteri: @ . _ - ), controlla e riprova"
-                data-msg-empty="Il campo vecchia password non pu&ograve; essere vuoto" /></span></label>
+                data-msg-invalid="Il campo password non può contenere spazzi e deve contenere da 4 a 20 caratteri alfanumerici (sono ammessi i seguenti caratteri: @ . _ - ), controlla e riprova"
+                data-msg-empty="Il campo vecchia password non può essere vuoto" /></span></label>
             <label for="newpassword"><span lang="en">Immetti la tua nuova Password: </span>
             <span><input  value="<new>" type="password" id="newpassword" name="newpassword" placeholder="Immetti la tua nuova password" maxlength="20"                      
-                data-msg-invalid="Il campo password non pu&ograve; contenere spazzi e deve contenere da 4 a 20 caratteri alfanumerici (sono ammessi i seguenti caratteri: @ . _ - ), controlla e riprova"
-                data-msg-empty="Il campo nuova password non pu&ograve; essere vuoto" /></span></label>
+                data-msg-invalid="Il campo password non può contenere spazzi e deve contenere da 4 a 20 caratteri alfanumerici (sono ammessi i seguenti caratteri: @ . _ - ), controlla e riprova"
+                data-msg-empty="Il campo nuova password non può essere vuoto" /></span></label>
             <label for="repeat"><span lang="en">Ripeti la Password: </span>
             <span><input  value="" type="password" id="repeat" name="repepassword" placeholder="Ripeti la password" maxlength="20"                      
-                data-msg-empty="Il campo repeti password non pu&ograve; essere vuoto" /></span></label>   
+                data-msg-empty="Il campo repeti password non può essere vuoto" /></span></label>   
             <input type="submit"  class="submit" id="submit" name="salva" value="Salva"/>
         </fieldset>
     </form>';
@@ -337,13 +340,13 @@ if($dbOK){
         $rep=PulisciInput($_POST['repepassword']);
         
         if (!preg_match('/^[@a-zA-Z0-9._-]{4,20}$/',$vecchia)){
-            $msgPassword.='<li class="error">Il campo vecchia password non pu&ograve; essere vuoto e non pu&ograve; contenere spazi e deve contenere da 4 a 20 caratteri alfanumerici (sono ammessi i seguenti caratteri: @ . _ - )</li>';
-            $_SESSION['password']='<p class="error">Il campo vecchia password non pu&ograve; essere vuoto e non pu&ograve; contenere spazi e deve contenere da 4 a 20 caratteri alfanumerici (sono ammessi i seguenti caratteri: @ . _ - )</p>';
+            $msgPassword.='<li class="error">Il campo vecchia password non può essere vuoto e non può contenere spazi e deve contenere da 4 a 20 caratteri alfanumerici (sono ammessi i seguenti caratteri: @ . _ - )</li>';
+            $_SESSION['password']='<p class="error">Il campo vecchia password non può essere vuoto e non può contenere spazi e deve contenere da 4 a 20 caratteri alfanumerici (sono ammessi i seguenti caratteri: @ . _ - )</p>';
              header("Location:area_admin.php#form_passw");
         }
         if (!preg_match('/^[@a-zA-Z0-9._-]{4,20}$/',$nuova)){
-            $msgPassword.='<li class="error">Il campo nuova password non pu&ograve; essere vuoto e non pu&ograve; contenere spazzi e deve contenere da 4 a 20 caratteri alfanumerici (sono ammessi i seguenti caratteri: @ . _ - )</li>';
-            $_SESSION['password']='<p class="error">Il campo nuova password non pu&ograve; essere vuoto e non pu&ograve; contenere spazzi e deve contenere da 4 a 20 caratteri alfanumerici (sono ammessi i seguenti caratteri: @ . _ - )</p>';
+            $msgPassword.='<li class="error">Il campo nuova password non può essere vuoto e non può contenere spazzi e deve contenere da 4 a 20 caratteri alfanumerici (sono ammessi i seguenti caratteri: @ . _ - )</li>';
+            $_SESSION['password']='<p class="error">Il campo nuova password non può essere vuoto e non può contenere spazzi e deve contenere da 4 a 20 caratteri alfanumerici (sono ammessi i seguenti caratteri: @ . _ - )</p>';
             header("Location:area_admin.php#form_passw");
         }
         if($nuova!=$rep){
