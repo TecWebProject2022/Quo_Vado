@@ -43,7 +43,7 @@ section, article {
     margin: 2.5px 0;
 }
 
-div,main, section, article, dd {
+main{
     text-align: justify;
 }
 
