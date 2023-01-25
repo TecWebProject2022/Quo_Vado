@@ -104,13 +104,6 @@ if($dbOK){
         $user=isset($_POST['com_utente']) ? PulisciInput($_POST['com_utente']):'';
         $classe=isset($_POST['com_classe']) ? PulisciInput($_POST['com_classe']):'';
         $_SESSION['nome_admin']=$user;
-       /* //if ((!preg_match('/^[@a-zA-Z0-9._-]{4,40}$/',$user))){
-            $msgCommenti.='<li class="error">Il campo username non può; contenere spazi e deve contenere da 4 a 40 caratteri alfanumerici (sono ammessi i seguenti caratteri: @ . _ - )</li>';
-        }
-        //if ((!preg_match('/^(L|LM)[0-9]{2}$/',$classe))){
-            $msgCommenti.='<li class="error">La classe di laurea non può; contenere spazi.Le classi di laurea vanno dalla classe L01 alla L43 e dalla LM01 alla LM94</li>';
-        }
-        */
         if($msgCommenti){
             $msgCommenti='<ul>'.$msgCommenti.'</ul>';
         }else{
