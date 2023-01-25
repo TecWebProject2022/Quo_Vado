@@ -55,9 +55,9 @@ if($dbOK){
     }
     if($opzioni){    
         $input_classi_commenti='<select id="com_classe" name="com_classe"  data-msg-invalid="La classe di laurea non può contenere spazi."
-        data-msg-empty=""><option value="" disabled selected>Seleziona una classe di laurea</option>'.$opzioni.'</select>';
+        data-msg-empty="">'.$opzioni.'</select>';
         $input_classi_corsi='<select id="cor_classe" name="cor_classe"  data-msg-invalid="La classe di laurea non può contenere spazi. "
-        data-msg-empty=""><option value="" disabled selected>Seleziona una classe di laurea</option>'.$opzioni.'</select>';
+        data-msg-empty="">'.$opzioni.'</select>';
     }else{
         $input_classi_commenti='<input id="com_classe" name="com_classe" type="text" placeholder="L01" 
         data-msg-invalid="La classe di laurea non può contenere spazi. "
@@ -75,7 +75,7 @@ if($dbOK){
     }
     if($opzioni){ 
         $input_atenei='<select id="cor_ateneo" name="cor_ateneo" data-msg-invalid="Il nome dell\'ateneo non può contenere numeri o caratteri speciali"
-        data-msg-empty="Il nome dell\'ateneo non puo essere vuoto"><option value="" disabled selected>Seleziona un ateneo</option>'.$opzioni.'</select>';
+        data-msg-empty="Il nome dell\'ateneo non puo essere vuoto">'.$opzioni.'</select>';
     }else{
         $input_atenei='<input id="cor_ateneo" name="cor_ateneo" type="text" placeholder="Politecnico di milano"
         data-msg-invalid="Il nome dell\'ateneo non può contenere numeri o caratteri speciali"
@@ -92,7 +92,7 @@ if($dbOK){
                     data-msg-invalid="Il campo username non può contenere spazi e deve contenere da 4 a 40 caratteri alfanumerici (sono ammessi i seguenti caratteri: @ . _ - )"
                     data-msg-empty=""/></span></label>
 
-                <label for="com_classe">Classe di laurea: 
+                <label for="com_classe">Inserisci Classe di laurea: 
                 <span>'.$input_classi_commenti.'</span></label>
 
                 <input type="submit" class="submit"  name="trova" value="trova"/>
@@ -179,7 +179,6 @@ if($dbOK){
                 <span><select name="cor_accesso" id="cor_accesso" 
                     data-msg-invalid="Le modalita di accesso sono Accesso programmato,Accesso libero con prova,Accesso a numero chiuso,Accesso libero cronologico"
                     data-msg-empty="il campo accesso non puo essere vuoto">
-                        <option value="" disabled selected>Selezionare un\'opzione</option>
                         <option value="Accesso programmato">Accesso programmato</option>
                         <option value="Accesso libero con prova">Accesso libero con prova</option>
                         <option value="Accesso a numero chiuso">Accesso a numero chiuso</option>
