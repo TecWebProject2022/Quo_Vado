@@ -206,10 +206,10 @@ $contenuto.='<form id="form_aggiungicomm" aria-describedby="aggiungi_commento" a
 <li><label for="p_inclusione">Punteggio servizio inclusione:</label><span><input type="number" id="p_inclusione" name="p_inclusione" placeholder="1" value="1" min="1" max="5" required
     /></span></li>
     
-<li><label for="p_tempestivita">Punteggio tempestivita burocratica: </label><span><input type="number" id="p_tempestivita" name="p_tempestivita" placeholder="1" value="1" min="1" max="5" required
+<li><label for="p_tempestivita">Punteggio tempestivita burocratica: </label><span><input type="number" id="p_tempestivita" name="p_tempestivita" placeholder="1" value="1" min="1" max="5" 
     /></span></li>
     
-<li><label for="p_insegnamento">Punteggio qualità di insegnamento :</label><span><input  type="number" id="p_insegnamento" name="p_insegnamento" placeholder="1" value="1" min="1" max="5" required
+<li><label for="p_insegnamento">Punteggio qualità di insegnamento :</label><span><input  type="number" id="p_insegnamento" name="p_insegnamento" placeholder="1" value="1" min="1" max="5" 
     /></span></li>
 </ul>
 <input type="submit" class="submit"  name="submit3" value="pubblica"/>
@@ -239,10 +239,9 @@ $contenuto.='<h2 id="pw" class="titles_area_classi">Cambio password</h2>';
 $contenuto.='<form id="form_passw" action="area_utente.php" method="post" onsubmit=" return OnPassword()" >';
 $contenuto.='<fieldset><legend class="field_legend">Cambio password</legend>
 
-<label for="oldpassword">Immetti la tua vecchia <span lang="en">password</span>: <span><input  value="<old>" type="password" id="oldpassword" name="Vecchiapassword" placeholder="Immetti la tua vecchia password" maxlength="20" /></span></label>
-<label for="newpassword">Immetti la tua nuova <span lang="en">password</span>: <span><input  value="<new>" type="password" id="newpassword" name="newpassword" placeholder="Immetti la tua nuova password" maxlength="20" /></span></label>
-<label for="repeat">Ripeti la <span lang="en">password </span>:<span><input  value="" type="password" id="repeat" name="repepassword" placeholder="Ripeti la password" maxlength="20" /></span></label>
-    
+<label for="oldpassword">Immetti la tua vecchia <span lang="en">password</span>: <span></label><input  value="<old>" type="password" id="oldpassword" name="Vecchiapassword" placeholder="Immetti la tua vecchia password" maxlength="20" /></span>
+<label for="newpassword">Immetti la tua nuova <span lang="en">password</span>: <span></label><input  value="<new>" type="password" id="newpassword" name="newpassword" placeholder="Immetti la tua nuova password" maxlength="20" /></span>
+<label for="repeat">Ripeti la <span lang="en">password </span>:<span></label><input  value="" type="password" id="repeat" name="repepassword" placeholder="Ripeti la password" maxlength="20" /></span>
 <input type="submit" class="submit" name="submit1" value="Salva"/>
 </fieldset>
 </form>

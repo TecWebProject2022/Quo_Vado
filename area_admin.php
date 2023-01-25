@@ -80,11 +80,11 @@ if($dbOK){
         <form id="formTrovaCommenti" action="area_admin.php#formTrovaCommenti" method="post" onsubmit=" return Cancella()">
             <fieldset>
                 <legend class="field_legend">Trova i commenti da eliminare</legend>
-                <label for="com_utente">Utente: 
-                <span><input value="<nome>" id="com_utente" name="com_utente" type="text" placeholder="Utente" /></span></label>
+                <label for="com_utente">Utente: </label>
+                <span><input value="<nome>" id="com_utente" name="com_utente" type="text" placeholder="Utente" /></span>
 
-                <label for="com_classe">Inserisci Classe di laurea: 
-                <span>'.$input_classi_commenti.'</span></label>
+                <label for="com_classe">Inserisci Classe di laurea: </label>
+                <span>'.$input_classi_commenti.'</span>
 
                 <input type="submit" class="submit"  name="trova" value="trova"/>
             </fieldset>
@@ -157,21 +157,21 @@ if($dbOK){
             <fieldset>
                 <legend class="field_legend">Aggiungi o elimina un corso di studi</legend>
                 
-                <label for="cor_classe">Classe di laurea: 
-                <span>'.$input_classi_corsi.'</span></label>
-                <label for="cor_ateneo">Ateneo: 
-                <span>'.$input_atenei.'</span></label>
-                <label for="cor_nome">Nome: 
-                <span><input id="cor_nome" value="<nome>" name="cor_nome" type="text" placeholder="corso di laurea in informatica"/></span></label>
-                <label for="cor_link">Link: 
-                <span><input id="cor_link" value="<link>" name="cor_link" type="text" placeholder="https://www.unipd.it/informatica"/></span></label>
-                <label for="cor_accesso">Accesso: 
+                <label for="cor_classe">Classe di laurea: </label>
+                <span>'.$input_classi_corsi.'</span>
+                <label for="cor_ateneo">Ateneo: </label>
+                <span>'.$input_atenei.'</span>
+                <label for="cor_nome">Nome: </label>
+                <span><input id="cor_nome" value="<nome>" name="cor_nome" type="text" placeholder="corso di laurea in informatica"/></span>
+                <label for="cor_link">Link: </label>
+                <span><input id="cor_link" value="<link>" name="cor_link" type="text" placeholder="https://www.unipd.it/informatica"/></span>
+                <label for="cor_accesso">Accesso: </label>
                 <span><select name="cor_accesso" id="cor_accesso">
                         <option value="Accesso programmato">Accesso programmato</option>
                         <option value="Accesso libero con prova">Accesso libero con prova</option>
                         <option value="Accesso a numero chiuso">Accesso a numero chiuso</option>
                         <option value="Accesso libero cronologico">Accesso libero cronologico</option>
-                </select></span></label>
+                </select></span>
 
                 <input type="submit"  class="submit"  onclick="return Add()" id="add_corso" name="add_corso" value="Aggiungi" />
                 <input type="submit"  class="submit" onclick="return Remove()" id="delete_corso" name="delete_corso" value="Elimina" />
@@ -311,12 +311,12 @@ if($dbOK){
     <form id="form_passw" action="area_admin.php" method="post" onsubmit=" return OnPassword()" >
         <fieldset>
             <legend class="field_legend">Cambio password</legend>
-            <label for="oldpassword"><span lang="en">Immetti la tua vecchia Password: </span>
-            <span><input  value="<old>" type="password" id="oldpassword" name="Vecchiapassword" placeholder="Immetti la tua vecchia Password" maxlength="20" /></span></label>
-            <label for="newpassword"><span lang="en">Immetti la tua nuova Password: </span>
-            <span><input  value="<new>" type="password" id="newpassword" name="newpassword" placeholder="Immetti la tua nuova password" maxlength="20" /></span></label>
-            <label for="repeat"><span lang="en">Ripeti la Password: </span>
-            <span><input  value="" type="password" id="repeat" name="repepassword" placeholder="Ripeti la password" maxlength="20"  /></span></label>   
+            <label for="oldpassword">Immetti la tua vecchia <span lang="en">Password</span>: </label>
+            <span><input  value="<old>" type="password" id="oldpassword" name="Vecchiapassword" placeholder="Immetti la tua vecchia Password" maxlength="20" /></span>
+            <label for="newpassword">Immetti la tua nuova <span lang="en">Password</span>: </label>
+            <span><input  value="<new>" type="password" id="newpassword" name="newpassword" placeholder="Immetti la tua nuova password" maxlength="20" /></span>
+            <label for="repeat">Ripeti la <span lang="en">Password</span>:</label>   
+            <span><input  value="" type="password" id="repeat" name="repepassword" placeholder="Ripeti la password" maxlength="20"  /></span>
             <input type="submit"  class="submit" id="submit" name="salva" value="Salva"/>
         </fieldset>
     </form>';
