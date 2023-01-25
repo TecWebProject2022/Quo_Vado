@@ -88,7 +88,7 @@ if($dbOK){
             <fieldset>
                 <legend class="field_legend">Trova i commenti da eliminare</legend>
                 <label for="com_utente">Utente: 
-                <span><input value="<nome>" id="com_utente" name="com_utente" type="text" placeholder="user" 
+                <span><input value="<nome>" id="com_utente" name="com_utente" type="text" placeholder="Utente" 
                     data-msg-invalid="Il campo username non può contenere spazi e deve contenere da 4 a 40 caratteri alfanumerici (sono ammessi i seguenti caratteri: @ . _ - )"
                     data-msg-empty=""/></span></label>
 
