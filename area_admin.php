@@ -100,6 +100,7 @@ if($dbOK){
         </form>';
     # sezione elimina commenti
     if(isset($_POST['trova'])){
+        $formCommenti='';
         # in base ai campi inseriti imposto la query
         $user=isset($_POST['com_utente']) ? PulisciInput($_POST['com_utente']):'';
         $classe=isset($_POST['com_classe']) ? PulisciInput($_POST['com_classe']):'';
