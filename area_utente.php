@@ -192,7 +192,7 @@ $contenuto.='<form id="form_aggiungicomm" aria-describedby="aggiungi_commento" a
 <fieldset id="container_aggiungi">
 <legend class="field_legend">Aggiungi un commento</legend>'.$classi.'
 <li><label for="commento">Commento:</label><br/><span><textarea  placeholder="Inserisci un commento" rows="5" cols="40"  id="commento" name="insertcommento" maxlength="200"><areacom/></textarea></span></li>
-<li><label for="tag">Settore per il quale stai rilasciando il commento:</label><span><select name="tag" id="tag" data-msg-empty="Per favore, aiutaci a capire di cosa parla il tuo commento">
+<li><label for="tag">Settore per il quale stai rilasciando il commento:</label><span><select name="tag" id="tag">
     <option value="1">Inclusività</option>
     <option value="2">Commento generale</option></select></span></li>
 </ul>
@@ -239,14 +239,9 @@ $contenuto.='<h2 id="pw" class="titles_area_classi">Cambio password</h2>';
 $contenuto.='<form id="form_passw" action="area_utente.php" method="post" onsubmit=" return OnPassword()" >';
 $contenuto.='<fieldset><legend class="field_legend">Cambio password</legend>
 
-<label for="oldpassword">Immetti la tua vecchia <span lang="en">password</span>: <span><input  value="<old>" type="password" id="oldpassword" name="Vecchiapassword" placeholder="Immetti la tua vecchia password" maxlength="20"                      
-    data-msg-invalid="Il campo password non può contenere spazzi e deve contenere da 4 a 20 caratteri alfanumerici (sono ammessi i seguenti caratteri: @ . _ - ), controlla e riprova"
-    data-msg-empty="Il campo vecchia password non può essere vuoto" /></span></label>
-<label for="newpassword">Immetti la tua nuova <span lang="en">password</span>: <span><input  value="<new>" type="password" id="newpassword" name="newpassword" placeholder="Immetti la tua nuova password" maxlength="20"                      
-    data-msg-invalid="Il campo password non può contenere spazzi e deve contenere da 4 a 20 caratteri alfanumerici (sono ammessi i seguenti caratteri: @ . _ - ), controlla e riprova"
-    data-msg-empty="Il campo nuova password non può essere vuoto" /></span></label>
-<label for="repeat">Ripeti la <span lang="en">password </span>:<span><input  value="" type="password" id="repeat" name="repepassword" placeholder="Ripeti la password" maxlength="20"                      
-    data-msg-empty="Il campo repeti password non può essere vuoto" /></span></label>
+<label for="oldpassword">Immetti la tua vecchia <span lang="en">password</span>: <span><input  value="<old>" type="password" id="oldpassword" name="Vecchiapassword" placeholder="Immetti la tua vecchia password" maxlength="20" /></span></label>
+<label for="newpassword">Immetti la tua nuova <span lang="en">password</span>: <span><input  value="<new>" type="password" id="newpassword" name="newpassword" placeholder="Immetti la tua nuova password" maxlength="20" /></span></label>
+<label for="repeat">Ripeti la <span lang="en">password </span>:<span><input  value="" type="password" id="repeat" name="repepassword" placeholder="Ripeti la password" maxlength="20" /></span></label>
     
 <input type="submit" class="submit" name="submit1" value="Salva"/>
 </fieldset>
