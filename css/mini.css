@@ -475,6 +475,17 @@ Parità di genere
 
 /*
 ================
+CONTATTI    
+================
+*/
+
+#contatti > fieldset {
+    flex-basis: 7%;
+    padding: 2em;
+}
+
+/*
+================
 REGISTRAZIONE
 ================
 */

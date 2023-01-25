@@ -1809,16 +1809,22 @@ CONTATTI
 }
 
 #contatti {
-    margin: 0% 30% 0% 30%;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    justify-content: center;
+    margin-top: 3%;
 }
 
 #contatti > fieldset {
-    padding: 1em;
+    flex-basis: 15%;
+    background-color: #ecebeb;
+    padding: 3em;
 }
 
-#contatti label {
-    margin: 0.5em 0em 1em 0em;
-    display: block;
+#contatti textarea {
+    background-color: #FFF;
 }
 
 /*
@@ -1843,16 +1849,11 @@ LOGIN
 }
 
 #form {
-    flex-basis: 15%;
+    flex-basis: 12%;
     background-color: #ecebeb;
     padding: 3em;
-    margin: 0% 42.4% 0% 42.4%;
 }
-/*
-#form > span {
-    padding-right: 100%;
-}
-*/
+
 #form > label {
     font-size: 1.1em;
 }
