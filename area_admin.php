@@ -265,8 +265,8 @@ if($dbOK){
                     unset( $_SESSION['add_nome']);
                     header("Location:area_admin.php");
                 }else{
-                    $msgCorso.='<p class="error">Inserimento di '.$nome.' non riuscito, riprova</p>';
-                    $_SESSION['add']='<p class="error">Inserimento di '.$nome.' non riuscito, riprova</p>';
+                    $msgCorso.='<p class="error">Corso  '.$nome.' già presente </p>';
+                    $_SESSION['add']='<p class="error">Corso  '.$nome.' già presente </p>';
                     header("Location:area_admin.php#formCorsi");
                 }
             }else{
@@ -308,7 +308,7 @@ if($dbOK){
                     $_SESSION['info'].='<p class="invito">'.$nome.' rimosso con successo</p>';
                     header("Location:area_admin.php");
                 }else{
-                    $msgCorso.='<p class="error">Cancellazione di '.$nome.' non riuscita, riprova</p>';
+                    $msgCorso.='<p class="error">Il corso risulta inesistente</p>';
                     $_SESSION['add']='<p class="error">Il corso risulta inesistente</p>';
                     header("Location:area_admin.php#formCorsi");
                 }
