@@ -126,7 +126,6 @@ if($dbOK){
                     }
                     else{
                         $query_commenti.="classe_laurea=\"".$classe."\";";
-                       echo $query_commenti;
                     }
                 }
                 
