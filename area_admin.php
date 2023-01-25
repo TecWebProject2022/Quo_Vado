@@ -55,7 +55,7 @@ if($dbOK){
     }
     if($opzioni){    
         $input_classi_commenti='<select id="com_classe" name="com_classe"  data-msg-invalid="La classe di laurea non può contenere spazi."
-        data-msg-empty="">'.$opzioni.'</select>';
+        data-msg-empty=""><option disable></option>'.$opzioni.'</select>';
         $input_classi_corsi='<select id="cor_classe" name="cor_classe"  data-msg-invalid="La classe di laurea non può contenere spazi. "
         data-msg-empty="">'.$opzioni.'</select>';
     }else{
@@ -104,24 +104,34 @@ if($dbOK){
         $user=isset($_POST['com_utente']) ? PulisciInput($_POST['com_utente']):'';
         $classe=isset($_POST['com_classe']) ? PulisciInput($_POST['com_classe']):'';
         $_SESSION['nome_admin']=$user;
-        if ((!preg_match('/^[@a-zA-Z0-9._-]{4,40}$/',$user))){
+       /* //if ((!preg_match('/^[@a-zA-Z0-9._-]{4,40}$/',$user))){
             $msgCommenti.='<li class="error">Il campo username non può; contenere spazi e deve contenere da 4 a 40 caratteri alfanumerici (sono ammessi i seguenti caratteri: @ . _ - )</li>';
         }
-        if ((!preg_match('/^(L|LM)[0-9]{2}$/',$classe))){
+        //if ((!preg_match('/^(L|LM)[0-9]{2}$/',$classe))){
             $msgCommenti.='<li class="error">La classe di laurea non può; contenere spazi.Le classi di laurea vanno dalla classe L01 alla L43 e dalla LM01 alla LM94</li>';
         }
-
+        */
         if($msgCommenti){
             $msgCommenti='<ul>'.$msgCommenti.'</ul>';
         }else{
-            if($user && $classe ){
+            if($user ||  $classe ){
                 $query_commenti='SELECT nome_utente,datav,classe_laurea,tag,commento,p_complessivo,p_acc_fisica, p_servizio_inclusione,tempestivita_burocratica, p_insegnamento FROM Valutazione WHERE ';
-                $query_commenti.="nome_utente=\"".$user."\" and classe_laurea=\"".$classe."\";";
-                
-                if (substr($query_commenti, -4) == " AND ") {
-                    $query_commenti = substr($query, 0, -4);
+                if($user && $classe){
+                    $query_commenti.="nome_utente=\"".$user."\" and classe_laurea=\"".$classe."\";";
                 }
-                $query_commenti.=';';
+                else{
+                    if($user){
+                        $query_commenti.="nome_utente=\"".$user."\";";
+                       
+                    }
+                    else{
+                        $query_commenti.="classe_laurea=\"".$classe."\";";
+                       echo $query_commenti;
+                    }
+                }
+                
+                
+                
 
                 if($commenti=$db->ExecQueryNum($query_commenti)){
                     $formCommenti='<form id="formEliminaCommenti" action="area_admin.php" method="post" onsubmit="return OnDelete()"><fieldset><legend class="field_legend">Seleziona i commenti da eliminare</legend>';
@@ -129,7 +139,7 @@ if($dbOK){
                     for($i=0;$i<count($commenti);$i++){
                         $commento='
 
-                            <span class="highlight">utente: '.$commenti[$i][0].'| classe di laurea: '.$commenti[$i][2].'| data commento:'.date("d-m-Y",strtotime($commenti[$i][1])).'</span>
+                            <span class="highlight">utente: '.$commenti[$i][0].'</span><span> classe di laurea: '.$commenti[$i][2].'</span><span class="highlight">data commento:'.date("d-m-Y",strtotime($commenti[$i][1])).'</span>
                             <span >commento : '.$commenti[$i][4].'</span>
                             <span class="highlight">Punteggio complessivo: '.$commenti[$i][5].' </span>
 				            <span>Punteggio accessibita fisica: '.$commenti[$i][6].' </span>

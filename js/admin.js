@@ -73,27 +73,15 @@ function OnPassword(){
 }
 function Cancella(){
     var user=document.getElementById('com_utente');
-    
-    var parent= user.parentNode;
-    if(parent.children.length==2){
-        parent.removeChild(parent.children[1]);
-    }
-    if(!user.value.length){
-       var a=document.createElement('strong');
-       a.appendChild(document.createTextNode("Il campo Utente non può essere vuoto"));
-       parent.appendChild(a);
-       user.focus();
-       user.select();
-       return false;
-    }
     var classe=document.getElementById('com_classe');
+
     var parent= classe.parentNode;
     if(parent.children.length==2){
         parent.removeChild(parent.children[1]);
     }
-    if(!classe.value.length){
+    if(!classe.value.length && !user.value.length){
        var a=document.createElement('strong');
-       a.appendChild(document.createTextNode("Il campo classe di laure  non è stato selzionato"));
+       a.appendChild(document.createTextNode("Il campo user o il campo classe di laurea deve essere riempito. "));
        parent.appendChild(a);
        classe.focus();
        return false;
