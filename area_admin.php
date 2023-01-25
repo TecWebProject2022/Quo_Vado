@@ -84,11 +84,11 @@ if($dbOK){
     # preparazione form commenti
     $formSelezioneCommenti.='
     <h2 class="titles_area_classi">Cancellazione commenti</h2>
-        <form id="formTrovaCommenti" action="area_admin.php#formTrovaCommenti" method="post" onsubmit="return OnCommentFind(event)">
+        <form id="formTrovaCommenti" action="area_admin.php#formTrovaCommenti" method="post" onsubmit=" return Cancella()">
             <fieldset>
                 <legend class="field_legend">Trova i commenti da eliminare</legend>
                 <label for="com_utente">Utente: 
-                <span><input id="com_utente" name="com_utente" type="text" placeholder="user" 
+                <span><input value="<nome>" id="com_utente" name="com_utente" type="text" placeholder="user" 
                     data-msg-invalid="Il campo username non può contenere spazi e deve contenere da 4 a 40 caratteri alfanumerici (sono ammessi i seguenti caratteri: @ . _ - )"
                     data-msg-empty=""/></span></label>
 
@@ -101,8 +101,9 @@ if($dbOK){
     # sezione elimina commenti
     if(isset($_POST['trova'])){
         # in base ai campi inseriti imposto la query
-        $user=isset($_POST['com_utente'])?pulisciInput($_POST['com_utente']):'';
-        $classe=isset($_POST['com_classe'])?pulisciInput($_POST['com_classe']):'';
+        $user=isset($_POST['com_utente']) ? PulisciInput($_POST['com_utente']):'';
+        $classe=isset($_POST['com_classe']) ? PulisciInput($_POST['com_classe']):'';
+        $_SESSION['nome_admin']=$user;
         if ((!preg_match('/^[@a-zA-Z0-9._-]{4,40}$/',$user))){
             $msgCommenti.='<li class="error">Il campo username non può; contenere spazi e deve contenere da 4 a 40 caratteri alfanumerici (sono ammessi i seguenti caratteri: @ . _ - )</li>';
         }
@@ -158,7 +159,7 @@ if($dbOK){
     $formGestioneCorsi='
         <h2 class="titles_area_classi">Gestione corsi di studio</h2>
         <p class="formdesc">Per aggiungere un corso di studi è necessario riempire tutti i campi, per eliminarne uno bastano nome, classe di laurea e ateneo.</p>
-        <form id="formCorsi" action="area_admin.php" method="post" onsubmit="return onFormSubmit(event)" >
+        <form id="formCorsi" action="area_admin.php" method="post" >
             <fieldset>
                 <legend class="field_legend">Aggiungi o elimina un corso di studi</legend>
                 
@@ -167,11 +168,11 @@ if($dbOK){
                 <label for="cor_ateneo">Ateneo: 
                 <span>'.$input_atenei.'</span></label>
                 <label for="cor_nome">Nome: 
-                <span><input id="cor_nome" name="cor_nome" type="text" placeholder="corso di laurea in informatica"
+                <span><input id="cor_nome" value="<nome>" name="cor_nome" type="text" placeholder="corso di laurea in informatica"
                     data-msg-invalid="Il nome del corso di laurea non può contenere numeri o caratteri speciali"
                     data-msg-empty="il campo nome non puo essere vuoto"/></span></label>
                 <label for="cor_link">Link: 
-                <span><input id="cor_link" name="cor_link" type="text" placeholder="https://www.unipd.it/informatica"
+                <span><input id="cor_link" value="<link>" name="cor_link" type="text" placeholder="https://www.unipd.it/informatica"
                     data-msg-invalid="Il link del corso non è nel formato corretto"
                     data-msg-empty="il campo link non puo essere vuoto"/></span></label>
                 <label for="cor_accesso">Accesso: 
@@ -185,8 +186,8 @@ if($dbOK){
                         <option value="Accesso libero cronologico">Accesso libero cronologico</option>
                 </select></span></label>
 
-                <input type="submit"  class="submit"  id="add_corso" name="add_corso" value="Aggiungi" />
-                <input type="submit"  class="submit"  id="delete_corso" name="delete_corso" value="Elimina" />
+                <input type="submit"  class="submit"  onclick="return Add()" id="add_corso" name="add_corso" value="Aggiungi" />
+                <input type="submit"  class="submit" onclick="return Remove()" id="delete_corso" name="delete_corso" value="Elimina" />
             </fieldset>
         </form><msgCorsi/>';
     
@@ -202,6 +203,7 @@ if($dbOK){
                 $query_delete_commenti="DELETE FROM Valutazione Where nome_utente=\"".$userdata[0]."\" && classe_laurea=\"".$userdata[1]."\" && tag=\"".$userdata[2]."\";";
                 if($db->Insert($query_delete_commenti)){
                     $_SESSION['info'].='<p class="invito">Commento dell\'utente '.$userdata[0].' eliminato con successo</p>';
+                    unset($_SESSION['nome_admin']);
                     header("Location:area_admin.php#formCorsi");
                 }else{
                     $msgCommenti_delete.='<li class="error">Si è verificato un errori ai nostri servizi, commento dell\'utente '.$userdata[0].' non eliminato</li>';
@@ -220,12 +222,13 @@ if($dbOK){
     #sezione gestione corsi
     if(isset($_POST['add_corso'])){
         $_SESSION['add']='';
-        $classe=isset($_POST['cor_classe'])?pulisciInput($_POST['cor_classe']):'';
-        $ateneo=isset($_POST['cor_ateneo'])?pulisciInput($_POST['cor_ateneo']):'';
-        $nome=isset($_POST['cor_nome'])?pulisciInput($_POST['cor_nome']):'';
-        $link=isset($_POST['cor_link'])?pulisciInput($_POST['cor_link']):'';
+        $classe=isset($_POST['cor_classe'])?PulisciInput($_POST['cor_classe']):'';
+        $ateneo=isset($_POST['cor_ateneo'])?PulisciInput($_POST['cor_ateneo']):'';
+        $nome=isset($_POST['cor_nome'])?PulisciInput($_POST['cor_nome']):'';
+        $link=isset($_POST['cor_link'])?PulisciInput($_POST['cor_link']):'';
         $accesso=isset($_POST['cor_accesso'])?$_POST['cor_accesso']:'';
-        #controlli sulle variabili
+        $_SESSION['add_nome']=$nome;
+        $_SESSION['add_link']=$link;
         if (!preg_match('/^(L|LM)[0-9]{2}$/',$classe)){
             $msgCorso.='<li class="error">La classe di laurea non può essere vuoto o contenere spazi.Le classi di laurea vanno dalla L01 alla L43 e dalla LM01 alla LM94</li>';
             $_SESSION['add']='<p class="error">La classe di laurea non può essere vuoto o contenere spazi.Le classi di laurea vanno dalla L01 alla L43 e dalla LM01 alla LM94</p>';
@@ -259,6 +262,8 @@ if($dbOK){
                 if($db->Insert($query_insert_corso)){
                     $_SESSION['info'].='<p class="invito">'.$nome.' aggiunto con successo</p>';
                     unset($_SESSION['add']);
+                    unset( $_SESSION['add_link']);
+                    unset( $_SESSION['add_nome']);
                     header("Location:area_admin.php");
                 }else{
                     $msgCorso.='<p class="error">Inserimento di '.$nome.' non riuscito, riprova</p>';
@@ -276,9 +281,10 @@ if($dbOK){
     }else{
         if(isset($_POST['delete_corso'])){
             $_SESSION['add']='';
-            $classe=isset($_POST['cor_classe'])?pulisciInput($_POST['cor_classe']):'';
-            $ateneo=isset($_POST['cor_ateneo'])?pulisciInput($_POST['cor_ateneo']):'';
-            $nome=isset($_POST['cor_nome'])?pulisciInput($_POST['cor_nome']):'';
+            $classe=isset($_POST['cor_classe']) ? PulisciInput($_POST['cor_classe']):'';
+            $ateneo=isset($_POST['cor_ateneo']) ? PulisciInput($_POST['cor_ateneo']):'';
+            $nome=isset($_POST['cor_nome']) ? PulisciInput($_POST['cor_nome']):'';
+            $_SESSION['add_nome']=$nome;
             #controlli sulle variabili
             if (!preg_match('/^(L|LM)[0-9]{2}$/',$classe)){
                 $msgCorso.='<li class="error">La classe di laurea non può essere vuoto o contenere spazi.Le classi di laurea vanno dalla classe L01 alla L43 e dalla LM01 alla LM94</li>';
@@ -304,7 +310,7 @@ if($dbOK){
                     header("Location:area_admin.php");
                 }else{
                     $msgCorso.='<p class="error">Cancellazione di '.$nome.' non riuscita, riprova</p>';
-                    $_SESSION['add']='<p class="error">Cancellazione di '.$nome.' non riuscita, riprova</p>';
+                    $_SESSION['add']='<p class="error">Il corso risulta inesistente</p>';
                     header("Location:area_admin.php#formCorsi");
                 }
             }else{
@@ -315,7 +321,7 @@ if($dbOK){
     #preparazione form cambio password
     $formCambioPw=' 
     <h2 id="CambioPw" class="titles_area_classi">Cambia Password</h2>
-    <form id="form_passw" action="area_admin.php" method="post" >
+    <form id="form_passw" action="area_admin.php" method="post" onsubmit=" return OnPassword()" >
         <fieldset>
             <legend class="field_legend">Cambio password</legend>
             <label for="oldpassword"><span lang="en">Immetti la tua vecchia Password: </span>
@@ -337,6 +343,12 @@ if($dbOK){
         $_SESSION['password']='';
         $vecchia=PulisciInput($_POST['Vecchiapassword']);
         $nuova=PulisciInput($_POST['newpassword']);
+        $_SESSION['nuova']=$nuova;
+        echo  $_SESSION['nuova'];
+        $_SESSION['vecchia']=$vecchia;
+        echo $vecchia;
+
+
         $rep=PulisciInput($_POST['repepassword']);
         
         if (!preg_match('/^[@a-zA-Z0-9._-]{4,20}$/',$vecchia)){
@@ -395,15 +407,35 @@ if(!isset($_SESSION['add'])){
 if(!isset($_SESSION['password'])){
     $_SESSION['password']='';
 }
+if(!isset($_SESSION['nuova'])){
+    $_SESSION['nuova']='';
+}
+if(!isset($_SESSION['vecchia'])){
+    $_SESSION['vecchia']='';
+}
+if(!isset($_SESSION['nome_admin']))
+{
+    $_SESSION['nome_admin']='';
+}
+if(!isset($_SESSION['add_nome'])){
+    $_SESSION['add_nome']='';
+}
+if(! isset($_SESSION['add_link'])){
+    $_SESSION['add_link']='';
+}
 #stampa sezione commenti
+$formSelezioneCommenti=str_replace("<nome>",$_SESSION['nome_admin'],$formSelezioneCommenti);
 $content=str_replace("<formSelezioneCommenti/>",$formSelezioneCommenti,$content);
 $content=str_replace("<formCommenti/>",$formCommenti,$content);
 $content=str_replace("<msgCommenti/>",$msgCommenti,$content);
 $content=str_replace("<msgCommenti_delete/>",$msgCommenti_delete,$content);
-#stampa sezione corsi
+$formGestioneCorsi=str_replace("<nome>", $_SESSION['add_nome'],$formGestioneCorsi);
+$formGestioneCorsi=str_replace("<link>",  $_SESSION['add_link'],$formGestioneCorsi);
 $content=str_replace("<formGestioneCorsi/>",$formGestioneCorsi,$content);
 $content=str_replace("<msgCorsi/>",$_SESSION['add'],$content);
 #stampa cambio pw
+$formCambioPw=str_replace("<new>",$_SESSION['nuova'],$formCambioPw);
+$formCambioPw=str_replace("<old>",$_SESSION['vecchia'],$formCambioPw);
 $content=str_replace("<formCambioPw/>",$formCambioPw,$content);
 $content=str_replace("<msgPassword/>",$_SESSION['password'],$content);
 $content=str_replace("<msgConnError/>",$conn_error,$content);

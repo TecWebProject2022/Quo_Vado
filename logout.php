@@ -16,5 +16,8 @@ unset($_SESSION['user']);
     unset( $_SESSION['commento']);
     unset($_SESSION['password']);
     unset($_SESSION['add']);
+    unset($_SESSION['nome_admin']);
+    unset( $_SESSION['add_link']);
+    unset( $_SESSION['add_nome']);
 header('Location:index.html');
 ?>

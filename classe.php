@@ -74,7 +74,8 @@ $db=new Connection();
             }    
             #sezione commenti
             #filtro, con solo due elementi ma potenzialmente potrei averne n
-            $contenuto.='<form id="filtro" class="filter" action="classe.php?nclasse='.$target.'" method="get" >
+           
+            $contenuto.='<form id="filtro" class="filter" action="classe.php?nclasse='.$target.'" method="get" onsubmit="return Validate()" >
             <fieldset>
             <legend>Seleziona i commenti che vuoi visualizzare</legend>
                 <label for="commento_generale">
@@ -93,6 +94,18 @@ $db=new Connection();
                     <input type="hidden" name="area" value="'.$area.'"/>
                 </fieldset>
             </form>';
+            $contenuto.="<p class=invito>Filtri applicati:";
+            if(isset($_GET['filtri'])){
+                foreach( $_GET['filtri'] as $f ){
+                   switch($f){
+                    case 1: $contenuto.=" commento generale ";
+                            break;
+                    case 2:  $contenuto.=" inclusività";
+                            break;
+                   }
+                }
+            }
+            $contenuto.="<p>";
             # se ottengo tag (da filtro, al primo caricamento della pagina sara sempre false) allora la query chiedera solo le valutazioni corrispondenti
             
             if(isset($_GET['filterTags'])){

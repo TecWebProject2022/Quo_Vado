@@ -236,16 +236,16 @@ if($res5=$db->ExecQueryAssoc($query5)){
 
     //CAMBIO PASSWORD
 $contenuto.='<h2 id="pw" class="titles_area_classi">Cambio password</h2>';
-$contenuto.='<form id="form_passw" action="area_utente.php" method="post" >';
+$contenuto.='<form id="form_passw" action="area_utente.php" method="post" onsubmit=" return OnPassword()" >';
 $contenuto.='<fieldset><legend class="field_legend">Cambio password</legend>
 
-<label for="oldpassword"><span lang="en">Immetti la tua vecchia password: </span><span><input  value="<old>" type="password" id="oldpassword" name="Vecchiapassword" placeholder="Immetti la tua vecchia password" maxlength="20"                      
+<label for="oldpassword">Immetti la tua vecchia <span lang="en">password</span>: <span><input  value="<old>" type="password" id="oldpassword" name="Vecchiapassword" placeholder="Immetti la tua vecchia password" maxlength="20"                      
     data-msg-invalid="Il campo password non può contenere spazzi e deve contenere da 4 a 20 caratteri alfanumerici (sono ammessi i seguenti caratteri: @ . _ - ), controlla e riprova"
     data-msg-empty="Il campo vecchia password non può essere vuoto" /></span></label>
-<label for="newpassword"><span lang="en">Immetti la tua nuova password: </span><span><input  value="<new>" type="password" id="newpassword" name="newpassword" placeholder="Immetti la tua nuova password" maxlength="20"                      
+<label for="newpassword">Immetti la tua nuova <span lang="en">password</span>: <span><input  value="<new>" type="password" id="newpassword" name="newpassword" placeholder="Immetti la tua nuova password" maxlength="20"                      
     data-msg-invalid="Il campo password non può contenere spazzi e deve contenere da 4 a 20 caratteri alfanumerici (sono ammessi i seguenti caratteri: @ . _ - ), controlla e riprova"
     data-msg-empty="Il campo nuova password non può essere vuoto" /></span></label>
-<label for="repeat"><span lang="en">Ripeti la password: </span><span><input  value="" type="password" id="repeat" name="repepassword" placeholder="Ripeti la password" maxlength="20"                      
+<label for="repeat">Ripeti la <span lang="en">password </span>:<span><input  value="" type="password" id="repeat" name="repepassword" placeholder="Ripeti la password" maxlength="20"                      
     data-msg-empty="Il campo repeti password non può essere vuoto" /></span></label>
     
 <input type="submit" class="submit" name="submit1" value="Salva"/>
@@ -270,7 +270,7 @@ if(isset($_POST['submit4']) && check()){
         $query7="Select ateneo, nome FROM CorsodiStudio where classe_laurea=\"".$_POST['classe']."\";";
         if($r=$db->ExecQueryNum($query7)){
            $_SESSION['data']=$r;
-            $form='<p class="formdesc">Inserimento per la classe di laurea: '.$_SESSION['LAUREA'].':  seleziona il corso di studi da te frequentato ed inserissci la data di inizio, la data di fine studi e un avalutazione da 1 a 5 sulla affinità della scuola supeiore da te frequentata con il corso di studio selezionato</p><form id="selectcorso" action="area_utente.php" method="post">';
+            $form='<p class="formdesc">Inserimento per la classe di laurea: '.$_SESSION['LAUREA'].':  seleziona il corso di studi da te frequentato ed inserissci la data di inizio, la data di fine studi e un avalutazione da 1 a 5 sulla affinità della scuola supeiore da te frequentata con il corso di studio selezionato</p><form id="selectcorso" action="area_utente.php" onsubmit=" return Ondate()" method="post">';
             $form.="<fieldset><legend class='field_legend'>Seleziona corso di studi</legend>";
             $form.='<label for="corso">Seleziona il corso: </label>';
             $form.='<select class="select" id="corso" name="corso">';
@@ -281,7 +281,7 @@ if(isset($_POST['submit4']) && check()){
             $form.='<br/><label for="datai">Data di iscrizione: </label>
             <input type="date" id="datai" name="datai" value="1960-01-01" min="1960-01-01" max="2100-01-01"/>';
             $form.='<br/><label for="dataf">Data di fine studi: </label>
-            <input type="date" id="dataf" name="dataf" value="1960-01-01" min="1960-01-01" max="2100-01-01"/>';
+            <span><input type="date" id="dataf" name="dataf" value="1960-01-01" min="1960-01-01" max="2100-01-01"/></span>';
             $form.='<br/><label for="punteggio">Punteggio scuola di provenienza: </label>
             <input type="number" id="punteggio" name="punteggio" value="1" min="1" max="5"/>';
             $form.='<br/> <input type="submit" class="submit" name="submit5" value="Inserisci"/>';

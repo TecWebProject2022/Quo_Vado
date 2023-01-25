@@ -1,65 +1,3 @@
-//Validazione dei campi
-/*var test={
-    "com_utente":/^[@a-zA-Z0-9._-]{4,40}$/,
-    "com_classe":/^(L|LM)[0-9]{2}$/,
-    "cor_classe":/^(L|LM)[0-9]{2}$/,
-    "cor_nome":/^[a-zA-ZÀ-ÿ\s]{1,50}$/,
-    "cor_ateneo":/^[a-zA-ZÀ-ÿ\s]{1,50}$/,
-    "cor_link": /^(http:\/\/www\.|https:\/\/www\.|http:\/\/|https:\/\/)?[a-z0-9]+([\-\.]{1}[a-z0-9]+)*\.[a-z]{2,5}(:[0-9]{1,5})?(\/.*)?$/,
-    "cor_accesso":/^(Accesso programmato|Accesso libero con prova|Accesso a numero chiuso|Accesso libero cronologico)$/
-   }; 
-   
-function Validate(element){
-    var parent= element.parentNode;
-    
-    if(parent.children.length==2){
-        parent.removeChild(parent.children[1]);
-    }
-    if(!element.value.length){
-       var a=document.createElement('strong');
-       a.appendChild(document.createTextNode(element.dataset.msgEmpty));
-       a.classList.add('error');
-       parent.appendChild(a);
-       element.focus();
-       element.select();
-       return false;
-    }
-    else if(element.value.search(test[element.id])==-1){
-        console.log(element.dataset.control);
-        console.log(element.value);
-        var b=document.createElement('strong');
-        b.appendChild(document.createTextNode(element.dataset.msgInvalid));
-        b.classList.add('error');
-        parent.appendChild(b); 
-        element.focus();
-        element.select();
-        return false;
-    }
-    return true;
-}
-//chiamata al submit
-function onFormSubmit(event) {
-    if (event.target.id === "add_corso") {
-        return OnCourseAdd(event);
-    } else if (event.target.id === "delete_corso") {
-        return OnCourseDelete(event);
-    }
-}
-
-function OnCourseAdd(event){
-    var isValid=true;
-    if(!( Validate(document.getElementById('cor_nome')) & Validate(document.getElementById('cor_classe')) & Validate(document.getElementById('cor_ateneo')) & Validate(document.getElementById('cor_accesso')) & Validate(document.getElementById('cor_link')))){
-        
-        isValid=false;
-    }
-    if(!isValid){
-        event.preventDefault();
-        return isValid;
-    }
-
-    return isValid;
-   
-}*/
 function Box_Validate(){
     var box=document.getElementsByName('commento[]'); // è una lista quindi devo verificare se esiste al meno un elemento selezionato altrimenti do un errore
     for(var i=0; i<box.length; i++){
@@ -86,75 +24,153 @@ function OnDelete(){
     }
     return false;
 }
-/*   
-function OnCourseDelete(event){
-    if(Box_Validate()){
-        return window.confirm("Sei sicuro di voler elminirare gli elementi selezionati?");
-    }
-    return false;
-}
-
-function OnCommentFind(event){
-    var username=document.getElementById('com_utente');         
-    var classe=document.getElementById('com_classe');
-    var isValid=true;    
-    
-    if (username.value.length && classe.value.length){ 
-        isValid=(Validate(username) & Validate(classe));//entrambi utilizzati li verifico tutti e due
-    }else{
-        if(username.value.length || classe.value.length) {
-            //almeno uno utilizzato
-            isValid=(Validate(username) || Validate(classe));
-        }else{
-            //nessuno dei due utilizzato tolgo eventuali messaggi precedenti
-            if(username.parentNode.children.length==2){
-                username.parentNode.removeChild(parent.children[1]);
-            }
-            if(classe.parentNode.children.length==2){
-                classe.parentNode.removeChild(parent.children[1]);
-            }
-            //aggiungo mesaggio di errore
-            var errore= document.getElementById('comment_selector_error');
-            if(errore){
-                errore.remove();
-            }
-            var a=document.createElement('strong');
-            a.setAttribute('id', 'comment_selector_error')
-            a.classList.add('error');
-            a.appendChild(document.createTextNode('riempire almeno uno dei due campi'));
-            parent.insertBefore(a, document.getElementById('formTrovaCommenti').nextSibling);
-            isValid=false;
-        }
-    }
-    
-    if(!isValid){
-        event.preventDefault();
-    }
-    return isValid;
-}
-
-function Box_Validate(){
-    var box=document.getElementsByName('commento[]'); // è una lista quindi devo verificare se esiste al meno un elemento selezionato altrimenti do un errore
-    for(var i=0; i<box.length; i++){
-        if(box[i].checked){
-            return true;
-        }
-    }
-    var parent= box[0].parentNode;
+function OnPassword(){
+    var pw=document.getElementById('oldpassword');
+    var parent= pw.parentNode;
     if(parent.children.length==2){
         parent.removeChild(parent.children[1]);
     }
-    var a=document.createElement('strong');
-       a.appendChild(document.createTextNode("Selezionare un commento per cancellarlo"));
+    if(!pw.value.length){
+       
+       var a=document.createElement('strong');
+       a.appendChild(document.createTextNode("Il campo vecchia password non può essere vuoto"));
        parent.appendChild(a);
-       box[0].focus();
-       box[0].select();
-   return false;
-}
-
-function OnCommentDelete(){
-    if(Box_Validate()){
-        return window.confirm("Sei sicuro di voler elminirare gli elementi selezionati?");
+       pw.focus();
+       pw.select();
+       return false;
     }
+    var nuova = document.getElementById('newpassword');
+    var parent= nuova.parentNode;
+        if(parent.children.length==2){
+            parent.removeChild(parent.children[1]);
+        }
+    if(!nuova.value.length){
+        
+       var a=document.createElement('strong');
+       a.appendChild(document.createTextNode("Il campo nuova password non può essere vuoto"));
+       parent.appendChild(a);
+       nuova.focus();
+       nuova.select();
+       return false;
+    }
+    var repeat = document.getElementById('repeat');
+    var parent= repeat.parentNode;
+    if(parent.children.length==2){
+        parent.removeChild(parent.children[1]);
+    }
+    if(!repeat.value.length){
+      
+       var a=document.createElement('strong');
+       a.appendChild(document.createTextNode("Il campo nuova password non può essere vuoto"));
+       parent.appendChild(a);
+       repeat.focus();
+       repeat.select();
+       return false;
+    }
+    return true;
+
+
+}
+function Cancella(){
+    var user=document.getElementById('com_utente');
+    
+    var parent= user.parentNode;
+    if(parent.children.length==2){
+        parent.removeChild(parent.children[1]);
+    }
+    if(!user.value.length){
+       var a=document.createElement('strong');
+       a.appendChild(document.createTextNode("Il campo Utente non può essere vuoto"));
+       parent.appendChild(a);
+       user.focus();
+       user.select();
+       return false;
+    }
+    var classe=document.getElementById('com_classe');
+    var parent= classe.parentNode;
+    if(parent.children.length==2){
+        parent.removeChild(parent.children[1]);
+    }
+    if(!classe.value.length){
+       var a=document.createElement('strong');
+       a.appendChild(document.createTextNode("Il campo classe di laure  non è stato selzionato"));
+       parent.appendChild(a);
+       classe.focus();
+       return false;
+    }
+
+    
+    return true;
+}
+function Remove(){
+    var classe=document.getElementById('cor_classe');
+ var parent= classe.parentNode;
+ if(parent.children.length==2){
+     parent.removeChild(parent.children[1]);
+ }
+ if(!classe.value.length){
+    var a=document.createElement('strong');
+    a.appendChild(document.createTextNode("Il campo Classe di  laurea non può essere vuoto"));
+    parent.appendChild(a);
+    classe.focus();
     return false;
-}*/
+ }
+ var ateneo=document.getElementById('cor_ateneo');
+ var parent= ateneo.parentNode;
+ if(parent.children.length==2){
+     parent.removeChild(parent.children[1]);
+ }
+ if(!ateneo.value.length){
+    var a=document.createElement('strong');
+    a.appendChild(document.createTextNode("Il campo Ateneo non può essere vuoto"));
+    parent.appendChild(a);
+    ateneo.focus();
+    return false;
+ }
+ var nome=document.getElementById('cor_nome');
+ var parent= nome.parentNode;
+ if(parent.children.length==2){
+     parent.removeChild(parent.children[1]);
+ }
+ if(!nome.value.length){
+    var a=document.createElement('strong');
+    a.appendChild(document.createTextNode("Il campo Utente non può essere vuoto"));
+    parent.appendChild(a);
+    nome.focus();
+    nome.select();
+    return false;
+ }
+ 
+ 
+ return true;
+}
+function Add(){
+    if(Remove()){
+        var link=document.getElementById('cor_link');
+        var parent= link.parentNode;
+        if(parent.children.length==2){
+            parent.removeChild(parent.children[1]);
+        }
+        if(!link.value.length){
+            var a=document.createElement('strong');
+            a.appendChild(document.createTextNode("Il campo link non può essere vuoto"));
+            parent.appendChild(a);
+            link.focus();
+            link.select();
+            return false;
+        }
+        var accesso=document.getElementById('cor_accesso');
+        var parent= accesso.parentNode;
+        if(parent.children.length==2){
+            parent.removeChild(parent.children[1]);
+        }
+        if(!accesso.value.length){
+            var a=document.createElement('strong');
+            a.appendChild(document.createTextNode("Il campo acesso  non può essere vuoto"));
+            parent.appendChild(a);
+            accesso.focus();
+            return false;
+        }
+    }
+    return true;
+}
