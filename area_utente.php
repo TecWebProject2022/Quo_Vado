@@ -38,7 +38,7 @@ $user=$_SESSION['user'];
 $content=str_replace('<sottomenu/>',$menu1,$content);
 
 if(isset($_SESSION['info'])){
-    $content=str_replace('<span id="8"></span>',$_SESSION['info'],$content);
+    $content=str_replace('<span id="Sostituo"></span>',$_SESSION['info'],$content);
     $_SESSION['info']='';
 }
 
