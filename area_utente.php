@@ -240,9 +240,9 @@ $contenuto.='<label class="formdesc" for="form_passw">Per modificare la tua pass
 $contenuto.='<form id="form_passw" action="area_utente.php" method="post" onsubmit=" return OnPassword()" >';
 $contenuto.='<fieldset><legend class="field_legend">Cambio password</legend>
 
-<label for="oldpassword">Immetti la tua vecchia <span lang="en">password</span>: <span></label><input  value="<old>" type="password" id="oldpassword" name="Vecchiapassword" placeholder="Immetti la tua vecchia password" maxlength="20" /></span>
-<label for="newpassword">Immetti la tua nuova <span lang="en">password</span>: <span></label><input  value="<new>" type="password" id="newpassword" name="newpassword" placeholder="Immetti la tua nuova password" maxlength="20" /></span>
-<label for="repeat">Ripeti la <span lang="en">password </span>:<span></label><input  value="" type="password" id="repeat" name="repepassword" placeholder="Ripeti la password" maxlength="20" /></span>
+<label for="oldpassword">Immetti la tua vecchia <span lang="en">password</span>: </label><span><input  value="<old>" type="password" id="oldpassword" name="Vecchiapassword" placeholder="Immetti la tua vecchia password" maxlength="20" /></span>
+<label for="newpassword">Immetti la tua nuova <span lang="en">password</span>: </label><span><input  value="<new>" type="password" id="newpassword" name="newpassword" placeholder="Immetti la tua nuova password" maxlength="20" /></span>
+<label for="repeat">Ripeti la <span lang="en">password </span>:</label><span><input  value="" type="password" id="repeat" name="repepassword" placeholder="Ripeti la password" maxlength="20" /></span>
 <input type="submit" class="submit" name="submit1" value="Salva"/>
 </fieldset>
 </form>
