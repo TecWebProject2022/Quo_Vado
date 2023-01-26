@@ -7,6 +7,9 @@ if(!isset($_SESSION['user']) || !isset($_SESSION['time']) || time()-$_SESSION['t
     unset($_SESSION['time']);
     unset($_SESSION['password']);
     unset($_SESSION['add']);
+    unset($_SESSION['nome_admin']);
+    unset($_SESSION['add_nome']);
+    unset( $_SESSION['add_link']);
     $_SESSION['sessione']='<p class="error">Sessione Scaduta</p>';
     header('Location:login.php');
 }
