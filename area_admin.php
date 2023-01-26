@@ -77,6 +77,7 @@ if($dbOK){
     # preparazione form commenti
     $formSelezioneCommenti.='
     <h2 class="titles_area_classi">Cancellazione commenti</h2>
+    <label for="formTrovaCommenti" class="formdesc">Inserisci nome utente o classe di laurea dei commenti che vuoi ricercare</label>
         <form id="formTrovaCommenti" action="area_admin.php#formTrovaCommenti" method="post" onsubmit=" return Cancella()">
             <fieldset>
                 <legend class="field_legend">Trova i commenti da eliminare</legend>
@@ -118,7 +119,7 @@ if($dbOK){
                 
 
                 if($commenti=$db->ExecQueryNum($query_commenti)){
-                    $formCommenti='<form id="formEliminaCommenti" action="area_admin.php" method="post" onsubmit="return OnDelete()"><fieldset><legend class="field_legend">Seleziona i commenti da eliminare</legend>';
+                    $formCommenti='<label for="formEliminaCommenti" class="formdesc">Selezionare un commento e premere Elimina commenti selezionati per eliminarli</label><form id="formEliminaCommenti" action="area_admin.php" method="post" onsubmit="return OnDelete()"><fieldset><legend class="field_legend">Seleziona i commenti da eliminare</legend>';
                     $formCommenti.= "<ul id=\"commrilasc\">";
                     for($i=0;$i<count($commenti);$i++){
                         $commento='
@@ -152,7 +153,7 @@ if($dbOK){
     #preparazione form corsi
     $formGestioneCorsi='
         <h2 class="titles_area_classi">Gestione corsi di studio</h2>
-        <p class="formdesc">Per aggiungere un corso di studi è necessario riempire tutti i campi, per eliminarne uno bastano nome, classe di laurea e ateneo.</p>
+        <p class="formdesc">Per aggiungere un corso di studi è necessario riempire tutti i campi, per eliminarne uno bastano nome, classe di laurea e ateneo e premi il relativo pulsante</p>
         <form id="formCorsi" action="area_admin.php" method="post" >
             <fieldset>
                 <legend class="field_legend">Aggiungi o elimina un corso di studi</legend>
@@ -308,6 +309,7 @@ if($dbOK){
     #preparazione form cambio password
     $formCambioPw=' 
     <h2 id="CambioPw" class="titles_area_classi">Cambia Password</h2>
+    <label class="formdesc" for="form_passw">Per modificare la tua password compila i campi sottostanti e premi salva per salvare la modifica</label>
     <form id="form_passw" action="area_admin.php" method="post" onsubmit=" return OnPassword()" >
         <fieldset>
             <legend class="field_legend">Cambio password</legend>

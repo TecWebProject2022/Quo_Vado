@@ -102,8 +102,8 @@ $query6="Select num_classe FROM ClassediLaurea";
 if($res5=$db->ExecQueryAssoc($query6)){
     $contenuto.="<h2 id=\"aggiscrizione\" class='titles_area_classi'>Inserisci una nuova iscrizione</h2>";
     $contenuto.='<span id="error"></span>';
-    $contenuto.="<label id=\"descseclect\" class=\"formdesc\">Qui ti è consentito inserire una nuova iscrizione, fai molta attenzione ai passaggi</label>";
-    $contenuto.='<form  aria-describedby="descseclect" id="selectclass" action="area_utente.php#aggiscrizione" method="post" ><fieldset><legend class="field_legend">Seleziona classe</legend>';
+    $contenuto.="<label id=\"descseclect\" class=\"formdesc\">Per iserire una nuova iscrizione seleziona la classe di laurea da te frequentata</label>";
+    $contenuto.='<form  aria-describedby="descseclect" id="selectclass" action="area_utente.php#aggiscrizione" method="post" ><fieldset><legend class="field_legend">Seleziona una classe</legend>';
     $contenuto.="<label for=\"classi\">Classi disponibili:</label>
     <select id=\"classi\" name=\"classe\">";
     foreach($res5 as $r){
@@ -169,7 +169,7 @@ if($res5=$db->ExecQueryAssoc($query5)){
     $classi.="</select></li>";
 
 $contenuto.='<h2 id="aggiungi" class="titles_area_classi">Aggiungi un commento</h2>';
-$contenuto.='<label id="aggiungi_commento" class="formdesc">Ti è consentito lasciare un solo commento e una valutazione da 1 a 5 per ogni ambito di valutazione delle classe di laurea per le quali ti sei dichiarato iscritto. Inoltre ti verrà richiesto di specificare per che settore stai lasciando il commento</label>';
+$contenuto.='<label id="aggiungi_commento" class="formdesc">Per lasciare un commento compila i campi sottostanti: ti è consentito lasciare un solo commento e una valutazione da 1 a 5 per ogni ambito di valutazione delle classe di laurea per le quali ti sei dichiarato iscritto. Inoltre ti verrà richiesto di specificare per che settore stai lasciando il commento</label>';
 $contenuto.='<div class="formdesc">
 <h3 class="formdesc">Glossario</h3>
 <ul class="invito1">
@@ -236,6 +236,7 @@ if($res5=$db->ExecQueryAssoc($query5)){
 
     //CAMBIO PASSWORD
 $contenuto.='<h2 id="pw" class="titles_area_classi">Cambio password</h2>';
+$contenuto.='<label class="formdesc" for="form_passw">Per modificare la tua password compila i campi sottostanti e premi salva per salvare la modifica</label>';
 $contenuto.='<form id="form_passw" action="area_utente.php" method="post" onsubmit=" return OnPassword()" >';
 $contenuto.='<fieldset><legend class="field_legend">Cambio password</legend>
 
@@ -264,7 +265,7 @@ if(isset($_POST['submit4']) && check()){
         $query7="Select ateneo, nome FROM CorsodiStudio where classe_laurea=\"".$_POST['classe']."\";";
         if($r=$db->ExecQueryNum($query7)){
            $_SESSION['data']=$r;
-            $form='<p class="formdesc">Inserimento per la classe di laurea: '.$_SESSION['LAUREA'].':  seleziona il corso di studi da te frequentato ed inserissci la data di inizio, la data di fine studi e un avalutazione da 1 a 5 sulla affinità della scuola supeiore da te frequentata con il corso di studio selezionato</p><form id="selectcorso" action="area_utente.php" onsubmit=" return Ondate()" method="post">';
+            $form='<p class="formdesc">Inserimento per la classe di laurea: '.$_SESSION['LAUREA'].':  seleziona il corso di studi da te frequentato ed inserissci la data di inizio, la data di fine studi e un avalutazione da 1 a 5 sulla affinità della scuola superiore da te frequentata con il corso di studio selezionato</p><form id="selectcorso" action="area_utente.php" onsubmit=" return Ondate()" method="post">';
             $form.="<fieldset><legend class='field_legend'>Seleziona corso di studi</legend>";
             $form.='<label for="corso">Seleziona il corso: </label>';
             $form.='<select class="select" id="corso" name="corso">';
