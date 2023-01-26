@@ -6,7 +6,7 @@
 	<meta name="description" content="Per orientarsi nella scelta dell'università serve raccogliere informazioni su quali sono gli sbocchi professionali e 
     le opportunità lavorative, attuali e future." />
 	<meta name="author" content="Marco Brugin, Valentina Caputo, Matteo Umatche, Bianca Zaghetto" />
-    <meta name="viewport" content="width=device-width" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 	<link rel="stylesheet"  media= "screen" href="css/style.css"/> 
     <link rel="stylesheet"  media= "screen and (max-width:600px), only screen
 	and (max-width:600px)" href="css/mini.css"/>
@@ -21,9 +21,33 @@
 		<h2>Fai la scelta giusta!</h2>
 	</header>
 
-    <!-- Manca menù -->
+    <a class="skip" href="#content">Vai al contenuto</a>
 
-    <nav id="breadcrumb" aria-label="breadcrumb">
+    <nav id="menu" aria-label="menù">
+        <button onclick="View()" id="hamburger-menu" aria-label="Menù a panino">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button> 
+
+        <ul class="minimenu">
+            <li lang="en"><a href="index.html">Home</a></li>
+            <li><a href="percorso_disciplinare.html">Esplora corsi</a></li>
+            <li><a href="lavoro.html">Obiettivo Lavoro</a></li>
+            <li><a href="risorse_interne.html">La scelta giusta per te</a></li>
+            <li class="sottomenu">
+                    <a href="universita_inclusiva.html">Università e Inclusione <span class="arrow"></span></a>
+                <ul class="sottomenu-content">
+                    <li><a href="diritto_studio.html">Diritto allo studio</a></li>
+                    <li><a href="parita_genere.html">Pari opportunità e Parità di genere</a></li>
+                    <li><a href="disabilita.html">Servizi per la Disabilità</a></li>
+                </ul>
+            </li>
+            <li><a  href="login.php">Area Riservata</a></li>
+        </ul>
+    </nav>
+
+    <nav id="breadcrumb" aria-label="percorso">
 		<p>Sembra che tu abbia scoperto il nostro segreto...</p>
 	</nav> 
     
@@ -47,7 +71,7 @@
         <div id="credits">
             <h3 lang="en">Credits</h3>
             <ul>
-                <li lang="en">Home - faro: <a href="https://www.freepik.com/free-vector/lighthouse-sea-shore-beacon-building-nature-landscape_13875697.htm">Image by upklyak</a> on Freepik</li>
+                <li lang="en">Home - <span lang="it">faro</span>: <a href="https://www.freepik.com/free-vector/lighthouse-sea-shore-beacon-building-nature-landscape_13875697.htm">Image by upklyak</a> on Freepik</li>
                 <li>Obiettivo Lavoro - sfondo titolo: <a lang="en" href="https://www.freepik.com/free-photo/business-strategy-success-target-goals_1211528.htm">Image by ijeab</a> on Freepik</li>
                 <li>Università adatta a te - sfondo titolo: <a href="https://www.freepik.com/free-vector/seamless-pattern-with-women-faces-crowd_6722088.htm">Freepik</a></li>
             </ul>
