@@ -273,10 +273,10 @@ if(isset($_POST['submit4']) && check()){
                 $form.="<option value=\"".$i."\">".$r[$i][0]." ".$r[$i][1]."</option>";
             }
             $form.="</select>";
-            $form.='<br/><label for="datai">Data di iscrizione: </label>
-            <input type="date" id="datai" name="datai" value="1960-01-01" min="1960-01-01" max="2100-01-01"/>';
-            $form.='<br/><label for="dataf">Data di fine studi: </label>
-            <span><input type="date" id="dataf" name="dataf" value="1960-01-01" min="1960-01-01" max="2100-01-01"/></span>';
+            $form.='<br/><label for="datai">Data di iscrizione [valide dal 01-01-1960 al 01-01-2100]: </label>
+            <input type="date" id="datai" name="datai" value="1960-01-01" />';
+            $form.='<br/><label for="dataf">Data di fine studi [valide dal 01-01-1960 al 01-01-2100]: </label>
+            <span><input type="date" id="dataf" name="dataf" value="1960-01-01" /></span>';
             $form.='<br/><label for="punteggio">Punteggio scuola di provenienza: </label>
             <input type="number" id="punteggio" name="punteggio" value="1" />';
             $form.='<br/> <input type="submit" class="submit" name="submit5" value="Inserisci"/>';
@@ -304,6 +304,7 @@ if(isset($_POST['submit5']) && check()){
     $_SESSION['user'];
 
     if($dataf>$datai){
+    if($datai>'1960-01-01' && $datai<'2100-01-01'){
     if($punteggio>=1 &&  $punteggio<6){
         $db=new Connection();
         $dbOK=$db->Connect();
@@ -330,6 +331,11 @@ else{
         $_SESSION['error']='<p class="error">Il punteggio sulla scuola di provenienza deve essere compreso tra 1 e 5 </p>';
         header('Location:area_utente.php#aggiscrizione');
     }
+}
+else{
+    $_SESSION['error']='<p class="error"> le date valide sono comprese tra il 01-01-1960 e il 01-01-2100</p>';
+    header('Location:area_utente.php#aggiscrizione');
+}
 }
 else{
     $_SESSION['error']='<p class="error">La data di fine studi deve essere successiva alla data di inizio studi</p>';

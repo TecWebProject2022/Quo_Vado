@@ -129,6 +129,16 @@ function Ondate(){
        dataf.select();
        return false;
     }
+    console.log(new Date(datai.value));
+    if(datai.value<'1960-01-01' || datai.value>'2100-01-01'){
+       
+        var a=document.createElement('strong');
+        a.appendChild(document.createTextNode("Le date valide vanno dal 01-01-1960 al 01-01-2100"));
+        parent.appendChild(a);
+        dataf.focus();
+        dataf.select();
+        return false;
+    }
     var punteggio=document.getElementById('punteggio');
     var parent=punteggio.parentNode;
     if(parent.children.length==2){
