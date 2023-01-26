@@ -2059,9 +2059,7 @@ AREA UTENTE
 #commrilasc > fieldset {
     padding: 1em;
 }
-.margine{
-    margin-top: 0.5em;
-}
+
 .blocco_commento {
     padding: 1em;
     border: 1px solid #000000;
