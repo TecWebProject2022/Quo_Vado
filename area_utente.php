@@ -191,7 +191,7 @@ $contenuto.='<div class="formdesc">
 $contenuto.='<form id="form_aggiungicomm" aria-describedby="aggiungi_commento" action="area_utente.php"  onsubmit="return OnInsert()" method="post">
 <fieldset id="container_aggiungi">
 <legend class="field_legend">Aggiungi un commento</legend>'.$classi.'
-<li><label for="commento">Commento:</label><br/><span><textarea  placeholder="Inserisci un commento" rows="5" cols="40"  id="commento" name="insertcommento" maxlength="200"><areacom/></textarea></span></li>
+<li><label for="commento">Commento:</label><br/><span><textarea  placeholder="Inserisci un commento" rows="4" cols="35"  id="commento" name="insertcommento" maxlength="200"><areacom/></textarea></span></li>
 <li><label for="tag">Settore per il quale stai rilasciando il commento:</label><span><select name="tag" id="tag">
     <option value="1">Inclusività</option>
     <option value="2">Commento generale</option></select></span></li>
