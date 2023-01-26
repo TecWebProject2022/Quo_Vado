@@ -122,7 +122,7 @@ function Remove(){
  }
  if(!nome.value.length){
     var a=document.createElement('strong');
-    a.appendChild(document.createTextNode("Il campo Utente non può essere vuoto"));
+    a.appendChild(document.createTextNode("Il campo nome corso di studio non può essere vuoto"));
     parent.appendChild(a);
     nome.focus();
     nome.select();

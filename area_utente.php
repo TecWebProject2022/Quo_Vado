@@ -197,19 +197,19 @@ $contenuto.='<form id="form_aggiungicomm" aria-describedby="aggiungi_commento" a
     <option value="2">Commento generale</option></select></span></li>
 </ul>
 <ul id="val_list">
-<li><label for="p_complessivo">Punteggio complessivo :</label><span><input  type="number" id="p_complessivo" name="p_complessivo" placeholder="1" value="1" min="1" max="5" 
+<li><label for="p_complessivo">Punteggio complessivo :</label><span><input  type="number" id="p_complessivo" name="p_complessivo" placeholder="1" value="1"
    /></span></li>
     
-<li><label for="p_acc_fisica">Punteggio accessibilità fisica :</label><span><input  type="number" id="p_acc_fisica" name="p_acc_fisica" placeholder="1" value="1" min="1" max="5" 
+<li><label for="p_acc_fisica">Punteggio accessibilità fisica :</label><span><input  type="number" id="p_acc_fisica" name="p_acc_fisica" placeholder="1" value="1"
    /></span></li>
     
-<li><label for="p_inclusione">Punteggio servizio inclusione:</label><span><input type="number" id="p_inclusione" name="p_inclusione" placeholder="1" value="1" min="1" max="5" required
+<li><label for="p_inclusione">Punteggio servizio inclusione:</label><span><input type="number" id="p_inclusione" name="p_inclusione" placeholder="1" value="1" 
     /></span></li>
     
-<li><label for="p_tempestivita">Punteggio tempestivita burocratica: </label><span><input type="number" id="p_tempestivita" name="p_tempestivita" placeholder="1" value="1" min="1" max="5" 
+<li><label for="p_tempestivita">Punteggio tempestivita burocratica: </label><span><input type="number" id="p_tempestivita" name="p_tempestivita" placeholder="1" value="1"
     /></span></li>
     
-<li><label for="p_insegnamento">Punteggio qualità di insegnamento :</label><span><input  type="number" id="p_insegnamento" name="p_insegnamento" placeholder="1" value="1" min="1" max="5" 
+<li><label for="p_insegnamento">Punteggio qualità di insegnamento :</label><span><input  type="number" id="p_insegnamento" name="p_insegnamento" placeholder="1" value="1"
     /></span></li>
 </ul>
 <input type="submit" class="submit"  name="submit3" value="pubblica"/>
@@ -278,7 +278,7 @@ if(isset($_POST['submit4']) && check()){
             $form.='<br/><label for="dataf">Data di fine studi: </label>
             <span><input type="date" id="dataf" name="dataf" value="1960-01-01" min="1960-01-01" max="2100-01-01"/></span>';
             $form.='<br/><label for="punteggio">Punteggio scuola di provenienza: </label>
-            <input type="number" id="punteggio" name="punteggio" value="1" min="1" max="5"/>';
+            <input type="number" id="punteggio" name="punteggio" value="1" />';
             $form.='<br/> <input type="submit" class="submit" name="submit5" value="Inserisci"/>';
             $form.="</fieldset></form>";
             $contenuto=str_replace("<span id=\"ins\"></span>",$form,$contenuto);
@@ -302,7 +302,9 @@ if(isset($_POST['submit5']) && check()){
    $dataf= $_POST['dataf'];
    $punteggio= $_POST['punteggio'];
     $_SESSION['user'];
+
     if($dataf>$datai){
+    if($punteggio>=1 &&  $punteggio<6){
         $db=new Connection();
         $dbOK=$db->Connect();
    if($dbOK){
@@ -323,6 +325,11 @@ else{
     $_SESSION['error']='<p class="error">Inserimento non riuscito</p>';
     $errori.="<p  class=\"error\">Inserimento  non riuscito</p>";
    }
+    }
+    else{
+        $_SESSION['error']='<p class="error">Il punteggio sulla scuola di provenienza deve essere compreso tra 1 e 5 </p>';
+        header('Location:area_utente.php#aggiscrizione');
+    }
 }
 else{
     $_SESSION['error']='<p class="error">La data di fine studi deve essere successiva alla data di inizio studi</p>';
@@ -458,8 +465,33 @@ if(isset($_POST['submit3']) && check()){
    $tag=$_POST['tag'];
    if (!preg_match('/^[ @a-zA-Z0-9\._-]{10,200}$/',$commento)){
     $_SESSION['errorf'].='<p class="error">Il campo commento non può essere vuoto e deve contenere da 10 a 200 caratteri alfanumerici (sono ammessi i seguenti caratteri: @ . _ - )</p>';
-    $errorf.='<li>Il campo commento non può essere vuoto e deve contenere da 10 a 200 caratteri alfanumerici (sono ammessi i seguenti caratteri: @ . _ - )</li>';
+    $errorf.='<li>Errore</li>';
     $errori.="<p class=\"error\">Errore nell'inserimento del commento</p>";
+    header('Location:area_utente.php#form_aggiungicomm');
+}
+if($pc<1 || $pc>5){
+    $_SESSION['errorf'].='<p class="error">Il campo punteggio complessivo deve essere compreso tra 1 e 5</p>';
+    $errorf.='<li>Errore</li>';
+    header('Location:area_utente.php#form_aggiungicomm');
+}
+if($pf<1 || $pf>5){
+    $_SESSION['errorf'].='<p class="error">Il campo punteggio accessibilità fisica deve essere compreso tra 1 e 5</p>';
+    $errorf.='<li>Errore</li>';
+    header('Location:area_utente.php#form_aggiungicomm');
+}
+if($ps<1 || $ps>5){
+    $_SESSION['errorf'].='<p class="error">Il campo punteggio servizio inclusione deve essere compreso tra 1 e 5</p>';
+    $errorf.='<li>Errore</li>';
+    header('Location:area_utente.php#form_aggiungicomm');
+}
+if($tb<1 || $tb>5){
+    $_SESSION['errorf'].='<p class="error">Il campo punteggio tempestività burocratica deve essere compreso tra 1 e 5</p>';
+    $errorf.='<li>Errore</li>';
+    header('Location:area_utente.php#form_aggiungicomm');
+}
+if($pi<1 || $pi>5){
+    $_SESSION['errorf'].='<p class="error">Il campo punteggio sulla qualità dell\'insegnamento insegnamento deve essere compreso tra 1 e 5</p>';
+    $errorf.='<li>Errore</li>';
     header('Location:area_utente.php#form_aggiungicomm');
 }
 if($errorf=='<ul class="error">'){
@@ -477,7 +509,7 @@ if($errorf=='<ul class="error">'){
        $insert="INSERT INTO Valutazione(nome_utente, classe_laurea, datav, commento, tag, p_complessivo, p_acc_fisica, p_servizio_inclusione, tempestivita_burocratica, p_insegnamento) VALUES (\"".$user."\",\"".$classlaurea."\",curdate(),\"".$commento."\",\"".$tag."\",".$pc.",".$pf.",".$ps.",".$tb.",".$pi.");";
        $q=$db->Insert($insert);
        if($q){
-            $_SESSION['info']="<p id=\"ok\" class=\"invito\">Inserimento avvenuto con successo</p>";
+            $_SESSION['info']="<p id=\"ok\" class=\"invito\">Inserimento del commento avvenuto con successo</p>";
             unset($_SESSION['errorf']);
             unset( $_SESSION['commento']);
             header('Location:area_utente.php#ok');

@@ -165,11 +165,11 @@ if($dbOK){
                 <span>'.$input_classi_corsi.'</span>
                 <label for="cor_ateneo">Ateneo: </label>
                 <span>'.$input_atenei.'</span>
-                <label for="cor_nome">Nome: </label>
+                <label for="cor_nome">Nome corso di studio: </label>
                 <span><input id="cor_nome" value="<nome>" name="cor_nome" type="text" placeholder="corso di laurea in informatica"/></span>
-                <label for="cor_link">Link: </label>
+                <label for="cor_link">Link del sito web: </label>
                 <span><input id="cor_link" value="<link>" name="cor_link" type="text" placeholder="https://www.unipd.it/informatica"/></span>
-                <label for="cor_accesso">Accesso: </label>
+                <label for="cor_accesso">Tipo di accesso: </label>
                 <span><select name="cor_accesso" id="cor_accesso">
                         <option value="Accesso programmato">Accesso programmato</option>
                         <option value="Accesso libero con prova">Accesso libero con prova</option>
