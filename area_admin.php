@@ -187,7 +187,7 @@ if($dbOK){
         $_SESSION['add']='';
         #commenti da eliminare selezionati
         $msgCommenti_delete.='<ul>';
-        $commenti_selezionati=isset($_POST['commento']) ? $_POST['commento']: '';
+        $commenti_selezionati=isset($_POST['commento']) ? PulisciInput($_POST['commento']): '';
         if($commenti_selezionati){
             foreach($commenti_selezionati as $i){  
                 $userdata=explode("-",$i);
@@ -217,7 +217,7 @@ if($dbOK){
         $ateneo=isset($_POST['cor_ateneo'])?PulisciInput($_POST['cor_ateneo']):'';
         $nome=isset($_POST['cor_nome'])?PulisciInput($_POST['cor_nome']):'';
         $link=isset($_POST['cor_link'])?PulisciInput($_POST['cor_link']):'';
-        $accesso=isset($_POST['cor_accesso'])?$_POST['cor_accesso']:'';
+        $accesso=isset($_POST['cor_accesso'])? PulisciInput($_POST['cor_accesso']):'';
         $_SESSION['add_nome']=$nome;
         $_SESSION['add_link']=$link;
         if (!preg_match('/^(L|LM)[0-9]{2}$/',$classe)){

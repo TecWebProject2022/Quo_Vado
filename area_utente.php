@@ -252,17 +252,17 @@ $contenuto.='<fieldset><legend class="field_legend">Cambio password</legend>
     //NUOVA ISCRIZIONE PT2
 if(isset($_POST['submit4']) && check()){
     
-    $_SESSION['LAUREA']=$_POST['classe'];
+    $_SESSION['LAUREA']=PulisciInput($_POST['classe']);
     $db=new Connection();
     $dbOK=$db->Connect();
     if($dbOK){
-        $check=" SELECT * FROM Iscrizione where  classe=\"".$_POST['classe']."\" && nome_utente=\"".$_SESSION['user']."\";";
+        $check=" SELECT * FROM Iscrizione where  classe=\"". $_SESSION['LAUREA']."\" && nome_utente=\"".$_SESSION['user']."\";";
         if($resc=$db->ExecQueryNum($check)){
             $_SESSION['error']='<p class="error">Iscrizione già inserita</p>';
             header('Location:area_utente.php#aggiscrizione'); 
         }
         else{
-        $query7="Select ateneo, nome FROM CorsodiStudio where classe_laurea=\"".$_POST['classe']."\";";
+        $query7="Select ateneo, nome FROM CorsodiStudio where classe_laurea=\"". $_SESSION['LAUREA']."\";";
         if($r=$db->ExecQueryNum($query7)){
            $_SESSION['data']=$r;
             $form='<p class="formdesc">Inserimento per la classe di laurea: '.$_SESSION['LAUREA'].':  seleziona il corso di studi da te frequentato ed inserissci la data di inizio, la data di fine studi e un avalutazione da 1 a 5 sulla affinità della scuola superiore da te frequentata con il corso di studio selezionato</p><form id="selectcorso" action="area_utente.php" onsubmit=" return Ondate()" method="post">';
@@ -296,11 +296,11 @@ if(isset($_POST['submit4']) && check()){
 }
 if(isset($_POST['submit5']) && check()){
    $r=$_SESSION['data'];
-   $corso=$r[$_POST['corso']];
+   $corso=$r[PulisciInput($_POST['corso'])];
    $classe=$_SESSION['LAUREA'];
-   $datai=$_POST['datai'];
-   $dataf= $_POST['dataf'];
-   $punteggio= $_POST['punteggio'];
+   $datai=PulisciInput($_POST['datai']);
+   $dataf= PulisciInput($_POST['dataf']);
+   $punteggio= PulisciInput($_POST['punteggio']);
     $_SESSION['user'];
 
     if($dataf>$datai){
@@ -345,7 +345,7 @@ else{
 if(isset($_POST['submit2']) && check()){
     $commenti='<ul class="error">';
     $_SESSION['commenti']='';
-    $cancella=isset($_POST['commento']) ? $_POST['commento']: '';
+    $cancella=isset($_POST['commento']) ? PulisciInput($_POST['commento']): '';
     
     if(!$cancella){
      $commenti.='<li>Selezionare un commento o dei commenti per cancellarli</li>';
@@ -461,14 +461,14 @@ if(isset($_POST['submit3']) && check()){
    $errorf='<ul class="error">';
    $_SESSION['errorf']='';
    $commento=PulisciInput($_POST['insertcommento']);
-   $_SESSION['commento']=$_POST['insertcommento'];
-   $classlaurea=$_POST['classel'];
-   $pc=$_POST['p_complessivo'];
-   $pf=$_POST['p_acc_fisica'];
-   $ps=$_POST['p_inclusione'];
-   $tb=$_POST['p_tempestivita'];
-   $pi=$_POST['p_insegnamento'];
-   $tag=$_POST['tag'];
+   $_SESSION['commento']=PulisciInput($_POST['insertcommento']);
+   $classlaurea=PulisciInput($_POST['classel']);
+   $pc=PulisciInput($_POST['p_complessivo']);
+   $pf=PulisciInput($_POST['p_acc_fisica']);
+   $ps=PulisciInput($_POST['p_inclusione']);
+   $tb=PulisciInput($_POST['p_tempestivita']);
+   $pi=PulisciInput($_POST['p_insegnamento']);
+   $tag=PulisciInput($_POST['tag']);
    if (!preg_match('/^[ @a-zA-Z0-9\._-]{10,200}$/',$commento)){
     $_SESSION['errorf'].='<p class="error">Il campo commento non può essere vuoto e deve contenere da 10 a 200 caratteri alfanumerici (sono ammessi i seguenti caratteri: @ . _ - )</p>';
     $errorf.='<li>Errore</li>';
