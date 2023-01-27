@@ -58,7 +58,9 @@ html,body{
     color:var(--txtcolor);
     scroll-behavior: smooth;
 }
-
+.margine{
+    margin-top: 0.5em;
+}
 .error {
     color: #E61B10;
     text-align: center;
