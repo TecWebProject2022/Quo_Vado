@@ -304,7 +304,7 @@ if(isset($_POST['submit5']) && check()){
     $_SESSION['user'];
 
     if($dataf>$datai){
-    if($datai>'1960-01-01' && $datai<'2100-01-01'){
+    if($datai>='1960-01-01' && $datai<='2100-01-01'){
     if($punteggio>=1 &&  $punteggio<6){
         $db=new Connection();
         $dbOK=$db->Connect();

@@ -43,5 +43,6 @@ $content=str_replace('<valoreEmail/>',$email,$content);
 $content=str_replace('<valoreMessagio/>',$commento,$content);
 $content=str_replace('<errori/>',$errori,$content);
 $content=str_replace(' <info/>',$info,$content);
+$info='';
 echo $content;
 ?>
