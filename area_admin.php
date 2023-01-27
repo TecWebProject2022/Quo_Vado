@@ -81,7 +81,7 @@ if($dbOK){
     $formSelezioneCommenti.='
     <h2 id="Cancella" class="titles_area_classi">Cancellazione commenti</h2>
     <p id="formTrovaCommenti" class="formdesc">Inserisci nome utente o classe di laurea dei commenti che vuoi ricercare</p>
-        <form aria-describedby="formTrovaCommenti" id="formTrovaCommentiform" action="area_admin.php#formTrovaCommenti" method="post" onsubmit=" return Cancella()">
+        <form aria-describedby="formTrovaCommenti" id="formTrovaCommentiform" action="area_admin.php#formEliminaCommenti" method="post" onsubmit=" return Cancella()">
             <fieldset>
                 <legend class="field_legend">Trova i commenti da eliminare</legend>
                 <label for="com_utente">Utente: </label>
@@ -122,7 +122,7 @@ if($dbOK){
                 
 
                 if($commenti=$db->ExecQueryNum($query_commenti)){
-                    $formCommenti='<p id="formEliminaCommenti" class="formdesc">Selezionare un commento e premere Elimina commenti selezionati per eliminarli</p><form aria-describedby="formEliminaCommenti" id="formEliminaCommentiform" action="area_admin.php" method="post" onsubmit="return OnDelete()"><fieldset><legend class="field_legend">Seleziona i commenti da eliminare</legend>';
+                    $formCommenti='<p id="formEliminaCommenti" class="formdesc">Selezionare un commento e premere Elimina commenti selezionati per eliminarli</p><form aria-describedby="formEliminaCommenti" id="form_cancellacomm" action="area_admin.php" method="post" onsubmit="return OnDelete()"><fieldset><legend class="field_legend">Seleziona i commenti da eliminare</legend>';
                     $formCommenti.= "<ul id=\"commrilasc\">";
                     for($i=0;$i<count($commenti);$i++){
                         $commento='
