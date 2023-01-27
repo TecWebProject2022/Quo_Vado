@@ -58,7 +58,7 @@ if($dbOK){
     }
     if($opzioni){    
         $input_classi_commenti='<select id="com_classe" name="com_classe"  
-        >'.$opzioni.'</select>';
+        > <option value="" disabled="disabled" selected="selected">Seleziona una classe</option>'.$opzioni.'</select>';
         $input_classi_corsi='<select id="cor_classe" name="cor_classe"  
         >'.$opzioni.'</select>';
     }else{
@@ -79,18 +79,18 @@ if($dbOK){
     }
     # preparazione form commenti
     $formSelezioneCommenti.='
-    <h2 class="titles_area_classi">Cancellazione commenti</h2>
-    <label id="formTrovaCommenti" class="formdesc">Inserisci nome utente o classe di laurea dei commenti che vuoi ricercare</label>
-        <form aria-describedby="formTrovaCommenti" action="area_admin.php#formTrovaCommenti" method="post" onsubmit=" return Cancella()">
+    <h2 id="Cancella" class="titles_area_classi">Cancellazione commenti</h2>
+    <p id="formTrovaCommenti" class="formdesc">Inserisci nome utente o classe di laurea dei commenti che vuoi ricercare</p>
+        <form aria-describedby="formTrovaCommenti" id="formTrovaCommentiform" action="area_admin.php#formTrovaCommenti" method="post" onsubmit=" return Cancella()">
             <fieldset>
                 <legend class="field_legend">Trova i commenti da eliminare</legend>
                 <label for="com_utente">Utente: </label>
-                <span><input value="<nome>" id="com_utente" name="com_utente" type="text" placeholder="Utente" /></span>
+                <span><input value="<nome>" id="com_utente" name="com_utente" type="text" placeholder="Inserisci Utente" /></span>
 
                 <label for="com_classe">Inserisci Classe di laurea: </label>
                 <span>'.$input_classi_commenti.'</span>
 
-                <input type="submit" class="submit"  name="trova" value="trova"/>
+                <input type="submit" class="submit"  name="trova" onclick="Cancella()" value="trova"/>
             </fieldset>
         </form>';
     # sezione elimina commenti
@@ -122,7 +122,7 @@ if($dbOK){
                 
 
                 if($commenti=$db->ExecQueryNum($query_commenti)){
-                    $formCommenti='<label id="formEliminaCommenti" class="formdesc">Selezionare un commento e premere Elimina commenti selezionati per eliminarli</label><form aria-describedby="formEliminaCommenti" action="area_admin.php" method="post" onsubmit="return OnDelete()"><fieldset><legend class="field_legend">Seleziona i commenti da eliminare</legend>';
+                    $formCommenti='<p id="formEliminaCommenti" class="formdesc">Selezionare un commento e premere Elimina commenti selezionati per eliminarli</p><form aria-describedby="formEliminaCommenti" id="formEliminaCommentiform" action="area_admin.php" method="post" onsubmit="return OnDelete()"><fieldset><legend class="field_legend">Seleziona i commenti da eliminare</legend>';
                     $formCommenti.= "<ul id=\"commrilasc\">";
                     for($i=0;$i<count($commenti);$i++){
                         $commento='
@@ -137,8 +137,8 @@ if($dbOK){
 				            <span class="tipo_valutazione">'.$tags[$commenti[$i][3]].'</span>';
 
                         $formCommenti.='
-                        <li class="blocco_commento"> <span><input type="checkbox" id="'.$i.'" name="commento[]" value="'.$commenti[$i][0].'-'.$commenti[$i][2].'-'.$commenti[$i][3].'"/></span>
-                                <label for="'.$i.'">'.$commento.'</li></label>
+                        <li class="blocco_commento"> <span><input type="checkbox" id="C'.$i.'" name="commento[]" value="'.$commenti[$i][0].'-'.$commenti[$i][2].'-'.$commenti[$i][3].'"/></span>
+                                <label for="C'.$i.'">'.$commento.'</label></li>
                            ';
                         
                     }
@@ -155,9 +155,9 @@ if($dbOK){
     }
     #preparazione form corsi
     $formGestioneCorsi='
-        <h2 class="titles_area_classi">Gestione corsi di studio</h2>
-        <p class="formdesc">Per aggiungere un corso di studi è necessario riempire tutti i campi, per eliminarne uno bastano nome, classe di laurea e ateneo e premi il relativo pulsante</p>
-        <form id="formCorsi" action="area_admin.php" method="post" >
+        <h2 id="Corsi" class="titles_area_classi">Gestione corsi di studio</h2>
+        <p id="Aggicorso" class="formdesc">Per aggiungere un corso di studi è necessario riempire tutti i campi, per eliminarne uno bastano nome, classe di laurea e ateneo e premi il relativo pulsante</p>
+        <form id="formCorsi" aria-describedby="Aggicorso" action="area_admin.php" method="post">
             <fieldset>
                 <legend class="field_legend">Aggiungi o elimina un corso di studi</legend>
                 
@@ -166,9 +166,9 @@ if($dbOK){
                 <label for="cor_ateneo">Ateneo: </label>
                 <span>'.$input_atenei.'</span>
                 <label for="cor_nome">Nome corso di studio: </label>
-                <span><input id="cor_nome" value="<nome>" name="cor_nome" type="text" placeholder="corso di laurea in informatica"/></span>
+                <span><input id="cor_nome" value="<nome>" name="cor_nome" type="text" placeholder="Inserisci corso di studio"/></span>
                 <label for="cor_link">Link del sito web: </label>
-                <span><input id="cor_link" value="<link>" name="cor_link" type="text" placeholder="https://www.unipd.it/informatica"/></span>
+                <span><input id="cor_link" value="<link>" name="cor_link" type="text" placeholder="inserisci link al sito web"/></span>
                 <label for="cor_accesso">Tipo di accesso: </label>
                 <span><select name="cor_accesso" id="cor_accesso">
                         <option value="Accesso programmato">Accesso programmato</option>
@@ -312,17 +312,17 @@ if($dbOK){
     #preparazione form cambio password
     $formCambioPw=' 
     <h2 id="CambioPw" class="titles_area_classi">Cambia Password</h2>
-    <label class="formdesc" id="form_passw">Per modificare la tua password compila i campi sottostanti e premi salva per salvare la modifica</label>
+    <p class="formdesc" id="form_passw">Per modificare la tua password compila i campi sottostanti e premi salva per salvare la modifica</p>
     <form aria-describedby="form_passw" action="area_admin.php" method="post"  id="formpw" onsubmit="return OnPassword()" >
         <fieldset>
             <legend class="field_legend">Cambio password</legend>
             <label for="oldpassword">Immetti la tua vecchia <span lang="en">Password</span>: </label>
-            <span><input  value="<old>" type="password" id="oldpassword" name="Vecchiapassword" placeholder="Immetti la tua vecchia Password" maxlength="20" /></span>
-            <label for="newpassword">Immetti la tua nuova <span lang="en">Password</span>: </label>
-            <span><input  value="<new>" type="password" id="newpassword" name="newpassword" placeholder="Immetti la tua nuova password" maxlength="20" /></span>
-            <label for="repeat">Ripeti la <span lang="en">Password</span>:</label>   
+            <span><input  value="<old>" type="password" id="oldpassword" name="Vecchiapassword" placeholder="Inserisci vecchia password" maxlength="20" /></span>
+            <br/><label for="newpassword">Immetti la tua nuova <span lang="en">Password</span>: </label>
+            <span><input  value="<new>" type="password" id="newpassword" name="newpassword" placeholder="Inserisci nuova password" maxlength="20" /></span>
+            <br/><label for="repeat">Ripeti la <span lang="en">Password</span>:</label>   
             <span><input  value="" type="password" id="repeat" name="repepassword" placeholder="Ripeti la password" maxlength="20"  /></span>
-            <input type="submit"  class="submit" id="submit" name="salva" value="Salva"/>
+            <br/><input type="submit"  class="submit" id="submit" name="salva" value="Salva"/>
         </fieldset>
     </form>';
     #sezione  cambio password da gestire 

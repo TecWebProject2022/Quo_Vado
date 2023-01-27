@@ -74,7 +74,6 @@ function OnPassword(){
 function Cancella(){
     var user=document.getElementById('com_utente');
     var classe=document.getElementById('com_classe');
-
     var parent= classe.parentNode;
     if(parent.children.length==2){
         parent.removeChild(parent.children[1]);

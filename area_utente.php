@@ -102,7 +102,7 @@ $query6="Select num_classe FROM ClassediLaurea";
 if($res5=$db->ExecQueryAssoc($query6)){
     $contenuto.="<h2 id=\"aggiscrizione\" class='titles_area_classi'>Inserisci una nuova iscrizione</h2>";
     $contenuto.='<span id="error"></span>';
-    $contenuto.="<label id=\"descseclect\" class=\"formdesc\">Per iserire una nuova iscrizione seleziona la classe di laurea da te frequentata</label>";
+    $contenuto.="<p id=\"descseclect\" class=\"formdesc\">Per iserire una nuova iscrizione seleziona la classe di laurea da te frequentata</p>";
     $contenuto.='<form  aria-describedby="descseclect" id="selectclass" action="area_utente.php#aggiscrizione" method="post" ><fieldset><legend class="field_legend">Seleziona una classe</legend>';
     $contenuto.="<label for=\"classi\">Classi disponibili:</label>
     <select id=\"classi\" name=\"classe\">";
@@ -125,14 +125,14 @@ $query3="Select classe_laurea,datav,commento,p_complessivo,p_acc_fisica,p_serviz
              
 if($res3=$db->ExecQueryNum($query3)){
 
-    $contenuto.="<label id=\"cancellacomm\" class=\"formdesc\">Seleziona un commento e clicca &quot;cancella&quot; per eliminarlo</label>";
+    $contenuto.="<p id=\"cancellacomm\" class=\"formdesc\">Seleziona un commento e clicca &quot;cancella&quot; per eliminarlo</p>";
     $contenuto.='<form id="form_cancellacomm" aria-describedby="cancellacomm" action="area_utente.php" method="post" onsubmit="return OnDelete()">
     <fieldset><legend class="field_legend">Commenti</legend>';
     /*flexbox esterna*/
     $contenuto.="<ul id=\"commrilasc\">";
     for($i=0;$i<count($res3);$i++){
             /*flexbox interna*/
-            $contenuto.='<li class="blocco_commento"><label><span><input type="checkbox" id="'.$i.'" name="commento[]" value="'.$i.'" /></span>
+            $contenuto.='<li class="blocco_commento"><label><span><input type="checkbox" id="C'.$i.'" name="commento[]" value="'.$i.'" /></span>
             <span class="highlight">Data di emissione: '.date("d/m/Y",strtotime($res3[$i][1])).'</span>
             <span>Classe di laurea: '.$res3[$i][0].'</span>
             <span class="highlight">Commento: '.$res3[$i][2].'</span>
@@ -169,8 +169,8 @@ if($res5=$db->ExecQueryAssoc($query5)){
     $classi.="</select></li>";
 
 $contenuto.='<h2 id="aggiungi" class="titles_area_classi">Aggiungi un commento</h2>';
-$contenuto.='<label id="aggiungi_commento" class="formdesc">Per lasciare un commento compila i campi sottostanti: ti è consentito lasciare un solo commento e una valutazione da 1 a 5 per ogni ambito di valutazione delle classe di laurea per le quali ti sei dichiarato iscritto. Inoltre ti verrà richiesto di specificare per che settore stai lasciando il commento</label>';
-$contenuto.='<div class="formdesc">
+$contenuto.='<p id="aggiungi_commento" class="formdesc" aria-describedby="glossario" >Per lasciare un commento compila i campi sottostanti: ti è consentito lasciare un solo commento e una valutazione da 1 a 5 per ogni ambito di valutazione delle classe di laurea per le quali ti sei dichiarato iscritto. Inoltre ti verrà richiesto di specificare per che settore stai lasciando il commento. I dettagli dell\' inserimento sono decsritti nel glossario.</p>';
+$contenuto.='<div  id="glossario" class="formdesc">
 <h3 class="formdesc">Glossario</h3>
 <ul class="invito1">
 <li>Il contenuto testuale del commento dovrà contenere da 10 a 200 caratteri alfanumerici (sono ammessi i seguenti caratteri: @._ - )</li>
@@ -221,29 +221,18 @@ $contenuto.='<form id="form_aggiungicomm" aria-describedby="aggiungi_commento" a
 else{
     $errori.="<p class=\"error\">Siamo spiacenti, hai nessun commento nel tuo profilo</p>";
 }
-$query5="Select classe FROM Iscrizione where nome_utente=\"".$user."\";";
-if($res5=$db->ExecQueryAssoc($query5)){
-    $classi="<ul id=\"comm_list\"><li><label for=\"classi\">Corsi di Studio disponibili:</label>
-    <select id=\"corsi\" name=\"corsi\">";
-    foreach($res5 as $r){
-       $classi.="<option value=\"".$r['classe']."\">".$r['classe']."</option>";
-    }
-    $classi.="</select></li>";
-
-   
-}
 }
 
     //CAMBIO PASSWORD
 $contenuto.='<h2 id="pw" class="titles_area_classi">Cambio password</h2>';
-$contenuto.='<label  id="form_passw" class="formdesc">Per modificare la tua password compila i campi sottostanti e premi salva per salvare la modifica</label>';
+$contenuto.='<p  id="form_passw" class="formdesc">Per modificare la tua password compila i campi sottostanti e premi salva per salvare la modifica</p>';
 $contenuto.='<form aria-describedby="form_passw" id="formpw" action="area_utente.php" method="post" onsubmit=" return OnPassword()" >';
 $contenuto.='<fieldset><legend class="field_legend">Cambio password</legend>
 
-<label for="oldpassword">Immetti la tua vecchia <span lang="en">password</span>: </label><span><input  value="<old>" type="password" id="oldpassword" name="Vecchiapassword" placeholder="Immetti la tua vecchia password" maxlength="20" /></span>
-<label for="newpassword">Immetti la tua nuova <span lang="en">password</span>: </label><span><input  value="<new>" type="password" id="newpassword" name="newpassword" placeholder="Immetti la tua nuova password" maxlength="20" /></span>
-<label for="repeat">Ripeti la <span lang="en">password </span>:</label><span><input  value="" type="password" id="repeat" name="repepassword" placeholder="Ripeti la password" maxlength="20" /></span>
-<input type="submit" class="submit" name="submit1" value="Salva"/>
+<label for="oldpassword">Immetti la tua vecchia <span lang="en">password</span>: </label><span><input  value="<old>" type="password" id="oldpassword" name="Vecchiapassword" placeholder="Inserisci vecchia password" maxlength="20" /></span>
+<br/><label for="newpassword">Immetti la tua nuova <span lang="en">password</span>: </label><span><input  value="<new>" type="password" id="newpassword" name="newpassword" placeholder="Immetti nuova password" maxlength="20" /></span>
+<br/><label for="repeat">Ripeti la <span lang="en">password </span>:</label><span><input  value="" type="password" id="repeat" name="repepassword" placeholder="Ripeti la password" maxlength="20" /></span>
+<br/><input type="submit" class="submit" name="submit1" value="Salva"/>
 </fieldset>
 </form>
 </err/>';
@@ -266,7 +255,7 @@ if(isset($_POST['submit4']) && check()){
         if($r=$db->ExecQueryNum($query7)){
            $_SESSION['data']=$r;
 
-            $form='<p id="selectcorso" class="formdesc">Inserimento per la classe di laurea: '.$_SESSION['LAUREA'].':  seleziona il corso di studi da te frequentato ed inserissci la data di inizio, la data di fine studi e un avalutazione da 1 a 5 sulla affinità della scuola superiore da te frequentata con il corso di studio selezionato</p><form aria-describedby="selectcorso" action="area_utente.php" onsubmit=" return Ondate()" method="post">';
+            $form='<p id="selectcorso" class="formdesc">Inserimento per la classe di laurea: '.$_SESSION['LAUREA'].':  seleziona il corso di studi da te frequentato ed inserissci la data di inizio, la data di fine studi e un avalutazione da 1 a 5 sulla affinità della scuola superiore da te frequentata con il corso di studio selezionato</p><form aria-describedby="selectcorso" id="selectcorsoform" action="area_utente.php" onsubmit=" return Ondate()" method="post">';
             $form.="<fieldset><legend class='field_legend'>Seleziona corso di studi</legend>";
             $form.='<label for="corso">Seleziona il corso: </label>';
             $form.='<select class="select" id="corso" name="corso">';

@@ -1092,16 +1092,16 @@ CLASSE DI LAUREA
     font-size: 1.1em;
 }
 
-#filtro fieldset {
+#filtroform fieldset {
     margin: 3% 20% 0% 20%;
     padding: 1em;
 }
 
-#filtro legend {
+#filtroform legend {
     font-variant: small-caps;
 }
 
-#filtro label {
+#filtroform label {
     margin-right: 1em;
 }
 
@@ -1807,7 +1807,7 @@ CONTATTI
     margin-top:0.25em;
 }
 
-#contatti {
+#contattiform {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
@@ -1816,13 +1816,13 @@ CONTATTI
     margin-top: 3%;
 }
 
-#contatti > fieldset {
+#contattiform > fieldset {
     flex-basis: 15%;
     background-color: #ecebeb;
     padding: 3em;
 }
 
-#contatti textarea {
+#contattiform textarea {
     background-color: #FFF;
 }
 
@@ -2023,7 +2023,7 @@ AREA UTENTE
 
 /*NUOVE ISCRIZIONI*/
 
-#selectclass, #selectcorso, #pwform{
+#selectclass, #selectcorsoform, #pwform{
     padding: 1em;
     margin: 0% 15% 0% 15%;
 }
@@ -2036,7 +2036,7 @@ AREA UTENTE
     display: block;
 }
 
-#selectcorso > fieldset {
+#selectcorsoform > fieldset {
     padding: 1em;
 }
 
@@ -2119,12 +2119,12 @@ AREA ADMIN
 ================
 */
 
-#formTrovaCommenti, #formEliminaCommenti, #formCorsi, #form_passw {
+#formTrovaCommentiform, #formEliminaCommentiform, #formCorsi, #form_passw {
     padding: 1em;
     margin: 0% 15% 0% 15%;
 }
 
-#formTrovaCommenti > fieldset {
+#formTrovaCommentiform > fieldset {
     padding: 1em;
 }
 
@@ -2136,7 +2136,7 @@ AREA ADMIN
     padding: 1em;
 }
 
-#formTrovaCommenti label {
+#formTrovaCommentiform label {
     display: block;
     margin-top: 0.2em;
     margin-bottom: 0.2em;
