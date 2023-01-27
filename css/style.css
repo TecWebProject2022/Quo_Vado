@@ -2026,7 +2026,7 @@ AREA UTENTE
 
 /*NUOVE ISCRIZIONI*/
 
-#selectclass, #selectcorso {
+#selectclass, #selectcorso, #pwform{
     padding: 1em;
     margin: 0% 15% 0% 15%;
 }
@@ -2045,7 +2045,7 @@ AREA UTENTE
 
 /*COMMENTI RILASCIATI*/
 
-#form_cancellacomm, #form_aggiungicomm {
+#form_cancellacomm, #form_aggiungicomm, #formpw {
     padding: 1em;
     margin: 0% 15% 0% 15%;
 }

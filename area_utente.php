@@ -27,7 +27,7 @@ $menu1='<nav id="visible-sottomenu" aria-label="sotto menù di area riservata">
     <li><a href="#aggiscrizione">Aggiungi Iscrizione</a></li>
     <li><a href="#commenti">Commenti rilasciati</a></li>
     <li><a href="#aggiungi">Aggiungi un commento</a></li>
-    <li><a href="#form_passw">Cambia password</a></li>
+    <li><a href="#pw">Cambia password</a></li>
     <li><a href="logout.php">Logout</a></li>
 </ul>
 </nav>';
@@ -236,8 +236,8 @@ if($res5=$db->ExecQueryAssoc($query5)){
 
     //CAMBIO PASSWORD
 $contenuto.='<h2 id="pw" class="titles_area_classi">Cambio password</h2>';
-$contenuto.='<label class="formdesc" for="form_passw">Per modificare la tua password compila i campi sottostanti e premi salva per salvare la modifica</label>';
-$contenuto.='<form id="form_passw" action="area_utente.php" method="post" onsubmit=" return OnPassword()" >';
+$contenuto.='<label  id="form_passw" class="formdesc">Per modificare la tua password compila i campi sottostanti e premi salva per salvare la modifica</label>';
+$contenuto.='<form aria-describedby="form_passw" id="formpw" action="area_utente.php" method="post" onsubmit=" return OnPassword()" >';
 $contenuto.='<fieldset><legend class="field_legend">Cambio password</legend>
 
 <label for="oldpassword">Immetti la tua vecchia <span lang="en">password</span>: </label><span><input  value="<old>" type="password" id="oldpassword" name="Vecchiapassword" placeholder="Immetti la tua vecchia password" maxlength="20" /></span>
@@ -265,7 +265,8 @@ if(isset($_POST['submit4']) && check()){
         $query7="Select ateneo, nome FROM CorsodiStudio where classe_laurea=\"". $_SESSION['LAUREA']."\";";
         if($r=$db->ExecQueryNum($query7)){
            $_SESSION['data']=$r;
-            $form='<p class="formdesc">Inserimento per la classe di laurea: '.$_SESSION['LAUREA'].':  seleziona il corso di studi da te frequentato ed inserissci la data di inizio, la data di fine studi e un avalutazione da 1 a 5 sulla affinità della scuola superiore da te frequentata con il corso di studio selezionato</p><form id="selectcorso" action="area_utente.php" onsubmit=" return Ondate()" method="post">';
+
+            $form='<p id="selectcorso" class="formdesc">Inserimento per la classe di laurea: '.$_SESSION['LAUREA'].':  seleziona il corso di studi da te frequentato ed inserissci la data di inizio, la data di fine studi e un avalutazione da 1 a 5 sulla affinità della scuola superiore da te frequentata con il corso di studio selezionato</p><form aria-describedby="selectcorso" action="area_utente.php" onsubmit=" return Ondate()" method="post">';
             $form.="<fieldset><legend class='field_legend'>Seleziona corso di studi</legend>";
             $form.='<label for="corso">Seleziona il corso: </label>';
             $form.='<select class="select" id="corso" name="corso">';
