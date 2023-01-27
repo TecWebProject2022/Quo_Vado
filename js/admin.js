@@ -74,7 +74,7 @@ function OnPassword(){
 function Cancella(){
     var user=document.getElementById('com_utente');
     var classe=document.getElementById('com_classe');
-    var parent= classe.parentNode;
+    var parent= user.parentNode;
     if(parent.children.length==2){
         parent.removeChild(parent.children[1]);
     }
@@ -82,7 +82,7 @@ function Cancella(){
        var a=document.createElement('strong');
        a.appendChild(document.createTextNode("Il campo user o il campo classe di laurea deve essere riempito. "));
        parent.appendChild(a);
-       classe.focus();
+       user.focus();
        return false;
     }
 
