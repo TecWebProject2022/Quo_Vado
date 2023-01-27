@@ -169,8 +169,8 @@ if($res5=$db->ExecQueryAssoc($query5)){
     $classi.="</select></li>";
 
 $contenuto.='<h2 id="aggiungi" class="titles_area_classi">Aggiungi un commento</h2>';
-$contenuto.='<p id="aggiungi_commento" class="formdesc" aria-describedby="glossario" >Per lasciare un commento compila i campi sottostanti: ti è consentito lasciare un solo commento e una valutazione da 1 a 5 per ogni ambito di valutazione delle classe di laurea per le quali ti sei dichiarato iscritto. Inoltre ti verrà richiesto di specificare per che settore stai lasciando il commento.</p>';
-$contenuto.='<div  id="glossario" class="formdesc">
+$contenuto.='<div  id="aggiungi_commento" class="formdesc"><p>Per lasciare un commento compila i campi sottostanti: ti è consentito lasciare un solo commento e una valutazione da 1 a 5 per ogni ambito di valutazione delle classe di laurea per le quali ti sei dichiarato iscritto. Inoltre ti verrà richiesto di specificare per che settore stai lasciando il commento.</p>';
+$contenuto.='
 <h3 class="formdesc">Glossario</h3>
 <ul class="invito1">
 <li>Il contenuto testuale del commento dovrà contenere da 10 a 200 caratteri alfanumerici (sono ammessi i seguenti caratteri: @._ - )</li>
