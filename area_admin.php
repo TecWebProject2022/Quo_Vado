@@ -58,7 +58,7 @@ if($dbOK){
     }
     if($opzioni){    
         $input_classi_commenti='<select id="com_classe" name="com_classe"  
-        ><option disable></option>'.$opzioni.'</select>';
+        >'.$opzioni.'</select>';
         $input_classi_corsi='<select id="cor_classe" name="cor_classe"  
         >'.$opzioni.'</select>';
     }else{
@@ -80,8 +80,8 @@ if($dbOK){
     # preparazione form commenti
     $formSelezioneCommenti.='
     <h2 class="titles_area_classi">Cancellazione commenti</h2>
-    <label for="formTrovaCommenti" class="formdesc">Inserisci nome utente o classe di laurea dei commenti che vuoi ricercare</label>
-        <form id="formTrovaCommenti" action="area_admin.php#formTrovaCommenti" method="post" onsubmit=" return Cancella()">
+    <label id="formTrovaCommenti" class="formdesc">Inserisci nome utente o classe di laurea dei commenti che vuoi ricercare</label>
+        <form aria-describedby="formTrovaCommenti" action="area_admin.php#formTrovaCommenti" method="post" onsubmit=" return Cancella()">
             <fieldset>
                 <legend class="field_legend">Trova i commenti da eliminare</legend>
                 <label for="com_utente">Utente: </label>
@@ -122,7 +122,7 @@ if($dbOK){
                 
 
                 if($commenti=$db->ExecQueryNum($query_commenti)){
-                    $formCommenti='<label for="formEliminaCommenti" class="formdesc">Selezionare un commento e premere Elimina commenti selezionati per eliminarli</label><form id="formEliminaCommenti" action="area_admin.php" method="post" onsubmit="return OnDelete()"><fieldset><legend class="field_legend">Seleziona i commenti da eliminare</legend>';
+                    $formCommenti='<label id="formEliminaCommenti" class="formdesc">Selezionare un commento e premere Elimina commenti selezionati per eliminarli</label><form aria-describedby="formEliminaCommenti" action="area_admin.php" method="post" onsubmit="return OnDelete()"><fieldset><legend class="field_legend">Seleziona i commenti da eliminare</legend>';
                     $formCommenti.= "<ul id=\"commrilasc\">";
                     for($i=0;$i<count($commenti);$i++){
                         $commento='
@@ -313,7 +313,7 @@ if($dbOK){
     $formCambioPw=' 
     <h2 id="CambioPw" class="titles_area_classi">Cambia Password</h2>
     <label class="formdesc" id="form_passw">Per modificare la tua password compila i campi sottostanti e premi salva per salvare la modifica</label>
-    <form  id="formpw" aria-describedby="form_passw" action="area_admin.php" method="post" onsubmit=" return OnPassword()" >
+    <form aria-describedby="form_passw" action="area_admin.php" method="post"  id="formpw" onsubmit="return OnPassword()" >
         <fieldset>
             <legend class="field_legend">Cambio password</legend>
             <label for="oldpassword">Immetti la tua vecchia <span lang="en">Password</span>: </label>

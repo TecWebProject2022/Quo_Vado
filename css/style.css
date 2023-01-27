@@ -58,9 +58,6 @@ html,body{
     color:var(--txtcolor);
     scroll-behavior: smooth;
 }
-.margine{
-    margin-top: 0.5em;
-}
 .error {
     color: #E61B10;
     text-align: center;
@@ -1903,7 +1900,7 @@ REGISTRAZIONE
 ================
 */
 
-#registrazione {
+#registrazioneform {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
@@ -1914,17 +1911,17 @@ REGISTRAZIONE
     margin-top: 3%;
 }
 
-#registrazione > fieldset {
+#registrazioneform > fieldset {
     background-color: #ecebeb;
     flex-basis: 15%;
     padding: 2em;
 }
 
-#registrazione fieldset > span {
+#registrazioneform fieldset > span {
     padding-right: 40%;
 }
 
-#registrazione input, select {
+#registrazioneform input, select {
     margin-bottom: 1em;
 }
 
@@ -2057,7 +2054,9 @@ AREA UTENTE
 #commrilasc legend {
     font-variant: small-caps;
 }
-
+#formpw > fieldset{
+    padding: 1em;
+}
 #commrilasc > fieldset {
     padding: 1em;
 }
