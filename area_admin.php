@@ -386,7 +386,7 @@ if($dbOK){
     }
     $db->Disconnect();
 }else{
-    $_SESSION['password'].='<p class="error">Spiacente, i sistemi sono al momentamentamnete non disponibili, <a href="contatti.php">Contattaci</a> per avere un supporto</p>';
+    $_SESSION['password'].='<p class="error">Spiacente, i sistemi sono al momentamentamnete non disponibili</p>';
 }
 if(!isset($_SESSION['add'])){
     $_SESSION['add']='';

@@ -173,11 +173,11 @@ $db=new Connection();
             }
         }
         else{
-            $errori.="<p class='error'>Nessun risultato presente, se il problema persiste <a href='contatti.php'>Contattaci</a> per avere un supporto</p>";
+            $errori.="<p class='error'>Nessun risultato presente</p>";
         }
         $db->Disconnect();
     }else{
-        $errori.="<p class='error'>Ci scusiamo, la connessione non &egrave; riuscita. Per favore, attendere e riprovare, se il problema persiste <a href='contatti.php'>Contattaci</a> per avere un supporto</p>";
+        $errori.="<p class='error'>Ci scusiamo, la connessione non &egrave; riuscita. Per favore, attendere e riprovare. </p>";
     }
  
     $content=str_replace("<area/>",$area,$content); 

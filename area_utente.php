@@ -71,7 +71,7 @@ if($dbOK){
         
     }
     else{
-        $errori.="<p class='error'>Siamo spiacenti, i dati non sono al momento disponibili <a href='contatti.php'>Contattaci</a> per avere un suppoorto</p>";
+        $errori.="<p class='error'>Siamo spiacenti, i dati non sono al momento disponibili</p>";
     }
     $query2="Select ateneo, classe,corso, datai, dataf,punteggio_scuola_provenienza  from Iscrizione where nome_utente=\"$user\"";
     //ISCRIZIONI
