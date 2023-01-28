@@ -8,16 +8,6 @@
     src: url(font/OpenDyslexic/OpenDyslexic-Regular.otf);
 }
 
-@font-face {
-    font-family: OpenDyslexicBold;
-    src: url(font/OpenDyslexic/OpenDyslexic-Bold.otf);
-}
-
-@font-face {
-    font-family: OpenDyslexicItalic;
-    src: url(font/OpenDyslexic/OpenDyslexic-Italic.otf);
-}
-
 :root {
     --headerbg: #FFFDE8;
 
@@ -51,7 +41,7 @@
 
 html,body{
     font-size: 100%; 
-    font-family: OpenDyslexic, Verdana, Geneva, Tahoma, sans-serif; 
+    font-family: Verdana, Helvetica, Arial, sans-serif; 
     line-height: 1.5em;
     margin:auto;
     background-color: var(--bgcolor);
@@ -162,6 +152,10 @@ MENU
     display: inline-block;   /* considero primo e secondo livello */
 }
 
+.minimenu>li{
+    padding: 0.8em 0;
+}
+
 #menu a:link{
     text-decoration: none;
     color: var(--menulink);
@@ -257,7 +251,6 @@ MENU
 
 #currentOverLink {
     font-size: 1.2em;
-    padding: 0.8em 0;
 }
 
 
@@ -610,8 +603,7 @@ article div{
 }
 
 q{
-    font-family: OpenDyslexicItalic ,monospace, sans-serif;
-    font-size: 1.2em;
+    font-size: 1.1em;
     color: #093e4b;
 }
 
@@ -1399,7 +1391,7 @@ img[src="css/css_images/struzzo.png"]{
 
 .motivational{
     margin: 0.2em 0em;
-    font-family: OpenDyslexicBold, Verdana, Geneva, Tahoma, sans-serif;
+    font-family: OpenDyslexic, monospace;
     font-size: 1.8em;
     line-height: 1.5em;
     text-align: center;
