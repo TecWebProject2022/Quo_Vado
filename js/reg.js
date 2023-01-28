@@ -16,6 +16,7 @@ function Validation(element){
     if(!element.value.length){
        var a=document.createElement('strong');
        a.appendChild(document.createTextNode(element.dataset.msgEmpty));
+       a.classList.add('errorjs');
        parent.appendChild(a);
        element.focus();
        element.select();
@@ -26,6 +27,7 @@ function Validation(element){
         console.log(element.value);
         var b=document.createElement('strong');
         b.appendChild(document.createTextNode(element.dataset.msgInvalid));
+        b.classList.add('errorjs');
         parent.appendChild(b); 
         element.focus();
         element.select();

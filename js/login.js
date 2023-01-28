@@ -13,6 +13,7 @@ function Validation(element){
     if(!element.value.length){
        var a=document.createElement('strong');
        a.appendChild(document.createTextNode(element.dataset.msgEmpty));
+       a.classList.add('errorjs');
        parent.appendChild(a);
        element.focus();
        element.select();

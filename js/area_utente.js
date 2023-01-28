@@ -12,7 +12,7 @@ function Box_Validate(){
    
     var a=document.createElement('strong');
        a.appendChild(document.createTextNode("Selezionare un commento per cancellarlo"));
-       a.classList.add('error_js');
+       a.classList.add('errorjs');
        parent.appendChild(a);
        box[0].focus();
        box[0].select();
@@ -36,6 +36,7 @@ function OnInsert(){
        
        var a=document.createElement('strong');
        a.appendChild(document.createTextNode("Il campo commento non può essere vuoto e deve contenere da 10 a 200 caratteri alfanumerici (sono ammessi i seguenti caratteri: @ . _ - )"));
+       a.classList.add('errorjs');
        parent.appendChild(a);
        commento.focus();
        commento.select();
@@ -50,6 +51,7 @@ function OnInsert(){
         
        var a=document.createElement('strong');
        a.appendChild(document.createTextNode("Il campo punteggio complessivo deve essere compreso tra 1 e 5"));
+       a.classList.add('errorjs');
        parent.appendChild(a);
        p_complessivo.focus();
        p_complessivo.select();
@@ -64,6 +66,7 @@ function OnInsert(){
         
        var a=document.createElement('strong');
        a.appendChild(document.createTextNode("Il campo punteggio accessibilità fisica deve essere compreso tra 1 e 5"));
+       a.classList.add('errorjs');
        parent.appendChild(a);
        p_acc_fisica.focus();
        p_acc_fisica.select();
@@ -78,6 +81,7 @@ function OnInsert(){
         
        var a=document.createElement('strong');
        a.appendChild(document.createTextNode("Il campo punteggio servizio inclusione deve essere compreso tra 1 e 5"));
+       a.classList.add('errorjs');
        parent.appendChild(a);
        p_inclusione.focus();
        p_inclusione.select();
@@ -92,6 +96,7 @@ function OnInsert(){
         
        var a=document.createElement('strong');
        a.appendChild(document.createTextNode("Il campo punteggio tempestività burocratica deve essere compreso tra 1 e 5"));
+       a.classList.add('errorjs');
        parent.appendChild(a);
        p_tempestivita.focus();
        p_tempestivita.select();
@@ -106,6 +111,7 @@ function OnInsert(){
         
        var a=document.createElement('strong');
        a.appendChild(document.createTextNode("Il campo punteggio sulla qualità dell'insegnamento  deve essere compreso tra 1 e 5"));
+       a.classList.add('errorjs');
        parent.appendChild(a);
        p_insegnamento.focus();
        p_insegnamento.select();
@@ -124,6 +130,7 @@ function Ondate(){
        
        var a=document.createElement('strong');
        a.appendChild(document.createTextNode("Il campo data di fine studi deve essere maggiore della data di inizio"));
+       a.classList.add('errorjs');
        parent.appendChild(a);
        dataf.focus();
        dataf.select();
@@ -134,6 +141,7 @@ function Ondate(){
        
         var a=document.createElement('strong');
         a.appendChild(document.createTextNode("Le date valide vanno dal 01-01-1960 al 01-01-2100"));
+        a.classList.add('errorjs');
         parent.appendChild(a);
         dataf.focus();
         dataf.select();
@@ -148,6 +156,7 @@ function Ondate(){
        
        var a=document.createElement('strong');
        a.appendChild(document.createTextNode("Il campo il campo punteggio scuola di provenienza deve compreso tra 1 e 5 "));
+       a.classList.add('errorjs');
        parent.appendChild(a);
        punteggio.focus();
        punteggio.select();
@@ -166,6 +175,7 @@ function Ondate(){
            
            var a=document.createElement('strong');
            a.appendChild(document.createTextNode("Il campo vecchia password non può essere vuoto"));
+           a.classList.add('errorjs');
            parent.appendChild(a);
            pw.focus();
            pw.select();
@@ -180,6 +190,7 @@ function Ondate(){
             
            var a=document.createElement('strong');
            a.appendChild(document.createTextNode("Il campo nuova password non può essere vuoto"));
+           a.classList.add('errorjs');
            parent.appendChild(a);
            nuova.focus();
            nuova.select();
@@ -194,6 +205,7 @@ function Ondate(){
           
            var a=document.createElement('strong');
            a.appendChild(document.createTextNode("Il campo nuova password non può essere vuoto"));
+           a.classList.add('errorjs');
            parent.appendChild(a);
            repeat.focus();
            repeat.select();

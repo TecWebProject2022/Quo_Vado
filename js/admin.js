@@ -11,7 +11,7 @@ function Box_Validate(){
     }
     var a=document.createElement('strong');
        a.appendChild(document.createTextNode("Selezionare un commento per cancellarlo"));
-       a.classList.add('error_js');
+       a.classList.add('errorjs');
        parent.appendChild(a);
        box[0].focus();
        box[0].select();
@@ -34,6 +34,7 @@ function OnPassword(){
        
        var a=document.createElement('strong');
        a.appendChild(document.createTextNode("Il campo vecchia password non può essere vuoto"));
+       a.classList.add('errorjs');
        parent.appendChild(a);
        pw.focus();
        pw.select();
@@ -48,6 +49,7 @@ function OnPassword(){
         
        var a=document.createElement('strong');
        a.appendChild(document.createTextNode("Il campo nuova password non può essere vuoto"));
+       a.classList.add('errorjs');
        parent.appendChild(a);
        nuova.focus();
        nuova.select();
@@ -62,6 +64,7 @@ function OnPassword(){
       
        var a=document.createElement('strong');
        a.appendChild(document.createTextNode("Il campo nuova password non può essere vuoto"));
+       a.classList.add('errorjs');
        parent.appendChild(a);
        repeat.focus();
        repeat.select();
@@ -81,6 +84,7 @@ function Cancella(){
     if(!classe.value.length && !user.value.length){
        var a=document.createElement('strong');
        a.appendChild(document.createTextNode("Il campo user o il campo classe di laurea deve essere riempito. "));
+       a.classList.add('errorjs');
        parent.appendChild(a);
        user.focus();
        return false;
@@ -97,7 +101,8 @@ function Remove(){
  }
  if(!classe.value.length){
     var a=document.createElement('strong');
-    a.appendChild(document.createTextNode("Il campo Classe di  laurea non può essere vuoto"));
+    a.appendChild(document.createTextNode("Il campo Classe di laurea non può essere vuoto"));
+    a.classList.add('errorjs');
     parent.appendChild(a);
     classe.focus();
     return false;
@@ -110,6 +115,7 @@ function Remove(){
  if(!ateneo.value.length){
     var a=document.createElement('strong');
     a.appendChild(document.createTextNode("Il campo Ateneo non può essere vuoto"));
+    a.classList.add('errorjs');
     parent.appendChild(a);
     ateneo.focus();
     return false;
@@ -122,6 +128,7 @@ function Remove(){
  if(!nome.value.length){
     var a=document.createElement('strong');
     a.appendChild(document.createTextNode("Il campo nome corso di studio non può essere vuoto"));
+    a.classList.add('errorjs');
     parent.appendChild(a);
     nome.focus();
     nome.select();
@@ -141,6 +148,7 @@ function Add(){
         if(!link.value.length){
             var a=document.createElement('strong');
             a.appendChild(document.createTextNode("Il campo link non può essere vuoto"));
+            a.classList.add('errorjs');
             parent.appendChild(a);
             link.focus();
             link.select();
@@ -154,6 +162,7 @@ function Add(){
         if(!accesso.value.length){
             var a=document.createElement('strong');
             a.appendChild(document.createTextNode("Il campo acesso  non può essere vuoto"));
+            a.classList.add('errorjs');
             parent.appendChild(a);
             accesso.focus();
             return false;

@@ -15,6 +15,7 @@ var test={
     if(element.value.search(test[element.id])==-1){
         var b=document.createElement('strong');
         b.appendChild(document.createTextNode(respond[element.id]));
+        b.classList.add('errorjs');
         parent.appendChild(b); 
         element.focus();
         element.select();

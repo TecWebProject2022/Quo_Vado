@@ -12,6 +12,7 @@ function Validate(){
 }
     var a=document.createElement('strong');
    a.appendChild(document.createTextNode("Selezionare almeno un filtro"));
+   a.classList.add('errorjs');
    parent.appendChild(a);
    filtro[0].focus();
    filtro[0].select();
