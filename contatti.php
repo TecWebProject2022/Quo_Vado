@@ -8,7 +8,7 @@ $errori='<ul class="error">';
 
 if(isset($_POST['submit'])){
     $email=PulisciInput($_POST['email']);
-    $commento=PulisciInput($_POST['commento']);
+    $commento=isset($_POST['commento']) ? PulisciInput($_POST['commento']) : "";
     if(!preg_match('/^([\w\-\+\.]+)\@([\w\-\+\.]+)\.([\w\-\+\.]+)$/',$email)){
         $errori.='<li>Il campo email non corrisponde ad una email valida</li>';
     }
