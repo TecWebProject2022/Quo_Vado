@@ -48,20 +48,19 @@
         </ul>
     </nav>
     <nav id="breadcrumb" aria-label="percorso">
-        <p>Ti trovi in: <a href="index.html" lang="en">Home</a> &#11162; Login</p>
+        <p>Ti trovi in: <a href="index.html" lang="en">Home</a> &#11162; <span lang="en">Login</span></p>
     </nav>
     
     <main id="content">
         <h1 class="area_riservata" lang="en">LOGIN</h1>
         <form id="form_container" action="login.php" method="post" onsubmit="return Validate()">
             <fieldset id="form">
-                <legend>Dati personali</legend>
-                <label for="username"><span lang="en">Username:</span></label>
+                <legend>Dati <span lang="en">personali</span></legend>
+                <label for="username">Nome Utente: </label>
                 <span><input value="<username/>" name="username" id="username" placeholder="username"    maxlength="40"                 
-                        data-msg-invalid="Il campo username non può contenere spazi e deve contenere da 4 a 40 caratteri alfanumerici (sono ammessi i seguenti caratteri: @ . _ - ), controlla e riprova"
-                        data-msg-empty="Il campo username non può essere vuoto"
+                        data-msg-invalid="Il campo nome utente non può contenere spazi e deve contenere da 4 a 40 caratteri alfanumerici (sono ammessi i seguenti caratteri: @ . _ - ), controlla e riprova"
+                        data-msg-empty="Il campo nome utente non può essere vuoto"
                        /></span>
-                
                 <label for="password"><span lang="en">Password:</span></label>
                 <span><input  value="<password/>" type="password" id="password" name="password" placeholder="password" maxlength="20"                      
                         data-msg-invalid="Il campo password non può contenere spazi e deve contenere da 4 a 20 caratteri alfanumerici (sono ammessi i seguenti caratteri: @ . _ - ), controlla e riprova"

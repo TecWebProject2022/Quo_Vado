@@ -27,8 +27,8 @@ $menu1='<nav id="visible-sottomenu" aria-label="sotto menù di area riservata">
     <li><a href="#aggiscrizione">Aggiungi Iscrizione</a></li>
     <li><a href="#commenti">Commenti rilasciati</a></li>
     <li><a href="#aggiungi">Aggiungi un commento</a></li>
-    <li><a href="#pw">Cambia password</a></li>
-    <li><a href="logout.php">Logout</a></li>
+    <li><a href="#pw">Cambia <span lang="en">password</span></a></li>
+    <li lang="en"><a href="logout.php">Logout</a></li>
 </ul>
 </nav>';
 $content=file_get_contents("area_riservata.html");
@@ -224,10 +224,10 @@ else{
 }
 
     //CAMBIO PASSWORD
-$contenuto.='<h2 id="pw" class="titles_area_classi">Cambio password</h2>';
-$contenuto.='<p  id="form_passw" class="formdesc">Per modificare la tua password compila i campi sottostanti e premi salva per salvare la modifica</p>';
+$contenuto.='<h2 id="pw" class="titles_area_classi">Cambio <span lang="en">password</span></h2>';
+$contenuto.='<p  id="form_passw" class="formdesc">Per modificare la tua <span lang="en">password</span> compila i campi sottostanti e premi salva per salvare la modifica</p>';
 $contenuto.='<form aria-describedby="form_passw" id="formpw" action="area_utente.php" method="post" onsubmit=" return OnPassword()" >';
-$contenuto.='<fieldset><legend class="field_legend">Cambio password</legend>
+$contenuto.='<fieldset><legend class="field_legend">Cambio  <span lang="en">password</span></legend>
 
 <label for="oldpassword">Immetti la tua vecchia <span lang="en">password</span>: </label><span><input  value="<old>" type="password" id="oldpassword" name="Vecchiapassword" placeholder="Inserisci vecchia password" maxlength="20" /></span>
 <br/><label for="newpassword">Immetti la tua nuova <span lang="en">password</span>: </label><span><input  value="<new>" type="password" id="newpassword" name="newpassword" placeholder="Immetti nuova password" maxlength="20" /></span>
@@ -384,21 +384,21 @@ if(isset($_POST['submit1']) && check()){
     $_SESSION['nuova']=$nuova;
     if (!preg_match('/^[@a-zA-Z0-9._-]{4,20}$/',$vecchia)){
         $errori1.='<li>Il campo vecchia password non può essere vuoto e non può contenere spazzi e deve contenere da 4 a 20 caratteri alfanumerici (sono ammessi i seguenti caratteri: @ . _ - )</li>';
-        $_SESSION['errori1'].='<p class="error">Il campo vecchia password non può essere vuoto e non può contenere spazzi e deve contenere da 4 a 20 caratteri alfanumerici (sono ammessi i seguenti caratteri: @ . _ - )</p>';
+        $_SESSION['errori1'].='<p class="error">Il campo vecchia  <span lang="en">password</span> non può essere vuoto e non può contenere spazzi e deve contenere da 4 a 20 caratteri alfanumerici (sono ammessi i seguenti caratteri: @ . _ - )</p>';
         $errori.="<p class=\"error\">Errore nell'aggiornamento della password</p>";
         header('Location:area_utente.php#form_passw');
         
     }
     if (!preg_match('/^[@a-zA-Z0-9._-]{4,20}$/',$nuova)){
         $errori1='<li>Il campo vecchia password non può essere vuoto e non può contenere spazzi e deve contenere da 4 a 20 caratteri alfanumerici (sono ammessi i seguenti caratteri: @ . _ - )</li>';
-        $_SESSION['errori1'].='<p class="error">Il campo nuova password non può essere vuoto e non può contenere spazzi e deve contenere da 4 a 20 caratteri alfanumerici (sono ammessi i seguenti caratteri: @ . _ - )</p>';
+        $_SESSION['errori1'].='<p class="error">Il campo nuova  <span lang="en">password</span> non può essere vuoto e non può contenere spazzi e deve contenere da 4 a 20 caratteri alfanumerici (sono ammessi i seguenti caratteri: @ . _ - )</p>';
         $errori.="<p class=\"error\">Errore nell'aggiornamento della password</p>";
         header('Location:area_utente.php#form_passw');
         
     }
     if($nuova!=$rep){
         $errori1.="<p class=\"error\">Errore nell'aggiornamento della password</p>";
-        $_SESSION['errori1'].='<p class="error">Il campo nuova password e ripeti la password non corrispondono</p>';
+        $_SESSION['errori1'].='<p class="error">Il campo nuova  <span lang="en">password</span> e ripeti la  <span lang="en">password</span> non corrispondono</p>';
         $errori.="<p class=\"error\">Errore nell'aggiornamento della password</p>";
         header('Location:area_utente.php#form_passw');
         
@@ -411,7 +411,7 @@ if(isset($_POST['submit1']) && check()){
             if($r=$db->ExecQueryAssoc($query)){
                 $errori1.="<li>Password già usata</li>";
                 $errori.="<p class=\"error\">Errore nell'aggiornamento della password</p>";
-                $_SESSION['errori1'].='<p class="error">Password già usata</p>';
+                $_SESSION['errori1'].='<p class="error"> <span lang="en">Password</span> già usata</p>';
                 header('Location:area_utente.php#form_passw');
             }
             else{
@@ -421,7 +421,7 @@ if(isset($_POST['submit1']) && check()){
                 $query2.="INSERT INTO Credenziale(pw, data_inserimento, utente, attuale) VALUES('".$nuova."',curdate(),'".$user."',1);";
                 $q=$db->multiInsert($query2);
                 if($q){
-                    $_SESSION['info']="<p  id =\"ok\"class=\"invito\">Password modificata con successo</p>";
+                    $_SESSION['info']="<p  id =\"ok\"class=\"invito\"> <span lang=\"en\">Password</span> modificata con successo</p>";
                     unset($_SESSION['errori1']);
                     $_SESSION['nuova']='';
                     $_SESSION['vecchia']='';
@@ -430,13 +430,13 @@ if(isset($_POST['submit1']) && check()){
                 }
                 else{
                     $errori."<p class=\"error\">Al momento non è possibile modificare la password</p>";
-                    $_SESSION['errori1'].='<p class="error">Al momento non è possibile modificare la password</p>';
+                    $_SESSION['errori1'].='<p class="error">Al momento non è possibile modificare la  <span lang="en">password</span></p>';
                     header('Location:area_utente.php#form_passw');
                 } 
             }
             else{
                 $errori.="<p class=\"error\">La vecchia password inserita non corrisponde</p>";
-                $_SESSION['errori1'].='<p class="error">La vecchia password inserita non corrisponde</p>';
+                $_SESSION['errori1'].='<p class="error">La vecchia  <span lang="en">password<7span> inserita non corrisponde</p>';
                 header('Location:area_utente.php#form_passw');
             }
             
@@ -564,23 +564,4 @@ $contenuto=str_replace("<old>",$_SESSION['vecchia'],$contenuto);
 $content=str_replace("<content/>",$contenuto,$content);
 $content=str_replace("</err/>",$_SESSION['errori1'],$content);
 echo $content;
-
-/*
-$contenuto.="<aside>
-                <h2 class="titles_area_classi">Legenda valutazione</h2>
-                <p>Ogni utente può esprime un giudizio con un valore da 1 a 5 sui seguenti ambiti riguardanti una classe di laurea</p>
-                    <dl>
-                        <dt>Complessiva: </dt>
-                        <dd>valutazione che riguarda tutti gli ambiti universitari in generale</dd>
-                        <dt>Accessibilità fisica: </dt>
-                        <dd>valutazione che riguarda la possibilità da parte di chiunque di fruire dei servizi universitari da un punto di vista fisico</dd>
-                        <dt>Servizio inclusione: </dt>
-                        <dd>valutazione riguardante l'accoglienza e l'appartenenza ad un gruppo universitario</dd>
-                        <dt>Tempestività burocratica: </dt>
-                        <dd>valutazione attinente alla velocità di intervento e risposta da parte dei servizi amministrativi e burocratici universitari</dd>
-                        <dt>Qualità di insegnamento: </dt>
-                        <dd>valutazione riguardante la qualità di insegnamento ricevuto e le competenze acquisite in esso</dd>
-                    </dl>
-            </aside>";
-*/
 ?>

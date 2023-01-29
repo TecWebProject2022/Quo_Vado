@@ -167,7 +167,7 @@ if($dbOK){
                 <span>'.$input_atenei.'</span>
                 <label for="cor_nome">Nome corso di studio: </label>
                 <span><input id="cor_nome" value="<nome>" name="cor_nome" type="text" placeholder="Inserisci corso di studio"/></span>
-                <label for="cor_link">Link del sito web: </label>
+                <label for="cor_link">indirizzo  del sito web: </label>
                 <span><input id="cor_link" value="<link>" name="cor_link" type="text" placeholder="inserisci link al sito web"/></span>
                 <label for="cor_accesso">Tipo di accesso: </label>
                 <span><select name="cor_accesso" id="cor_accesso">
@@ -242,7 +242,7 @@ if($dbOK){
         }
         if(!filter_var($link, FILTER_VALIDATE_URL)){
             $msgCorso.='<li class="error">Link non valido, inserire un url corretto</li>';
-            $_SESSION['add']='<p class="error">Link non valido, inserire un url corretto</p>';
+            $_SESSION['add']='<p class="error">Indirizzo <span lang="en">web</span> non valido, inserire un url corretto</p>';
             header("Location:area_admin.php#formCorsi");
         }
         if(!$msgCorso){
@@ -311,11 +311,11 @@ if($dbOK){
     }
     #preparazione form cambio password
     $formCambioPw=' 
-    <h2 id="CambioPw" class="titles_area_classi">Cambia Password</h2>
-    <p class="formdesc" id="form_passw">Per modificare la tua password compila i campi sottostanti e premi salva per salvare la modifica</p>
+    <h2 id="CambioPw" class="titles_area_classi">Cambia <span lang="en">Password</span></h2>
+    <p class="formdesc" id="form_passw">Per modificare la tua <span lang="en>password</span> compila i campi sottostanti e premi salva per salvare la modifica</p>
     <form aria-describedby="form_passw" action="area_admin.php" method="post"  id="formpw" onsubmit="return OnPassword()" >
         <fieldset>
-            <legend class="field_legend">Cambio password</legend>
+            <legend class="field_legend">Cambio <span lang="en">password</span></legend>
             <label for="oldpassword">Immetti la tua vecchia <span lang="en">Password</span>: </label>
             <span><input  value="<old>" type="password" id="oldpassword" name="Vecchiapassword" placeholder="Inserisci vecchia password" maxlength="20" /></span>
             <br/><label for="newpassword">Immetti la tua nuova <span lang="en">Password</span>: </label>
@@ -340,17 +340,17 @@ if($dbOK){
         
         if (!preg_match('/^[@a-zA-Z0-9._-]{4,20}$/',$vecchia)){
             $msgPassword.='<li class="error">Il campo vecchia password non può essere vuoto e non può contenere spazi e deve contenere da 4 a 20 caratteri alfanumerici (sono ammessi i seguenti caratteri: @ . _ - )</li>';
-            $_SESSION['password']='<p class="error">Il campo vecchia password non può essere vuoto e non può contenere spazi e deve contenere da 4 a 20 caratteri alfanumerici (sono ammessi i seguenti caratteri: @ . _ - )</p>';
+            $_SESSION['password']='<p class="error">Il campo vecchia <span lang="en">password</span> non può essere vuoto e non può contenere spazi e deve contenere da 4 a 20 caratteri alfanumerici (sono ammessi i seguenti caratteri: @ . _ - )</p>';
              header("Location:area_admin.php#form_passw");
         }
         if (!preg_match('/^[@a-zA-Z0-9._-]{4,20}$/',$nuova)){
             $msgPassword.='<li class="error">Il campo nuova password non può essere vuoto e non può contenere spazzi e deve contenere da 4 a 20 caratteri alfanumerici (sono ammessi i seguenti caratteri: @ . _ - )</li>';
-            $_SESSION['password']='<p class="error">Il campo nuova password non può essere vuoto e non può contenere spazzi e deve contenere da 4 a 20 caratteri alfanumerici (sono ammessi i seguenti caratteri: @ . _ - )</p>';
+            $_SESSION['password']='<p class="error">Il campo nuova <span lang="en">password</span> non può essere vuoto e non può contenere spazzi e deve contenere da 4 a 20 caratteri alfanumerici (sono ammessi i seguenti caratteri: @ . _ - )</p>';
             header("Location:area_admin.php#form_passw");
         }
         if($nuova!=$rep){
             $msgPassword.='<li class="error">Il campo nuova password e ripeti la password non corrispondono</li>';
-            $_SESSION['password']='<p class="error">Il campo nuova password e ripeti la password non corrispondono</p>';
+            $_SESSION['password']='<p class="error">Il campo nuova <span lang="en">password</span> e ripeti la <span lang="en">password</span> non corrispondono</p>';
             header("Location:area_admin.php#form_passw");
         }
         
@@ -358,7 +358,7 @@ if($dbOK){
             $query="Select * from Credenziale where utente='admin' && pw=\"".$nuova."\";";
             if($r=$db->ExecQueryAssoc($query)){
                 $msgPassword.='<p class="error">Password già usata</p>';
-                $_SESSION['password']='<p class="error">Password già usata</p>';
+                $_SESSION['password']='<p class="error"><span lang="en">Password</span> già usata</p>';
                 header("Location:area_admin.php#form_passw");
             }else{
                 $query_controllo_pw="Select * from Credenziale where utente='admin' && pw=\"".$vecchia."\";";
@@ -366,17 +366,17 @@ if($dbOK){
                     $query_update_pw="UPDATE Credenziale SET attuale=0 WHERE utente='admin' and pw=\"".$vecchia."\";";
                     $query_update_pw.="INSERT INTO Credenziale(pw, data_inserimento, utente, attuale) VALUES('".$nuova."','".date('Y-m-d')."','admin',1);";
                     if($db->multiInsert($query_update_pw)){
-                        $_SESSION['info'].='<p class="invito">Password modificata con successo</p>';
+                        $_SESSION['info'].='<p class="invito"><span lang="en">Password</span> modificata con successo</p>';
                         unset($_SESSION['password']);
                         header("Location:area_admin.php");
                     }else{
                         $msgPassword.='<p class="error">Cambiamento password non riuscito, Contattaci per avere un supporto</p>';
-                        $_SESSION['password']='<p class="error">Cambiamento password non riuscito, Contattaci per avere un supporto</p>';
+                        $_SESSION['password']='<p class="error">Cambiamento <span lang="en">password</span> non riuscito, Contattaci per avere un supporto</p>';
                         header("Location:area_admin.php#form_passw");
                     } 
                 }else{
                     $msgPassword.='<p class="error">la vecchia password inserita non corrisponde</p>';
-                    $_SESSION['password']='<p class="error">Cambiamento password non riuscito, Contattaci per avere un supporto</p>';
+                    $_SESSION['password']='<p class="error">Cambiamento <span lang="en">password</span> non riuscito, Contattaci per avere un supporto</p>';
                     header("Location:area_admin.php#form_passw");
                 }
             }
