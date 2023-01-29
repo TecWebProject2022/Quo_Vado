@@ -27,6 +27,7 @@ if(isset($_POST['submit'])){
                 $cognome='';
                 $email='';
                 $commento='';
+                $errori='';
             }
             else{
                 $errori.="<li>Inserimento non riuscito</li>";
