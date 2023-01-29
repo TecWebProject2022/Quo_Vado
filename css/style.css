@@ -856,11 +856,13 @@ ESPLORA CORSI
     color: #D67200;
 }
 
-.area p {
+.area .disc{
     background: linear-gradient(to right, rgba(0,0,0,0.7), rgba(0,0,0,0.5));
     background-clip: content-box;
 }
-
+.disc{
+    display: block;
+}
 .area dt {
     font-size: 1.5em;
     -webkit-transition: all .2s ease-in-out;
@@ -874,7 +876,7 @@ ESPLORA CORSI
     font-size: 1.3em;
 }
 
-#stem p, #sanita p, #arte p, #economia p {
+#stem span, #sanita span, #arte span, #economia span {
     padding: 5em 1em 5em 1em;
 }
 
