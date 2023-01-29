@@ -75,7 +75,7 @@ $db=new Connection();
             #sezione commenti
             #filtro, con solo due elementi ma potenzialmente potrei averne n
            
-            $contenuto.='<p id ="filtro" class="formdesc center">Seleziona un filtro per filtrare  i commenti che vuoi visualizzare</p><form aria-describeby="filtro" id="filtroform" class="filter" action="classe.php?nclasse='.$target.'" method="get" onsubmit="return Validate()" >
+            $contenuto.='<p id ="filtro" class="formdesc center">Seleziona un filtro per filtrare  i commenti che vuoi visualizzare</p><form id="filtroform" class="filter" action="classe.php?nclasse='.$target.'" method="get" onsubmit="return Validate()" >
             <fieldset>
             <legend>Seleziona un filtro</legend>
                 <label for="commento_generale">
