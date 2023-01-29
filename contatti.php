@@ -12,8 +12,8 @@ if(isset($_POST['submit'])){
     if(!preg_match('/^([\w\-\+\.]+)\@([\w\-\+\.]+)\.([\w\-\+\.]+)$/',$email)){
         $errori.='<li>Il campo email non corrisponde ad una email valida</li>';
     }
-    if(!preg_match('/^[ !?@a-zA-Z.,_-]{10,400}$/',$commento)){
-        $errori.='<li>Il campo commento/mesaggio può contenere da 10 a 500 caratteri (sono amessi i seguenti simboli: .,_-!?@)</li>';
+    if(!preg_match('/^[ !?@a-zA-Z0-9.,_-]{10,400}$/',$commento)){
+        $errori.='<li>Il campo commento/mesaggio può contenere da 10 a 500 caratteri (sono amessi i nuemri da 0 a 9 e i seguenti simboli: .,_-!?@)</li>';
     }
     if($errori=="<ul class=\"error\">"){
         $db=new Connection();
