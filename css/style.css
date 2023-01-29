@@ -1567,36 +1567,6 @@ Inclusivi per scelta
     padding-top: 1em;
 }
 
-#return{
-    text-align: right;
-    margin-right: 10%;
-    margin-top: 3%;
-}
-
-@media screen and (max-width:1200px) {
-    #return{
-        margin-right: 2.5%;
-    }
-}
-
-#return a:link{
-    padding: 1em;
-    border-radius: 20px;
-    color: #E36600;
-    text-decoration: none;
-    font-weight: bold;
-    font-variant: small-caps;
-    background-image: linear-gradient(to bottom, rgb(13, 93, 112),rgb(22, 38, 54));
-}
-
-#return a:visited{
-    color: white;
-    background-image: linear-gradient(to bottom, rgb(13, 93, 112),rgb(22, 38, 54));
-}
-
-#return a:hover{
-    opacity: 0.9;
-}
 
 /***************************************************************
 Parità di genere
