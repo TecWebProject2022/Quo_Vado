@@ -18,6 +18,9 @@
     --menulinkhover: white;
     --menulinkhoverbg: #0d5d70;
 
+    --hidemenuCurrentLink: #009d9d;
+    --hidemenubg: #162636;
+
     --breadcolor: #162636;
     --breadtext: #FFF;
     --breadlink: #FFFEF4;
@@ -37,6 +40,8 @@
     --footerlink: #FFFEF4;
     --footerlinkvisitedbg: #162636;
     --footerlinkvisited: #D67200;
+
+    --error: #E61B10;
 }
 
 html,body{
@@ -48,11 +53,13 @@ html,body{
     color:var(--txtcolor);
     scroll-behavior: smooth;
 }
+
 .errorjs{
-    color: #E61B10;
+    color: var(--error);
 }
+
 .error {
-    color: #E61B10;
+    color: var(--error);
     text-align: center;
     list-style-type: none;
     margin: 1em 5em;
@@ -69,30 +76,21 @@ html,body{
 HEADER
 ================
 */
-.none{
-    display: none;
-}
-.inline{
-    display:inline;
-}
-.block{
-    display: block;
-}
+
 header {
     color: var(--txtcolor);
     text-align: left;
     padding: 0.7em 0.5em 0.5em;
     background-color: var(--headerbg); 
 }
+
 header h1{
     background-image: url("css_images/logo.png");
     background-repeat: no-repeat;
     background-size: contain;
     font-size: 3em;
-    line-height: 1.5em;
-   
+    line-height: 1.5em; 
 }
-
 
 header h1, header h2{
     text-indent: -999999em;
@@ -186,6 +184,29 @@ MENU
     padding-bottom: 0.95em;
 }
 
+.arrow{
+    border-style: solid;
+    border-width: 0px 2px 2px 0px;
+    display: inline-block;
+    padding: 0.2em;
+    margin-bottom: 0.2em;
+    transform: rotate(45deg);
+    -webkit-transform: rotate(45deg);
+}
+
+#currentlink,#currentSMLink {
+    font-size: 1.2em;
+    padding: 0.8em;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+    background-color: var(--breadcolor);
+    color: var(--breadtext);
+}
+
+#currentOverLink {
+    font-size: 1.2em;
+}
+
 /* Impostazioni per il sotto menù */
 
 .sottomenu {
@@ -212,16 +233,6 @@ MENU
     text-indent: 0em;
 }
 
-.arrow{
-    border-style: solid;
-    border-width: 0px 2px 2px 0px;
-    display: inline-block;
-    padding: 0.2em;
-    margin-bottom: 0.2em;
-    transform: rotate(45deg);
-    -webkit-transform: rotate(45deg);
-}
-
 .sottomenu:hover .arrow, li:focus-within .arrow { /* Mostra al passaggio del mouse o al tab da tastiera*/
     transform: rotate(-135deg);
     margin-bottom: 0;
@@ -239,25 +250,7 @@ MENU
     opacity: 0.8;
 }
 
-
-
-/* Pagina corrente e sezione con sottomenù*/
-
-#currentlink,#currentSMLink {
-    font-size: 1.2em;
-    padding: 0.8em;
-    border-top-left-radius: 20px;
-    border-top-right-radius: 20px;
-    background-color: var(--breadcolor);
-    color: #FFFDE8;
-}
-
-#currentOverLink {
-    font-size: 1.2em;
-}
-
-
-/*  Menù specifico delle pagine DA RIVEDERE */
+/*  Menù specifico dell'area riservata */
 
 #visible-sottomenu {
     position: relative;
@@ -310,8 +303,6 @@ MENU
     font-size: 1.3em; 
 }
 
-/********************************              Responsive menu             **********************************************/
-
 @media screen and (max-width:1200px){
     
     #menu>button{
@@ -325,7 +316,7 @@ MENU
         font-size: 2.5em;
     }
 
-    button>span{
+    button>span{  /* disegno le barre del menù ad hamburger */
         position: relative;
         display: block;
         width: 35px;
@@ -347,7 +338,7 @@ MENU
         z-index: 1;
         padding-top: 4%;
         text-align: center;
-        background-color: #162636;
+        background-color: var(--hidemenubg);
         color: #FFFDE8;
         padding-bottom: 8%;
     }
@@ -368,28 +359,28 @@ MENU
     
     #menu a:link{
         color: #FFFDE8;
-        background-color: var(--breadcolor);
+        background-color: var(--hidemenubg);
         font-variant: small-caps;
     } 
     
     #menu a:visited {
-        background-color: var(--breadcolor);
+        background-color: var(--hidemenubg);
         color: var(--menulinkvisitedbg);
     }
     
     #menu a:hover {
-        color: #009d9d;
+        color: var(--hidemenuCurrentLink);
     }
 
     .sottomenu-content { 
         position:relative;
         text-indent: 0;
-        background-color: #162636;
+        background-color: var(--hidemenubg);
         box-shadow: none;
         margin: 1em 15% -0.2em;
         border-top: #FFFDE8 2px solid;
         border-bottom: #FFFDE8 2px solid;
-        font-size: 0.95em;  /*font troppo piccolo per mobile*/
+        font-size: 0.95em;  
     }
     
     .sottomenu-content a{
@@ -405,11 +396,11 @@ MENU
         padding: 0.5em;
         border-top-left-radius: 0px;
         border-top-right-radius: 0px;
-        color: #009d9d;
+        color: var(--hidemenuCurrentLink);
     }
 
     #menu #currentSMLink:hover{
-        background-color: var(--breadcolor);
+        background-color: var(--hidemenubg);
     }
 
     #currentSMLink>.sottomenu-content{
@@ -418,13 +409,17 @@ MENU
 
     #menu #currentSubLink{
         padding: 0em;
-        color: #009d9d;
+        color: var(--hidemenuCurrentLink);
         font-size: 1em; 
         border-top: none;
         width: auto;
     }
+
+    .arrow {
+        visibility: hidden;
+     }
     
-    /*********************************  DA RIVEDERE  *********************************/
+    /*********************************  Menù Area riservata  *********************************/
 
     #visible-sottomenu {
         position: relative;
@@ -453,77 +448,6 @@ MENU
     #visible-sottomenu #currentSubLink {
          font-size: 1.2em;    
      }
-    
-     .arrow {
-        visibility: hidden;
-     }
-}
-
-
-/*
-================
-404
-================
-*/
-
-#error_page{
-    margin-bottom: 0;
-}
-
-#error_page div{
-    background: #162636 url(css_images/festa.jpg) 85% no-repeat;
-    background-size: cover;
-    padding: 0% 5% 2.5% 5%;
-    margin-bottom: 1%;
-}
-
-#error_page h1{
-    max-width: 1024px;
-    color: #FFFFFF;
-    margin-bottom: 1.5%;
-    font-size: 3em;
-    line-height: 1.5em;
-    padding-top: 2.5%;
-    padding-bottom: 0%;
-    text-shadow: 4px 4px 4px rgba(0,0,0,0.26);
-    text-align: center;
-}
-
-#error_page p{
-    color: #fff;
-    padding-top: 0.5%;
-    padding-bottom: 2.5%;
-    font-size: 1.5em;
-    line-height: 1.5em;
-    max-width: 1024px;
-    text-align: center;
-    margin-left: 5%;
-}
-
-#error_page a{
-    transition: all .2s ease-in-out;
-}
-
-#error_page a:link{
-    color: #162636;
-    background-color: #fff;
-    font-size: 1.2em;
-    padding: 2%;
-    text-decoration: none;
-    border-radius: 25px;
-    box-shadow: inset 5px -10px 16px rgba(0, 0, 0, 0.25);
-}
-
-#error_page a:hover{
-    transform: scale(1.02); /*non funziona perché?*/
-    background-color: rgba(22, 38, 54, 0.2);
-    border: #fff 2px solid;
-    color: #fff;
-}
-
-#error_page a:visited{
-    background-color: #162636;
-    color: #E36600;
 }
 
 /*
@@ -653,6 +577,7 @@ article li, section li{
 }
 
 
+
 /*
 ================
 HOME
@@ -748,6 +673,9 @@ HOME
 
 .grid_container a {
     text-decoration: none;
+    -webkit-transition: all .2s ease-in-out;
+    -moz-transition: all .2s ease-in-out;
+    -o-transition: all .2s ease-in-out;
     transition: all .2s ease-in-out;
 }
 
@@ -935,10 +863,14 @@ ESPLORA CORSI
 
 .area dt {
     font-size: 1.5em;
+    -webkit-transition: all .2s ease-in-out;
+    -moz-transition: all .2s ease-in-out;
+    -o-transition: all .2s ease-in-out;
+    transition: all .2s ease-in-out;
 }
 
 .area dd {
-    font-family: Monospace;
+    font-family: courier, Monospace;
     font-size: 1.3em;
 }
 
@@ -954,8 +886,7 @@ ESPLORA CORSI
     background: url('css_images/stem.jpg');
     background-size: cover;
     background-position: center;
-    margin-bottom: 1.5em;
-    transition: all .2s ease-in-out;
+    margin-bottom: 1.5em;   
 }
 
 #sanita {
@@ -964,7 +895,6 @@ ESPLORA CORSI
     background-size: cover;
     background-position: center;
     margin-bottom: 1.5em;
-    transition: all .2s ease-in-out;
 }
 
 #arte {
@@ -972,7 +902,6 @@ ESPLORA CORSI
     background-size: cover;
     background-position: center;
     margin-bottom: 1.5em;
-    transition: all .2s ease-in-out;
 }
 
 #economia {
@@ -980,7 +909,6 @@ ESPLORA CORSI
     background-size: cover;
     background-position: center;
     margin-bottom: 1.5em;
-    transition: all .2s ease-in-out;
 }
 
 /*
@@ -996,7 +924,7 @@ GRUPPI DISCIPLINARI
     align-items: stretch;
     margin: 2em 30% 2em 10%;
     gap: 20px;
-    font-family: monospace;
+    font-family: courier, monospace;
     font-size: 1.4em;
 }
 
@@ -1020,7 +948,7 @@ GRUPPI DISCIPLINARI
 }
 
 /*
-================a
+================
 CLASSE DI LAUREA
 ================
 */
@@ -1215,7 +1143,6 @@ OBIETTIVO LAVORO
 }
 
 #nota {
-    /*box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.25);*/
     background-color: #FFFDE8;
     margin: 1em 5% 1.2em 5%;
     padding: 1.8em;
@@ -1259,14 +1186,7 @@ OBIETTIVO LAVORO
     color: #0D5D70;
 }
 
-img[src="images/almalaurea.png"]{
-    margin-bottom: 2em;
-    width: 50%;
-    height: auto;
-    border-radius: 10px;
-}
-
-img[src="images/atlanteProfessioni.svg"]{
+#external_resources img{
     margin-bottom: 2em;
     width: 50%;
     height: auto;
@@ -1294,7 +1214,7 @@ LA SCELTA GIUSTA PER TE
     margin-left: -1em;
     padding-bottom: 40%;
     margin-bottom: 1.5em;
-    background-image: url("css_images/sentiero.webp"); /*linear-gradient(to bottom, rgba(255,255,255,1), rgba(255,255,255,0)),*/
+    background-image: url("css_images/sentiero.webp"); 
     background-repeat: no-repeat;
     background-size: 200%;
     background-position: bottom; 
@@ -1371,7 +1291,6 @@ LA SCELTA GIUSTA PER TE
     background-size: 3%, 3%;
     margin: 1.5em 4.2em;
     font-size: 0.95em;
-    /*color: #616161;*/
     color: #093e4b;
 }
 
@@ -1385,7 +1304,7 @@ LA SCELTA GIUSTA PER TE
     font-size: 1.05em;
 } 
 
-img[src="css/css_images/struzzo.png"]{
+img[src="images/struzzo.png"]{
     width: 50%;
     height: auto;
     margin: 1em 8em;
@@ -1394,15 +1313,11 @@ img[src="css/css_images/struzzo.png"]{
 
 .motivational{
     margin: 0.2em 0em;
-    font-family: OpenDyslexic, monospace;
+    font-family: OpenDyslexic, courier, monospace;
     font-size: 1.8em;
     line-height: 1.5em;
     text-align: center;
 }
-
-
-
-
 
 /******************************************************************************************************************************************
 QUESTIONARIO
@@ -1524,8 +1439,6 @@ QUESTIONARIO
     padding: 1.5em;
 }
 
-
-
 .tab{
     display: none;
 }
@@ -1579,7 +1492,6 @@ aside #nota{
 }
 
 #barriere dt{
-    /*border: #000 3px solid;*/
     padding: 0.5em 0%;
     margin-top: 1em;
     font-size: 1.5em;
@@ -1752,7 +1664,7 @@ article h3{
     padding-left: 14em;
 }
 
-img[src="css/css_images/par_gen.webp"]{
+img[src="images/par_gen.webp"]{
     width: 60%;
     height: auto;
     margin: 1em 20% 2.5em 20%;
@@ -1882,6 +1794,9 @@ LOGIN
     font-variant: small-caps;
     border-radius: 15px;
     box-shadow: inset -5px -5px 7px rgba(255,255,255,0.3), inset 5px 5px 9px rgba(94,104,121,0.3);
+    -webkit-transition: box-shadow 0.1s linear;
+    -moz-transition: box-shadow 0.1s linear;
+    -o-transition: box-shadow 0.1s linear;
     transition: box-shadow 0.1s linear;
 }
 
@@ -1983,7 +1898,7 @@ AREA UTENTE
     margin: 0.5em 20% 0.5em 20%;
     column-gap: 3%;
     font-size: 1.2em;
-    font-family: monospace;
+    font-family: courier, monospace;
 }
 
 #container_info > dt {
@@ -2148,6 +2063,68 @@ AREA ADMIN
     margin-top: 0.2em;
     margin-bottom: 0.2em;
 }
+
+/*
+================
+404
+================
+*/
+
+#error_page{
+    margin-bottom: 0;
+}
+
+#error_page div{
+    background: #162636 url(css_images/festa.jpg) 85% no-repeat;
+    background-size: cover;
+    padding: 0% 5% 2.5% 5%;
+    margin-bottom: 1%;
+}
+
+#error_page h1{
+    max-width: 1024px;
+    color: #FFFFFF;
+    margin-bottom: 1.5%;
+    font-size: 3em;
+    line-height: 1.5em;
+    padding-top: 2.5%;
+    padding-bottom: 0%;
+    text-shadow: 4px 4px 4px rgba(0,0,0,0.26);
+    text-align: center;
+}
+
+#error_page p{
+    color: #fff;
+    padding-top: 0.5%;
+    padding-bottom: 2.5%;
+    font-size: 1.5em;
+    line-height: 1.5em;
+    max-width: 1024px;
+    text-align: center;
+    margin-left: 5%;
+}
+
+#error_page a:link{
+    color: #162636;
+    background-color: #fff;
+    font-size: 1.2em;
+    padding: 2%;
+    text-decoration: none;
+    border-radius: 25px;
+    box-shadow: inset 5px -10px 16px rgba(0, 0, 0, 0.25);
+}
+
+#error_page a:hover{
+    background-color: rgba(22, 38, 54, 0.2);
+    border: #fff 2px solid;
+    color: #fff;
+}
+
+#error_page a:visited{
+    background-color: #162636;
+    color: #E36600;
+}
+
 
 /*
 ================
