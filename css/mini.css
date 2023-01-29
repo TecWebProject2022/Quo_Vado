@@ -1,27 +1,3 @@
-
-:root {
-    --headerbg: #FFFDE8;
-
-    --menulink: #0D5D70;
-    --menulinkbg: #FFFEF4;
-    --menulinkvisited: #162636;
-    --menulinkvisitedbg: #D67200;
-    --menulinkhover: white;
-    --menulinkhoverbg: #0D5D70;
-
-    --breadcolor: #162636;
-
-    --bgcolor: #FFFFFF;
-    --txtcolor: #000000;
-    --contentbgcolor: ;
-    --contentcolor: ;
-    --linkcolor: ;
-    --visitedcolor: #E36600;
-    --blocks: #548E9C;
-}
-
-
-
 header {
     padding: 0.7em 0.5em;
     background-size: 12em;
@@ -76,13 +52,7 @@ main{
 }
 
 #up{
-    padding-top: 3em;
     margin: -3.5em 0.5em 2em 0em;
-    background-image: url("icons/torna_su.svg");
-    background-size: 3em;
-    background-repeat: no-repeat;
-    background-position: top;
-    float: right;
 }
 
 
@@ -267,11 +237,7 @@ OBIETTIVO LAVORO
 
 
 
-img[src="images/almalaurea.png"]{
-    width: 45%;
-}
-
-img[src="images/atlanteProfessioni.svg"]{
+#external_resources img{
     width: 45%;
 }
 
@@ -330,7 +296,7 @@ LA SCELTA GIUSTA PER TE
     font-size: 1em;
 } 
 
-img[src="css/css_images/struzzo.png"]{
+img[src="images/struzzo.png"]{
     width: 50%;
     height: auto;
     margin: 0em 20% 1em;

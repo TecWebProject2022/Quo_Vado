@@ -15,7 +15,7 @@ header h1, header h2:not(section header h2), .skip, nav:not(#breadcrumb), footer
 }
 
 header:not(section header){
-    content: url("css_images/logo.png");  /* DA SEGNARE IN RELAZIONE! */
+    content: url("css_images/logo.png"); 
 }
 
 #breadcrumb {
@@ -82,7 +82,6 @@ li p:not(#nota){
 /*********************************** NEL DETTAGLIO ********************************************************************/
 
 /* Index */
-/* ??? */
 .mini_desc, .link{
     display: none;
 }
@@ -138,7 +137,7 @@ li a, #step_list li p.importante, #step_list li p.quote{
     padding-left: 10px;
 }
 
-img[src="css/css_images/struzzo.png"]{
+img[src="images/struzzo.png"]{
     width: 4cm;
     height: auto;
     float: right;
@@ -147,7 +146,7 @@ img[src="css/css_images/struzzo.png"]{
 
 .motivational{
     margin: 10px;
-    font-family: 'Brush Script MT',cursive;
+    font-weight: bold;
     font-size: 20px;
     line-height: 1.5;
     text-align: center;
@@ -173,7 +172,7 @@ img[src="css/css_images/struzzo.png"]{
     display: inline;
 }
 
-img[src="css/css_images/par_gen.webp"]{
+img[src="images/par_gen.webp"]{
     width: 5cm;
     height: auto;
     margin: 15px 40%;
