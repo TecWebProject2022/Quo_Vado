@@ -1,13 +1,13 @@
 insert into Ateneo (nome, link, citta, regione) values
-('Università degli studi di Bologna', 'www.unibo.it', 'Bologna', 'Emilia Romagna'),
- ('Università degli studi di Padova', 'www.unipd.it', 'Padova', 'Veneto'),
-('Università degli Studi del Molise', 'www.unimol.it', 'Campobasso', 'Molise'),
-('Università Cattolica del Sacro Cuore', 'www.unicatt.it', 'Milano', 'Lombardia'),
-('Università degli studi di Pisa', 'www.unipi.it', 'Pisa', 'Toscana'),
-('Università degli Studi di Perugia', 'www.unipg.it', 'Perugia', 'Umbria'),
-('Politecnico di Bari', 'www.poliba.it', 'Bari', 'Puglia'),
-('Università degli Studi della Tuscia', 'www.unitus.it', 'Viterbo', 'Lazio'),
- ('Università della Calabria', 'www.unical.it', 'Arcavacata di Rende', 'Calabria');
+('Università degli studi di Bologna', 'http://www.unibo.it', 'Bologna', 'Emilia Romagna'),
+ ('Università degli studi di Padova', 'http://www.unipd.it', 'Padova', 'Veneto'),
+('Università degli Studi del Molise', 'http://www.unimol.it', 'Campobasso', 'Molise'),
+('Università Cattolica del Sacro Cuore', 'http://www.unicatt.it', 'Milano', 'Lombardia'),
+('Università degli studi di Pisa', 'http://www.unipi.it', 'Pisa', 'Toscana'),
+('Università degli Studi di Perugia', 'http://www.unipg.it', 'Perugia', 'Umbria'),
+('Politecnico di Bari', 'www.poliba.it', 'http://Bari', 'Puglia'),
+('Università degli Studi della Tuscia', 'http://www.unitus.it', 'Viterbo', 'Lazio'),
+ ('Università della Calabria', 'http://www.unical.it', 'Arcavacata di Rende', 'Calabria');
 
 insert into ClassediLaurea (num_classe, denominazione, illustrazione, area_disciplinare, gruppo_disciplinare, durata) values
 ('L01', 'Lauree in Beni Culturali', 'La classe di laurea in Beni Culturali è una laurea che attira soprattutto coloro che mostrano una spiccata attenzione al patrimonio culturale, alla scrittura e lettura. L’Italia, luogo ricco di beni culturali fornisce ai laureati in Beni Culturali molte possibilità di impiego.', 'Artistica_e_Letteraria', 'Arte e Design', 'triennale'),
