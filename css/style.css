@@ -1400,9 +1400,20 @@ QUESTIONARIO
     background-color: #F29C38;
     color: #162636;
 }
-#questions,#end{
+
+
+.toShow {
+    display: block;
+}
+
+#prevBtn.toShow, #nextBtn.toShow{
+    display: inline;
+}
+
+.toHide, #prevBtn.toHide, #nextBtn.toHide{
     display: none;
 }
+
 
 
 
@@ -1439,10 +1450,6 @@ QUESTIONARIO
 
 .txt{
     padding: 1.5em;
-}
-
-.tab{
-    display: none;
 }
 
 .pag {

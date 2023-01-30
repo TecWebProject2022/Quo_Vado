@@ -1,30 +1,30 @@
 var currentTab = 0; // Imposta la visualizzazione dal primo tab
+showTab(currentTab); // Mostralo
 
 //Predispone la pagina per iniziare il questionario
 function startQuest() { 
-    document.getElementById("begin").classList.replace("toShow", "toHide");
-    document.getElementById("questions").classList.replace("toHide", "toShow");
-    currentTab = 0;
-    showTab(currentTab);
+    document.getElementById("begin").style.display = "none";
+    document.getElementById("questions").style.display = "block";
+    currentTab = 0; 
+    showTab(currentTab); 
 }
 
 //Mostra le varie parti/tab del questionatio
 function showTab(n) {
     // mostra il testo
     var x = document.getElementsByClassName("tab");
-    x[n].classList.replace("toHide","toShow");
+    x[n].style.display = "block";
 
     //sistema i pulsanti di controllo
     if (n == 0) {
-        document.getElementById("prevBtn").classList.replace("toShow","toHide");
-    }
-    else {
-        document.getElementById("prevBtn").classList.replace("toHide","toShow");
-    }
-    if (n < (x.length - 1)) {
-        document.getElementById("nextBtn").innerHTML = "Avanti";
+        document.getElementById("prevBtn").style.display = "none";
     } else {
+        document.getElementById("prevBtn").style.display = "inline";
+    }
+    if (n == (x.length - 1)) {
         document.getElementById("nextBtn").innerHTML = "Fine";
+    } else {
+        document.getElementById("nextBtn").innerHTML = "Avanti";
     }
 
     //aggiusta indicatore di avanzamento
@@ -34,9 +34,9 @@ function showTab(n) {
 
 //avanzamento  e mostra il successivo
 function nextPrev(n) {
-    var x = document.getElementsByClassName("tab");
+var x = document.getElementsByClassName("tab");
     //nasconde tab attuale
-    x[currentTab].classList.replace("toShow","toHide");
+    x[currentTab].style.display = "none";
     // mostra il successivo se esiste
     currentTab = currentTab + n;
     if (currentTab < x.length) {
@@ -60,12 +60,12 @@ x[n].className += " active";
 
 //Esce dal questionario e mostra messaggio finale
 function exitQuest(){
-   document.getElementById("questions").classList.replace("toShow","toHide");
-   document.getElementById("end").classList.replace("toHide","toShow");
+    document.getElementById("questions").style.display = "none";
+    document.getElementById("end").style.display = "block";
 }
 
 //consente di ripetere il questionario
 function reStart(){
-    document.getElementById("end").classList.replace("toShow","toHide");
-    document.getElementById("begin").classList.replace("toHide","toShow");
+    document.getElementById("begin").style.display = "block";
+    document.getElementById("end").style.display = "none";
 }

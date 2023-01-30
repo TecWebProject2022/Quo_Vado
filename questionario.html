@@ -61,7 +61,7 @@
 
     <main id="content">
 
-        <section id="begin" class="questionnaire">
+        <section id="begin" class="questionnaire toShow">
             <header>
                 <h2 lang="en">Keep calm and Answer the Questions</h2>
             </header>
@@ -99,7 +99,7 @@
             
         </section> 
 
-        <section id="questions" class="questionnaire">
+        <section id="questions" class="questionnaire toHide">
             <header>
                 <!-- Per fare i cerchi in basso ad indicare la pagina -->
                     <span class="pag"></span>
@@ -108,7 +108,7 @@
                     <span class="pag"></span>
             </header>
             <div class="section_content">
-                <div class="tab">
+                <div class="tab toHide">
                     <h2><strong>Interessi</strong> e passioni</h2>
                     
                     <dl>
@@ -141,7 +141,7 @@
         
                 </div>
                 
-                <div class="tab">
+                <div class="tab toHide">
                     <h2><strong>Risultati</strong> ottenuti finora</h2>
                     <div class="txt">
                         <p>Rifletti su i <span lang="en">feedback</span> ricevuto ogni volta che ti sei cimentato o cimentata in qualcosa che dovevi o volevi fare; 
@@ -157,7 +157,7 @@
                     </div>
                 </div>
     
-                <div class="tab">
+                <div class="tab toHide">
                     <h2><strong>Punti di forza</strong> e <strong>Punti di debolezza</strong></h2>
                     <div class="txt">
                         <p>Concentrati su quali pensi che siano le tue qualità, in cosa ti senti particolarmente bravo o brava.</p>
@@ -173,7 +173,7 @@
                     </div>
                 </div>
                     
-                <div class="tab">
+                <div class="tab toHide">
                     <h2><strong>Ambizioni</strong></h2>
                     <div class="txt">
                         <p>Che <strong>obiettivi</strong> ti poni nella vita, cosa <strong>sogni</strong> di diventare, se pensi al te o alla te del futuro come te lo immagini o te la immagini:</p>
@@ -190,13 +190,13 @@
 
             <footer>
                 <nav aria-label="controllo avanzamento">
-                    <button type="button" id="prevBtn" onclick="nextPrev(-1)">Indietro</button>
-                    <button type="button" id="nextBtn" onclick="nextPrev(1)">Avanti</button>
+                    <button type="button" id="prevBtn" class="toShow" onclick="nextPrev(-1)">Indietro</button>
+                    <button type="button" id="nextBtn" class="toShow" onclick="nextPrev(1)">Avanti</button>
                 </nav>
             </footer>                
         </section>
 
-        <section id="end" class="questionnaire none">
+        <section id="end" class="questionnaire toHide">
             <header>
                 <h2 class="motivational">Ottimo!</h2>
             </header>
