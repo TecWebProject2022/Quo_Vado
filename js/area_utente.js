@@ -155,7 +155,7 @@ function Ondate(){
     if(punteggio.value<1 || punteggio.value>5){
        
        var a=document.createElement('strong');
-       a.appendChild(document.createTextNode("Il campo il campo punteggio scuola di provenienza deve compreso tra 1 e 5 "));
+       a.appendChild(document.createTextNode("Il campo punteggio scuola di provenienza deve compreso tra 1 e 5 "));
        a.classList.add('errorjs');
        parent.appendChild(a);
        punteggio.focus();
