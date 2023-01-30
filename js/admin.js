@@ -1,14 +1,15 @@
 function Box_Validate(){
-    var box=document.getElementsByName('commento[]'); // è una lista quindi devo verificare se esiste al meno un elemento selezionato altrimenti do un errore
+    var box=document.getElementsByName('commento[]');
+    var parent= box[0].parentNode;
+    if(parent.children.length==2){
+        parent.removeChild(parent.children[1]);
+    } // è una lista quindi devo verificare se esiste al meno un elemento selezionato altrimenti do un errore
     for(var i=0; i<box.length; i++){
         if(box[i].checked){
             return true;
         }
     }
-    var parent= box[0].parentNode;
-    if(parent.children.length==2){
-        parent.removeChild(parent.children[1]);
-    }
+    
     var a=document.createElement('strong');
        a.appendChild(document.createTextNode("Selezionare un commento per cancellarlo"));
        a.classList.add('errorjs');
