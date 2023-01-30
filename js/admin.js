@@ -162,7 +162,7 @@ function Add(){
         }
         if(!accesso.value.length){
             var a=document.createElement('strong');
-            a.appendChild(document.createTextNode("Il campo acesso  non può essere vuoto"));
+            a.appendChild(document.createTextNode("Il campo accesso  non può essere vuoto"));
             a.classList.add('errorjs');
             parent.appendChild(a);
             accesso.focus();

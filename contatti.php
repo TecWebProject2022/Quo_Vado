@@ -12,7 +12,7 @@ if(isset($_POST['submit'])){
         $errori.='<p class="error">Il campo email non corrisponde ad una email valida</p>';
     }
     if(!preg_match('/^[ !?@a-zA-Z0-9.,_-]{10,400}$/',$commento)){
-        $errori.='<p class="error">Il campo commento/mesaggio può contenere da 10 a 400 caratteri (sono amessi i nuemri da 0 a 9 e i seguenti simboli: .,_-!?@)</p>';
+        $errori.='<p class="error">Il campo commento/mesaggio può contenere da 10 a 400 caratteri (sono amessi i numeri da 0 a 9 e i seguenti simboli: .,_-!?@)</p>';
     }
     if($errori==""){
         $db=new Connection();

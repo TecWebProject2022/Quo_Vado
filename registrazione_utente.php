@@ -28,7 +28,7 @@ if(isset($_POST['submit'])){
         $errori.='<li class="error">Il campo cognome non può essere vuoto e può contenere numeri o caratteri speciali, deve avere una lunghezza compresa da 2 a 40 caratteri</li>';
     }
     if(!preg_match('/\d{4}\-\d{2}\-\d{2}/',$data)){
-        $errori.='<li class="error">La data  inserita non rispetta il seguente schema: dd/mm/aaaa</li>';
+        $errori.='<li class="error">La data  inserita non rispetta il seguente schema: gg/mm/aaaa</li>';
     }
     if (!preg_match('/^[@a-zA-Z0-9._-]{4,40}$/',$username)){
         $errori.='<li class="error">Il campo username  non può essere vuoto e  non può contenere spazzi e deve contenere da 4 a 40 caratteri alfanumerici (sono ammessi i seguenti caratteri: @ . _ - )</li>';

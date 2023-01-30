@@ -57,6 +57,7 @@
     <main id="content">
         <h1 class="area_riservata">REGISTRAZIONE</h1>
         <p class="formdesc center" id="registrazione">Per effettuare una nuova registrazione compila tutti i campi sottostanti</p>
+        <errori/>
         <form aria-describedby="registrazione" id="registrazioneform" action="registrazione_utente.php"  onsubmit=" return Validate()" method="post">
                 
             <fieldset id="set_personal_data">
@@ -74,9 +75,9 @@
                         data-msg-invalid="Il cognome deve essere compreso da 3 a 30 caratteri e non può contenere numeri o caratteri speciali" /></span>
                         
                 <label for="birthday">Data di nascita: </label>
-                <span><input type="date" name="birthday" id="birthday" value="<valoreDataNascita/>" min="1900-01-01"                 
+                <span><input type="date" name="birthday" id="birthday" value="<valoreDataNascita/>" min="1960-01-01"                 
                     data-msg-empty="Data di nascita non inserita. Per favore, inserisci la tua data di nascita"
-                    data-msg-invalid="Formato non corretto, inserire un a data compresa tra il 01/01/1900 e oggi" /></span>  
+                    data-msg-invalid="Formato non corretto, inserire un a data compresa tra il 01-01-1960 e oggi" /></span>  
 
                 <label for="gender">Genere: </label>
                 <span><select  name="gender" id="gender" data-msg-empty="Genere non inserito. Per favore, inserisci il tuo genere">
@@ -118,7 +119,7 @@
             
             </fieldset>
        </form>
-       <errori/>
+      
        <p id="redirect_login">Hai già un <span lang="en">account</span>? <a href="login.php">Accedi</a></p>
     </main>
     
