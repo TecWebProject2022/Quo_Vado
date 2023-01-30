@@ -335,7 +335,7 @@ else{
 if(isset($_POST['submit2']) && check()){
     $commenti='<ul class="error">';
     $_SESSION['commenti']='';
-    $cancella=isset($_POST['commento']) ? PulisciInput($_POST['commento']): '';
+    $cancella=isset($_POST['commento']) ? $_POST['commento']: '';
     
     if(!$cancella){
      $commenti.='<li>Selezionare un commento o dei commenti per cancellarli</li>';

@@ -4,8 +4,8 @@ insert into Ateneo (nome, link, citta, regione) values
 ('Università degli Studi del Molise', 'http://www.unimol.it', 'Campobasso', 'Molise'),
 ('Università Cattolica del Sacro Cuore', 'http://www.unicatt.it', 'Milano', 'Lombardia'),
 ('Università degli studi di Pisa', 'http://www.unipi.it', 'Pisa', 'Toscana'),
-('Università degli Studi di Perugia', 'http://www.unipg.it', 'Perugia', 'Umbria'),
-('Politecnico di Bari', 'www.poliba.it', 'http://Bari', 'Puglia'),
+('Università degli Studi di Perugia', 'https://www.unipg.it', 'Perugia', 'Umbria'),
+('Politecnico di Bari', 'http://www.poliba.it', 'Bari', 'Puglia'),
 ('Università degli Studi della Tuscia', 'http://www.unitus.it', 'Viterbo', 'Lazio'),
  ('Università della Calabria', 'http://www.unical.it', 'Arcavacata di Rende', 'Calabria');
 

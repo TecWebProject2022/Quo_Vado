@@ -159,16 +159,18 @@ $db=new Connection();
                 $contenuto.='<p class="invito"><a href="registrazione_utente.php">Iscriviti</a> o <a href="login.php">Accedi</a> per lasciare un commento!</p>';
             }
             else{
-                $query_iscrizione='SELECT nome_utente,corso FROM Iscrizione WHERE classe = "'.$target.'" AND nome_utente="'.PulisciInput($_SESSION['user']).'";';
+                $query_iscrizione='SELECT nome_utente,corso FROM Iscrizione WHERE classe = "'.$target.'" AND nome_utente="'.$_SESSION['user'].'";';
                 if(!$iscritto=$db->ExecQueryAssoc($query_iscrizione)){
                     if($_SESSION['user']!='admin'){
+                        
                         $Com='<p class="invito">Ciao '.$_SESSION['user'].', per lasciare un commento aggiungi il corso di laurea appartenente alla classe '.$classe.' che hai frequentato nella tua <a href="area_utente.php">area personale</a>!</p>';
-                    }else{
-                        $Com='<p class="invito">Gestisci i corsi e i commenti della classe di laurea '.$classe.' dal <a href="area_admin.php">pannello di controllo</a>!</p>';
                     }
                 }
                 else{
-                    $Com='';
+                    $query="SELECT * FROM Valutazione where nome_utente=\"".$_SESSION['user']."\" and classe_laurea=\"".$target."\"";
+                        if($d=$db->ExecQueryAssoc($query)){
+                            $Com='<p class="invito">Ciao '.$_SESSION['user'].', per lasciare un commento accedi alla  tua <a href="area_utente.php">area personale</a>!</p>';
+                        }
                 }
             }
         }
