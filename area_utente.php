@@ -126,7 +126,7 @@ $query3="Select classe_laurea,datav,commento,p_complessivo,p_acc_fisica,p_serviz
 if($res3=$db->ExecQueryNum($query3)){
 
     $contenuto.="<p id=\"cancellacomm\" class=\"formdesc\">Seleziona un commento e clicca &quot;cancella&quot; per eliminarlo</p>";
-    $contenuto.='<form id="form_cancellacomm" aria-describedby="cancellacomm" action="area_utente.php" method="post" onsubmit="return OnDelete()">
+    $contenuto.='</commenterror><form id="form_cancellacomm" aria-describedby="cancellacomm" action="area_utente.php" method="post" onsubmit="return OnDelete()">
     <fieldset><legend class="field_legend">Commenti</legend>';
     /*flexbox esterna*/
     $contenuto.="<ul id=\"commrilasc\">";
@@ -150,7 +150,7 @@ if($res3=$db->ExecQueryNum($query3)){
     }
 
     $contenuto.="</ul>";
-    $contenuto.='<input type="submit"   id="canc" class="submit" name="submit2" value="cancella"/></fieldset></form></commenterror>';
+    $contenuto.='<input type="submit"   id="canc" class="submit" name="submit2" value="cancella"/></fieldset></form>';
     
 }
 else{

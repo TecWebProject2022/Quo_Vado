@@ -81,6 +81,7 @@ if($dbOK){
     $formSelezioneCommenti.='
     <h2 id="Cancella" class="titles_area_classi">Eliminazione commenti</h2>
     <p id="formTrovaCommenti" class="formdesc">Inserisci nome utente o classe di laurea dei commenti che vuoi ricercare</p>
+       <msgCommenti/>
         <form aria-describedby="formTrovaCommenti" id="formTrovaCommentiform" action="area_admin.php#formEliminaCommenti" method="post" onsubmit=" return Cancella()">
             <fieldset>
                 <legend class="field_legend">Trova i commenti da eliminare</legend>
@@ -145,11 +146,11 @@ if($dbOK){
                     $formCommenti.="</ul>";
                     $formCommenti.='<input type="submit" class="submit" id="delete_commento" name="delete_commento"  value="elimina commenti selezionati"/></fieldset></form>';
                 }else{
-                    $msgCommenti.='<p class="error">nessun commento</p>';
+                    $msgCommenti.='<p class="error">E\' presente nessun commento in base al campo inserito</p>';
                 }
             }else{
                 #nessun valore inserito nel form perla ricerca
-                $msgCommenti.='<p class="error">riempire almeno uno dei due campi</p>';
+                $msgCommenti.='<p class="error">E\' necessario riempire almeno uno dei due campi</p>';
             } 
         }  
     }
@@ -221,27 +222,27 @@ if($dbOK){
         $_SESSION['add_link']=$link;
         if (!preg_match('/^(L|LM)[0-9]{2}$/',$classe)){
             $msgCorso.='<li class="error"></li>';
-            $_SESSION['add']='<p class="error">La classe di laurea non può essere vuoto o contenere spazi.Le classi di laurea vanno dalla L01 alla L43 e dalla LM01 alla LM94</p>';
+            $_SESSION['add'].='<p class="error">La classe di laurea non può essere vuoto o contenere spazi.Le classi di laurea vanno dalla L01 alla L43 e dalla LM01 alla LM94</p>';
             header("Location:area_admin.php#formCorsi");
         }
         if (!preg_match('/^(Accesso programmato|Accesso libero con prova|Accesso a numero chiuso|Accesso libero cronologico)$/',$accesso)){
             $msgCorso.='<li class="error"></li>';
-            $_SESSION['add']='<p class="error">Le modalita di accesso sono Accesso programmato,Accesso libero con prova,Accesso a numero chiuso,Accesso libero cronologico4</p>';
+            $_SESSION['add'].='<p class="error">Le modalita di accesso sono Accesso programmato,Accesso libero con prova,Accesso a numero chiuso,Accesso libero cronologico4</p>';
             header("Location:area_admin.php#formCorsi");
         }
         if (!preg_match('/^[a-zA-ZÀ-ÿ\s]{1,50}$/',$ateneo)){
             $msgCorso.='<li class="error"></li>';
-            $_SESSION['add']='<p class="error">Il nome dell\'ateneo non può essere vuoto o contenere numeri o caratteri speciali</p>';
+            $_SESSION['add'].='<p class="error">Il nome dell\'ateneo non può essere vuoto o contenere numeri o caratteri speciali</p>';
             header("Location:area_admin.php#formCorsi");
         }
         if (!preg_match('/^[a-zA-ZÀ-ÿ\s]{1,50}$/',$nome)){
             $msgCorso.='<li class="error"></li>';
-            $_SESSION['add']='<p class="error">Il nome del corso di laurea non può essere vuoto o contenere numeri o caratteri speciali</p>';
+            $_SESSION['add'].='<p class="error">Il nome del corso di laurea non può essere vuoto o contenere numeri o caratteri speciali</p>';
             header("Location:area_admin.php#formCorsi");
         }
         if(!filter_var($link, FILTER_VALIDATE_URL)){
             $msgCorso.='<li class="error"></li>';
-            $_SESSION['add']='<p class="error">Indirizzo <span lang="en">web</span> non valido, inserire un url corretto</p>';
+            $_SESSION['add'].='<p class="error">Indirizzo <span lang="en">web</span> non valido, inserire un <span lang="en">url</span> corretto</p>';
             header("Location:area_admin.php#formCorsi");
         }
         if(!$msgCorso){
@@ -256,7 +257,7 @@ if($dbOK){
                     header("Location:area_admin.php");
                 }else{
                    
-                    $_SESSION['add']='<p class="error">Corso  '.$nome.' già presente </p>';
+                    $_SESSION['add'].='<p class="error">Corso  '.$nome.' già presente </p>';
                     header("Location:area_admin.php#formCorsi");
                 }
             
@@ -273,17 +274,17 @@ if($dbOK){
             #controlli sulle variabili
             if (!preg_match('/^(L|LM)[0-9]{2}$/',$classe)){
                 $msgCorso.='<li class="error"></li>';
-                $_SESSION['add']='<p class="error">La classe di laurea non può essere vuoto o contenere spazi.Le classi di laurea vanno dalla classe L01 alla L43 e dalla LM01 alla LM94</p>';
+                $_SESSION['add'].='<p class="error">La classe di laurea non può essere vuoto o contenere spazi.Le classi di laurea vanno dalla classe L01 alla L43 e dalla LM01 alla LM94</p>';
                 header("Location:area_admin.php#formCorsi");
             }
             if (!preg_match('/^[a-zA-ZÀ-ÿ\s]{1,50}$/',$ateneo)){
                 $msgCorso.='<li class="error"></li>';
-                $_SESSION['add']='<p class="error">Il nome dell\'ateneo non può essere vuoto o contenere numeri o caratteri speciali</p>';
+                $_SESSION['add'].='<p class="error">Il nome dell\'ateneo non può essere vuoto o contenere numeri o caratteri speciali</p>';
                 header("Location:area_admin.php#formCorsi");
             }
             if (!preg_match('/^[a-zA-ZÀ-ÿ\s]{1,80}$/',$nome)){
                 $msgCorso.='<li class="error"></li>';
-                $_SESSION['add']='<p class="error">Il nome del corso di laurea non può essere vuoto o contenere numeri o caratteri speciali</p>';
+                $_SESSION['add'].='<p class="error">Il nome del corso di laurea non può essere vuoto o contenere numeri o caratteri speciali</p>';
                 header("Location:area_admin.php#formCorsi");
             }
 
@@ -294,7 +295,7 @@ if($dbOK){
                     $_SESSION['info'].='<p class="invito">'.$nome.' rimosso con successo</p>';
                     header("Location:area_admin.php");
                 }else{
-                    $_SESSION['add']='<p class="error">Il corso risulta inesistente</p>';
+                    $_SESSION['add'].='<p class="error">Il corso risulta inesistente</p>';
                     header("Location:area_admin.php#formCorsi");
                 }
             }
@@ -330,17 +331,17 @@ if($dbOK){
         
         if (!preg_match('/^[@a-zA-Z0-9._-]{4,20}$/',$vecchia)){
             $msgPassword.='<li class="error"></li>';
-            $_SESSION['password']='<p class="error">Il campo vecchia <span lang="en">password</span> non può essere vuoto e non può contenere spazi e deve contenere da 4 a 20 caratteri alfanumerici (sono ammessi i seguenti caratteri: @ . _ - )</p>';
+            $_SESSION['password'].='<p class="error">Il campo vecchia <span lang="en">password</span> non può essere vuoto e non può contenere spazi e deve contenere da 4 a 20 caratteri alfanumerici (sono ammessi i seguenti caratteri: @ . _ - )</p>';
              header("Location:area_admin.php#form_passw");
         }
         if (!preg_match('/^[@a-zA-Z0-9._-]{4,20}$/',$nuova)){
             $msgPassword.='<li class="error"></li>';
-            $_SESSION['password']='<p class="error">Il campo nuova <span lang="en">password</span> non può essere vuoto e non può contenere spazzi e deve contenere da 4 a 20 caratteri alfanumerici (sono ammessi i seguenti caratteri: @ . _ - )</p>';
+            $_SESSION['password'].='<p class="error">Il campo nuova <span lang="en">password</span> non può essere vuoto e non può contenere spazzi e deve contenere da 4 a 20 caratteri alfanumerici (sono ammessi i seguenti caratteri: @ . _ - )</p>';
             header("Location:area_admin.php#form_passw");
         }
         if($nuova!=$rep){
             $msgPassword.='<li class="error"></li>';
-            $_SESSION['password']='<p class="error">Il campo nuova <span lang="en">password</span> e ripeti la <span lang="en">password</span> non corrispondono</p>';
+            $_SESSION['password'].='<p class="error">Il campo nuova <span lang="en">password</span> e ripeti la <span lang="en">password</span> non corrispondono</p>';
             header("Location:area_admin.php#form_passw");
         }
         
@@ -348,7 +349,7 @@ if($dbOK){
             $query="Select * from Credenziale where utente='admin' && pw=\"".$nuova."\";";
             if($r=$db->ExecQueryAssoc($query)){
                
-                $_SESSION['password']='<p class="error"><span lang="en">Password</span> già usata</p>';
+                $_SESSION['password'].='<p class="error"><span lang="en">Password</span> già usata</p>';
                 header("Location:area_admin.php#form_passw");
             }else{
                 $query_controllo_pw="Select * from Credenziale where utente='admin' && pw=\"".$vecchia."\";";
@@ -360,12 +361,12 @@ if($dbOK){
                         unset($_SESSION['password']);
                         header("Location:area_admin.php");
                     }else{
-                        $_SESSION['password']='<p class="error">Cambiamento <span lang="en">password</span> non riuscito</p>';
+                        $_SESSION['password'].='<p class="error">Cambiamento <span lang="en">password</span> non riuscito</p>';
                         header("Location:area_admin.php#form_passw");
                     } 
                 }else{
                    
-                    $_SESSION['password']='<p class="error">La vecchia password non corrisponde</p>';
+                    $_SESSION['password'].='<p class="error">La vecchia password non corrisponde</p>';
                     header("Location:area_admin.php#form_passw");
                 }
             }

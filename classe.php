@@ -168,7 +168,7 @@ $db=new Connection();
                 }
                 else{
                     $query="SELECT * FROM Valutazione where nome_utente=\"".$_SESSION['user']."\" and classe_laurea=\"".$target."\"";
-                        if($d=$db->ExecQueryAssoc($query)){
+                        if(!$d=$db->ExecQueryAssoc($query)){
                             $Com='<p class="invito">Ciao '.$_SESSION['user'].', per lasciare un commento accedi alla  tua <a href="area_utente.php">area personale</a>!</p>';
                         }
                 }
