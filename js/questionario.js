@@ -1,3 +1,31 @@
+function VerificaJS(){
+    // gestione menù 
+	var mini = document.getElementsByClassName('minimenu');
+	mini[0].setAttribute('id', 'menu-content');
+	mini[0].classList.add('not_view');
+
+    // imposta wizard
+    document.getElementById("begin").classList.add("toShow");
+    document.getElementById("questions").classList.add("toHide");
+    document.getElementById("end").classList.add("toHide");
+
+    var t = document.getElementsByClassName("tab");
+    for (var i=0; i<t.length; i++){
+        t[i].classList.add("toHide");
+    }
+}
+
+function View(){
+	var minimenu = document.getElementById('menu-content');
+	if(minimenu.classList.contains('not_view')){
+		minimenu.classList.remove('not_view');
+	}
+	else{
+		minimenu.classList.add('not_view');
+	}
+}
+
+
 var currentTab = 0; // Imposta la visualizzazione dal primo tab
 
 //Predispone la pagina per iniziare il questionario
