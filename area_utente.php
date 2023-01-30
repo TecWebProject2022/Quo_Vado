@@ -356,7 +356,7 @@ if(isset($_POST['submit2']) && check()){
             }
         }
         if($r==true){
-            $_SESSION['info'].="<p if=\"ok\" class=\"invito\">Cancellazione avvenuta con successo</p>";
+            $_SESSION['info'].="<p id=\"ok\" class=\"invito\">Cancellazione avvenuta con successo</p>";
             unset($_SESSION['commenti']);
             header('Location:area_utente.php#ok');
         }
