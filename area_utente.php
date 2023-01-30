@@ -434,7 +434,7 @@ if(isset($_POST['submit1']) && check()){
             }
             else{
                
-                $_SESSION['errori1'].='<p class="error">La vecchia  <span lang="en">password<7span> inserita non corrisponde</p>';
+                $_SESSION['errori1'].='<p class="error">La vecchia  <span lang="en">password</span> inserita non corrisponde</p>';
                 header('Location:area_utente.php#form_passw');
             }
             

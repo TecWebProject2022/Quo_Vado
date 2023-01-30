@@ -197,7 +197,7 @@ if($dbOK){
                     unset($_SESSION['nome_admin']);
                     header("Location:area_admin.php#formCorsi");
                 }else{
-                    $_SESSION['add']='<p class="error">Si è verificato un errori ai nostri servizi, commento dell\'utente '.$userdata[0].' non eliminato</p>';
+                    $_SESSION['add']='<p class="error">Cancellazione non riuscita</p>';
                     header("Location:area_admin.php#formCorsi");
                 }
             }
@@ -246,8 +246,7 @@ if($dbOK){
         }
         if(!$msgCorso){
             # tutte le variabili sono istanziate e valide
-            $query_controllo_ateneo="SELECT * FROM Ateneo WHERE nome ='".$ateneo."';";
-            if($db->ExecQueryAssoc($query_controllo_ateneo)){
+           
                 $query_insert_corso="INSERT INTO CorsodiStudio(ateneo,classe_laurea,nome,accesso,link) VALUES ('".$ateneo."','".$classe."','".$nome."','".$accesso."','".$link."');";
                 if($db->Insert($query_insert_corso)){
                     $_SESSION['info'].='<p class="invito">'.$nome.' aggiunto con successo</p>';
@@ -260,10 +259,7 @@ if($dbOK){
                     $_SESSION['add']='<p class="error">Corso  '.$nome.' già presente </p>';
                     header("Location:area_admin.php#formCorsi");
                 }
-            }else{
-                $_SESSION['add']='<p class="error">Inserimento di '.$nome.' non riuscito, '.$ateneo.' non presente nella lista atenei, riprova</p>';
-                header("Location:area_admin.php#formCorsi");
-            }
+            
         }else{
             $msgCorso='<ul>'.$msgCorso.'</ul>';
         }
@@ -298,7 +294,6 @@ if($dbOK){
                     $_SESSION['info'].='<p class="invito">'.$nome.' rimosso con successo</p>';
                     header("Location:area_admin.php");
                 }else{
-                    $msgCorso.='<p class="error">Il corso risulta inesistente</p>';
                     $_SESSION['add']='<p class="error">Il corso risulta inesistente</p>';
                     header("Location:area_admin.php#formCorsi");
                 }
@@ -327,9 +322,8 @@ if($dbOK){
         $vecchia=PulisciInput($_POST['Vecchiapassword']);
         $nuova=PulisciInput($_POST['newpassword']);
         $_SESSION['nuova']=$nuova;
-        echo  $_SESSION['nuova'];
         $_SESSION['vecchia']=$vecchia;
-        echo $vecchia;
+       
 
 
         $rep=PulisciInput($_POST['repepassword']);
@@ -366,7 +360,7 @@ if($dbOK){
                         unset($_SESSION['password']);
                         header("Location:area_admin.php");
                     }else{
-                        $_SESSION['password']='<p class="error">Cambiamento <span lang="en">password</span> non riuscito, Contattaci per avere un supporto</p>';
+                        $_SESSION['password']='<p class="error">Cambiamento <span lang="en">password</span> non riuscito</p>';
                         header("Location:area_admin.php#form_passw");
                     } 
                 }else{
