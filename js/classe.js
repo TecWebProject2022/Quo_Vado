@@ -1,6 +1,7 @@
 
 function Validate(){
    var filtro=document.getElementsByName('filtri[]');
+   var parent=filtro[0].parentNode;
    if(parent.children.length==2){
     parent.removeChild(parent.children[1]);
 }
@@ -9,7 +10,7 @@ function Validate(){
     return true;
    }
    }
-   var parent=filtro[0].parentNode;
+   
    
     var a=document.createElement('strong');
    a.appendChild(document.createTextNode("Selezionare almeno un filtro"));
