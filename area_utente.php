@@ -314,7 +314,7 @@ if(isset($_POST['submit5']) && check()){
 }
 else{
     $_SESSION['error']='<p class="error">Inserimento non riuscito</p>';
-    $errori.="<p  class=\"error\">Inserimento  non riuscito</p>";
+   
    }
     }
     else{
@@ -333,12 +333,12 @@ else{
 }
 }
 if(isset($_POST['submit2']) && check()){
-    $commenti='<ul class="error">';
+   
     $_SESSION['commenti']='';
     $cancella=isset($_POST['commento']) ? $_POST['commento']: '';
     
     if(!$cancella){
-     $commenti.='<li>Selezionare un commento o dei commenti per cancellarli</li>';
+
      $_SESSION['commenti'].="<p class='error'>Cancellazione  non riuscita</p>";
     header('Location:area_utente.php#commenti');
     }
@@ -383,23 +383,22 @@ if(isset($_POST['submit1']) && check()){
     $_SESSION['vecchia']=$vecchia;
     $_SESSION['nuova']=$nuova;
     if (!preg_match('/^[@a-zA-Z0-9._-]{4,20}$/',$vecchia)){
-        $errori1.='<li>Il campo vecchia password non può essere vuoto e non può contenere spazzi e deve contenere da 4 a 20 caratteri alfanumerici (sono ammessi i seguenti caratteri: @ . _ - )</li>';
+        $errori1.="<p class=\"error\">Errore nell'aggiornamento della password</p>";
         $_SESSION['errori1'].='<p class="error">Il campo vecchia  <span lang="en">password</span> non può essere vuoto e non può contenere spazzi e deve contenere da 4 a 20 caratteri alfanumerici (sono ammessi i seguenti caratteri: @ . _ - )</p>';
-        $errori.="<p class=\"error\">Errore nell'aggiornamento della password</p>";
+       
         header('Location:area_utente.php#form_passw');
         
     }
     if (!preg_match('/^[@a-zA-Z0-9._-]{4,20}$/',$nuova)){
-        $errori1='<li>Il campo vecchia password non può essere vuoto e non può contenere spazzi e deve contenere da 4 a 20 caratteri alfanumerici (sono ammessi i seguenti caratteri: @ . _ - )</li>';
+        $errori1.="<p class=\"error\">Errore nell'aggiornamento della password</p>";
         $_SESSION['errori1'].='<p class="error">Il campo nuova  <span lang="en">password</span> non può essere vuoto e non può contenere spazzi e deve contenere da 4 a 20 caratteri alfanumerici (sono ammessi i seguenti caratteri: @ . _ - )</p>';
-        $errori.="<p class=\"error\">Errore nell'aggiornamento della password</p>";
         header('Location:area_utente.php#form_passw');
         
     }
     if($nuova!=$rep){
         $errori1.="<p class=\"error\">Errore nell'aggiornamento della password</p>";
         $_SESSION['errori1'].='<p class="error">Il campo nuova  <span lang="en">password</span> e ripeti la  <span lang="en">password</span> non corrispondono</p>';
-        $errori.="<p class=\"error\">Errore nell'aggiornamento della password</p>";
+       
         header('Location:area_utente.php#form_passw');
         
     }
@@ -409,8 +408,7 @@ if(isset($_POST['submit1']) && check()){
         if($dbOK){
             $query="Select * from Credenziale where utente=\"".$user."\" && pw=\"".$nuova."\";";
             if($r=$db->ExecQueryAssoc($query)){
-                $errori1.="<li>Password già usata</li>";
-                $errori.="<p class=\"error\">Errore nell'aggiornamento della password</p>";
+               
                 $_SESSION['errori1'].='<p class="error"> <span lang="en">Password</span> già usata</p>';
                 header('Location:area_utente.php#form_passw');
             }
@@ -429,13 +427,13 @@ if(isset($_POST['submit1']) && check()){
                     
                 }
                 else{
-                    $errori."<p class=\"error\">Al momento non è possibile modificare la password</p>";
+                   
                     $_SESSION['errori1'].='<p class="error">Al momento non è possibile modificare la  <span lang="en">password</span></p>';
                     header('Location:area_utente.php#form_passw');
                 } 
             }
             else{
-                $errori.="<p class=\"error\">La vecchia password inserita non corrisponde</p>";
+               
                 $_SESSION['errori1'].='<p class="error">La vecchia  <span lang="en">password<7span> inserita non corrisponde</p>';
                 header('Location:area_utente.php#form_passw');
             }
@@ -496,9 +494,7 @@ if($errorf=='<ul class="error">'){
     if($dbOK){
         $check="Select * from  Valutazione where nome_utente=\"".$user."\" && classe_laurea=\"".$classlaurea."\" && tag=\"".$tag."\";";
         if($r=$db->ExecQueryAssoc($check)){
-            $_SESSION['errorf'].='<p class="error">Commento già risaliscato per questa calsse di laurea</p>';
-            $errorf.="<li>Commento già risaliscato per questa calsse di laurea</li>";
-            $errori.="<p class=\"error\">Errore nell'inserimento del commento</p>";
+            $_SESSION['errorf'].='<p class="error">Commento già risaliscato per questo settore della classe di laurea</p>';
             header('Location:area_utente.php#form_aggiungicomm');
         }
         else{
@@ -512,7 +508,6 @@ if($errorf=='<ul class="error">'){
        }
        else{
         $_SESSION['errorf'].='<p class="error">Al momento non è possibile inserire commenti</p>';
-        $errori.="<p class=\"error\">Al momento non è possibile inserire commenti</p>";
         header('Location:area_utente.php#form_aggiungicomm');
        }
     }
@@ -520,17 +515,13 @@ if($errorf=='<ul class="error">'){
     }
     else{
         $_SESSION['errorf'].='<p class="error">Spiacenti ma i nostri servizi sono momentaneamente non disponibili</p>'; 
-        $errorf.="<li>Spiacenti ma i nostri servizi sono momentaneamente non disponibili</li>"; 
-        $errori.="<p class=\"error\">Al momento non è possibile inserire commenti</p>";
         header('Location:area_utente.php#aggiungi');
         
     }
 
 }
 }
-if(!isset($errori1)){
-    $errori1='';
-}
+
 if(!isset($_SESSION['errori1'])){
     $_SESSION['errori1']='';
 }
