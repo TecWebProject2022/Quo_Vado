@@ -4,18 +4,17 @@ require_once 'database.php';
 $email='';
 $commento='';
 $info='';
-$errori='<ul class="error">';
-
+$errori='';
 if(isset($_POST['submit'])){
     $email=PulisciInput($_POST['email']);
     $commento=isset($_POST['commento']) ? PulisciInput($_POST['commento']) : "";
     if(!preg_match('/^([\w\-\+\.]+)\@([\w\-\+\.]+)\.([\w\-\+\.]+)$/',$email)){
-        $errori.='<li>Il campo email non corrisponde ad una email valida</li>';
+        $errori.='<p class="error">Il campo email non corrisponde ad una email valida</p>';
     }
     if(!preg_match('/^[ !?@a-zA-Z0-9.,_-]{10,400}$/',$commento)){
-        $errori.='<li>Il campo commento/mesaggio può contenere da 10 a 500 caratteri (sono amessi i nuemri da 0 a 9 e i seguenti simboli: .,_-!?@)</li>';
+        $errori.='<p class="error">Il campo commento/mesaggio può contenere da 10 a 400 caratteri (sono amessi i nuemri da 0 a 9 e i seguenti simboli: .,_-!?@)</p>';
     }
-    if($errori=="<ul class=\"error\">"){
+    if($errori==""){
         $db=new Connection();
         $dbOK=$db->Connect();
         if($dbOK){
@@ -30,15 +29,14 @@ if(isset($_POST['submit'])){
                 $errori='';
             }
             else{
-                $errori.="<li>Inserimento non riuscito</li>";
+                $errori.="<<p class=\"error\">>Inserimento non riuscito</p>";
             }
         }
         else{
-            $errori.="<li>Connessione non riuscita</li>";
+            $errori.="<p class=\"error\">Connessione non riuscita</p>";
         }
     }
 }
-$errori.='</ul>';
 $content=file_get_contents('contatti.html');
 $content=str_replace('<valoreEmail/>',$email,$content);
 $content=str_replace('<valoreMessagio/>',$commento,$content);
