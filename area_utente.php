@@ -339,7 +339,7 @@ if(isset($_POST['submit2']) && check()){
     
     if(!$cancella){
 
-     $_SESSION['commenti'].="<p class='error'>Cancellazione  non riuscita</p>";
+     $_SESSION['commenti'].="<p class='error'>Selezionare un commento per cancellarlo</p>";
     header('Location:area_utente.php#commenti');
     }
     else{
