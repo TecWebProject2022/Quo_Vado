@@ -924,7 +924,7 @@ GRUPPI DISCIPLINARI
     flex-flow: row wrap;
     justify-content: flex-start;
     align-items: stretch;
-    margin: 2em 30% 2em 10%;
+    margin: 2em 25% 2em 10%;
     gap: 20px;
     font-family: courier, monospace;
     font-size: 1.4em;
@@ -936,14 +936,14 @@ GRUPPI DISCIPLINARI
 
 .elenco_classi {
     background: #ecebeb;
-    flex-basis: 60%;
+    flex-basis: 50%;
     flex-grow: 1;
     padding: 1.5em;
 }
 
 .gruppo {
     background: #FFFDE8;
-    flex-basis: 26.48%;
+    flex-basis: 27%;
     flex-grow: 1;
     padding: 1.5em;
     box-shadow: 5px 10px 15px rgba(0, 0, 0, 0.25);
