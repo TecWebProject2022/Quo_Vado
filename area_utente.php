@@ -439,6 +439,10 @@ if(isset($_POST['submit1']) && check()){
             
             }
         }
+        else{
+            $_SESSION['errori1'].='<p class="error">Al momento non è possibile modificare la  <span lang="en">password</span></p>';
+            header('Location:area_utente.php#form_passw'); 
+        }
    
     
     }
