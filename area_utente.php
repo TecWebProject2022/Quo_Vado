@@ -210,7 +210,7 @@ $contenuto.='<form id="form_aggiungicomm" aria-describedby="aggiungi_commento" a
 <li><label for="p_insegnamento">Punteggio qualità di insegnamento: </label><span><input  type="number" id="p_insegnamento" name="p_insegnamento" placeholder="1" value="1"
     /></span></li>
 </ul>
-<input type="submit" class="submit" name="submit3" value="pubblica"/>
+<input type="submit" class="submit" id="button_aggiungi" name="submit3" value="pubblica"/>
 </fieldset>
 </form>
 </errorform>';

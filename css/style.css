@@ -1984,7 +1984,6 @@ AREA UTENTE
     text-align: center;
 }
 
-
 /*AGGIUNGI COMMENTO*/
 
 #container_aggiungi {
@@ -2001,6 +2000,10 @@ AREA UTENTE
 #val_list {
     flex-basis: 62%;
     list-style: none;
+}
+
+#button_aggiungi {
+    margin-right: 85%;
 }
 
 #commento{
