@@ -936,15 +936,15 @@ GRUPPI DISCIPLINARI
 
 .elenco_classi {
     background: #ecebeb;
-    flex-grow: 1;
     flex-basis: 60%;
+    flex-grow: 1;
     padding: 1.5em;
 }
 
 .gruppo {
     background: #FFFDE8;
-    flex-grow: 2;
-    flex-basis: 60%;
+    flex-basis: 26.48%;
+    flex-grow: 1;
     padding: 1.5em;
     box-shadow: 5px 10px 15px rgba(0, 0, 0, 0.25);
 }
