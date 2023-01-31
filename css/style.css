@@ -1411,11 +1411,11 @@ button#startBtn, button#nextBtn, #goNext {
     display: block;
 }
 
-#prevBtn.toShow, #nextBtn.toShow{
+#startBtn.toShow,#prevBtn.toShow, #nextBtn.toShow,#endBtn.toShow{
     display: inline;
 }
 
-.toHide, #prevBtn.toHide, #nextBtn.toHide{
+.toHide, #startBtn.toHide, #prevBtn.toHide, #nextBtn.toHide, #endBtn.toHide{
     display: none;
 }
 

@@ -1,7 +1,6 @@
 function VerificaJS(){
     // gestione menù 
 	var mini = document.getElementsByClassName('minimenu');
-	mini[0].setAttribute('id', 'menu-content');
 	mini[0].classList.add('not_view');
 
     // imposta wizard
@@ -12,6 +11,11 @@ function VerificaJS(){
     var t = document.getElementsByClassName("tab");
     for (var i=0; i<t.length; i++){
         t[i].classList.add("toHide");
+    }
+
+    var btn = document.getElementsByTagName("button");
+    for (var i=0; i<btn.length; i++){
+        btn[i].classList.replace("toHide","toShow");
     }
 }
 
