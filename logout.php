@@ -8,6 +8,7 @@ unset($_SESSION['user']);
     unset($_SESSION['data']);
     unset($_SESSION['errori1']);
     unset($_SESSION['commenti']);
+    unset($_SESSION['commento']);
     unset($_SESSION['errorf']);
     unset($_SESSION['query7']);
     unset($_SESSION['nuova']);

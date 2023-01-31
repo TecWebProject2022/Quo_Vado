@@ -10,6 +10,8 @@ if(!isset($_SESSION['user']) || !isset($_SESSION['time']) || time()-$_SESSION['t
     unset($_SESSION['nome_admin']);
     unset($_SESSION['add_nome']);
     unset( $_SESSION['add_link']);
+    unset($_SESSION['nuova']);
+    unset($_SESSION['vecchia']);
     $_SESSION['sessione']='<p class="error">Sessione Scaduta</p>';
     header('Location:login.php');
 }
@@ -196,6 +198,7 @@ if($dbOK){
                 if($db->Insert($query_delete_commenti)){
                     $_SESSION['info'].='<p id="ok" class="invito">Commento dell\'utente '.$userdata[0].' eliminato con successo</p>';
                     unset($_SESSION['nome_admin']);
+                    unset($_SESSION['add']);
                     header("Location:area_admin.php#ok");
                 }else{
                     $_SESSION['add']='<p class="error">Cancellazione non riuscita</p>';
@@ -361,6 +364,8 @@ if($dbOK){
                     if($db->multiInsert($query_update_pw)){
                         $_SESSION['info'].='<p class="invito"><span lang="en">Password</span> modificata con successo</p>';
                         unset($_SESSION['password']);
+                        $_SESSION['nuova']='';
+                        $_SESSION['vecchia']='';
                         header("Location:area_admin.php");
                     }else{
                         $_SESSION['password'].='<p class="error">Cambiamento <span lang="en">password</span> non riuscito</p>';
