@@ -7,7 +7,6 @@ function Conferma_eliminazione(){
 }
 function VerificaJS(){
 	var mini = document.getElementsByClassName('minimenu');
-	mini[0].setAttribute('id', 'menu-content');
 	mini[0].classList.add('not_view');
 }
 
