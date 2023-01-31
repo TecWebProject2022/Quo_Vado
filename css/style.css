@@ -1369,16 +1369,20 @@ QUESTIONARIO
 .questionnaire a:link{
     border: #E07800 3px solid;
     background-color: #162636;
-    color: #E07800;
+    color: #E36600;
     border-radius: 10px;
     margin: 0.5em;
     padding: 0.7em;
-    width: 150px;
     font-variant: small-caps;
     font-size: 1.05em;
     display: inline-block;
     align-items: center;
     text-decoration: none;
+}
+
+#goBack, #goNext{
+    width: 144px;
+    padding: 5px 0;
 }
 
 .questionnaire button{
@@ -1389,6 +1393,7 @@ QUESTIONARIO
     margin: 0.5em;
     padding: 0.7em;
     width: 150px;
+    height: 40px;
     font-variant: small-caps;
     font-size: 1.05em;
     display: inline-block;
@@ -1396,9 +1401,10 @@ QUESTIONARIO
     cursor: pointer;
 }
 
-#startBtn, #nextBtn, #best_choice {
+button#startBtn, button#nextBtn, #goNext {
     background-color: #F29C38;
     color: #162636;
+    border: #E07800 3px solid;
 }
 
 

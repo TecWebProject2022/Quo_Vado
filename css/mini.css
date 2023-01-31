@@ -323,26 +323,6 @@ QUESTIONARIO
     margin-top: 10%;
 }
 
-.questionnaire a:link{
-    margin: 0.2em;
-    padding: 0.4em;
-    width: 120px;
-    height: 32px;
-    font-size: 1em;
-}
-
-.questionnaire button{
-    margin: 0.5em;
-    padding: 0.7em;
-    width: 130px;
-    height: 55px;
-    font-size: 1em;
-}
-
-#best_choice{
-    height: 35px;
-    padding-top: 0.9em;
-}
 
 #questions .section_content h2{
     font-size: 2.5em;
