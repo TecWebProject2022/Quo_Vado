@@ -1865,6 +1865,7 @@ AREA UTENTE
 .center{
     text-align: center;
 }
+
 .formdesc {
     display: block;
     margin-left: 18%;
@@ -1874,6 +1875,11 @@ AREA UTENTE
 
 .field_legend {
     font-variant: small-caps;
+}
+
+#desc_glossario {
+    padding: 2em;
+    border: 1px solid #000000;
 }
 
 /*DATI PERSONALI*/
@@ -1901,12 +1907,11 @@ AREA UTENTE
 }
 
 /*ISCRIZIONI*/
-.invito1{
-    border: 1.5px solid #000000;
-    padding: 2em;
-    margin: 1em 20%;
-    margin-left: 20%;
+
+#desc_glossario {
+
 }
+
 #container_iscrizioni {
     display: flex;
     flex-wrap: wrap;

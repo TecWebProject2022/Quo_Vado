@@ -168,10 +168,10 @@ if($res5=$db->ExecQueryAssoc($query5)){
     $classi.="</select></li>";
 
 $contenuto.='<h2 id="aggiungi" class="titles_area_classi">Aggiungi un commento</h2>';
-$contenuto.='<div  id="aggiungi_commento" class="formdesc"><p>Per lasciare un commento compila i campi sottostanti: ti è consentito lasciare per ogni settore  un solo commento e una valutazione da 1 a 5 per ogni ambito di valutazione delle classe di laurea per le quali ti sei dichiarato iscritto. </p>';
+$contenuto.='<div id="aggiungi_commento" class="formdesc"><p>Per lasciare un commento compila i campi sottostanti: ti è consentito lasciare per ogni settore  un solo commento e una valutazione da 1 a 5 per ogni ambito di valutazione delle classi di laurea per le quali ti sei dichiarato iscritto. </p>';
 $contenuto.='
-<h3 class="formdesc">Glossario</h3>
-<ul class="invito1">
+<h3>Glossario</h3>
+<ul id="desc_glossario">
 <li>Il contenuto testuale del commento dovrà contenere da 10 a 200 caratteri alfanumerici (sono ammessi i seguenti caratteri: @._ - )</li>
 <li>Ambiti di valutazione: </li>
     
@@ -196,22 +196,22 @@ $contenuto.='<form id="form_aggiungicomm" aria-describedby="aggiungi_commento" a
     <option value="2">Commento generale</option></select></span></li>
 </ul>
 <ul id="val_list">
-<li><label for="p_complessivo">Punteggio complessivo :</label><span><input  type="number" id="p_complessivo" name="p_complessivo" placeholder="1" value="1"
+<li><label for="p_complessivo">Punteggio complessivo: </label><span><input  type="number" id="p_complessivo" name="p_complessivo" placeholder="1" value="1"
    /></span></li>
     
-<li><label for="p_acc_fisica">Punteggio accessibilità fisica :</label><span><input  type="number" id="p_acc_fisica" name="p_acc_fisica" placeholder="1" value="1"
+<li><label for="p_acc_fisica">Punteggio accessibilità fisica: </label><span><input  type="number" id="p_acc_fisica" name="p_acc_fisica" placeholder="1" value="1"
    /></span></li>
     
-<li><label for="p_inclusione">Punteggio servizio inclusione:</label><span><input type="number" id="p_inclusione" name="p_inclusione" placeholder="1" value="1" 
+<li><label for="p_inclusione">Punteggio servizio inclusione: </label><span><input type="number" id="p_inclusione" name="p_inclusione" placeholder="1" value="1" 
     /></span></li>
     
 <li><label for="p_tempestivita">Punteggio tempestivita burocratica: </label><span><input type="number" id="p_tempestivita" name="p_tempestivita" placeholder="1" value="1"
     /></span></li>
     
-<li><label for="p_insegnamento">Punteggio qualità di insegnamento :</label><span><input  type="number" id="p_insegnamento" name="p_insegnamento" placeholder="1" value="1"
+<li><label for="p_insegnamento">Punteggio qualità di insegnamento: </label><span><input  type="number" id="p_insegnamento" name="p_insegnamento" placeholder="1" value="1"
     /></span></li>
 </ul>
-<input type="submit" class="submit"  name="submit3" value="pubblica"/>
+<input type="submit" class="submit" name="submit3" value="pubblica"/>
 </fieldset>
 </form>
 </errorform>';
@@ -254,7 +254,7 @@ if(isset($_POST['submit4']) && check()){
         if($r=$db->ExecQueryNum($query7)){
            $_SESSION['data']=$r;
 
-            $form='<p id="selectcorso" class="formdesc">Inserimento per la classe di laurea: '.$_SESSION['LAUREA'].':  seleziona il corso di studi da te frequentato ed inserisci la data di inizio, la data di fine studi e una valutazione da 1 a 5 sull\'affinità della scuola superiore da te frequentata con il corso di studi selezionato</p><form aria-describedby="selectcorso" id="selectcorsoform" action="area_utente.php" onsubmit=" return Ondate()" method="post">';
+            $form='<p id="selectcorso" class="formdesc">INSERIMENTO PER LA CLASSE DI LAUREA '.$_SESSION['LAUREA'].':  seleziona il corso di studi da te frequentato ed inserisci la data di inizio, la data di fine studi e una valutazione da 1 a 5 sull\'affinità della scuola superiore da te frequentata con il corso di studi selezionato</p><form aria-describedby="selectcorso" id="selectcorsoform" action="area_utente.php" onsubmit=" return Ondate()" method="post">';
             $form.="<fieldset><legend class='field_legend'>Seleziona corso di studi</legend>";
             $form.='<label for="corso">Seleziona il corso: </label>';
             $form.='<select class="select" id="corso" name="corso">';
