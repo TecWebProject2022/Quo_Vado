@@ -9,7 +9,7 @@ $scuola='';
 $username='';
 $password='';
 $rippassword='';
-$errori='<ul>';
+$errori='';
 $content=file_get_contents('registrazione_utente.html');
 
 if(isset($_POST['submit'])){
@@ -22,31 +22,31 @@ if(isset($_POST['submit'])){
     $password=PulisciInput($_POST['password']);
     $rippassword=PulisciInput($_POST['repeat_password']);
     if(!preg_match('/^[a-zA-Z ]{2,20}$/',$nome)){
-        $errori.='<li class="error">Il campo nome non può essere vuoto e può contenere numeri o caratteri speciali, deve avere una lunghezza compresa da 2 a 20 caratteri</li>';
+        $errori.='<p class="error">Il campo nome non può essere vuoto e può contenere numeri o caratteri speciali, deve avere una lunghezza compresa da 2 a 20 caratteri</p>';
     }
     if(!preg_match('/^[a-zA-Z ]{3,30}$/',$cognome)){
-        $errori.='<li class="error">Il campo cognome non può essere vuoto e può contenere numeri o caratteri speciali, deve avere una lunghezza compresa da 2 a 40 caratteri</li>';
+        $errori.='<p class="error">Il campo cognome non può essere vuoto e può contenere numeri o caratteri speciali, deve avere una lunghezza compresa da 2 a 40 caratteri</p>';
     }
     if(!preg_match('/\d{4}\-\d{2}\-\d{2}/',$data)){
-        $errori.='<li class="error">La data  inserita non rispetta il seguente schema: gg/mm/aaaa</li>';
+        $errori.='<p class="error">La data  inserita non rispetta il seguente schema: gg/mm/aaaa</p>';
     }
     if (!preg_match('/^[@a-zA-Z0-9._-]{4,40}$/',$username)){
-        $errori.='<li class="error">Il campo username  non può essere vuoto e  non può contenere spazzi e deve contenere da 4 a 40 caratteri alfanumerici (sono ammessi i seguenti caratteri: @ . _ - )</li>';
+        $errori.='<p class="error">Il campo username  non può essere vuoto e  non può contenere spazzi e deve contenere da 4 a 40 caratteri alfanumerici (sono ammessi i seguenti caratteri: @ . _ - )</p>';
     }
     if (!preg_match('/^[@a-zA-Z0-9._-]{4,20}$/',$password)){
-        $errori.='<li class="error">Il campo password non può essere vuoto e non può contenere spazzi e deve contenere da 4 a 20 caratteri alfanumerici (sono ammessi i seguenti caratteri: @ . _ - )</li>';
+        $errori.='<p class="error">Il campo password non può essere vuoto e non può contenere spazzi e deve contenere da 4 a 20 caratteri alfanumerici (sono ammessi i seguenti caratteri: @ . _ - )</p>';
     }
     if($password!=$rippassword){
-        $errori.='<li class="error">Le due password inserite non corrispondono</li>';
+        $errori.='<p class="error">Le due password inserite non corrispondono</p>';
     }
-    if($errori=="<ul>"){
+    if($errori==""){
        
         $db=new Connection();
         $dbOK=$db->Connect();
         if($dbOK){
             $query="Select nome_utente from Utente where nome_utente=\"".$username."\"";
             if($r=$db->ExecQueryAssoc($query)){
-                $errori.="<li class='error'>Username già registrato</li>";
+                $errori.="<p class='error'>Username già registrato</p>";
             }
             
             else{
@@ -55,7 +55,7 @@ if(isset($_POST['submit'])){
             
                 $q=$db->multiInsert($insert);
                 if($q){
-                    $errori.="<li class='invito'>Inserimento con successo</li>";
+                    $errori.="<p class='invito'>Inserimento con successo</p>";
                     $nome='';
                     $cognome='';
                     $data='';
@@ -66,20 +66,19 @@ if(isset($_POST['submit'])){
                     $rippassword='';
                 }
                 else{
-                    $errori.="<li class='error'>Inserimento non riuscito</li>";
+                    $errori.="<p class='error'>Inserimento non riuscito</p>";
                 }
                 
             }
             $db->Disconnect();
         }
         else{
-            $errori.="<li class='error'>Connessione non riuscita</li>";
+            $errori.="<p class='error'>Connessione non riuscita</p>";
         }
         
     }
 
 }
-$errori=$errori."</ul>";
 $content=str_replace('<valoreNome/>',$nome,$content);
 $content=str_replace('<valoreCognome/>',$cognome,$content);
 $content=str_replace('<valoreDataNascita/>',$data,$content);

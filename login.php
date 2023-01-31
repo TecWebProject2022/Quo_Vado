@@ -23,16 +23,16 @@ if(isset($_POST['submit'])){
     $username=PulisciInput($_POST['username']);
     $password=PulisciInput($_POST['password']);
     if(!strlen($username)){
-        $errori.='<li class="error">Il campo username non può essere vuoto</li>';
+        $errori.='<p class="error">Il campo username non può essere vuoto</p>';
     }
     else if (!preg_match('/^[@a-zA-Z0-9._-]{4,40}$/',$username)){
-        $errori.='<li class="error">Il campo username non può contenere spazi e deve contenere da 4 a 40 caratteri alfanumerici (sono ammessi i seguenti caratteri: @ . _ - )</li>';
+        $errori.='<p class="error">Il campo username non può contenere spazi e deve contenere da 4 a 40 caratteri alfanumerici (sono ammessi i seguenti caratteri: @ . _ - )</p>';
     }
     if(!strlen($password)){
-        $errori.='<li class="error">Il campo password non può essere vuoto</li>';
+        $errori.='<p class="error">Il campo password non può essere vuoto</p>';
     }
     else if (!preg_match('/^[@a-zA-Z0-9._-]{4,20}$/',$password)){
-        $errori.='<li class="error">Il campo password non può contenere spazi e deve contenere da 4 a 20 caratteri alfanumerici (sono ammessi i seguenti caratteri: @ . _ - )</li>';
+        $errori.='<p class="error">Il campo password non può contenere spazi e deve contenere da 4 a 20 caratteri alfanumerici (sono ammessi i seguenti caratteri: @ . _ - )</p>';
     }
 
 
@@ -50,19 +50,16 @@ if(!$errori){
             header("Location:area_admin.php");
       }
       else{
-        $errori.='<li class="error">Username o password non corretti</li>';
+        $errori.='<p class="error">Username o password non corretti</p>';
       }
     $db->Disconnect();    
     }
     else{
-        $errori.='<li class="error">Ci scusiamo, la connessione non &egrave; riuscita. Per favore, attendere e riprovare</li>';
+        $errori.='<p class="error">Ci scusiamo, la connessione non &egrave; riuscita. Per favore, attendere e riprovare</p>';
     }   
 }
 }
 $content=file_get_contents('login.html');
-if($errori){
-    $errori='<ul>'.$errori.'</ul>';
-}
 
 if(isset($_SESSION['sessione'])){
     $sessione_tag=$_SESSION['sessione'];
