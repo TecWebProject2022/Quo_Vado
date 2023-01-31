@@ -75,18 +75,18 @@ $db=new Connection();
             #sezione commenti
             #filtro, con solo due elementi ma potenzialmente potrei averne n
            
-            $contenuto.='<p id ="filtro" class="formdesc center">Seleziona un filtro per filtrare  i commenti che vuoi visualizzare</p><form aria-describedBy="filtro" id="filtroform" class="filter" action="classe.php?nclasse='.$target.'" method="get" onsubmit="return Validate()" >
+            $contenuto.='<p id="filtro" class="invito">Seleziona un filtro per filtrare  i commenti che vuoi visualizzare</p><form aria-describedBy="filtro" id="filtroform" class="filter" action="classe.php?nclasse='.$target.'" method="get" onsubmit="return Validate()" >
             <fieldset>
             <legend>Seleziona un filtro</legend>
                 <label for="commento_generale">
                     <input type="checkbox" name="filtri[]" id="commento_generale"  value="1"/>
                     commento generale
-                </label>
+                </label><br/>
 
                 <label for="inclusivita">
                     <input type="checkbox" name="filtri[]" id="inclusivita"  value="2" />
                     inclusività
-                </label>
+                </label><br/>
                 
                     <input type="submit" class="submit" name="filterTags" id="filter_button" value="filtra commenti"/>
 
@@ -94,11 +94,11 @@ $db=new Connection();
                     <input type="hidden" name="area" value="'.$area.'"/>
                 </fieldset>
             </form>';
-            $contenuto.="<p class=invito>Filtri applicati:";
+            $contenuto.="<p id='currentFilter'>Filtri applicati:";
             if(isset($_GET['filtri'])){
                 foreach( $_GET['filtri'] as $f ){
                    switch($f){
-                    case 1: $contenuto.=" commento generale ";
+                    case 1: $contenuto.=" commento generale";
                             break;
                     case 2:  $contenuto.=" inclusività";
                             break;

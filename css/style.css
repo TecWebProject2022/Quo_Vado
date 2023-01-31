@@ -1017,8 +1017,13 @@ CLASSE DI LAUREA
     font-size: 1.1em;
 }
 
+#filtro, #currentFilter {
+    text-align: center;
+    margin: 1% 20% 1% 20%;
+}
+
 #filtroform fieldset {
-    margin: 3% 20% 0% 20%;
+    margin: 0% 30% 0% 30%;
     padding: 1em;
 }
 

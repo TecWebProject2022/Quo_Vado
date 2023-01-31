@@ -161,6 +161,11 @@ CLASSE DI LAUREA
     margin-bottom: 1em;
 }
 
+#filtroform fieldset {
+    margin: 0% 3% 0% 3%;
+    padding: 1em;
+}
+
 #listaCommenti {
     margin: 2em 0.5em 2em 0.5em;
 }
