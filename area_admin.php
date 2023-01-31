@@ -188,15 +188,15 @@ if($dbOK){
         $_SESSION['add']='';
         #commenti da eliminare selezionati
        
-        $commenti_selezionati=isset($_POST['commento']) ? PulisciInput($_POST['commento']): '';
+        $commenti_selezionati=isset($_POST['commento']) ? $_POST['commento']: '';
         if($commenti_selezionati){
             foreach($commenti_selezionati as $i){  
                 $userdata=explode("-",$i);
                 $query_delete_commenti="DELETE FROM Valutazione Where nome_utente=\"".$userdata[0]."\" && classe_laurea=\"".$userdata[1]."\" && tag=\"".$userdata[2]."\";";
                 if($db->Insert($query_delete_commenti)){
-                    $_SESSION['info'].='<p class="invito">Commento dell\'utente '.$userdata[0].' eliminato con successo</p>';
+                    $_SESSION['info'].='<p id="ok" class="invito">Commento dell\'utente '.$userdata[0].' eliminato con successo</p>';
                     unset($_SESSION['nome_admin']);
-                    header("Location:area_admin.php#formCorsi");
+                    header("Location:area_admin.php#ok");
                 }else{
                     $_SESSION['add']='<p class="error">Cancellazione non riuscita</p>';
                     header("Location:area_admin.php#formCorsi");
@@ -293,6 +293,8 @@ if($dbOK){
                 $query_delete_corso="DELETE FROM CorsodiStudio WHERE  ateneo='".$ateneo."' AND classe_laurea='".$classe."' AND nome='".$nome."';";
                 if($db->Insert($query_delete_corso)){
                     $_SESSION['info'].='<p class="invito">'.$nome.' rimosso con successo</p>';
+                    unset($_SESSION['add']);
+                    unset( $_SESSION['add_nome']);
                     header("Location:area_admin.php");
                 }else{
                     $_SESSION['add'].='<p class="error">Il corso risulta inesistente</p>';
