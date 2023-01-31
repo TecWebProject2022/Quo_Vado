@@ -91,7 +91,7 @@ if($dbOK){
                 <span><input value="<nome>" id="com_utente" name="com_utente" type="text" placeholder="Inserisci Utente" /></span>
 
                 <label for="com_classe">Inserisci Classe di laurea: </label>
-                <span>'.$input_classi_commenti.'</span>
+                <span>'.$input_classi_commenti.'</span><br/>
 
                 <input type="submit" class="submit"  name="trova" onclick="Cancella()" value="trova"/>
             </fieldset>
@@ -125,7 +125,7 @@ if($dbOK){
                 
 
                 if($commenti=$db->ExecQueryNum($query_commenti)){
-                    $formCommenti='<p id="formEliminaCommenti" class="formdesc">Selezionare i commenti che vuoi eliminare e premere Elimina commenti selezionati per eliminarli</p><form aria-describedby="formEliminaCommenti" id="form_cancellacomm" action="area_admin.php" method="post" onsubmit="return OnDelete()"><fieldset><legend class="field_legend">Seleziona i commenti da eliminare</legend>';
+                    $formCommenti='<p id="formEliminaCommenti" class="formdesc">Selezionare i commenti che vuoi eliminare e premere "Elimina commenti selezionati" per eliminarli</p><form aria-describedby="formEliminaCommenti" id="form_cancellacomm" action="area_admin.php" method="post" onsubmit="return OnDelete()"><fieldset><legend class="field_legend">Seleziona i commenti da eliminare</legend>';
                     $formCommenti.= "<ul id=\"commrilasc\">";
                     for($i=0;$i<count($commenti);$i++){
                         $commento='
@@ -178,7 +178,7 @@ if($dbOK){
                         <option value="Accesso libero con prova">Accesso libero con prova</option>
                         <option value="Accesso a numero chiuso">Accesso a numero chiuso</option>
                         <option value="Accesso libero cronologico">Accesso libero cronologico</option>
-                </select></span>
+                </select></span><br/>
 
                 <input type="submit"  class="submit"  onclick="return Add()" id="add_corso" name="add_corso" value="Aggiungi" />
                 <input type="submit"  class="submit" onclick="return Remove()" id="delete_corso" name="delete_corso" value="Elimina" />
