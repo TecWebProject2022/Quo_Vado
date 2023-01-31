@@ -79,7 +79,7 @@ if($dbOK){
     }
     # preparazione form commenti
     $formSelezioneCommenti.='
-    <h2 id="Cancella" class="titles_area_classi">Eliminazione commenti</h2>
+    <h2 id="Cancella" class="titles_area_classi">Elimina un commento</h2>
     <p id="formTrovaCommenti" class="formdesc">Inserisci nome utente o classe di laurea dei commenti che vuoi ricercare</p>
        <msgCommenti/>
         <form aria-describedby="formTrovaCommenti" id="formTrovaCommentiform" action="area_admin.php#formEliminaCommenti" method="post" onsubmit=" return Cancella()">
@@ -157,7 +157,7 @@ if($dbOK){
     #preparazione form corsi
     $formGestioneCorsi='
         <h2 id="Corsi" class="titles_area_classi">Gestione corsi di studio</h2>
-        <p id="Aggicorso" class="formdesc">Per aggiungere un corso di studi è necessario riempire tutti i campi, per eliminarne uno bastano nome, classe di laurea e ateneo e premi il relativo pulsante</p>
+        <p id="Aggicorso" class="formdesc">Per aggiungere un corso di studi è necessario riempire tutti i campi, per eliminarne uno bastano nome, classe di laurea e ateneo e premere il relativo pulsante</p>
         <form id="formCorsi" aria-describedby="Aggicorso" action="area_admin.php" method="post">
             <fieldset>
                 <legend class="field_legend">Aggiungi o elimina un corso di studi</legend>
@@ -376,7 +376,7 @@ if($dbOK){
     }
     $db->Disconnect();
 }else{
-    $_SESSION['password'].='<p class="error">Spiacente, i sistemi sono al momentamentamnete non disponibili</p>';
+    $formSelezioneCommenti='<p class="error">Spiacente non è stato possibile recuperarre le informazioni</p>'.$formSelezioneCommenti;
 }
 if(!isset($_SESSION['add'])){
     $_SESSION['add']='';
