@@ -173,12 +173,11 @@ $contenuto.='
 <h3>Glossario</h3>
 <ul id="desc_glossario">
 <li>Il contenuto testuale del commento dovrà contenere da 10 a 200 caratteri alfanumerici (sono ammessi i seguenti caratteri: @._ - )</li>
-<li>Ambiti di valutazione: </li>
     
         <li>Punteggio complessivo: 
         valutazione che riguarda tutti gli ambiti universitari in generale</li>
         <li>Punteggio accessibilità fisica: 
-       valutazione su quanto sono raggiungibile i servizi universitari da un punto di vista motorio</li>
+       valutazione su quanto sono raggiungibili i servizi universitari da un punto di vista motorio</li>
         <li>Punteggio sul servizio inclusione: 
         valutazione riguardante l\'accoglienza e l\'appartenenza ad un gruppo universitario</li>
         <li>Punteggio sulla tempestività burocratica: 

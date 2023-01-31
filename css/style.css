@@ -1909,7 +1909,7 @@ AREA UTENTE
 /*ISCRIZIONI*/
 
 #desc_glossario {
-
+    padding: 2em;
 }
 
 #container_iscrizioni {
