@@ -261,9 +261,9 @@ if(isset($_POST['submit4']) && check()){
                 $form.="<option value=\"".$i."\">".$r[$i][0]." ".$r[$i][1]."</option>";
             }
             $form.="</select>";
-            $form.='<br/><label for="datai">Data di iscrizione [valide dal 01-01-1960 al 01-01-2100]: </label>
+            $form.='<br/><label for="datai">Data di iscrizione: </label>
             <input type="date" id="datai" name="datai" value="1960-01-01" />';
-            $form.='<br/><label for="dataf">Data di fine studi [valide dal 01-01-1960 al 01-01-2100]: </label>
+            $form.='<br/><label for="dataf">Data di fine studi: </label>
             <span><input type="date" id="dataf" name="dataf" value="1960-01-01" /></span>';
             $form.='<br/><label for="punteggio">Punteggio scuola di provenienza: </label>
             <span><input type="number" id="punteggio" name="punteggio" value="1" /></span>';
