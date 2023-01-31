@@ -71,7 +71,7 @@ if($dbOK){
         
     }
     else{
-        $errori.="<p class='error'>Siamo spiacenti, i dati non sono al momento disponibili</p>";
+        $contenuto.="<p class='error'>Siamo spiacenti, i dati non sono al momento disponibili</p>";
     }
     $query2="Select ateneo, classe,corso, datai, dataf,punteggio_scuola_provenienza  from Iscrizione where nome_utente=\"$user\"";
     //ISCRIZIONI
@@ -90,17 +90,16 @@ if($dbOK){
             }
             $contenuto.="</ul>";
 
-            $query3="Select classe_laurea,datav,commento,p_complessivo,p_acc_fisica,p_servizio_inclusione,tempestivita_burocratica,p_insegnamento,tag FROM Valutazione WHERE nome_utente=\"$user\"";
             
         }
         else{
-            $errori.="<p class=\"error\">Siamo spiacenti, hai nessuna iscrizione nel tuo profilo</p>";
+            $contenuto.="<p class=\"error\">Siamo spiacenti, hai nessuna iscrizione nel tuo profilo</p>";
         }
 
     //NUOVA ISCRIZIONE
 $query6="Select num_classe FROM ClassediLaurea";
 if($res5=$db->ExecQueryAssoc($query6)){
-    $contenuto.="<h2 id=\"aggiscrizione\" class='titles_area_classi'>Inserisci una nuova iscrizione</h2>";
+    $contenuto.="<h2 id=\"aggiscrizione\" class='titles_area_classi'>Aggiungi Iscrizione</h2>";
     $contenuto.='<span id="error"></span>';
     $contenuto.="<p id=\"descseclect\" class=\"formdesc\">Per iserire una nuova iscrizione seleziona la classe di laurea da te frequentata</p>";
     $contenuto.='<form  aria-describedby="descseclect" id="selectclass" action="area_utente.php#aggiscrizione" method="post" ><fieldset><legend class="field_legend">Seleziona una classe</legend>';
@@ -219,12 +218,12 @@ $contenuto.='<form id="form_aggiungicomm" aria-describedby="aggiungi_commento" a
 }
 
 else{
-    $errori.="<p class=\"error\">Siamo spiacenti, hai nessun commento nel tuo profilo</p>";
+    $contenuto.="<p class=\"error\">Siamo spiacenti, hai nessun commento nel tuo profilo</p>";
 }
 }
 
     //CAMBIO PASSWORD
-$contenuto.='<h2 id="pw" class="titles_area_classi">Cambio <span lang="en">password</span></h2>';
+$contenuto.='<h2 id="pw" class="titles_area_classi">Cambia <span lang="en">password</span></h2>';
 $contenuto.='<p  id="form_passw" class="formdesc">Per modificare la tua <span lang="en">password</span> compila i campi sottostanti e premi salva per salvare la modifica</p>';
 $contenuto.='<form aria-describedby="form_passw" id="formpw" action="area_utente.php" method="post" onsubmit=" return OnPassword()" >';
 $contenuto.='<fieldset><legend class="field_legend">Cambio  <span lang="en">password</span></legend>
@@ -300,7 +299,7 @@ if(isset($_POST['submit5']) && check()){
         $dbOK=$db->Connect();
    if($dbOK){
         $query8="INSERT INTO Iscrizione (ateneo, classe, corso, nome_utente, datai, punteggio_scuola_provenienza, dataf) VALUES(\"".$corso[0]."\",\"".$classe."\",\"".$corso[1]."\",\"".$_SESSION['user']."\",'".$datai."',".$punteggio.",'".$dataf."');";
-        echo $query8;
+        
         $q=$db->Insert($query8);
        if($q){
             $_SESSION['info']="<p id=\"ok\" class=\"invito\">Iscrizione  avvenuta con successo</p>";
