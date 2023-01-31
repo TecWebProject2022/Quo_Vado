@@ -262,9 +262,9 @@ if(isset($_POST['submit4']) && check()){
             }
             $form.="</select>";
             $form.='<br/><label for="datai">Data di iscrizione: </label>
-            <input type="date" id="datai" name="datai" value="1960-01-01" />';
+            <input type="date" id="datai" name="datai" value="2016-01-01" />';
             $form.='<br/><label for="dataf">Data di fine studi: </label>
-            <span><input type="date" id="dataf" name="dataf" value="1960-01-01" /></span>';
+            <span><input type="date" id="dataf" name="dataf" value="2019-01-01" /></span>';
             $form.='<br/><label for="punteggio">Punteggio scuola di provenienza: </label>
             <span><input type="number" id="punteggio" name="punteggio" value="1" /></span>';
             $form.='<br/> <input type="submit" class="submit" name="submit5" value="Inserisci"/>';
