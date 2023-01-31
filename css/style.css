@@ -1993,12 +1993,12 @@ AREA UTENTE
 }
 
 #comm_list {
-    flex-basis: 35%;
+    flex-grow: 1;
     list-style: none;
 }
 
 #val_list {
-    flex-basis: 62%;
+    flex-grow: 1;
     list-style: none;
 }
 
