@@ -93,7 +93,7 @@ if($dbOK){
             
         }
         else{
-            $contenuto.="<p class=\"error\">Siamo spiacenti, hai nessuna iscrizione nel tuo profilo</p>";
+            $contenuto.="<p class=\"invito\">Siamo spiacenti, hai nessuna iscrizione nel tuo profilo</p>";
         }
 
     //NUOVA ISCRIZIONE
@@ -114,7 +114,7 @@ if($res5=$db->ExecQueryAssoc($query6)){
     $contenuto.="<span id=\"ins\"></span>";
 }
 else{
-    $contenuto.="<p class=\"error\">Siamo spaicenti ma non è  presente alcuna classe di laurea</p>";
+    $contenuto.="<p class=\"invito\">Siamo spaicenti ma non è  presente alcuna classe di laurea</p>";
 }
 
 
@@ -217,7 +217,7 @@ $contenuto.='<form id="form_aggiungicomm" aria-describedby="aggiungi_commento" a
 }
 
 else{
-    $contenuto.="<p class=\"error\">Siamo spiacenti, hai nessun commento nel tuo profilo</p>";
+    $contenuto.="<p class=\"invito\">Siamo spiacenti, hai nessun iscrizione nel tuo profilo quindi non puoi lasciare alcun commento</p>";
 }
 }
 

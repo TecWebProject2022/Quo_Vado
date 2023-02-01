@@ -55,7 +55,7 @@ if(isset($_POST['submit'])){
             
                 $q=$db->multiInsert($insert);
                 if($q){
-                    $errori.="<p class='invito'>Inserimento con successo</p>";
+                    $errori.="<p class='invito'>Registrazione avvenuta con successo</p>";
                     $nome='';
                     $cognome='';
                     $data='';
@@ -66,7 +66,7 @@ if(isset($_POST['submit'])){
                     $rippassword='';
                 }
                 else{
-                    $errori.="<p class='error'>Inserimento non riuscito</p>";
+                    $errori.="<p class='error'>Registrazione non riuscito</p>";
                 }
                 
             }
