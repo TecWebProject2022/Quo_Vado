@@ -108,7 +108,7 @@ if($dbOK){
             </fieldset>
         </form>';
     # sezione elimina commenti
-    if(isset($_POST['trova'])){
+    if(isset($_POST['trova']) && check()){
         $formCommenti='';
         # in base ai campi inseriti imposto la query
         $user=isset($_POST['com_utente']) ? PulisciInput($_POST['com_utente']):'';
@@ -200,7 +200,7 @@ if($lista_classi && $lista_atenei){
         </form><msgCorsi/>';
     
         # controllo se nel form per la ricerca e' stato selezionato qualcosa
-    if(isset($_POST['delete_commento'])){
+    if(isset($_POST['delete_commento']) && check()){
         $_SESSION['add']='';
         #commenti da eliminare selezionati
        
@@ -236,7 +236,7 @@ if($lista_classi && $lista_atenei){
     
 
     #sezione gestione corsi
-    if(isset($_POST['add_corso'])){
+    if(isset($_POST['add_corso']) && check()){
         $_SESSION['add']='';
         $classe=isset($_POST['cor_classe'])?PulisciInput($_POST['cor_classe']):'';
         $ateneo=isset($_POST['cor_ateneo'])?PulisciInput($_POST['cor_ateneo']):'';
@@ -290,7 +290,7 @@ if($lista_classi && $lista_atenei){
             $msgCorso='<ul>'.$msgCorso.'</ul>';
         }
     }else{
-        if(isset($_POST['delete_corso'])){
+        if(isset($_POST['delete_corso']) && check()){
             $_SESSION['add']='';
             $classe=isset($_POST['cor_classe']) ? PulisciInput($_POST['cor_classe']):'';
             $ateneo=isset($_POST['cor_ateneo']) ? PulisciInput($_POST['cor_ateneo']):'';
