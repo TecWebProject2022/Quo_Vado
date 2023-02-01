@@ -223,6 +223,9 @@ else{
 }
 
 }
+else{
+    $contenuto.="<p class=\"invito\">Siamo spiacenti, ma le informazioni al momento non sono disponibili</p>";
+}
 
     //CAMBIO PASSWORD
 $contenuto.='<h2 id="pw" class="titles_area_classi">Cambia <span lang="en">password</span></h2>';

@@ -399,8 +399,9 @@ else{
             }
         
     }
-    $db->Disconnect();
-}}else{
+    }
+$db->Disconnect();
+}else{
     $formSelezioneCommenti='<p class="invito">Spiacente non è stato possibile recuperarre le informazioni personali</p>'.$formSelezioneCommenti;
 }
 if(!isset($_SESSION['add'])){
