@@ -501,6 +501,14 @@ AREA UTENTE
     margin: 0% 2% 0% 2%;
 }
 
+#glossario {
+    margin: 1em 3% 1em 3%;
+}
+
+#desc_glossario {
+    padding: 0.5em 1em 0.5em 2em;
+}
+
 /*
 ================
 AREA ADMIN

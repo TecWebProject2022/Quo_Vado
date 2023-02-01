@@ -1877,9 +1877,18 @@ AREA UTENTE
     font-variant: small-caps;
 }
 
+#glossario {
+    margin: 1em 15% 1em 15%;
+}
+
+#glossario h3 {
+    margin: 0.4em;
+    text-align: center;
+}
+
 #desc_glossario {
-    padding: 2em;
-    border: 1px solid #000000;
+    padding: 1em 2em 1em 2em;
+    border: 4px double #000000;
 }
 
 /*DATI PERSONALI*/
@@ -1907,10 +1916,6 @@ AREA UTENTE
 }
 
 /*ISCRIZIONI*/
-
-#desc_glossario {
-    padding: 2em;
-}
 
 #container_iscrizioni {
     display: flex;

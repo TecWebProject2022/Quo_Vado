@@ -309,7 +309,7 @@ if($dbOK){
     #preparazione form cambio password
     $formCambioPw=' 
     <h2 id="CambioPw" class="titles_area_classi">Cambia <span lang="en">Password</span></h2>
-    <p class="formdesc" id="form_passw">Per modificare la tua <span lang="en">password</span> compila i campi sottostanti e premi salva per salvare la modifica</p>
+    <p class="formdesc" id="form_passw">Per modificare la tua <span lang="en">password</span> compila i campi sottostanti e clicca "salva" per salvare la modifica</p>
     <form aria-describedby="form_passw" action="area_admin.php" method="post"  id="formpw" onsubmit="return OnPassword()" >
         <fieldset>
             <legend class="field_legend">Cambio <span lang="en">password</span></legend>

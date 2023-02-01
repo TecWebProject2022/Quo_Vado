@@ -168,9 +168,9 @@ if($res5=$db->ExecQueryAssoc($query5)){
     $classi.="</select></li>";
 
 $contenuto.='<h2 id="aggiungi" class="titles_area_classi">Aggiungi un commento</h2>';
-$contenuto.='<div id="aggiungi_commento" class="formdesc"><p>Per lasciare un commento compila i campi sottostanti: ti è consentito lasciare per ogni settore  un solo commento e una valutazione da 1 a 5 per ogni ambito di valutazione delle classi di laurea per le quali ti sei dichiarato iscritto. </p>';
+$contenuto.='<p id="aggiungi_commento" class="formdesc">Per lasciare un commento compila i campi sottostanti: ti è consentito lasciare per ogni settore  un solo commento e una valutazione da 1 a 5 per ogni ambito di valutazione delle classi di laurea per le quali ti sei dichiarato iscritto. </p>';
 $contenuto.='
-<h3>Glossario</h3>
+<div id="glossario"><h3>Glossario</h3>
 <ul id="desc_glossario">
 <li>Il contenuto testuale del commento dovrà contenere da 10 a 200 caratteri alfanumerici (sono ammessi i seguenti caratteri: @._ - )</li>
     
@@ -195,19 +195,19 @@ $contenuto.='<form id="form_aggiungicomm" aria-describedby="aggiungi_commento" a
     <option value="2">Commento generale</option></select></span></li>
 </ul>
 <ul id="val_list">
-<li><label for="p_complessivo">Punteggio complessivo: </label><span><input  type="number" id="p_complessivo" name="p_complessivo" placeholder="1" value="1"
+<li><label for="p_complessivo">Punteggio complessivo: </label><span><input title="valutazione che riguarda tutti gli ambiti universitari in generale" type="number" id="p_complessivo" name="p_complessivo" placeholder="1" value="1"
    /></span></li>
     
-<li><label for="p_acc_fisica">Punteggio accessibilità fisica: </label><span><input  type="number" id="p_acc_fisica" name="p_acc_fisica" placeholder="1" value="1"
+<li><label for="p_acc_fisica">Punteggio accessibilità fisica: </label><span><input title="valutazione su quanto sono raggiungibili i servizi universitari da un punto di vista motorio" type="number" id="p_acc_fisica" name="p_acc_fisica" placeholder="1" value="1"
    /></span></li>
     
-<li><label for="p_inclusione">Punteggio servizio inclusione: </label><span><input type="number" id="p_inclusione" name="p_inclusione" placeholder="1" value="1" 
+<li><label for="p_inclusione">Punteggio servizio inclusione: </label><span><input title="valutazione riguardante l\'accoglienza e l\'appartenenza ad un gruppo universitario" type="number" id="p_inclusione" name="p_inclusione" placeholder="1" value="1" 
     /></span></li>
     
-<li><label for="p_tempestivita">Punteggio tempestivita burocratica: </label><span><input type="number" id="p_tempestivita" name="p_tempestivita" placeholder="1" value="1"
+<li><label for="p_tempestivita">Punteggio tempestivita burocratica: </label><span><input title="valutazione attinente alla velocità di intervento e risposta da parte dei servizi amministrativi e burocratici universitari" type="number" id="p_tempestivita" name="p_tempestivita" placeholder="1" value="1"
     /></span></li>
     
-<li><label for="p_insegnamento">Punteggio qualità di insegnamento: </label><span><input  type="number" id="p_insegnamento" name="p_insegnamento" placeholder="1" value="1"
+<li><label for="p_insegnamento">Punteggio qualità di insegnamento: </label><span><input title="valutazione riguardante la qualità di insegnamento ricevuto e le competenze acquisite in esso" type="number" id="p_insegnamento" name="p_insegnamento" placeholder="1" value="1"
     /></span></li>
 </ul>
 <input type="submit" class="submit" id="button_aggiungi" name="submit3" value="pubblica"/>
@@ -223,13 +223,13 @@ else{
 
     //CAMBIO PASSWORD
 $contenuto.='<h2 id="pw" class="titles_area_classi">Cambia <span lang="en">password</span></h2>';
-$contenuto.='<p  id="form_passw" class="formdesc">Per modificare la tua <span lang="en">password</span> compila i campi sottostanti e premi salva per salvare la modifica</p>';
+$contenuto.='<p  id="form_passw" class="formdesc">Per modificare la tua <span lang="en">password</span> compila i campi sottostanti e clicca "salva" per salvare la modifica</p>';
 $contenuto.='<form aria-describedby="form_passw" id="formpw" action="area_utente.php" method="post" onsubmit=" return OnPassword()" >';
 $contenuto.='<fieldset><legend class="field_legend">Cambio  <span lang="en">password</span></legend>
 
 <label for="oldpassword">Immetti la tua vecchia <span lang="en">password</span>: </label><span><input  value="<old>" type="password" id="oldpassword" name="Vecchiapassword" placeholder="Inserisci vecchia password" maxlength="20" /></span>
 <br/><label for="newpassword">Immetti la tua nuova <span lang="en">password</span>: </label><span><input  value="<new>" type="password" id="newpassword" name="newpassword" placeholder="Immetti nuova password" maxlength="20" /></span>
-<br/><label for="repeat">Ripeti la <span lang="en">password </span>:</label><span><input  value="" type="password" id="repeat" name="repepassword" placeholder="Ripeti la password" maxlength="20" /></span>
+<br/><label for="repeat">Ripeti la <span lang="en">password</span>: </label><span><input  value="" type="password" id="repeat" name="repepassword" placeholder="Ripeti la password" maxlength="20" /></span>
 <br/><input type="submit" class="submit" name="submit1" value="Salva"/>
 </fieldset>
 </form>
