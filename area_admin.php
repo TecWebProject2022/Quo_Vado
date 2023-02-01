@@ -79,7 +79,19 @@ if($dbOK){
     }else{
         $input_atenei='<input id="cor_ateneo" name="cor_ateneo" type="text" placeholder="Politecnico di milano"/>';
     }
+    $queryUtente=$db->ExecQueryAssoc("Select * From Utente where nome_utente!=\"admin\"");
+    $formSelezioneCommenti='';
     # preparazione form commenti
+    if(!$lista_classi && !$queryUtente){
+        $formSelezioneCommenti.="<p class=\"invito\">Siamo spiacenti, non è presente nessun utente e nessuna classe di laurea</p>";
+    }
+    else{  if(!$lista_classi){
+        $formSelezioneCommenti.="<p class=\"invito\">Siamo spiacenti, non è presente nessuna classe di laurea di cui definire un corso di studio</p>";
+    }
+    if(!$queryUtente){
+        $formSelezioneCommenti.="<p class=\"invito\">Siamo spiacenti, non è presente nessun utente</p>";
+    }
+    
     $formSelezioneCommenti.='
     <h2 id="Cancella" class="titles_area_classi">Elimina un commento</h2>
     <p id="formTrovaCommenti" class="formdesc">Inserisci nome utente o classe di laurea dei commenti che vuoi ricercare</p>
@@ -156,6 +168,8 @@ if($dbOK){
             } 
         }  
     }
+}
+if($lista_classi && $lista_atenei){
     #preparazione form corsi
     $formGestioneCorsi='
         <h2 id="Corsi" class="titles_area_classi">Gestione corsi di studio</h2>
@@ -306,6 +320,15 @@ if($dbOK){
             }
         }
     }
+}
+else{
+    if(!$lista_atenei){
+        $formGestioneCorsi.="<p class=\"invito\">Siamo spiacenti, non è presente alcun ateneo di cui inserire un nuovo corso di studio</p>";
+    }
+    if(!$lista_classi){
+        $formGestioneCorsi.="<p class=\"invito\">Siamo spiacenti, non è presente nessuna classe di laurea  di cui inserire un nuovo corso di studio</p>";
+    }
+}
     #preparazione form cambio password
     $formCambioPw=' 
     <h2 id="CambioPw" class="titles_area_classi">Cambia <span lang="en">Password</span></h2>

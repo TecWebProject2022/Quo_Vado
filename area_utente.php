@@ -71,7 +71,7 @@ if($dbOK){
         
     }
     else{
-        $contenuto.="<p class='error'>Siamo spiacenti, i dati non sono al momento disponibili</p>";
+        $contenuto.="<p class='invito'>Siamo spiacenti, i dati personali  non sono al momento disponibili</p>";
     }
     $query2="Select ateneo, classe,corso, datai, dataf,punteggio_scuola_provenienza  from Iscrizione where nome_utente=\"$user\"";
     //ISCRIZIONI
@@ -114,7 +114,7 @@ if($res5=$db->ExecQueryAssoc($query6)){
     $contenuto.="<span id=\"ins\"></span>";
 }
 else{
-    $contenuto.="<p class=\"invito\">Siamo spaicenti ma non è  presente alcuna classe di laurea</p>";
+    $contenuto.="<p class=\"invito\">Siamo spiacenti ma non è  presente alcuna classe di laurea</p>";
 }
 
 
@@ -168,7 +168,7 @@ if($res5=$db->ExecQueryAssoc($query5)){
     $classi.="</select></li>";
 
 $contenuto.='<h2 id="aggiungi" class="titles_area_classi">Aggiungi un commento</h2>';
-$contenuto.='<p id="aggiungi_commento" class="formdesc">Per lasciare un commento compila i campi sottostanti: ti è consentito lasciare per ogni settore  un solo commento e una valutazione da 1 a 5 per ogni ambito di valutazione delle classi di laurea per le quali ti sei dichiarato iscritto. </p>';
+$contenuto.='<p id="aggiungi_commento" class="formdesc">Per lasciare un commento è necessraio essere iscritti a una clsse di laurea e  compilare i campi sottostanti: ti è consentito lasciare per ogni settore  un solo commento e una valutazione da 1 a 5 per ogni ambito di valutazione delle classi di laurea per le quali ti sei dichiarato iscritto. </p>';
 $contenuto.='
 <div id="glossario"><h3>Glossario</h3>
 <ul id="desc_glossario">
@@ -216,9 +216,7 @@ $contenuto.='<form id="form_aggiungicomm" aria-describedby="aggiungi_commento" a
 </errorform>';
 }
 
-else{
-    $contenuto.="<p class=\"invito\">Siamo spiacenti, hai nessun iscrizione nel tuo profilo quindi non puoi lasciare alcun commento</p>";
-}
+
 }
 
     //CAMBIO PASSWORD
