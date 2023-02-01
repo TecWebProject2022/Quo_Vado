@@ -224,7 +224,7 @@ else{
 
 }
 else{
-    $contenuto.="<p class=\"invito\">Siamo spiacenti, ma le informazioni personali  al momento non sono disponibili</p>";
+    $contenuto.="<p class=\"error\">Siamo spiacenti, ma le informazioni personali  al momento non sono disponibili</p>";
 }
 
     //CAMBIO PASSWORD
