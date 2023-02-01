@@ -29,8 +29,8 @@ nome varchar(80),
 PRIMARY KEY(ateneo, classe_laurea, nome),
 accesso ENUM('Accesso programmato','Accesso libero con prova','Accesso a numero chiuso','Accesso libero cronologico') not null,
 link varchar(2000) not null,
-foreign key (ateneo) references Ateneo(nome),
-foreign key (classe_laurea) references ClassediLaurea(num_classe)
+foreign key (ateneo) references Ateneo(nome)ON DELETE CASCADE ON UPDATE CASCADE,
+foreign key (classe_laurea) references ClassediLaurea(num_classe)  ON UPDATE CASCADE
 );
 
 create table Utente (
@@ -55,7 +55,7 @@ p_servizio_inclusione int  not null check(p_servizio_inclusione>0 and p_servizio
 tempestivita_burocratica int  not null check(tempestivita_burocratica>0 and tempestivita_burocratica<6),
 p_insegnamento  int not null check(p_insegnamento>0 and p_insegnamento<6),
 foreign key (nome_utente) references Utente(nome_utente) ON UPDATE CASCADE,
-foreign key (classe_laurea) references ClassediLaurea(num_classe) ON UPDATE CASCADE ON DELETE CASCADE
+foreign key (classe_laurea) references ClassediLaurea(num_classe) ON UPDATE CASCADE 
 );
 
 create table Credenziale(
@@ -75,7 +75,7 @@ create table Iscrizione(
     PRIMARY KEY(ateneo,classe,corso,nome_utente,datai), 
     punteggio_scuola_provenienza int   not null check(punteggio_scuola_provenienza>0 and punteggio_scuola_provenienza<6), 
     dataf date not null ,
-    FOREIGN KEY(ateneo,classe,corso) REFERENCES CorsodiStudio(ateneo, classe_laurea, nome) ON UPDATE CASCADE ON DELETE CASCADE,
+    FOREIGN KEY(ateneo,classe,corso) REFERENCES CorsodiStudio(ateneo, classe_laurea, nome) ON UPDATE CASCADE,
     FOREIGN KEY(nome_utente) REFERENCES Utente(nome_utente) ON UPDATE CASCADE
 );
 create table Domande(

@@ -82,15 +82,12 @@ if($dbOK){
     $queryUtente=$db->ExecQueryAssoc("Select * From Utente where nome_utente!=\"admin\"");
     $formSelezioneCommenti='';
     # preparazione form commenti
-    if(!$lista_classi && !$queryUtente){
+    if(!$lista_classi || !$queryUtente){
         $formSelezioneCommenti.="<p class=\"invito\">Siamo spiacenti, non è presente nessun utente e nessuna classe di laurea</p>";
     }
-    else{  if(!$lista_classi){
-        $formSelezioneCommenti.="<p class=\"invito\">Siamo spiacenti, non è presente nessuna classe di laurea di cui definire un corso di studio</p>";
-    }
-    if(!$queryUtente){
-        $formSelezioneCommenti.="<p class=\"invito\">Siamo spiacenti, non è presente nessun utente</p>";
-    }
+    if($lista_classi && $queryUtente){  
+    
+   
     
     $formSelezioneCommenti.='
     <h2 id="Cancella" class="titles_area_classi">Elimina un commento</h2>
@@ -168,6 +165,7 @@ if($dbOK){
             } 
         }  
     }
+}
 }
 if($lista_classi && $lista_atenei){
     #preparazione form corsi
@@ -400,11 +398,11 @@ else{
                     header("Location:area_admin.php#form_passw");
                 }
             }
-        }
+        
     }
     $db->Disconnect();
 }else{
-    $formSelezioneCommenti='<p class="error">Spiacente non è stato possibile recuperarre le informazioni</p>'.$formSelezioneCommenti;
+    $formSelezioneCommenti='<p class="invito">Spiacente non è stato possibile recuperarre le informazioni personali</p>'.$formSelezioneCommenti;
 }
 if(!isset($_SESSION['add'])){
     $_SESSION['add']='';
