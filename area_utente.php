@@ -221,6 +221,7 @@ $contenuto.='<form id="form_aggiungicomm" aria-describedby="aggiungi_commento" a
 else{
     $contenuto.="<p class=\"invito\">Siamo spiacenti, non è presente alcuna iscrizione di cui esprimere un commento</p>";
 }
+ //CAMBIO PASSWORD
 $contenuto.='<h2 id="pw" class="titles_area_classi">Cambia <span lang="en">password</span></h2>';
 $contenuto.='<p  id="form_passw" class="formdesc">Per modificare la tua <span lang="en">password</span> compila i campi sottostanti e clicca "salva" per salvare la modifica</p>';
 $contenuto.='<form aria-describedby="form_passw" id="formpw" action="area_utente.php" method="post" onsubmit=" return OnPassword()" >';
@@ -239,7 +240,7 @@ else{
     $contenuto.="<p class=\"error\">Siamo spiacenti, ma le informazioni personali  al momento non sono disponibili</p>";
 }
 
-    //CAMBIO PASSWORD
+   
 
 
 
