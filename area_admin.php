@@ -209,23 +209,31 @@ if($lista_classi && $lista_atenei){
             foreach($commenti_selezionati as $i){  
                 $userdata=explode("-",$i);
                 $query_delete_commenti="DELETE FROM Valutazione Where nome_utente=\"".$userdata[0]."\" && classe_laurea=\"".$userdata[1]."\" && tag=\"".$userdata[2]."\";";
-                if($db->Insert($query_delete_commenti)){
-                    $_SESSION['info'].='<p id="ok" class="invito">Commento dell\'utente '.$userdata[0].' eliminato con successo</p>';
-                    unset($_SESSION['nome_admin']);
-                    unset($_SESSION['add']);
-                    header("Location:area_admin.php#ok");
-                }else{
-                    $_SESSION['add']='<p class="error">Cancellazione non riuscita</p>';
-                    header("Location:area_admin.php#formCorsi");
-                }
+                if(!$a=$db->Insert($query_delete_commenti)){
+                   break;}}
+
+            if($a){
+                if(count($commenti_selezionati)==1){
+                    $_SESSION['info'].='<p id="ok" class="invito">Commento dell\'utente '.$userdata[0].' eliminato con successo</p>';}
+                    else{
+                        $_SESSION['info'].='<p id="ok" class="invito">Commenti dell\'utente '.$userdata[0].' eliminato con successo</p>';} 
+                    
+                unset($_SESSION['nome_admin']);
+                unset($_SESSION['add']);
+                header("Location:area_admin.php#ok");
             }
-        }else{
+            else{
+                $_SESSION['add']='<p class="error">Cancellazione non riuscita</p>';
+                header("Location:area_admin.php#formCorsi");
+            }
+        }
+    else{
           
             $_SESSION['add']='<p class="error">Selezionare almeno un commento</p>';
             header("Location:area_admin.php#formCorsi");
         }
-       
-    }
+    }  
+    
 
     #sezione gestione corsi
     if(isset($_POST['add_corso'])){
