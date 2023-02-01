@@ -21,7 +21,7 @@ if(isset($_POST['submit'])){
             $insert="INSERT INTO Domande( email, data, descrizione) VALUES(\"".$email."\",now(),\"".$commento."\");";
             $q=$db->Insert($insert);
             if($q){
-                $info.="<p class=\"invito\">Inserimento con successo, Grazie di cuore del tuo aiuto, a presto.</p>";
+                $info.="<p class=\"invito\">Inserimento avvenuto con successo, Grazie di cuore del tuo aiuto, a presto.</p>";
                 $nome='';
                 $cognome='';
                 $email='';
@@ -29,7 +29,7 @@ if(isset($_POST['submit'])){
                 $errori='';
             }
             else{
-                $errori.="<<p class=\"error\">>Inserimento non riuscito</p>";
+                $errori.="<<p class=\"error\">Inserimento non riuscito</p>";
             }
         }
         else{
