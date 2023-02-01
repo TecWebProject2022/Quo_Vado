@@ -83,7 +83,7 @@ if($dbOK){
     $formSelezioneCommenti='';
     # preparazione form commenti
     if(!$lista_classi || !$queryUtente){
-        $formSelezioneCommenti.="<p class=\"invito\">Siamo spiacenti, non è presente nessun utente e nessuna classe di laurea</p>";
+        $formSelezioneCommenti.="<p class=\"invito\">Siamo spiacenti, non è presente nessun utente e nessuna classe di laurea di cui eliminare commenti</p>";
     }
     if($lista_classi && $queryUtente){  
     
