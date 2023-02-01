@@ -81,6 +81,8 @@ if($dbOK){
     }
     $queryUtente=$db->ExecQueryAssoc("Select * From Utente where nome_utente!=\"admin\"");
     $formSelezioneCommenti='';
+    $formSelezioneCommenti.='
+    <h2 id="Cancella" class="titles_area_classi">Elimina un commento</h2>';
     # preparazione form commenti
     if(!$lista_classi || !$queryUtente){
         $formSelezioneCommenti.="<p class=\"invito\">Siamo spiacenti, non è presente nessun utente e nessuna classe di laurea di cui eliminare commenti</p>";
@@ -90,7 +92,7 @@ if($dbOK){
    
     
     $formSelezioneCommenti.='
-    <h2 id="Cancella" class="titles_area_classi">Elimina un commento</h2>
+   
     <p id="formTrovaCommenti" class="formdesc">Inserisci nome utente o classe di laurea dei commenti che vuoi ricercare</p>
        <msgCommenti/>
         <form aria-describedby="formTrovaCommenti" id="formTrovaCommentiform" action="area_admin.php#formEliminaCommenti" method="post" onsubmit=" return Cancella()">
@@ -166,11 +168,11 @@ if($dbOK){
         }  
     }
 }
-}
+$formGestioneCorsi.='
+<h2 id="Corsi" class="titles_area_classi">Gestione corsi di studio</h2>';
 if($lista_classi && $lista_atenei){
     #preparazione form corsi
-    $formGestioneCorsi='
-        <h2 id="Corsi" class="titles_area_classi">Gestione corsi di studio</h2>
+    $formGestioneCorsi.='
         <p id="Aggicorso" class="formdesc">Per aggiungere un corso di studi è necessario riempire tutti i campi, per eliminarne uno bastano nome, classe di laurea e ateneo e premere il relativo pulsante</p>
         <form id="formCorsi" aria-describedby="Aggicorso" action="area_admin.php" method="post">
             <fieldset>
@@ -320,12 +322,9 @@ if($lista_classi && $lista_atenei){
     }
 }
 else{
-    if(!$lista_atenei){
-        $formGestioneCorsi.="<p class=\"invito\">Siamo spiacenti, non è presente alcun ateneo di cui inserire un nuovo corso di studio</p>";
-    }
-    if(!$lista_classi){
-        $formGestioneCorsi.="<p class=\"invito\">Siamo spiacenti, non è presente nessuna classe di laurea  di cui inserire un nuovo corso di studio</p>";
-    }
+   
+        $formGestioneCorsi.="<p class=\"invito\">Siamo spiacenti, non è presente alcun ateneo o alcuna classe di laurea  di cui inserire un nuovo corso di studio</p>";
+    
 }
     #preparazione form cambio password
     $formCambioPw=' 
@@ -401,7 +400,7 @@ else{
         
     }
     $db->Disconnect();
-}else{
+}}else{
     $formSelezioneCommenti='<p class="invito">Spiacente non è stato possibile recuperarre le informazioni personali</p>'.$formSelezioneCommenti;
 }
 if(!isset($_SESSION['add'])){

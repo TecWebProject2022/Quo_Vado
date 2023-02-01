@@ -58,8 +58,9 @@ $dbOK=$db->Connect();
 if($dbOK){
 
     //DATI PERSONALI//
+    $contenuto.="<h2 class='titles_area_classi'>Dati personali</h2>";
     if($res1=$db->ExecQueryAssoc($query1)){
-        $contenuto.="<h2 class='titles_area_classi'>Dati personali</h2>";
+       
         $contenuto.="<dl id='container_info'>";
         $contenuto.="<dt class='highlight'>Nome utente: </dt><dd class='highlight'>".$res1[0]['nome_utente']."</dd>";
         $contenuto.="<dt>Nome: </dt><dd>".$res1[0]['nome']."</dd>";
@@ -75,8 +76,9 @@ if($dbOK){
     }
     $query2="Select ateneo, classe,corso, datai, dataf,punteggio_scuola_provenienza  from Iscrizione where nome_utente=\"$user\"";
     //ISCRIZIONI
+    $contenuto.="<h2 id='iscrizioni' class='titles_area_classi'>Iscrizioni</h2> ";
         if($res2=$db->ExecQueryAssoc($query2)){
-            $contenuto.="<h2 id='iscrizioni' class='titles_area_classi'>Iscrizioni</h2> ";
+           
             $contenuto.="<ul id='container_iscrizioni'>";
             foreach($res2 as $i){
                 $contenuto.="<li><dl class=\"container_iscrizione\">";
@@ -98,8 +100,9 @@ if($dbOK){
 
     //NUOVA ISCRIZIONE
 $query6="Select num_classe FROM ClassediLaurea";
+$contenuto.="<h2 id=\"aggiscrizione\" class='titles_area_classi'>Aggiungi Iscrizione</h2>";
 if($res5=$db->ExecQueryAssoc($query6)){
-    $contenuto.="<h2 id=\"aggiscrizione\" class='titles_area_classi'>Aggiungi Iscrizione</h2>";
+   
     $contenuto.='<span id="error"></span>';
     $contenuto.="<p id=\"descseclect\" class=\"formdesc\">Per iserire una nuova iscrizione seleziona la classe di laurea da te frequentata</p>";
     $contenuto.='<form  aria-describedby="descseclect" id="selectclass" action="area_utente.php#aggiscrizione" method="post" ><fieldset><legend class="field_legend">Seleziona una classe</legend>';
@@ -157,7 +160,7 @@ else{
 }
 $query5="Select classe FROM Iscrizione where nome_utente=\"".$user."\";";
 
-
+$contenuto.='<h2 id="aggiungi" class="titles_area_classi">Aggiungi un commento</h2>';
     //AGGIUNGI COMMENTO
 if($res5=$db->ExecQueryAssoc($query5)){
     $classi="<ul id=\"comm_list\"><li><label for=\"classi2\">Classi di Laurea:</label>
@@ -167,7 +170,7 @@ if($res5=$db->ExecQueryAssoc($query5)){
     }
     $classi.="</select></li>";
 
-$contenuto.='<h2 id="aggiungi" class="titles_area_classi">Aggiungi un commento</h2>';
+
 $contenuto.='<p id="aggiungi_commento" class="formdesc">Per lasciare un commento è necessario <strong>essere iscritti a una clsse di laurea</strong> e  compilare i campi sottostanti: ti è consentito lasciare per ogni settore  un solo commento e una valutazione da 1 a 5 per ogni ambito di valutazione delle classi di laurea per le quali ti sei dichiarato iscritto. </p>';
 $contenuto.='
 <div id="glossario"><h3>Glossario</h3>
@@ -215,7 +218,9 @@ $contenuto.='<form id="form_aggiungicomm" aria-describedby="aggiungi_commento" a
 </form>
 </errorform>';
 }
-
+else{
+    $contenuto.="<p class=\"invito\">Siamo spiacenti, non è presente alcuna iscrizione di cui esprimere un commento</p>";
+}
 
 }
 
