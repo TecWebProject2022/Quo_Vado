@@ -73,39 +73,7 @@ $db=new Connection();
                 $errori.="<p class='error'>Opss, si è verficato un errore di connessione: impossibile caricare i corsi di laurea. Per favore, riprova più tardi.</p>";
             }    
             #sezione commenti
-            #filtro, con solo due elementi ma potenzialmente potrei averne n
-           
-            $contenuto.='<p id="filtro" class="invito">Seleziona un filtro per filtrare  i commenti che vuoi visualizzare</p><form aria-describedBy="filtro" id="filtroform" class="filter" action="classe.php?nclasse='.$target.'" method="get" onsubmit="return Validate()" >
-            <fieldset>
-            <legend>Seleziona un filtro</legend>
-                <label for="commento_generale">
-                    <input type="checkbox" name="filtri[]" id="commento_generale"  value="1"/>
-                    commento generale
-                </label><br/>
-
-                <label for="inclusivita">
-                    <input type="checkbox" name="filtri[]" id="inclusivita"  value="2" />
-                    inclusività
-                </label><br/>
-                
-                    <input type="submit" class="submit" name="filterTags" id="filter_button" value="filtra commenti"/>
-
-                    <input type="hidden" name="nclasse" value="'.$target.'"/>
-                    <input type="hidden" name="area" value="'.$area.'"/>
-                </fieldset>
-            </form>';
-            $contenuto.="<p id='currentFilter'>Filtri applicati:";
-            if(isset($_GET['filtri'])){
-                foreach( $_GET['filtri'] as $f ){
-                   switch($f){
-                    case 1: $contenuto.=" commento generale";
-                            break;
-                    case 2:  $contenuto.=" inclusività";
-                            break;
-                   }
-                }
-            }
-            $contenuto.="<p>";
+            
             # se ottengo tag (da filtro, al primo caricamento della pagina sara sempre false) allora la query chiedera solo le valutazioni corrispondenti
             
             if(isset($_GET['filterTags'])){
@@ -151,6 +119,39 @@ $db=new Connection();
             else{
                 $errori.="<p class='error'>Nessun commento presente per il filtro selezionato</p>";
             }
+            #filtro, con solo due elementi ma potenzialmente potrei averne n
+           
+            $contenuto.='<p id="filtro" class="invito">Seleziona un filtro per filtrare  i commenti che vuoi visualizzare</p><form aria-describedBy="filtro" id="filtroform" class="filter" action="classe.php?nclasse='.$target.'" method="get" onsubmit="return Validate()" >
+            <fieldset>
+            <legend>Seleziona un filtro</legend>
+                <label for="commento_generale">
+                    <input type="checkbox" name="filtri[]" id="commento_generale"  value="1"/>
+                    commento generale
+                </label><br/>
+
+                <label for="inclusivita">
+                    <input type="checkbox" name="filtri[]" id="inclusivita"  value="2" />
+                    inclusività
+                </label><br/>
+                
+                    <input type="submit" class="submit" name="filterTags" id="filter_button" value="filtra commenti"/>
+
+                    <input type="hidden" name="nclasse" value="'.$target.'"/>
+                    <input type="hidden" name="area" value="'.$area.'"/>
+                </fieldset>
+            </form>';
+            $contenuto.="<p id='currentFilter'>Filtri applicati:";
+            if(isset($_GET['filtri'])){
+                foreach( $_GET['filtri'] as $f ){
+                   switch($f){
+                    case 1: $contenuto.=" commento generale";
+                            break;
+                    case 2:  $contenuto.=" inclusività";
+                            break;
+                   }
+                }
+            }
+            $contenuto.="<p>";
             #aggiunta commento
             #controllo se sono in presenza di un utente loggato
             session_start();
