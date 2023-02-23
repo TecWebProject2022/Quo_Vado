@@ -3,7 +3,7 @@ class Connection{
     private const HOST='127.0.0.1';
     private const DATABASE='mbrugin';
     private const USERNAME='mbrugin';
-    private const PASSWORD='eingohha5Iemuaba';
+    private const PASSWORD='Euj8Aeh7eiz3enga';
     private $conn;
     public function Connect() {
         
