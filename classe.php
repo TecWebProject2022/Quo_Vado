@@ -184,6 +184,7 @@ $db=new Connection();
     }
  
     $content=str_replace("<area/>",str_replace("_"," ",$area),$content); 
+    $content=str_replace("<area1/>",$area,$content);
     $content=str_replace("<classe/>",$classe,$content); 
     $content=str_replace("<content/>",$contenuto,$content);
     $content=str_replace("<error/>",$errori,$content);
